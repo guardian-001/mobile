@@ -1,5 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Env } from '@env';
+import { useRouter } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 
 import { Github, Rate, Share, Support, Website } from '@/assets/icons';
@@ -17,7 +18,14 @@ import {
 } from '@/shared/components';
 
 export default function Settings() {
+  const router = useRouter();
   const signOut = useAuth.use.signOut();
+
+  const handleLogout = () => {
+    signOut();
+    router.replace('/(architect)/(public)/login');
+  };
+
   const { colorScheme } = useColorScheme();
   const iconColor =
     colorScheme === 'dark' ? colors.neutral[400] : colors.neutral[500];
@@ -75,7 +83,7 @@ export default function Settings() {
 
           <View className="my-8">
             <ItemsContainer>
-              <Item text="settings.logout" onPress={signOut} />
+              <Item text="settings.logout" onPress={handleLogout} />
             </ItemsContainer>
           </View>
         </View>

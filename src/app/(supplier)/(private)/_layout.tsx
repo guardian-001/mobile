@@ -14,7 +14,7 @@ export default function SupplierPrivateLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Feed',
+          title: 'Supplier Space',
           tabBarIcon: ({ color }) => <FeedIcon color={color} />,
           tabBarTestID: 'feed-tab',
         }}
@@ -22,7 +22,7 @@ export default function SupplierPrivateLayout() {
       <Tabs.Screen
         name="style"
         options={{
-          title: 'Style',
+          title: 'Supplier Space',
           headerShown: false,
           tabBarIcon: ({ color }) => <StyleIcon color={color} />,
           tabBarTestID: 'style-tab',
@@ -31,7 +31,7 @@ export default function SupplierPrivateLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
+          title: 'Supplier Space',
           headerShown: false,
           tabBarIcon: ({ color }) => <SettingsIcon color={color} />,
           tabBarTestID: 'settings-tab',

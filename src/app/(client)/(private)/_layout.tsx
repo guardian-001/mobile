@@ -14,7 +14,7 @@ export default function ClientPrivateLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Feed',
+          title: 'Client Space',
           tabBarIcon: ({ color }) => <FeedIcon color={color} />,
           tabBarTestID: 'feed-tab',
         }}
@@ -23,7 +23,7 @@ export default function ClientPrivateLayout() {
       <Tabs.Screen
         name="style"
         options={{
-          title: 'Style',
+          title: 'Client Space',
           headerShown: false,
           tabBarIcon: ({ color }) => <StyleIcon color={color} />,
           tabBarTestID: 'style-tab',
@@ -32,7 +32,7 @@ export default function ClientPrivateLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
+          title: 'Client Space',
           headerShown: false,
           tabBarIcon: ({ color }) => <SettingsIcon color={color} />,
           tabBarTestID: 'settings-tab',

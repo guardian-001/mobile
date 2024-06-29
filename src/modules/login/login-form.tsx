@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
@@ -26,6 +27,7 @@ export type LoginFormProps = {
 };
 
 export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
+  const router = useRouter();
   const { handleSubmit, control } = useForm<FormType>({
     resolver: zodResolver(schema),
   });
@@ -53,6 +55,12 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
         testID="login-button"
         label="Login"
         onPress={handleSubmit(onSubmit)}
+      />
+
+      <Button
+        testID="login-button"
+        label="go back"
+        onPress={() => router.push('/onboarding')}
       />
     </View>
   );
