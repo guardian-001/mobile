@@ -1,9 +1,15 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
 
-import { Cover } from '@/components/cover';
+import { Cover } from '@/assets/icons/cover';
 import { useIsFirstTime } from '@/core/hooks';
-import { Button, FocusAwareStatusBar, SafeAreaView, Text, View } from '@/ui';
+import {
+  Button,
+  FocusAwareStatusBar,
+  SafeAreaView,
+  Text,
+  View,
+} from '@/shared/components';
 export default function Onboarding() {
   const [_, setIsFirstTime] = useIsFirstTime();
   const router = useRouter();
@@ -14,35 +20,36 @@ export default function Onboarding() {
         <Cover />
       </View>
       <View className="justify-end ">
-        <Text className="my-3 text-center text-5xl font-bold">
-          Obytes Starter
-        </Text>
+        <Text className="my-3 text-center text-5xl font-bold">Archimatch</Text>
         <Text className="mb-2 text-center text-lg text-gray-600">
           The right way to build your mobile app
         </Text>
-
-        <Text className="my-1 pt-6 text-left text-lg">
-          🚀 Production-ready{' '}
-        </Text>
-        <Text className="my-1 text-left text-lg">
-          🥷 Developer experience + Productivity
-        </Text>
-        <Text className="my-1 text-left text-lg">
-          🧩 Minimal code and dependencies
-        </Text>
-        <Text className="my-1 text-left text-lg">
-          💪 well maintained third-party libraries
-        </Text>
       </View>
-      <SafeAreaView className="mt-6">
-        <Button
-          label="Let's Get Started "
-          onPress={() => {
-            setIsFirstTime(false);
-            router.replace('/login');
-          }}
-        />
-      </SafeAreaView>
+      <View className="h-1/3">
+        <SafeAreaView className="mt-6">
+          <Button
+            label="Let's Get Started architect"
+            onPress={() => {
+              setIsFirstTime(false);
+              router.replace('/(architect)/(public)/login');
+            }}
+          />
+          <Button
+            label="Let's Get Started client"
+            onPress={() => {
+              setIsFirstTime(false);
+              router.replace('/(client)/(public)/login');
+            }}
+          />
+          <Button
+            label="Let's Get Started supplier"
+            onPress={() => {
+              setIsFirstTime(false);
+              router.replace('/(supplier)/(public)/login');
+            }}
+          />
+        </SafeAreaView>
+      </View>
     </View>
   );
 }
