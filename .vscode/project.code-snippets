@@ -27,7 +27,7 @@
     "body": [
       "import * as React from 'react';",
       "",
-      "import { Text, View } from '@/ui';",
+      "import { Text, View } from '@/shared/components';",
       "",
       "type Props = {",
       "  $2",
