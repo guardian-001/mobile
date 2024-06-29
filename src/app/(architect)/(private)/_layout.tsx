@@ -14,7 +14,7 @@ export default function ArchitectPrivateLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Feed',
+          title: 'Architect Space',
           tabBarIcon: ({ color }) => <FeedIcon color={color} />,
           tabBarTestID: 'feed-tab',
         }}
@@ -23,7 +23,7 @@ export default function ArchitectPrivateLayout() {
       <Tabs.Screen
         name="style"
         options={{
-          title: 'Style',
+          title: 'Architect Space',
           headerShown: false,
           tabBarIcon: ({ color }) => <StyleIcon color={color} />,
           tabBarTestID: 'style-tab',
@@ -32,7 +32,7 @@ export default function ArchitectPrivateLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
+          title: 'Architect Space',
           headerShown: false,
           tabBarIcon: ({ color }) => <SettingsIcon color={color} />,
           tabBarTestID: 'settings-tab',

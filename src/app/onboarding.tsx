@@ -2,7 +2,6 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 
 import { Cover } from '@/assets/icons/cover';
-import { useIsFirstTime } from '@/core/hooks';
 import {
   Button,
   FocusAwareStatusBar,
@@ -10,6 +9,7 @@ import {
   Text,
   View,
 } from '@/shared/components';
+import { useIsFirstTime } from '@/shared/hooks';
 export default function Onboarding() {
   const [_, setIsFirstTime] = useIsFirstTime();
   const router = useRouter();
@@ -25,31 +25,30 @@ export default function Onboarding() {
           The right way to build your mobile app
         </Text>
       </View>
-      <View className="h-1/3">
-        <SafeAreaView className="mt-6">
-          <Button
-            label="Let's Get Started architect"
-            onPress={() => {
-              setIsFirstTime(false);
-              router.replace('/(architect)/(public)/login');
-            }}
-          />
-          <Button
-            label="Let's Get Started client"
-            onPress={() => {
-              setIsFirstTime(false);
-              router.replace('/(client)/(public)/login');
-            }}
-          />
-          <Button
-            label="Let's Get Started supplier"
-            onPress={() => {
-              setIsFirstTime(false);
-              router.replace('/(supplier)/(public)/login');
-            }}
-          />
-        </SafeAreaView>
-      </View>
+
+      <SafeAreaView className="mt-6">
+        <Button
+          label="Let's Get Started architect"
+          onPress={() => {
+            setIsFirstTime(false);
+            router.replace('/(architect)/(public)/login');
+          }}
+        />
+        <Button
+          label="Let's Get Started client"
+          onPress={() => {
+            setIsFirstTime(false);
+            router.replace('/(client)/(public)/login');
+          }}
+        />
+        <Button
+          label="Let's Get Started supplier"
+          onPress={() => {
+            setIsFirstTime(false);
+            router.replace('/(supplier)/(public)/login');
+          }}
+        />
+      </SafeAreaView>
     </View>
   );
 }

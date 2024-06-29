@@ -6,7 +6,7 @@ import FlashMessage from 'react-native-flash-message';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { APIProvider } from '@/api';
-import { useThemeConfig } from '@/core/use-theme-config';
+import { useThemeConfig } from '@/theme/use-theme-config';
 
 function AppProvider({ children }: { children: React.ReactNode }) {
   const theme = useThemeConfig();
