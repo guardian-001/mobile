@@ -36,8 +36,8 @@ require('dotenv').config({
 const BUNDLE_ID = 'com.archimatch'; // ios bundle id
 const PACKAGE = 'com.archimatch'; // android package name
 const NAME = 'archimatch'; // app name
-const EXPO_ACCOUNT_OWNER = 'guardian-001'; // expo account owner
-const EAS_PROJECT_ID = '7abb7f72-61a1-4dcf-9e6c-1ca21475b803'; // eas project id
+const EXPO_ACCOUNT_OWNER = 'archimatch'; // expo account owner
+const EAS_PROJECT_ID = '68260e1d-246b-438c-8d7e-26bf234fd97b'; // eas project id
 const SCHEME = 'archimatch'; // app scheme
 
 /**
