@@ -10,7 +10,9 @@ export * from './input';
 export * from './list';
 export * from './modal';
 export * from './progress-bar';
+export * from './radio';
 export * from './select';
+export * from './switch';
 export * from './text';
 export * from './utils';
 

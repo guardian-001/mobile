@@ -1,11 +1,6 @@
 import { MotiView } from 'moti';
 import React, { useCallback } from 'react';
-import {
-  I18nManager,
-  Pressable,
-  type PressableProps,
-  View,
-} from 'react-native';
+import { Pressable, type PressableProps } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import colors from '@/theme/colors';
@@ -13,12 +8,6 @@ import colors from '@/theme/colors';
 import { Text } from './text';
 
 const SIZE = 20;
-const WIDTH = 50;
-const HEIGHT = 28;
-const THUMB_HEIGHT = 22;
-const THUMB_WIDTH = 22;
-const THUMB_OFFSET = 4;
-
 export interface RootProps extends Omit<PressableProps, 'onPress'> {
   onChange: (checked: boolean) => void;
   checked?: boolean;
@@ -139,129 +128,5 @@ const CheckboxBase = ({
 export const Checkbox = Object.assign(CheckboxBase, {
   Icon: CheckboxIcon,
   Root: CheckboxRoot,
-  Label,
-});
-
-export const RadioIcon = ({ checked = false }: IconProps) => {
-  const color = checked ? colors.primary[300] : colors.charcoal[400];
-  return (
-    <MotiView
-      style={{
-        height: SIZE,
-        width: SIZE,
-        borderColor: color,
-      }}
-      className="items-center justify-center rounded-[20px] border-2 bg-transparent"
-      from={{ borderColor: '#CCCFD6' }}
-      animate={{
-        borderColor: color,
-      }}
-      transition={{ borderColor: { duration: 100, type: 'timing' } }}
-    >
-      <MotiView
-        className={`h-[10px] w-[10px] rounded-[10px] ${
-          checked && 'bg-primary-300'
-        } `}
-        from={{ opacity: 0 }}
-        animate={{ opacity: checked ? 1 : 0 }}
-        transition={{ opacity: { duration: 50, type: 'timing' } }}
-      />
-    </MotiView>
-  );
-};
-
-const RadioRoot = ({ checked = false, children, ...props }: RootProps) => {
-  return (
-    <Root checked={checked} accessibilityRole="radio" {...props}>
-      {children}
-    </Root>
-  );
-};
-
-const RadioBase = ({
-  checked = false,
-  testID,
-  label,
-  ...props
-}: RootProps & { label?: string }) => {
-  return (
-    <RadioRoot checked={checked} testID={testID} {...props}>
-      <RadioIcon checked={checked} />
-      {label ? (
-        <Label text={label} testID={testID ? `${testID}-label` : undefined} />
-      ) : null}
-    </RadioRoot>
-  );
-};
-
-export const Radio = Object.assign(RadioBase, {
-  Icon: RadioIcon,
-  Root: RadioRoot,
-  Label,
-});
-
-export const SwitchIcon = ({ checked = false }: IconProps) => {
-  const translateX = checked
-    ? THUMB_OFFSET
-    : WIDTH - THUMB_WIDTH - THUMB_OFFSET;
-
-  const backgroundColor = checked ? colors.primary[300] : colors.charcoal[400];
-
-  return (
-    <View className="w-[50px] justify-center">
-      <View className="overflow-hidden rounded-full">
-        <View
-          style={{
-            width: WIDTH,
-            height: HEIGHT,
-            backgroundColor,
-          }}
-        />
-      </View>
-      <MotiView
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          height: THUMB_HEIGHT,
-          width: THUMB_WIDTH,
-          position: 'absolute',
-          backgroundColor: 'white',
-          borderRadius: 13,
-          right: 0,
-        }}
-        animate={{
-          translateX: I18nManager.isRTL ? translateX : -translateX,
-        }}
-        transition={{ translateX: { overshootClamping: true } }}
-      />
-    </View>
-  );
-};
-const SwitchRoot = ({ checked = false, children, ...props }: RootProps) => {
-  return (
-    <Root checked={checked} accessibilityRole="switch" {...props}>
-      {children}
-    </Root>
-  );
-};
-
-const SwitchBase = ({
-  checked = false,
-  testID,
-  label,
-  ...props
-}: RootProps & { label?: string }) => {
-  return (
-    <SwitchRoot checked={checked} testID={testID} {...props}>
-      <SwitchIcon checked={checked} />
-      {label ? (
-        <Label text={label} testID={testID ? `${testID}-label` : undefined} />
-      ) : null}
-    </SwitchRoot>
-  );
-};
-
-export const Switch = Object.assign(SwitchBase, {
-  Icon: SwitchIcon,
-  Root: SwitchRoot,
   Label,
 });
