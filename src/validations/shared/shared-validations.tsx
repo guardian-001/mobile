@@ -1,29 +1,24 @@
 import { z } from 'zod';
 
-export const requiredValidation = z.string().nonempty({
-  message: 'Required',
+export const requiredValidation = z.string({
+  message: 'validations.required',
 });
 
 export const emailValidation = z
-  .string()
-  .email({ message: 'Invalid email format' })
-  .max(100, { message: 'Email must be at most 100 characters' });
+  .string({ message: 'validations.required' })
+  .email({ message: 'validations.invalid' })
+  .max(100, { message: 'validations.email-max-length' });
 
 export const passwordValidation = z
-  .string()
-  .min(8, { message: 'Password must be at least 6 characters' })
-  .regex(/[a-z]/, { message: 'password-lowercase' })
-  .regex(/[A-Z]/, { message: 'password-uppercase' })
-  .regex(/[0-9]/, { message: 'password-digit' })
-  .regex(/[^a-zA-Z0-9]/, { message: 'password-special-char' });
+  .string({ message: 'validations.required' })
+  .min(8, { message: 'validations.password-min-length' })
+  .regex(/[a-z]/, { message: 'validations.password-lowercase' })
+  .regex(/[A-Z]/, { message: 'validations.password-uppercase' })
+  .regex(/[0-9]/, { message: 'validations.password-digit' })
+  .regex(/[^a-zA-Z0-9]/, { message: 'validations.password-special-char' });
 
 export const fieldValidation = z
-  .string()
-  .min(3, { message: 'field-min-length' })
-  .max(30, { message: 'field-max-length' })
-  .regex(/^[a-zA-Z0-9_]+$/, { message: 'field-shape' });
-
-export const confirmPasswordValidation = (password: string) =>
-  z.string().refine((val) => val === password, {
-    message: 'Passwords do not match',
-  });
+  .string({ message: 'validations.required' })
+  .min(3, { message: 'validations.field-min-length' })
+  .max(50, { message: 'validations.field-max-length' })
+  .regex(/^[a-zA-Z0-9_]+$/, { message: 'validations.field-shape' });

@@ -16,7 +16,7 @@ export const ConfirmPasswordSchema = z
       return values.password === values.confirmPassword;
     },
     {
-      message: 'confirm-password',
+      message: 'validations.confirm-password',
       path: ['confirmPassword'],
     }
   );
