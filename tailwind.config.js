@@ -1,5 +1,3 @@
-const colors = require('./src/theme/colors');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // NOTE: Update this to include the paths to all of your component files.
@@ -11,7 +9,10 @@ module.exports = {
       fontFamily: {
         lato: ['Lato'],
       },
-      colors,
+      colors: {
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+      },
     },
   },
   plugins: [],

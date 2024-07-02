@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import React from 'react';
 import { I18nManager } from 'react-native';
 
@@ -45,11 +44,11 @@ describe('Input component ', () => {
   });
 
   it('should render the error message correctly ', () => {
-    render(<Input testID="input" error="This is an error message" />);
+    render(<Input testID="input" error="validations.invalid" />);
     expect(screen.getByTestId('input')).toBeOnTheScreen();
 
     expect(screen.getByTestId('input-error')).toHaveTextContent(
-      'This is an error message'
+      'validations.invalid'
     );
   });
   it('should render the label, error message & placeholder correctly ', () => {
@@ -58,7 +57,7 @@ describe('Input component ', () => {
         testID="input"
         label="Username"
         placeholder="Enter your username"
-        error="This is an error message"
+        error="validations.invalid"
       />
     );
     expect(screen.getByTestId('input')).toBeOnTheScreen();
@@ -66,7 +65,7 @@ describe('Input component ', () => {
     expect(screen.getByTestId('input-label')).toHaveTextContent('Username');
     expect(screen.getByTestId('input-error')).toBeOnTheScreen();
     expect(screen.getByTestId('input-error')).toHaveTextContent(
-      'This is an error message'
+      'validations.invalid'
     );
     expect(
       screen.getByPlaceholderText('Enter your username')
