@@ -26,7 +26,7 @@ export default function Feed() {
     );
   }
   return (
-    <View className="flex-1 bg-primary">
+    <View className="bg-primary flex-1">
       <FocusAwareStatusBar />
       <FlashList
         data={data}
