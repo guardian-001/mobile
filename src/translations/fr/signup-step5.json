@@ -1,0 +1,10 @@
+{
+  "title": "Créez votre mot de passe",
+  "description": "Créez un mot de passe sécurisé pour protéger votre compte.",
+  "chooseMdp": "Choisir un mot de passe",
+  "mdpConditionTitle": "Votre mot de passe doit contenir au moins : ",
+  "nbCaractersCondition": "8 caractères ( 12 maximum) ",
+  "atLeastNbLetters&Numbers": "1 lettre et 1 chiffre",
+  "nbSpecialCaracters": "1 caractère spécial (# ? ! $ & @)",
+  "createMdpBtn": "créer le mot de passe"
+}
