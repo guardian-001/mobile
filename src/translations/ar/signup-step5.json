@@ -1,0 +1,10 @@
+{
+  "title": "إنشاء كلمة مرور",
+  "description": "أنشئ كلمة مرور آمنة لحماية حسابك.",
+  "chooseMdp": "اختر كلمة مرور",
+  "mdpConditionTitle": "يجب أن تحتوي كلمة المرور الخاصة بك على الأقل:",
+  "nbCaractersCondition": "8 أحرف (بحد أقصى 12)",
+  "atLeastNbLetters&Numbers": "1 حرف و 1 رقم",
+  "nbSpecialCaracters": "1 حرف خاص (# ؟ ! $ & @)",
+  "createMdpBtn": "إنشاء كلمة مرور"
+}

@@ -1,3 +1,9 @@
 {
-  "message": "مرحبا بكم في موقع تطبيق obytes"
+  "welcomeTitle": "اعثر على",
+  "welcomeTitleSpan": "مهندس معماري!",
+  "welcomeDescription": "ابحث عن مهندسين معماريين لمشاريع البناء والتجديد الخاصة بك.",
+  "clientBtn": "اعثر على مهندس معماري",
+  "architectBtn": "هل أنت مهندس معماري",
+  "supplierBtn": "تسجيل دخول المورد",
+  "or": "أو"
 }
