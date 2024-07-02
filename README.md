@@ -1,6 +1,6 @@
 <h1 align="center">
   <img alt="logo" src="./assets/icon.png" width="124px" style="border-radius:10px"/><br/>
-Mobile App </h1>
+Archimatch </h1>
 
 > This Project is based on [Obytes starter](https://starter.obytes.com)
 
@@ -13,6 +13,18 @@ Mobile App </h1>
 - [Pnpm](https://pnpm.io/installation)
 - [VS Code Editor](https://code.visualstudio.com/download) ⚠️ Make sure to install all recommended extension from `.vscode/extensions.json`
 
+## VERSION
+
+- in this location ( C:\Program Files (x86)\Java ) we need three folders to be present:
+- jdk-1.8
+- jre-1.8
+- jre1.8.0_261
+
+### other versions required :
+
+- jdk: 17 version
+- ndkVersion = "26.1.10909125" //specified in the build.gradle project file
+
 ## 👋 Quick start
 
 Clone the repo to your machine and install deps :
@@ -23,6 +35,9 @@ git clone https://github.com/user/repo-name
 cd ./repo-name
 
 pnpm install
+
+pnpm prebuild
+
 ```
 
 To run the app on ios

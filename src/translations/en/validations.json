@@ -1,0 +1,14 @@
+{
+  "required": "Required",
+  "invalid": "Invalid email format",
+  "email-max-length": "Email must be at most 100 characters",
+  "password-min-length": "Password must be at least 8 characters",
+  "password-lowercase": "Password must contain at least one lowercase letter",
+  "password-uppercase": "Password must contain at least one uppercase letter",
+  "password-digit": "Password must contain at least one digit",
+  "password-special-char": "Password must contain at least one special character",
+  "field-min-length": "Field must be at least 3 characters",
+  "field-max-length": "Field must be at most 50 characters",
+  "field-shape": "Field must follow the required format",
+  "confirm-password": "Passwords must match"
+}

@@ -11,6 +11,8 @@ import { I18nManager, StyleSheet, View } from 'react-native';
 import { TextInput as NTextInput } from 'react-native';
 import { tv } from 'tailwind-variants';
 
+import type { TxKeyPath } from '@/core';
+
 import colors from '../../theme/colors';
 import { Text } from './text';
 
@@ -50,7 +52,7 @@ const inputTv = tv({
 export interface NInputProps extends TextInputProps {
   label?: string;
   disabled?: boolean;
-  error?: string;
+  error?: TxKeyPath;
 }
 
 type TRule = Omit<
@@ -112,9 +114,8 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
         <Text
           testID={testID ? `${testID}-error` : undefined}
           className="text-sm text-danger-400 dark:text-danger-600"
-        >
-          {error}
-        </Text>
+          tx={error}
+        />
       )}
     </View>
   );
@@ -127,6 +128,7 @@ export function ControlledInput<T extends FieldValues>(
   const { name, control, rules, ...inputProps } = props;
 
   const { field, fieldState } = useController({ control, name, rules });
+  const error = fieldState.error?.message as TxKeyPath | undefined;
   return (
     <Input
       ref={field.ref}
@@ -134,7 +136,7 @@ export function ControlledInput<T extends FieldValues>(
       onChangeText={field.onChange}
       value={(field.value as string) || ''}
       {...inputProps}
-      error={fieldState.error?.message}
+      error={error}
     />
   );
 }
