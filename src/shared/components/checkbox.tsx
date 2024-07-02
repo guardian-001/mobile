@@ -7,7 +7,6 @@ import colors from '@/theme/colors';
 
 import { Text } from './text';
 
-const SIZE = 20;
 export interface RootProps extends Omit<PressableProps, 'onPress'> {
   onChange: (checked: boolean) => void;
   checked?: boolean;
@@ -65,8 +64,8 @@ export const CheckboxIcon = ({ checked = false }: IconProps) => {
   return (
     <MotiView
       style={{
-        height: SIZE,
-        width: SIZE,
+        height: 20,
+        width: 20,
         borderColor: color,
       }}
       className="items-center justify-center rounded-[5px] border-2"

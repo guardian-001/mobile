@@ -7,8 +7,6 @@ import type { IconProps, RootProps } from './checkbox';
 import { Root } from './checkbox';
 import { Text } from './text';
 
-const SIZE = 20;
-
 type LabelProps = {
   text: string;
   className?: string;
@@ -28,8 +26,8 @@ export const RadioIcon = ({ checked = false }: IconProps) => {
   return (
     <MotiView
       style={{
-        height: SIZE,
-        width: SIZE,
+        height: 20,
+        width: 20,
         borderColor: color,
       }}
       className="items-center justify-center rounded-[20px] border-2 bg-transparent"

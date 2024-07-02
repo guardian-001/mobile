@@ -8,12 +8,6 @@ import type { IconProps, RootProps } from './checkbox';
 import { Root } from './checkbox';
 import { Text } from './text';
 
-const WIDTH = 50;
-const HEIGHT = 28;
-const THUMB_HEIGHT = 22;
-const THUMB_WIDTH = 22;
-const THUMB_OFFSET = 4;
-
 type LabelProps = {
   text: string;
   className?: string;
@@ -29,9 +23,7 @@ const Label = ({ text, testID, className = '' }: LabelProps) => {
 };
 
 export const SwitchIcon = ({ checked = false }: IconProps) => {
-  const translateX = checked
-    ? THUMB_OFFSET
-    : WIDTH - THUMB_WIDTH - THUMB_OFFSET;
+  const translateX = checked ? 4 : 50 - 22 - 4;
 
   const backgroundColor = checked ? colors.primary[300] : colors.charcoal[400];
 
@@ -40,8 +32,8 @@ export const SwitchIcon = ({ checked = false }: IconProps) => {
       <View className="overflow-hidden rounded-full">
         <View
           style={{
-            width: WIDTH,
-            height: HEIGHT,
+            width: 50,
+            height: 28,
             backgroundColor,
           }}
         />
@@ -49,8 +41,8 @@ export const SwitchIcon = ({ checked = false }: IconProps) => {
       <MotiView
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
-          height: THUMB_HEIGHT,
-          width: THUMB_WIDTH,
+          height: 22,
+          width: 22,
           position: 'absolute',
           backgroundColor: 'white',
           borderRadius: 13,
