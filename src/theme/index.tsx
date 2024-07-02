@@ -42,8 +42,6 @@ export function Theme(props: ThemeProps) {
     | 'supplier'
     | 'default';
 
-  console.log(theme);
-
   return (
     <View style={Themes[theme]} className={clsx('flex-1', props.className)}>
       <ThemeProviderValues.Provider value={{ theme }}>
