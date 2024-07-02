@@ -25,7 +25,7 @@ export default function Onboarding() {
 
       <View className="mt-6 bg-primary">
         <Button
-          type="space"
+          type="default"
           icon={<ArrowRightLong />}
           label="Let's Get Started architect"
           onPress={() => {

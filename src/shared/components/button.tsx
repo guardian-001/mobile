@@ -34,9 +34,9 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
     },
     ref
   ) => {
-    const containerClassname = type == 'default' ? 'bg-white' : 'bg-primary';
+    const containerClassname = type === 'default' ? 'bg-white' : 'bg-black';
     const labelClassname =
-      type == 'default' ? 'text-primary-txt' : 'text-white';
+      type === 'default' ? 'text-primary-txt' : 'text-white';
 
     return (
       <TouchableOpacity
