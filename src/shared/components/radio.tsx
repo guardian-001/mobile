@@ -22,14 +22,14 @@ const Label = ({ text, testID, className = '' }: LabelProps) => {
 };
 
 export const RadioIcon = ({ checked = false }: IconProps) => {
-  const color = checked ? colors.primary[300] : colors.charcoal[400];
+  const color = checked ? colors.primary[300] : colors.gray[600];
   return (
     <MotiView
       style={{
         borderColor: color,
       }}
       className="h-6 w-6 items-center justify-center rounded-[20px] border-2 bg-transparent"
-      from={{ borderColor: '#CCCFD6' }}
+      from={{ borderColor: colors.gray[600] }}
       animate={{
         borderColor: color,
       }}

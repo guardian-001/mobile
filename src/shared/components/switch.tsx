@@ -25,7 +25,7 @@ const Label = ({ text, testID, className = '' }: LabelProps) => {
 export const SwitchIcon = ({ checked = false }: IconProps) => {
   const translateX = checked ? 4 : 24;
 
-  const backgroundColor = checked ? colors.primary[300] : colors.charcoal[400];
+  const backgroundColor = checked ? colors.primary[300] : colors.gray[600];
 
   return (
     <View className="w-14 justify-center">

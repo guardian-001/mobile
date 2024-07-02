@@ -60,14 +60,14 @@ const Label = ({ text, testID, className = '' }: LabelProps) => {
 };
 
 export const CheckboxIcon = ({ checked = false }: IconProps) => {
-  const color = checked ? colors.primary[300] : colors.charcoal[400];
+  const color = checked ? colors.primary[300] : colors.gray[600];
   return (
     <MotiView
       style={{
         borderColor: color,
       }}
       className="h-6 w-6 items-center justify-center rounded-[5px] border-2"
-      from={{ backgroundColor: 'transparent', borderColor: '#CCCFD6' }}
+      from={{ backgroundColor: 'transparent', borderColor: colors.gray[600] }}
       animate={{
         backgroundColor: checked ? color : 'transparent',
         borderColor: color,
