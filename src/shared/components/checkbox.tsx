@@ -64,11 +64,9 @@ export const CheckboxIcon = ({ checked = false }: IconProps) => {
   return (
     <MotiView
       style={{
-        height: 20,
-        width: 20,
         borderColor: color,
       }}
-      className="items-center justify-center rounded-[5px] border-2"
+      className="h-6 w-6 items-center justify-center rounded-[5px] border-2"
       from={{ backgroundColor: 'transparent', borderColor: '#CCCFD6' }}
       animate={{
         backgroundColor: checked ? color : 'transparent',
@@ -84,7 +82,7 @@ export const CheckboxIcon = ({ checked = false }: IconProps) => {
         animate={{ opacity: checked ? 1 : 0 }}
         transition={{ opacity: { type: 'timing', duration: 100 } }}
       >
-        <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <Svg className="h-7 w-7" viewBox="0 0 24 24" fill="none">
           <Path
             d="m16.726 7-.64.633c-2.207 2.212-3.878 4.047-5.955 6.158l-2.28-1.928-.69-.584L6 12.66l.683.577 2.928 2.477.633.535.591-.584c2.421-2.426 4.148-4.367 6.532-6.756l.633-.64L16.726 7Z"
             fill="#fff"

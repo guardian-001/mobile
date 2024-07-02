@@ -26,11 +26,9 @@ export const RadioIcon = ({ checked = false }: IconProps) => {
   return (
     <MotiView
       style={{
-        height: 20,
-        width: 20,
         borderColor: color,
       }}
-      className="items-center justify-center rounded-[20px] border-2 bg-transparent"
+      className="h-6 w-6 items-center justify-center rounded-[20px] border-2 bg-transparent"
       from={{ borderColor: '#CCCFD6' }}
       animate={{
         borderColor: color,
@@ -38,9 +36,7 @@ export const RadioIcon = ({ checked = false }: IconProps) => {
       transition={{ borderColor: { duration: 100, type: 'timing' } }}
     >
       <MotiView
-        className={`h-[10px] w-[10px] rounded-[10px] ${
-          checked && 'bg-primary-300'
-        } `}
+        className={`h-3 w-3 rounded-[10px] ${checked && 'bg-primary-300'} `}
         from={{ opacity: 0 }}
         animate={{ opacity: checked ? 1 : 0 }}
         transition={{ opacity: { duration: 50, type: 'timing' } }}

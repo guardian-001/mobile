@@ -23,31 +23,29 @@ const Label = ({ text, testID, className = '' }: LabelProps) => {
 };
 
 export const SwitchIcon = ({ checked = false }: IconProps) => {
-  const translateX = checked ? 4 : 50 - 22 - 4;
+  const translateX = checked ? 4 : 24;
 
   const backgroundColor = checked ? colors.primary[300] : colors.charcoal[400];
 
   return (
-    <View className="w-[50px] justify-center">
+    <View className="w-14 justify-center">
       <View className="overflow-hidden rounded-full">
         <View
           style={{
-            width: 50,
-            height: 28,
             backgroundColor,
           }}
+          className="h-8 w-16"
         />
       </View>
       <MotiView
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
-          height: 22,
-          width: 22,
           position: 'absolute',
           backgroundColor: 'white',
           borderRadius: 13,
           right: 0,
         }}
+        className="h-6 w-6"
         animate={{
           translateX: I18nManager.isRTL ? translateX : -translateX,
         }}
