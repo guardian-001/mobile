@@ -1,10 +1,8 @@
-/* eslint-disable max-lines-per-function */
 import {
   BottomSheetFlatList,
   type BottomSheetModal,
 } from '@gorhom/bottom-sheet';
 import { FlashList } from '@shopify/flash-list';
-import { useColorScheme } from 'nativewind';
 import * as React from 'react';
 import type { FieldValues } from 'react-hook-form';
 import { useController } from 'react-hook-form';
@@ -75,8 +73,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
   ({ options, onSelect, value, testID }, ref) => {
     const height = options.length * 70 + 100;
     const snapPoints = React.useMemo(() => [height], [height]);
-    const { colorScheme } = useColorScheme();
-    const isDark = colorScheme === 'dark';
+    const isDark = false;
 
     const renderSelectItem = React.useCallback(
       ({ item }: { item: Option }) => (
@@ -210,7 +207,7 @@ export const Select = (props: SelectProps) => {
         {error && (
           <Text
             testID={`${testID}-error`}
-            className="text-sm text-danger-300 dark:text-danger-600"
+            className="text-danger-300 dark:text-danger-600 text-sm"
           >
             {error}
           </Text>

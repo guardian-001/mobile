@@ -5,7 +5,7 @@ import type { SvgProps } from 'react-native-svg';
 
 const HouseImage = ({ ...props }: SvgProps) => {
   const colorScheme = useColorScheme();
-  const fillColor = colorScheme === 'dark' ? '#FFFFFF' : '#344054';
+  const fillColor = false ? '#FFFFFF' : '#344054';
 
   return (
     <Svg
