@@ -15,7 +15,7 @@ import { tv } from 'tailwind-variants';
 import { CaretDown } from '@/assets/icons';
 import colors from '@/theme/colors';
 
-import type { InputControllerType } from './input';
+import type { InputControllerType } from './controlled-input';
 import { useModal } from './modal';
 import { Modal } from './modal';
 import { Text } from './text';

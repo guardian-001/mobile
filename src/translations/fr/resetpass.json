@@ -1,4 +1,16 @@
 {
-  "forgetPasswordTitle": "Mot de passe oublié?",
-  "sendingEmailDescription": "Nous vous enverrons par e-mail le lien pour réinitialiser votre mot de passe"
+  "reset": "Réinitialiser",
+  "forgetPasswordTitle": "Mot de passe oublié ?",
+  "sendingEmailDescription": "Nous vous enverrons par email le lien pour réinitialiser votre mot de passe",
+  "verificationCodeTitle": "Code de vérification",
+  "verificationCodeDescription": "Entrez le code envoyé à",
+  "resetPasswordTitle": "Réinitialiser le mot de passe",
+  "resetPasswordDescription": "Créez un mot de passe sécurisé pour protéger votre compte.",
+  "passwordConditions": "Votre mot de passe doit contenir au moins :",
+  "passwordLength": "Votre mot de passe doit contenir au moins :",
+  "password-min-length": "8 caractères",
+  "password-lowercase": "une lettre minuscule",
+  "password-uppercase": "une lettre majuscule",
+  "password-digit": "un chiffre",
+  "password-special-char": "un caractère spécial (#?!$&@)"
 }
