@@ -2,7 +2,9 @@ import * as React from 'react';
 import type { SvgProps } from 'react-native-svg';
 import Svg, { Path } from 'react-native-svg';
 
-export const ArrowRightLong = ({ color = '#CCC', ...props }: SvgProps) => (
+import colors from '@/theme/colors';
+
+export const ArrowRightLong = ({ color = colors.blue, ...props }: SvgProps) => (
   <Svg width={12} height={6} fill="none" {...props}>
     <Path
       fill={color}

@@ -8,6 +8,10 @@ import { useIsFirstTime } from '@/shared/hooks';
 export default function Onboarding() {
   const [_, setIsFirstTime] = useIsFirstTime();
   const router = useRouter();
+  const onPressHAndler = (route: string) => {
+    setIsFirstTime(false);
+    router.replace(route);
+  };
   return (
     <View className="flex h-full items-center justify-center  ">
       <FocusAwareStatusBar />
@@ -25,31 +29,22 @@ export default function Onboarding() {
 
       <View className="mt-6 bg-primary">
         <Button
-          type="default"
+          type="special"
           icon={<ArrowRightLong />}
           label="Let's Get Started architect"
-          onPress={() => {
-            setIsFirstTime(false);
-            router.replace('/(architect)/(public)/login');
-          }}
+          onPress={() => onPressHAndler('/(architect)/(public)/login')}
         />
         <Button
-          type="space"
+          type="default"
           icon={<ArrowRightLong />}
           label="Let's Get Started client"
-          onPress={() => {
-            setIsFirstTime(false);
-            router.replace('/(client)/(public)/login');
-          }}
+          onPress={() => onPressHAndler('/(client)/(public)/login')}
         />
         <Button
-          type="space"
+          type="default"
           icon={<ArrowRightLong />}
           label="Let's Get Started supplier"
-          onPress={() => {
-            setIsFirstTime(false);
-            router.replace('/(supplier)/(public)/login');
-          }}
+          onPress={() => onPressHAndler('/(supplier)/(public)/login')}
         />
       </View>
     </View>

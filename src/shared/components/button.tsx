@@ -6,7 +6,7 @@ import {
   I18nManager,
   Text,
   TouchableOpacity,
-  View as RNView,
+  View,
 } from 'react-native';
 
 interface Props extends Omit<TouchableOpacityProps, 'disabled'> {
@@ -15,7 +15,7 @@ interface Props extends Omit<TouchableOpacityProps, 'disabled'> {
   className?: string;
   textClassName?: string;
   disabled?: boolean;
-  type: string;
+  type: 'default' | 'special';
   icon?: React.ReactNode;
 }
 
@@ -42,7 +42,9 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
       <TouchableOpacity
         disabled={disabled || loading}
         className={clsx(
-          'my-2 flex flex-row items-center justify-center rounded-md px-4',
+          `my-2 flex flex-row items-center justify-center px-4 ${
+            type === 'default' ? 'rounded-full' : 'rounded-md'
+          } h-10 w-full ${className}`,
           containerClassname
         )}
         {...props}
@@ -64,21 +66,21 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
                 <Text
                   testID={testID ? `${testID}-label` : undefined}
                   className={clsx(
-                    'font-lato text-base font-semibold',
+                    `font-lato text-base font-semibold ${textClassName}`,
                     labelClassname
                   )}
                 >
                   {text}
                 </Text>
                 {icon && (
-                  <RNView
+                  <View
                     style={{
                       transform: I18nManager.isRTL ? 'rotate(180deg)' : '',
                     }}
                     className="mr-2 bg-primary-txt"
                   >
                     {icon}
-                  </RNView>
+                  </View>
                 )}
               </>
             )}
