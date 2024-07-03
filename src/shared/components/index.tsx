@@ -4,6 +4,7 @@ import Svg from 'react-native-svg';
 export { default as colors } from '../../theme/colors';
 export * from './button';
 export * from './checkbox';
+export * from './controlled-input';
 export * from './focus-aware-status-bar';
 export * from './image';
 export * from './input';
@@ -19,6 +20,8 @@ export * from './utils';
 // export base components from react-native
 export {
   ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
   Pressable,
   ScrollView,
   TouchableOpacity,

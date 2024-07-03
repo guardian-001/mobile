@@ -12,6 +12,8 @@ module.exports = {
       colors: {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
+        'primary-txt': '#344054',
+        description: '#888FA7',
       },
     },
   },
