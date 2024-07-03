@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 
@@ -20,7 +21,7 @@ export default function MainButton({
   onPressHandler,
   icon,
   label,
-  type = 'pill',
+  type = 'button',
   textPosition = 'text-center',
   width = `w-full`,
   height = `h-12`,
@@ -33,8 +34,11 @@ export default function MainButton({
       onPress={onPressHandler}
       label={label}
       type={type}
-      className={`${height} ${width} ${radius} flex  ${shadow} ${alternativeStyle}`}
-      textClassName={`font-lato font-bold text-xs w-11/12 flex  ${textPosition}`}
+      className={clsx(height, width, radius, 'flex', shadow, alternativeStyle)}
+      textClassName={clsx(
+        'flex w-11/12 font-lato text-xs font-bold',
+        textPosition
+      )}
       icon={icon} // Pass the icon prop to Button
     />
   );

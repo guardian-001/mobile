@@ -1,6 +1,6 @@
 import { View } from 'moti';
-import type { SVGProps } from 'react';
 import React from 'react';
+import type { SvgProps } from 'react-native-svg';
 import Svg, {
   ClipPath,
   Defs,
@@ -8,21 +8,13 @@ import Svg, {
   LinearGradient,
   Path,
   Stop,
-  SvgProps,
 } from 'react-native-svg';
 /* SVGR has dropped some elements not supported by react-native-svg: filter */
 
 export const CompleteLogoClient = (props: SvgProps) => {
   return (
- 
-    <View className="flex   items-center justify-center  ">
-
-      <Svg
-        width="117px"
-        height="117px"
-        viewBox="0 0 117 117"
-        {...props}
-      >
+    <View className="flex h-28 w-28  items-center justify-center  ">
+      <Svg width="100%" height="100%" viewBox="0 0 117 117" {...props}>
         <Defs>
           <ClipPath id="a">
             <Path d="M28 14h61v60H28zm0 0" />

@@ -8,13 +8,9 @@ interface ImageContainerProps {
 }
 
 const ImageContainer: React.FC<ImageContainerProps> = ({
-  // width,
-  // height,
   className,
   children,
 }) => {
-  // const containerStyle: ViewStyle = { width, height };style={containerStyle}
-
   return <View className={className}>{children}</View>;
 };
 
