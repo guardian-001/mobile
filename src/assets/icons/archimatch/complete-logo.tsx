@@ -1,9 +1,10 @@
 import type { SVGProps } from 'react';
 import * as React from 'react';
-import Svg, { ClipPath, Defs, G, Mask, Path } from 'react-native-svg';
-export const CompleteLogo: React.FC<SVGProps<SVGElement>> = (props) => (
+import Svg, { ClipPath, Defs, G, Mask, Path, SvgProps } from 'react-native-svg';
+export const CompleteLogo  = (props: SvgProps)  => (
+ 
   <Svg
-    xmlns="http://www.w3.org/2000/svg"
+ 
     width={165}
     height={49}
     fill="none"
@@ -21,6 +22,7 @@ export const CompleteLogo: React.FC<SVGProps<SVGElement>> = (props) => (
         x={0}
         y={0}
         maskUnits="userSpaceOnUse"
+        // @ts-ignore
         style={{
           maskType: 'luminance',
         }}
@@ -35,6 +37,8 @@ export const CompleteLogo: React.FC<SVGProps<SVGElement>> = (props) => (
           x={0}
           y={0}
           maskUnits="userSpaceOnUse"
+        // @ts-ignore
+
           style={{
             maskType: 'luminance',
           }}

@@ -3,13 +3,12 @@ import { useColorScheme } from 'react-native';
 import Svg, { ClipPath, Defs, G, Path } from "react-native-svg";
 import type { SvgProps } from 'react-native-svg';
 
-const HouseImage = ({ ...props }: SvgProps) => {
+const HouseImage  = (props: SvgProps)  => {
   const colorScheme = useColorScheme();
   const fillColor = false ? '#FFFFFF' : '#344054';
 
   return (
-    <Svg
-    xmlns="http://www.w3.org/2000/svg"
+    <Svg 
     width={47}
     height={44}
     fill="none"

@@ -133,5 +133,11 @@
   "packageManager": "pnpm@8.6.5",
   "osMetadata": {
     "initVersion": "6.0.0"
+  },
+  "lint-staged": {
+    "!(src/assets/**/*)*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }

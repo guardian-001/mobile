@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react';
+ 
 import Svg, {
   Defs,
   G,
@@ -7,9 +7,10 @@ import Svg, {
   Path,
   Rect,
   Stop,
+  SvgProps,
 } from 'react-native-svg';
 
-export const LogoArchi: React.FC<SVGProps<SVGElement>> = (props) => (
+export const LogoArchi  = (props: SvgProps)  => (
   <Svg
     width="100%"
     height="100%"

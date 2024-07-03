@@ -1,10 +1,9 @@
 import type { SVGProps } from 'react';
 import * as React from 'react';
-import Svg, { Defs, Image, Pattern, Rect, Use } from 'react-native-svg';
-export const Animation: React.FC<SVGProps<SVGElement>> = (props) => (
-  <Svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
+import Svg, { Defs, Image, Pattern, Rect, SvgProps, Use } from 'react-native-svg';
+export const Animation  = (props: SvgProps) => (
+ 
+  <Svg  
     fill="none"
     viewBox="0 0 393 319"
     {...props}

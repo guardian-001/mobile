@@ -6,12 +6,11 @@ import Svg, {
   Path,
   Pattern,
   Stop,
+  SvgProps,
   Use,
 } from 'react-native-svg';
-export const LoginBanner: React.FC<React.SVGProps<SVGElement>> = (props) => (
-  <Svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
+export const LoginBanner  = (props: SvgProps)  => (
+  <Svg 
     width={393}
     height={235}
     fill="none"

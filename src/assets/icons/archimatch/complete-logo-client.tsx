@@ -8,14 +8,16 @@ import Svg, {
   LinearGradient,
   Path,
   Stop,
+  SvgProps,
 } from 'react-native-svg';
 /* SVGR has dropped some elements not supported by react-native-svg: filter */
 
-export const CompleteLogoClient: React.FC<SVGProps<SVGElement>> = (props) => {
+export const CompleteLogoClient = (props: SvgProps) => {
   return (
+ 
     <View className="flex   items-center justify-center  ">
+
       <Svg
-        xmlns="http://www.w3.org/2000/svg"
         width="117px"
         height="117px"
         viewBox="0 0 117 117"
