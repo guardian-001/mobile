@@ -1,0 +1,13 @@
+{
+  "name": "Nom",
+  "namePlaceHolder": "Entrer votre nom",
+  "surname": "Prénom",
+  "surnamePlaceHolder": "Entrer votre prénom",
+  "mail": "E-mail",
+  "mailPlaceHolder": "Entrer votre e-mail",
+  "phone": "Numéro de téléphone",
+  "address": "Adresse de votre bureau",
+  "addressPlaceHolder": "Entrer L’adresse du bureau",
+  "matricule": "Matricule ficale de votre sociéte",
+  "matriculePlaceHolder": "votre Matricule fiscale"
+}

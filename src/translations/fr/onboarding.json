@@ -1,3 +1,9 @@
 {
-  "message": "Welcome to obytes app site"
+  "welcomeTitle": "Trouver un",
+  "welcomeTitleSpan": "architecte !",
+  "welcomeDescription": "Trouvez des architectes pour vos projets de construction et  rénovation.",
+  "clientBtn": "trouver un architecte",
+  "architectBtn": "vous êtes un architecte",
+  "supplierBtn": "Connexion fournisseur",
+  "or": "ou"
 }

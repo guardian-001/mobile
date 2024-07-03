@@ -1,6 +1,8 @@
-import onboarding from './onboarding.json';
+import common from './common.json';
+import login from './login.json';
+import onBoarding from './onBoarding.json';
+import resetpass from './resetpass.json';
 import settings from './settings.json';
-import validations from './validations.json';
-import welcome from './welcome.json';
+import signupStep1 from './signup-step1.json';
 
-export default { welcome, onboarding, settings, validations };
+export default { login, onBoarding, settings, common, resetpass, signupStep1 };

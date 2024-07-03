@@ -1,0 +1,10 @@
+{
+  "title": "Create Your Password",
+  "description": "Create a secure password to protect your account.",
+  "chooseMdp": "Choose a Password",
+  "mdpConditionTitle": "Your password must contain at least:",
+  "nbCaractersCondition": "8 characters (maximum 12)",
+  "atLeastNbLetters&Numbers": "1 letter and 1 number",
+  "nbSpecialCaracters": "1 special character (# ? ! $ & @)",
+  "createMdpBtn": "Create Password"
+}

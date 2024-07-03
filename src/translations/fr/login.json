@@ -1,0 +1,15 @@
+{
+  "welcomeTitle": "Bienvenue sur archimatch !",
+  "welcomeText": "Entrez votre email et votre mot de passe pour vous connecter",
+  "email": "Email",
+  "mdp": "Mot de passe",
+  "souvenir": "Se souvenir de moi",
+  "mdpOublier": "Mot de passe oublié?",
+  "connectBtn": "Se connecter",
+  "termsConditionsPart1": "En continuant avec un compte, vous acceptez nos",
+  "termsConditionsPart2": "conditions d’utilisation",
+  "termsConditionsPart3": "et reconnaissez avoir lu notre",
+  "termsConditionsPart4": "politique de confidentialité.",
+  "haveAccountQuestion": "Vous n’avez pas de compte?",
+  "signupLink": "S’inscrire"
+}
