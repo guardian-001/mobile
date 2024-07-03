@@ -40,12 +40,14 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
         secureTextEntry={true}
       />
       <Button
+        type="button"
         testID="login-button"
         label="Login"
         onPress={handleSubmit(onSubmit)}
       />
 
       <Button
+        type="button"
         testID="login-button"
         label="go back"
         onPress={() => router.push('/onboarding')}

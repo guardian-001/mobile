@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import React from 'react';
 import { Text } from 'react-native';
 
@@ -10,31 +9,36 @@ afterEach(cleanup);
 
 describe('Button component ', () => {
   it('should render correctly ', () => {
-    render(<Button testID="button" />);
+    render(<Button type="button" testID="button" />);
     expect(screen.getByTestId('button')).toBeOnTheScreen();
   });
   it('should render correctly if we add explicit child ', () => {
     render(
-      <Button testID="button">
+      <Button type="button" testID="button">
         <Text> Custom child </Text>
       </Button>
     );
     expect(screen.getByText('Custom child')).toBeOnTheScreen();
   });
   it('should render the label correctly', () => {
-    render(<Button testID="button" label="Submit" />);
+    render(<Button type="button" testID="button" label="Submit" />);
     expect(screen.getByTestId('button')).toBeOnTheScreen();
     expect(screen.getByText('Submit')).toBeOnTheScreen();
   });
   it('should render the loading indicator correctly', () => {
-    render(<Button testID="button" loading={true} />);
+    render(<Button type="button" testID="button" loading={true} />);
     expect(screen.getByTestId('button')).toBeOnTheScreen();
     expect(screen.getByTestId('button-activity-indicator')).toBeOnTheScreen();
   });
   it('should call onClick handler when clicked', () => {
     const onClick = jest.fn();
     render(
-      <Button testID="button" label="Click the button" onPress={onClick} />
+      <Button
+        type="button"
+        testID="button"
+        label="Click the button"
+        onPress={onClick}
+      />
     );
     expect(screen.getByTestId('button')).toBeOnTheScreen();
     fireEvent.press(screen.getByTestId('button'));
@@ -44,6 +48,7 @@ describe('Button component ', () => {
     const onClick = jest.fn();
     render(
       <Button
+        type="button"
         testID="button"
         loading={true}
         label="Click the button"
@@ -57,18 +62,18 @@ describe('Button component ', () => {
     expect(onClick).toHaveBeenCalledTimes(0);
   });
   it('should be disabled when disabled prop is true', () => {
-    render(<Button testID="button" disabled={true} />);
+    render(<Button type="button" testID="button" disabled={true} />);
     expect(screen.getByTestId('button')).toBeDisabled();
   });
   it("shouldn't call onClick when disabled", () => {
     const onClick = jest.fn();
     render(
       <Button
+        type="button"
         testID="button"
         label="Click the button"
         disabled={true}
         onPress={onClick}
-        variant="secondary"
       />
     );
     expect(screen.getByTestId('button')).toBeOnTheScreen();
@@ -78,28 +83,9 @@ describe('Button component ', () => {
 
     expect(onClick).toHaveBeenCalledTimes(0);
   });
-  it('should apply correct styles based on size prop', () => {
-    render(<Button testID="button" size="lg" />);
-    const button = screen.getByTestId('button');
-    // TODO: should be fixed to use haveStyle instead of comparing the class name
-    const expectedStyle =
-      'font-lato font-semibold text-white dark:text-black text-xl';
-    const receivedStyle =
-      button.props.children[0].props.children.props.className;
-    expect(receivedStyle).toContain(expectedStyle);
-  });
-  it('should apply correct styles for label when variant is secondary', () => {
-    render(<Button testID="button" variant="secondary" label="Submit" />);
-    const button = screen.getByTestId('button');
 
-    const expectedStyle =
-      'font-lato font-semibold text-secondary-600 text-base';
-    const receivedStyle =
-      button.props.children[0].props.children.props.className;
-    expect(receivedStyle).toContain(expectedStyle);
-  });
   it('should apply correct styles for label when is disabled', () => {
-    render(<Button testID="button" label="Submit" disabled />);
+    render(<Button type="button" testID="button" label="Submit" disabled />);
     const button = screen.getByTestId('button');
 
     const expectedStyle =
