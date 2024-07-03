@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import {
   BottomSheetFlatList,
   type BottomSheetModal,
@@ -17,7 +16,7 @@ import { tv } from 'tailwind-variants';
 import { CaretDown } from '@/assets/icons';
 import colors from '@/theme/colors';
 
-import type { InputControllerType } from './input';
+import type { InputControllerType } from './controlled-input';
 import { useModal } from './modal';
 import { Modal } from './modal';
 import { Text } from './text';
@@ -210,7 +209,7 @@ export const Select = (props: SelectProps) => {
         {error && (
           <Text
             testID={`${testID}-error`}
-            className="text-sm text-danger-300 dark:text-danger-600"
+            className="text-danger-300 dark:text-danger-600 text-sm"
           >
             {error}
           </Text>
