@@ -1,4 +1,16 @@
 {
-  "forgetPasswordTitle": "هل نسيت كلمة السر؟",
-  "sendingEmailDescription": "سنرسل لك رابط إعادة تعيين كلمة المرور عبر البريد الإلكتروني."
+  "reset": "إعادة تعيين",
+  "forgetPasswordTitle": "هل نسيت كلمة المرور؟",
+  "sendingEmailDescription": "سنرسل لك رابطًا عبر البريد الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك",
+  "verificationCodeTitle": "رمز التحقق",
+  "verificationCodeDescription": "أدخل الرمز المرسل إلى",
+  "resetPasswordTitle": "إعادة تعيين كلمة المرور",
+  "resetPasswordDescription": "أنشئ كلمة مرور آمنة لحماية حسابك.",
+  "passwordConditions": "يجب أن تحتوي كلمة المرور الخاصة بك على الأقل على:",
+  "passwordLength": "يجب أن تحتوي كلمة مرورك على الأقل على:",
+  "password-min-length": "8 أحرف",
+  "password-lowercase": "حرف صغير واحد",
+  "password-uppercase": "حرف كبير واحد",
+  "password-digit": "رقم واحد",
+  "password-special-char": "حرف خاص واحد (#?!$&@)"
 }
