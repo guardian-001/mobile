@@ -18,8 +18,7 @@
     "cli",
     "android",
     "ios",
-    "lint-staged.config.js",
-    "src/assets/icons/archimatch"
+    "lint-staged.config.js"
   ],
   "include": [
     "**/*.ts",

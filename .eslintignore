@@ -7,5 +7,4 @@ ios/
 .expo
 .expo-shared
 docs/
-cli/
-src/assets/
+cli/ 
