@@ -1,3 +1,6 @@
 {
-  "reset": "Reset"
+  "email": "Email",
+  "yourEmail": "Your email",
+  "choosePassword": "Choose a password",
+  "enterPassword": "Enter the password"
 }

@@ -5,8 +5,9 @@ import React from 'react';
 
 import { cleanup, fireEvent, render, screen } from '@/core/test-utils';
 
-import { Checkbox, Radio, Switch } from './checkbox';
-
+import { Checkbox } from './checkbox';
+import { Radio } from './radio';
+import { Switch } from './switch';
 afterEach(cleanup);
 
 describe('Checkbox, Radio & Switch components ', () => {
