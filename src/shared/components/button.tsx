@@ -1,6 +1,9 @@
 import clsx from 'clsx';
 import React from 'react';
-import type { TouchableOpacityProps } from 'react-native';
+import type {
+  GestureResponderEvent,
+  TouchableOpacityProps,
+} from 'react-native';
 import {
   ActivityIndicator,
   I18nManager,
@@ -10,41 +13,42 @@ import {
 } from 'react-native';
 
 interface Props extends Omit<TouchableOpacityProps, 'disabled'> {
+  onPressHandler?: (event: GestureResponderEvent) => void;
+
   label?: string;
   loading?: boolean;
   className?: string;
   textClassName?: string;
   disabled?: boolean;
-  type: 'default' | 'special';
+  type: 'pill' | 'button';
   icon?: React.ReactNode;
 }
 
 export const Button = React.forwardRef<TouchableOpacity, Props>(
   (
     {
+      onPressHandler,
       label: text,
       loading = false,
       disabled = false,
-      type = 'default',
-      className,
+      type = 'pill',
+      className = '',
       testID,
-      textClassName,
+      textClassName = '',
       icon,
       ...props
     },
     ref
   ) => {
-    const containerClassname = type === 'default' ? 'bg-white' : 'bg-black';
-    const labelClassname =
-      type === 'default' ? 'text-primary-txt' : 'text-white';
+    const containerClassname = type === 'pill' ? 'bg-white' : 'bg-primary';
+    const labelClassname = type === 'pill' ? 'text-primary-txt' : 'text-white';
 
     return (
       <TouchableOpacity
+        onPress={onPressHandler}
         disabled={disabled || loading}
         className={clsx(
-          `my-2 flex flex-row items-center justify-center px-4 ${
-            type === 'default' ? 'rounded-full' : 'rounded-md'
-          } h-10 w-full ${className}`,
+          `my-2 flex flex-row items-center justify-center px-4 ${className}`,
           containerClassname
         )}
         {...props}
@@ -77,7 +81,7 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
                     style={{
                       transform: I18nManager.isRTL ? 'rotate(180deg)' : '',
                     }}
-                    className="mr-2 bg-primary-txt"
+                    className="mr-2 "
                   >
                     {icon}
                   </View>
