@@ -10,6 +10,7 @@ import Svg, {
   Use,
 } from 'react-native-svg';
 
+import ImageSVGPNG from './image-svg-png';
 export const LoginBanner = (props: SvgProps) => (
   <View className="h-60 w-full">
     <Svg width="100%" height="100%" fill="none" {...props}>
@@ -75,6 +76,7 @@ export const LoginBanner = (props: SvgProps) => (
             transform="matrix(.00166 0 0 .00055 -.428 .322)"
           />
         </Pattern>
+        <ImageSVGPNG />
         <LinearGradient
           id="f"
           x1={196.5}

@@ -3,8 +3,8 @@ import React from 'react';
 
 import { useAuth } from '@/core';
 import { useSoftKeyboardEffect } from '@/core/keyboard';
+import LoginShared from '@/modules/login/login';
 import type { LoginFormProps } from '@/modules/login/login-form';
-import { LoginForm } from '@/modules/login/login-form';
 import { FocusAwareStatusBar } from '@/shared/components';
 
 export default function Login() {
@@ -19,7 +19,7 @@ export default function Login() {
   return (
     <>
       <FocusAwareStatusBar />
-      <LoginForm onSubmit={onSubmit} />
+      <LoginShared onSubmit={onSubmit} />
     </>
   );
 }

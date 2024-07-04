@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
 import Svg, { ClipPath, Defs, G, Mask, Path } from 'react-native-svg';
 export const CompleteLogo = (props: SvgProps) => (
-  <View className="flex h-12 w-40 items-center justify-center">
+  <View className="flex h-14 w-48 items-center justify-center">
     <Svg width="100%" height="100%" fill="none" {...props}>
       <G clipPath="url(#a)">
         <Path

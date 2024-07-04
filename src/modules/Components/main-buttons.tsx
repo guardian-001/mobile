@@ -15,7 +15,7 @@ export default function MainButtons() {
   return (
     <>
       <MainButton
-        onPressHandler={() => onPressHandler('/(architect)/(public) / login)')}
+        onPressHandler={() => onPressHandler('/(architect)/(public)/login')}
         label={translate('onBoarding.architectBtn')}
         icon={<ArrowRightLong />}
         width="w-[86%]"
@@ -25,7 +25,7 @@ export default function MainButtons() {
         type="pill"
       />
       <MainButton
-        onPressHandler={() => onPressHandler('/(supplier)/(public) / login)')}
+        onPressHandler={() => onPressHandler('/(supplier)/(public)/login')}
         label={translate('onBoarding.supplierBtn')}
         icon={<ArrowRightLong />}
         // textPosition="text-center" //by default center
