@@ -22,6 +22,7 @@ export default function MainButtons() {
         height="h-14"
         radius="rounded-full"
         shadow="shadow-md"
+        type="pill"
       />
       <MainButton
         onPressHandler={() => onPressHandler('/(supplier)/(public) / login)')}
@@ -32,6 +33,7 @@ export default function MainButtons() {
         height="h-14"
         radius="rounded-full"
         shadow="shadow-md"
+        type="pill"
       />
     </>
   );
