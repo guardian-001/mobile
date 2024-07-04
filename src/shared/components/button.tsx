@@ -20,7 +20,7 @@ interface Props extends Omit<TouchableOpacityProps, 'disabled'> {
   className?: string;
   textClassName?: string;
   disabled?: boolean;
-  type: 'pill' | 'button';
+  type?: 'pill' | 'button';
   icon?: React.ReactNode;
 }
 
@@ -31,7 +31,7 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
       label: text,
       loading = false,
       disabled = false,
-      type = 'pill',
+      type = 'button',
       className = '',
       testID,
       textClassName = '',
@@ -40,8 +40,16 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
     },
     ref
   ) => {
-    const containerClassname = type === 'pill' ? 'bg-white' : 'bg-primary';
-    const labelClassname = type === 'pill' ? 'text-primary-txt' : 'text-white';
+    const containerClassname = !disabled
+      ? type === 'pill'
+        ? 'bg-white'
+        : 'bg-primary'
+      : 'bg-disabled';
+    const labelClassname = !disabled
+      ? type === 'pill'
+        ? 'text-primary-txt'
+        : 'text-white'
+      : 'text-disabled-txt';
 
     return (
       <TouchableOpacity

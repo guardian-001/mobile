@@ -44,7 +44,7 @@ describe('Input component ', () => {
   });
 
   it('should render the error message correctly ', () => {
-    render(<Input testID="input" error="validations.invalid" />);
+    render(<Input testID="input" />);
     expect(screen.getByTestId('input')).toBeOnTheScreen();
 
     expect(screen.getByTestId('input-error')).toHaveTextContent(
@@ -57,7 +57,6 @@ describe('Input component ', () => {
         testID="input"
         label="Username"
         placeholder="Enter your username"
-        error="validations.invalid"
       />
     );
     expect(screen.getByTestId('input')).toBeOnTheScreen();
