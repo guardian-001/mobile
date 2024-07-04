@@ -24,8 +24,8 @@ export function StartScreen() {
       />
 
       <Container style="flex-1 items-center justify-center w-full my-4  pt-5">
-        <Container style="flex w-full items-start justify-center  ">
-          <ImageContainer className="flex-start mb-5 ms-10 flex h-10 w-10 justify-center">
+        <Container style="flex   items-start justify-center w-[86%]   ">
+          <ImageContainer className="flex-start mb-5   flex h-10 w-10 justify-center">
             <LogoArchi />
           </ImageContainer>
         </Container>
@@ -38,17 +38,21 @@ export function StartScreen() {
             />
           </ImageContainer>
           <View className="flex  flex-row ">
-            <Text className={`font-lato text-2xl text-primary-txt`}>
+            <Text
+              className={`font-lato text-primary-txt sm:text-2xl md:text-4xl`}
+            >
               {translate('onBoarding.welcomeTitle')}
             </Text>
             <Text
-              className={`font-lato text-2xl font-extrabold text-primary-txt `}
+              className={`font-lato font-extrabold text-primary-txt sm:text-2xl md:text-4xl `}
             >
               &nbsp;{translate('onBoarding.welcomeTitleSpan')}
             </Text>
           </View>
           <Container style="  items-center justify-center w-[80%]">
-            <Text className={`text-center font-lato text-sm text-primary-txt `}>
+            <Text
+              className={`text-center font-lato text-primary-txt sm:text-sm md:text-lg `}
+            >
               {translate('onBoarding.welcomeDescription')}
             </Text>
           </Container>

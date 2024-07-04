@@ -34,9 +34,9 @@ export default function MainButton({
       onPress={onPressHandler}
       label={label}
       type={type}
-      className={clsx(height, width, radius, 'flex', shadow, alternativeStyle)}
+      className={clsx(height, width, radius, 'flex ', shadow, alternativeStyle)}
       textClassName={clsx(
-        'flex w-11/12 font-lato text-xs font-bold',
+        'flex w-11/12 font-lato font-bold sm:text-xs md:text-lg',
         textPosition
       )}
       icon={icon}
