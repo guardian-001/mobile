@@ -1,4 +1,4 @@
- 
+import type { SvgProps } from 'react-native-svg';
 import Svg, {
   Defs,
   G,
@@ -7,10 +7,9 @@ import Svg, {
   Path,
   Rect,
   Stop,
-  SvgProps,
 } from 'react-native-svg';
 
-export const LogoArchi  = (props: SvgProps)  => (
+export const LogoArchi = (props: SvgProps) => (
   <Svg
     width="100%"
     height="100%"
