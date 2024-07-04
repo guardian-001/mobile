@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import React from 'react';
 import { Text } from 'react-native';
 
@@ -68,7 +67,6 @@ describe('Button component ', () => {
         label="Click the button"
         disabled={true}
         onPress={onClick}
-        variant="secondary"
       />
     );
     expect(screen.getByTestId('button')).toBeOnTheScreen();
@@ -79,7 +77,7 @@ describe('Button component ', () => {
     expect(onClick).toHaveBeenCalledTimes(0);
   });
   it('should apply correct styles based on size prop', () => {
-    render(<Button testID="button" size="lg" />);
+    render(<Button testID="button" />);
     const button = screen.getByTestId('button');
     // TODO: should be fixed to use haveStyle instead of comparing the class name
     const expectedStyle =
@@ -89,7 +87,7 @@ describe('Button component ', () => {
     expect(receivedStyle).toContain(expectedStyle);
   });
   it('should apply correct styles for label when variant is secondary', () => {
-    render(<Button testID="button" variant="secondary" label="Submit" />);
+    render(<Button testID="button" label="Submit" />);
     const button = screen.getByTestId('button');
 
     const expectedStyle =

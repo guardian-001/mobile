@@ -12,5 +12,6 @@
   "password-lowercase": "one lowercase letter",
   "password-uppercase": "one uppercase letter",
   "password-digit": "one digit",
-  "password-special-char": "one special character (#?!$&@)"
+  "password-special-char": "one special character (#?!$&@)",
+  "resendCode": "Resend code"
 }

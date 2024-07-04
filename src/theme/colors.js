@@ -77,5 +77,7 @@ module.exports = {
   },
 
   blue: '#344054',
-
+  description: '#888FA7',
+  green: '#00B031',
+  gray: { 600: '#888FA7' },
 };

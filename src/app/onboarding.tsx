@@ -29,19 +29,16 @@ export default function Onboarding() {
 
       <View className="mt-6 bg-primary">
         <Button
-          type="special"
           icon={<ArrowRightLong />}
           label="Let's Get Started architect"
           onPress={() => onPressHAndler('/(architect)/(public)/login')}
         />
         <Button
-          type="default"
           icon={<ArrowRightLong />}
           label="Let's Get Started client"
           onPress={() => onPressHAndler('/(client)/(public)/login')}
         />
         <Button
-          type="default"
           icon={<ArrowRightLong />}
           label="Let's Get Started supplier"
           onPress={() => onPressHAndler('/(supplier)/(public)/login')}

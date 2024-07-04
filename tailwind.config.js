@@ -14,6 +14,8 @@ module.exports = {
         secondary: 'var(--color-secondary)',
         'primary-txt': '#344054',
         description: '#888FA7',
+        disabled: '#F2F2F2',
+        'disabled-txt': '#BFC2CC',
       },
     },
   },
