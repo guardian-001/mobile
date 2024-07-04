@@ -3,7 +3,7 @@ import type { SvgProps } from 'react-native-svg';
 import Svg, { Defs, Image, Path, Pattern, Use } from 'react-native-svg';
 
 const HouseModel = (props: SvgProps) => (
-  <Svg width={100} height={100} fill="none" {...props}>
+  <Svg className="h-28 w-28" fill="none" {...props}>
     <Path fill="url(#a)" d="M0 0h100v100H0z" />
     <Defs>
       <Pattern

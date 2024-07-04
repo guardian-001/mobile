@@ -1,5 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import type { Control, FieldValues, Path } from 'react-hook-form';
+import type {
+  Control,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from 'react-hook-form';
 import { useController } from 'react-hook-form';
 import { TextInput, View } from 'react-native';
 
@@ -8,7 +13,7 @@ type OTPInputProps<T extends FieldValues> = {
   disabled: boolean;
   name: Path<T>;
   control: Control<T>;
-  rules?: any;
+  rules?: RegisterOptions;
 };
 
 export const OTPInput = <T extends FieldValues>({

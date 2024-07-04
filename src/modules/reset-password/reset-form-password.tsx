@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import type * as z from 'zod';
 
 import { Button, ControlledInput, Text, View } from '@/shared/components';
+import type { TxKeyPath } from '@/translations/i18n';
 import { translate } from '@/translations/i18n';
 import { PasswordSchema } from '@/validations';
 
@@ -23,6 +24,29 @@ export default function ResetFormPassword({
   });
   const password = watch('password');
 
+  const passwordRequirements: { isValid: boolean; message: TxKeyPath }[] = [
+    {
+      isValid: password?.length >= 8,
+      message: 'resetpass.password-min-length',
+    },
+    {
+      isValid: /[a-z]/.test(password) && password?.length >= 1,
+      message: 'resetpass.password-lowercase',
+    },
+    {
+      isValid: /[A-Z]/.test(password),
+      message: 'resetpass.password-uppercase',
+    },
+    {
+      isValid: /[0-9]/.test(password),
+      message: 'resetpass.password-digit',
+    },
+    {
+      isValid: /[^a-zA-Z0-9]/.test(password),
+      message: 'resetpass.password-special-char',
+    },
+  ];
+
   return (
     <View className="flex-1">
       <ControlledInput
@@ -35,26 +59,13 @@ export default function ResetFormPassword({
       />
       <View className="mb-4">
         <Text tx="resetpass.passwordConditions" />
-        <PasswordRequirementItem
-          isValid={password?.length >= 8}
-          message="resetpass.password-min-length"
-        />
-        <PasswordRequirementItem
-          isValid={/[a-z]/.test(password) && password?.length >= 1}
-          message="resetpass.password-lowercase"
-        />
-        <PasswordRequirementItem
-          isValid={/[A-Z]/.test(password)}
-          message="resetpass.password-uppercase"
-        />
-        <PasswordRequirementItem
-          isValid={/[0-9]/.test(password)}
-          message="resetpass.password-digit"
-        />
-        <PasswordRequirementItem
-          isValid={/[^a-zA-Z0-9]/.test(password)}
-          message="resetpass.password-special-char"
-        />
+        {passwordRequirements.map((requirement, index) => (
+          <PasswordRequirementItem
+            key={index}
+            isValid={requirement.isValid}
+            message={requirement.message}
+          />
+        ))}
       </View>
       <Button
         label={translate('resetpass.reset')}

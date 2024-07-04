@@ -65,8 +65,8 @@ export default function ResetStepper({}: Props) {
             contentFit="cover"
             source={
               space === 'client'
-                ? require('@/assets/images/CodeCerificationBlue.png')
-                : require('@/assets/images/CodeCerificationRed.png')
+                ? require('@/assets/images/code-verification-blue.png')
+                : require('@/assets/images/code-verification-red.png')
             }
           />
         )}

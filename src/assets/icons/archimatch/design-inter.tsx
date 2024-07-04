@@ -3,7 +3,7 @@ import type { SvgProps } from 'react-native-svg';
 import Svg, { Defs, Image, Path, Pattern, Use } from 'react-native-svg';
 
 const DesignInter = (props: SvgProps) => (
-  <Svg width={115} height={104} fill="none" {...props}>
+  <Svg className="h-24 w-32" fill="none" {...props}>
     <Path fill="url(#a)" d="M0 .371h114.218v103H0z" />
     <Defs>
       <Pattern

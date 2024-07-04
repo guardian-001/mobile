@@ -33,3 +33,7 @@ export const LoginFormSchema = z.object({
   email: emailValidation,
   password: requiredValidation,
 });
+
+export const OTPSchema = z.object({
+  OTP: requiredValidation,
+});

@@ -2,20 +2,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
-import * as z from 'zod';
+import type * as z from 'zod';
 
 import { Button, ControlledInput, View } from '@/shared/components';
 import { translate } from '@/translations/i18n';
+import { EmailSchema } from '@/validations';
 
-const schema = z.object({
-  email: z
-    .string({
-      required_error: 'Email is required',
-    })
-    .email('Invalid email format'),
-});
-
-export type FormType = z.infer<typeof schema>;
+export type FormType = z.infer<typeof EmailSchema>;
 
 export type ResetFormProps = {
   onSubmit?: SubmitHandler<FormType>;
@@ -24,7 +17,7 @@ export default function ResetFormEmail({
   onSubmit = () => {},
 }: ResetFormProps) {
   const { handleSubmit, control, formState } = useForm<FormType>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(EmailSchema),
   });
   return (
     <View className="flex-1">
