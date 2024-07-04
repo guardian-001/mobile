@@ -13,7 +13,7 @@ export default function Conditions() {
         {translate('login.termsConditionsPart1')}
         <Text
           onPress={() => {
-            Linking.openURL('https://example.com');
+            Linking.openURL(process.env.TERMS_URL || '');
           }}
           className={`text-xs font-bold text-primary-txt  `}
         >
@@ -22,7 +22,7 @@ export default function Conditions() {
         {translate('login.termsConditionsPart3')}
         <Text
           onPress={() => {
-            Linking.openURL('https://example.com');
+            Linking.openURL(process.env.PRIVACY_URL || '');
           }}
           className={`text-xs font-bold text-primary-txt  `}
         >

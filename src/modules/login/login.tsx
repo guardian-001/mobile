@@ -1,10 +1,9 @@
-import { Stack } from 'expo-router';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 
 import { LoginHeader, Welcome } from '../Components';
-import { AuthFooter, BackButton, Conditions, Container } from '../shared';
+import { AuthFooter, Conditions, Container } from '../shared';
 import type { FormType } from './login-form';
 import { LoginForm } from './login-form';
 export type LoginFormProps = {
@@ -16,14 +15,6 @@ export default function LoginShared({ onSubmit = () => {} }: LoginFormProps) {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className={`flex-1  items-center justify-center  bg-secondary`}
     >
-      <Stack.Screen
-        options={{
-          headerTransparent: true,
-          headerTitle: '',
-          headerShown: true,
-          headerLeft: () => <BackButton />,
-        }}
-      />
       <LoginHeader />
       <ScrollView>
         <Container style="flex-1 items-start justify-start w-full px-8 py-10 gap-5 ">
