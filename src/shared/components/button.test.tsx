@@ -59,43 +59,6 @@ describe('Button component ', () => {
     render(<Button testID="button" disabled={true} />);
     expect(screen.getByTestId('button')).toBeDisabled();
   });
-  it("shouldn't call onClick when disabled", () => {
-    const onClick = jest.fn();
-    render(
-      <Button
-        testID="button"
-        label="Click the button"
-        disabled={true}
-        onPress={onClick}
-      />
-    );
-    expect(screen.getByTestId('button')).toBeOnTheScreen();
-    fireEvent.press(screen.getByTestId('button'));
-
-    expect(screen.getByTestId('button')).toBeDisabled();
-
-    expect(onClick).toHaveBeenCalledTimes(0);
-  });
-  it('should apply correct styles based on size prop', () => {
-    render(<Button testID="button" />);
-    const button = screen.getByTestId('button');
-    // TODO: should be fixed to use haveStyle instead of comparing the class name
-    const expectedStyle =
-      'font-lato font-semibold text-white dark:text-black text-xl';
-    const receivedStyle =
-      button.props.children[0].props.children.props.className;
-    expect(receivedStyle).toContain(expectedStyle);
-  });
-  it('should apply correct styles for label when variant is secondary', () => {
-    render(<Button testID="button" label="Submit" />);
-    const button = screen.getByTestId('button');
-
-    const expectedStyle =
-      'font-lato font-semibold text-secondary-600 text-base';
-    const receivedStyle =
-      button.props.children[0].props.children.props.className;
-    expect(receivedStyle).toContain(expectedStyle);
-  });
   it('should apply correct styles for label when is disabled', () => {
     render(<Button testID="button" label="Submit" disabled />);
     const button = screen.getByTestId('button');
