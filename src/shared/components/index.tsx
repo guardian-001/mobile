@@ -28,6 +28,7 @@ export {
   KeyboardAvoidingView,
   Platform,
   Pressable,
+  type PressableProps,
   ScrollView,
   TouchableOpacity,
   View,

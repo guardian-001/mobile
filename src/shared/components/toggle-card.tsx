@@ -1,5 +1,10 @@
 import * as React from 'react';
-import type { Control, FieldValues, Path } from 'react-hook-form';
+import type {
+  Control,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from 'react-hook-form';
 import { useController } from 'react-hook-form';
 import { Pressable } from 'react-native';
 
@@ -14,7 +19,7 @@ type CardProps<T extends FieldValues> = {
   svgComponent?: React.ComponentType;
   name: Path<T>;
   control: Control<T>;
-  rules?: any; // Adjust the type according to your validation rules
+  rules?: RegisterOptions; // Adjust the type according to your validation rules
 };
 
 export const ToggleCard = <T extends FieldValues>({

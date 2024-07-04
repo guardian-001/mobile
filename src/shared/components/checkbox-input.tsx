@@ -1,5 +1,10 @@
 import * as React from 'react';
-import type { Control, FieldValues, Path } from 'react-hook-form';
+import type {
+  Control,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from 'react-hook-form';
 import { useController } from 'react-hook-form';
 
 import { Checkbox } from './checkbox';
@@ -9,7 +14,7 @@ type Props<T extends FieldValues> = {
   label: string;
   name: Path<T>;
   control: Control<T>;
-  rules?: any;
+  rules?: RegisterOptions;
 };
 export const CheckboxInput = <T extends FieldValues>(props: Props<T>) => {
   const { name, control, rules, label, accessibilityLabel, className } = props;
