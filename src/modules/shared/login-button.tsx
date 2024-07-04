@@ -1,37 +1,39 @@
 import clsx from 'clsx';
 import React from 'react';
-import type { GestureResponderEvent } from 'react-native';
 
 import { Button } from '@/shared/components';
 
-interface MainButtonProps {
-  onPressHandler?: (event: GestureResponderEvent) => void;
+interface LoginButtonProps {
+  loginFunction: (e?: React.BaseSyntheticEvent) => Promise<void>;
+  type?: 'pill' | 'button';
   label: string;
   width?: string;
   height?: string;
   radius?: string;
   shadow?: string;
   textPosition?: string;
-  type?: 'pill' | 'button';
   alternativeStyle?: string;
   icon?: React.ReactNode;
 }
 
-export default function MainButton({
-  onPressHandler,
+export default function LoginButton({
+  loginFunction,
+  type,
   icon,
   label,
-  type = 'button',
+
   textPosition = 'text-center',
   width = `w-full`,
-  height = `h-12`,
+  height = `h-10`,
   radius = 'rounded-md',
   shadow,
   alternativeStyle,
-}: MainButtonProps) {
+}: LoginButtonProps) {
   return (
     <Button
-      onPress={onPressHandler}
+      onPress={() => {
+        loginFunction();
+      }}
       label={label}
       type={type}
       className={clsx(height, width, radius, 'flex', shadow, alternativeStyle)}
