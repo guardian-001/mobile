@@ -91,4 +91,7 @@ module.exports = {
   },
 
   blue: '#344054',
+
+  'light-blue': '#E5EBFF',
+  'extra-light-blue': '#DFF6FF',
 };

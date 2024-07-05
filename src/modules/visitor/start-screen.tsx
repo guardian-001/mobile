@@ -6,6 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { LogoArchi } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import { Image, ImageContainer, Text } from '@/shared/components';
+import colors from '@/theme/colors';
 
 import { MainButtons, OrDevider } from '../Components';
 import { Container, MainButton } from '../shared';
@@ -19,7 +20,7 @@ export function StartScreen() {
     <LinearGradient
       start={{ x: 0, y: 1 }}
       end={{ x: 0, y: 0 }}
-      colors={['#E5EBFF', '#DFF6FF']}
+      colors={[colors['light-blue'], colors['extra-light-blue']]}
       className="flex-1 items-center justify-center"
     >
       <Container style="flex-1 items-center justify-center w-full my-4 pt-5">
