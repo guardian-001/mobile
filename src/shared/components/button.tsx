@@ -11,10 +11,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
 interface Props extends Omit<TouchableOpacityProps, 'disabled'> {
   onPressHandler?: (event: GestureResponderEvent) => void;
-
   label?: string;
   loading?: boolean;
   className?: string;
@@ -23,7 +21,6 @@ interface Props extends Omit<TouchableOpacityProps, 'disabled'> {
   type?: 'pill' | 'button';
   icon?: React.ReactNode;
 }
-
 export const Button = React.forwardRef<TouchableOpacity, Props>(
   (
     {
@@ -50,7 +47,6 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
         ? 'text-primary-txt'
         : 'text-white'
       : 'text-disabled-txt';
-
     return (
       <TouchableOpacity
         onPress={onPressHandler}

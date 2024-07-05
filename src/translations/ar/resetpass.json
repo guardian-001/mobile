@@ -12,5 +12,6 @@
   "password-lowercase": "حرف صغير واحد",
   "password-uppercase": "حرف كبير واحد",
   "password-digit": "رقم واحد",
-  "password-special-char": "حرف خاص واحد (#?!$&@)"
+  "password-special-char": "حرف خاص واحد (#?!$&@)",
+  "resendCode": "إعادة إرسال الرمز"
 }

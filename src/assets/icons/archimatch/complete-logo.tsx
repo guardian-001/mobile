@@ -17,10 +17,7 @@ export const CompleteLogo = (props: SvgProps) => (
           x={0}
           y={0}
           maskUnits="userSpaceOnUse"
-          // @ts-ignore
-          style={{
-            maskType: 'luminance',
-          }}
+          mask-type="luminance"
         >
           <Path fill="#fff" d="M22.015 0H0v48.848h22.015V0Z" />
         </Mask>
@@ -32,11 +29,7 @@ export const CompleteLogo = (props: SvgProps) => (
             x={0}
             y={0}
             maskUnits="userSpaceOnUse"
-            // @ts-ignore
-
-            style={{
-              maskType: 'luminance',
-            }}
+            mask-type="luminance"
           >
             <Path fill="#fff" d="M22.015 0H0v48.848h22.015V0Z" />
           </Mask>

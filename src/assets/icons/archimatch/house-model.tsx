@@ -1,14 +1,9 @@
-import * as React from "react"
-import Svg, { Path, Defs, Pattern, Use, Image } from "react-native-svg"
+import * as React from 'react';
 import type { SvgProps } from 'react-native-svg';
+import Svg, { Defs, Image, Path, Pattern, Use } from 'react-native-svg';
 
-const HouseModel  = (props: SvgProps)  => (
-  <Svg 
-    width={100}
-    height={100}
-    fill="none"
-    {...props}
-  >
+const HouseModel = (props: SvgProps) => (
+  <Svg className="h-28 w-28" fill="none" {...props}>
     <Path fill="url(#a)" d="M0 0h100v100H0z" />
     <Defs>
       <Pattern
@@ -27,5 +22,5 @@ const HouseModel  = (props: SvgProps)  => (
       />
     </Defs>
   </Svg>
-)
-export default HouseModel
+);
+export default HouseModel;

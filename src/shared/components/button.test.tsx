@@ -59,7 +59,6 @@ describe('Button component ', () => {
     render(<Button testID="button" disabled={true} />);
     expect(screen.getByTestId('button')).toBeDisabled();
   });
-
   it('should apply correct styles for label when is disabled', () => {
     render(<Button testID="button" label="Submit" disabled />);
     const button = screen.getByTestId('button');

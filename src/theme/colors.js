@@ -82,7 +82,7 @@ module.exports = {
     300: '#E0E0E0',
     400: '#BDBDBD',
     500: '#9E9E9E',
-    600: '#757575',
+    600: '#888FA7',
     700: '#616161',
     800: '#424242',
     850: '#303030',
@@ -94,4 +94,7 @@ module.exports = {
 
   'light-blue': '#E5EBFF',
   'extra-light-blue': '#DFF6FF',
+
+  description: '#888FA7',
+  green: '#00B031',
 };

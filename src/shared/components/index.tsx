@@ -4,6 +4,7 @@ import Svg from 'react-native-svg';
 export { default as colors } from '../../theme/colors';
 export * from './button';
 export * from './checkbox';
+export * from './checkbox-input';
 export * from './controlled-input';
 export * from './focus-aware-status-bar';
 export * from './image';
@@ -13,17 +14,20 @@ export * from './list';
 export * from './modal';
 export * from './progress-bar';
 export * from './radio';
+export * from './radio-input';
 export * from './select';
 export * from './switch';
+export * from './switch-input';
 export * from './text';
+export * from './toggle-card';
 export * from './utils';
 
 // export base components from react-native
 export {
   ActivityIndicator,
   KeyboardAvoidingView,
-  Platform,
   Pressable,
+  type PressableProps,
   ScrollView,
   TouchableOpacity,
   View,
