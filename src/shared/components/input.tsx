@@ -12,7 +12,7 @@ import { Text } from './text';
 const inputTv = tv({
   slots: {
     container: 'mb-2',
-    label: 'text-blue mb-1 text-lg font-medium dark:text-white',
+    label: 'mb-1 text-lg font-medium text-primary-txt dark:text-white',
     input:
       'mt-0 rounded-lg border-[0.5px] border-gray-600 bg-white px-4 py-3 font-lato text-base  font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white',
   },
