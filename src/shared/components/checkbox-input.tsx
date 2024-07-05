@@ -1,11 +1,11 @@
 import * as React from 'react';
-import type {
-  Control,
-  FieldValues,
-  Path,
-  RegisterOptions,
+import {
+  type Control,
+  type FieldValues,
+  type Path,
+  type RegisterOptions,
+  useController,
 } from 'react-hook-form';
-import { useController } from 'react-hook-form';
 
 import { Checkbox } from './checkbox';
 type Props<T extends FieldValues> = {
