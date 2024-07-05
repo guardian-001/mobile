@@ -4,20 +4,22 @@ import {
 } from '@gorhom/bottom-sheet';
 import { FlashList } from '@shopify/flash-list';
 import * as React from 'react';
-import type { FieldValues } from 'react-hook-form';
-import { useController } from 'react-hook-form';
-import { Platform, TouchableOpacity, View } from 'react-native';
-import { Pressable, type PressableProps } from 'react-native';
-import type { SvgProps } from 'react-native-svg';
-import Svg, { Path } from 'react-native-svg';
+import { type FieldValues, useController } from 'react-hook-form';
+import Svg, { Path, type SvgProps } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
 import { CaretDown } from '@/assets/icons';
+import {
+  Platform,
+  Pressable,
+  type PressableProps,
+  TouchableOpacity,
+  View,
+} from '@/shared/components';
 import colors from '@/theme/colors';
 
 import type { InputControllerType } from './controlled-input';
-import { useModal } from './modal';
-import { Modal } from './modal';
+import { Modal, useModal } from './modal';
 import { Text } from './text';
 
 const selectTv = tv({
