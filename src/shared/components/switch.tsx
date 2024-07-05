@@ -4,8 +4,7 @@ import { I18nManager, View } from 'react-native';
 
 import colors from '@/theme/colors';
 
-import type { IconProps, RootProps } from './checkbox';
-import { Root } from './checkbox';
+import { type IconProps, Root, type RootProps } from './checkbox';
 import { Text } from './text';
 
 type LabelProps = {

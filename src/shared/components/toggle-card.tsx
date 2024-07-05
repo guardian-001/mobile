@@ -1,15 +1,13 @@
 import * as React from 'react';
-import type {
-  Control,
-  FieldValues,
-  Path,
-  RegisterOptions,
+import {
+  type Control,
+  type FieldValues,
+  type Path,
+  type RegisterOptions,
+  useController,
 } from 'react-hook-form';
-import { useController } from 'react-hook-form';
-import { Pressable } from 'react-native';
 
-import { Image } from './image';
-import { Text } from './text';
+import { Image, Pressable, Text } from '@/shared/components';
 
 type CardProps<T extends FieldValues> = {
   title?: string;

@@ -1,16 +1,15 @@
 import * as React from 'react';
-import type {
-  Control,
-  FieldValues,
-  Path,
-  RegisterOptions,
+import {
+  type Control,
+  type FieldValues,
+  type Path,
+  type RegisterOptions,
+  useController,
 } from 'react-hook-form';
-import { useController } from 'react-hook-form';
 
 import type { TxKeyPath } from '@/core';
 
-import type { NInputProps } from './input';
-import { Input } from './input';
+import { Input, type NInputProps } from './input';
 
 type TRule = Omit<
   RegisterOptions,
