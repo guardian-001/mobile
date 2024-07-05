@@ -40,14 +40,14 @@ export function StartScreen() {
           </ImageContainer>
           <View className="flex flex-row">
             <Text
-              className={`mr-1 font-lato text-2xl text-primary-txt md:text-4xl`}
+              className={`  font-lato text-2xl text-primary-txt md:text-4xl`}
             >
               {translate('onBoarding.welcomeTitle')}
             </Text>
             <Text
-              className={`   font-lato text-2xl font-extrabold text-primary-txt md:text-4xl`}
+              className={`font-lato text-2xl font-extrabold text-primary-txt md:text-4xl`}
             >
-              {translate('onBoarding.welcomeTitleSpan')}
+              {` ${translate('onBoarding.welcomeTitleSpan')}`}
             </Text>
           </View>
           <Container style="items-center justify-center w-[80%]">
