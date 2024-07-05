@@ -33,7 +33,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
   });
   const [checked, setChecked] = useState(true);
   return (
-    <View className="flex w-full  justify-center ">
+    <View className="flex w-full justify-center ">
       <ControlledInput
         testID="email-input"
         control={control}

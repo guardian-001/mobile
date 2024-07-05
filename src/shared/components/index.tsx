@@ -26,7 +26,6 @@ export * from './utils';
 export {
   ActivityIndicator,
   KeyboardAvoidingView,
-  Platform,
   Pressable,
   type PressableProps,
   ScrollView,

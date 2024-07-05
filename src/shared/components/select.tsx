@@ -5,12 +5,12 @@ import {
 import { FlashList } from '@shopify/flash-list';
 import * as React from 'react';
 import { type FieldValues, useController } from 'react-hook-form';
+import { Platform } from 'react-native';
 import Svg, { Path, type SvgProps } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
 import { CaretDown } from '@/assets/icons';
 import {
-  Platform,
   Pressable,
   type PressableProps,
   TouchableOpacity,

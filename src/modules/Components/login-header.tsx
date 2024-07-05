@@ -15,7 +15,7 @@ export default function LoginHeader() {
       <ImageContainer className="flex-start h-2/8 flex w-full justify-center">
         <LoginBanner />
       </ImageContainer>
-      <ImageContainer className="flex-center h-1/8  -mt-5 flex    justify-center">
+      <ImageContainer className="flex-center h-1/8 -mt-5 flex justify-center">
         {space === 'client' ? <CompleteLogoClient /> : <CompleteLogo />}
       </ImageContainer>
     </>

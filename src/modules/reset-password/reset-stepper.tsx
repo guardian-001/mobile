@@ -1,11 +1,11 @@
 import { router } from 'expo-router';
 import * as React from 'react';
+import { Platform } from 'react-native';
 
 import type { TxKeyPath } from '@/core';
 import {
   Image,
   KeyboardAvoidingView,
-  Platform,
   ScrollView,
   Text,
 } from '@/shared/components';

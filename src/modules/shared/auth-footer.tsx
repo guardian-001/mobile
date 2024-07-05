@@ -18,7 +18,7 @@ export default function AuthFooter() {
           }}
           className="text-xs font-bold text-primary"
         >
-          {translate('login.signupLink')}
+          {` ${translate('login.signupLink')}`}
         </Text>
       </Text>
     </View>
