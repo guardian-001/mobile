@@ -15,10 +15,11 @@ export default function Conditions() {
           onPress={() => {
             Linking.openURL(process.env.TERMS_URL || '');
           }}
-          className={`text-xs font-bold text-primary-txt  `}
+          className={`text-xs font-bold text-primary-txt`}
         >
+          {' '}
           {translate('login.termsConditionsPart2')}
-        </Text>
+        </Text>{' '}
         {translate('login.termsConditionsPart3')}
         <Text
           onPress={() => {
@@ -26,6 +27,7 @@ export default function Conditions() {
           }}
           className={`text-xs font-bold text-primary-txt  `}
         >
+          {' '}
           {translate('login.termsConditionsPart4')}
         </Text>
       </Text>

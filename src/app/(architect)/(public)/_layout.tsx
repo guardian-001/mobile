@@ -3,7 +3,7 @@ import React from 'react';
 
 import { BackButton } from '@/modules/shared';
 
-export default function SupplierPublicLayout() {
+export default function ArchitectPublicLayout() {
   return (
     <Stack initialRouteName="login">
       <Stack.Screen

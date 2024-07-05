@@ -38,7 +38,7 @@ export default function LoginButton({
       type={type}
       className={clsx(height, width, radius, 'flex', shadow, alternativeStyle)}
       textClassName={clsx(
-        'flex w-11/12 font-lato text-xs font-bold',
+        'flex w-11/12 font-lato text-xs font-bold md:text-lg',
         textPosition
       )}
       icon={icon}

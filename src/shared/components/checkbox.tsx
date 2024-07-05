@@ -115,7 +115,7 @@ const CheckboxBase = ({
         <Label
           text={label}
           testID={testID ? `${testID}-label` : undefined}
-          className="pr-2"
+          className="pr-2  text-xs md:text-lg"
         />
       ) : null}
     </CheckboxRoot>

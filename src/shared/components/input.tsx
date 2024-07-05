@@ -12,9 +12,9 @@ import { Text } from './text';
 const inputTv = tv({
   slots: {
     container: 'mb-2',
-    label: 'text-blue mb-1 text-lg font-medium dark:text-white',
+    label: 'text-blue mb-1 text-xs font-medium dark:text-white md:text-lg',
     input:
-      'mt-0 rounded-lg border-[0.5px] border-gray-600 bg-white px-4 py-3 font-lato text-base  font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white',
+      'mt-0 h-10 rounded-lg border-[0.5px] border-gray-600 bg-white px-4 py-3 font-lato text-xs font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white md:text-lg',
   },
 
   variants: {
@@ -91,7 +91,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
       {error && (
         <Text
           testID={testID ? `${testID}-error` : undefined}
-          className="text-danger-400 dark:text-danger-600 text-sm"
+          className="text-xs text-red-400 dark:text-red-600"
           tx={error}
         />
       )}
