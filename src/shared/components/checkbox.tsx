@@ -1,8 +1,8 @@
 import { MotiView } from 'moti';
 import React, { useCallback } from 'react';
-import { Pressable, type PressableProps } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
+import { Pressable, type PressableProps, View } from '@/shared/components';
 import colors from '@/theme/colors';
 
 import { Text } from './text';
@@ -12,6 +12,7 @@ export interface RootProps extends Omit<PressableProps, 'onPress'> {
   checked?: boolean;
   className?: string;
   accessibilityLabel: string;
+  error?: string;
 }
 
 export type IconProps = {
@@ -24,6 +25,7 @@ export const Root = ({
   onChange,
   disabled,
   className = '',
+  error,
   ...props
 }: RootProps) => {
   const handleChange = useCallback(() => {
@@ -31,17 +33,24 @@ export const Root = ({
   }, [onChange, checked]);
 
   return (
-    <Pressable
-      onPress={handleChange}
-      className={`flex-row items-center ${className} ${
-        disabled ? 'opacity-50' : ''
-      }`}
-      accessibilityState={{ checked }}
-      disabled={disabled}
-      {...props}
-    >
-      {children}
-    </Pressable>
+    <View className="flex-1">
+      <Pressable
+        onPress={handleChange}
+        className={`flex-row items-center ${className} ${
+          disabled ? 'opacity-50' : ''
+        }`}
+        accessibilityState={{ checked }}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </Pressable>
+      {error && (
+        <Text className="text-danger-400 dark:text-danger-600 text-sm">
+          {error}
+        </Text>
+      )}
+    </View>
   );
 };
 
