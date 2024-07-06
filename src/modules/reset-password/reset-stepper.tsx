@@ -44,7 +44,7 @@ export default function ResetStepper({}: Props) {
       subtitle: 'resetpass.resetPasswordDescription',
       component: (
         <ResetFormPassword
-          onSubmit={() => router.replace(`/(${space})/(public)/reset-password`)}
+          onSubmit={() => router.replace(`/(${space})/(public)/login`)}
         />
       ),
     },
