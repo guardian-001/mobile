@@ -1,13 +1,9 @@
 import { MotiView } from 'moti';
 import React from 'react';
 
-import {
-  type IconProps,
-  Root,
-  type RootProps,
-  Text,
-} from '@/shared/components';
 import colors from '@/theme/colors';
+
+import { type IconProps, Root, type RootProps, Text } from './';
 type LabelProps = {
   text: string;
   className?: string;

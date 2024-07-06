@@ -12,6 +12,15 @@ export default function ArchitectPublicLayout() {
           headerTransparent: true,
           headerTitle: '',
           headerShown: true,
+          headerLeft: () => <BackButton route={'init'} />,
+        }}
+      />
+      <Stack.Screen
+        name="reset-password"
+        options={{
+          headerTransparent: true,
+          headerTitle: '',
+          headerShown: true,
           headerLeft: () => <BackButton />,
         }}
       />

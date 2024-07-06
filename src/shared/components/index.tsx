@@ -7,6 +7,7 @@ export * from './checkbox';
 export * from './checkbox-input';
 export * from './controlled-input';
 export * from './focus-aware-status-bar';
+export * from './header-title';
 export * from './image';
 export { default as ImageContainer } from './image-container';
 export * from './input';
@@ -19,6 +20,7 @@ export * from './select';
 export * from './switch';
 export * from './switch-input';
 export * from './text';
+export * from './title';
 export * from './toggle-card';
 export * from './utils';
 

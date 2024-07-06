@@ -2,8 +2,9 @@ import { router } from 'expo-router';
 import * as React from 'react';
 import { Platform } from 'react-native';
 
-import type { TxKeyPath } from '@/core';
+import { type TxKeyPath } from '@/core';
 import {
+  HeaderTitle,
   Image,
   KeyboardAvoidingView,
   ScrollView,
@@ -55,6 +56,7 @@ export default function ResetStepper({}: Props) {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1 bg-white dark:bg-black"
     >
+      <HeaderTitle text="resetpass.reset" />
       <ScrollView
         className="flex-1 p-6 pt-12"
         contentContainerClassName={`${step === 1 && 'items-center'}`}

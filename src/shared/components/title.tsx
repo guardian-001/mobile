@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Text, View } from '@/shared/components';
+import { Text, View } from './';
 
 type Props = {
   text: string;

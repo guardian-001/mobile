@@ -39,13 +39,11 @@ export function StartScreen() {
             />
           </ImageContainer>
           <View className="flex flex-row">
-            <Text
-              className={`  font-lato text-2xl text-primary-txt md:text-4xl`}
-            >
+            <Text className={`font-lato text-2xl text-primary-txt md:text-4xl`}>
               {translate('onBoarding.welcomeTitle')}
             </Text>
             <Text
-              className={`font-lato text-2xl font-extrabold text-primary-txt md:text-4xl`}
+              className={`font-lato text-2xl font-bold text-primary-txt md:text-4xl`}
             >
               {` ${translate('onBoarding.welcomeTitleSpan')}`}
             </Text>

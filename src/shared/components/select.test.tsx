@@ -1,10 +1,8 @@
-/* eslint-disable max-lines-per-function */
-
 import React from 'react';
 
 import { cleanup, fireEvent, render, screen } from '@/core/test-utils';
-import type { Option } from '@/shared/components';
 
+import type { Option } from './';
 import { Select } from './select';
 
 afterEach(cleanup);

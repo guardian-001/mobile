@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
@@ -7,6 +8,7 @@ import * as z from 'zod';
 
 import { translate } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
+import { useRouteName } from '@/shared/hooks/use-get-route';
 
 import { Container } from '../shared';
 import LoginButton from '../shared/login-button';
@@ -28,10 +30,15 @@ export type LoginFormProps = {
   onSubmit?: SubmitHandler<FormType>;
 };
 export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
+  const router = useRouter();
   const { handleSubmit, control } = useForm<FormType>({
     resolver: zodResolver(schema),
   });
   const [checked, setChecked] = useState(true);
+  const space = useRouteName();
+  const handleResetPass = () => {
+    router.push(`/(${space})/(public)/reset-password`);
+  };
   return (
     <View className="flex w-full justify-center ">
       <ControlledInput
@@ -56,7 +63,10 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
           accessibilityLabel="Se souvenir de moi"
           label={translate('login.souvenir')}
         />
-        <Text className={`font-lato text-xs font-semibold text-primary `}>
+        <Text
+          onPress={handleResetPass}
+          className={`font-lato text-xs font-semibold text-primary `}
+        >
           {translate('login.mdpOublier')}
         </Text>
       </Container>
