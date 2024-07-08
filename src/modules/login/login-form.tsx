@@ -14,7 +14,7 @@ import LoginButton from '../shared/login-button';
 
 export type LoginFormType = z.infer<typeof LoginFormSchema>;
 export type LoginFormProps = {
-  onSubmit?: SubmitHandler<LoginFormType>;
+  onSubmit: SubmitHandler<LoginFormType>;
 };
 
 export const LoginForm = ({ onSubmit }: LoginFormProps) => {
@@ -26,9 +26,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const handleFormSubmit: SubmitHandler<LoginFormType> = (data) => {
     signIn({ access: 'access-token', refresh: 'refresh-token' });
     router.push('/(architect)/(private)');
-    if (onSubmit) {
-      onSubmit(data);
-    }
+    onSubmit(data);
   };
 
   return (

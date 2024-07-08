@@ -12,7 +12,7 @@ import { OTPInput } from './otp-input';
 type OTPFormType = z.infer<typeof OTPSchema>;
 
 type ResetFormProps = {
-  onSubmit?: SubmitHandler<OTPFormType>;
+  onSubmit: SubmitHandler<OTPFormType>;
 };
 export default function VerificationCode({
   onSubmit = () => {},

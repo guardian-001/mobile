@@ -13,7 +13,7 @@ import PasswordRequirementItem from './password-requirement-item';
 type ResetFormType = z.infer<typeof PasswordSchema>;
 
 type ResetFormPasswordProps = {
-  onSubmit?: SubmitHandler<ResetFormType>;
+  onSubmit: SubmitHandler<ResetFormType>;
 };
 export default function ResetFormPassword({
   onSubmit = () => {},

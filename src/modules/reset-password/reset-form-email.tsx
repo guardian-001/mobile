@@ -10,7 +10,7 @@ import { EmailSchema } from '@/validations';
 type EmailFormType = z.infer<typeof EmailSchema>;
 
 type ResetFormProps = {
-  onSubmit?: SubmitHandler<EmailFormType>;
+  onSubmit: SubmitHandler<EmailFormType>;
 };
 export default function ResetFormEmail({
   onSubmit = () => {},
