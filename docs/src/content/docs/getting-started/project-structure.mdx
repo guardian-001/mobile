@@ -1,0 +1,268 @@
+---
+title: Project Structure
+description: Project structure files and folders.
+head:
+  - tag: title
+    content: Project Structure | React Native / Expo Starter
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+import Code from '../../../components/code.astro';
+
+<FileTree>
+
+- api ## anything related to API calls and data fetching
+  - common/
+    - api-provider.tsx
+    - client.tsx
+    - index.tsx
+    - utils.tsx
+  - index.tsx
+  - posts/
+    - index.ts
+    - types.ts
+    - use-add-post.ts
+    - use-post.ts
+    - use-posts.ts
+  - types.ts
+- app ## app routes and layouts
+  - onboarding.tsx
+  - \_layout.tsx
+  - (app)/
+    - \_layout.tsx
+  - (architect)/
+    - \_layout.tsx
+    - (private)/
+      - index.tsx
+      - \_layout.tsx
+    - (public)/
+      - login.tsx
+      - reset-password.tsx
+      - \_layout.tsx
+  - (client)/
+    - \_layout.tsx
+    - (private)/
+      - index.tsx
+      - \_layout.tsx
+    - (public)/
+      - login.tsx
+      - reset-password.tsx
+      - \_layout.tsx
+  - (supplier)/
+    - \_layout.tsx
+    - (private)/
+      - index.tsx
+      - \_layout.tsx
+    - (public)/
+      - login.tsx
+      - \_layout.tsx
+- assets ## assets like icons, images, etc.
+  - start-screen-homes.gif
+  - icons/
+    - arrow-left.tsx
+    - arrow-right.tsx
+    - caret-down.tsx
+    - cover.tsx
+    - feed.tsx
+    - github.tsx
+    - home.tsx
+    - index.tsx
+    - language.tsx
+    - long-arrow-right.tsx
+    - rate.tsx
+    - settings.tsx
+    - share.tsx
+    - style.tsx
+    - support.tsx
+    - tick-icon.tsx
+    - website.tsx
+    - archimatch/
+      - complete-logo-client.tsx
+      - complete-logo.tsx
+      - design-inter.tsx
+      - house-icon.tsx
+      - house-image.tsx
+      - house-model.tsx
+      - image-svg-png.tsx
+      - index.ts
+      - login-banner.tsx
+      - logo-archi.tsx
+  - images/
+    - code-verification-blue.png
+    - code-verification-red.png
+- core ## core files such as auth, localization, storage, and more
+  - env.js
+  - index.tsx
+  - keyboard.ts
+  - storage.tsx
+  - test-utils.tsx
+  - utils.ts
+  - auth/
+    - index.tsx
+    - utils.tsx
+- modules ## feature modules
+  - index.ts
+  - Components/
+    - index.ts
+    - login-header.tsx
+    - main-buttons.tsx
+    - or-devider.tsx
+    - welcome.tsx
+  - login/
+    - login-form.test.tsx
+    - login-form.tsx
+    - login.tsx
+  - reset-password/
+    - otp-input.tsx
+    - password-requirement-item.tsx
+    - reset-form-email.tsx
+    - reset-form-password.tsx
+    - reset-stepper.tsx
+    - verification-code.tsx
+  - settings/
+    - item.tsx
+    - items-container.tsx
+    - language-item.tsx
+    - theme-item.tsx
+  - shared/
+    - auth-footer.tsx
+    - back-button.tsx
+    - conditions.tsx
+    - container.tsx
+    - devider.tsx
+    - index.ts
+    - login-button.tsx
+    - main-button.tsx
+  - visitor/
+    - start-screen.tsx
+- shared ## shared utilities and components
+  - index.ts
+  - components/
+    - button.test.tsx
+    - button.tsx
+    - checkbox-input.tsx
+    - checkbox.test.tsx
+    - checkbox.tsx
+    - controlled-input.tsx
+    - focus-aware-status-bar.tsx
+    - image-container.tsx
+    - image.tsx
+    - index.tsx
+    - input.test.tsx
+    - input.tsx
+    - list.tsx
+    - modal.tsx
+    - progress-bar.tsx
+    - radio-input.tsx
+    - radio.tsx
+    - select.test.tsx
+    - select.tsx
+    - switch-input.tsx
+    - switch.tsx
+    - text.tsx
+    - title.tsx
+    - toggle-card.tsx
+    - typography.tsx
+    - utils.tsx
+  - hooks/
+    - index.ts
+    - use-custom-form.tsx
+    - use-get-route.tsx
+    - use-is-first-time.tsx
+    - use-selected-theme.tsx
+  - providers/
+    - app-provider.tsx
+    - index.ts
+    - theme-provider.tsx
+  - utils/
+    - card.tsx
+    - colors.tsx
+    - inputs.tsx
+- theme ## theme configuration and files
+  - architect-theme.ts
+  - client-theme.ts
+  - colors.js
+  - default-theme.ts
+  - index.tsx
+  - supplier-theme.ts
+  - theme-config.ts
+  - use-theme-config.ts
+- translations ## translation resource files
+  - ar/
+    - common.json
+    - index.ts
+    - login.json
+    - onboarding.json
+    - resetpass.json
+    - settings.json
+    - signup-step1.json
+    - signup-step2.json
+    - signup-step3.json
+    - signup-step4.json
+    - signup-step5.json
+    - signup.json
+    - validations.json
+  - en/
+    - common.json
+    - index.ts
+    - login.json
+    - onboarding.json
+    - resetpass.json
+    - settings.json
+    - signup-step1.json
+    - signup-step2.json
+    - signup-step3.json
+    - signup-step4.json
+    - signup-step5.json
+    - signup.json
+    - validations.json
+  - fr/
+    - common.json
+    - index.ts
+    - labels.json
+    - login.json
+    - onboarding.json
+    - resetpass.json
+    - settings.json
+    - signup-step1.json
+    - signup-step2.json
+    - signup-step3.json
+    - signup-step4.json
+    - signup-step5.json
+    - signup.json
+    - validations.json
+  - i18n/
+    - index.tsx
+    - react-i18next.d.ts
+    - resources.ts
+    - types.ts
+    - utils.tsx
+- types ## global types
+  - index.ts
+- validations ## validation schemas and utilities
+  - index.ts
+  - shared/
+    - shared-schema.tsx
+    - shared-validations.tsx
+
+</FileTree>
+
+## Importing files
+
+We use absolute imports to import files using the Babel module resolver plugin and TypeScript path mapping. This approach helps us avoid long relative paths and makes the code cleaner and more readable.
+
+Here is a simple example of how the Feed screen looks with absolute imports.
+
+<Code file="src/app/_layout.tsx" meta="{4-7}" />
+
+This approach is very useful when you are working on a large project with a lot of files and folders and it can be done by updating the `babel.config.js` file and `tsconfig.json` file to the following:
+
+<details>
+  <summary>⚙️ Babel configuration</summary>
+  <Code file="babel.config.js" meta="ins={8-27}" />
+</details>
+
+<details>
+  <summary>⚙️ Typescript Config</summary>
+  <Code file="tsconfig.json" meta="ins={5-9}" />
+</details>
