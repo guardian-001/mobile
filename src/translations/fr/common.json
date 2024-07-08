@@ -1,3 +1,6 @@
 {
-  "reset": "Réinitialiser"
+  "email": "E-mail",
+  "yourEmail": "Votre e-mail",
+  "choosePassword": "Choisir un mot de passe",
+  "enterPassword": "Saisirez le mot de passe"
 }

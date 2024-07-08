@@ -1,25 +1,25 @@
-/* eslint-disable max-lines-per-function */
 import {
   BottomSheetFlatList,
   type BottomSheetModal,
 } from '@gorhom/bottom-sheet';
 import { FlashList } from '@shopify/flash-list';
-import { useColorScheme } from 'nativewind';
 import * as React from 'react';
-import type { FieldValues } from 'react-hook-form';
-import { useController } from 'react-hook-form';
-import { Platform, TouchableOpacity, View } from 'react-native';
-import { Pressable, type PressableProps } from 'react-native';
-import type { SvgProps } from 'react-native-svg';
-import Svg, { Path } from 'react-native-svg';
+import { type FieldValues, useController } from 'react-hook-form';
+import { Platform } from 'react-native';
+import Svg, { Path, type SvgProps } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
 import { CaretDown } from '@/assets/icons';
+import {
+  Pressable,
+  type PressableProps,
+  TouchableOpacity,
+  View,
+} from '@/shared/components';
 import colors from '@/theme/colors';
 
-import type { InputControllerType } from './input';
-import { useModal } from './modal';
-import { Modal } from './modal';
+import type { InputControllerType } from './controlled-input';
+import { Modal, useModal } from './modal';
 import { Text } from './text';
 
 const selectTv = tv({
@@ -75,8 +75,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
   ({ options, onSelect, value, testID }, ref) => {
     const height = options.length * 70 + 100;
     const snapPoints = React.useMemo(() => [height], [height]);
-    const { colorScheme } = useColorScheme();
-    const isDark = colorScheme === 'dark';
+    const isDark = false;
 
     const renderSelectItem = React.useCallback(
       ({ item }: { item: Option }) => (
@@ -210,7 +209,7 @@ export const Select = (props: SelectProps) => {
         {error && (
           <Text
             testID={`${testID}-error`}
-            className="text-sm text-danger-300 dark:text-danger-600"
+            className="text-danger-300 dark:text-danger-600 text-sm"
           >
             {error}
           </Text>

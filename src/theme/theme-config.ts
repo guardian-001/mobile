@@ -5,8 +5,8 @@ export type ThemesVariant = 'default' | 'client' | 'supplier' | 'architect';
 
 export const Themes = {
   default: vars({
-    '--color-primary': '#000000',
-    '--color-secondary': '#9b6cca',
+    '--color-primary': '#11ABEC',
+    '--color-secondary': '#FAFBFF',
   }),
   supplier: vars({
     '--color-primary': '#FC5C63',

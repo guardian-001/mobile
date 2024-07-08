@@ -75,12 +75,26 @@ module.exports = {
     800: '#991B1B',
     900: '#7F1D1D',
   },
-  bgm: {
-    //background colors for progress bar and second background
-    300: '#CEF0FF4D',
-    900: '#E5EBFF',
+  gray: {
+    50: '#FAFAFA',
+    100: '#F5F5F5',
+    200: '#EEEEEE',
+    300: '#E0E0E0',
+    400: '#BDBDBD',
+    500: '#9E9E9E',
+    600: '#888FA7',
+    700: '#616161',
+    800: '#424242',
+    850: '#303030',
+    900: '#212121',
+    950: '#121212',
   },
+
   blue: '#344054',
 
-  gray: { 600: '#888FA7', 100: '#FAFBFF' },
+  'light-blue': '#E5EBFF',
+  'extra-light-blue': '#DFF6FF',
+
+  description: '#888FA7',
+  green: '#00B031',
 };

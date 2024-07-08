@@ -1,4 +1,17 @@
 {
+  "reset": "Reset",
   "forgetPasswordTitle": "Forgot your password?",
-  "sendingEmailDescription": "We will email you the link to reset your password"
+  "sendingEmailDescription": "We will email you the link to reset your password",
+  "verificationCodeTitle": "Verification code",
+  "verificationCodeDescription": "Enter the code sent to",
+  "resetPasswordTitle": "Reset password",
+  "resetPasswordDescription": "Create a secure password to protect your account.",
+  "passwordConditions": "Your password must contain at least:",
+  "passwordLength": "Your password must contain at least:",
+  "password-min-length": "8 characters",
+  "password-lowercase": "one lowercase letter",
+  "password-uppercase": "one uppercase letter",
+  "password-digit": "one digit",
+  "password-special-char": "one special character (#?!$&@)",
+  "resendCode": "Resend code"
 }
