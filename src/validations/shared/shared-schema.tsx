@@ -31,6 +31,11 @@ export const PasswordSchema = z.object({
 
 export const LoginFormSchema = z.object({
   email: emailValidation,
+  password: requiredValidation,
+});
+
+export const SignupFormSchema = z.object({
+  email: emailValidation,
   password: passwordValidation,
 });
 
