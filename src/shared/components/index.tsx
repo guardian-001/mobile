@@ -23,6 +23,7 @@ export * from './text';
 export * from './title';
 export * from './toggle-card';
 export * from './utils';
+export * from './screen-options'
 
 // export base components from react-native
 export {
