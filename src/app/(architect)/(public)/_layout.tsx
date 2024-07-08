@@ -24,6 +24,15 @@ export default function ArchitectPublicLayout() {
           headerLeft: () => <BackButton />,
         }}
       />
+      <Stack.Screen
+        name="signup"
+        options={{
+          headerTransparent: true,
+          headerTitle: '',
+          headerShown: true,
+          headerLeft: () => <BackButton />,
+        }}
+      />
     </Stack>
   );
 }
