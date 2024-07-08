@@ -1,26 +1,24 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
 import type * as z from 'zod';
 
 import { Button, Text, TouchableOpacity, View } from '@/shared/components';
+import useCustomForm from '@/shared/hooks/use-custom-form';
 import { translate } from '@/translations/i18n';
 import { OTPSchema } from '@/validations';
 
 import { OTPInput } from './otp-input';
 
-export type FormType = z.infer<typeof OTPSchema>;
+type OTPFormType = z.infer<typeof OTPSchema>;
 
-export type ResetFormProps = {
-  onSubmit?: SubmitHandler<FormType>;
+type ResetFormProps = {
+  onSubmit?: SubmitHandler<OTPFormType>;
 };
 export default function VerificationCode({
   onSubmit = () => {},
 }: ResetFormProps) {
-  const { control, handleSubmit } = useForm<FormType>({
-    resolver: zodResolver(OTPSchema),
-  });
+  const { control, handleSubmit } = useCustomForm(OTPSchema);
+
   return (
     <View className="w-full flex-1 items-center justify-center">
       <View className="my-8 w-11/12 flex-1 ">

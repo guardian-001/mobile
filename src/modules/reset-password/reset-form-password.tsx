@@ -1,28 +1,26 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
 import type * as z from 'zod';
 
 import { Button, ControlledInput, Text, View } from '@/shared/components';
+import useCustomForm from '@/shared/hooks/use-custom-form';
 import type { TxKeyPath } from '@/translations/i18n';
 import { translate } from '@/translations/i18n';
 import { PasswordSchema } from '@/validations';
 
 import PasswordRequirementItem from './password-requirement-item';
 
-export type FormType = z.infer<typeof PasswordSchema>;
+type ResetFormType = z.infer<typeof PasswordSchema>;
 
-export type ResetFormPasswordProps = {
-  onSubmit?: SubmitHandler<FormType>;
+type ResetFormPasswordProps = {
+  onSubmit?: SubmitHandler<ResetFormType>;
 };
 export default function ResetFormPassword({
   onSubmit = () => {},
 }: ResetFormPasswordProps) {
-  const { handleSubmit, control, watch, formState } = useForm<FormType>({
-    resolver: zodResolver(PasswordSchema),
-  });
-  const password = watch('password');
+  const { handleSubmit, control, form } = useCustomForm(PasswordSchema);
+
+  const password = form.watch('password');
 
   const passwordRequirements: { isValid: boolean; message: TxKeyPath }[] = [
     {
@@ -71,7 +69,7 @@ export default function ResetFormPassword({
         label={translate('resetpass.reset')}
         onPress={handleSubmit(onSubmit)}
         className="h-12 rounded-md"
-        disabled={!formState.isValid}
+        disabled={!form.formState.isValid}
       />
     </View>
   );
