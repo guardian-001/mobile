@@ -11,12 +11,12 @@ const onSubmitMock: jest.Mock<LoginFormProps['onSubmit']> = jest.fn();
 
 describe('LoginForm Form ', () => {
   it('renders correctly', async () => {
-    render(<LoginForm />);
+    render(<LoginForm onSubmit={onSubmitMock} />);
     expect(await screen.findByText(/Sign in/i)).toBeOnTheScreen();
   });
 
   it('should display required error when values are empty', async () => {
-    render(<LoginForm />);
+    render(<LoginForm onSubmit={onSubmitMock} />);
 
     const button = screen.getByTestId('login-button');
     expect(screen.queryByText(/Email is required/i)).not.toBeOnTheScreen();
@@ -26,7 +26,7 @@ describe('LoginForm Form ', () => {
   });
 
   it('should display matching error when email is invalid', async () => {
-    render(<LoginForm />);
+    render(<LoginForm onSubmit={onSubmitMock} />);
 
     const button = screen.getByTestId('login-button');
     const emailInput = screen.getByTestId('email-input');
@@ -56,7 +56,7 @@ describe('LoginForm Form ', () => {
     // undefined because we don't use second argument of the  SubmitHandler
     expect(onSubmitMock).toHaveBeenCalledWith(
       {
-        email: 'youssef@gmail.com',
+        email: 'example@gmail.com',
         password: 'password',
       },
       undefined
