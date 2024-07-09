@@ -1,13 +1,10 @@
-export const loginScreenOptions = {
-  headerTransparent: true,
-  headerTitle: '',
-  headerShown: true,
-  headerLeft: () => <BackButton route={'init'} />,
-};
+import { BackButton } from '@/modules/shared';
 
-export const resetPasswordScreenOptions = {
-  headerTransparent: true,
-  headerTitle: '',
-  headerShown: true,
-  headerLeft: () => <BackButton />,
+export const ScreenOptions = (route?: 'init') => {
+  return {
+    headerTransparent: true,
+    headerTitle: '',
+    headerShown: true,
+    headerLeft: () => <BackButton route={route} />,
+  };
 };
