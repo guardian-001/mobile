@@ -3,7 +3,6 @@ export * from './caret-down';
 export * from './construction-helmet';
 export * from './feed';
 export * from './fournisseur';
-export * from './github';
 export * from './home';
 export * from './inspiration';
 export * from './language';
