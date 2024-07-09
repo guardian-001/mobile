@@ -7,7 +7,7 @@ import {
   useController,
 } from 'react-hook-form';
 
-import { Image, Pressable, Text } from '@/shared/components';
+import { Image, Pressable, Text } from './';
 
 type CardProps<T extends FieldValues> = {
   title?: string;
