@@ -1,15 +1,13 @@
 import React from 'react';
-import type { SubmitHandler } from 'react-hook-form';
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 
 import { LoginHeader, Welcome } from '../Components';
 import { AuthFooter, Conditions, Container } from '../shared';
-import type { FormType } from './login-form';
+import type { LoginFormProps } from './login-form';
 import { LoginForm } from './login-form';
-export type LoginFormProps = {
-  onSubmit?: SubmitHandler<FormType>;
-};
-export default function LoginShared({ onSubmit = () => {} }: LoginFormProps) {
+
+export default function LoginShared() {
+  const onSubmit: LoginFormProps['onSubmit'] = () => {};
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

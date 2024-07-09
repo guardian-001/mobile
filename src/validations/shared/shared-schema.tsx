@@ -4,7 +4,6 @@ import {
   emailValidation,
   passwordValidation,
   requiredValidation,
-  specialityValidation,
 } from './shared-validations';
 
 export const ConfirmPasswordSchema = z
@@ -35,8 +34,9 @@ export const LoginFormSchema = z.object({
   password: requiredValidation,
 });
 
-export const SignUpFormSchema = z.object({
-  speciality: specialityValidation,
+export const SignupFormSchema = z.object({
+  email: emailValidation,
+  password: passwordValidation,
 });
 
 export const OTPSchema = z.object({

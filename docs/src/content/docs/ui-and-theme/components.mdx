@@ -1,0 +1,655 @@
+---
+title: UI Components
+description: List of all UI components and how to use them.
+head:
+  - tag: title
+    content: UI Components | React Native / Expo Starter
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+import CodeBlock from '../../../components/code.astro';
+
+The starter comes with a set of basic components and a simple design system based on Nativewind to help you get started and save you time.
+
+All those components can be found in the `src/shared/components//core` folder. Our philosophy is to keep the components as simple as possible and to avoid adding too much logic to them. This way, they are easier to reuse and customize.
+
+Based on your needs, you can either use them as they are or customize them to fit your needs. You can also create new ones based on the same approach.
+
+<FileTree>
+
+- components ## any reusable components
+  - button.test.tsx
+  - button.tsx
+  - checkbox.tsx
+  - checkbox-input.tsx
+  - checkbox.test.tsx
+  - radio.tsx
+  - radio-input.tsx
+  - switch.tsx
+  - switch-input.tsx
+  - focus-aware-status-bar.tsx
+  - image.tsx
+  - image-container.tsx
+  - index.tsx
+  - input.test.tsx
+  - input.tsx
+  - controlled-input.tsx
+  - list.tsx
+  - modal.tsx
+  - progress-bar.tsx
+  - select.test.tsx
+  - select.tsx
+  - text.tsx
+  - toggle-card.tsx
+  - title.tsx
+  - utils.tsx
+
+</FileTree>
+
+:::tip
+To save time when creating new components or screens, we can simply start typing `comp` and press Enter to generate a new component with the correct structure.
+
+![Create component](https://github.com/obytes/react-native-template-obytes/assets/11137944/ca84555f-12b7-4048-98b8-3c8391bd9918)
+:::
+
+## List
+
+The `List` component references the FlashList component from the `@shopify/flash-list` package.
+
+<CodeBlock file="src/shared/components//list.tsx" />
+
+**Props**
+
+- All `@shopify/flash-list` Props are supported
+
+We also provide an `EmptyList` component that you can use to display a message when the list is empty. Feel free to customize it to fit your needs.
+
+**Use Case**
+
+```tsx
+import * as React from 'react';
+import { List, EmptyList, Text } from '@/shared';
+
+const MyComponent = () => {
+  return (
+    <List
+      data={['Item 1', 'Item 2']}
+      renderItem={({ item }) => <Text>{item}</Text>}
+      ListEmptyComponent={<EmptyList message="No items" />}
+    />
+  );
+};
+```
+
+## Image
+
+For the `Image` component, we use the `expo-image` library to provide a fast and performant image component. The `Image` component is a wrapper around the `Image` component from `expo-image` package with additional styling provided by `nativewind`.
+The `cssInterop` function from `nativewind` is used to apply styling and, in this way, the `className` property is applied to the `style` property of the `Image` component.
+
+<CodeBlock file="src/shared/components//image.tsx" />
+
+**Props**
+
+- All `expo-image` Props are supported
+- `className` - Tailwind CSS class names
+
+**Use Case**
+
+```tsx
+import * as React from 'react';
+import { Image } from '@/components';
+
+const MyComponent = () => {
+  return (
+    <Image
+      className="w-32 h-32"
+      source={{
+        uri: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36',
+      }}
+    />
+  );
+};
+```
+
+## Text
+
+With this custom Text component, you can use the translation key as the `tx` prop, and it will automatically translate the text based on the current locale, as well as support right-to-left (RTL) languages based on the selected locale.
+
+<CodeBlock file="src/shared/components//text.tsx" />
+
+:::tip
+You can also use the `t` snippet to create a simple Text with a default `className`.
+:::
+
+**Props**
+
+- All React Native Text Props are supported
+- `className` - Tailwind CSS class names
+- `tx` - Translation key
+
+**Use Case**
+
+```tsx
+import * as React from 'react';
+import { Text, View } from 'react-native';
+
+const MyComponent = () => {
+  return (
+    <View className="flex flex-col items-center justify-center">
+      <Text className="text-2xl" tx="welcome" />
+      <Text className="text-md" className="text-base">
+        Hello world
+      </Text>
+    </View>
+  );
+};
+```
+
+## Button
+
+The starter comes with a simple `Button` component that you can use to create a basic `Pressable` with a `Text` using Tailwind CSS classes and variant definitions. These variants' logic is based on the `tailwind-variants` package.
+
+The `tv` function from `tailwind-variants` is used to create a function that generates a styling configuration object for the Button component based on slot definitions, variant, size , disabled status, full-width, and default variants. Consequently, the `styles` defines the styles for the Button based on the provided props using the `button` function.
+
+Each variant should include styles for the `container`, `indicator`, and `label` keys. The `container` style is for the `Pressable`, the `label` style is for the `Text` component, and the `indicator` style is for the `ActivityIndicator` component when the `loading` prop is `true`.
+
+<CodeBlock file="src/shared/components//button.tsx" />
+
+**Props**
+
+- All React Native Pressable Props are supported.
+- `variant` - Button variant, one of `variant` objects keys (default: `default`)
+- `loading` - Show loading indicator (default: `false`)
+- `label` - Button label
+- `size` - Button size, one of variants `size` objects keys (default: `default`)
+- `className` - Tailwind CSS class names to be applied to the Button's container
+- `textClassName` - Additional styling for the Button's label
+- `icon` - Optionally include an icon component after the button label
+
+**Use Case**
+
+```tsx
+import React from 'react';
+
+import { Button, View, Text } from '@/components';
+
+export const Buttons = () => {
+  return (
+    <>
+      <Text>Buttons</Text>
+      <View>
+        <View className="flex-row  flex-wrap">
+          <Button label="small" size="sm" className="mr-2" />
+          <Button
+            label="small"
+            loading
+            size="sm"
+            className="mr-2 min-w-[60px]"
+          />
+          <Button
+            label="small"
+            size="sm"
+            variant="secondary"
+            className="mr-2"
+          />
+          <Button label="small" size="sm" variant="outline" className="mr-2" />
+          <Button
+            label="small"
+            size="sm"
+            variant="destructive"
+            className="mr-2"
+          />
+          <Button label="small" size="sm" variant="ghost" className="mr-2" />
+          <Button label="small" size="sm" disabled className="mr-2" />
+        </View>
+        <Button label="Default Button" />
+        <Button label="Secondary Button" variant="secondary" />
+        <Button label="Outline Button" variant="outline" />
+        <Button label="Destructive Button" variant="destructive" />
+        <Button label="Ghost Button" variant="ghost" />
+        <Button label="Button" loading={true} />
+        <Button label="Button" loading={true} variant="outline" />
+        <Button label="Default Button Disabled" disabled />
+        <Button
+          label="Secondary Button Disabled"
+          disabled
+          variant="secondary"
+        />
+      </View>
+    </>
+  );
+};
+```
+
+## Input
+
+We provide a simple `Input` component with a `Text` component for the label and a `TextInput` component for the input.
+
+You can use it in the same way you use the `TextInput` component from React Native, but with additional props to customize the label and error styling.
+
+The component utilizes the tv function from Tailwind Variants to define styling slots and variants for different states such as focused, error, and disabled. These styles are applied dynamically based on the component's state and props.
+
+We tried to keep the ` Input` component as simple as possible, but you can add more functionality, such as `onFocus` and `onBlur`, or adding left and right icons to the input.
+
+<CodeBlock file="src/shared/components//input.tsx" />
+
+**Props**
+
+- All React Native TextInput Props are supported
+- `label` - Input label
+- `error` - Input error message
+
+We provide also a simple `ControlledInput` component that uses the `Input` component under the hood but with a `useController` hook from `react-hook-form` to make it ready to use with `react-hook-form` library.
+
+Read more about Handling Forms [here](../forms/).
+
+**Use Case**
+
+```tsx
+import * as React from 'react';
+import { Input, View } from '@/components';
+
+const MyComponent = () => {
+  return (
+    <View className="flex flex-col items-center justify-center">
+      <Input label="Email" error="Email is required" />
+    </View>
+  );
+};
+```
+
+## Modal
+
+We provide a simple `Modal` component using the `@gorhom/bottom-sheet` library to display a modal at the bottom of the screen.
+
+We opt to use a bottom sheet instead of a modal to make it more flexible and easy to use. as well as having full control over the logic and the UI.
+
+Based on your needs, you can use the `Modal` if you don't have a fixed height for the modal content.
+
+<CodeBlock file="src/shared/components//modal.tsx" />
+
+**Props**
+
+- All `@gorhom/bottom-sheet` Props are supported
+- `children` - Modal content
+- `title`: `string` - Modal title
+
+**Use Case**
+
+```tsx
+import * as React from 'react';
+import { Modal, useModal, View, Button, Text } from '@/components';
+
+const MyComponent = () => {
+  const modal = useModal();
+
+  return (
+    <View className="flex flex-col items-center justify-center">
+      <Button variant="primary" label="Show Modal" onPress={modal.present} />
+      <Modal ref={modal.ref} title="modal title" snapPoints={['60%']}>
+        <Text>Modal Content</Text>
+      </Modal>
+    </View>
+  );
+};
+```
+
+## Select
+
+We provide a simple `Select` component using a bottom sheet with a simple List component to select an item from a list of items.
+
+We opt to use a bottom sheet instead of a dropdown to make it more flexible and easy to use on both iOS and Android and also to minimize the number of dependencies in the starter.
+
+The component uses the `tv` function from Tailwind Variants to define styling slots and variants for different states such as error, and disabled. These styles are applied dynamically based on the component's state and props.
+
+Feel free to update the component implementation to fit your need and as you keep the same Props signature for the `Select` component the component will work with our form handling solution without any changes.
+
+<CodeBlock file="src/shared/components//select.tsx" />
+
+**Props**
+
+- `label`: `string` - Input label
+- `error`: `string` - Input error message
+- `options` : array of `{ label: string; value: string | number }` - List of items to select from
+- `value` : `string | number` - Selected item value
+- `onSelect`: `(option: Option) => void;` - Callback function to handle item selection
+- `placeholder`: `string`- Placeholder text
+- `disabled`: `boolean` - Disable select input (default: `false`)
+
+**Use Case**
+
+```tsx
+import * as React from 'react';
+
+import type { Option } from '@/components';
+import { SelectInput, View } from '@/components';
+
+const options: Option[] = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+];
+
+const MyComponent = () => {
+  const [value, setValue] = React.useState<string | number | undefined>();
+  return (
+    <View className="flex flex-col items-center justify-center">
+      <Select
+        label="Select"
+        error="Select is required"
+        options={options}
+        value={value}
+        onSelect={(option) => setValue(option.value)}
+      />
+    </View>
+  );
+};
+```
+
+## Controlled Select
+
+We provide a simple `ControlledSelect` component that uses the `Select` component under the hood but with a `useController` hook from `react-hook-form` to make it ready to use with `react-hook-form` library.
+
+Read more about Handling Forms [here](../forms/).
+
+## Checkbox, Radio & Switch
+
+We provide a set of three simple and customizable components including a `Checkbox`, a `Radio`, and a `Switch`, which share the same logic under the hood.
+
+The `Checkbox`, `Switch`, and `Radio` components are very similar as they share a common structure and are supposed to handle boolean values, their primary difference being the icon they display and the associated accessibility label. Each component accepts a range of props, allowing us to customize their appearance, behavior, and accessibility features.
+
+For handling common functionality like handling press events and accessibility states we have the `Root` component. It wraps its children in a `Pressable` component and passes along props.
+
+Animations are applied to the icons using the `MotiView` component from the `moti` library. These animations change the appearance of the icons based on their checked state.
+
+<CodeBlock file="src/shared/components//checkbox.tsx" />
+<CodeBlock file="src/shared/components//radio.tsx" />
+<CodeBlock file="src/shared/components//switch.tsx" />
+
+**Props**
+
+- All React Native Pressable Props are supported excluding `onPress` prop
+- `onChange` - (checked: boolean) => void;` - Callback function to handle component's state
+- `checked` - `boolean`- Determines the state of the component (default:`false`)
+- `label` - Component's label
+- `accessibilityLabel` - Component's accessibility label
+- `children` - Child components/elements
+- `className` - Tailwind CSS class names
+- `disabled`: `boolean` - Disable component (default: `false`)
+
+**Use Case**
+
+```tsx
+import { Checkbox } from '@/components';
+
+const App = () => {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <Checkbox
+      checked={checked}
+      onChange={setChecked}
+      accessibilityLabel="accept terms of condition"
+      label="I accept terms and conditions"
+    />
+  );
+};
+```
+
+By default the component will render a label with the text you passed as label prop and clicking on the label will toggle the component as well.
+
+For rendering a custom Checkbox, you can use the `Checkbox.Root`, `Checkbox.Icon`, and `Checkbox.Label` components.
+
+```tsx
+import { Checkbox } from '@/components';
+
+const App = () => {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <Checkbox.Root
+      checked={checked}
+      onChange={setChecked}
+      accessibilityLabel="accept terms of condition"
+    >
+      <Checkbox.Icon checked={checked} />
+      <Checkbox.Label text="I agree to terms and conditions" />
+    </Checkbox.Root>
+  );
+};
+```
+
+## CheckboxInput
+
+The `CheckboxInput` component is a controlled checkbox input designed to integrate seamlessly with `react-hook-form`. It uses the `Checkbox` component and `useController` from `react-hook-form` to manage form state and validation.
+
+The component is flexible and can be customized with various props such as `label`, `accessibilityLabel`, `colorIcon`, and `className`. These props help in customizing the appearance and behavior of the checkbox.
+
+The component uses the `tv` function from Tailwind Variants to define styling slots and variants for different states such as error. These styles are applied dynamically based on the component's state and props.
+
+Feel free to update the component implementation to fit your needs. As long as you maintain the same Props signature for the `CheckboxInput` component, it will work with our form handling solution without any changes.
+
+<CodeBlock file="src/shared/components//checkbox-input.tsx" />
+
+**Props**
+
+- `className`: `string` (optional) - Additional CSS classes for custom styling.
+- `accessibilityLabel`: `string` - Label for accessibility purposes.
+- `label`: `string` - Text label displayed next to the checkbox.
+- `colorIcon`: `string` (optional) - Color of the checkbox icon.
+- `name`: `Path<T>` - The name of the field, used for form registration.
+- `control`: `Control<T>` - Control object from `react-hook-form` to manage form state.
+- `rules`: `any` (optional) - Validation rules for the checkbox input.
+
+**Use Case**
+
+```tsx
+import * as React from 'react';
+import { useForm, Controller,SubmitHandler } from 'react-hook-form';
+import { Button} from '@/components';
+import { View } from 'react-native';
+import { CheckboxInput } from './checkbox-input';
+
+type FormValues = {
+  agreeToTerms: boolean;
+};
+const MyComponent = () => {
+
+  const { control, handleSubmit }useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+  };
+
+  return (
+        <View>
+          <CheckboxInput
+            name="agreeToTerms"
+            control={control}
+            label="Agree to terms"
+            accessibilityLabel="Agree to terms and conditions"
+            className="my-custom-class"
+          />
+          <Button onPress={handleSubmit(onSubmit)} label="Submit" />
+        </View>
+  );
+};
+```
+
+## RadioInput
+
+The `RadioInput` component is a controlled radio input designed to integrate seamlessly with `react-hook-form`. It uses the `Radio` component and `useController` from `react-hook-form` to manage form state and validation.
+
+The component is flexible and can be customized with various props such as `label`, `accessibilityLabel`, `colorIcon`, and `className`. These props help in customizing the appearance and behavior of the radio.
+
+The component uses the `tv` function from Tailwind Variants to define styling slots and variants for different states such as error. These styles are applied dynamically based on the component's state and props.
+
+Feel free to update the component implementation to fit your needs. As long as you maintain the same Props signature for the `RadioInput` component, it will work with our form handling solution without any changes.
+
+<CodeBlock file="src/shared/components//radio-input.tsx" />
+
+**Props**
+
+- `className`: `string` (optional) - Additional CSS classes for custom styling.
+- `accessibilityLabel`: `string` - Label for accessibility purposes.
+- `label`: `string` - Text label displayed next to the radio.
+- `colorIcon`: `string` (optional) - Color of the radio icon.
+- `name`: `Path<T>` - The name of the field, used for form registration.
+- `control`: `Control<T>` - Control object from `react-hook-form` to manage form state.
+- `rules`: `any` (optional) - Validation rules for the radio input.
+
+**Use Case**
+
+```tsx
+import * as React from 'react';
+import { useForm, Controller,SubmitHandler } from 'react-hook-form';
+import { Button} from '@/components';
+import { View } from 'react-native';
+import { RadioInput } from './radio-input';
+
+type FormValues = {
+  agreeToTerms: boolean;
+};
+const MyComponent = () => {
+
+  const { control, handleSubmit }useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+  };
+
+  return (
+        <View>
+          <RadioInput
+            name="agreeToTerms"
+            control={control}
+            label="Agree to terms"
+            accessibilityLabel="Agree to terms and conditions"
+            className="my-custom-class"
+          />
+          <Button onPress={handleSubmit(onSubmit)} label="Submit" />
+        </View>
+  );
+};
+```
+
+## SwitchInput
+
+The `SwitchInput` component is a controlled switch input designed to integrate seamlessly with `react-hook-form`. It uses the `switch` component and `useController` from `react-hook-form` to manage form state and validation.
+
+The component is flexible and can be customized with various props such as `label`, `accessibilityLabel`, `colorIcon`, and `className`. These props help in customizing the appearance and behavior of the switch.
+
+The component uses the `tv` function from Tailwind Variants to define styling slots and variants for different states such as error. These styles are applied dynamically based on the component's state and props.
+
+Feel free to update the component implementation to fit your needs. As long as you maintain the same Props signature for the `SwitchInput` component, it will work with our form handling solution without any changes.
+
+<CodeBlock file="src/shared/components//switch-input.tsx" />
+
+**Props**
+
+- `className`: `string` (optional) - Additional CSS classes for custom styling.
+- `accessibilityLabel`: `string` - Label for accessibility purposes.
+- `label`: `string` - Text label displayed next to the switch.
+- `colorIcon`: `string` (optional) - Color of the switch icon.
+- `name`: `Path<T>` - The name of the field, used for form registration.
+- `control`: `Control<T>` - Control object from `react-hook-form` to manage form state.
+- `rules`: `any` (optional) - Validation rules for the switch input.
+
+**Use Case**
+
+```tsx
+import * as React from 'react';
+import { useForm, Controller,SubmitHandler } from 'react-hook-form';
+import { Button} from '@/components';
+import { View } from 'react-native';
+import { SwitchInput } from './switch-input';
+
+type FormValues = {
+  agreeToTerms: boolean;
+};
+const MyComponent = () => {
+
+  const { control, handleSubmit }useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+  };
+
+  return (
+        <View>
+          <SwitchInput
+            name="agreeToTerms"
+            control={control}
+            label="Agree to terms"
+            accessibilityLabel="Agree to terms and conditions"
+            className="my-custom-class"
+          />
+          <Button onPress={handleSubmit(onSubmit)} label="Submit" />
+        </View>
+  );
+};
+```
+
+## ToggleCard
+
+The `ToggleCard` component is a versatile card component designed to toggle its selection state when pressed. It integrates seamlessly with `react-hook-form` to manage form state and validation. The component can display an image or an SVG component, along with a title, and it offers customizable styling options.
+
+The `ToggleCard` component can be themed as either 'architecte' or 'client', each with its unique styles applied based on the selection state. The component utilizes `useController` from `react-hook-form` to manage its state and validation.
+
+Feel free to update the component implementation to fit your needs. As long as you maintain the same Props signature for the `ToggleCard` component, it will work with our form handling solution without any changes.
+
+<CodeBlock file="src/shared/components//toggle-card.tsx" />
+
+**Props**
+
+- `title`: `string` (optional) - The title text displayed on the card.
+- `image`: `string` (optional) - The URL of the image to be displayed on the card.
+- `className`: `string` (optional) - Additional CSS classes for custom styling of the card.
+- `classNameText`: `string` (optional) - Additional CSS classes for custom styling of the title text.
+- `theme`: `'architecte' | 'client'` (optional) - The theme of the card, defaults to 'architecte'.
+- `svgComponent`: `React.ComponentType` (optional) - A custom SVG component to be displayed on the card.
+- `name`: `Path<T>` - The name of the field, used for form registration.
+- `control`: `Control<T>` - Control object from `react-hook-form` to manage form state.
+- `rules`: `any` (optional) - Validation rules for the card input.
+
+**Use Case**
+
+```tsx
+import * as React from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { ToggleCard } from './toggle-card';
+
+const MyComponent = () => {
+  const { control, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <ToggleCard
+        name="selectCard"
+        control={control}
+        title="Architect"
+        image="https://example.com/architect.png"
+        theme="architecte"
+        className="my-custom-card-class"
+        classNameText="my-custom-text-class"
+        rules={{ required: 'You must select the card' }}
+      />
+      <ToggleCard
+        name="selectCardClient"
+        control={control}
+        title="Client"
+        image="https://example.com/client.png"
+        theme="client"
+        className="my-custom-card-class"
+        classNameText="my-custom-text-class"
+        rules={{ required: 'You must select the card' }}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+```
