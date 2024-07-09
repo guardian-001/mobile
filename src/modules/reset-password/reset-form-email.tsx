@@ -1,24 +1,22 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
 import type * as z from 'zod';
 
 import { Button, ControlledInput, View } from '@/shared/components';
+import useCustomForm from '@/shared/hooks/use-custom-form';
 import { translate } from '@/translations/i18n';
 import { EmailSchema } from '@/validations';
 
-export type FormType = z.infer<typeof EmailSchema>;
+type EmailFormType = z.infer<typeof EmailSchema>;
 
-export type ResetFormProps = {
-  onSubmit?: SubmitHandler<FormType>;
+type ResetFormProps = {
+  onSubmit: SubmitHandler<EmailFormType>;
 };
 export default function ResetFormEmail({
   onSubmit = () => {},
 }: ResetFormProps) {
-  const { handleSubmit, control, formState } = useForm<FormType>({
-    resolver: zodResolver(EmailSchema),
-  });
+  const { handleSubmit, control, form } = useCustomForm(EmailSchema);
+
   return (
     <View className="flex-1">
       <ControlledInput
@@ -32,7 +30,7 @@ export default function ResetFormEmail({
         label={translate('resetpass.reset')}
         onPress={handleSubmit(onSubmit)}
         className="h-12 rounded-md"
-        disabled={!formState.isValid}
+        disabled={!form.formState.isValid}
       />
     </View>
   );

@@ -1,37 +1,34 @@
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
-import * as z from 'zod';
+import type * as z from 'zod';
 
-import { translate } from '@/core';
+import { translate, useAuth } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
+import useCustomForm from '@/shared/hooks/use-custom-form';
+import { LoginFormSchema } from '@/validations';
 
 import { Container } from '../shared';
 import LoginButton from '../shared/login-button';
 
-const schema = z.object({
-  email: z
-    .string({
-      required_error: 'Email is required',
-    })
-    .email('Invalid email format'),
-  password: z
-    .string({
-      required_error: 'Password is required',
-    })
-    .min(6, 'Password must be at least 6 characters'),
-});
-export type FormType = z.infer<typeof schema>;
+export type LoginFormType = z.infer<typeof LoginFormSchema>;
 export type LoginFormProps = {
-  onSubmit?: SubmitHandler<FormType>;
+  onSubmit: SubmitHandler<LoginFormType>;
 };
-export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
-  const { handleSubmit, control } = useForm<FormType>({
-    resolver: zodResolver(schema),
-  });
+
+export const LoginForm = ({ onSubmit }: LoginFormProps) => {
+  const { handleSubmit, control } = useCustomForm(LoginFormSchema);
+  const router = useRouter();
+  const signIn = useAuth.use.signIn();
   const [checked, setChecked] = useState(true);
+
+  const handleFormSubmit: SubmitHandler<LoginFormType> = (data) => {
+    signIn({ access: 'access-token', refresh: 'refresh-token' });
+    router.push('/(architect)/(private)');
+    onSubmit(data);
+  };
+
   return (
     <View className="flex w-full justify-center ">
       <ControlledInput
@@ -56,14 +53,14 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
           accessibilityLabel="Se souvenir de moi"
           label={translate('login.souvenir')}
         />
-        <Text className={`font-lato text-xs font-semibold text-primary `}>
+        <Text className="font-lato text-xs font-semibold text-primary ">
           {translate('login.mdpOublier')}
         </Text>
       </Container>
       <LoginButton
         type="button"
         label={translate('login.connectBtn')}
-        loginFunction={handleSubmit(onSubmit)}
+        loginFunction={handleSubmit(handleFormSubmit)}
         radius="rounded-lg"
         width="w-full"
         height="h-12"
