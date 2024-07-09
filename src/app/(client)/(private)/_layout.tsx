@@ -11,7 +11,7 @@ import Search from '@/assets/icons/search';
 export default function ClientPrivateLayout() {
   return (
     <Tabs
-      initialRouteName="index"
+      initialRouteName="(home)"
       screenOptions={{
         tabBarStyle: {
           height: '8%',
@@ -19,11 +19,12 @@ export default function ClientPrivateLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="(home)"
         options={{
           title: 'Explorer',
           tabBarIcon: ({ color }) => <Search color={color} />,
           tabBarTestID: 'search-tab',
+          headerShown: false,
         }}
       />
       <Tabs.Screen
