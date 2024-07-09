@@ -3,26 +3,18 @@ import React from 'react';
 
 import { BackButton } from '@/modules/shared';
 
+import {LoginScreenOptions, ResetPasswordScreenOptions} from '@/shared/components';
+
 export default function ArchitectPublicLayout() {
   return (
     <Stack initialRouteName="login">
       <Stack.Screen
         name="login"
-        options={{
-          headerTransparent: true,
-          headerTitle: '',
-          headerShown: true,
-          headerLeft: () => <BackButton route={'init'} />,
-        }}
+        options={LoginScreenOptions}
       />
       <Stack.Screen
         name="reset-password"
-        options={{
-          headerTransparent: true,
-          headerTitle: '',
-          headerShown: true,
-          headerLeft: () => <BackButton />,
-        }}
+        options={ResetPasswordScreenOptions}
       />
     </Stack>
   );
