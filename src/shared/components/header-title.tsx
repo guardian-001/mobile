@@ -11,6 +11,7 @@ interface HeaderTitleProps {
 }
 export function HeaderTitle({ text, type }: HeaderTitleProps) {
   return (
+
     <>
       {type === 'custom' ? (
         <LinearGradient
@@ -31,5 +32,6 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
         </View>
       )}
     </>
+
   );
 }

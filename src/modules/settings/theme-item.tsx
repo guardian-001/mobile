@@ -3,9 +3,7 @@ import React from 'react';
 import type { ColorSchemeType } from '@/core';
 import { translate, useSelectedTheme } from '@/core';
 import type { Option } from '@/shared/components';
-import { Options, useModal } from '@/shared/components';
-
-import { Item } from './item';
+import { Item, Options, useModal } from '@/shared/components';
 
 export const ThemeItem = () => {
   const { selectedTheme, setSelectedTheme } = useSelectedTheme();
