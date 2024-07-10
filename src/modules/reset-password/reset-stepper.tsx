@@ -55,8 +55,9 @@ export default function ResetStepper({}: Props) {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1 bg-white dark:bg-black"
-    >
-      <HeaderTitle text="resetpass.reset" />
+    > 
+      <HeaderTitle text="resetpass.reset" type="default" />
+ 
       <ScrollView
         className="flex-1 p-6 pt-12"
         contentContainerClassName={`${step === 1 && 'items-center'}`}

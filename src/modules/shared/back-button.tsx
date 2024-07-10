@@ -5,13 +5,13 @@ import { TouchableOpacity, View } from 'react-native';
 import { ArrowLeft } from '@/assets/icons/arrow-left';
 import colors from '@/theme/colors';
 type RouteProp = {
-  route?: 'init';
+  route?: string;
 };
 export default function BackButton({ route }: RouteProp) {
   const router = useRouter();
   const handleBack = () => {
-    if (route) {
-      router.push('/onboarding');
+    if (route) { 
+      router.push(route);
     } else {
       router.back();
     }

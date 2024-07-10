@@ -1,18 +1,16 @@
 import React from 'react';
 
 import { useSoftKeyboardEffect } from '@/core/keyboard';
-import LoginShared from '@/modules/login/login';
+import SignupStepper from '@/modules/architect/signup/signup-stepper';
 import { FocusAwareStatusBar } from '@/shared/components';
 
-export default function Login() {
+export default function ResetPassword() {
   useSoftKeyboardEffect();
 
   return (
     <>
       <FocusAwareStatusBar />
-
-      <LoginShared />
-
+      <SignupStepper />
     </>
   );
 }

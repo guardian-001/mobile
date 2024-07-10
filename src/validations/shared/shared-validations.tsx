@@ -22,3 +22,10 @@ export const fieldValidation = z
   .min(3, { message: 'validations.field-min-length' })
   .max(50, { message: 'validations.field-max-length' })
   .regex(/^[a-zA-Z0-9_]+$/, { message: 'validations.field-shape' });
+
+export const SpecialityEnum = z.enum(['construction', 'interior']);
+
+export const specialityValidation = SpecialityEnum.refine(
+  (val) => val === 'construction' || val === 'interior',
+  { message: 'validations.invalid-speciality' }
+);
