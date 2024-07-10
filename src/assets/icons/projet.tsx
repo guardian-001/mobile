@@ -3,7 +3,7 @@ import type { SvgProps } from 'react-native-svg';
 import Svg, { Path } from 'react-native-svg';
 
 import colors from '@/theme/colors';
-const Projet = ({ color = colors.black, ...props }: SvgProps) => (
+export const Projet = ({ color = colors.black, ...props }: SvgProps) => (
   <Svg className="h-6 w-6" fill="none" {...props}>
     <Path
       fill={color}
@@ -19,4 +19,3 @@ const Projet = ({ color = colors.black, ...props }: SvgProps) => (
     />
   </Svg>
 );
-export default Projet;

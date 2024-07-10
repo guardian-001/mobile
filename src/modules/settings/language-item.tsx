@@ -3,10 +3,8 @@ import * as React from 'react';
 import { useSelectedLanguage } from '@/core';
 import { translate } from '@/core';
 import type { Option } from '@/shared/components';
-import { Options, useModal } from '@/shared/components';
+import { Item, Options, useModal } from '@/shared/components';
 import type { Language } from '@/translations/i18n/resources';
-
-import { Item } from './item';
 
 export const LanguageItem = () => {
   const { language, setLanguage } = useSelectedLanguage();
