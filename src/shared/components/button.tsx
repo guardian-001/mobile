@@ -16,6 +16,7 @@ interface Props extends Omit<TouchableOpacityProps, 'disabled'> {
   label?: string;
   loading?: boolean;
   className?: string;
+  alternativeBg?: string;
   textClassName?: string;
   disabled?: boolean;
   type?: 'pill' | 'button';
@@ -28,6 +29,7 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
       label: text,
       loading = false,
       disabled = false,
+      alternativeBg,
       type = 'button',
       className = '',
       testID,
@@ -53,7 +55,7 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
         disabled={disabled || loading}
         className={clsx(
           `my-2 flex flex-row items-center justify-center px-4 ${className}`,
-          containerClassname
+          alternativeBg ? alternativeBg : containerClassname
         )}
         {...props}
         ref={ref}

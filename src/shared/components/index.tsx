@@ -16,6 +16,7 @@ export * from './modal';
 export * from './progress-bar';
 export * from './radio';
 export * from './radio-input';
+export * from './screen-options';
 export * from './select';
 export * from './switch';
 export * from './switch-input';

@@ -7,6 +7,7 @@ import type * as z from 'zod';
 import { translate, useAuth } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
+import { useRouteName } from '@/shared/hooks/use-get-route';
 import { LoginFormSchema } from '@/validations';
 
 import { Container } from '../shared';
@@ -21,14 +22,17 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const { handleSubmit, control } = useCustomForm(LoginFormSchema);
   const router = useRouter();
   const signIn = useAuth.use.signIn();
+  const space = useRouteName();
   const [checked, setChecked] = useState(true);
 
   const handleFormSubmit: SubmitHandler<LoginFormType> = (data) => {
     signIn({ access: 'access-token', refresh: 'refresh-token' });
-    router.push('/(architect)/(private)');
+    router.push(`/(${space})/(private)`);
     onSubmit(data);
   };
-
+  const handleResetPass = () => {
+    router.push(`/(${space})/(public)/reset-password`);
+  };
   return (
     <View className="flex w-full justify-center ">
       <ControlledInput
@@ -53,7 +57,11 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
           accessibilityLabel="Se souvenir de moi"
           label={translate('login.souvenir')}
         />
-        <Text className="font-lato text-xs font-semibold text-primary ">
+
+        <Text
+          onPress={handleResetPass}
+          className={`font-lato text-xs font-semibold text-primary `}
+        >
           {translate('login.mdpOublier')}
         </Text>
       </Container>

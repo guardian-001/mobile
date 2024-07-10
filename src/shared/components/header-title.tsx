@@ -17,7 +17,7 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
           start={{ x: 0, y: 1 }}
           end={{ x: 0, y: 0 }}
           colors={[colors.background, colors['light-blue']]}
-          className="flex h-32 w-full items-center justify-end bg-white pb-6"
+          className="flex h-[13%] w-full items-center justify-end bg-white pb-6"
         >
           <Text className="text-2xl font-bold text-primary-txt ">
             {translate(text)}
