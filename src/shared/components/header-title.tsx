@@ -5,10 +5,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
 import colors from '@/theme/colors';
+
 interface HeaderTitleProps {
   text: TxKeyPath;
-  type: 'custom' | 'default';
+  type: 'custom' | 'transparent' | 'default';
 }
+
 export function HeaderTitle({ text, type }: HeaderTitleProps) {
   return (
     <>

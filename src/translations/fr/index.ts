@@ -1,6 +1,7 @@
 import common from './common.json';
 import login from './login.json';
 import onBoarding from './onboarding.json';
+import profile from './profile.json';
 import resetpass from './resetpass.json';
 import settings from './settings.json';
 import signup from './signup.json';
@@ -12,6 +13,7 @@ import signupStep5 from './signup-step5.json';
 import validations from './validations.json';
 
 export default {
+  profile,
   login,
   onBoarding,
   settings,

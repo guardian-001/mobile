@@ -12,7 +12,6 @@ import { LoginFormSchema } from '@/validations';
 
 import { Container } from '../shared';
 import LoginButton from '../shared/login-button';
-
 export type LoginFormType = z.infer<typeof LoginFormSchema>;
 export type LoginFormProps = {
   onSubmit: SubmitHandler<LoginFormType>;
@@ -24,7 +23,6 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const signIn = useAuth.use.signIn();
   const space = useRouteName();
   const [checked, setChecked] = useState(true);
-
   const handleFormSubmit: SubmitHandler<LoginFormType> = (data) => {
     signIn({ access: 'access-token', refresh: 'refresh-token' });
     router.push(`/(${space})/(private)`);
@@ -33,6 +31,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const handleResetPass = () => {
     router.push(`/(${space})/(public)/reset-password`);
   };
+
   return (
     <View className="flex w-full justify-center ">
       <ControlledInput
