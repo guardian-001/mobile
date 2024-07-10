@@ -36,7 +36,7 @@ export default function ClientProfile({}: Props) {
       className="flex-1"
     >
       <HeaderTitle text="profile.profile" />
-      <ScrollView contentContainerClassName="p-6 pb-14 dark:bg-black">
+      <ScrollView contentContainerClassName="p-6 pb-20 dark:bg-black">
         <Container style="flex flex-row w-full h-[30%] items-center bg-white dark:bg-primary-txt rounded-3xl px-5">
           <View className="flex h-4/5 w-7/12">
             <View className="flex flex-row">

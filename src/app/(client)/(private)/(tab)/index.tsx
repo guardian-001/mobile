@@ -12,7 +12,7 @@ export default function Explorer() {
       <Button
         label={'profile'}
         onPress={() => {
-          router.push(`/profile`);
+          router.replace(`/(client)/(profile)/profile`);
         }}
         className="h-12 rounded-md"
       />

@@ -3,10 +3,9 @@ import React from 'react';
 
 import { ScreenOptions } from '@/shared/components';
 
-export default function ClientPublicLayout() {
+export default function ProfileLayout() {
   return (
-    <Stack initialRouteName="index">
-      <Stack.Screen name="index" options={{ headerShown: false }} />
+    <Stack initialRouteName="profile">
       <Stack.Screen name="profile" options={ScreenOptions()} />
     </Stack>
   );
