@@ -57,7 +57,6 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
           accessibilityLabel="Se souvenir de moi"
           label={translate('login.souvenir')}
         />
-
         <Text
           onPress={handleResetPass}
           className={`font-lato text-xs font-semibold text-primary `}
