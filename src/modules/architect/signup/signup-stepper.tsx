@@ -2,7 +2,6 @@ import { router } from 'expo-router';
 import * as React from 'react';
 import { Platform } from 'react-native';
 
-import { type TxKeyPath } from '@/core';
 import ResetFormPassword from '@/modules/reset-password/reset-form-password';
 import {
   HeaderTitle,
@@ -25,33 +24,21 @@ export default function SignupStepper({}: Props) {
     setStep(step + 1);
   };
   const stepsContent: {
-    title: TxKeyPath;
-    subtitle: TxKeyPath;
     component: React.ReactNode;
   }[] = [
     {
-      title: 'signupStep1.title',
-      subtitle: 'signupStep1.description',
       component: <ChooseSpeciality onSubmit={handleNextStep} />,
     },
     {
-      title: 'signupStep2.title',
-      subtitle: 'signupStep2.description',
       component: <CreateProfile onSubmit={handleNextStep} />,
     },
     {
-      title: 'signupStep3.title',
-      subtitle: 'signupStep3.description',
       component: <DemoPlanning onSubmit={handleNextStep} />,
     },
     {
-      title: 'signupStep4.title',
-      subtitle: 'signupStep4.description',
       component: <DemoPlanningConfirmation onSubmit={handleNextStep} />,
     },
     {
-      title: 'signupStep5.title',
-      subtitle: 'signupStep5.description',
       component: (
         <ResetFormPassword
           onSubmit={() => router.replace(`/(${space})/(public)/login`)}

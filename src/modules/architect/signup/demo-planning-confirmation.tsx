@@ -12,11 +12,11 @@ export default function DemoPlanningConfirmation({ onSubmit }: ResetFormProps) {
     <View className="flex h-fit items-center justify-between gap-16">
       <View>
         <Text
-          tx={'signupStep4.title'}
+          tx={'signupStepDemoPlanningConfirmation.title'}
           className="mb-2 text-center text-2xl font-extrabold"
         />
         <Text
-          tx={'signupStep4.description'}
+          tx={'signupStepDemoPlanningConfirmation.description'}
           className="max-w-xs text-center text-sm text-description"
         />
       </View>

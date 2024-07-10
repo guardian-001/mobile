@@ -28,11 +28,11 @@ export default function ChooseSpeciality({ onSubmit }: ResetFormProps) {
     <View className="flex h-fit items-center justify-between gap-16">
       <View>
         <Text
-          tx={'signupStep1.title'}
+          tx={'signupStepSpeciality.title'}
           className="mb-2 text-center text-2xl font-extrabold"
         />
         <Text
-          tx={'signupStep1.description'}
+          tx={'signupStepSpeciality.description'}
           className="max-w-xs text-center text-sm text-description"
         />
       </View>
@@ -40,7 +40,7 @@ export default function ChooseSpeciality({ onSubmit }: ResetFormProps) {
       <ScrollView className=" flex h-fit gap-5">
         <ToggleCard
           className="h-38 w-64 rounded-2xl"
-          title={translate('signupStep1.constructionArchitect')}
+          title={translate('signupStepSpeciality.constructionArchitect')}
           svgComponent={HouseModel}
           name="speciality"
           control={control}
@@ -50,7 +50,7 @@ export default function ChooseSpeciality({ onSubmit }: ResetFormProps) {
 
         <ToggleCard
           className="h-38 w-64 rounded-2xl"
-          title={translate('signupStep1.interiorArchitect')}
+          title={translate('signupStepSpeciality.interiorArchitect')}
           svgComponent={InteriorHouseModel}
           name="speciality"
           control={control}
