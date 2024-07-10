@@ -1,5 +1,5 @@
 import { BackButton } from '@/modules/shared';
-
+ 
 export const ScreenOptions = (route?: string) => {
   return {
     headerTransparent: true,
