@@ -1,42 +1,66 @@
 import React from 'react';
+import type { z } from 'zod';
 
 import { translate } from '@/core';
-import StepperButton from '@/modules/shared/stepper-button';
-import { ScrollView, Text, View } from '@/shared/components';
+import { StepButtons } from '@/modules/shared';
+import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
+import useCustomForm from '@/shared/hooks/use-custom-form';
+import { SignupFormSchema } from '@/validations';
+
+export type SignupFormType = z.infer<typeof SignupFormSchema>;
 
 export type ResetFormProps = {
-  onSubmit?: () => void;
+  handlePreviousStep?: () => void;
+  handleNextStep?: () => void;
 };
 
-export default function CreateProfile({ onSubmit }: ResetFormProps) {
+export default function CreateProfile({
+  handlePreviousStep,
+  handleNextStep,
+}: ResetFormProps) {
+  const { control } = useCustomForm(SignupFormSchema);
+  // const router = useRouter();
+
+  // const space = useRouteName();
+
+  // const handleFormSubmit: SubmitHandler<LoginFormType> = (data) => {
+  //   router.push(`/(${space})/(public)/login`);
+  //   onSubmit(data);
+  // };
   return (
     <View className="flex h-fit items-center justify-between gap-16">
       <View>
         <Text
-          tx={'signupStep2.title'}
+          tx={'signupStepCreateProfile.title'}
           className="mb-2 text-center text-2xl font-extrabold"
         />
         <Text
-          tx={'signupStep2.description'}
+          tx={'signupStepCreateProfile.description'}
           className="max-w-xs text-center text-sm text-description"
         />
       </View>
 
-      <ScrollView className=" flex h-fit gap-5" />
-      <View className="flex flex-row  gap-2">
-        <StepperButton
-          width="w-[45%]"
-          alternativeBg="bg-secondary-btn"
-          alternativeTextStyle="color-primary-txt"
-          label={translate('signup.retour')}
+      <ScrollView className=" flex h-fit gap-5">
+        <ControlledInput
+          testID="email-input"
+          control={control}
+          name="email"
+          label={translate('login.email')}
+          placeholder={translate('login.email')}
         />
-
-        <StepperButton
-          width="w-[45%]"
-          onPressHandler={onSubmit}
-          label={translate('signup.suivant')}
+        <ControlledInput
+          testID="password-input"
+          control={control}
+          name="password"
+          label={translate('login.mdp')}
+          placeholder={translate('login.mdp')}
+          secureTextEntry={true}
         />
-      </View>
+      </ScrollView>
+      <StepButtons
+        previous={{ handlePreviousStep, label: 'signup.retour' }}
+        next={{ handleNextStep, label: 'signup.suivant' }}
+      />
     </View>
   );
 }
