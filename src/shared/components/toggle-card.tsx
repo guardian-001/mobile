@@ -1,4 +1,3 @@
-import { View } from 'moti';
 import * as React from 'react';
 import {
   type Control,
@@ -8,7 +7,7 @@ import {
   useController,
 } from 'react-hook-form';
 
-import { Image, Pressable, Text } from './';
+import { Image, Pressable, Text, View } from './';
 
 type CardProps<T extends FieldValues> = {
   title?: string;

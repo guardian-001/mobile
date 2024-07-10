@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native'; 
+import { Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import type { TxKeyPath } from '@/core';
@@ -31,6 +31,5 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
         </View>
       )}
     </>
- 
   );
 }
