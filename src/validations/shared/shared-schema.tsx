@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 import {
   emailValidation,
+  notRequiredValidationBoolean,
   passwordValidation,
   requiredValidation,
   specialityValidation,
@@ -53,6 +54,6 @@ export const BasicInfoFormSchema = z.object({
 });
 
 export const NotificationFormSchema = z.object({
-  new: z.boolean(),
-  activity: z.boolean(),
+  new: notRequiredValidationBoolean,
+  activity: notRequiredValidationBoolean,
 });

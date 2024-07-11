@@ -3,7 +3,10 @@ import { z } from 'zod';
 export const requiredValidation = z.string({
   message: 'validations.required',
 });
-
+export const requiredValidationBoolean = z.boolean({
+  message: 'validations.required',
+});
+export const notRequiredValidationBoolean = z.boolean().optional();
 export const emailValidation = z
   .string({ message: 'validations.required' })
   .email({ message: 'validations.invalid' })
