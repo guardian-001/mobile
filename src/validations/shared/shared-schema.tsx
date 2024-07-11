@@ -42,3 +42,10 @@ export const SignupFormSchema = z.object({
 export const OTPSchema = z.object({
   OTP: requiredValidation,
 });
+
+export const BasicInfoFormSchema = z.object({
+  name: requiredValidation,
+  lastName: requiredValidation,
+  email: emailValidation,
+  number: requiredValidation,
+});

@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import * as React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -28,6 +29,8 @@ import { Container, MainButton } from '../shared';
 type Props = {};
 export default function ClientProfile({}: Props) {
   const signOut = useAuth.use.signOut();
+  const router = useRouter();
+
   return (
     <LinearGradient
       start={{ x: 0, y: 1 }}
@@ -69,7 +72,13 @@ export default function ClientProfile({}: Props) {
           </ImageContainer>
         </Container>
         <ItemsContainer title="profile.account">
-          <Item text="profile.info" icon={<User />} onPress={() => {}} />
+          <Item
+            text="profile.info"
+            icon={<User />}
+            onPress={() => {
+              router.push(`/(client)/(private)/(profile)/basic-information/`);
+            }}
+          />
           <Item
             text="profile.notifications"
             icon={<Settings />}
@@ -78,7 +87,11 @@ export default function ClientProfile({}: Props) {
           <Item
             text="profile.password"
             icon={<Security />}
-            onPress={() => {}}
+            onPress={() => {
+              router.push(
+                `/(client)/(private)/(profile)/reset-password-client/`
+              );
+            }}
           />
         </ItemsContainer>
         <ItemsContainer title="profile.assistance">

@@ -16,11 +16,10 @@ import ResetFormEmail from './reset-form-email';
 import ResetFormPassword from './reset-form-password';
 import VerificationCode from './verification-code';
 
-type Props = {};
-export default function ResetStepper({}: Props) {
+type Props = { initialStep?: number };
+export default function ResetStepper({ initialStep = 0 }: Props) {
   const space = useRouteName();
-  const [step, setStep] = React.useState(0);
-
+  const [step, setStep] = React.useState(initialStep);
   const handleNextStep = () => {
     setStep(step + 1);
   };
@@ -42,14 +41,9 @@ export default function ResetStepper({}: Props) {
     {
       title: 'resetpass.resetPasswordTitle',
       subtitle: 'resetpass.resetPasswordDescription',
-      component: (
-        <ResetFormPassword
-          onSubmit={() => router.replace(`/(${space})/(public)/login`)}
-        />
-      ),
+      component: <ResetFormPassword onSubmit={() => router.back()} />,
     },
   ];
-
   const { title, subtitle, component } = stepsContent[step];
   return (
     <KeyboardAvoidingView
