@@ -1,4 +1,5 @@
 import common from './common.json';
+import labels from './labels.json';
 import login from './login.json';
 import onBoarding from './onboarding.json';
 import profile from './profile.json';
@@ -14,6 +15,7 @@ import validations from './validations.json';
 export default {
   profile,
   login,
+  labels,
   onBoarding,
   settings,
   common,

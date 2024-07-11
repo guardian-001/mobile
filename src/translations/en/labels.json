@@ -1,0 +1,13 @@
+{
+  "name": "Name",
+  "namePlaceHolder": "Enter your name",
+  "surname": "Surname",
+  "surnamePlaceHolder": "Enter your surname",
+  "mail": "E-mail",
+  "mailPlaceHolder": "Enter your e-mail",
+  "phone": "Phone number",
+  "address": "Office address",
+  "addressPlaceHolder": "Enter office address",
+  "matricule": "Tax identification number",
+  "matriculePlaceHolder": "Enter your tax identification number"
+}

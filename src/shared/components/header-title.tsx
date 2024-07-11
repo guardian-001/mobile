@@ -28,13 +28,13 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
       ) : (
         <>
           {type === 'transparent' ? (
-            <View className="flex h-32 w-full items-center justify-end bg-transparent pb-6">
+            <View className="flex h-[14%] w-full items-center justify-end bg-transparent pb-6">
               <Text className="text-2xl font-bold text-primary-txt ">
                 {translate(text)}
               </Text>
             </View>
           ) : (
-            <View className="flex h-32 w-full items-center justify-end bg-white pb-6">
+            <View className="flex h-[14%] w-full items-center justify-end bg-white pb-6">
               <Text className="text-2xl font-bold text-primary-txt ">
                 {translate(text)}
               </Text>

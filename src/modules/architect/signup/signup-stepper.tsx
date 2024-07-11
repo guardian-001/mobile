@@ -1,13 +1,8 @@
-import { router } from 'expo-router';
+import { router, useRouter } from 'expo-router';
 import * as React from 'react';
-import { Platform } from 'react-native';
 
 import ResetFormPassword from '@/modules/reset-password/reset-form-password';
-import {
-  HeaderTitle,
-  KeyboardAvoidingView,
-  ScrollView,
-} from '@/shared/components';
+import { HeaderTitle, ScrollView, View } from '@/shared/components';
 import { useRouteName } from '@/shared/hooks/use-get-route';
 
 import ChooseSpeciality from './choose-speciality';
@@ -19,13 +14,18 @@ type Props = {};
 export default function SignupStepper({}: Props) {
   const space = useRouteName();
   const [step, setStep] = React.useState(0);
-
+  const route = useRouter();
   const handleNextStep = () => {
     setStep(step + 1);
   };
   const handlePreviousStep = () => {
-    setStep(step - 1);
+    if (step >= 1) {
+      setStep(step - 1);
+    } else {
+      route.replace('(architect)/(public)/login');
+    }
   };
+
   const handleConfirmationStep = () => {
     console.log('confirmed');
   };
@@ -74,8 +74,8 @@ export default function SignupStepper({}: Props) {
 
   const { component } = stepsContent[step];
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    <View
+      // behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="items-between flex h-full  bg-background dark:bg-black"
     >
       <HeaderTitle text="signup.headerTitle" type="custom" />
@@ -87,6 +87,6 @@ export default function SignupStepper({}: Props) {
       >
         {component}
       </ScrollView>
-    </KeyboardAvoidingView>
+    </View>
   );
 }
