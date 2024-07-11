@@ -52,7 +52,7 @@ export const ToggleCard = <T extends FieldValues>({
         {...props}
       >
         {SvgComponent ? (
-          <View className="flex h-28 w-32  items-center justify-center ">
+          <View className="flex h-28 w-28  items-center justify-center ">
             <SvgComponent />
           </View>
         ) : (

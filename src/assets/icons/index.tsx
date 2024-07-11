@@ -1,5 +1,6 @@
 export * from './arrow-right';
 export * from './caret-down';
+export * from './close';
 export * from './construction-helmet';
 export * from './feed';
 export * from './flag';
