@@ -21,6 +21,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const { handleSubmit, control } = useCustomForm(LoginFormSchema);
   const router = useRouter();
   const signIn = useAuth.use.signIn();
+  const space = useRouteName();
   const [checked, setChecked] = useState(true);
   const space = useRouteName();
 
