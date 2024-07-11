@@ -1,67 +1,41 @@
-import { useRouter } from 'expo-router';
 import React from 'react';
-import type { SubmitHandler } from 'react-hook-form';
-import type * as z from 'zod';
 
-import { translate } from '@/core';
-import {
-  Button,
-  ControlledInput,
-  HeaderTitle,
-  View,
-} from '@/shared/components';
+import { CheckboxInput, HeaderTitle, View } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
-import { BasicInfoFormSchema } from '@/validations';
+import { NotificationFormSchema } from '@/validations';
 
-type BasicInfoFormType = z.infer<typeof BasicInfoFormSchema>;
-type BasicInfoFormProps = {};
+type NotificationFormProps = {};
 
-export const NotificationForm = ({}: BasicInfoFormProps) => {
-  const { handleSubmit, control, form } = useCustomForm(BasicInfoFormSchema);
-  const router = useRouter();
-
-  const handleFormSubmit: SubmitHandler<BasicInfoFormType> = () => {
-    router.back();
-  };
+export const NotificationForm = ({}: NotificationFormProps) => {
+  const { control } = useCustomForm(NotificationFormSchema);
 
   return (
     <View className="flex-1 bg-white dark:bg-black">
-      <HeaderTitle text="profile.info" />
-      <View className="flex-1 gap-4 p-6 pt-12">
-        <ControlledInput
-          testID="name-input"
+      <HeaderTitle text="profile.info" type="default" />
+      <View className="h-2/5 p-6">
+        <CheckboxInput
           control={control}
-          name="name"
-          label={'Name'}
-          placeholder={'Name'}
+          name="new"
+          label="Nouveau pour vous"
+          accessibilityLabel="Nouveau pour vous"
         />
-        <ControlledInput
-          testID="LastName-input"
+        <CheckboxInput
           control={control}
-          name="lastName"
-          label={'LastName'}
-          placeholder={'LastName'}
+          name="activity"
+          label="L'activité du compte"
+          accessibilityLabel="L'activité du compte"
         />
-        <ControlledInput
-          testID="email-input"
+        <CheckboxInput
           control={control}
-          name="email"
-          label={translate('login.email')}
-          placeholder={translate('login.email')}
+          name="activity"
+          label="L'activité du compte"
+          accessibilityLabel="L'activité du compte"
         />
-        <ControlledInput
-          testID="number-input"
+        <CheckboxInput
           control={control}
-          name="number"
-          label="number"
-          placeholder="number"
-          secureTextEntry={true}
-        />
-        <Button
-          label="Enregistrer"
-          onPress={handleSubmit(handleFormSubmit)}
-          className="my-8 h-12 rounded-lg"
-          disabled={!form.formState.isValid}
+          name="activity"
+          label="L'activité du compte"
+          accessibilityLabel="L'activité du compte"
         />
       </View>
     </View>

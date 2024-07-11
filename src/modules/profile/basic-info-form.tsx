@@ -31,7 +31,7 @@ export const BasicInfoForm = ({}: BasicInfoFormProps) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1 bg-white dark:bg-black"
     >
-      <HeaderTitle text="profile.info" />
+      <HeaderTitle text="profile.info" type="default" />
       <ScrollView
         className="flex-1 p-6 pt-12"
         contentContainerClassName="gap-4"

@@ -51,3 +51,8 @@ export const BasicInfoFormSchema = z.object({
   email: emailValidation,
   number: requiredValidation,
 });
+
+export const NotificationFormSchema = z.object({
+  new: z.boolean(),
+  activity: z.boolean(),
+});
