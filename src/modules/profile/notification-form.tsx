@@ -26,25 +26,25 @@ export const NotificationForm = ({
             control={control}
             name="new"
             label={translate('notification.new')}
-            accessibilityLabel="Nouveau pour vous"
+            accessibilityLabel={translate('notification.new')}
           />
           <CheckboxInput
             control={control}
             name="activity"
             label={translate('notification.activity')}
-            accessibilityLabel="L'activité du compte"
+            accessibilityLabel={translate('notification.activity')}
           />
           <CheckboxInput
             control={control}
             name="newNavigator"
             label={translate('notification.newInfo')}
-            accessibilityLabel="Un nouveau navigateur utilisé pour se connecter"
+            accessibilityLabel={translate('notification.newInfo')}
           />
           <CheckboxInput
             control={control}
             name="activity"
             label={translate('notification.activity')}
-            accessibilityLabel="L'activité du compte"
+            accessibilityLabel={translate('notification.activity')}
           />
         </View>
         <Button

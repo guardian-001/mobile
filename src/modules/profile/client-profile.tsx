@@ -31,7 +31,7 @@ export default function ClientProfile({}: Props) {
   const signOut = useAuth.use.signOut();
   const router = useRouter();
   const navigateTo = (path: string) => {
-    router.push(path);
+    router.push(`/(client)/(private)/${path}`);
   };
   return (
     <LinearGradient
@@ -77,23 +77,17 @@ export default function ClientProfile({}: Props) {
           <Item
             text="profile.info"
             icon={<User />}
-            onPress={() =>
-              navigateTo(`/(client)/(private)/(profile)/basic-information/`)
-            }
+            onPress={() => navigateTo(`(profile)/basic-information/`)}
           />
           <Item
             text="profile.notifications"
             icon={<Settings />}
-            onPress={() =>
-              navigateTo(`/(client)/(private)/(profile)/notification/`)
-            }
+            onPress={() => navigateTo(`(profile)/notification/`)}
           />
           <Item
             text="profile.password"
             icon={<Security />}
-            onPress={() =>
-              navigateTo(`/(client)/(private)/(profile)/reset-password-client/`)
-            }
+            onPress={() => navigateTo(`(profile)/reset-password-client/`)}
           />
         </ItemsContainer>
         <ItemsContainer title="profile.assistance">
