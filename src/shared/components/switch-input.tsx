@@ -7,6 +7,8 @@ import {
   useController,
 } from 'react-hook-form';
 
+import type { TxKeyPath } from '@/core';
+
 import { Switch } from './switch';
 type Props<T extends FieldValues> = {
   className?: string;
@@ -20,12 +22,13 @@ export const SwitchInput = <T extends FieldValues>(props: Props<T>) => {
   const { name, control, rules, label, accessibilityLabel, className } = props;
 
   const { field, fieldState } = useController({ control, name, rules });
+  const error = fieldState.error?.message as TxKeyPath | undefined;
 
   return (
     <Switch.Root
       checked={field.value}
       onChange={field.onChange}
-      error={fieldState.error?.message}
+      error={error}
       accessibilityLabel={accessibilityLabel}
       className={`${className} pb-2`}
     >

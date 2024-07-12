@@ -23,17 +23,15 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const signIn = useAuth.use.signIn();
   const space = useRouteName();
   const [checked, setChecked] = useState(true);
-  const space = useRouteName();
 
   const handleFormSubmit: SubmitHandler<LoginFormType> = (data) => {
     signIn({ access: 'access-token', refresh: 'refresh-token' });
     router.push(`/(${space})/(private)`);
     onSubmit(data);
-
-  }; 
+  };
   const handleResetPass = () => {
     router.push(`/(${space})/(public)/reset-password`);
-  }; 
+  };
 
   return (
     <View className="flex w-full justify-center ">

@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import * as React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -28,6 +29,10 @@ import { Container, MainButton } from '../shared';
 type Props = {};
 export default function ClientProfile({}: Props) {
   const signOut = useAuth.use.signOut();
+  const router = useRouter();
+  const navigateTo = (path: string) => {
+    router.push(`/(client)/(private)/${path}`);
+  };
   return (
     <LinearGradient
       start={{ x: 0, y: 1 }}
@@ -35,7 +40,7 @@ export default function ClientProfile({}: Props) {
       colors={[colors.white, colors['extra-light-blue']]}
       className="flex-1"
     >
-      <HeaderTitle text="profile.profile" />
+      <HeaderTitle text="profile.profile" type="default" />
       <ScrollView contentContainerClassName="p-6 pb-20 dark:bg-black">
         <Container style="flex flex-row w-full h-[30%] items-center bg-white dark:bg-primary-txt rounded-3xl px-5">
           <View className="flex h-4/5 w-7/12">
@@ -69,16 +74,20 @@ export default function ClientProfile({}: Props) {
           </ImageContainer>
         </Container>
         <ItemsContainer title="profile.account">
-          <Item text="profile.info" icon={<User />} onPress={() => {}} />
+          <Item
+            text="profile.info"
+            icon={<User />}
+            onPress={() => navigateTo(`(profile)/basic-information/`)}
+          />
           <Item
             text="profile.notifications"
             icon={<Settings />}
-            onPress={() => {}}
+            onPress={() => navigateTo(`(profile)/notification/`)}
           />
           <Item
             text="profile.password"
             icon={<Security />}
-            onPress={() => {}}
+            onPress={() => navigateTo(`(profile)/reset-password-client/`)}
           />
         </ItemsContainer>
         <ItemsContainer title="profile.assistance">
