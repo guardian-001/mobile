@@ -5,10 +5,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
 import colors from '@/theme/colors';
+
 interface HeaderTitleProps {
   text: TxKeyPath;
-  type: 'custom' | 'default';
+  type: 'custom' | 'transparent' | 'default';
 }
+
 export function HeaderTitle({ text, type }: HeaderTitleProps) {
   return (
     <>
@@ -24,11 +26,21 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
           </Text>
         </LinearGradient>
       ) : (
-        <View className="flex h-32 w-full items-center justify-end bg-white pb-6">
-          <Text className="text-2xl font-bold text-primary-txt ">
-            {translate(text)}
-          </Text>
-        </View>
+        <>
+          {type === 'transparent' ? (
+            <View className="flex h-[14%] w-full items-center justify-end bg-transparent pb-6">
+              <Text className="text-2xl font-bold text-primary-txt ">
+                {translate(text)}
+              </Text>
+            </View>
+          ) : (
+            <View className="flex h-[14%] w-full items-center justify-end bg-white pb-6">
+              <Text className="text-2xl font-bold text-primary-txt ">
+                {translate(text)}
+              </Text>
+            </View>
+          )}
+        </>
       )}
     </>
   );

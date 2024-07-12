@@ -1,0 +1,13 @@
+{
+  "name": "الاسم",
+  "namePlaceHolder": "أدخل اسمك",
+  "surname": "اللقب",
+  "surnamePlaceHolder": "أدخل لقبك",
+  "mail": "البريد الإلكتروني",
+  "mailPlaceHolder": "أدخل بريدك الإلكتروني",
+  "phone": "رقم الهاتف",
+  "address": "عنوان المكتب",
+  "addressPlaceHolder": "أدخل عنوان المكتب",
+  "matricule": "الرقم الضريبي",
+  "matriculePlaceHolder": "أدخل رقمك الضريبي"
+}

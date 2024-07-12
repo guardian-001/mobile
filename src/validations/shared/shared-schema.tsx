@@ -2,8 +2,9 @@ import { z } from 'zod';
 
 import {
   emailValidation,
-  notRequiredValidationBoolean,
+  fieldValidation,
   passwordValidation,
+  phoneValidation,
   requiredValidation,
   specialityValidation,
 } from './shared-validations';
@@ -37,7 +38,12 @@ export const LoginFormSchema = z.object({
 });
 
 export const SignupFormSchema = z.object({
+  name: fieldValidation,
+  surname: fieldValidation,
   email: emailValidation,
+  phone: phoneValidation,
+  address: fieldValidation,
+  matricule: fieldValidation, //matriculeValidation
   password: passwordValidation,
   speciality: specialityValidation,
 });
