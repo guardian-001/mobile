@@ -35,7 +35,6 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
   const [selectedCountry, setSelectedCountry] = useState<ICountry>();
 
   function handleSelectedCountry(country: ICountry) {
-    console.log(country);
     setSelectedCountry(country);
   }
   return (
