@@ -2,6 +2,7 @@ import { MotiView } from 'moti';
 import React, { useCallback } from 'react';
 import Svg, { Path } from 'react-native-svg';
 
+import type { TxKeyPath } from '@/core';
 import colors from '@/theme/colors';
 
 import { Pressable, type PressableProps, View } from './';
@@ -12,7 +13,7 @@ export interface RootProps extends Omit<PressableProps, 'onPress'> {
   checked?: boolean;
   className?: string;
   accessibilityLabel: string;
-  error?: string;
+  error?: TxKeyPath;
 }
 
 export type IconProps = {
@@ -46,9 +47,10 @@ export const Root = ({
         {children}
       </Pressable>
       {error && (
-        <Text className="text-danger-400 dark:text-danger-600 text-sm">
-          {error}
-        </Text>
+        <Text
+          className="text-danger-400 dark:text-danger-600 text-sm"
+          tx={error}
+        />
       )}
     </View>
   );

@@ -1,6 +1,7 @@
 import common from './common.json';
 import labels from './labels.json';
 import login from './login.json';
+import notification from './notification.json';
 import onBoarding from './onboarding.json';
 import profile from './profile.json';
 import resetpass from './resetpass.json';
@@ -13,6 +14,7 @@ import signupStepDemoPlanningConfirmation from './signup-step4.json';
 import validations from './validations.json';
 
 export default {
+  notification,
   profile,
   login,
   labels,
