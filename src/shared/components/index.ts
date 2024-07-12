@@ -3,6 +3,7 @@ import Svg from 'react-native-svg';
 
 export { default as colors } from '../../theme/colors';
 export * from './button';
+export * from './calendar';
 export * from './checkbox';
 export * from './checkbox-input';
 export * from './controlled-input';
