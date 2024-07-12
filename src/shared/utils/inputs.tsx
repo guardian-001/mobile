@@ -1,9 +1,15 @@
 import React from 'react';
 
 import type { Option } from '@/shared/components';
-import { Input, Select, View } from '@/shared/components';
-import { Checkbox, Radio, Switch } from '@/shared/components';
-import { Title } from '@/shared/components/title';
+import {
+  Checkbox,
+  Input,
+  Radio,
+  Select,
+  Switch,
+  Title,
+  View,
+} from '@/shared/components';
 
 const options: Option[] = [
   { value: 'chocolate', label: 'Chocolate' },

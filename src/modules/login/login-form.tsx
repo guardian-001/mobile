@@ -7,11 +7,11 @@ import type * as z from 'zod';
 import { translate, useAuth } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
+import { useRouteName } from '@/shared/hooks/use-get-route';
 import { LoginFormSchema } from '@/validations';
 
 import { Container } from '../shared';
 import LoginButton from '../shared/login-button';
-
 export type LoginFormType = z.infer<typeof LoginFormSchema>;
 export type LoginFormProps = {
   onSubmit: SubmitHandler<LoginFormType>;
@@ -21,12 +21,17 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const { handleSubmit, control } = useCustomForm(LoginFormSchema);
   const router = useRouter();
   const signIn = useAuth.use.signIn();
+  const space = useRouteName();
   const [checked, setChecked] = useState(true);
 
-  const handleFormSubmit: SubmitHandler<LoginFormType> = (data) => {
+  const handleResetPassword: SubmitHandler<LoginFormType> = (data) => {
+
     signIn({ access: 'access-token', refresh: 'refresh-token' });
-    router.push('/(architect)/(private)');
+    router.push(`/(${space})/(private)`);
     onSubmit(data);
+  };
+  const handleResetPass = () => {
+    router.push(`/(${space})/(public)/reset-password`);
   };
 
   return (
@@ -53,14 +58,17 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
           accessibilityLabel="Se souvenir de moi"
           label={translate('login.souvenir')}
         />
-        <Text className="font-lato text-xs font-semibold text-primary ">
+        <Text
+          onPress={handleResetPass}
+          className={`font-lato text-xs font-semibold text-primary `}
+        >
           {translate('login.mdpOublier')}
         </Text>
       </Container>
       <LoginButton
         type="button"
         label={translate('login.connectBtn')}
-        loginFunction={handleSubmit(handleFormSubmit)}
+        loginFunction={handleSubmit(handleResetPassword)}
         radius="rounded-lg"
         width="w-full"
         height="h-12"

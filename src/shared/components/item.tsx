@@ -17,14 +17,14 @@ export const Item = ({ text, value, icon, onPress }: ItemProps) => {
     <Pressable
       onPress={onPress}
       pointerEvents={isPressable ? 'auto' : 'none'}
-      className="flex-1 flex-row items-center justify-between px-4 py-2"
+      className="h-fit flex-1 flex-row items-center justify-between px-4 py-2"
     >
       <View className="flex-row items-center">
         {icon && <View className="pr-2">{icon}</View>}
         <Text tx={text} />
       </View>
       <View className="flex-row items-center">
-        <Text className="text-neutral-600 dark:text-white">{value}</Text>
+        <Text>{value}</Text>
         {isPressable && (
           <View className="pl-2">
             <ArrowRight />

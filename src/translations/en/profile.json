@@ -1,0 +1,13 @@
+{
+  "profile": "Profile",
+  "account": "Account",
+  "info": "Basic Information",
+  "notifications": "Notifications",
+  "password": "Password",
+  "assistance": "Assistance and Information",
+  "helpCenter": "Help Center",
+  "terms": "Terms and Policies",
+  "report": "Report a Problem",
+  "logout": "Logout",
+  "connection": "Connection"
+}

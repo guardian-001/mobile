@@ -3,7 +3,10 @@ import { z } from 'zod';
 export const requiredValidation = z.string({
   message: 'validations.required',
 });
-
+export const requiredValidationBoolean = z.boolean({
+  message: 'validations.required',
+});
+export const notRequiredValidationBoolean = z.boolean().optional();
 export const emailValidation = z
   .string({ message: 'validations.required' })
   .email({ message: 'validations.invalid' })
@@ -22,3 +25,16 @@ export const fieldValidation = z
   .min(3, { message: 'validations.field-min-length' })
   .max(50, { message: 'validations.field-max-length' })
   .regex(/^[a-zA-Z0-9_]+$/, { message: 'validations.field-shape' });
+
+export const phoneValidation = z
+  .string({ message: 'validations.required' })
+  .regex(/^\d+$/, { message: 'validations.phone-number-digits' })
+  .min(8, { message: 'validations.phone-number-min-length' })
+  .max(15, { message: 'validations.phone-number-max-length' });
+
+export const SpecialityEnum = z.enum(['construction', 'interior']);
+
+export const specialityValidation = SpecialityEnum.refine(
+  (val) => val === 'construction' || val === 'interior',
+  { message: 'validations.invalid-speciality' }
+);

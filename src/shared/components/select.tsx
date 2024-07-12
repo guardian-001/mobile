@@ -10,14 +10,9 @@ import Svg, { Path, type SvgProps } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
 import { CaretDown } from '@/assets/icons';
-import {
-  Pressable,
-  type PressableProps,
-  TouchableOpacity,
-  View,
-} from '@/shared/components';
 import colors from '@/theme/colors';
 
+import { Pressable, type PressableProps, TouchableOpacity, View } from './';
 import type { InputControllerType } from './controlled-input';
 import { Modal, useModal } from './modal';
 import { Text } from './text';

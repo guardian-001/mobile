@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Text, View } from '@/shared/components';
-import { Title } from '@/shared/components/title';
+
+import { Title } from './title';
 
 export const Typography = () => {
   return (
