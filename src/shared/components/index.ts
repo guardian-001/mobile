@@ -3,7 +3,6 @@ import Svg from 'react-native-svg';
 
 export { default as colors } from '../../theme/colors';
 export * from './button';
-export * from './calendar';
 export * from './checkbox';
 export * from './checkbox-input';
 export * from './controlled-input';
@@ -16,7 +15,6 @@ export * from './item';
 export * from './items-container';
 export * from './list';
 export * from './modal';
-export * from './pref-test-calendar';
 export * from './progress-bar';
 export * from './radio';
 export * from './radio-input';

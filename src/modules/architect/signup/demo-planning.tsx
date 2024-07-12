@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { StepButtons } from '@/modules/shared';
-import { ScrollView, Text, View } from '@/shared/components';
+import { Text, View } from '@/shared/components';
+import Calendar from '@/shared/components/calendar';
 
 export type ResetFormProps = {
   handlePreviousStep?: () => void;
@@ -13,7 +14,7 @@ export default function DemoPlanning({
   handleNextStep,
 }: ResetFormProps) {
   return (
-    <View className="flex h-fit items-center justify-between gap-16">
+    <View className="flex h-fit w-full items-center justify-between gap-16">
       <View>
         <Text
           tx={'signupStepDemoPlanning.title'}
@@ -25,9 +26,12 @@ export default function DemoPlanning({
         />
       </View>
 
-      <ScrollView className=" flex h-fit gap-5">
-        {/* <CalendarPicker /> */}
-      </ScrollView>
+      <View className=" flex h-fit w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
+        <View className="flex-1 items-center justify-center" />
+        <Calendar />
+        {/* <TimePicker/> */}
+        <Text>epfzefojze</Text>
+      </View>
       <StepButtons
         previous={{ handlePreviousStep, label: 'signup.retour' }}
         next={{ handleNextStep, label: 'signup.suivant' }}
