@@ -56,4 +56,5 @@ export const BasicInfoFormSchema = z.object({
 export const NotificationFormSchema = z.object({
   new: notRequiredValidationBoolean,
   activity: notRequiredValidationBoolean,
+  newNavigator: notRequiredValidationBoolean,
 });

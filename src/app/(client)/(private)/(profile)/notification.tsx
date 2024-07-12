@@ -7,7 +7,7 @@ export default function Notification() {
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
-      <NotificationForm />
+      <NotificationForm onSubmit={() => {}} />
     </View>
   );
 }
