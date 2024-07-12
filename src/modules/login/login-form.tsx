@@ -24,7 +24,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const space = useRouteName();
   const [checked, setChecked] = useState(true);
 
-  const handleFormSubmit: SubmitHandler<LoginFormType> = (data) => {
+  const handleResetPassword: SubmitHandler<LoginFormType> = (data) => {
     signIn({ access: 'access-token', refresh: 'refresh-token' });
     router.push(`/(${space})/(private)`);
     onSubmit(data);
@@ -57,7 +57,6 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
           accessibilityLabel="Se souvenir de moi"
           label={translate('login.souvenir')}
         />
-
         <Text
           onPress={handleResetPass}
           className={`font-lato text-xs font-semibold text-primary `}
@@ -68,7 +67,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
       <LoginButton
         type="button"
         label={translate('login.connectBtn')}
-        loginFunction={handleSubmit(handleFormSubmit)}
+        loginFunction={handleSubmit(handleResetPassword)}
         radius="rounded-lg"
         width="w-full"
         height="h-12"

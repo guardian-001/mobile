@@ -14,7 +14,7 @@ export default function Explorer() {
         onPress={() => {
           router.push(`/(client)/(profile)/profile`);
         }}
-        className="h-12 rounded-md"
+        className="mt-20 h-12 rounded-md"
       />
     </View>
   );

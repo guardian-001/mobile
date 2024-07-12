@@ -1,16 +1,28 @@
 import React from 'react';
+import type { z } from 'zod';
 
 import { translate } from '@/core';
-import StepperButton from '@/modules/shared/stepper-button';
-import { ScrollView, Text, View } from '@/shared/components';
+import { StepButtons } from '@/modules/shared';
+import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
+import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
+import useCustomForm from '@/shared/hooks/use-custom-form';
+import { SignupFormSchema } from '@/validations';
+
+export type SignupFormType = z.infer<typeof SignupFormSchema>;
 
 export type ResetFormProps = {
-  onSubmit?: () => void;
+  handlePreviousStep?: () => void;
+  handleNextStep?: () => void;
 };
 
-export default function CreateProfile({ onSubmit }: ResetFormProps) {
+export default function CreateProfile({
+  handlePreviousStep,
+  handleNextStep,
+}: ResetFormProps) {
+  const { control } = useCustomForm(SignupFormSchema);
+
   return (
-    <View className="flex h-fit items-center justify-between gap-16">
+    <View className="flex h-fit items-center justify-between gap-8">
       <View>
         <Text
           tx={'signupStepCreateProfile.title'}
@@ -22,21 +34,54 @@ export default function CreateProfile({ onSubmit }: ResetFormProps) {
         />
       </View>
 
-      <ScrollView className=" flex h-fit gap-5" />
-      <View className="flex flex-row  gap-2">
-        <StepperButton
-          width="w-[45%]"
-          alternativeBg="bg-secondary-btn"
-          alternativeTextStyle="color-primary-txt"
-          label={translate('signup.retour')}
+      <ScrollView className=" flex h-fit w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
+        <ControlledInput
+          testID="name-input"
+          control={control}
+          name="name"
+          label={translate('labels.name')}
+          placeholder={translate('labels.name')}
+        />
+        <ControlledInput
+          testID="surname-input"
+          control={control}
+          name="surname"
+          label={translate('labels.surname')}
+          placeholder={translate('labels.surname')}
+        />
+        <ControlledInput
+          testID="email-input"
+          control={control}
+          name="email"
+          label={translate('labels.mail')}
+          placeholder={translate('labels.mail')}
+        />
+        <ControlledPhoneNumberInput
+          name="phone"
+          control={control}
+          label={translate('labels.phone')}
+          rules={{ required: 'Phone number is required' }}
         />
 
-        <StepperButton
-          width="w-[45%]"
-          onPressHandler={onSubmit}
-          label={translate('signup.suivant')}
+        <ControlledInput
+          testID="address-input"
+          control={control}
+          name="address"
+          label={translate('labels.address')}
+          placeholder={translate('labels.address')}
         />
-      </View>
+        <ControlledInput
+          testID="matricule-input"
+          control={control}
+          name="matricule"
+          label={translate('labels.matricule')}
+          placeholder={translate('labels.matricule')}
+        />
+      </ScrollView>
+      <StepButtons
+        previous={{ handlePreviousStep, label: 'signup.retour' }}
+        next={{ handleNextStep, label: 'signup.suivant' }}
+      />
     </View>
   );
 }

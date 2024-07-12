@@ -4,10 +4,12 @@ import { translate } from '@/core';
 import StepperButton from '@/modules/shared/stepper-button';
 import { ScrollView, Text, View } from '@/shared/components';
 export type ResetFormProps = {
-  onSubmit?: () => void;
+  handleConfirmationStep?: () => void;
 };
 
-export default function DemoPlanningConfirmation({ onSubmit }: ResetFormProps) {
+export default function DemoPlanningConfirmation({
+  handleConfirmationStep,
+}: ResetFormProps) {
   return (
     <View className="flex h-fit items-center justify-between gap-16">
       <View>
@@ -22,20 +24,13 @@ export default function DemoPlanningConfirmation({ onSubmit }: ResetFormProps) {
       </View>
 
       <ScrollView className=" flex h-fit gap-5" />
-      <View className="flex flex-row  gap-2">
-        <StepperButton
-          width="w-[45%]"
-          alternativeBg="bg-secondary-btn"
-          alternativeTextStyle="color-primary-txt"
-          label={translate('signup.retour')}
-        />
-
-        <StepperButton
-          width="w-[45%]"
-          onPressHandler={onSubmit}
-          label={translate('signup.suivant')}
-        />
-      </View>
+      <StepperButton
+        width="w-[45%]"
+        alternativeBg="bg-secondary-btn"
+        alternativeTextStyle="color-primary-txt"
+        label={translate('signupStepDemoPlanningConfirmation.confirmBtn')}
+        onPressHandler={handleConfirmationStep}
+      />
     </View>
   );
 }

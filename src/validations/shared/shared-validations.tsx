@@ -26,6 +26,12 @@ export const fieldValidation = z
   .max(50, { message: 'validations.field-max-length' })
   .regex(/^[a-zA-Z0-9_]+$/, { message: 'validations.field-shape' });
 
+export const phoneValidation = z
+  .string({ message: 'validations.required' })
+  .regex(/^\d+$/, { message: 'validations.phone-number-digits' })
+  .min(8, { message: 'validations.phone-number-min-length' })
+  .max(15, { message: 'validations.phone-number-max-length' });
+
 export const SpecialityEnum = z.enum(['construction', 'interior']);
 
 export const specialityValidation = SpecialityEnum.refine(

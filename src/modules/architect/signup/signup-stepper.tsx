@@ -1,13 +1,9 @@
-import { router } from 'expo-router';
-import * as React from 'react';
-import { Platform } from 'react-native';
+import { useRouter } from 'expo-router';
+import React from 'react';
 
 import ResetFormPassword from '@/modules/reset-password/reset-form-password';
-import {
-  HeaderTitle,
-  KeyboardAvoidingView,
-  ScrollView,
-} from '@/shared/components';
+import { HeaderTitle, ScrollView, View } from '@/shared/components';
+import { useStepperNavigation } from '@/shared/hooks';
 import { useRouteName } from '@/shared/hooks/use-get-route';
 
 import ChooseSpeciality from './choose-speciality';
@@ -18,30 +14,53 @@ import DemoPlanningConfirmation from './demo-planning-confirmation';
 type Props = {};
 export default function SignupStepper({}: Props) {
   const space = useRouteName();
-  const [step, setStep] = React.useState(0);
+  const route = useRouter();
+  const { step, handleNextStep, handlePreviousStep } = useStepperNavigation({
+    maxSteps: 5,
+  });
 
-  const handleNextStep = () => {
-    setStep(step + 1);
+  const handleConfirmationStep = () => {
+    console.log('confirmed');
   };
+
   const stepsContent: {
     component: React.ReactNode;
   }[] = [
     {
-      component: <ChooseSpeciality onSubmit={handleNextStep} />,
+      component: (
+        <ChooseSpeciality
+          handleNextStep={handleNextStep}
+          handlePreviousStep={handlePreviousStep}
+        />
+      ),
     },
     {
-      component: <CreateProfile onSubmit={handleNextStep} />,
+      component: (
+        <CreateProfile
+          handleNextStep={handleNextStep}
+          handlePreviousStep={handlePreviousStep}
+        />
+      ),
     },
     {
-      component: <DemoPlanning onSubmit={handleNextStep} />,
+      component: (
+        <DemoPlanning
+          handleNextStep={handleNextStep}
+          handlePreviousStep={handlePreviousStep}
+        />
+      ),
     },
     {
-      component: <DemoPlanningConfirmation onSubmit={handleNextStep} />,
+      component: (
+        <DemoPlanningConfirmation
+          handleConfirmationStep={handleConfirmationStep}
+        />
+      ),
     },
     {
       component: (
         <ResetFormPassword
-          onSubmit={() => router.replace(`/(${space})/(public)/login`)}
+          onSubmit={() => route.replace(`/(${space})/(public)/login`)}
         />
       ),
     },
@@ -49,10 +68,7 @@ export default function SignupStepper({}: Props) {
 
   const { component } = stepsContent[step];
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="items-between flex h-full  bg-background dark:bg-black"
-    >
+    <View className="items-between flex h-full  bg-background dark:bg-black">
       <HeaderTitle text="signup.headerTitle" type="custom" />
       <ScrollView
         className=" flex-1p-6 h-full pt-12"
@@ -62,6 +78,6 @@ export default function SignupStepper({}: Props) {
       >
         {component}
       </ScrollView>
-    </KeyboardAvoidingView>
+    </View>
   );
 }
