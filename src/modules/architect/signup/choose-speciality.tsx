@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
-import { StepButtons } from '@/modules/shared'; // Adjust the import path if necessary
+import { StepButtons } from '@/modules/shared';
 import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
 import { SignupFormSchema } from '@/validations';

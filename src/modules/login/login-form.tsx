@@ -23,7 +23,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const signIn = useAuth.use.signIn();
   const space = useRouteName();
   const [checked, setChecked] = useState(true);
-  const handleFormSubmit: SubmitHandler<LoginFormType> = (data) => {
+  const handleResetPassword: SubmitHandler<LoginFormType> = (data) => {
     signIn({ access: 'access-token', refresh: 'refresh-token' });
     router.push(`/(${space})/(private)`);
     onSubmit(data);
@@ -66,7 +66,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
       <LoginButton
         type="button"
         label={translate('login.connectBtn')}
-        loginFunction={handleSubmit(handleFormSubmit)}
+        loginFunction={handleSubmit(handleResetPassword)}
         radius="rounded-lg"
         width="w-full"
         height="h-12"
