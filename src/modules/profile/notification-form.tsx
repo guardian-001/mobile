@@ -48,7 +48,7 @@ export const NotificationForm = ({
           />
         </View>
         <Button
-          label={translate('resetpass.reset')}
+          label={translate('notification.Save')}
           onPress={handleSubmit(onSubmit)}
           className="h-12 rounded-md"
         />
