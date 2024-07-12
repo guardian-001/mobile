@@ -23,7 +23,9 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const signIn = useAuth.use.signIn();
   const space = useRouteName();
   const [checked, setChecked] = useState(true);
+
   const handleResetPassword: SubmitHandler<LoginFormType> = (data) => {
+
     signIn({ access: 'access-token', refresh: 'refresh-token' });
     router.push(`/(${space})/(private)`);
     onSubmit(data);
