@@ -58,11 +58,7 @@ export default function ClientProfile({}: Props) {
               <Text className={`text-xs`} tx="onBoarding.welcomeDescription" />
             </Container>
             <MainButton
-              onPressHandler={() => {
-                router.replace(
-                  '(client)/(private)/(projet)/publication-projet'
-                );
-              }}
+              onPressHandler={() => navigateTo(`(projet)/publication-projet`)}
               label={translate('common.start')}
               type="button"
               width="w-[52%]"
