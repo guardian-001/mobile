@@ -10,7 +10,7 @@ type RouteProp = {
 export default function BackButton({ route }: RouteProp) {
   const router = useRouter();
   const handleBack = () => {
-    if (route) { 
+    if (route) {
       router.push(route);
     } else {
       router.back();

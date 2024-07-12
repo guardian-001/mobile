@@ -29,7 +29,10 @@ import { Container, MainButton } from '../shared';
 type Props = {};
 export default function ClientProfile({}: Props) {
   const signOut = useAuth.use.signOut();
-  const route = useRouter();
+  const router = useRouter();
+  const navigateTo = (path: string) => {
+    router.push(`/(client)/(private)/${path}`);
+  };
   return (
     <LinearGradient
       start={{ x: 0, y: 1 }}
@@ -56,7 +59,9 @@ export default function ClientProfile({}: Props) {
             </Container>
             <MainButton
               onPressHandler={() => {
-                route.replace('(client)/(private)/(projet)/publication-projet');
+                router.replace(
+                  '(client)/(private)/(projet)/publication-projet'
+                );
               }}
               label={translate('common.start')}
               type="button"
@@ -73,16 +78,20 @@ export default function ClientProfile({}: Props) {
           </ImageContainer>
         </Container>
         <ItemsContainer title="profile.account">
-          <Item text="profile.info" icon={<User />} onPress={() => {}} />
+          <Item
+            text="profile.info"
+            icon={<User />}
+            onPress={() => navigateTo(`(profile)/basic-information/`)}
+          />
           <Item
             text="profile.notifications"
             icon={<Settings />}
-            onPress={() => {}}
+            onPress={() => navigateTo(`(profile)/notification/`)}
           />
           <Item
             text="profile.password"
             icon={<Security />}
-            onPress={() => {}}
+            onPress={() => navigateTo(`(profile)/reset-password-client/`)}
           />
         </ItemsContainer>
         <ItemsContainer title="profile.assistance">
