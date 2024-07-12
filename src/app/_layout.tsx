@@ -6,7 +6,6 @@ import { hydrateAuth, loadSelectedTheme } from '@/core';
 
 export { ErrorBoundary } from 'expo-router';
 
-// Import  global CSS file
 import '../../global.css';
 
 import AppProvider from '@/shared/providers/app-provider';

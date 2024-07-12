@@ -1,73 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
+import { ArrowLeft, ArrowRight, Globe } from '@/assets/icons';
+import { translate } from '@/core';
+import colors from '@/theme/colors';
+
+import { useCalendar, useTimezone } from '../hooks';
+import { capitalizeFirstLetter } from '../utils';
 import { renderCalendarDays } from './render-calendar-days';
-import { renderTimeSlots } from './time-slots';
+import { RenderTimeSlots } from './time-slots';
 
 const Calendar = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [currentMonth, setCurrentMonth] = useState(selectedDate.getMonth());
-  const [currentYear, setCurrentYear] = useState(selectedDate.getFullYear());
-
-  const handleDatePress = (date: any) => {
-    setSelectedDate(date);
-  };
-
-  const handlePreviousMonth = () => {
-    const today = new Date();
-    // Check if the current month is the actual current month
-    if (
-      currentMonth === today.getMonth() &&
-      currentYear === today.getFullYear()
-    ) {
-      // If so, do not allow going to the previous month
-      return;
-    }
-    const newMonth = currentMonth - 1;
-    const newYear = currentYear;
-    if (newMonth < 0) {
-      setCurrentMonth(11);
-      setCurrentYear(newYear - 1);
-    } else {
-      setCurrentMonth(newMonth);
-      setCurrentYear(newYear);
-    }
-  };
-
-  const handleNextMonth = () => {
-    const newMonth = currentMonth + 1;
-    const newYear = currentYear;
-    if (newMonth > 11) {
-      setCurrentMonth(0);
-      setCurrentYear(newYear + 1);
-    } else {
-      setCurrentMonth(newMonth);
-      setCurrentYear(newYear);
-    }
-  };
-
-  const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+  const {
+    selectedDate,
+    currentMonth,
+    currentYear,
+    handleDatePress,
+    handlePreviousMonth,
+    handleNextMonth,
+  } = useCalendar();
+  const [formattedTimezone] = useTimezone();
+  const days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 
   return (
     <View className="flex-1 items-center justify-center bg-white">
-      <View className="border border-gray-300 p-4">
-        <View className="mb-2 flex-row justify-between">
-          <TouchableOpacity onPress={handlePreviousMonth}>
-            <Text>Previous</Text>
+      <View className="  px-4">
+        <View className="mb-4 flex-row items-start justify-between py-2">
+          <TouchableOpacity
+            className="flex h-7 w-7 items-center justify-center rounded-md border border-gray-400 p-2"
+            onPress={handlePreviousMonth}
+          >
+            <ArrowLeft color={colors.gray[600]} />
           </TouchableOpacity>
-          <Text>
-            {new Date(currentYear, currentMonth, 1).toLocaleString('default', {
-              month: 'long',
-              year: 'numeric',
-            })}
+          <Text className=" text-sm font-bold text-primary-txt">
+            {capitalizeFirstLetter(
+              new Date(currentYear, currentMonth, 1).toLocaleString('default', {
+                month: 'long',
+                year: 'numeric',
+              })
+            )}
           </Text>
-          <TouchableOpacity onPress={handleNextMonth}>
-            <Text>Next</Text>
+          <TouchableOpacity
+            className="flex h-7 w-7 items-center justify-center rounded-md border border-gray-400 p-2"
+            onPress={handleNextMonth}
+          >
+            <ArrowRight color={colors.gray[600]} />
           </TouchableOpacity>
         </View>
-        <View className="mb-2 flex-row justify-between">
+        <View className="mb-2    flex-row items-center justify-between  ">
           {days.map((day, index) => (
-            <Text key={`day-header-${index}`} className="font-bold">
+            <Text
+              key={`day-header-${index}`}
+              className="mr-1 w-10   text-center font-medium text-primary-txt"
+            >
               {day}
             </Text>
           ))}
@@ -78,11 +63,15 @@ const Calendar = () => {
             currentMonth,
             selectedDate,
             handleDatePress,
+          }).map((week) => {
+            return (
+              <View className="mb-2 flex-row justify-between">{week}</View>
+            );
           })}
         </View>
       </View>
-      <View className="mt-4 items-center">
-        <Text className="mb-2">
+      <View className="mt-4 items-start">
+        <Text className="mb-2 ml-2 text-xs font-semibold text-primary-txt">
           {selectedDate.toLocaleDateString('en-US', {
             weekday: 'long',
             month: 'long',
@@ -90,9 +79,19 @@ const Calendar = () => {
           })}
         </Text>
         <View className="flex-row flex-wrap justify-center">
-          {renderTimeSlots()}
+          {RenderTimeSlots()}
         </View>
-        <Text className="mt-2">West Africa Time (UTC+1)</Text>
+        <View>
+          <Text className="ml-2 mt-2 text-start text-xs font-bold text-primary-txt">
+            {translate('signupStepDemoPlanning.timezone')}
+          </Text>
+          <View className="ml-2 flex flex-row items-center gap-2">
+            <Globe />
+            <Text className=" text-start   text-xs text-primary-txt">
+              {formattedTimezone}
+            </Text>
+          </View>
+        </View>
       </View>
     </View>
   );

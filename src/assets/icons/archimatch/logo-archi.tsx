@@ -10,13 +10,7 @@ import Svg, {
 } from 'react-native-svg';
 
 export const LogoArchi = (props: SvgProps) => (
-  <Svg
-    width="100%"
-    height="100%"
-    viewBox="0 0 39 40"
-    fill="none"
-    {...props} // Spread other props here
-  >
+  <Svg width="100%" height="100%" viewBox="0 0 39 40" fill="none" {...props}>
     <Rect
       y="0.5"
       width="100%"
@@ -41,7 +35,7 @@ export const LogoArchi = (props: SvgProps) => (
     <G mask="url(#mask0)">
       <Mask
         id="mask1"
-        mask-type="luminance" // Changed from maskType to mask-type
+        mask-type="luminance"
         maskUnits="userSpaceOnUse"
         x="13"
         y="6"
