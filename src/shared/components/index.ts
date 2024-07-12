@@ -16,6 +16,7 @@ export * from './item';
 export * from './items-container';
 export * from './list';
 export * from './modal';
+export * from './pref-test-calendar';
 export * from './progress-bar';
 export * from './radio';
 export * from './radio-input';
