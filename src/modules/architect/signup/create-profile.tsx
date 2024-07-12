@@ -20,14 +20,7 @@ export default function CreateProfile({
   handleNextStep,
 }: ResetFormProps) {
   const { control } = useCustomForm(SignupFormSchema);
-  // const router = useRouter();
 
-  // const space = useRouteName();
-
-  // const handleFormSubmit: SubmitHandler<LoginFormType> = (data) => {
-  //   router.push(`/(${space})/(public)/login`);
-  //   onSubmit(data);
-  // };
   return (
     <View className="flex h-fit items-center justify-between gap-8">
       <View>

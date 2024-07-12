@@ -48,6 +48,7 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
         <PhoneInput
           value={(field.value as string) || ''}
           onChangePhoneNumber={field.onChange}
+          placeholder="111-222-333-444"
           selectedCountry={selectedCountry}
           onChangeSelectedCountry={handleSelectedCountry}
           phoneInputStyles={{
@@ -56,7 +57,7 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
             callingCode: { fontSize: 12 },
             caret: { fontSize: 12, backgroundColor: colors.white },
             flag: { fontSize: 12 },
-            flagContainer: { width: '40%', backgroundColor: colors.white },
+            flagContainer: { width: 100, backgroundColor: colors.white },
           }}
         />
       </View>
