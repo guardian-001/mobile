@@ -65,3 +65,14 @@ export const NotificationFormSchema = z.object({
   activity: notRequiredValidationBoolean,
   newNavigator: notRequiredValidationBoolean,
 });
+
+export const AnnouncementFormSchema = z.object({
+  name: fieldValidation,
+  surname: fieldValidation,
+  email: emailValidation,
+  phone: phoneValidation,
+  address: fieldValidation,
+  matricule: fieldValidation, //matriculeValidation
+  password: passwordValidation,
+  speciality: specialityValidation,
+});
