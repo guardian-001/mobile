@@ -47,9 +47,7 @@ export const ToggleCard = <T extends FieldValues>({
       <Pressable
         onPress={handlePress}
         className={`${className} flex-1 items-center justify-center self-center   p-4 ${
-          isSelected
-            ? 'border-2 border-primary '
-            : 'border-borderColor border-[0.5px]'
+          isSelected ? 'border border-primary ' : 'border-borderColor border'
         } mb-7`}
         {...props}
       >
