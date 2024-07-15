@@ -7,6 +7,7 @@ import colors from '@/theme/colors';
 
 import { useCalendar, useTimezone } from '../hooks';
 import { capitalizeFirstLetter } from '../utils';
+import { days } from './';
 import { renderCalendarDays } from './render-calendar-days';
 import { RenderTimeSlots } from './time-slots';
 
@@ -29,7 +30,6 @@ export const Calendar: React.FC<CalendarProps> = ({
   } = useCalendar();
 
   const [formattedTimezone] = useTimezone();
-  const days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 
   const onDatePress = (date: Date) => {
     handleDatePress(date);
