@@ -7,6 +7,7 @@ import colors from '@/theme/colors';
 
 import { useCalendar, useTimezone } from '../hooks';
 import { capitalizeFirstLetter } from '../utils';
+import { days } from './';
 import { renderCalendarDays } from './render-calendar-days';
 import { RenderTimeSlots } from './time-slots';
 
@@ -20,7 +21,6 @@ const Calendar = () => {
     handleNextMonth,
   } = useCalendar();
   const [formattedTimezone] = useTimezone();
-  const days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 
   return (
     <View className="flex-1 items-center justify-center bg-white">
