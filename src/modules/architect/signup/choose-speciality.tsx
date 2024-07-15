@@ -27,7 +27,7 @@ export default function ChooseSpeciality({
   };
 
   return (
-    <View className="flex h-fit items-center justify-between gap-16">
+    <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
       <View>
         <Text
           tx={'signupStepSpeciality.title'}

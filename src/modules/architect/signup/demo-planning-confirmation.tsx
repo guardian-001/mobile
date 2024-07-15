@@ -12,7 +12,7 @@ export default function DemoPlanningConfirmation({
   handleConfirmationStep,
 }: ResetFormProps) {
   return (
-    <View className="flex h-fit w-full items-center justify-between gap-16">
+    <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
       <View>
         <Text
           tx={'signupStepDemoPlanningConfirmation.title'}
@@ -24,33 +24,37 @@ export default function DemoPlanningConfirmation({
         />
       </View>
 
-      <View className="flex h-fit w-full items-center justify-center gap-5">
-        <Clock />
-        <View className="flex h-fit w-4/5 flex-row items-center justify-between rounded-xl bg-white p-4 shadow-md">
-          <View>
-            <Text className="font-bold text-description">
-              {translate('labels.date')}
-            </Text>
-            <Text className="font-bold text-primary-txt">18 january 2025</Text>
-          </View>
-          <View>
-            <Text className="font-bold text-description">
-              {translate('labels.time')}
-            </Text>
-            <Text className="font-bold text-primary-txt">
-              14:00-14:30{' '}
-              <Text className="font-bold text-description">(GMT+1)</Text>
-            </Text>
+      <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
+        <View className="flex h-fit w-full items-center justify-between gap-5">
+          <Clock />
+          <View className="flex h-fit w-4/5 flex-row items-center justify-between rounded-xl bg-white p-4 shadow-md">
+            <View>
+              <Text className="font-bold text-description">
+                {translate('labels.date')}
+              </Text>
+              <Text className="font-bold text-primary-txt">
+                18 january 2025
+              </Text>
+            </View>
+            <View>
+              <Text className="font-bold text-description">
+                {translate('labels.time')}
+              </Text>
+              <Text className="font-bold text-primary-txt">
+                14:00-14:30{' '}
+                <Text className="font-bold text-description">(GMT+1)</Text>
+              </Text>
+            </View>
           </View>
         </View>
+        <StepperButton
+          width="w-[80%]"
+          alternativeBg="bg-primary"
+          alternativeTextStyle="color-white"
+          label={translate('signupStepDemoPlanningConfirmation.confirmBtn')}
+          onPressHandler={handleConfirmationStep}
+        />
       </View>
-      <StepperButton
-        width="w-[80%]"
-        alternativeBg="bg-primary"
-        alternativeTextStyle="color-white"
-        label={translate('signupStepDemoPlanningConfirmation.confirmBtn')}
-        onPressHandler={handleConfirmationStep}
-      />
     </View>
   );
 }

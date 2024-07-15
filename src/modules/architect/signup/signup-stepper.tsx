@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 
 import ResetFormPassword from '@/modules/reset-password/reset-form-password';
-import { HeaderTitle, ScrollView, View } from '@/shared/components';
+import { HeaderTitle, View } from '@/shared/components';
 import { useStepperNavigation } from '@/shared/hooks';
 import { useRouteName } from '@/shared/hooks/use-get-route';
 
@@ -70,14 +70,7 @@ export default function SignupStepper({}: Props) {
   return (
     <View className="items-between flex h-full  bg-background dark:bg-black">
       <HeaderTitle text="signup.headerTitle" type="custom" />
-      <ScrollView
-        className=" flex-1p-6 h-full pt-12"
-        contentContainerStyle={{
-          alignItems: 'center',
-        }}
-      >
-        {component}
-      </ScrollView>
+      <View className=" h-full flex-1 p-6 py-12">{component}</View>
     </View>
   );
 }

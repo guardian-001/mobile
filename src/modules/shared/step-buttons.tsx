@@ -13,7 +13,7 @@ type ButtonsProps = {
 
 export default function StepButtons({ previous, next }: ButtonsProps) {
   return (
-    <View className="flex flex-row gap-2">
+    <View className="my-2 flex flex-row gap-2">
       <StepperButton
         width="w-[45%]"
         alternativeBg="bg-secondary-btn"

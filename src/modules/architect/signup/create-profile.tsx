@@ -22,7 +22,7 @@ export default function CreateProfile({
   const { control } = useCustomForm(SignupFormSchema);
 
   return (
-    <View className="flex h-fit items-center justify-between gap-8">
+    <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
       <View>
         <Text
           tx={'signupStepCreateProfile.title'}
@@ -34,7 +34,7 @@ export default function CreateProfile({
         />
       </View>
 
-      <ScrollView className=" flex h-fit w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
+      <ScrollView className=" flex h-fit w-[90%] gap-5 rounded-3xl bg-white px-4 py-5 shadow-md">
         <ControlledInput
           testID="name-input"
           control={control}
