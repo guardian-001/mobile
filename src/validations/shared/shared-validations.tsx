@@ -38,3 +38,12 @@ export const specialityValidation = SpecialityEnum.refine(
   (val) => val === 'construction' || val === 'interior',
   { message: 'validations.invalid-speciality' }
 );
+
+export const dateValidation = z
+  .string({ message: 'validations.required' })
+  .regex(/^\d{4}-\d{2}-\d{2}$/, { message: 'validations.invalid-date-format' })
+  .transform((date) => new Date(date));
+
+export const timeValidation = z
+  .string({ message: 'validations.required' })
+  .regex(/^\d{2}:\d{2}$/, { message: 'validations.invalid-time-format' });

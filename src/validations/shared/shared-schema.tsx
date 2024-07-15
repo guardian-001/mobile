@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import {
+  dateValidation,
   emailValidation,
   fieldValidation,
   notRequiredValidationBoolean,
@@ -8,6 +9,7 @@ import {
   phoneValidation,
   requiredValidation,
   specialityValidation,
+  timeValidation,
 } from './shared-validations';
 
 export const ConfirmPasswordSchema = z
@@ -47,6 +49,8 @@ export const SignupFormSchema = z.object({
   matricule: fieldValidation, //matriculeValidation
   password: passwordValidation,
   speciality: specialityValidation,
+  demoDate: dateValidation,
+  demoTime: timeValidation,
 });
 
 export const OTPSchema = z.object({

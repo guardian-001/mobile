@@ -9,5 +9,7 @@
   "address": "عنوان المكتب",
   "addressPlaceHolder": "أدخل عنوان المكتب",
   "matricule": "الرقم الضريبي",
-  "matriculePlaceHolder": "أدخل رقمك الضريبي"
+  "matriculePlaceHolder": "أدخل رقمك الضريبي",
+  "date": "تاريخ",
+  "time": "وقت"
 }

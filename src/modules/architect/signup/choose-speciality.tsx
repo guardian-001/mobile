@@ -16,9 +16,7 @@ export default function ChooseSpeciality({
   handlePreviousStep,
   handleNextStep,
 }: ResetFormProps) {
-  const { control } = useCustomForm(SignupFormSchema, {
-    speciality: 'speciality',
-  });
+  const { control } = useCustomForm(SignupFormSchema);
 
   const [selectedSpeciality, setSelectedSpeciality] = useState<string | null>(
     null

@@ -10,7 +10,15 @@ import { capitalizeFirstLetter } from '../utils';
 import { renderCalendarDays } from './render-calendar-days';
 import { RenderTimeSlots } from './time-slots';
 
-const Calendar = () => {
+type CalendarProps = {
+  onDateSelect: (date: Date) => void;
+  onTimeSelect: (time: string) => void;
+};
+
+export const Calendar: React.FC<CalendarProps> = ({
+  onDateSelect,
+  onTimeSelect,
+}) => {
   const {
     selectedDate,
     currentMonth,
@@ -19,12 +27,18 @@ const Calendar = () => {
     handlePreviousMonth,
     handleNextMonth,
   } = useCalendar();
+
   const [formattedTimezone] = useTimezone();
   const days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 
+  const onDatePress = (date: Date) => {
+    handleDatePress(date);
+    onDateSelect(date);
+  };
+
   return (
     <View className="flex-1 items-center justify-center bg-white">
-      <View className="  px-4">
+      <View className="px-4">
         <View className="mb-4 flex-row items-start justify-between py-2">
           <TouchableOpacity
             className="flex h-7 w-7 items-center justify-center rounded-md border border-gray-400 p-2"
@@ -32,7 +46,7 @@ const Calendar = () => {
           >
             <ArrowLeft color={colors.gray[600]} />
           </TouchableOpacity>
-          <Text className=" text-sm font-bold text-primary-txt">
+          <Text className="text-sm font-bold text-primary-txt">
             {capitalizeFirstLetter(
               new Date(currentYear, currentMonth, 1).toLocaleString('default', {
                 month: 'long',
@@ -47,25 +61,36 @@ const Calendar = () => {
             <ArrowRight color={colors.gray[600]} />
           </TouchableOpacity>
         </View>
-        <View className="mb-2    flex-row items-center justify-between  ">
+        <View className="mb-2 flex-row items-center justify-between ">
           {days.map((day, index) => (
             <Text
               key={`day-header-${index}`}
-              className="mr-1 w-10   text-center font-medium text-primary-txt"
+              className="mr-1 w-10 text-center font-medium text-primary-txt"
             >
               {day}
             </Text>
           ))}
         </View>
-        <View className="flex-row flex-wrap">
+        {/* <CalendarView
+          currentYear={currentYear}
+          currentMonth={currentMonth}
+          selectedDate={selectedDate}
+          handleDatePress={onDatePress}
+        /> */}
+        <View className="flex-col flex-wrap">
           {renderCalendarDays({
             currentYear,
             currentMonth,
             selectedDate,
-            handleDatePress,
+            handleDatePress: onDatePress,
           }).map((week) => {
             return (
-              <View className="mb-2 flex-row justify-between">{week}</View>
+              <View
+                key={week[0]?.toString()}
+                className="mb-2 flex-row justify-between"
+              >
+                {week}
+              </View>
             );
           })}
         </View>
@@ -79,7 +104,7 @@ const Calendar = () => {
           })}
         </Text>
         <View className="flex-row flex-wrap justify-center">
-          {RenderTimeSlots()}
+          <RenderTimeSlots onTimePress={onTimeSelect} />
         </View>
         <View>
           <Text className="ml-2 mt-2 text-start text-xs font-bold text-primary-txt">
@@ -87,7 +112,7 @@ const Calendar = () => {
           </Text>
           <View className="ml-2 flex flex-row items-center gap-2">
             <Globe />
-            <Text className=" text-start   text-xs text-primary-txt">
+            <Text className="text-start text-xs text-primary-txt">
               {formattedTimezone}
             </Text>
           </View>
@@ -96,5 +121,3 @@ const Calendar = () => {
     </View>
   );
 };
-
-export default Calendar;
