@@ -30,12 +30,12 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
         <Text
           className={`text-lato-regular my-2 flex-row items-center justify-between text-xl font-bold`}
         >
-          {translate('loginSupplier.Bienvenue_sur_Archimatch')}
+          {translate('loginSupplier.BienvenuesurArchimatch')}
         </Text>
         <Text
           className={`text-lato-regular flex-row items-center justify-between text-xl font-bold`}
         >
-          {translate('loginSupplier.Kit_Partenariat_PRO')}
+          {translate('loginSupplier.KitPartenariatPRO')}
         </Text>
         <Container style="flex w-[100%] h-[28%] items-center mb-0 justify-between gap-3 bg-white  pb-2">
           <ImageContainer className="flex  w-full items-center justify-center">
