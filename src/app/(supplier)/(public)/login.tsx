@@ -3,8 +3,8 @@ import React from 'react';
 
 import { useAuth } from '@/core';
 import { useSoftKeyboardEffect } from '@/core/keyboard';
-import type { LoginFormProps } from '@/modules/login/login-form';
-import { LoginForm } from '@/modules/login/login-form';
+import type { LoginFormProps } from '@/modules/login/login-form-supplier';
+import { LoginForm } from '@/modules/login/login-form-supplier';
 import { FocusAwareStatusBar } from '@/shared/components';
 
 export default function Login() {

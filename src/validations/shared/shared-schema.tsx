@@ -3,6 +3,7 @@ import { z } from 'zod';
 import {
   emailValidation,
   fieldValidation,
+  notRequiredValidationBoolean,
   passwordValidation,
   phoneValidation,
   requiredValidation,
