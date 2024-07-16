@@ -7,6 +7,7 @@ import {
   passwordValidation,
   phoneValidation,
   requiredValidation,
+  requiredValidationBoolean,
   specialityValidation,
 } from './shared-validations';
 
@@ -67,12 +68,11 @@ export const NotificationFormSchema = z.object({
 });
 
 export const AnnouncementFormSchema = z.object({
-  name: fieldValidation,
-  surname: fieldValidation,
+  firstName: fieldValidation,
+  lastName: fieldValidation,
   email: emailValidation,
-  phone: phoneValidation,
-  address: fieldValidation,
-  matricule: fieldValidation, //matriculeValidation
-  password: passwordValidation,
+  phoneNumber: phoneValidation,
+  acceptTerms: requiredValidationBoolean,
+  receiveQuotes: notRequiredValidationBoolean,
   speciality: specialityValidation,
 });

@@ -1,20 +1,22 @@
+import { useRouter } from 'expo-router';
 import React from 'react';
 
-import { StepButtons } from '@/modules/shared';
+import { translate } from '@/core';
+import StepperButton from '@/modules/shared/stepper-button';
 import { View } from '@/shared/components';
 
 import type { StepperFormProps } from './choose-needs';
 
-export function SaveProject({
-  handlePreviousStep,
-  handleNextStep,
-}: StepperFormProps) {
+export function SaveProject({}: StepperFormProps) {
+  const router = useRouter();
   return (
     <View className="flex flex-1 items-center justify-between pt-8">
       <View className="h-[85%]" />
-      <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.retour' }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
+      <StepperButton
+        onPressHandler={() => {
+          router.back();
+        }}
+        label={translate('announcement.buttonLabel')}
       />
     </View>
   );

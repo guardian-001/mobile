@@ -20,5 +20,6 @@ export * from './style';
 export * from './support';
 export * from './terms';
 export * from './tick-icon';
+export * from './trafic';
 export * from './user';
 export * from './website';

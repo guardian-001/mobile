@@ -1,9 +1,10 @@
+import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { cloneElement, useState } from 'react';
+import { cloneElement } from 'react';
 import { Platform, TouchableOpacity } from 'react-native';
 
 import { Close } from '@/assets/icons';
-import { translate } from '@/core';
+import { translate, useStepperSpeacialNavigation } from '@/core';
 import {
   KeyboardAvoidingView,
   ScrollView,
@@ -14,16 +15,11 @@ import {
 import { stepsContent } from './steps-content';
 
 export default function PublicationProjetStepper() {
-  const [step, setStep] = useState(0);
-  const [scroller, setScroller] = useState(100 / 11);
-  const handleNextStep = () => {
-    setStep(step + 1);
-    setScroller(scroller + 100 / 11);
-  };
-  const handlePreviousStep = () => {
-    setStep(step - 1);
-    setScroller(scroller - 100 / 11);
-  };
+  const router = useRouter();
+  const { step, scroller, handleNextStep, handlePreviousStep } =
+    useStepperSpeacialNavigation({
+      maxSteps: 11,
+    });
 
   const { title, subtitle, component } = stepsContent[step];
   return (
@@ -32,7 +28,12 @@ export default function PublicationProjetStepper() {
       className="mt-16 w-full flex-1 rounded-t-3xl bg-white dark:bg-black "
     >
       <View className="px-4 py-6">
-        <TouchableOpacity className="items-end">
+        <TouchableOpacity
+          className="items-end"
+          onPress={() => {
+            router.back();
+          }}
+        >
           <Close />
         </TouchableOpacity>
         {step !== 11 && (
@@ -40,7 +41,7 @@ export default function PublicationProjetStepper() {
             <Text className="mb-2 font-bold">
               {step + 1}/11 {translate('announcement.question')}
             </Text>
-            <View className="h-2 w-full rounded-2xl bg-background">
+            <View className="h-2 w-full rounded-2xl bg-red-600">
               <View
                 className="rounded-2xl bg-primary"
                 style={{ width: `${scroller}%` }}
