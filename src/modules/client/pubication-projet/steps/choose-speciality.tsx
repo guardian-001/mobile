@@ -45,7 +45,7 @@ export function ChooseSpeciality({ handleNextStep }: SpecialityFormProps) {
         {toggleCardData.map((cardData, index) => (
           <ToggleCard
             key={index}
-            className="h-38 w-64 rounded-2xl"
+            className="h-38 mb-7 w-64 rounded-2xl"
             title={translate(cardData.title)}
             svgComponent={cardData.svgComponent}
             name="speciality"

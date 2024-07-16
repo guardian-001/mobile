@@ -50,7 +50,7 @@ export const ToggleCard = <T extends FieldValues>({
           isSelected
             ? 'border-2 border-primary '
             : 'border-borderColor border-[0.5px]'
-        } mb-7`}
+        }`}
         {...props}
       >
         {SvgComponent ? (
