@@ -5,21 +5,17 @@ import { ArrowLeft, ArrowRight, Globe } from '@/assets/icons';
 import { translate } from '@/core';
 import colors from '@/theme/colors';
 
+import { DAYS } from '../constants/constants';
 import { useCalendar, useTimezone } from '../hooks';
 import { capitalizeFirstLetter } from '../utils';
-import { days } from './';
 import { renderCalendarDays } from './render-calendar-days';
 import { RenderTimeSlots } from './time-slots';
 
 type CalendarProps = {
   onDateSelect: (date: Date) => void;
-  onTimeSelect: (time: string) => void;
 };
 
-export const Calendar: React.FC<CalendarProps> = ({
-  onDateSelect,
-  onTimeSelect,
-}) => {
+export const Calendar: React.FC<CalendarProps> = ({ onDateSelect }) => {
   const {
     selectedDate,
     currentMonth,
@@ -62,7 +58,7 @@ export const Calendar: React.FC<CalendarProps> = ({
           </TouchableOpacity>
         </View>
         <View className="mb-2 flex-row items-center justify-between ">
-          {days.map((day, index) => (
+          {DAYS.map((day, index) => (
             <Text
               key={`day-header-${index}`}
               className="mr-1 w-10 text-center font-medium text-primary-txt"
@@ -71,12 +67,6 @@ export const Calendar: React.FC<CalendarProps> = ({
             </Text>
           ))}
         </View>
-        {/* <CalendarView
-          currentYear={currentYear}
-          currentMonth={currentMonth}
-          selectedDate={selectedDate}
-          handleDatePress={onDatePress}
-        /> */}
         <View className="flex-col flex-wrap">
           {renderCalendarDays({
             currentYear,
@@ -104,7 +94,7 @@ export const Calendar: React.FC<CalendarProps> = ({
           })}
         </Text>
         <View className="flex-row flex-wrap justify-center">
-          <RenderTimeSlots onTimePress={onTimeSelect} />
+          <RenderTimeSlots />
         </View>
         <View>
           <Text className="ml-2 mt-2 text-start text-xs font-bold text-primary-txt">

@@ -31,11 +31,12 @@ export const CalendarDaysList = ({
     currentMonth + 1,
     0
   ).getDay();
-  const calendarDays = [];
+  const calendarDays: JSX.Element[] = [];
   const daysFromPreviousMonth =
     firstDayOfCurrentMonth === 0 ? 6 : firstDayOfCurrentMonth - 1;
   const currentDate = new Date();
-  for (let i = 0; i < daysFromPreviousMonth; i++) {
+
+  Array.from({ length: daysFromPreviousMonth }).forEach((_, i) => {
     const date = new Date(
       currentYear,
       currentMonth,
@@ -43,7 +44,7 @@ export const CalendarDaysList = ({
     );
     calendarDays.push(
       <CalendarDayItem
-        key={`day-${i}`}
+        key={`day-prev-${i}`}
         date={date}
         isPrevious={true}
         isSelected={
@@ -60,12 +61,13 @@ export const CalendarDaysList = ({
         isDisabled={date.getMonth() < currentDate.getMonth()}
       />
     );
-  }
-  for (let i = 1; i <= daysInCurrentMonth; i++) {
-    const date = new Date(currentYear, currentMonth, i);
+  });
+
+  Array.from({ length: daysInCurrentMonth }).forEach((_, i) => {
+    const date = new Date(currentYear, currentMonth, i + 1);
     calendarDays.push(
       <CalendarDayItem
-        key={`day-${i}`}
+        key={`day-${i + 1}`}
         date={date}
         isSelected={
           date.getDate() === selectedDate.getDate() &&
@@ -81,17 +83,18 @@ export const CalendarDaysList = ({
         isDisabled={date.getDate() < currentDate.getDate()}
       />
     );
-  }
+  });
   const daysFromNextMonth = (7 - lastDayOfCurrentMonth) % 7;
-  for (let i = 1; i <= daysFromNextMonth; i++) {
+
+  Array.from({ length: daysFromNextMonth }).forEach((_, i) => {
     const date = new Date(
       currentMonth === 11 ? currentYear + 1 : currentYear,
       currentMonth === 11 ? 0 : currentMonth + 1,
-      i
+      i + 1
     );
     calendarDays.push(
       <CalendarDayItem
-        key={`day-${daysInCurrentMonth + i}`}
+        key={`day-next-${i + 1}`}
         date={date}
         isNext={true}
         isSelected={
@@ -103,15 +106,7 @@ export const CalendarDaysList = ({
         handleDatePress={handleDatePress}
       />
     );
-  }
+  });
+
   return splitList(calendarDays, 7);
-  // return (
-  //   <View className="flex-col flex-wrap">
-  //     {splitList(calendarDays, 7).map((row, index) => (
-  //       <View key={`row-${index}`} className="mb-2 flex-row justify-between">
-  //         {row}
-  //       </View>
-  //     ))}
-  //   </View>
-  // );
 };

@@ -4,6 +4,9 @@ import { Clock } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import StepperButton from '@/modules/shared/stepper-button';
 import { Text, View } from '@/shared/components';
+import { useCustomForm } from '@/shared/hooks';
+import { formatDate } from '@/shared/utils';
+import { SignupFormSchema } from '@/validations';
 export type ResetFormProps = {
   handleConfirmationStep?: () => void;
 };
@@ -11,6 +14,7 @@ export type ResetFormProps = {
 export default function DemoPlanningConfirmation({
   handleConfirmationStep,
 }: ResetFormProps) {
+  const { form } = useCustomForm(SignupFormSchema);
   return (
     <View className="flex h-fit w-full items-center justify-between gap-16">
       <View>
@@ -31,7 +35,9 @@ export default function DemoPlanningConfirmation({
             <Text className="font-bold text-description">
               {translate('labels.date')}
             </Text>
-            <Text className="font-bold text-primary-txt">18 january 2025</Text>
+            <Text className="font-bold text-primary-txt">
+              {formatDate(form.getValues().demoDate)}
+            </Text>
           </View>
           <View>
             <Text className="font-bold text-description">

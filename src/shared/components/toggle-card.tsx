@@ -17,7 +17,7 @@ type CardProps<T extends FieldValues> = {
   svgComponent?: React.ComponentType;
   name: Path<T>;
   control: Control<T>;
-  rules?: RegisterOptions; // Adjust the type according to your validation rules
+  rules?: RegisterOptions;
   isSelected: boolean;
   onSelect: () => void;
 };

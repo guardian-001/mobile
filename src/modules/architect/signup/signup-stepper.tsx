@@ -19,9 +19,7 @@ export default function SignupStepper({}: Props) {
     maxSteps: 5,
   });
 
-  const handleConfirmationStep = () => {
-    console.log('confirmed');
-  };
+  const handleConfirmationStep = () => {};
 
   const stepsContent: {
     component: React.ReactNode;

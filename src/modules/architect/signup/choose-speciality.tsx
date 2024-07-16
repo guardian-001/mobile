@@ -4,7 +4,7 @@ import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import { useCustomForm } from '@/shared/hooks';
 import { SignupFormSchema } from '@/validations';
 
 export type ResetFormProps = {

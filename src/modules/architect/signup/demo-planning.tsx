@@ -3,7 +3,7 @@ import React from 'react';
 import { StepButtons } from '@/modules/shared';
 import { ScrollView, Text, View } from '@/shared/components';
 import { Calendar } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import { useCustomForm } from '@/shared/hooks';
 import { SignupFormSchema } from '@/validations';
 
 export type ResetFormProps = {
@@ -21,9 +21,9 @@ export default function DemoPlanning({
     setValue('demoDate', date);
   };
 
-  const handleTimeSelect = (time: string) => {
-    setValue('demoTime', time);
-  };
+  // const handleTimeSelect = (time: string) => {
+  //   setValue('demoTime', time);
+  // };
 
   return (
     <ScrollView
@@ -46,7 +46,7 @@ export default function DemoPlanning({
       <View className="my-5 flex h-fit w-4/5 rounded-3xl bg-white px-3 py-5 shadow-md">
         <Calendar
           onDateSelect={handleDateSelect}
-          onTimeSelect={handleTimeSelect}
+          // onTimeSelect={handleTimeSelect}
         />
       </View>
       <StepButtons
