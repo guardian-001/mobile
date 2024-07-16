@@ -41,7 +41,7 @@ export default function PublicationProjetStepper() {
             <Text className="mb-2 font-bold">
               {step + 1}/11 {translate('announcement.question')}
             </Text>
-            <View className="h-2 w-full rounded-2xl bg-red-600">
+            <View className="h-2 w-full rounded-2xl bg-background">
               <View
                 className="rounded-2xl bg-primary"
                 style={{ width: `${scroller}%` }}
