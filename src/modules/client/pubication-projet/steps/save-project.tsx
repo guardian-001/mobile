@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 
 import { translate } from '@/core';
-import StepperButton from '@/modules/shared/stepper-button';
+import { StepperButton } from '@/modules/shared';
 import { View } from '@/shared/components';
 
 import type { StepperFormProps } from './choose-needs';

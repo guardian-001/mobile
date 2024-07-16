@@ -4,7 +4,7 @@ import type { SvgProps } from 'react-native-svg';
 import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
 import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
-import StepperButton from '@/modules/shared/stepper-button';
+import { StepperButton } from '@/modules/shared';
 import { ToggleCard, View } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
 import { AnnouncementFormSchema } from '@/validations';
