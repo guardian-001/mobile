@@ -45,13 +45,14 @@ export function ChooseSpeciality({ handleNextStep }: SpecialityFormProps) {
         {toggleCardData.map((cardData, index) => (
           <ToggleCard
             key={index}
-            className="h-38 mb-7 w-64 rounded-2xl"
+            className="mb-7 h-40 w-64 rounded-2xl"
             title={translate(cardData.title)}
             svgComponent={cardData.svgComponent}
             name="speciality"
             control={control}
             isSelected={selectedSpeciality === cardData.selectedSpeciality}
             onSelect={() => handleSelectSpeciality(cardData.selectedSpeciality)}
+            classNameText="my-3"
           />
         ))}
       </View>

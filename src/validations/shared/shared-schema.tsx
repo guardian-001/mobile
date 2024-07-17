@@ -75,4 +75,7 @@ export const AnnouncementFormSchema = z.object({
   acceptTerms: requiredValidationBoolean,
   receiveQuotes: notRequiredValidationBoolean,
   speciality: specialityValidation,
+  needs: specialityValidation,
+  categories: specialityValidation,
+  properties: specialityValidation,
 });

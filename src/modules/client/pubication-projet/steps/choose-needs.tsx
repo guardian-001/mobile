@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import type { SvgProps } from 'react-native-svg';
 
 import { Trafic } from '@/assets/icons';
-import type { TxKeyPath } from '@/core';
-import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { ToggleCard, View } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
@@ -20,47 +18,52 @@ export function ChooseNeeds({
 }: StepperFormProps) {
   const { control } = useCustomForm(AnnouncementFormSchema);
 
-  const [selectedSpeciality, setSelectedSpeciality] = useState<string | null>(
-    null
-  );
-  const handleSelectSpeciality = (speciality: string) => {
-    setSelectedSpeciality(speciality);
+  const [selectedNeeds, setSelectedNeeds] = useState<string[]>([]);
+  const handleSelectNeeds = (need: string) => {
+    setSelectedNeeds((prevSelectedNeeds) => {
+      if (prevSelectedNeeds.includes(need)) {
+        return prevSelectedNeeds.filter((item) => item !== need);
+      } else {
+        return [...prevSelectedNeeds, need];
+      }
+    });
   };
+  console.log('d', selectedNeeds);
   type NeedsData = {
-    title: TxKeyPath;
+    title: string;
     svgComponent: React.FunctionComponent<SvgProps>;
-    selectedSpeciality: string;
+    selectedNeeds: string;
   };
   const NeedsData: NeedsData[] = [
     {
-      title: 'announcement.constructionArchitect',
+      title: 'Plans permis et suivi chantier',
       svgComponent: Trafic,
-      selectedSpeciality: 'constructionArchitect',
+      selectedNeeds: 'Chantier',
     },
     {
-      title: 'announcement.interiorDesigners',
+      title: 'Plan 3d de décoration extérieur',
       svgComponent: Trafic,
-      selectedSpeciality: 'interiorArchitect',
+      selectedNeeds: 'interiorArchitect',
     },
     {
-      title: 'announcement.interiorDesigners',
+      title: 'Plans et permis de construire',
       svgComponent: Trafic,
-      selectedSpeciality: 'interiorArchitect',
+      selectedNeeds: 'buildingPermit',
     },
     {
-      title: 'announcement.interiorDesigners',
+      title: 'Plan 3d de décoration intérieur',
       svgComponent: Trafic,
-      selectedSpeciality: 'interiorArchitect',
+      selectedNeeds: 'interiorDesign',
     },
     {
-      title: 'announcement.interiorDesigners',
+      title: 'Plans permis et suivi chantier',
       svgComponent: Trafic,
-      selectedSpeciality: 'interiorArchitect',
+      selectedNeeds: 'constructionArchitect',
     },
     {
-      title: 'announcement.interiorDesigners',
+      title: 'Plan 3d de décoration intérieur',
       svgComponent: Trafic,
-      selectedSpeciality: 'interiorArchitect',
+      selectedNeeds: 'interiorDecoration',
     },
   ];
   return (
@@ -70,12 +73,12 @@ export function ChooseNeeds({
           <ToggleCard
             key={index}
             className="mb-4 flex h-16  w-full flex-row rounded-lg"
-            title={translate(cardData.title)}
+            title={cardData.title}
             svgComponent={cardData.svgComponent}
-            name="speciality"
+            name="needs"
             control={control}
-            isSelected={selectedSpeciality === cardData.selectedSpeciality}
-            onSelect={() => handleSelectSpeciality(cardData.selectedSpeciality)}
+            isSelected={selectedNeeds.includes(cardData.selectedNeeds)}
+            onSelect={() => handleSelectNeeds(cardData.selectedNeeds)}
           />
         ))}
       </View>

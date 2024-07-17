@@ -4,24 +4,24 @@ import { cloneElement } from 'react';
 import { Platform, TouchableOpacity } from 'react-native';
 
 import { Close } from '@/assets/icons';
-import { translate, useStepperSpeacialNavigation } from '@/core';
 import {
   KeyboardAvoidingView,
   ScrollView,
   Text,
   View,
 } from '@/shared/components';
+import { useStepperSpeacialNavigation } from '@/shared/hooks/use-stepper-special-navigation';
 
 import { stepsContent } from './steps-content';
 
 export default function PublicationProjetStepper() {
   const router = useRouter();
-  const { step, scroller, handleNextStep, handlePreviousStep } =
-    useStepperSpeacialNavigation({
-      maxSteps: 11,
-    });
+  const { step, handleNextStep, handlePreviousStep } =
+    useStepperSpeacialNavigation({ maxSteps: 11 });
 
   const { title, subtitle, component } = stepsContent[step];
+  const percentageCompleted = Math.round(((step + 1) / 11) * 100);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -38,13 +38,11 @@ export default function PublicationProjetStepper() {
         </TouchableOpacity>
         {step !== 11 && (
           <View>
-            <Text className="mb-2 font-bold">
-              {step + 1}/11 {translate('announcement.question')}
-            </Text>
+            <Text className="mb-2 font-bold">{percentageCompleted}%</Text>
             <View className="h-2 w-full rounded-2xl bg-background">
               <View
                 className="rounded-2xl bg-primary"
-                style={{ width: `${scroller}%` }}
+                style={{ width: `${percentageCompleted}%` }}
               >
                 <Text />
               </View>
