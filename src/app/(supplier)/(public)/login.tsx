@@ -14,7 +14,7 @@ export default function Login() {
 
   const onSubmit: LoginFormProps['onSubmit'] = () => {
     signIn({ access: 'access-token', refresh: 'refresh-token' });
-    router.push('/(supplier)/(private)');
+    router.push('/(supplier)/(public)/reset-password-client.tsx');
   };
   return (
     <>
