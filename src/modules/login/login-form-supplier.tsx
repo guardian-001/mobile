@@ -42,7 +42,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
             <Image
               className="h-full w-full overflow-hidden rounded-t-xl "
               contentFit="cover"
-              source={require('@/assets/Supplier-login.png')}
+              source={require('@/assets/supplier-login.png')}
             />
           </ImageContainer>
         </Container>
