@@ -1,6 +1,5 @@
 import { useRouter } from 'expo-router';
 import * as React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 
 import {
   Flag,
@@ -14,6 +13,7 @@ import {
 import { translate, useAuth } from '@/core';
 import {
   colors,
+  GradientBackground,
   HeaderTitle,
   Image,
   ImageContainer,
@@ -34,13 +34,10 @@ export default function ClientProfile({}: Props) {
     router.push(`/(client)/(private)/${path}`);
   };
   return (
-    <LinearGradient
-      start={{ x: 0, y: 1 }}
-      end={{ x: 0, y: 0 }}
+    <GradientBackground
       colors={[colors.white, colors['extra-light-blue']]}
       className="flex-1"
     >
-
       <HeaderTitle text="profile.profile" type="transparent" />
 
       <ScrollView contentContainerClassName="p-6 pb-20 dark:bg-black">
@@ -60,7 +57,7 @@ export default function ClientProfile({}: Props) {
               <Text className={`text-xs`} tx="onBoarding.welcomeDescription" />
             </Container>
             <MainButton
-              onPressHandler={() => {}}
+              onPressHandler={() => navigateTo(`(projet)/publication-projet`)}
               label={translate('common.start')}
               type="button"
               width="w-[52%]"
@@ -101,6 +98,6 @@ export default function ClientProfile({}: Props) {
           <Item text="profile.logout" icon={<Logout />} onPress={signOut} />
         </ItemsContainer>
       </ScrollView>
-    </LinearGradient>
+    </GradientBackground>
   );
 }
