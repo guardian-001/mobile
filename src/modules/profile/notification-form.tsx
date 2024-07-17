@@ -4,7 +4,7 @@ import type { z } from 'zod';
 
 import { translate } from '@/core';
 import { Button, CheckboxInput, HeaderTitle, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import { useCustomForm } from '@/shared/hooks';
 import { NotificationFormSchema } from '@/validations';
 
 type NotificationFormType = z.infer<typeof NotificationFormSchema>;

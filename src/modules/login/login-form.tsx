@@ -6,8 +6,7 @@ import type * as z from 'zod';
 
 import { translate, useAuth } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
-import { useRouteName } from '@/shared/hooks/use-get-route';
+import { useCustomForm, useRouteName } from '@/shared/hooks';
 import { LoginFormSchema } from '@/validations';
 
 import { Container } from '../shared';

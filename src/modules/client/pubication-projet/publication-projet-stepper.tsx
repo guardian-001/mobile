@@ -16,11 +16,11 @@ import { stepsContent } from './steps-content';
 
 export default function PublicationProjetStepper() {
   const router = useRouter();
+  const lastStep = 11;
   const { step, scroller, handleNextStep, handlePreviousStep } =
     useStepperSpeacialNavigation({
-      maxSteps: 11,
+      maxSteps: lastStep,
     });
-
   const { title, subtitle, component } = stepsContent[step];
   return (
     <KeyboardAvoidingView
@@ -36,10 +36,10 @@ export default function PublicationProjetStepper() {
         >
           <Close />
         </TouchableOpacity>
-        {step !== 11 && (
+        {step !== lastStep && (
           <View>
             <Text className="mb-2 font-bold">
-              {step + 1}/11 {translate('announcement.question')}
+              {step + 1}/lastStep {translate('announcement.question')}
             </Text>
             <View className="h-2 w-full rounded-2xl bg-background">
               <View
@@ -55,7 +55,7 @@ export default function PublicationProjetStepper() {
       <ScrollView
         className="flex-1 px-4"
         contentContainerClassName={`${
-          step !== 11 ? 'min-h-[85%]' : 'min-h-[90%]'
+          step !== lastStep ? 'min-h-[85%]' : 'min-h-[90%]'
         }`}
       >
         <Text tx={title} className="mb-2 text-xl font-bold" />
