@@ -39,7 +39,7 @@ export default function PublicationProjetStepper() {
         {step !== lastStep && (
           <View>
             <Text className="mb-2 font-bold">
-              {step + 1}/lastStep {translate('announcement.question')}
+              {step + 1}/{lastStep} {translate('announcement.question')}
             </Text>
             <View className="h-2 w-full rounded-2xl bg-background">
               <View
