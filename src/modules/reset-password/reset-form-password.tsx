@@ -3,7 +3,7 @@ import type { SubmitHandler } from 'react-hook-form';
 import type * as z from 'zod';
 
 import { Button, ControlledInput, Text, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import { useCustomForm } from '@/shared/hooks';
 import type { TxKeyPath } from '@/translations/i18n';
 import { translate } from '@/translations/i18n';
 import { PasswordSchema } from '@/validations';

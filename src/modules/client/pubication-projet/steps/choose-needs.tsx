@@ -28,7 +28,6 @@ export function ChooseNeeds({
       }
     });
   };
-  console.log('d', selectedNeeds);
   type NeedsData = {
     title: string;
     svgComponent: React.FunctionComponent<SvgProps>;

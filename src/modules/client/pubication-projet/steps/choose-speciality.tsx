@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import type { SvgProps } from 'react-native-svg';
 
 import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
-import type { TxKeyPath } from '@/core';
-import { translate } from '@/core';
-import StepperButton from '@/modules/shared/stepper-button';
+import { translate, type TxKeyPath } from '@/core';
+import { StepperButton } from '@/modules/shared';
 import { ToggleCard, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import { useCustomForm } from '@/shared/hooks';
 import { AnnouncementFormSchema } from '@/validations';
 
 type SpecialityFormProps = {

@@ -16,11 +16,12 @@ import { stepsContent } from './steps-content';
 
 export default function PublicationProjetStepper() {
   const router = useRouter();
+  const lastStep = 11;
   const { step, handleNextStep, handlePreviousStep } =
-    useStepperSpeacialNavigation({ maxSteps: 11 });
+    useStepperSpeacialNavigation({ maxSteps: lastStep });
 
   const { title, subtitle, component } = stepsContent[step];
-  const percentageCompleted = Math.round(((step + 1) / 11) * 100);
+  const percentageCompleted = Math.round(((step + 1) / lastStep) * 100);
 
   return (
     <KeyboardAvoidingView
@@ -36,7 +37,7 @@ export default function PublicationProjetStepper() {
         >
           <Close />
         </TouchableOpacity>
-        {step !== 11 && (
+        {step !== lastStep && (
           <View>
             <Text className="mb-2 font-bold">{percentageCompleted}%</Text>
             <View className="h-2 w-full rounded-2xl bg-background">
@@ -53,7 +54,7 @@ export default function PublicationProjetStepper() {
       <ScrollView
         className="flex-1 px-4"
         contentContainerClassName={`${
-          step !== 11 ? 'min-h-[85%]' : 'min-h-[90%]'
+          step !== lastStep ? 'min-h-[85%]' : 'min-h-[90%]'
         }`}
       >
         <Text tx={title} className="mb-2 text-xl font-bold" />
