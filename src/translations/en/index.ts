@@ -1,3 +1,4 @@
+import announcement from './announcement.json';
 import common from './common.json';
 import labels from './labels.json';
 import login from './login.json';
@@ -14,6 +15,7 @@ import signupStepDemoPlanningConfirmation from './signup-step4.json';
 import validations from './validations.json';
 
 export default {
+  announcement,
   notification,
   profile,
   login,

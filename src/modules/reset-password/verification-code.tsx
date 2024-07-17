@@ -3,7 +3,7 @@ import type { SubmitHandler } from 'react-hook-form';
 import type * as z from 'zod';
 
 import { Button, Text, TouchableOpacity, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import { useCustomForm } from '@/shared/hooks';
 import { translate } from '@/translations/i18n';
 import { OTPSchema } from '@/validations';
 

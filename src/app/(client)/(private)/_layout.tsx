@@ -1,11 +1,20 @@
 import { Stack } from 'expo-router';
 import React from 'react';
 
+import { ScreenOptions } from '@/shared/components';
+
 export default function ClientPrivateLayout() {
   return (
     <Stack initialRouteName="(tab)">
-      <Stack.Screen name="(tab)" options={{ headerShown: false }} />
-      <Stack.Screen name="(profile)" options={{ headerShown: false }} />
+      <Stack.Screen name="(tab)" options={ScreenOptions({ type: 'custom' })} />
+      <Stack.Screen
+        name="(profile)"
+        options={ScreenOptions({ type: 'custom' })}
+      />
+      <Stack.Screen
+        name="(projet)"
+        options={ScreenOptions({ type: 'custom' })}
+      />
     </Stack>
   );
 }

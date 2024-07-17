@@ -5,7 +5,7 @@ import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import { useCustomForm } from '@/shared/hooks';
 import { SignupFormSchema } from '@/validations';
 
 export type SignupFormType = z.infer<typeof SignupFormSchema>;
