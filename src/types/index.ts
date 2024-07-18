@@ -1,4 +1,3 @@
-// type.ts
 import type { SubmitHandler } from 'react-hook-form';
 import type * as z from 'zod';
 
