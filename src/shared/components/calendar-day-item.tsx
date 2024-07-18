@@ -22,8 +22,8 @@ export const CalendarDayItem = ({
 }: CalendarDayItemProps) => {
   return (
     <TouchableOpacity
-      className={`mr-1 h-10 w-10 items-center justify-center rounded-full${
-        isPrevious || isNext ? 'bg-gray-200' : ''
+      className={`mr-1 h-10 w-10 items-center justify-center rounded-full ${
+        isPrevious || isNext ? 'rounded-full bg-zinc-200' : ''
       } ${
         isSelected
           ? 'bg-primary'
@@ -35,10 +35,8 @@ export const CalendarDayItem = ({
       disabled={isDisabled}
     >
       <Text
-        className={`font-lato text-sm ${
-          isPrevious || isNext ? 'bg-gray-200' : ''
-        }  ${
-          isDisabled
+        className={`font-lato text-sm   ${
+          isDisabled || isPrevious || isNext
             ? 'text-gray-500'
             : isSelected
             ? 'font-bold text-white'

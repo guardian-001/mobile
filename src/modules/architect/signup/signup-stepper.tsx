@@ -5,6 +5,7 @@ import ResetFormPassword from '@/modules/reset-password/reset-form-password';
 import { HeaderTitle, ScrollView, View } from '@/shared/components';
 import { useStepperNavigation } from '@/shared/hooks';
 import { useRouteName } from '@/shared/hooks/use-get-route';
+import { FormProvider } from '@/shared/providers/use-signup-stepper-provider';
 
 import ChooseSpeciality from './choose-speciality';
 import CreateProfile from './create-profile';
@@ -18,8 +19,6 @@ export default function SignupStepper({}: Props) {
   const { step, handleNextStep, handlePreviousStep } = useStepperNavigation({
     maxSteps: 5,
   });
-
-  const handleConfirmationStep = () => {};
 
   const stepsContent: {
     component: React.ReactNode;
@@ -49,11 +48,7 @@ export default function SignupStepper({}: Props) {
       ),
     },
     {
-      component: (
-        <DemoPlanningConfirmation
-          handleConfirmationStep={handleConfirmationStep}
-        />
-      ),
+      component: <DemoPlanningConfirmation />,
     },
     {
       component: (
@@ -66,16 +61,18 @@ export default function SignupStepper({}: Props) {
 
   const { component } = stepsContent[step];
   return (
-    <View className="items-between flex h-full  bg-background dark:bg-black">
-      <HeaderTitle text="signup.headerTitle" type="custom" />
-      <ScrollView
-        className=" flex-1p-6 h-full pt-12"
-        contentContainerStyle={{
-          alignItems: 'center',
-        }}
-      >
-        {component}
-      </ScrollView>
-    </View>
+    <FormProvider>
+      <View className="items-between flex h-full  bg-background dark:bg-black">
+        <HeaderTitle text="signup.headerTitle" type="custom" />
+        <ScrollView
+          className=" flex-1p-6 h-full pt-12"
+          contentContainerStyle={{
+            alignItems: 'center',
+          }}
+        >
+          {component}
+        </ScrollView>
+      </View>
+    </FormProvider>
   );
 }

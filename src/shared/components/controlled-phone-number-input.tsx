@@ -16,11 +16,16 @@ type TRule = Omit<
   RegisterOptions,
   'valueAsNumber' | 'valueAsDate' | 'setValueAs'
 >;
+export type CreateProfileType = {
+  name: string;
+  data: string;
+};
 export type InputControllerType<T extends FieldValues> = {
   label: string;
   name: Path<T>;
   control: Control<T>;
   rules?: TRule;
+  handleOnChange: ({ name, data }: CreateProfileType) => void;
 };
 
 interface ControlledInputProps<T extends FieldValues>
@@ -28,7 +33,7 @@ interface ControlledInputProps<T extends FieldValues>
 export function ControlledPhoneNumberInput<T extends FieldValues>(
   props: ControlledInputProps<T>
 ) {
-  const { name, control, rules, label } = props;
+  const { name, control, rules, label, handleOnChange } = props;
 
   const { field, fieldState } = useController({ control, name, rules });
   const error = fieldState.error?.message as TxKeyPath | undefined;
@@ -47,6 +52,10 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
       <View>
         <PhoneInput
           value={(field.value as string) || ''}
+          onChangeText={(value) => {
+            field.onChange(value);
+            handleOnChange({ name, data: value });
+          }}
           onChangePhoneNumber={field.onChange}
           placeholder="111-222-333-444"
           selectedCountry={selectedCountry}

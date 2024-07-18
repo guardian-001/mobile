@@ -1,35 +1,67 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
-import { ArrowLeft, ArrowRight, Globe } from '@/assets/icons';
-import { translate } from '@/core';
+import { ArrowLeft, ArrowRight } from '@/assets/icons';
 import colors from '@/theme/colors';
+import { DemoFormSchema } from '@/validations';
 
 import { DAYS } from '../constants/constants';
-import { useCalendar, useTimezone } from '../hooks';
-import { capitalizeFirstLetter } from '../utils';
-import { renderCalendarDays } from './render-calendar-days';
+import { useCalendar, useCustomForm } from '../hooks';
+import { useFormStepper } from '../providers/use-signup-stepper-provider';
+import { capitalizeFirstLetter, formatDateBackend } from '../utils';
+import { CalendarDaysList } from './';
 import { RenderTimeSlots } from './time-slots';
 
 type CalendarProps = {
-  onDateSelect: (date: Date) => void;
+  errors: any;
 };
-
-export const Calendar: React.FC<CalendarProps> = ({ onDateSelect }) => {
+type PlanDemoType = {
+  name: string;
+  data: Date | string;
+};
+export const Calendar = ({ errors }: CalendarProps) => {
   const {
     selectedDate,
+    selectedTime,
     currentMonth,
     currentYear,
     handleDatePress,
+    handleTimePress,
     handlePreviousMonth,
     handleNextMonth,
   } = useCalendar();
+  // const [formattedTimezone] = useTimezone();
+  const { formData, setFormData } = useFormStepper();
+  const { control } = useCustomForm(DemoFormSchema, {
+    date: formData?.date,
+    timeSlot: formData?.timeSlot,
+  });
 
-  const [formattedTimezone] = useTimezone();
+  const handleData = ({ name, data }: PlanDemoType) => {
+    console.log('name: ', name);
+    console.log('data: ', data);
+    setFormData((prev: any) => ({
+      ...prev,
+      [name]: data,
+    }));
+  };
 
   const onDatePress = (date: Date) => {
+    handleData({ name: 'date', data: date });
+    setFormData((prev: any) => ({
+      ...prev,
+      date: formatDateBackend(date),
+    }));
     handleDatePress(date);
-    onDateSelect(date);
+  };
+
+  const onTimePress = (time: string) => {
+    handleData({ name: 'timeSlot', data: time });
+    setFormData((prev: any) => ({
+      ...prev,
+      timeSlot: time,
+    }));
+    handleTimePress(time);
   };
 
   return (
@@ -67,36 +99,35 @@ export const Calendar: React.FC<CalendarProps> = ({ onDateSelect }) => {
             </Text>
           ))}
         </View>
-        <View className="flex-col flex-wrap">
-          {renderCalendarDays({
-            currentYear,
-            currentMonth,
-            selectedDate,
-            handleDatePress: onDatePress,
-          }).map((week) => {
-            return (
-              <View
-                key={week[0]?.toString()}
-                className="mb-2 flex-row justify-between"
-              >
-                {week}
-              </View>
-            );
-          })}
-        </View>
+        <CalendarDaysList
+          name="date"
+          control={control}
+          currentYear={currentYear}
+          currentMonth={currentMonth}
+          selectedDate={selectedDate}
+          handleDatePress={onDatePress}
+          handlePreviousMonth={handlePreviousMonth}
+          handleNextMonth={handleNextMonth}
+          errors={errors}
+        />
       </View>
       <View className="mt-4 items-start">
-        <Text className="mb-2 ml-2 text-xs font-semibold text-primary-txt">
+        {/* <Text className="mb-2 ml-2 text-xs font-semibold text-primary-txt">
           {selectedDate.toLocaleDateString('en-US', {
             weekday: 'long',
             month: 'long',
             day: 'numeric',
           })}
-        </Text>
+        </Text> */}
         <View className="flex-row flex-wrap justify-center">
-          <RenderTimeSlots />
+          <RenderTimeSlots
+            name="timeSlot"
+            control={control}
+            handleTimePress={onTimePress}
+            selectedTime={selectedTime}
+          />
         </View>
-        <View>
+        {/* <View>
           <Text className="ml-2 mt-2 text-start text-xs font-bold text-primary-txt">
             {translate('signupStepDemoPlanning.timezone')}
           </Text>
@@ -106,7 +137,7 @@ export const Calendar: React.FC<CalendarProps> = ({ onDateSelect }) => {
               {formattedTimezone}
             </Text>
           </View>
-        </View>
+        </View> */}
       </View>
     </View>
   );

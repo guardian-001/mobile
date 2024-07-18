@@ -1,11 +1,10 @@
-// usePagination.ts
 import { useState } from 'react';
 
 type UsePaginationResult<T> = {
   currentPage: number;
   totalPages: number;
   handlePageChange: (pageIndex: number) => void;
-  paginatedItems: (items: T[]) => T[];
+  paginatedItems: (items: T[]) => string[];
 };
 
 export const usePagination = <T,>(
@@ -20,9 +19,16 @@ export const usePagination = <T,>(
     setCurrentPage(pageIndex);
   };
 
-  const paginatedItems = (items: T[]) =>
-    items.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
-
+  const paginatedItems = (items: T[]) => {
+    const result: string[] = [];
+    const chunkSize: number = 8;
+    items.forEach((_, i) => {
+      if (i % chunkSize === 0) {
+        result.push(JSON.stringify(items.slice(i, i + chunkSize)));
+      }
+    });
+    return result;
+  };
   return {
     currentPage,
     totalPages,

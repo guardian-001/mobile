@@ -1,29 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { SignupFormSchema } from '@/validations';
+import { useFormStepper } from '@/shared/providers/use-signup-stepper-provider';
+import { SpecialityFormSchema } from '@/validations';
 
 export type ResetFormProps = {
-  handlePreviousStep?: () => void;
-  handleNextStep?: () => void;
+  handlePreviousStep: () => void;
+  handleNextStep: () => void;
+};
+
+export type FormData = {
+  architectSpeciality: string;
 };
 
 export default function ChooseSpeciality({
   handlePreviousStep,
   handleNextStep,
 }: ResetFormProps) {
-  const { control } = useCustomForm(SignupFormSchema);
+  const { setFormData, formData } = useFormStepper();
+  const { control, handleSubmit } = useCustomForm(SpecialityFormSchema, {
+    architectSpeciality: '',
+  });
 
-  const [selectedSpeciality, setSelectedSpeciality] = useState<string | null>(
-    null
-  );
+  const handleSelectSpeciality = (speciality: number) => {
+    setFormData((prev: any) => ({ ...prev, architectSpeciality: speciality }));
+  };
 
-  const handleSelectSpeciality = (speciality: string) => {
-    setSelectedSpeciality(speciality);
+  const onSubmit = () => {
+    handleNextStep();
   };
 
   return (
@@ -44,25 +52,27 @@ export default function ChooseSpeciality({
           className="h-38 w-64 rounded-2xl"
           title={translate('signupStepSpeciality.constructionArchitect')}
           svgComponent={HouseModel}
-          name="speciality"
+          name="architectSpeciality"
           control={control}
-          isSelected={selectedSpeciality === 'constructionArchitect'}
-          onSelect={() => handleSelectSpeciality('constructionArchitect')}
+          id={1}
+          selectedValue={formData?.architectSpeciality}
+          onSelect={() => handleSelectSpeciality(1)}
         />
 
         <ToggleCard
           className="h-38 w-64 rounded-2xl"
           title={translate('signupStepSpeciality.interiorArchitect')}
           svgComponent={InteriorHouseModel}
-          name="speciality"
+          name="architectSpeciality"
           control={control}
-          isSelected={selectedSpeciality === 'interiorArchitect'}
-          onSelect={() => handleSelectSpeciality('interiorArchitect')}
+          id={2}
+          selectedValue={formData?.architectSpeciality}
+          onSelect={() => handleSelectSpeciality(2)}
         />
       </ScrollView>
       <StepButtons
         previous={{ handlePreviousStep, label: 'signup.ignorer' }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
+        next={{ handleSubmit: handleSubmit(onSubmit), label: 'signup.suivant' }}
       />
     </View>
   );

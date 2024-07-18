@@ -20,7 +20,7 @@ export const LogoArchi = (props: SvgProps) => (
     />
     <Mask
       id="mask0"
-      mask-type="luminance" // Changed from maskType to mask-type
+      mask-type="luminance"
       maskUnits="userSpaceOnUse"
       x="13"
       y="6"

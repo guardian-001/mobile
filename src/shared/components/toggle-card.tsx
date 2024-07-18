@@ -16,9 +16,10 @@ type CardProps<T extends FieldValues> = {
   classNameText?: string;
   svgComponent?: React.ComponentType;
   name: Path<T>;
+  id: number;
   control: Control<T>;
   rules?: RegisterOptions;
-  isSelected: boolean;
+  selectedValue: number;
   onSelect: () => void;
 };
 
@@ -29,17 +30,18 @@ export const ToggleCard = <T extends FieldValues>({
   classNameText,
   svgComponent: SvgComponent,
   name,
+  id,
+  selectedValue,
   control,
   rules,
-  isSelected,
   onSelect,
   ...props
 }: CardProps<T>) => {
   const { field, fieldState } = useController({ control, name, rules });
 
   const handlePress = () => {
-    field.onChange(!field.value);
     onSelect();
+    field.onChange(id);
   };
 
   return (
@@ -47,7 +49,7 @@ export const ToggleCard = <T extends FieldValues>({
       <Pressable
         onPress={handlePress}
         className={`${className} flex-1 items-center justify-center self-center   p-4 ${
-          isSelected
+          selectedValue === id
             ? 'border-2 border-primary '
             : 'border-borderColor border-[0.5px]'
         } mb-7`}

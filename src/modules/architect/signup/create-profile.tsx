@@ -6,20 +6,47 @@ import { StepButtons } from '@/modules/shared';
 import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
 import { useCustomForm } from '@/shared/hooks';
-import { SignupFormSchema } from '@/validations';
+import { useFormStepper } from '@/shared/providers/use-signup-stepper-provider';
+import type { SignupFormSchema } from '@/validations';
+import { createAccountSchema } from '@/validations';
 
 export type SignupFormType = z.infer<typeof SignupFormSchema>;
 
 export type ResetFormProps = {
   handlePreviousStep?: () => void;
-  handleNextStep?: () => void;
+  handleNextStep: () => void;
+};
+
+export type CreateProfileType = {
+  name: string;
+  data: string;
 };
 
 export default function CreateProfile({
   handlePreviousStep,
   handleNextStep,
 }: ResetFormProps) {
-  const { control } = useCustomForm(SignupFormSchema);
+  const { setFormData, formData } = useFormStepper();
+
+  const handleData = ({ name, data }: CreateProfileType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      [name]: data,
+    }));
+  };
+
+  const { control, handleSubmit } = useCustomForm(createAccountSchema, {
+    firstName: formData?.firstName,
+    lastName: formData?.lastName,
+    email: formData?.email,
+    phoneNumber: formData?.phoneNumber,
+    address: formData?.address,
+    architectIdentifier: formData?.architectIdentifier,
+  });
+
+  const onSubmit = () => {
+    handleNextStep();
+  };
 
   return (
     <View className="flex h-fit items-center justify-between gap-8">
@@ -38,14 +65,16 @@ export default function CreateProfile({
         <ControlledInput
           testID="name-input"
           control={control}
-          name="name"
+          name="firstName"
+          handleOnChange={handleData}
           label={translate('labels.name')}
           placeholder={translate('labels.name')}
         />
         <ControlledInput
           testID="surname-input"
           control={control}
-          name="surname"
+          name="lastName"
+          handleOnChange={handleData}
           label={translate('labels.surname')}
           placeholder={translate('labels.surname')}
         />
@@ -53,12 +82,14 @@ export default function CreateProfile({
           testID="email-input"
           control={control}
           name="email"
+          handleOnChange={handleData}
           label={translate('labels.mail')}
           placeholder={translate('labels.mail')}
         />
         <ControlledPhoneNumberInput
-          name="phone"
+          name="phoneNumber"
           control={control}
+          handleOnChange={handleData}
           label={translate('labels.phone')}
           rules={{ required: 'Phone number is required' }}
         />
@@ -67,20 +98,22 @@ export default function CreateProfile({
           testID="address-input"
           control={control}
           name="address"
+          handleOnChange={handleData}
           label={translate('labels.address')}
           placeholder={translate('labels.address')}
         />
         <ControlledInput
           testID="matricule-input"
           control={control}
-          name="matricule"
+          name="architectIdentifier"
+          handleOnChange={handleData}
           label={translate('labels.matricule')}
           placeholder={translate('labels.matricule')}
         />
       </ScrollView>
       <StepButtons
         previous={{ handlePreviousStep, label: 'signup.retour' }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
+        next={{ handleSubmit: handleSubmit(onSubmit), label: 'signup.suivant' }}
       />
     </View>
   );

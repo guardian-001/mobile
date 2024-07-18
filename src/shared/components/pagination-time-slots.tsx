@@ -1,7 +1,5 @@
-// renderPagination.tsx
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-// Import the tailwind function
 
 type RenderPaginationProps = {
   totalPages: number;

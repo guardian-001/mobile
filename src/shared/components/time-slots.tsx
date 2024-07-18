@@ -1,38 +1,86 @@
-// RenderTimeSlots.tsx
 import React from 'react';
+import type { FieldValues } from 'react-hook-form';
+import {
+  type Control,
+  type Path,
+  type RegisterOptions,
+  useController,
+} from 'react-hook-form';
 import type { ListRenderItemInfo } from 'react-native';
-import { FlatList, View } from 'react-native';
+import { Dimensions, FlatList, View } from 'react-native';
 
-// Import the tailwind function
 import { usePagination } from '@/shared/hooks';
 
 import { TIMESLOTS } from '../constants/constants';
-import { RenderItem, RenderPagination } from './';
+import { RenderPagination, ToggleButton } from './';
 
-type RenderTimeSlotsProps = {};
+type RenderTimeSlotsProps<T extends FieldValues> = {
+  selectedTime: string;
+  handleTimePress: (time: string) => void;
+  name: Path<T>;
+  control: Control<T>;
+  rules?: RegisterOptions;
+};
 
 const ITEMS_PER_PAGE = 8;
+const { width } = Dimensions.get('window');
 
-export const RenderTimeSlots: React.FC<RenderTimeSlotsProps> = ({}) => {
+export const RenderTimeSlots = <T extends FieldValues>({
+  selectedTime,
+  handleTimePress,
+  name,
+  control,
+  rules,
+}: RenderTimeSlotsProps<T>) => {
   const { currentPage, totalPages, handlePageChange, paginatedItems } =
     usePagination<string>(TIMESLOTS.length, ITEMS_PER_PAGE);
 
   const paginatedTimeSlots = paginatedItems(TIMESLOTS);
 
-  const renderItem = ({ item, index }: ListRenderItemInfo<string>) => (
-    <RenderItem item={item} index={index} />
-  );
+  const { field } = useController({ control, name, rules });
+  const renderItem = ({ item }: ListRenderItemInfo<string>) => {
+    const list = JSON.parse(item);
+    const views = [];
+
+    for (let i = 0; i < 8; i += 2) {
+      views.push(
+        <View key={i}>
+          {list.slice(i, i + 2).map((timeSlot: string) => (
+            <ToggleButton
+              key={timeSlot}
+              value={timeSlot}
+              name={name}
+              control={control}
+              selectedValue={selectedTime}
+              onSelect={() => {
+                field.onChange(timeSlot);
+                handleTimePress(timeSlot);
+              }}
+              style={{ width: width / 4 - 10 }}
+            />
+          ))}
+        </View>
+      );
+    }
+
+    return <>{views}</>;
+  };
+
+  const handleScrollEnd = (event: any) => {
+    const pageIndex = Math.round(event.nativeEvent.contentOffset.x / width);
+    handlePageChange(pageIndex);
+  };
 
   return (
-    <View className="flex-1 items-center">
+    <View>
       <FlatList
         data={paginatedTimeSlots}
         renderItem={renderItem}
         keyExtractor={(item, index) => `${item}-${index}`}
-        numColumns={4}
-        className={'flex-1'}
-        contentContainerClassName="justify-around"
-        showsVerticalScrollIndicator={false}
+        horizontal
+        pagingEnabled
+        onMomentumScrollEnd={handleScrollEnd}
+        showsHorizontalScrollIndicator={false}
       />
       <RenderPagination
         totalPages={totalPages}

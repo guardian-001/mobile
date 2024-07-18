@@ -41,16 +41,31 @@ export const LoginFormSchema = z.object({
 });
 
 export const SignupFormSchema = z.object({
-  name: fieldValidation,
-  surname: fieldValidation,
+  firstName: fieldValidation,
+  lastName: fieldValidation,
   email: emailValidation,
-  phone: phoneValidation,
+  phoneNumber: phoneValidation,
   address: fieldValidation,
-  matricule: fieldValidation, //matriculeValidation
-  password: passwordValidation,
-  speciality: specialityValidation,
-  demoDate: dateValidation,
-  demoTime: timeValidation,
+  architectIdentifier: fieldValidation, //architectIdentifierValidation
+  architectSpeciality: specialityValidation,
+  date: dateValidation,
+  timeSlot: timeValidation,
+});
+export const createAccountSchema = z.object({
+  firstName: fieldValidation,
+  lastName: fieldValidation,
+  email: emailValidation,
+  phoneNumber: phoneValidation,
+  address: fieldValidation,
+  architectIdentifier: fieldValidation, //matriculeValidation
+});
+export const SpecialityFormSchema = z.object({
+  architectSpeciality: specialityValidation,
+});
+
+export const DemoFormSchema = z.object({
+  date: dateValidation,
+  timeSlot: timeValidation,
 });
 
 export const OTPSchema = z.object({

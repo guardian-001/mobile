@@ -1,20 +1,29 @@
 import React from 'react';
 
+import { useSignup } from '@/api/auth/use-signup';
 import { Clock } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import StepperButton from '@/modules/shared/stepper-button';
 import { Text, View } from '@/shared/components';
-import { useCustomForm } from '@/shared/hooks';
+import { useFormStepper } from '@/shared/providers/use-signup-stepper-provider';
 import { formatDate } from '@/shared/utils';
-import { SignupFormSchema } from '@/validations';
-export type ResetFormProps = {
-  handleConfirmationStep?: () => void;
-};
 
-export default function DemoPlanningConfirmation({
-  handleConfirmationStep,
-}: ResetFormProps) {
-  const { form } = useCustomForm(SignupFormSchema);
+export default function DemoPlanningConfirmation() {
+  const { formData } = useFormStepper();
+  const signup = useSignup();
+  const handleConfirmationStep = () => {
+    console.log(formData);
+    signup.mutate(formData, {
+      onSuccess: (data: any) => {
+        // Handle success (e.g., navigate to another screen, show a success message)
+        console.log('Signup successful:', data);
+      },
+      onError: (error: any) => {
+        // Handle error (e.g., show an error message)
+        console.error('Signup error:', error.message);
+      },
+    });
+  };
   return (
     <View className="flex h-fit w-full items-center justify-between gap-16">
       <View>
@@ -36,7 +45,7 @@ export default function DemoPlanningConfirmation({
               {translate('labels.date')}
             </Text>
             <Text className="font-bold text-primary-txt">
-              {formatDate(form.getValues().demoDate)}
+              {formatDate(formData.date)}
             </Text>
           </View>
           <View>
@@ -44,8 +53,8 @@ export default function DemoPlanningConfirmation({
               {translate('labels.time')}
             </Text>
             <Text className="font-bold text-primary-txt">
-              14:00-14:30{' '}
-              <Text className="font-bold text-description">(GMT+1)</Text>
+              {formData.timeSlot}
+              <Text className="font-bold text-description"> (GMT+1)</Text>
             </Text>
           </View>
         </View>
