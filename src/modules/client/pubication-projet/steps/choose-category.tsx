@@ -1,56 +1,64 @@
-import React, { useState } from 'react';
+import React from 'react';
+import type { SubmitHandler } from 'react-hook-form';
 import type { SvgProps } from 'react-native-svg';
 
 import { Home } from '@/assets/icons';
 import { StepButtons } from '@/modules/shared';
 import { ToggleCard, View } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
-import { AnnouncementFormSchema } from '@/validations';
 
-import type { StepperFormProps } from './choose-needs';
-
+import { CreateAnnouncementStepThreeSchema } from '../schemas';
+import type { StepperFormProps } from './choose-speciality';
+type FormData = {
+  projectCategory: string;
+};
 export function ChooseCategory({
   handlePreviousStep,
   handleNextStep,
+  setFormData,
+  formData,
 }: StepperFormProps) {
-  const { control } = useCustomForm(AnnouncementFormSchema);
+  const { handleSubmit, control } = useCustomForm(
+    CreateAnnouncementStepThreeSchema,
+    { projectCategory: formData?.projectCategory }
+  );
 
-  const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
-  const handleSelectCategory = (category: string) => {
-    setSelectedCategory((prevSelectedCategory) => {
-      if (prevSelectedCategory.includes(category)) {
-        return [];
-      } else {
-        return [category];
-      }
-    });
+  const handleSelectCategory = (projectCategory: string) => {
+    setFormData({ ...formData, projectCategory });
   };
-
+  const onSubmit: SubmitHandler<FormData> = (_data) => {
+    handleNextStep();
+  };
   type CategoryData = {
-    title: string;
-    svgComponent: React.FunctionComponent<SvgProps>;
+    id: number;
+    label: string;
+    icon: React.FunctionComponent<SvgProps>;
     selectedCategory: string;
   };
 
   const CategoryData: CategoryData[] = [
     {
-      title: 'Construction logement',
-      svgComponent: Home,
+      id: 1,
+      label: 'Construction logement',
+      icon: Home,
       selectedCategory: 'Construction logement',
     },
     {
-      title: 'Point vente et commercial',
-      svgComponent: Home,
+      id: 2,
+      label: 'Point vente et commercial',
+      icon: Home,
       selectedCategory: 'Point vente et commercial',
     },
     {
-      title: 'Grand oeuvre immobilier',
-      svgComponent: Home,
+      id: 3,
+      label: 'Grand oeuvre immobilier',
+      icon: Home,
       selectedCategory: 'Grand oeuvre immobilier',
     },
     {
-      title: 'Industrielle',
-      svgComponent: Home,
+      id: 4,
+      label: 'Industrielle',
+      icon: Home,
       selectedCategory: 'Industrielle',
     },
   ];
@@ -61,19 +69,24 @@ export function ChooseCategory({
         {CategoryData.map((cardData, index) => (
           <ToggleCard
             key={index}
-            className="min-h-[150px] min-w-[150px] rounded-lg"
-            title={cardData.title}
-            svgComponent={cardData.svgComponent}
-            name="categories"
+            className="rounded-lg"
+            containerClassName="min-h-[25%] min-w-[40%] max-w-[47%] max-h-[50%]"
+            title={cardData.label}
+            svgComponent={cardData.icon}
+            name="projectCategory"
             control={control}
-            isSelected={selectedCategory.includes(cardData.selectedCategory)}
-            onSelect={() => handleSelectCategory(cardData.selectedCategory)}
+            value={cardData.id.toString()}
+            selectedValue={formData?.projectCategory}
+            onSelect={() => handleSelectCategory(cardData.id.toString())}
           />
         ))}
       </View>
       <StepButtons
         previous={{ handlePreviousStep, label: 'signup.retour' }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
+        next={{
+          handleNextStep: handleSubmit(onSubmit),
+          label: 'signup.suivant',
+        }}
       />
     </View>
   );

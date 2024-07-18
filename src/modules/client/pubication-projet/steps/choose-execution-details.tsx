@@ -3,7 +3,7 @@ import React from 'react';
 import { StepButtons } from '@/modules/shared';
 import { View } from '@/shared/components';
 
-import type { StepperFormProps } from './choose-needs';
+import type { StepperFormProps } from './choose-speciality';
 
 export function ChooseExecutionDetails({
   handlePreviousStep,

@@ -1,11 +1,9 @@
 import { z } from 'zod';
 
-export const requiredValidation = z.string({
-  message: 'validations.required',
-});
-export const requiredValidationBoolean = z.boolean({
-  message: 'validations.required',
-});
+export const requiredValidation = z.string({ message: 'validations.required' });
+export const requiredValidationBoolean = z
+  .boolean()
+  .refine((value) => value === true, { message: 'validations.required' });
 export const notRequiredValidationBoolean = z.boolean().optional();
 export const emailValidation = z
   .string({ message: 'validations.required' })
@@ -38,3 +36,22 @@ export const specialityValidation = SpecialityEnum.refine(
   (val) => val === 'construction' || val === 'interior',
   { message: 'validations.invalid-speciality' }
 );
+
+export const arrayOfNonEmptyImage = z
+  .array(
+    z.object({
+      name: z.string(),
+      url: z.string(),
+    })
+  )
+  .nonempty({ message: 'validations.required' });
+
+export const arrayOfNonEmptyStrings = z
+  .array(
+    z.string().nonempty({
+      message: 'validations.required',
+    })
+  )
+  .refine((arr) => arr.length > 0, {
+    message: 'validations.required',
+  });

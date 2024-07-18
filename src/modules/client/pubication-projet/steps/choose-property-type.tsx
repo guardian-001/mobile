@@ -1,79 +1,77 @@
-import React, { useState } from 'react';
+import React from 'react';
+import type { SubmitHandler } from 'react-hook-form';
 import type { SvgProps } from 'react-native-svg';
 
 import { Home } from '@/assets/icons';
 import { StepButtons } from '@/modules/shared';
 import { ToggleCard, View } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
-import { AnnouncementFormSchema } from '@/validations';
 
-import type { StepperFormProps } from './choose-needs';
+import { CreateAnnouncementStepFourSchema } from '../schemas';
+import type { StepperFormProps } from './choose-speciality';
 
+type FormData = {
+  propertyType: string;
+};
 export function ChoosePropertyType({
   handlePreviousStep,
   handleNextStep,
+  setFormData,
+  formData,
 }: StepperFormProps) {
-  const { control } = useCustomForm(AnnouncementFormSchema);
+  const { handleSubmit, control } = useCustomForm(
+    CreateAnnouncementStepFourSchema,
+    { propertyType: formData?.propertyType }
+  );
 
-  const [selectedProperty, setSelectedProperty] = useState<string[]>([]);
-  const handleSelectProperty = (property: string) => {
-    setSelectedProperty((prevSelectedProperty) => {
-      if (prevSelectedProperty.includes(property)) {
-        return [];
-      } else {
-        return [property];
-      }
-    });
+  const handleSelectProperty = (propertyType: string) => {
+    setFormData({ ...formData, propertyType });
   };
-
+  const onSubmit: SubmitHandler<FormData> = (_data) => {
+    handleNextStep();
+  };
   type PropertyData = {
-    title: string;
-    svgComponent: React.FunctionComponent<SvgProps>;
+    id: number;
+    label: string;
+    icon: React.FunctionComponent<SvgProps>;
     selectedProperty: string;
   };
 
   const PropertyData: PropertyData[] = [
+    { id: 1, label: 'Maison', icon: Home, selectedProperty: 'Maison' },
+    { id: 2, label: 'Villa', icon: Home, selectedProperty: 'Villa' },
     {
-      title: 'Maison',
-      svgComponent: Home,
-      selectedProperty: 'Maison',
-    },
-    {
-      title: 'Villa',
-      svgComponent: Home,
-      selectedProperty: 'Villa',
-    },
-    {
-      title: 'Appartement',
-      svgComponent: Home,
+      id: 3,
+      label: 'Appartement',
+      icon: Home,
       selectedProperty: 'Appartement',
     },
-    {
-      title: 'Immobilier',
-      svgComponent: Home,
-      selectedProperty: 'Immobilier',
-    },
+    { id: 4, label: 'Immobilier', icon: Home, selectedProperty: 'Immobilier' },
   ];
 
   return (
     <View className="flex flex-1 justify-between pt-8">
-      <View>
+      <View className="gap-4">
         {PropertyData.map((cardData, index) => (
           <ToggleCard
             key={index}
-            className="mb-4 flex h-16 w-full flex-row-reverse justify-between rounded-lg pl-8 pr-0"
-            title={cardData.title}
-            svgComponent={cardData.svgComponent}
-            name="properties"
+            className="flex h-16 w-full flex-row-reverse justify-between rounded-lg pl-8 pr-0"
+            title={cardData.label}
+            svgComponent={cardData.icon}
+            name="propertyType"
             control={control}
-            isSelected={selectedProperty.includes(cardData.selectedProperty)}
-            onSelect={() => handleSelectProperty(cardData.selectedProperty)}
+            value={cardData.id.toString()}
+            selectedValue={formData?.propertyType}
+            onSelect={() => handleSelectProperty(cardData.id.toString())}
           />
         ))}
       </View>
       <StepButtons
         previous={{ handlePreviousStep, label: 'signup.retour' }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
+        next={{
+          handleNextStep: handleSubmit(onSubmit),
+          label: 'signup.suivant',
+        }}
       />
     </View>
   );

@@ -7,6 +7,8 @@ import {
   useController,
 } from 'react-hook-form';
 
+import type { TxKeyPath } from '@/core';
+
 import { Image, Pressable, Text, View } from './';
 
 type CardProps<T extends FieldValues> = {
@@ -14,12 +16,15 @@ type CardProps<T extends FieldValues> = {
   image?: string;
   className?: string;
   classNameText?: string;
+  containerClassName?: string;
   svgComponent?: React.ComponentType;
   name: Path<T>;
   control: Control<T>;
-  rules?: RegisterOptions; // Adjust the type according to your validation rules
-  isSelected: boolean;
+  rules?: RegisterOptions;
+  value: string;
+  selectedValue: string | string[];
   onSelect: () => void;
+  multi?: boolean;
 };
 
 export const ToggleCard = <T extends FieldValues>({
@@ -27,26 +32,43 @@ export const ToggleCard = <T extends FieldValues>({
   image,
   className,
   classNameText,
+  containerClassName,
   svgComponent: SvgComponent,
   name,
+  value,
+  selectedValue,
   control,
   rules,
-  isSelected,
   onSelect,
+  multi = false,
   ...props
 }: CardProps<T>) => {
   const { field, fieldState } = useController({ control, name, rules });
 
-  const handlePress = () => {
-    field.onChange(!field.value);
+  const handleChange = () => {
     onSelect();
+    field.onChange(value);
   };
 
+  const handleChangeMulti = () => {
+    onSelect();
+    if (field.value.includes(value)) {
+      field.onChange(field.value.filter((item: string) => item !== value));
+    } else {
+      field.onChange([...field.value, value]);
+    }
+  };
+
+  const error = fieldState.error?.message as TxKeyPath | undefined;
+  const isSelected = multi
+    ? selectedValue.includes(value)
+    : selectedValue === value;
+  console.log('tog', field.value, selectedValue, value);
   return (
-    <>
+    <View className={`${containerClassName} flex-1`}>
       <Pressable
-        onPress={handlePress}
-        className={`${className} flex-1 items-center justify-center self-center   p-4 ${
+        onPress={multi ? handleChangeMulti : handleChange}
+        className={`${className} flex-1 items-center justify-center p-4 ${
           isSelected
             ? 'border-2 border-primary '
             : 'border-borderColor border-[0.5px]'
@@ -54,7 +76,7 @@ export const ToggleCard = <T extends FieldValues>({
         {...props}
       >
         {SvgComponent ? (
-          <View className="flex h-28 w-28 items-center justify-center ">
+          <View className="flex h-28 w-28  items-center justify-center ">
             <SvgComponent />
           </View>
         ) : (
@@ -67,11 +89,12 @@ export const ToggleCard = <T extends FieldValues>({
           {title}
         </Text>
       </Pressable>
-      {fieldState.error?.message && (
-        <Text className="text-danger-400 dark:text-danger-600 text-sm">
-          {fieldState.error?.message}
-        </Text>
+      {error && (
+        <Text
+          className="text-danger-400 dark:text-danger-600 text-sm"
+          tx={error}
+        />
       )}
-    </>
+    </View>
   );
 };

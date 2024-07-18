@@ -15,6 +15,7 @@ export const useCustomForm = <T extends ZodType<any, any>>(
     control,
     formState: { errors },
     setValue,
+    watch,
   } = form;
   return {
     form,
@@ -22,6 +23,7 @@ export const useCustomForm = <T extends ZodType<any, any>>(
     control,
     errors,
     setValue,
+    watch,
   };
 };
 export default useCustomForm;

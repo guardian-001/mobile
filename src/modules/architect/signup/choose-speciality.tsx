@@ -20,9 +20,7 @@ export default function ChooseSpeciality({
     speciality: 'speciality',
   });
 
-  const [selectedSpeciality, setSelectedSpeciality] = useState<string | null>(
-    null
-  );
+  const [selectedSpeciality, setSelectedSpeciality] = useState<string>('');
 
   const handleSelectSpeciality = (speciality: string) => {
     setSelectedSpeciality(speciality);
@@ -48,7 +46,8 @@ export default function ChooseSpeciality({
           svgComponent={HouseModel}
           name="speciality"
           control={control}
-          isSelected={selectedSpeciality === 'constructionArchitect'}
+          value={'constructionArchitect'}
+          selectedValue={selectedSpeciality}
           onSelect={() => handleSelectSpeciality('constructionArchitect')}
         />
 
@@ -58,7 +57,8 @@ export default function ChooseSpeciality({
           svgComponent={InteriorHouseModel}
           name="speciality"
           control={control}
-          isSelected={selectedSpeciality === 'interiorArchitect'}
+          value={'interiorArchitect'}
+          selectedValue={selectedSpeciality}
           onSelect={() => handleSelectSpeciality('interiorArchitect')}
         />
       </ScrollView>

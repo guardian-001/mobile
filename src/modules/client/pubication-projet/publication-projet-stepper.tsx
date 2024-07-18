@@ -1,27 +1,27 @@
 import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { cloneElement } from 'react';
 import { Platform, TouchableOpacity } from 'react-native';
 
 import { Close } from '@/assets/icons';
+import { useStepperSpeacialNavigation } from '@/core';
 import {
   KeyboardAvoidingView,
   ScrollView,
   Text,
   View,
 } from '@/shared/components';
-import { useStepperSpeacialNavigation } from '@/shared/hooks/use-stepper-special-navigation';
 
 import { stepsContent } from './steps-content';
 
 export default function PublicationProjetStepper() {
   const router = useRouter();
   const lastStep = 11;
-  const { step, handleNextStep, handlePreviousStep } =
+  const { step, handleNextStep, handlePreviousStep, setFormData, formData } =
     useStepperSpeacialNavigation({ maxSteps: lastStep });
 
   const { title, subtitle, component } = stepsContent[step];
   const percentageCompleted = Math.round(((step + 1) / lastStep) * 100);
+  console.log('f', formData);
 
   return (
     <KeyboardAvoidingView
@@ -59,7 +59,12 @@ export default function PublicationProjetStepper() {
       >
         <Text tx={title} className="mb-2 text-xl font-bold" />
         <Text tx={subtitle} className="text-base text-description" />
-        {cloneElement(component, { handleNextStep, handlePreviousStep })}
+        {component({
+          handleNextStep,
+          handlePreviousStep,
+          setFormData,
+          formData,
+        })}
       </ScrollView>
     </KeyboardAvoidingView>
   );

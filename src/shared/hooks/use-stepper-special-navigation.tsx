@@ -10,25 +10,26 @@ export const useStepperSpeacialNavigation = ({
   maxSteps,
 }: StepperNavigationProps) => {
   const [step, setStep] = useState(initialStep);
-  const [scroller, setScroller] = useState(100 / maxSteps);
+  const [formData, setFormData] = useState();
 
   const handleNextStep = () => {
     if (step < maxSteps) {
       setStep(step + 1);
-      setScroller(scroller + 100 / maxSteps);
+      setFormData((prev: any) => ({ ...prev, rollback: false }));
     }
   };
 
   const handlePreviousStep = () => {
     if (step > 0) {
       setStep(step - 1);
-      setScroller(scroller - 100 / maxSteps);
+      setFormData((prev: any) => ({ ...prev, rollback: true }));
     }
   };
   return {
     step,
-    scroller,
     handleNextStep,
     handlePreviousStep,
+    setFormData,
+    formData,
   };
 };
