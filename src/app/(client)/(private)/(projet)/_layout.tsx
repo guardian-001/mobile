@@ -3,15 +3,11 @@ import React from 'react';
 
 import { ScreenOptions } from '@/shared/components';
 
-export default function ClientLayout() {
+export default function ProjetLayout() {
   return (
-    <Stack>
+    <Stack initialRouteName="publication-projet">
       <Stack.Screen
-        name="(public)"
-        options={ScreenOptions({ type: 'custom' })}
-      />
-      <Stack.Screen
-        name="(private)"
+        name="publication-projet"
         options={ScreenOptions({ type: 'custom' })}
       />
     </Stack>

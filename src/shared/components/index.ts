@@ -11,6 +11,7 @@ export * from './checkbox';
 export * from './checkbox-input';
 export * from './controlled-input';
 export * from './focus-aware-status-bar';
+export * from './gradient-background';
 export * from './header-title';
 export * from './image';
 export { default as ImageContainer } from './image-container';
