@@ -1,6 +1,8 @@
+// src/shared/hooks/use-custom-form.ts
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import type { z, ZodType } from 'zod';
+
 const useCustomForm = <T extends ZodType<any, any>>(
   schema: T,
   defaultValues?: any
@@ -24,4 +26,5 @@ const useCustomForm = <T extends ZodType<any, any>>(
     setValue,
   };
 };
+
 export default useCustomForm;
