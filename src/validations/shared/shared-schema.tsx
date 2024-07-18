@@ -7,6 +7,7 @@ import {
   passwordValidation,
   phoneValidation,
   requiredValidation,
+  requiredValidationBoolean,
   specialityValidation,
 } from './shared-validations';
 
@@ -64,4 +65,14 @@ export const NotificationFormSchema = z.object({
   new: notRequiredValidationBoolean,
   activity: notRequiredValidationBoolean,
   newNavigator: notRequiredValidationBoolean,
+});
+
+export const AnnouncementFormSchema = z.object({
+  firstName: fieldValidation,
+  lastName: fieldValidation,
+  email: emailValidation,
+  phoneNumber: phoneValidation,
+  acceptTerms: requiredValidationBoolean,
+  receiveQuotes: notRequiredValidationBoolean,
+  speciality: specialityValidation,
 });

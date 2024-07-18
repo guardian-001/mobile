@@ -12,7 +12,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import { useCustomForm } from '@/shared/hooks';
 import { BasicInfoFormSchema } from '@/validations';
 
 type BasicInfoFormType = z.infer<typeof BasicInfoFormSchema>;

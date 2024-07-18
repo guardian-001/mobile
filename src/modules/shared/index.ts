@@ -5,3 +5,4 @@ export { default as Container } from './container';
 export { default as Devider } from './devider';
 export { default as MainButton } from './main-button';
 export { default as StepButtons } from './step-buttons';
+export { default as StepperButton } from './stepper-button';

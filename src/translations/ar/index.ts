@@ -1,3 +1,4 @@
+import announcement from './announcement.json';
 import common from './common.json';
 import labels from './labels.json';
 import login from './login.json';
@@ -16,6 +17,7 @@ import validations from './validations.json';
 
 export default {
   loginSupplier,
+  announcement,
   notification,
   profile,
   login,
