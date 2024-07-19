@@ -18,6 +18,7 @@ module.exports = {
         'secondary-btn': '#f2f2f2',
         'disabled-txt': '#bfc2cc',
         background: '#fafbff',
+        error: '#FF0000',
       },
     },
   },

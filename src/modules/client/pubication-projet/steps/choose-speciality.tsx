@@ -3,9 +3,10 @@ import type { SubmitHandler } from 'react-hook-form';
 import type { SvgProps } from 'react-native-svg';
 
 import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
+import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
-import { ToggleCard, View } from '@/shared/components';
+import { Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 
 import { CreateAnnouncementStepOneSchema } from '../schemas';
@@ -25,14 +26,14 @@ export function ChooseSpeciality({
   setFormData,
   formData,
 }: StepperFormProps) {
-  const { handleSubmit, control } = useCustomForm(
+  const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepOneSchema,
     { architectSpeciality: formData?.architectSpeciality }
   );
   const handleSelectSpeciality = (architectSpeciality: string) => {
     setFormData({ ...formData, architectSpeciality });
   };
-  const onSubmit: SubmitHandler<FormData> = (_data) => {
+  const onSubmit: SubmitHandler<FormData> = () => {
     handleNextStep();
   };
   type ToggleCardData = {
@@ -61,9 +62,10 @@ export function ChooseSpeciality({
       selectedSpeciality: 'Artisan de construction',
     },
   ];
+  const error = errors?.architectSpeciality?.message as TxKeyPath | undefined;
   return (
-    <View className="flex flex-1 items-center justify-between pt-4">
-      <View className="h-[85%] gap-4">
+    <View className="flex flex-1 justify-between pt-4">
+      <View className="h-[85%] items-center gap-4">
         {toggleCardData.map((cardData, index) => (
           <ToggleCard
             key={index}
@@ -76,9 +78,13 @@ export function ChooseSpeciality({
             selectedValue={formData?.architectSpeciality}
             onSelect={() => handleSelectSpeciality(cardData.id.toString())}
             classNameText="my-3"
+            showError={false}
           />
         ))}
       </View>
+      {error && (
+        <Text className="text-sm text-error dark:text-error" tx={error} />
+      )}
       <StepperButton
         onPressHandler={handleSubmit(onSubmit)}
         label={translate('signup.suivant')}

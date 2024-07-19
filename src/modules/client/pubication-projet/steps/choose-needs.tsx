@@ -3,8 +3,9 @@ import type { SubmitHandler } from 'react-hook-form';
 import type { SvgProps } from 'react-native-svg';
 
 import { Trafic } from '@/assets/icons';
+import type { TxKeyPath } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { ToggleCard, View } from '@/shared/components';
+import { Text, ToggleCard, View } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
 
 import { CreateAnnouncementStepTwoSchema } from '../schemas';
@@ -19,7 +20,7 @@ export function ChooseNeeds({
   setFormData,
   formData,
 }: StepperFormProps) {
-  const { handleSubmit, control } = useCustomForm(
+  const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepTwoSchema,
     { needs: formData?.needs || [] }
   );
@@ -32,7 +33,7 @@ export function ChooseNeeds({
 
     setFormData({ ...formData, needs: newSelectedNeeds });
   };
-  const onSubmit: SubmitHandler<FormData> = (_data) => {
+  const onSubmit: SubmitHandler<FormData> = () => {
     handleNextStep();
   };
   type NeedsData = {
@@ -79,6 +80,7 @@ export function ChooseNeeds({
       selectedNeeds: 'interiorDecoration',
     },
   ];
+  const error = errors?.needs?.message as TxKeyPath | undefined;
   return (
     <View className="flex flex-1 justify-between pt-4">
       <View className="gap-4">
@@ -94,8 +96,12 @@ export function ChooseNeeds({
             value={cardData.id.toString()}
             selectedValue={formData?.needs || []}
             onSelect={() => handleSelectNeeds(cardData.id.toString())}
+            showError={false}
           />
         ))}
+        {error && (
+          <Text className="text-sm text-error dark:text-error" tx={error} />
+        )}
       </View>
       <StepButtons
         previous={{ handlePreviousStep, label: 'signup.retour' }}

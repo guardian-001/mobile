@@ -3,8 +3,9 @@ import type { SubmitHandler } from 'react-hook-form';
 import type { SvgProps } from 'react-native-svg';
 
 import { Home } from '@/assets/icons';
+import type { TxKeyPath } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { ToggleCard, View } from '@/shared/components';
+import { Text, ToggleCard, View } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
 
 import { CreateAnnouncementStepThreeSchema } from '../schemas';
@@ -18,22 +19,20 @@ export function ChooseCategory({
   setFormData,
   formData,
 }: StepperFormProps) {
-  const { handleSubmit, control } = useCustomForm(
+  const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepThreeSchema,
     { projectCategory: formData?.projectCategory }
   );
-
   const handleSelectCategory = (projectCategory: string) => {
     setFormData({ ...formData, projectCategory });
   };
-  const onSubmit: SubmitHandler<FormData> = (_data) => {
+  const onSubmit: SubmitHandler<FormData> = () => {
     handleNextStep();
   };
   type CategoryData = {
     id: number;
     label: string;
     icon: React.FunctionComponent<SvgProps>;
-    selectedCategory: string;
   };
 
   const CategoryData: CategoryData[] = [
@@ -41,28 +40,24 @@ export function ChooseCategory({
       id: 1,
       label: 'Construction logement',
       icon: Home,
-      selectedCategory: 'Construction logement',
     },
     {
       id: 2,
       label: 'Point vente et commercial',
       icon: Home,
-      selectedCategory: 'Point vente et commercial',
     },
     {
       id: 3,
       label: 'Grand oeuvre immobilier',
       icon: Home,
-      selectedCategory: 'Grand oeuvre immobilier',
     },
     {
       id: 4,
       label: 'Industrielle',
       icon: Home,
-      selectedCategory: 'Industrielle',
     },
   ];
-
+  const error = errors?.projectCategory?.message as TxKeyPath | undefined;
   return (
     <View className="flex flex-1 justify-between pt-8">
       <View className="flex flex-row flex-wrap gap-4">
@@ -78,9 +73,13 @@ export function ChooseCategory({
             value={cardData.id.toString()}
             selectedValue={formData?.projectCategory}
             onSelect={() => handleSelectCategory(cardData.id.toString())}
+            showError={false}
           />
         ))}
       </View>
+      {error && (
+        <Text className="text-sm text-error dark:text-error" tx={error} />
+      )}
       <StepButtons
         previous={{ handlePreviousStep, label: 'signup.retour' }}
         next={{

@@ -21,14 +21,13 @@ export default function PublicationProjetStepper() {
 
   const { title, subtitle, component } = stepsContent[step];
   const percentageCompleted = Math.round(((step + 1) / lastStep) * 100);
-  console.log('f', formData);
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="mt-16 w-full flex-1 rounded-t-3xl bg-white dark:bg-black "
+      className="mt-12 w-full flex-1 rounded-t-3xl bg-white dark:bg-black "
     >
-      <View className="px-4 py-6">
+      <View className="p-4">
         <TouchableOpacity
           className="items-end"
           onPress={() => {

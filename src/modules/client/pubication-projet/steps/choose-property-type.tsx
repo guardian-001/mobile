@@ -3,8 +3,9 @@ import type { SubmitHandler } from 'react-hook-form';
 import type { SvgProps } from 'react-native-svg';
 
 import { Home } from '@/assets/icons';
+import type { TxKeyPath } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { ToggleCard, View } from '@/shared/components';
+import { Text, ToggleCard, View } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
 
 import { CreateAnnouncementStepFourSchema } from '../schemas';
@@ -19,7 +20,7 @@ export function ChoosePropertyType({
   setFormData,
   formData,
 }: StepperFormProps) {
-  const { handleSubmit, control } = useCustomForm(
+  const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepFourSchema,
     { propertyType: formData?.propertyType }
   );
@@ -27,27 +28,22 @@ export function ChoosePropertyType({
   const handleSelectProperty = (propertyType: string) => {
     setFormData({ ...formData, propertyType });
   };
-  const onSubmit: SubmitHandler<FormData> = (_data) => {
+  const onSubmit: SubmitHandler<FormData> = () => {
     handleNextStep();
   };
   type PropertyData = {
     id: number;
     label: string;
     icon: React.FunctionComponent<SvgProps>;
-    selectedProperty: string;
   };
 
   const PropertyData: PropertyData[] = [
-    { id: 1, label: 'Maison', icon: Home, selectedProperty: 'Maison' },
-    { id: 2, label: 'Villa', icon: Home, selectedProperty: 'Villa' },
-    {
-      id: 3,
-      label: 'Appartement',
-      icon: Home,
-      selectedProperty: 'Appartement',
-    },
-    { id: 4, label: 'Immobilier', icon: Home, selectedProperty: 'Immobilier' },
+    { id: 1, label: 'Maison', icon: Home },
+    { id: 2, label: 'Villa', icon: Home },
+    { id: 3, label: 'Appartement', icon: Home },
+    { id: 4, label: 'Immobilier', icon: Home },
   ];
+  const error = errors?.propertyType?.message as TxKeyPath | undefined;
 
   return (
     <View className="flex flex-1 justify-between pt-8">
@@ -63,8 +59,13 @@ export function ChoosePropertyType({
             value={cardData.id.toString()}
             selectedValue={formData?.propertyType}
             onSelect={() => handleSelectProperty(cardData.id.toString())}
+            showError={false}
           />
         ))}
+
+        {error && (
+          <Text className="text-sm text-error dark:text-error" tx={error} />
+        )}
       </View>
       <StepButtons
         previous={{ handlePreviousStep, label: 'signup.retour' }}
