@@ -29,7 +29,6 @@ export function FormProvider<T>({ children, initialData }: IProps<T>) {
   const [step, setStep] = useState(0);
 
   function onHandleNext() {
-    console.log(step);
     setStep((prev) => prev + 1);
     setFormData((prev) => ({ ...prev, rollback: false }));
   }

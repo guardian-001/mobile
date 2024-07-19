@@ -37,12 +37,12 @@ export const RenderTimeSlots = <T extends FieldValues>({
   const { field } = useController({ control, name, rules });
   const renderItem = ({ item }: ListRenderItemInfo<string>) => {
     const list = JSON.parse(item);
-    const views = [];
+    const views: JSX.Element[] = [];
 
-    for (let i = 0; i < 8; i += 2) {
+    Array.from({ length: 4 }).forEach((_, i) => {
       views.push(
         <View key={i}>
-          {list.slice(i, i + 2).map((timeSlot: string) => (
+          {list.slice(i * 2, i * 2 + 2).map((timeSlot: string) => (
             <ToggleButton
               key={timeSlot}
               value={timeSlot}
@@ -58,7 +58,7 @@ export const RenderTimeSlots = <T extends FieldValues>({
           ))}
         </View>
       );
-    }
+    });
 
     return <>{views}</>;
   };

@@ -19,7 +19,7 @@ export const TIMESLOTS = [
   '17:00',
 ];
 
-export const months = [
+export const MONTHS = [
   'January',
   'February',
   'March',

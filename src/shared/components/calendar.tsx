@@ -1,8 +1,8 @@
-import { translate } from 'i18n-js';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import { ArrowLeft, ArrowRight, Globe } from '@/assets/icons';
+import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import colors from '@/theme/colors';
 import type { SignupFormDataType } from '@/types';
@@ -22,17 +22,11 @@ export const Calendar = () => {
   const { selectedDate } = useCalendar();
   const { formData, setFormData, onHandleNext, onHandleBack } =
     useFormStepper<SignupFormDataType>();
-  const { handleSubmit, errors, control, watch } = useCustomForm(
-    DemoFormSchema,
-    {
-      date: formData?.date,
-      timeSlot: formData?.timeSlot,
-    }
-  );
-  console.log('watch: ', watch());
+  const { handleSubmit, errors, control } = useCustomForm(DemoFormSchema, {
+    date: formData?.date,
+    timeSlot: formData?.timeSlot,
+  });
   const onSubmit = (data: DemoPlanningFormType) => {
-    console.log('data');
-    console.log(data);
     setFormData((prev: any) => ({
       ...prev,
       ...data,

@@ -4,14 +4,14 @@ import { createMutation } from 'react-query-kit';
 import { client } from '../common';
 import type { SignupRequest } from './types';
 
-type Variables = SignupRequest;
+type Request = SignupRequest;
 
-export const useSignup = createMutation<Response, Variables, AxiosError>({
-  mutationFn: async (variables) =>
+export const useSignupApi = createMutation<Response, Request, AxiosError>({
+  mutationFn: async (request) =>
     client({
       url: 'api/architect-request/create-architect-request/',
       method: 'POST',
-      data: variables,
+      data: request,
     })
       .then((response) => response.data)
       .catch((response) => response.data),

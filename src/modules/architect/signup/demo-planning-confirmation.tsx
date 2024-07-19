@@ -1,7 +1,6 @@
-// demo-planning-confirmation.js
 import React from 'react';
 
-import { useSignup } from '@/api/auth/use-signup';
+import { useSignupApi } from '@/api/auth/use-signup';
 import { Clock } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import StepperButton from '@/modules/shared/stepper-button';
@@ -12,17 +11,12 @@ import type { SignupFormDataType } from '@/types';
 
 export default function DemoPlanningConfirmation() {
   const { formData } = useFormStepper<SignupFormDataType>();
-  const signup = useSignup();
+  const signup = useSignupApi();
 
   const handleConfirmationStep = () => {
-    console.log(formData);
     signup.mutate(formData, {
-      onSuccess: (data) => {
-        console.log('Signup successful:', data);
-      },
-      onError: (error) => {
-        console.error('Signup error:', { ...error });
-      },
+      onSuccess: () => {},
+      onError: () => {},
     });
   };
 

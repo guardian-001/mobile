@@ -1,4 +1,4 @@
-import { months } from '../components';
+import { MONTHS } from '../components';
 
 export function capitalizeFirstLetter(string: string): string {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -16,7 +16,7 @@ export function splitList<T>(arr: T[], chunkSize: number): T[][] {
 
 export const formatDate = (date: string): string => {
   const [year, month, day] = date.split('-');
-  const monthName = months[parseInt(month, 10) - 1];
+  const monthName = MONTHS[parseInt(month, 10) - 1];
 
   return `${parseInt(day, 10)} ${monthName} ${year}`;
 };

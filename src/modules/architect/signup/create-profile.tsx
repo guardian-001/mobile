@@ -1,4 +1,3 @@
-// create-profile.js
 import React from 'react';
 import type { z } from 'zod';
 
@@ -36,8 +35,6 @@ export default function CreateProfile() {
   });
 
   const onSubmit = (data: CreateAccountFormType) => {
-    console.log('data');
-    console.log(data);
     setFormData((prev: any) => ({
       ...prev,
       ...data,

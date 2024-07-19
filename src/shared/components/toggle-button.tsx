@@ -38,27 +38,23 @@ export const ToggleButton = <T extends FieldValues>({
   };
 
   return (
-    <>
-      <Pressable
-        onPress={handlePress}
-        style={style}
-        className={`m-1 rounded-md px-4 py-2 ${
-          selectedValue === value
-            ? 'bg-primary'
-            : 'border border-dashed border-gray-300 bg-white text-gray-500'
+    <Pressable
+      onPress={handlePress}
+      style={style}
+      className={`m-1 rounded-md px-4 py-2 ${
+        selectedValue === value
+          ? 'bg-primary'
+          : 'border border-dashed border-gray-300 bg-white text-gray-500'
+      }  `}
+      {...props}
+    >
+      <Text
+        className={`text-xs ${
+          selectedValue === value ? 'font-semibold text-white' : 'text-gray-500'
         }  `}
-        {...props}
       >
-        <Text
-          className={`text-xs ${
-            selectedValue === value
-              ? 'font-semibold text-white'
-              : 'text-gray-500'
-          }  `}
-        >
-          {value}
-        </Text>
-      </Pressable>
-    </>
+        {value}
+      </Text>
+    </Pressable>
   );
 };

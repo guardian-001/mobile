@@ -1,8 +1,8 @@
-// choose-speciality.js
 import { useRouter } from 'expo-router';
 import React from 'react';
 
 import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
+import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
@@ -29,15 +29,13 @@ export default function ChooseSpeciality() {
   };
 
   const onSubmit = (data: SpecialityFormType) => {
-    console.log('data');
-    console.log(data);
     setFormData((prev: any) => ({
       ...prev,
       ...data,
     }));
     onHandleNext();
   };
-
+  const error = errors.architectSpeciality?.message as TxKeyPath | undefined;
   return (
     <View className="flex h-fit items-center justify-between gap-16">
       <View>
@@ -50,12 +48,6 @@ export default function ChooseSpeciality() {
           className="max-w-xs text-center text-sm text-description"
         />
       </View>
-
-      {errors.architectSpeciality && (
-        <Text className="text-danger-400 dark:text-danger-600 text-sm">
-          {errors.architectSpeciality?.message}
-        </Text>
-      )}
 
       <ScrollView className="flex h-fit gap-5">
         <ToggleCard
@@ -76,7 +68,7 @@ export default function ChooseSpeciality() {
           value={2}
         />
       </ScrollView>
-
+      {error && <Text tx={error} className="text-sm text-error" />}
       <StepButtons
         previous={{ handlePreviousStep: onHandleBack, label: 'signup.ignorer' }}
         next={{ handleSubmit: handleSubmit(onSubmit), label: 'signup.suivant' }}

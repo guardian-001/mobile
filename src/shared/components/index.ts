@@ -5,7 +5,7 @@ export { default as colors } from '../../theme/colors';
 export * from '../constants/constants';
 export * from './button';
 export * from './calendar';
-export * from './calendar-day-item';
+export * from './calendar-day';
 export * from './calendar-days-list';
 export * from './checkbox';
 export * from './checkbox-input';

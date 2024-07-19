@@ -65,8 +65,6 @@ const generateCalendarDays = (
         }
         isToday={isToday}
         handleDatePress={() => {
-          console.log(formatDateBackend(date));
-
           if (isDisabledCondition(date)) {
             setErrorMessage('Selected date is in the past.');
           } else {
