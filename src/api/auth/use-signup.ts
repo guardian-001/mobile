@@ -12,5 +12,7 @@ export const useSignup = createMutation<Response, Variables, AxiosError>({
       url: 'api/architect-request/create-architect-request/',
       method: 'POST',
       data: variables,
-    }).then((response) => response.data),
+    })
+      .then((response) => response.data)
+      .catch((response) => response.data),
 });

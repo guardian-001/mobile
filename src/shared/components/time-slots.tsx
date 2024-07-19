@@ -9,14 +9,12 @@ import {
 import type { ListRenderItemInfo } from 'react-native';
 import { Dimensions, FlatList, View } from 'react-native';
 
-import { usePagination } from '@/shared/hooks';
+import { useCalendar, usePagination } from '@/shared/hooks';
 
 import { TIMESLOTS } from '../constants/constants';
 import { RenderPagination, ToggleButton } from './';
 
 type RenderTimeSlotsProps<T extends FieldValues> = {
-  selectedTime: string;
-  handleTimePress: (time: string) => void;
   name: Path<T>;
   control: Control<T>;
   rules?: RegisterOptions;
@@ -26,12 +24,11 @@ const ITEMS_PER_PAGE = 8;
 const { width } = Dimensions.get('window');
 
 export const RenderTimeSlots = <T extends FieldValues>({
-  selectedTime,
-  handleTimePress,
   name,
   control,
   rules,
 }: RenderTimeSlotsProps<T>) => {
+  const { selectedTime, handleTimePress } = useCalendar();
   const { currentPage, totalPages, handlePageChange, paginatedItems } =
     usePagination<string>(TIMESLOTS.length, ITEMS_PER_PAGE);
 

@@ -1,46 +1,42 @@
-import React, { useState } from 'react';
-import type { SvgProps } from 'react-native-svg';
+import React from 'react';
 
-import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
-import { translate, type TxKeyPath } from '@/core';
+import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
-import { ToggleCard, View } from '@/shared/components';
-import { useCustomForm } from '@/shared/hooks';
-import { AnnouncementFormSchema } from '@/validations';
+import { View } from '@/shared/components';
 
 type SpecialityFormProps = {
   handleNextStep?: () => void;
 };
 
 export function ChooseSpeciality({ handleNextStep }: SpecialityFormProps) {
-  const { control } = useCustomForm(AnnouncementFormSchema);
+  // const { control } = useCustomForm(AnnouncementFormSchema);
 
-  const [selectedSpeciality, setSelectedSpeciality] = useState<string | null>(
-    null
-  );
-  const handleSelectSpeciality = (speciality: string) => {
-    setSelectedSpeciality(speciality);
-  };
-  type ToggleCardData = {
-    title: TxKeyPath;
-    svgComponent: React.FunctionComponent<SvgProps>;
-    selectedSpeciality: string;
-  };
-  const toggleCardData: ToggleCardData[] = [
-    {
-      title: 'announcement.constructionArchitect',
-      svgComponent: HouseModel,
-      selectedSpeciality: 'constructionArchitect',
-    },
-    {
-      title: 'announcement.interiorDesigners',
-      svgComponent: InteriorHouseModel,
-      selectedSpeciality: 'interiorArchitect',
-    },
-  ];
+  // const [selectedSpeciality, setSelectedSpeciality] = useState<string | null>(
+  //   null
+  // );
+  // const handleSelectSpeciality = (speciality: string) => {
+  //   setSelectedSpeciality(speciality);
+  // };
+  // type ToggleCardData = {
+  //   title: TxKeyPath;
+  //   svgComponent: React.FunctionComponent<SvgProps>;
+  //   selectedSpeciality: string;
+  // };
+  // const toggleCardData: ToggleCardData[] = [
+  //   {
+  //     title: 'announcement.constructionArchitect',
+  //     svgComponent: HouseModel,
+  //     selectedSpeciality: 'constructionArchitect',
+  //   },
+  //   {
+  //     title: 'announcement.interiorDesigners',
+  //     svgComponent: InteriorHouseModel,
+  //     selectedSpeciality: 'interiorArchitect',
+  //   },
+  // ];
   return (
     <View className="flex flex-1 items-center justify-between pt-8">
-      <View className="h-3/4">
+      {/* <View className="h-3/4">
         {toggleCardData.map((cardData, index) => (
           <ToggleCard
             key={index}
@@ -53,7 +49,7 @@ export function ChooseSpeciality({ handleNextStep }: SpecialityFormProps) {
             onSelect={() => handleSelectSpeciality(cardData.selectedSpeciality)}
           />
         ))}
-      </View>
+      </View> */}
       <StepperButton
         onPressHandler={handleNextStep}
         label={translate('signup.suivant')}

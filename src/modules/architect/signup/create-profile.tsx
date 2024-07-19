@@ -1,3 +1,4 @@
+// create-profile.js
 import React from 'react';
 import type { z } from 'zod';
 
@@ -6,36 +7,26 @@ import { StepButtons } from '@/modules/shared';
 import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
 import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers/use-signup-stepper-provider';
+import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import type { SignupFormDataType } from '@/types';
 import type { SignupFormSchema } from '@/validations';
 import { createAccountSchema } from '@/validations';
 
 export type SignupFormType = z.infer<typeof SignupFormSchema>;
 
-export type ResetFormProps = {
-  handlePreviousStep?: () => void;
-  handleNextStep: () => void;
-};
-
-export type CreateProfileType = {
-  name: string;
-  data: string;
-};
-
-export default function CreateProfile({
-  handlePreviousStep,
-  handleNextStep,
-}: ResetFormProps) {
-  const { setFormData, formData } = useFormStepper();
-
-  const handleData = ({ name, data }: CreateProfileType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      [name]: data,
-    }));
-  };
-
-  const { control, handleSubmit } = useCustomForm(createAccountSchema, {
+export default function CreateProfile() {
+  type CreateAccountFormType = Pick<
+    SignupFormDataType,
+    | 'firstName'
+    | 'lastName'
+    | 'email'
+    | 'phoneNumber'
+    | 'address'
+    | 'architectIdentifier'
+  >;
+  const { formData, setFormData, onHandleNext, onHandleBack } =
+    useFormStepper<SignupFormDataType>();
+  const { handleSubmit, control } = useCustomForm(createAccountSchema, {
     firstName: formData?.firstName,
     lastName: formData?.lastName,
     email: formData?.email,
@@ -44,8 +35,14 @@ export default function CreateProfile({
     architectIdentifier: formData?.architectIdentifier,
   });
 
-  const onSubmit = () => {
-    handleNextStep();
+  const onSubmit = (data: CreateAccountFormType) => {
+    console.log('data');
+    console.log(data);
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
+    onHandleNext();
   };
 
   return (
@@ -61,12 +58,11 @@ export default function CreateProfile({
         />
       </View>
 
-      <ScrollView className=" flex h-fit w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
+      <ScrollView className="flex h-fit w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
         <ControlledInput
           testID="name-input"
           control={control}
           name="firstName"
-          handleOnChange={handleData}
           label={translate('labels.name')}
           placeholder={translate('labels.name')}
         />
@@ -74,7 +70,6 @@ export default function CreateProfile({
           testID="surname-input"
           control={control}
           name="lastName"
-          handleOnChange={handleData}
           label={translate('labels.surname')}
           placeholder={translate('labels.surname')}
         />
@@ -82,23 +77,19 @@ export default function CreateProfile({
           testID="email-input"
           control={control}
           name="email"
-          handleOnChange={handleData}
           label={translate('labels.mail')}
           placeholder={translate('labels.mail')}
         />
         <ControlledPhoneNumberInput
           name="phoneNumber"
           control={control}
-          handleOnChange={handleData}
           label={translate('labels.phone')}
           rules={{ required: 'Phone number is required' }}
         />
-
         <ControlledInput
           testID="address-input"
           control={control}
           name="address"
-          handleOnChange={handleData}
           label={translate('labels.address')}
           placeholder={translate('labels.address')}
         />
@@ -106,13 +97,13 @@ export default function CreateProfile({
           testID="matricule-input"
           control={control}
           name="architectIdentifier"
-          handleOnChange={handleData}
           label={translate('labels.matricule')}
           placeholder={translate('labels.matricule')}
         />
       </ScrollView>
+
       <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.retour' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
         next={{ handleSubmit: handleSubmit(onSubmit), label: 'signup.suivant' }}
       />
     </View>

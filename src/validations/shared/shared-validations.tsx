@@ -32,7 +32,9 @@ export const phoneValidation = z
   .min(8, { message: 'validations.phone-number-min-length' })
   .max(15, { message: 'validations.phone-number-max-length' });
 
-export const specialityValidation = z.number();
+export const specialityValidation = z.number().refine((value) => value > 0, {
+  message: 'validations.required',
+});
 
 export const dateValidation = z
   .string({ message: 'validations.required' })

@@ -1,3 +1,4 @@
+// demo-planning-confirmation.js
 import React from 'react';
 
 import { useSignup } from '@/api/auth/use-signup';
@@ -5,25 +6,26 @@ import { Clock } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import StepperButton from '@/modules/shared/stepper-button';
 import { Text, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers/use-signup-stepper-provider';
+import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
 import { formatDate } from '@/shared/utils';
+import type { SignupFormDataType } from '@/types';
 
 export default function DemoPlanningConfirmation() {
-  const { formData } = useFormStepper();
+  const { formData } = useFormStepper<SignupFormDataType>();
   const signup = useSignup();
+
   const handleConfirmationStep = () => {
     console.log(formData);
     signup.mutate(formData, {
-      onSuccess: (data: any) => {
-        // Handle success (e.g., navigate to another screen, show a success message)
+      onSuccess: (data) => {
         console.log('Signup successful:', data);
       },
-      onError: (error: any) => {
-        // Handle error (e.g., show an error message)
-        console.error('Signup error:', error.message);
+      onError: (error) => {
+        console.error('Signup error:', { ...error });
       },
     });
   };
+
   return (
     <View className="flex h-fit w-full items-center justify-between gap-16">
       <View>

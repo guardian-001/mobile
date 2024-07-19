@@ -1,3 +1,5 @@
+// choose-speciality.js
+import { useRouter } from 'expo-router';
 import React from 'react';
 
 import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
@@ -5,33 +7,35 @@ import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers/use-signup-stepper-provider';
+import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import type { SignupFormDataType } from '@/types';
 import { SpecialityFormSchema } from '@/validations';
 
-export type ResetFormProps = {
-  handlePreviousStep: () => void;
-  handleNextStep: () => void;
-};
+export default function ChooseSpeciality() {
+  const route = useRouter();
 
-export type FormData = {
-  architectSpeciality: string;
-};
+  type SpecialityFormType = Pick<SignupFormDataType, 'architectSpeciality'>;
+  const { formData, setFormData, onHandleNext } =
+    useFormStepper<SignupFormDataType>();
+  const { handleSubmit, control, errors } = useCustomForm(
+    SpecialityFormSchema,
+    {
+      architectSpeciality: formData.architectSpeciality,
+    }
+  );
 
-export default function ChooseSpeciality({
-  handlePreviousStep,
-  handleNextStep,
-}: ResetFormProps) {
-  const { setFormData, formData } = useFormStepper();
-  const { control, handleSubmit } = useCustomForm(SpecialityFormSchema, {
-    architectSpeciality: '',
-  });
-
-  const handleSelectSpeciality = (speciality: number) => {
-    setFormData((prev: any) => ({ ...prev, architectSpeciality: speciality }));
+  const onHandleBack = () => {
+    route.push('/(architect)/(public)/login');
   };
 
-  const onSubmit = () => {
-    handleNextStep();
+  const onSubmit = (data: SpecialityFormType) => {
+    console.log('data');
+    console.log(data);
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
+    onHandleNext();
   };
 
   return (
@@ -47,6 +51,12 @@ export default function ChooseSpeciality({
         />
       </View>
 
+      {errors.architectSpeciality && (
+        <Text className="text-danger-400 dark:text-danger-600 text-sm">
+          {errors.architectSpeciality?.message}
+        </Text>
+      )}
+
       <ScrollView className="flex h-fit gap-5">
         <ToggleCard
           className="h-38 w-64 rounded-2xl"
@@ -54,9 +64,7 @@ export default function ChooseSpeciality({
           svgComponent={HouseModel}
           name="architectSpeciality"
           control={control}
-          id={1}
-          selectedValue={formData?.architectSpeciality}
-          onSelect={() => handleSelectSpeciality(1)}
+          value={1}
         />
 
         <ToggleCard
@@ -65,13 +73,12 @@ export default function ChooseSpeciality({
           svgComponent={InteriorHouseModel}
           name="architectSpeciality"
           control={control}
-          id={2}
-          selectedValue={formData?.architectSpeciality}
-          onSelect={() => handleSelectSpeciality(2)}
+          value={2}
         />
       </ScrollView>
+
       <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.ignorer' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'signup.ignorer' }}
         next={{ handleSubmit: handleSubmit(onSubmit), label: 'signup.suivant' }}
       />
     </View>
