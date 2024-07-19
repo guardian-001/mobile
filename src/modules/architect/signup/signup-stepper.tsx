@@ -1,9 +1,8 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { StyleSheet } from 'react-native';
 
 import ResetFormPassword from '@/modules/reset-password/reset-form-password';
-import { HeaderTitle, ScrollView, View } from '@/shared/components';
+import { HeaderTitle, View } from '@/shared/components';
 import { useRouteName } from '@/shared/hooks/use-get-route';
 import {
   FormProvider,
@@ -49,12 +48,7 @@ const SignupStepperInner = () => {
   return (
     <View className="items-between flex h-full bg-background dark:bg-black">
       <HeaderTitle text="signup.headerTitle" type="custom" />
-      <ScrollView
-        className="h-full flex-1 p-6 pt-12"
-        contentContainerStyle={styles.scrollContainer}
-      >
-        {component}
-      </ScrollView>
+      <View className=" h-full flex-1 p-6 py-12">{component}</View>
     </View>
   );
 };
@@ -78,9 +72,3 @@ export default function SignupStepper() {
     </FormProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  scrollContainer: {
-    alignItems: 'center',
-  },
-});

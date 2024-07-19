@@ -59,12 +59,19 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
           selectedCountry={selectedCountry}
           onChangeSelectedCountry={handleSelectedCountry}
           phoneInputStyles={{
-            container: { height: 35, backgroundColor: colors.white },
+            container: {
+              height: 35,
+              backgroundColor: colors.white,
+              paddingBottom: 1,
+            },
             input: { fontSize: 12 },
             callingCode: { fontSize: 12 },
             caret: { fontSize: 12, backgroundColor: colors.white },
             flag: { fontSize: 12 },
-            flagContainer: { width: 100, backgroundColor: colors.white },
+            flagContainer: {
+              width: 100,
+              backgroundColor: colors.white,
+            },
           }}
         />
       </View>

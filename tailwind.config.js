@@ -19,6 +19,7 @@ module.exports = {
         'disabled-txt': '#bfc2cc',
         background: '#fafbff',
         error: '#ff0000',
+        'color-border': '#aeaeae',
       },
     },
   },
