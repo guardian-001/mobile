@@ -9,5 +9,7 @@
   "address": "Adresse de votre bureau",
   "addressPlaceHolder": "Entrer L’adresse du bureau",
   "matricule": "Matricule ficale de votre sociéte",
-  "matriculePlaceHolder": "votre Matricule fiscale"
+  "matriculePlaceHolder": "votre Matricule fiscale",
+  "date": "Date",
+  "time": "Temps"
 }

@@ -4,13 +4,14 @@ import { cloneElement } from 'react';
 import { Platform, TouchableOpacity } from 'react-native';
 
 import { Close } from '@/assets/icons';
-import { translate, useStepperSpeacialNavigation } from '@/core';
+import { translate } from '@/core';
 import {
   KeyboardAvoidingView,
   ScrollView,
   Text,
   View,
 } from '@/shared/components';
+import { useStepperSpeacialNavigation } from '@/shared/hooks/use-stepper-special-navigation';
 
 import { stepsContent } from './steps-content';
 

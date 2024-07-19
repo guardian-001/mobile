@@ -32,7 +32,6 @@ export const OTPInput = <T extends FieldValues>({
     newValue[index] = text;
     field.onChange(newValue.join(''));
 
-    // Focus next input
     if (text && index < length - 1) {
       inputRefs.current[index + 1]?.focus();
     }

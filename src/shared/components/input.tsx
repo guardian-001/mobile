@@ -16,7 +16,7 @@ const inputTv = tv({
       'mb-1 text-xs font-medium text-primary-txt dark:text-white md:text-lg',
 
     input:
-      'mt-0 h-10 rounded-lg border-[0.5px] border-gray-600 bg-white px-4 py-3 font-lato text-xs font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white md:text-lg',
+      'mt-0 h-10 rounded-lg border border-color-border bg-white px-4 py-3 font-lato text-xs font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white md:text-lg',
   },
 
   variants: {

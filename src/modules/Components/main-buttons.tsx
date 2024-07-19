@@ -28,7 +28,6 @@ export default function MainButtons() {
         onPressHandler={() => onPressHandler('/(supplier)/(public)/login')}
         label={translate('onBoarding.supplierBtn')}
         icon={<ArrowRightLong />}
-        // textPosition="text-center" //by default center
         width="w-[86%]"
         height="h-14"
         radius="rounded-full"

@@ -18,6 +18,8 @@ module.exports = {
         'secondary-btn': '#f2f2f2',
         'disabled-txt': '#bfc2cc',
         background: '#fafbff',
+        error: '#ff0000',
+        'color-border': '#aeaeae',
       },
     },
   },

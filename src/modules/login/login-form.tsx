@@ -6,7 +6,9 @@ import type * as z from 'zod';
 
 import { translate, useAuth } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
-import { useCustomForm, useRouteName } from '@/shared/hooks';
+import { useCustomForm } from '@/shared/hooks';
+import { useRouteName } from '@/shared/hooks/use-get-route';
+import { useLoginForm } from '@/shared/providers/use-login-form';
 import { LoginFormSchema } from '@/validations';
 
 import { Container } from '../shared';
@@ -14,6 +16,10 @@ import LoginButton from '../shared/login-button';
 export type LoginFormType = z.infer<typeof LoginFormSchema>;
 export type LoginFormProps = {
   onSubmit: SubmitHandler<LoginFormType>;
+};
+export type LoginType = {
+  name: string;
+  data: string;
 };
 
 export const LoginForm = ({ onSubmit }: LoginFormProps) => {
@@ -31,7 +37,14 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const handleResetPass = () => {
     router.push(`/(${space})/(public)/reset-password`);
   };
+  const { setFormData } = useLoginForm();
 
+  const handleData = ({ name, data }: LoginType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      [name]: data,
+    }));
+  };
   return (
     <View className="flex w-full justify-center ">
       <ControlledInput
@@ -40,6 +53,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
         name="email"
         label={translate('login.email')}
         placeholder={translate('login.email')}
+        handleOnChange={handleData}
       />
       <ControlledInput
         testID="password-input"
@@ -48,7 +62,9 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
         label={translate('login.mdp')}
         placeholder={translate('login.mdp')}
         secureTextEntry={true}
+        handleOnChange={handleData}
       />
+
       <Container style="flex-row justify-between my-3 ">
         <Checkbox
           checked={checked}

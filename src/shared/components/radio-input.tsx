@@ -16,7 +16,7 @@ type Props<T extends FieldValues> = {
   label: string;
   name: Path<T>;
   control: Control<T>;
-  rules?: RegisterOptions; // Adjust the type according to your validation rules
+  rules?: RegisterOptions;
 };
 export const RadioInput = <T extends FieldValues>(props: Props<T>) => {
   const { name, control, rules, label, accessibilityLabel, className } = props;

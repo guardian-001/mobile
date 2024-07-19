@@ -16,10 +16,9 @@ type CardProps<T extends FieldValues> = {
   classNameText?: string;
   svgComponent?: React.ComponentType;
   name: Path<T>;
+  value: number;
   control: Control<T>;
-  rules?: RegisterOptions; // Adjust the type according to your validation rules
-  isSelected: boolean;
-  onSelect: () => void;
+  rules?: RegisterOptions;
 };
 
 export const ToggleCard = <T extends FieldValues>({
@@ -29,17 +28,15 @@ export const ToggleCard = <T extends FieldValues>({
   classNameText,
   svgComponent: SvgComponent,
   name,
+  value,
   control,
   rules,
-  isSelected,
-  onSelect,
   ...props
 }: CardProps<T>) => {
-  const { field, fieldState } = useController({ control, name, rules });
+  const { field } = useController({ control, name, rules });
 
   const handlePress = () => {
-    field.onChange(!field.value);
-    onSelect();
+    field.onChange(value);
   };
 
   return (
@@ -47,7 +44,7 @@ export const ToggleCard = <T extends FieldValues>({
       <Pressable
         onPress={handlePress}
         className={`${className} flex-1 items-center justify-center self-center   p-4 ${
-          isSelected
+          field.value === value
             ? 'border-2 border-primary '
             : 'border-borderColor border-[0.5px]'
         } mb-7`}
@@ -67,11 +64,11 @@ export const ToggleCard = <T extends FieldValues>({
           {title}
         </Text>
       </Pressable>
-      {fieldState.error?.message && (
+      {/* {fieldState.error?.message && (
         <Text className="text-danger-400 dark:text-danger-600 text-sm">
           {fieldState.error?.message}
         </Text>
-      )}
+      )} */}
     </>
   );
 };

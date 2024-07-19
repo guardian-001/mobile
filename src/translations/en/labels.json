@@ -9,5 +9,7 @@
   "address": "Office address",
   "addressPlaceHolder": "Enter office address",
   "matricule": "Tax identification number",
-  "matriculePlaceHolder": "Enter your tax identification number"
+  "matriculePlaceHolder": "Enter your tax identification number",
+  "date": "Date",
+  "time": "Time"
 }
