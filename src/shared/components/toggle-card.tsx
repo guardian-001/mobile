@@ -42,7 +42,7 @@ export const ToggleCard = <T extends FieldValues>({
   rules,
   onSelect,
   multi = false,
-  showError = true,
+  showError = false,
   ...props
 }: CardProps<T>) => {
   const { field, fieldState } = useController({ control, name, rules });

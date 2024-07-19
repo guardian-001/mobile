@@ -73,7 +73,6 @@ export function ChooseCategory({
             value={cardData.id.toString()}
             selectedValue={formData?.projectCategory}
             onSelect={() => handleSelectCategory(cardData.id.toString())}
-            showError={false}
           />
         ))}
       </View>

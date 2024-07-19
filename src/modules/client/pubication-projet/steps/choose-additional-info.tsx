@@ -80,7 +80,6 @@ export function ChooseAdditionalInfo({
             value={cardData.id.toString()}
             selectedValue={formData?.projectExtensions || []}
             onSelect={() => handleSelectExtensions(cardData.id.toString())}
-            showError={false}
           />
         ))}
       </View>

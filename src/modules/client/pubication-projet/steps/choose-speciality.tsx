@@ -78,7 +78,6 @@ export function ChooseSpeciality({
             selectedValue={formData?.architectSpeciality}
             onSelect={() => handleSelectSpeciality(cardData.id.toString())}
             classNameText="my-3"
-            showError={false}
           />
         ))}
       </View>

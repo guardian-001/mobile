@@ -78,7 +78,6 @@ export function ChoosePreferredStyle({
             value={cardData.id.toString()}
             selectedValue={formData?.architecturalStyle}
             onSelect={() => handleSelectPreferredStyle(cardData.id.toString())}
-            showError={false}
           />
         ))}
       </View>

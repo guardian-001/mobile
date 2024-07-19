@@ -96,7 +96,6 @@ export function ChooseNeeds({
             value={cardData.id.toString()}
             selectedValue={formData?.needs || []}
             onSelect={() => handleSelectNeeds(cardData.id.toString())}
-            showError={false}
           />
         ))}
         {error && (

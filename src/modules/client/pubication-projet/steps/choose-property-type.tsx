@@ -59,7 +59,6 @@ export function ChoosePropertyType({
             value={cardData.id.toString()}
             selectedValue={formData?.propertyType}
             onSelect={() => handleSelectProperty(cardData.id.toString())}
-            showError={false}
           />
         ))}
 
