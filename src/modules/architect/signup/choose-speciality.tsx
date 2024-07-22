@@ -8,8 +8,9 @@ import { StepButtons } from '@/modules/shared';
 import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
-import type { SignupFormDataType } from '@/types';
 import { SpecialityFormSchema } from '@/validations';
+
+import type { SignupFormDataType } from '../types';
 
 export default function ChooseSpeciality() {
   const route = useRouter();

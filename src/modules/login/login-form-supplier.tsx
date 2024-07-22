@@ -2,7 +2,6 @@ import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { View } from 'react-native';
 import { KeyboardAvoidingView, Platform } from 'react-native';
-import type * as z from 'zod';
 
 import { translate } from '@/core';
 import { Container } from '@/modules/shared';
@@ -10,13 +9,12 @@ import LoginButton from '@/modules/shared/login-button';
 import { Image, ImageContainer } from '@/shared/components';
 import { ControlledInput, Text } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
+import type { LoginFormSupplierType } from '@/types';
 import { EmailSchema } from '@/validations';
-
-export type LoginFormType = z.infer<typeof EmailSchema>;
-export type LoginFormProps = {
-  onSubmit: SubmitHandler<LoginFormType>;
+export type LoginFormSupplierProps = {
+  onSubmit: SubmitHandler<LoginFormSupplierType>;
 };
-export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
+export const LoginForm = ({ onSubmit = () => {} }: LoginFormSupplierProps) => {
   const { handleSubmit, control } = useCustomForm(EmailSchema);
 
   return (

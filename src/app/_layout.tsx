@@ -23,12 +23,11 @@ export default function RootLayout() {
   useReactNavigationDevTools(navigationRef);
   return (
     <AppProvider>
-      <Stack>
+      <Stack initialRouteName="(app)">
         <Stack.Screen name="(app)" options={{ headerShown: false }} />
         <Stack.Screen name="(architect)" options={{ headerShown: false }} />
         <Stack.Screen name="(client)" options={{ headerShown: false }} />
         <Stack.Screen name="(supplier)" options={{ headerShown: false }} />
-        <Stack.Screen name="onboarding" options={{ headerShown: false }} />
       </Stack>
     </AppProvider>
   );

@@ -13,5 +13,6 @@
   "password-uppercase": "une lettre majuscule",
   "password-digit": "un chiffre",
   "password-special-char": "un caractère spécial (#?!$&@)",
+  "passwordConfirmation": "confirmer le mot de passe",
   "resendCode": "Renvoyer le code"
 }

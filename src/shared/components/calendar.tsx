@@ -3,10 +3,10 @@ import { Text, TouchableOpacity, View } from 'react-native';
 
 import { ArrowLeft, ArrowRight, Globe } from '@/assets/icons';
 import { translate } from '@/core';
+import { DemoFormSchema } from '@/modules/architect/schemas';
+import type { SignupFormDataType } from '@/modules/architect/types';
 import { StepButtons } from '@/modules/shared';
 import colors from '@/theme/colors';
-import type { SignupFormDataType } from '@/types';
-import { DemoFormSchema } from '@/validations';
 
 import { DAYS } from '../constants/constants';
 import { useCalendar, useCustomForm, useTimezone } from '../hooks';

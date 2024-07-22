@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 import {
-  dateValidation,
   emailValidation,
   fieldValidation,
   notRequiredValidationBoolean,
@@ -10,7 +9,6 @@ import {
   requiredValidation,
   requiredValidationBoolean,
   specialityValidation,
-  timeValidation,
 } from './shared-validations';
 
 export const ConfirmPasswordSchema = z
@@ -41,34 +39,6 @@ export const LoginFormSchema = z.object({
   password: requiredValidation,
 });
 
-export const SignupFormSchema = z.object({
-  firstName: fieldValidation,
-  lastName: fieldValidation,
-  email: emailValidation,
-  phoneNumber: phoneValidation,
-  address: fieldValidation,
-  architectIdentifier: fieldValidation, //architectIdentifierValidation
-  architectSpeciality: specialityValidation,
-  date: dateValidation,
-  timeSlot: timeValidation,
-});
-export const createAccountSchema = z.object({
-  firstName: fieldValidation,
-  lastName: fieldValidation,
-  email: emailValidation,
-  phoneNumber: phoneValidation,
-  address: fieldValidation,
-  architectIdentifier: fieldValidation, //matriculeValidation
-});
-export const SpecialityFormSchema = z.object({
-  architectSpeciality: specialityValidation,
-});
-
-export const DemoFormSchema = z.object({
-  date: dateValidation,
-  timeSlot: timeValidation,
-});
-
 export const OTPSchema = z.object({
   OTP: requiredValidation,
 });
@@ -94,4 +64,14 @@ export const AnnouncementFormSchema = z.object({
   acceptTerms: requiredValidationBoolean,
   receiveQuotes: notRequiredValidationBoolean,
   speciality: specialityValidation,
+});
+
+export const SpecialityFormSchema = z.object({
+  architectSpeciality: specialityValidation,
+});
+
+export const ResetPassFormSchema = z.object({
+  email: emailValidation,
+  password: passwordValidation,
+  confirmPassword: passwordValidation,
 });

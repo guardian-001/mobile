@@ -1,8 +1,7 @@
-import { router } from 'expo-router';
 import * as React from 'react';
 import { Platform } from 'react-native';
 
-import { type TxKeyPath } from '@/core';
+import { type TxKeyPath, useRouteName } from '@/core';
 import {
   HeaderTitle,
   Image,
@@ -10,19 +9,19 @@ import {
   ScrollView,
   Text,
 } from '@/shared/components';
-import { useRouteName } from '@/shared/hooks/use-get-route';
+import {
+  FormProvider,
+  useFormStepper,
+} from '@/shared/providers/use-form-stepper-provider';
+import type { ResetPassFormType } from '@/types';
 
 import ResetFormEmail from './reset-form-email';
 import ResetFormPassword from './reset-form-password';
 import VerificationCode from './verification-code';
 
-type Props = { initialStep?: number };
-export default function ResetStepper({ initialStep = 0 }: Props) {
+function ResetStepperInner() {
+  const { step } = useFormStepper<ResetPassFormType>();
   const space = useRouteName();
-  const [step, setStep] = React.useState(initialStep);
-  const handleNextStep = () => {
-    setStep(step + 1);
-  };
   const stepsContent: {
     title: TxKeyPath;
     subtitle: TxKeyPath;
@@ -31,17 +30,17 @@ export default function ResetStepper({ initialStep = 0 }: Props) {
     {
       title: 'resetpass.forgetPasswordTitle',
       subtitle: 'resetpass.sendingEmailDescription',
-      component: <ResetFormEmail onSubmit={handleNextStep} />,
+      component: <ResetFormEmail />,
     },
     {
       title: 'resetpass.verificationCodeTitle',
       subtitle: 'resetpass.verificationCodeDescription',
-      component: <VerificationCode onSubmit={handleNextStep} />,
+      component: <VerificationCode />,
     },
     {
       title: 'resetpass.resetPasswordTitle',
       subtitle: 'resetpass.resetPasswordDescription',
-      component: <ResetFormPassword onSubmit={() => router.back()} />,
+      component: <ResetFormPassword />,
     },
   ];
   const { title, subtitle, component } = stepsContent[step];
@@ -72,5 +71,18 @@ export default function ResetStepper({ initialStep = 0 }: Props) {
         {component}
       </ScrollView>
     </KeyboardAvoidingView>
+  );
+}
+
+export default function ResetStepper() {
+  const initialData = {
+    email: '',
+    password: '',
+    confirmPassword: '',
+  };
+  return (
+    <FormProvider<ResetPassFormType> initialData={initialData}>
+      <ResetStepperInner />
+    </FormProvider>
   );
 }

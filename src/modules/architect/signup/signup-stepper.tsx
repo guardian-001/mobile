@@ -1,24 +1,18 @@
-import { useRouter } from 'expo-router';
 import React from 'react';
 
-import ResetFormPassword from '@/modules/reset-password/reset-form-password';
 import { HeaderTitle, View } from '@/shared/components';
-import { useRouteName } from '@/shared/hooks/use-get-route';
 import {
   FormProvider,
   useFormStepper,
 } from '@/shared/providers/use-form-stepper-provider';
-import type { SignupFormDataType } from '@/types';
 
+import type { SignupFormDataType } from '../types';
 import ChooseSpeciality from './choose-speciality';
 import CreateProfile from './create-profile';
 import DemoPlanning from './demo-planning';
 import DemoPlanningConfirmation from './demo-planning-confirmation';
 
 const SignupStepperInner = () => {
-  const space = useRouteName();
-  const route = useRouter();
-
   const { step } = useFormStepper<SignupFormDataType>();
 
   const stepsContent: { component: React.ReactNode }[] = [
@@ -33,13 +27,6 @@ const SignupStepperInner = () => {
     },
     {
       component: <DemoPlanningConfirmation />,
-    },
-    {
-      component: (
-        <ResetFormPassword
-          onSubmit={() => route.replace(`/(${space})/(public)/login`)}
-        />
-      ),
     },
   ];
 

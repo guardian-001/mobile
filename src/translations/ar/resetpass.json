@@ -13,5 +13,6 @@
   "password-uppercase": "حرف كبير واحد",
   "password-digit": "رقم واحد",
   "password-special-char": "حرف خاص واحد (#?!$&@)",
+  "passwordConfirmation": "تأكيد كلمة المرور",
   "resendCode": "إعادة إرسال الرمز"
 }

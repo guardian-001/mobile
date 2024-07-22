@@ -10,7 +10,7 @@ export default function ResetPasswordClient() {
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
-      <ResetStepper initialStep={1} />
+      <ResetStepper />
     </View>
   );
 }

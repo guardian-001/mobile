@@ -1,3 +1,4 @@
+import { Env } from '@env';
 import * as React from 'react';
 import {
   type Control,
@@ -34,20 +35,20 @@ export const ToggleCard = <T extends FieldValues>({
   ...props
 }: CardProps<T>) => {
   const { field } = useController({ control, name, rules });
-
   const handlePress = () => {
     field.onChange(value);
   };
 
+  console.log(`${Env.API_URL}${image}`);
   return (
     <>
       <Pressable
         onPress={handlePress}
-        className={`${className} flex-1 items-center justify-center self-center   p-4 ${
+        className={`${className} flex-1 items-center justify-center  self-center   p-4 ${
           field.value === value
             ? 'border-2 border-primary '
-            : 'border-borderColor border-[0.5px]'
-        } mb-7`}
+            : 'border-borderColor border'
+        } `}
         {...props}
       >
         {SvgComponent ? (
@@ -56,19 +57,14 @@ export const ToggleCard = <T extends FieldValues>({
           </View>
         ) : (
           <Image
-            className="h-1/3 w-1/3 overflow-hidden rounded-2xl"
-            source={{ uri: image }}
+            className="h-2/3 w-4/6 overflow-hidden rounded-2xl"
+            source={{ uri: `${Env.API_URL}${image}` }}
           />
         )}
         <Text className={`${classNameText} text-center text-xs font-bold`}>
           {title}
         </Text>
       </Pressable>
-      {/* {fieldState.error?.message && (
-        <Text className="text-danger-400 dark:text-danger-600 text-sm">
-          {fieldState.error?.message}
-        </Text>
-      )} */}
     </>
   );
 };

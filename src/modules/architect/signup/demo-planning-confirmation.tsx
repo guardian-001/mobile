@@ -7,7 +7,8 @@ import StepperButton from '@/modules/shared/stepper-button';
 import { Text, View } from '@/shared/components';
 import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
 import { formatDate } from '@/shared/utils';
-import type { SignupFormDataType } from '@/types';
+
+import type { SignupFormDataType } from '../types';
 
 export default function DemoPlanningConfirmation() {
   const { formData } = useFormStepper<SignupFormDataType>();

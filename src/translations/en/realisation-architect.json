@@ -1,0 +1,33 @@
+{
+  "categoryStep": {
+    "title": "Choose the Project Category",
+    "description": "To get started, please select your specialty"
+  },
+  "styleStep": {
+    "title": "What style to adopt for the project?",
+    "description": "To get started, please select your specialty"
+  },
+  "detailsStep": {
+    "title": "More details",
+    "description": "To get started, please select your specialty",
+    "inputLabel": "Project title",
+    "inputPlaceholder": "Title your project",
+    "localisationLabel": "Project location",
+    "surfaceLabel": "Work surface",
+    "descriptionLabel": "Project description",
+    "descriptionPlaceholder": "Write a short introduction..."
+  },
+  "servicesStep": {
+    "title": "Approved services",
+    "description": "To get started, please select your specialty"
+  },
+  "galleryStep": {
+    "title": "Gallery",
+    "description": "To get started, please select your specialty",
+    "imgSelectorPlaceholder": "Upload a minimum of 5 photos",
+    "buttonTitle": "Upload photos",
+    "imgLoaderTitle": "We are organizing your photos to showcase your architectural vision",
+    "imgLoaderDescriptionSur": "on",
+    "imgLoaderDescription": "photos uploaded"
+  }
+}

@@ -2,7 +2,6 @@ import { cssInterop } from 'nativewind';
 import Svg from 'react-native-svg';
 
 export { default as colors } from '../../theme/colors';
-export * from '../constants/constants';
 export * from './button';
 export * from './calendar';
 export * from './calendar-day';

@@ -9,7 +9,7 @@ type Request = SignupRequest;
 export const useSignupApi = createMutation<Response, Request, AxiosError>({
   mutationFn: async (request) =>
     client({
-      url: 'api/architect-request/create-architect-request/',
+      url: '/api/architect-request/create-architect-request/',
       method: 'POST',
       data: request,
     })
