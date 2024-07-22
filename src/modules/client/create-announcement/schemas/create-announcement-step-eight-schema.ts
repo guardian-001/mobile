@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { requiredValidation } from '@/validations';
+import { requiredValidation } from '@/shared/validations';
 
 export const CreateAnnouncementStepEightSchema = z.object({
   budget: requiredValidation,

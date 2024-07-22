@@ -10,7 +10,7 @@ import LoginButton from '@/modules/shared/login-button';
 import { Image, ImageContainer } from '@/shared/components';
 import { ControlledInput, Text } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { EmailSchema } from '@/validations';
+import { EmailSchema } from '@/shared/validations';
 
 export type LoginFormType = z.infer<typeof EmailSchema>;
 export type LoginFormProps = {

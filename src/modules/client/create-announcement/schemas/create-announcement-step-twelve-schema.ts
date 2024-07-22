@@ -6,7 +6,7 @@ import {
   notRequiredValidationBoolean,
   phoneValidation,
   requiredValidationBoolean,
-} from '@/validations';
+} from '@/shared/validations';
 
 export const CreateAnnouncementStepTwelveSchema = z.object({
   firstName: fieldValidation,

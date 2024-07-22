@@ -17,7 +17,7 @@ import type { AnnouncementType } from '@/types/announcement';
 
 import { stepsContent } from './steps-content';
 
-const PublicationProjetInner = () => {
+const CreateAnnouncementInner = () => {
   const router = useRouter();
   const lastStep = 11;
   const { step, onHandleBack, onHandleNext, setFormData, formData } =
@@ -71,7 +71,7 @@ const PublicationProjetInner = () => {
     </KeyboardAvoidingView>
   );
 };
-export default function PublicationProjetStepper() {
+export default function CreateAnnouncementStepper() {
   const initialData = {
     architectSpeciality: 0,
     needs: [],
@@ -99,7 +99,7 @@ export default function PublicationProjetStepper() {
 
   return (
     <FormProvider<AnnouncementType> initialData={initialData}>
-      <PublicationProjetInner />
+      <CreateAnnouncementInner />
     </FormProvider>
   );
 }

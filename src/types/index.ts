@@ -1,8 +1,8 @@
 import type { SubmitHandler } from 'react-hook-form';
 import type { z } from 'zod';
 
-import type { EmailSchema } from '@/validations';
-import type { SignupFormSchema } from '@/validations';
+import type { EmailSchema } from '@/shared/validations';
+import type { SignupFormSchema } from '@/shared/validations';
 
 export type SignupFormDataType = z.infer<typeof SignupFormSchema>;
 

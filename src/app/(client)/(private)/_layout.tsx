@@ -12,7 +12,7 @@ export default function ClientPrivateLayout() {
         options={ScreenOptions({ type: 'custom' })}
       />
       <Stack.Screen
-        name="(projet)"
+        name="(announcement)"
         options={ScreenOptions({ type: 'custom' })}
       />
     </Stack>

@@ -4,8 +4,8 @@ import type * as z from 'zod';
 
 import { Button, ControlledInput, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
+import { EmailSchema } from '@/shared/validations';
 import { translate } from '@/translations/i18n';
-import { EmailSchema } from '@/validations';
 
 type EmailFormType = z.infer<typeof EmailSchema>;
 
