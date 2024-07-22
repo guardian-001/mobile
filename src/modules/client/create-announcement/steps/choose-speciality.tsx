@@ -7,16 +7,10 @@ import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
+import type { StepperFormProps } from '@/types';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepOneSchema } from '../schemas';
-
-export type StepperFormProps = {
-  onHandleBack: () => void;
-  onHandleNext: () => void;
-  setFormData: (data: any) => void;
-  formData: any;
-};
 
 export function ChooseSpeciality({
   onHandleNext,

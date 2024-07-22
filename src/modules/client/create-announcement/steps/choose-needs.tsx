@@ -6,11 +6,10 @@ import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
+import type { StepperFormProps } from '@/types';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepTwoSchema } from '../schemas';
-import type { StepperFormProps } from './choose-speciality';
-
 export function ChooseNeeds({
   onHandleBack,
   onHandleNext,

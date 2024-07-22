@@ -3,9 +3,7 @@ import React from 'react';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { View } from '@/shared/components';
-
-import type { StepperFormProps } from './choose-speciality';
-
+import type { StepperFormProps } from '@/types';
 export function AddPhotos({ onHandleBack, onHandleNext }: StepperFormProps) {
   return (
     <View className="flex flex-1 items-center justify-between pt-8">

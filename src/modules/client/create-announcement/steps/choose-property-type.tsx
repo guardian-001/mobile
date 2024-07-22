@@ -6,11 +6,10 @@ import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
+import type { StepperFormProps } from '@/types';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepFourSchema } from '../schemas';
-import type { StepperFormProps } from './choose-speciality';
-
 export function ChoosePropertyType({
   onHandleBack,
   onHandleNext,

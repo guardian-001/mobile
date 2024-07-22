@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { type TxKeyPath } from '@/core';
+import type { StepperFormProps } from '@/types';
 
-import type { StepperFormProps } from './steps';
 import {
   AddPhotos,
   ChooseAdditionalInfo,
