@@ -15,6 +15,7 @@ interface MainButtonProps {
   type?: 'pill' | 'button';
   alternativeStyle?: string;
   icon?: React.ReactNode;
+  iconClassName?: string;
 }
 
 export default function MainButton({
@@ -28,6 +29,7 @@ export default function MainButton({
   radius = 'rounded-md',
   shadow,
   alternativeStyle,
+  iconClassName,
 }: MainButtonProps) {
   return (
     <Button
@@ -40,6 +42,7 @@ export default function MainButton({
         textPosition
       )}
       icon={icon}
+      iconClassName={iconClassName}
     />
   );
 }

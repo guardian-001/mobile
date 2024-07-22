@@ -21,6 +21,7 @@ type CardProps<T extends FieldValues> = {
   control: Control<T>;
   rules?: RegisterOptions;
   multi?: boolean;
+  tip?: string;
 };
 
 export const ToggleCard = <T extends FieldValues>({
@@ -35,6 +36,7 @@ export const ToggleCard = <T extends FieldValues>({
   control,
   rules,
   multi = false,
+  tip,
   ...props
 }: CardProps<T>) => {
   const { field } = useController({ control, name, rules });
@@ -76,6 +78,11 @@ export const ToggleCard = <T extends FieldValues>({
         <Text className={`${classNameText} text-center text-xs font-bold`}>
           {title}
         </Text>
+        {tip && (
+          <Text className={`text-[10px] font-normal text-description`}>
+            {tip}
+          </Text>
+        )}
       </Pressable>
     </View>
   );
