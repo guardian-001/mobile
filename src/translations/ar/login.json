@@ -11,5 +11,7 @@
   "termsConditionsPart3": "وتقر بأنك قرأت",
   "termsConditionsPart4": "سياسة الخصوصية الخاصة بنا.",
   "haveAccountQuestion": "ليس لديك حساب؟",
-  "signupLink": "سجل"
+  "signupLink": "سجل",
+  "codeVerif": "رمز التحقق",
+  "saisirCode": "أدخل الرمز المرسل إليه"
 }

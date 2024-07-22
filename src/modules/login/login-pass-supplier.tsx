@@ -8,18 +8,18 @@ import { translate } from '@/core';
 import { Image, ImageContainer } from '@/shared/components';
 import { ControlledInput, Text } from '@/shared/components';
 import useCustomForm from '@/shared/hooks/use-custom-form';
-import { EmailSchema } from '@/validations';
+import { PasswordSchema } from '@/validations';
 
 import { Container } from '../shared';
 import LoginButton from '../shared/login-button';
 
-export type LoginFormType = z.infer<typeof EmailSchema>;
+export type LoginFormType = z.infer<typeof PasswordSchema>;
 export type LoginFormProps = {
   onSubmit: SubmitHandler<LoginFormType>;
 };
 
 export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
-  const { handleSubmit, control } = useCustomForm(EmailSchema);
+  const { handleSubmit, control } = useCustomForm(PasswordSchema);
 
   return (
     <KeyboardAvoidingView
@@ -45,9 +45,9 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
         <ControlledInput
           testID="email-input"
           control={control}
-          name="email"
-          label={translate('login.email')}
-          placeholder={translate('login.email')}
+          name="password"
+          label={translate('login.mdp')}
+          placeholder={translate('login.mdp')}
         />
         <LoginButton
           type="button"

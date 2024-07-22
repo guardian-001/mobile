@@ -7,7 +7,7 @@ export default function SupplierPublicLayout() {
   return (
     <Stack initialRouteName="login">
       <Stack.Screen name="login" options={ScreenOptions('/onboarding')} />
-      <Stack.Screen name="reset-password-client" options={ScreenOptions()} />
+      <Stack.Screen name="reset-password-supplier" options={ScreenOptions()} />
     </Stack>
   );
 }

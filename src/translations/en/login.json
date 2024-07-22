@@ -11,5 +11,7 @@
   "termsConditionsPart3": "and acknowledge that you have read our",
   "termsConditionsPart4": "privacy policy.",
   "haveAccountQuestion": "Don't have an account?",
-  "signupLink": "Sign up"
+  "signupLink": "Sign up",
+  "codeVerif": "Verification code",
+  "saisirCode": "enter the code sent to"
 }

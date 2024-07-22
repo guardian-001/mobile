@@ -1,4 +1,5 @@
 import common from './common.json';
+import createYourPass from './createPass.json';
 import labels from './labels.json';
 import login from './login.json';
 import loginSupplier from './loginSupplier.json';
@@ -15,6 +16,7 @@ import signupStepDemoPlanningConfirmation from './signup-step4.json';
 import validations from './validations.json';
 
 export default {
+  createYourPass,
   loginSupplier,
   notification,
   profile,

@@ -56,7 +56,9 @@ export function StartScreen() {
             </Text>
           </Container>
           <MainButton
-            onPressHandler={() => onPressHandler('/(client)/(public)/login')}
+            onPressHandler={() =>
+              onPressHandler('/(client)/(public)/login-email')
+            }
             label={translate('onBoarding.clientBtn')}
             type="button"
             width="w-[88%]"
