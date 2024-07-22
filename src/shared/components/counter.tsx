@@ -25,6 +25,30 @@ type CounterProps<T extends FieldValues> = {
   rules?: RegisterOptions;
 };
 
+type PiecesRenovateType = { [key: number]: number };
+
+const findInitialValue = (values: PiecesRenovateType[], id: number): number => {
+  return values?.find((item) => Object.keys(item)[0] === String(id))?.[id] ?? 0;
+};
+
+const updateArray = (
+  arr: PiecesRenovateType[],
+  id: number,
+  newCount: number
+): PiecesRenovateType[] => {
+  if (newCount === 0) {
+    return arr.filter((item) => Object.keys(item)[0] !== String(id));
+  } else {
+    const index = arr.findIndex((item) => Object.keys(item)[0] === String(id));
+    if (index !== -1) {
+      arr[index] = { [id]: newCount };
+    } else {
+      arr.push({ [id]: newCount });
+    }
+    return [...arr];
+  }
+};
+
 export const Counter = <T extends FieldValues>({
   title,
   image,
@@ -36,25 +60,9 @@ export const Counter = <T extends FieldValues>({
   rules,
 }: CounterProps<T>) => {
   const { field } = useController({ control, name, rules });
-  const initialValue =
-    field.value?.find((item: any) => Object.keys(item)[0] === String(id))?.[
-      id
-    ] ?? 0;
+  const initialValue = findInitialValue(field.value, id);
   const [count, setCount] = useState<number>(initialValue);
-  console.log('dd');
-  const updateArray = (arr: any[], id: number, newCount: number) => {
-    if (newCount === 0) {
-      return arr.filter((item) => item[id] === undefined);
-    } else {
-      const index = arr.findIndex((item) => item[id] !== undefined);
-      if (index !== -1) {
-        arr[index] = { [id]: newCount };
-      } else {
-        arr.push({ [id]: newCount });
-      }
-      return [...arr];
-    }
-  };
+
   const handleAdd = () => {
     const updatedValue = updateArray(field.value, id, count + 1);
     field.onChange(updatedValue);
@@ -89,13 +97,13 @@ export const Counter = <T extends FieldValues>({
       <View className="flex flex-row items-center">
         <Button
           icon={<Minus />}
-          className="h-10 w-10 rounded"
+          className="h-10 w-10 rounded bg-sky-blue"
           onPressHandler={handleMin}
         />
         <Text className="w-8 text-center text-xs font-medium">{count}</Text>
         <Button
           icon={<Plus />}
-          className="h-10 w-10 rounded "
+          className="h-10 w-10 rounded bg-sky-blue"
           onPressHandler={handleAdd}
         />
       </View>

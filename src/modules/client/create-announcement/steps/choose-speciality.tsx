@@ -12,6 +12,33 @@ import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepOneSchema } from '../schemas';
 
+type ToggleCardData = {
+  id: number;
+  label: string;
+  icon: React.FunctionComponent<SvgProps>;
+  selectedSpeciality: string;
+};
+const toggleCardData: ToggleCardData[] = [
+  {
+    id: 1,
+    label: 'Architecte de construction	',
+    icon: HouseModel,
+    selectedSpeciality: 'constructionArchitect',
+  },
+  {
+    id: 2,
+    label: "Designer d'interieur",
+    icon: InteriorHouseModel,
+    selectedSpeciality: 'interiorArchitect',
+  },
+  {
+    id: 3,
+    label: 'Artisan de construction',
+    icon: InteriorHouseModel,
+    selectedSpeciality: 'Artisan de construction',
+  },
+];
+
 export function ChooseSpeciality({
   onHandleNext,
   setFormData,
@@ -30,32 +57,6 @@ export function ChooseSpeciality({
     }));
     onHandleNext();
   };
-  type ToggleCardData = {
-    id: number;
-    label: string;
-    icon: React.FunctionComponent<SvgProps>;
-    selectedSpeciality: string;
-  };
-  const toggleCardData: ToggleCardData[] = [
-    {
-      id: 1,
-      label: 'Architecte de construction	',
-      icon: HouseModel,
-      selectedSpeciality: 'constructionArchitect',
-    },
-    {
-      id: 2,
-      label: "Designer d'interieur",
-      icon: InteriorHouseModel,
-      selectedSpeciality: 'interiorArchitect',
-    },
-    {
-      id: 3,
-      label: 'Artisan de construction',
-      icon: InteriorHouseModel,
-      selectedSpeciality: 'Artisan de construction',
-    },
-  ];
 
   const error = errors?.architectSpeciality?.message as TxKeyPath | undefined;
   return (

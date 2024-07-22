@@ -20,6 +20,7 @@ module.exports = {
         background: '#fafbff',
         error: '#ff0000',
         'color-border': '#aeaeae',
+        'sky-blue': '#92D8F6',
       },
     },
   },

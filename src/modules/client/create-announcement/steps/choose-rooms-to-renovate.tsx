@@ -9,17 +9,37 @@ import type { StepperFormProps } from '@/types';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepSixSchema } from '../schemas';
+
+type RenovateTypeData = {
+  id: number;
+  label: string;
+  icon: React.FunctionComponent<SvgProps>;
+};
+const RenovateData: RenovateTypeData[] = [
+  { id: 1, label: 'Suite parentale', icon: Home },
+  { id: 2, label: 'Chambre', icon: Home },
+  { id: 3, label: 'Chambre enfant', icon: Home },
+  { id: 4, label: 'Salon', icon: Home },
+  { id: 5, label: 'Cuisine', icon: Home },
+  { id: 6, label: 'Salle à manger', icon: Home },
+  { id: 7, label: 'Salle de bain', icon: Home },
+  { id: 8, label: 'Bureau', icon: Home },
+  { id: 9, label: 'Terrasse', icon: Home },
+  { id: 10, label: 'Jardin', icon: Home },
+  { id: 11, label: 'Hall ou Entrée', icon: Home },
+  { id: 12, label: 'Garage', icon: Home },
+];
+
 export function ChooseRoomsToRenovate({
   onHandleBack,
   onHandleNext,
   setFormData,
   formData,
 }: StepperFormProps) {
-  const { handleSubmit, control, errors } = useCustomForm(
+  const { handleSubmit, control } = useCustomForm(
     CreateAnnouncementStepSixSchema,
     { piecesRenovate: formData?.piecesRenovate }
   );
-  console.log('error : ', errors);
   type piecesRenovateFormType = Pick<AnnouncementType, 'piecesRenovate'>;
   const onSubmit = (data: piecesRenovateFormType) => {
     setFormData((prev: any) => ({
@@ -28,25 +48,7 @@ export function ChooseRoomsToRenovate({
     }));
     onHandleNext();
   };
-  type RenovateTypeData = {
-    id: number;
-    label: string;
-    icon: React.FunctionComponent<SvgProps>;
-  };
-  const RenovateData: RenovateTypeData[] = [
-    { id: 1, label: 'Suite parentale', icon: Home },
-    { id: 2, label: 'Chambre', icon: Home },
-    { id: 3, label: 'Chambre enfant', icon: Home },
-    { id: 4, label: 'Salon', icon: Home },
-    { id: 5, label: 'Cuisine', icon: Home },
-    { id: 6, label: 'Salle à manger', icon: Home },
-    { id: 7, label: 'Salle de bain', icon: Home },
-    { id: 8, label: 'Bureau', icon: Home },
-    { id: 9, label: 'Terrasse', icon: Home },
-    { id: 10, label: 'Jardin', icon: Home },
-    { id: 11, label: 'Hall ou Entrée', icon: Home },
-    { id: 12, label: 'Garage', icon: Home },
-  ];
+
   return (
     <View className="flex flex-1 items-center justify-between pt-8">
       <View className="gap-4">

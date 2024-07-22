@@ -10,6 +10,19 @@ import type { StepperFormProps } from '@/types';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepFourSchema } from '../schemas';
+
+type PropertyData = {
+  id: number;
+  label: string;
+  icon: React.FunctionComponent<SvgProps>;
+};
+const PropertyData: PropertyData[] = [
+  { id: 1, label: 'Maison', icon: Home },
+  { id: 2, label: 'Villa', icon: Home },
+  { id: 3, label: 'Appartement', icon: Home },
+  { id: 4, label: 'Immobilier', icon: Home },
+];
+
 export function ChoosePropertyType({
   onHandleBack,
   onHandleNext,
@@ -29,18 +42,7 @@ export function ChoosePropertyType({
     }));
     onHandleNext();
   };
-  type PropertyData = {
-    id: number;
-    label: string;
-    icon: React.FunctionComponent<SvgProps>;
-  };
 
-  const PropertyData: PropertyData[] = [
-    { id: 1, label: 'Maison', icon: Home },
-    { id: 2, label: 'Villa', icon: Home },
-    { id: 3, label: 'Appartement', icon: Home },
-    { id: 4, label: 'Immobilier', icon: Home },
-  ];
   const error = errors?.propertyType?.message as TxKeyPath | undefined;
 
   return (

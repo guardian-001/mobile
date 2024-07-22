@@ -22,7 +22,6 @@ const CreateAnnouncementInner = () => {
   const lastStep = 11;
   const { step, onHandleBack, onHandleNext, setFormData, formData } =
     useFormStepper<AnnouncementType>();
-  console.log('formData :', formData);
   const { title, subtitle, component } = stepsContent[step];
   const percentageCompleted = Math.round(((step + 1) / lastStep) * 100);
   return (

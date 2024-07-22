@@ -10,6 +10,36 @@ import type { StepperFormProps } from '@/types';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepThreeSchema } from '../schemas';
+
+type CategoryData = {
+  id: number;
+  label: string;
+  icon: React.FunctionComponent<SvgProps>;
+};
+
+const CategoryData: CategoryData[] = [
+  {
+    id: 1,
+    label: 'Construction logement',
+    icon: Home,
+  },
+  {
+    id: 2,
+    label: 'Point vente et commercial',
+    icon: Home,
+  },
+  {
+    id: 3,
+    label: 'Grand oeuvre immobilier',
+    icon: Home,
+  },
+  {
+    id: 4,
+    label: 'Industrielle',
+    icon: Home,
+  },
+];
+
 export function ChooseCategory({
   onHandleBack,
   onHandleNext,
@@ -29,34 +59,7 @@ export function ChooseCategory({
     }));
     onHandleNext();
   };
-  type CategoryData = {
-    id: number;
-    label: string;
-    icon: React.FunctionComponent<SvgProps>;
-  };
 
-  const CategoryData: CategoryData[] = [
-    {
-      id: 1,
-      label: 'Construction logement',
-      icon: Home,
-    },
-    {
-      id: 2,
-      label: 'Point vente et commercial',
-      icon: Home,
-    },
-    {
-      id: 3,
-      label: 'Grand oeuvre immobilier',
-      icon: Home,
-    },
-    {
-      id: 4,
-      label: 'Industrielle',
-      icon: Home,
-    },
-  ];
   const error = errors?.projectCategory?.message as TxKeyPath | undefined;
   return (
     <View className="flex flex-1 justify-between pt-8">
