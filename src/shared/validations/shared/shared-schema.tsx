@@ -9,7 +9,7 @@ import {
   phoneValidation,
   requiredValidation,
   requiredValidationBoolean,
-  specialityValidation,
+  requiredValidationNumber,
   timeValidation,
 } from './shared-validations';
 
@@ -48,7 +48,7 @@ export const SignupFormSchema = z.object({
   phoneNumber: phoneValidation,
   address: fieldValidation,
   architectIdentifier: fieldValidation, //architectIdentifierValidation
-  architectSpeciality: specialityValidation,
+  architectSpeciality: requiredValidationNumber,
   date: dateValidation,
   timeSlot: timeValidation,
 });
@@ -61,7 +61,7 @@ export const createAccountSchema = z.object({
   architectIdentifier: fieldValidation, //matriculeValidation
 });
 export const SpecialityFormSchema = z.object({
-  architectSpeciality: specialityValidation,
+  architectSpeciality: requiredValidationNumber,
 });
 
 export const DemoFormSchema = z.object({
@@ -93,5 +93,8 @@ export const AnnouncementFormSchema = z.object({
   phoneNumber: phoneValidation,
   acceptTerms: requiredValidationBoolean,
   receiveQuotes: notRequiredValidationBoolean,
-  speciality: specialityValidation,
+  speciality: requiredValidationNumber,
+  needs: requiredValidationNumber,
+  categories: requiredValidationNumber,
+  properties: requiredValidationNumber,
 });

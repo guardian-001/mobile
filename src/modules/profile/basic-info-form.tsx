@@ -13,7 +13,7 @@ import {
   ScrollView,
 } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { BasicInfoFormSchema } from '@/validations';
+import { BasicInfoFormSchema } from '@/shared/validations';
 
 type BasicInfoFormType = z.infer<typeof BasicInfoFormSchema>;
 type BasicInfoFormProps = {};

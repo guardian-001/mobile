@@ -4,9 +4,7 @@ import React from 'react';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { View } from '@/shared/components';
-
-import type { StepperFormProps } from './choose-needs';
-
+import type { StepperFormProps } from '@/types';
 export function SaveProject({}: StepperFormProps) {
   const router = useRouter();
   return (

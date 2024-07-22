@@ -4,9 +4,9 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { ArrowLeft, ArrowRight, Globe } from '@/assets/icons';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
+import { DemoFormSchema } from '@/shared/validations';
 import colors from '@/theme/colors';
 import type { SignupFormDataType } from '@/types';
-import { DemoFormSchema } from '@/validations';
 
 import { DAYS } from '../constants/constants';
 import { useCalendar, useCustomForm, useTimezone } from '../hooks';

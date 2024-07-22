@@ -4,9 +4,9 @@ import type * as z from 'zod';
 
 import { Button, ControlledInput, Text, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
+import { PasswordSchema } from '@/shared/validations';
 import type { TxKeyPath } from '@/translations/i18n';
 import { translate } from '@/translations/i18n';
-import { PasswordSchema } from '@/validations';
 
 import PasswordRequirementItem from './password-requirement-item';
 

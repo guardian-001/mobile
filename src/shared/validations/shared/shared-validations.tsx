@@ -1,11 +1,9 @@
 import { z } from 'zod';
 
-export const requiredValidation = z.string({
-  message: 'validations.required',
-});
-export const requiredValidationBoolean = z.boolean({
-  message: 'validations.required',
-});
+export const requiredValidation = z.string({ message: 'validations.required' });
+export const requiredValidationBoolean = z
+  .boolean()
+  .refine((value) => value === true, { message: 'validations.required' });
 export const notRequiredValidationBoolean = z.boolean().optional();
 export const emailValidation = z
   .string({ message: 'validations.required' })
@@ -32,10 +30,30 @@ export const phoneValidation = z
   .min(8, { message: 'validations.phone-number-min-length' })
   .max(15, { message: 'validations.phone-number-max-length' });
 
-export const specialityValidation = z.number().refine((value) => value > 0, {
-  message: 'validations.required',
-});
+export const requiredValidationNumber = z
+  .number()
+  .refine((value) => value > 0, {
+    message: 'validations.required',
+  });
 
+export const arrayOfNonEmptyImage = z
+  .array(
+    z.object({
+      name: z.string(),
+      url: z.string(),
+    })
+  )
+  .nonempty({ message: 'validations.required' });
+
+export const arrayOfNonEmptyNumbers = z
+  .array(
+    z.number().refine((num) => num !== null && num !== undefined, {
+      message: 'validations.required',
+    })
+  )
+  .refine((arr) => arr.length > 0, {
+    message: 'validations.required',
+  });
 export const dateValidation = z
   .string({ message: 'validations.required' })
   .regex(/^\d{4}-\d{2}-\d{2}$/, { message: 'validations.invalid-date-format' });

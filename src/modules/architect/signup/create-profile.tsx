@@ -7,9 +7,9 @@ import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import type { SignupFormSchema } from '@/shared/validations';
+import { createAccountSchema } from '@/shared/validations';
 import type { SignupFormDataType } from '@/types';
-import type { SignupFormSchema } from '@/validations';
-import { createAccountSchema } from '@/validations';
 
 export type SignupFormType = z.infer<typeof SignupFormSchema>;
 

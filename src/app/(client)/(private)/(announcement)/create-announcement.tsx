@@ -1,13 +1,13 @@
 import React from 'react';
 
-import PublicationProjetStepper from '@/modules/client/pubication-projet/publication-projet-stepper';
+import CreateAnnouncementStepper from '@/modules/client/create-announcement/create-announcement-stepper';
 import { FocusAwareStatusBar, GradientBackground } from '@/shared/components';
 
-export default function PublicationProjet() {
+export default function CreateAnnouncement() {
   return (
     <GradientBackground className="flex-1 items-center">
       <FocusAwareStatusBar />
-      <PublicationProjetStepper />
+      <CreateAnnouncementStepper />
     </GradientBackground>
   );
 }

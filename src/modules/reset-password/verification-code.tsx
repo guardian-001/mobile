@@ -4,8 +4,8 @@ import type * as z from 'zod';
 
 import { Button, Text, TouchableOpacity, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
+import { OTPSchema } from '@/shared/validations';
 import { translate } from '@/translations/i18n';
-import { OTPSchema } from '@/validations';
 
 import { OTPInput } from './otp-input';
 
