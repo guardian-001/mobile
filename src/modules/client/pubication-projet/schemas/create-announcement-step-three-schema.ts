@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { requiredValidation } from '@/validations';
+import { requiredValidationNumber } from '@/validations';
 
 export const CreateAnnouncementStepThreeSchema = z.object({
-  projectCategory: requiredValidation,
+  projectCategory: requiredValidationNumber,
 });

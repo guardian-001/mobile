@@ -220,7 +220,6 @@ export const Select = (props: SelectProps) => {
   );
 };
 
-// only used with react-hook-form
 export function ControlledSelect<T extends FieldValues>(
   props: ControlledSelectProps<T>
 ) {

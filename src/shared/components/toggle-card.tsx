@@ -7,8 +7,6 @@ import {
   useController,
 } from 'react-hook-form';
 
-import type { TxKeyPath } from '@/core';
-
 import { Image, Pressable, Text, View } from './';
 
 type CardProps<T extends FieldValues> = {
@@ -19,13 +17,10 @@ type CardProps<T extends FieldValues> = {
   containerClassName?: string;
   svgComponent?: React.ComponentType;
   name: Path<T>;
+  value: number;
   control: Control<T>;
   rules?: RegisterOptions;
-  value: string;
-  selectedValue: string | string[];
-  onSelect: () => void;
   multi?: boolean;
-  showError?: boolean;
 };
 
 export const ToggleCard = <T extends FieldValues>({
@@ -37,43 +32,34 @@ export const ToggleCard = <T extends FieldValues>({
   svgComponent: SvgComponent,
   name,
   value,
-  selectedValue,
   control,
   rules,
-  onSelect,
   multi = false,
-  showError = false,
   ...props
 }: CardProps<T>) => {
-  const { field, fieldState } = useController({ control, name, rules });
+  const { field } = useController({ control, name, rules });
 
-  const handleChange = () => {
-    onSelect();
+  const handlePress = () => {
     field.onChange(value);
   };
 
   const handleChangeMulti = () => {
-    onSelect();
     if (field.value.includes(value)) {
-      field.onChange(field.value.filter((item: string) => item !== value));
+      field.onChange(field.value.filter((item: number) => item !== value));
     } else {
       field.onChange([...field.value, value]);
     }
   };
-
-  const error = fieldState.error?.message as TxKeyPath | undefined;
   const isSelected = multi
-    ? selectedValue.includes(value)
-    : selectedValue === value;
+    ? field.value.includes(value)
+    : field.value === value;
   return (
     <View className={`${containerClassName} flex-1`}>
       <Pressable
-        onPress={multi ? handleChangeMulti : handleChange}
-        className={`${className} flex-1 items-center justify-center p-4 ${
-          isSelected
-            ? 'border border-primary '
-            : 'border border-description dark:border-white'
-        }`}
+        onPress={multi ? handleChangeMulti : handlePress}
+        className={`${className} flex-1 items-center justify-center self-center   p-4 ${
+          isSelected ? 'border-2 border-primary ' : 'border border-color-border'
+        } `}
         {...props}
       >
         {SvgComponent && (
@@ -91,9 +77,6 @@ export const ToggleCard = <T extends FieldValues>({
           {title}
         </Text>
       </Pressable>
-      {error && showError && (
-        <Text className="text-sm text-error dark:text-error" tx={error} />
-      )}
     </View>
   );
 };

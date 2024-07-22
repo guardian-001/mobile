@@ -1,20 +1,17 @@
 import React from 'react';
-import type { SubmitHandler } from 'react-hook-form';
 
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
+import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepNineSchema } from '../schemas';
 import type { StepperFormProps } from './choose-speciality';
 
-type FormData = {
-  architecturalStyle: string;
-};
 export function ChoosePreferredStyle({
-  handlePreviousStep,
-  handleNextStep,
+  onHandleBack,
+  onHandleNext,
   setFormData,
   formData,
 }: StepperFormProps) {
@@ -23,11 +20,16 @@ export function ChoosePreferredStyle({
     { architecturalStyle: formData?.architecturalStyle }
   );
 
-  const handleSelectPreferredStyle = (architecturalStyle: string) => {
-    setFormData({ ...formData, architecturalStyle });
-  };
-  const onSubmit: SubmitHandler<FormData> = () => {
-    handleNextStep();
+  type architecturalStyleFormType = Pick<
+    AnnouncementType,
+    'architecturalStyle'
+  >;
+  const onSubmit = (data: architecturalStyleFormType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
+    onHandleNext();
   };
   type PreferredStyleData = {
     id: number;
@@ -75,9 +77,7 @@ export function ChoosePreferredStyle({
             title={cardData.label}
             name="architecturalStyle"
             control={control}
-            value={cardData.id.toString()}
-            selectedValue={formData?.architecturalStyle}
-            onSelect={() => handleSelectPreferredStyle(cardData.id.toString())}
+            value={cardData.id}
           />
         ))}
       </View>
@@ -85,9 +85,9 @@ export function ChoosePreferredStyle({
         <Text className="text-sm text-error dark:text-error" tx={error} />
       )}
       <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.retour' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
         next={{
-          handleNextStep: handleSubmit(onSubmit),
+          handleSubmit: handleSubmit(onSubmit),
           label: 'signup.suivant',
         }}
       />

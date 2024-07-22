@@ -1,18 +1,15 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 
-import { StepButtons } from '@/modules/shared';
 import { ScrollView, Text, View } from '@/shared/components';
-export type ResetFormProps = {
-  handlePreviousStep?: () => void;
-  handleNextStep?: () => void;
-};
+import { Calendar } from '@/shared/components';
 
-export default function DemoPlanning({
-  handlePreviousStep,
-  handleNextStep,
-}: ResetFormProps) {
+export default function DemoPlanning() {
   return (
-    <View className="flex h-fit items-center justify-between gap-16">
+    <ScrollView
+      className="h-fit w-full"
+      contentContainerStyle={styles.scrollContainer}
+    >
       <View>
         <Text
           tx={'signupStepDemoPlanning.title'}
@@ -24,11 +21,14 @@ export default function DemoPlanning({
         />
       </View>
 
-      <ScrollView className=" flex h-fit gap-5" />
-      <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.retour' }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
-      />
-    </View>
+      <Calendar />
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  scrollContainer: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+});

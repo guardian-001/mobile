@@ -6,23 +6,44 @@ import { StepButtons } from '@/modules/shared';
 import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
 import { useCustomForm } from '@/shared/hooks';
-import { SignupFormSchema } from '@/validations';
+import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import type { SignupFormDataType } from '@/types';
+import type { SignupFormSchema } from '@/validations';
+import { createAccountSchema } from '@/validations';
 
 export type SignupFormType = z.infer<typeof SignupFormSchema>;
 
-export type ResetFormProps = {
-  handlePreviousStep?: () => void;
-  handleNextStep?: () => void;
-};
+export default function CreateProfile() {
+  type CreateAccountFormType = Pick<
+    SignupFormDataType,
+    | 'firstName'
+    | 'lastName'
+    | 'email'
+    | 'phoneNumber'
+    | 'address'
+    | 'architectIdentifier'
+  >;
+  const { formData, setFormData, onHandleNext, onHandleBack } =
+    useFormStepper<SignupFormDataType>();
+  const { handleSubmit, control } = useCustomForm(createAccountSchema, {
+    firstName: formData?.firstName,
+    lastName: formData?.lastName,
+    email: formData?.email,
+    phoneNumber: formData?.phoneNumber,
+    address: formData?.address,
+    architectIdentifier: formData?.architectIdentifier,
+  });
 
-export default function CreateProfile({
-  handlePreviousStep,
-  handleNextStep,
-}: ResetFormProps) {
-  const { control } = useCustomForm(SignupFormSchema);
+  const onSubmit = (data: CreateAccountFormType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
+    onHandleNext();
+  };
 
   return (
-    <View className="flex h-fit items-center justify-between gap-8">
+    <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
       <View>
         <Text
           tx={'signupStepCreateProfile.title'}
@@ -34,18 +55,18 @@ export default function CreateProfile({
         />
       </View>
 
-      <ScrollView className=" flex h-fit w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
+      <ScrollView className=" flex h-fit w-[90%] gap-5 rounded-3xl bg-white px-4 py-5 shadow-md">
         <ControlledInput
           testID="name-input"
           control={control}
-          name="name"
+          name="firstName"
           label={translate('labels.name')}
           placeholder={translate('labels.name')}
         />
         <ControlledInput
           testID="surname-input"
           control={control}
-          name="surname"
+          name="lastName"
           label={translate('labels.surname')}
           placeholder={translate('labels.surname')}
         />
@@ -57,12 +78,11 @@ export default function CreateProfile({
           placeholder={translate('labels.mail')}
         />
         <ControlledPhoneNumberInput
-          name="phone"
+          name="phoneNumber"
           control={control}
           label={translate('labels.phone')}
           rules={{ required: 'Phone number is required' }}
         />
-
         <ControlledInput
           testID="address-input"
           control={control}
@@ -73,14 +93,15 @@ export default function CreateProfile({
         <ControlledInput
           testID="matricule-input"
           control={control}
-          name="matricule"
+          name="architectIdentifier"
           label={translate('labels.matricule')}
           placeholder={translate('labels.matricule')}
         />
       </ScrollView>
+
       <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.retour' }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
+        next={{ handleSubmit: handleSubmit(onSubmit), label: 'signup.suivant' }}
       />
     </View>
   );

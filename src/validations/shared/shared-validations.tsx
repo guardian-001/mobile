@@ -30,12 +30,11 @@ export const phoneValidation = z
   .min(8, { message: 'validations.phone-number-min-length' })
   .max(15, { message: 'validations.phone-number-max-length' });
 
-export const SpecialityEnum = z.enum(['construction', 'interior']);
-
-export const specialityValidation = SpecialityEnum.refine(
-  (val) => val === 'construction' || val === 'interior',
-  { message: 'validations.invalid-speciality' }
-);
+export const requiredValidationNumber = z
+  .number()
+  .refine((value) => value > 0, {
+    message: 'validations.required',
+  });
 
 export const arrayOfNonEmptyImage = z
   .array(
@@ -46,12 +45,19 @@ export const arrayOfNonEmptyImage = z
   )
   .nonempty({ message: 'validations.required' });
 
-export const arrayOfNonEmptyStrings = z
+export const arrayOfNonEmptyNumbers = z
   .array(
-    z.string().nonempty({
+    z.number().refine((num) => num !== null && num !== undefined, {
       message: 'validations.required',
     })
   )
   .refine((arr) => arr.length > 0, {
     message: 'validations.required',
   });
+export const dateValidation = z
+  .string({ message: 'validations.required' })
+  .regex(/^\d{4}-\d{2}-\d{2}$/, { message: 'validations.invalid-date-format' });
+
+export const timeValidation = z
+  .string({ message: 'validations.required' })
+  .regex(/^\d{2}:\d{2}$/, { message: 'validations.invalid-time-format' });

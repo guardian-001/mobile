@@ -1,21 +1,27 @@
 import React from 'react';
 
-import { StepButtons } from '@/modules/shared';
+import { translate } from '@/core';
+import { StepperButton } from '@/modules/shared';
 import { View } from '@/shared/components';
 
 import type { StepperFormProps } from './choose-speciality';
 
-export function AddPhotos({
-  handlePreviousStep,
-  handleNextStep,
-}: StepperFormProps) {
+export function AddPhotos({ onHandleBack, onHandleNext }: StepperFormProps) {
   return (
     <View className="flex flex-1 items-center justify-between pt-8">
       <View className="h-3/4" />
-      <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.retour' }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
-      />
+      <View className="flex flex-row">
+        <StepperButton
+          width="w-[45%]"
+          onPressHandler={onHandleBack}
+          label={translate('signup.retour')}
+        />
+        <StepperButton
+          width="w-[45%]"
+          onPressHandler={onHandleNext}
+          label={translate('signup.suivant')}
+        />
+      </View>
     </View>
   );
 }

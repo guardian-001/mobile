@@ -1,21 +1,19 @@
 import React from 'react';
-import type { SubmitHandler } from 'react-hook-form';
 import type { SvgProps } from 'react-native-svg';
 
 import { Home } from '@/assets/icons';
 import type { TxKeyPath } from '@/core';
+import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepThreeSchema } from '../schemas';
 import type { StepperFormProps } from './choose-speciality';
-type FormData = {
-  projectCategory: string;
-};
+
 export function ChooseCategory({
-  handlePreviousStep,
-  handleNextStep,
+  onHandleBack,
+  onHandleNext,
   setFormData,
   formData,
 }: StepperFormProps) {
@@ -23,11 +21,14 @@ export function ChooseCategory({
     CreateAnnouncementStepThreeSchema,
     { projectCategory: formData?.projectCategory }
   );
-  const handleSelectCategory = (projectCategory: string) => {
-    setFormData({ ...formData, projectCategory });
-  };
-  const onSubmit: SubmitHandler<FormData> = () => {
-    handleNextStep();
+
+  type projectCategoryFormType = Pick<AnnouncementType, 'projectCategory'>;
+  const onSubmit = (data: projectCategoryFormType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
+    onHandleNext();
   };
   type CategoryData = {
     id: number;
@@ -64,15 +65,13 @@ export function ChooseCategory({
         {CategoryData.map((cardData, index) => (
           <ToggleCard
             key={index}
-            className="rounded-lg"
+            className="w-full rounded-lg"
             containerClassName="min-h-[25%] min-w-[40%] max-w-[47%] max-h-[50%]"
             title={cardData.label}
             svgComponent={cardData.icon}
             name="projectCategory"
             control={control}
-            value={cardData.id.toString()}
-            selectedValue={formData?.projectCategory}
-            onSelect={() => handleSelectCategory(cardData.id.toString())}
+            value={cardData.id}
           />
         ))}
       </View>
@@ -80,9 +79,9 @@ export function ChooseCategory({
         <Text className="text-sm text-error dark:text-error" tx={error} />
       )}
       <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.retour' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
         next={{
-          handleNextStep: handleSubmit(onSubmit),
+          handleSubmit: handleSubmit(onSubmit),
           label: 'signup.suivant',
         }}
       />

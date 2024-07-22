@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { arrayOfNonEmptyStrings } from '@/validations';
+import { arrayOfNonEmptyNumbers } from '@/validations';
 
 export const CreateAnnouncementStepTwoSchema = z.object({
-  needs: arrayOfNonEmptyStrings,
+  needs: arrayOfNonEmptyNumbers,
 });

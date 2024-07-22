@@ -25,6 +25,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: true,
     bundleIdentifier: Env.BUNDLE_ID,
+    associatedDomains: ['applinks:expo.dev'],
   },
   experiments: {
     typedRoutes: true,

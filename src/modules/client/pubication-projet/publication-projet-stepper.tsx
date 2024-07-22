@@ -3,25 +3,28 @@ import * as React from 'react';
 import { Platform, TouchableOpacity } from 'react-native';
 
 import { Close } from '@/assets/icons';
-import { useStepperSpeacialNavigation } from '@/core';
 import {
   KeyboardAvoidingView,
   ScrollView,
   Text,
   View,
 } from '@/shared/components';
+import {
+  FormProvider,
+  useFormStepper,
+} from '@/shared/providers/use-form-stepper-provider';
+import type { AnnouncementType } from '@/types/announcement';
 
 import { stepsContent } from './steps-content';
 
-export default function PublicationProjetStepper() {
+const PublicationProjetInner = () => {
   const router = useRouter();
   const lastStep = 11;
-  const { step, handleNextStep, handlePreviousStep, setFormData, formData } =
-    useStepperSpeacialNavigation({ maxSteps: lastStep });
+  const { step, onHandleBack, onHandleNext, setFormData, formData } =
+    useFormStepper<AnnouncementType>();
 
   const { title, subtitle, component } = stepsContent[step];
   const percentageCompleted = Math.round(((step + 1) / lastStep) * 100);
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -59,12 +62,44 @@ export default function PublicationProjetStepper() {
         <Text tx={title} className="mb-2 text-xl font-bold" />
         <Text tx={subtitle} className="text-base text-description" />
         {component({
-          handleNextStep,
-          handlePreviousStep,
+          onHandleBack,
+          onHandleNext,
           setFormData,
           formData,
         })}
       </ScrollView>
     </KeyboardAvoidingView>
+  );
+};
+export default function PublicationProjetStepper() {
+  const initialData = {
+    architectSpeciality: 0,
+    needs: [],
+    projectCategory: 0,
+    propertyType: 0,
+    workType: 0,
+    piecesRenovate: {},
+    address: '',
+    city: '',
+    terrainSurface: '',
+    workSurface: '',
+    budget: '',
+    description: '',
+    architecturalStyle: 0,
+    projectExtensions: [],
+    projectImages: [],
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    rules: false,
+    receiveNotifications: false,
+    currentLanguage: '',
+  };
+
+  return (
+    <FormProvider<AnnouncementType> initialData={initialData}>
+      <PublicationProjetInner />
+    </FormProvider>
   );
 }

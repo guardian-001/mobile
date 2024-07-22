@@ -1,22 +1,19 @@
 import React from 'react';
-import type { SubmitHandler } from 'react-hook-form';
 import type { SvgProps } from 'react-native-svg';
 
 import { Trafic } from '@/assets/icons';
 import type { TxKeyPath } from '@/core';
+import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepTwoSchema } from '../schemas';
 import type { StepperFormProps } from './choose-speciality';
 
-type FormData = {
-  needs: string[];
-};
 export function ChooseNeeds({
-  handlePreviousStep,
-  handleNextStep,
+  onHandleBack,
+  onHandleNext,
   setFormData,
   formData,
 }: StepperFormProps) {
@@ -25,16 +22,13 @@ export function ChooseNeeds({
     { needs: formData?.needs || [] }
   );
 
-  const handleSelectNeeds = (need: string) => {
-    const currentNeeds = formData?.needs || [];
-    const newSelectedNeeds: string[] = currentNeeds.includes(need)
-      ? currentNeeds.filter((item: string) => item !== need)
-      : [...currentNeeds, need];
-
-    setFormData({ ...formData, needs: newSelectedNeeds });
-  };
-  const onSubmit: SubmitHandler<FormData> = () => {
-    handleNextStep();
+  type needsFormType = Pick<AnnouncementType, 'needs'>;
+  const onSubmit = (data: needsFormType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
+    onHandleNext();
   };
   type NeedsData = {
     id: number;
@@ -93,9 +87,7 @@ export function ChooseNeeds({
             name="needs"
             control={control}
             multi={true}
-            value={cardData.id.toString()}
-            selectedValue={formData?.needs || []}
-            onSelect={() => handleSelectNeeds(cardData.id.toString())}
+            value={cardData.id}
           />
         ))}
         {error && (
@@ -103,9 +95,9 @@ export function ChooseNeeds({
         )}
       </View>
       <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.retour' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
         next={{
-          handleNextStep: handleSubmit(onSubmit),
+          handleSubmit: handleSubmit(onSubmit),
           label: 'signup.suivant',
         }}
       />

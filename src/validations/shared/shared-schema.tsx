@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import {
+  dateValidation,
   emailValidation,
   fieldValidation,
   notRequiredValidationBoolean,
@@ -8,7 +9,8 @@ import {
   phoneValidation,
   requiredValidation,
   requiredValidationBoolean,
-  specialityValidation,
+  requiredValidationNumber,
+  timeValidation,
 } from './shared-validations';
 
 export const ConfirmPasswordSchema = z
@@ -40,14 +42,31 @@ export const LoginFormSchema = z.object({
 });
 
 export const SignupFormSchema = z.object({
-  name: fieldValidation,
-  surname: fieldValidation,
+  firstName: fieldValidation,
+  lastName: fieldValidation,
   email: emailValidation,
-  phone: phoneValidation,
+  phoneNumber: phoneValidation,
   address: fieldValidation,
-  matricule: fieldValidation, //matriculeValidation
-  password: passwordValidation,
-  speciality: specialityValidation,
+  architectIdentifier: fieldValidation, //architectIdentifierValidation
+  architectSpeciality: requiredValidationNumber,
+  date: dateValidation,
+  timeSlot: timeValidation,
+});
+export const createAccountSchema = z.object({
+  firstName: fieldValidation,
+  lastName: fieldValidation,
+  email: emailValidation,
+  phoneNumber: phoneValidation,
+  address: fieldValidation,
+  architectIdentifier: fieldValidation, //matriculeValidation
+});
+export const SpecialityFormSchema = z.object({
+  architectSpeciality: requiredValidationNumber,
+});
+
+export const DemoFormSchema = z.object({
+  date: dateValidation,
+  timeSlot: timeValidation,
 });
 
 export const OTPSchema = z.object({
@@ -74,8 +93,8 @@ export const AnnouncementFormSchema = z.object({
   phoneNumber: phoneValidation,
   acceptTerms: requiredValidationBoolean,
   receiveQuotes: notRequiredValidationBoolean,
-  speciality: specialityValidation,
-  needs: specialityValidation,
-  categories: specialityValidation,
-  properties: specialityValidation,
+  speciality: requiredValidationNumber,
+  needs: requiredValidationNumber,
+  categories: requiredValidationNumber,
+  properties: requiredValidationNumber,
 });

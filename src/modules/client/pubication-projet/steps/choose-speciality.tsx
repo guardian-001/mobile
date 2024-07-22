@@ -1,5 +1,4 @@
 import React from 'react';
-import type { SubmitHandler } from 'react-hook-form';
 import type { SvgProps } from 'react-native-svg';
 
 import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
@@ -8,33 +7,34 @@ import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
+import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepOneSchema } from '../schemas';
 
-type FormData = {
-  architectSpeciality: string;
-};
 export type StepperFormProps = {
-  handlePreviousStep: () => void;
-  handleNextStep: () => void;
+  onHandleBack: () => void;
+  onHandleNext: () => void;
   setFormData: (data: any) => void;
   formData: any;
 };
 
 export function ChooseSpeciality({
-  handleNextStep,
+  onHandleNext,
   setFormData,
   formData,
 }: StepperFormProps) {
   const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepOneSchema,
-    { architectSpeciality: formData?.architectSpeciality }
+    { architectSpeciality: formData.architectSpeciality }
   );
-  const handleSelectSpeciality = (architectSpeciality: string) => {
-    setFormData({ ...formData, architectSpeciality });
-  };
-  const onSubmit: SubmitHandler<FormData> = () => {
-    handleNextStep();
+  type SpecialityFormType = Pick<AnnouncementType, 'architectSpeciality'>;
+
+  const onSubmit = (data: SpecialityFormType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
+    onHandleNext();
   };
   type ToggleCardData = {
     id: number;
@@ -62,6 +62,7 @@ export function ChooseSpeciality({
       selectedSpeciality: 'Artisan de construction',
     },
   ];
+
   const error = errors?.architectSpeciality?.message as TxKeyPath | undefined;
   return (
     <View className="flex flex-1 justify-between pt-4">
@@ -74,9 +75,7 @@ export function ChooseSpeciality({
             svgComponent={cardData.icon}
             name="architectSpeciality"
             control={control}
-            value={cardData.id.toString()}
-            selectedValue={formData?.architectSpeciality}
-            onSelect={() => handleSelectSpeciality(cardData.id.toString())}
+            value={cardData.id}
             classNameText="my-3"
           />
         ))}

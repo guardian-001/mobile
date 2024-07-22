@@ -1,5 +1,4 @@
 import React from 'react';
-import type { SubmitHandler } from 'react-hook-form';
 import type { SvgProps } from 'react-native-svg';
 
 import { Home } from '@/assets/icons';
@@ -7,17 +6,14 @@ import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
+import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepTenSchema } from '../schemas';
 import type { StepperFormProps } from './choose-speciality';
 
-type FormData = {
-  projectExtensions: string[];
-};
-
 export function ChooseAdditionalInfo({
-  handlePreviousStep,
-  handleNextStep,
+  onHandleBack,
+  onHandleNext,
   setFormData,
   formData,
 }: StepperFormProps) {
@@ -26,18 +22,13 @@ export function ChooseAdditionalInfo({
     { projectExtensions: formData?.projectExtensions || [] }
   );
 
-  const handleSelectExtensions = (Extension: string) => {
-    const currentExtensions = formData?.projectExtensions || [];
-    const newSelectedExtensions: string[] = currentExtensions.includes(
-      Extension
-    )
-      ? currentExtensions.filter((item: string) => item !== Extension)
-      : [...currentExtensions, Extension];
-
-    setFormData({ ...formData, projectExtensions: newSelectedExtensions });
-  };
-  const onSubmit: SubmitHandler<FormData> = () => {
-    handleNextStep();
+  type projectExtensionsFormType = Pick<AnnouncementType, 'projectExtensions'>;
+  const onSubmit = (data: projectExtensionsFormType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
+    onHandleNext();
   };
 
   type ExtensionsData = {
@@ -77,9 +68,7 @@ export function ChooseAdditionalInfo({
             name="projectExtensions"
             control={control}
             multi={true}
-            value={cardData.id.toString()}
-            selectedValue={formData?.projectExtensions || []}
-            onSelect={() => handleSelectExtensions(cardData.id.toString())}
+            value={cardData.id}
           />
         ))}
       </View>
@@ -87,9 +76,9 @@ export function ChooseAdditionalInfo({
         <Text className="text-sm text-error dark:text-error" tx={error} />
       )}
       <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.retour' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
         next={{
-          handleNextStep: handleSubmit(onSubmit),
+          handleSubmit: handleSubmit(onSubmit),
           label: 'signup.suivant',
         }}
       />

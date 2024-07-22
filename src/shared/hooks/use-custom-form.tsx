@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import type { z, ZodType } from 'zod';
+
 export const useCustomForm = <T extends ZodType<any, any>>(
   schema: T,
   defaultValues?: any
@@ -26,4 +27,3 @@ export const useCustomForm = <T extends ZodType<any, any>>(
     watch,
   };
 };
-export default useCustomForm;
