@@ -1,33 +1,15 @@
 import React from 'react';
 
-import type { TxKeyPath } from '@/core';
-import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
 
 import { CategoryData } from '../dump-data';
-import { CreateAnnouncementStepThreeSchema } from '../schemas';
+import { useCategory } from '../hooks';
 
 export function ChooseCategory() {
-  const { onHandleBack, onHandleNext, setFormData, formData } =
-    useFormStepper<AnnouncementType>();
-  const { handleSubmit, control, errors } = useCustomForm(
-    CreateAnnouncementStepThreeSchema,
-    { projectCategory: formData?.projectCategory }
-  );
+  const { onHandleBack, handleSubmit, control, error, onSubmit } =
+    useCategory();
 
-  type projectCategoryFormType = Pick<AnnouncementType, 'projectCategory'>;
-  const onSubmit = (data: projectCategoryFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    onHandleNext();
-  };
-
-  const error = errors?.projectCategory?.message as TxKeyPath | undefined;
   return (
     <View className="flex flex-1 justify-between pt-8">
       <View className="flex flex-row flex-wrap gap-4">

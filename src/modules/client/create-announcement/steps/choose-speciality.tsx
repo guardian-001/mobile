@@ -1,34 +1,14 @@
 import React from 'react';
 
-import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
 
 import { toggleCardData } from '../dump-data';
-import { CreateAnnouncementStepOneSchema } from '../schemas';
+import { useSpeciality } from '../hooks';
 
 export function ChooseSpeciality() {
-  const { onHandleNext, setFormData, formData } =
-    useFormStepper<AnnouncementType>();
-  const { handleSubmit, control, errors } = useCustomForm(
-    CreateAnnouncementStepOneSchema,
-    { architectSpeciality: formData.architectSpeciality }
-  );
-  type SpecialityFormType = Pick<AnnouncementType, 'architectSpeciality'>;
-
-  const onSubmit = (data: SpecialityFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    onHandleNext();
-  };
-
-  const error = errors?.architectSpeciality?.message as TxKeyPath | undefined;
+  const { handleSubmit, control, error, onSubmit } = useSpeciality();
   return (
     <View className="flex flex-1 justify-between pt-4">
       <View className="h-[85%] items-center gap-4">

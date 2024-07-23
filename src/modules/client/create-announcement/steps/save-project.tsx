@@ -1,45 +1,14 @@
-import { useRouter } from 'expo-router';
 import React from 'react';
 
-import { translate, useCustomForm } from '@/core';
+import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { CheckboxInput, ControlledInput, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
 
-import { CreateAnnouncementStepTwelveSchema } from '../schemas';
+import { useProject } from '../hooks';
 
 export function SaveProject() {
-  const router = useRouter();
-  const { setFormData, formData } = useFormStepper<AnnouncementType>();
-  const { handleSubmit, control } = useCustomForm(
-    CreateAnnouncementStepTwelveSchema,
-    {
-      firstName: formData?.firstName,
-      lastName: formData?.lastName,
-      email: formData?.email,
-      phoneNumber: formData?.phoneNumber,
-      rules: formData?.rules,
-      receiveNotifications: formData?.receiveNotifications,
-    }
-  );
-  type CreateProfileFormType = Pick<
-    AnnouncementType,
-    | 'firstName'
-    | 'lastName'
-    | 'email'
-    | 'phoneNumber'
-    | 'rules'
-    | 'receiveNotifications'
-  >;
-  const onSubmit = (data: CreateProfileFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    router.back();
-  };
+  const { handleSubmit, control, onSubmit } = useProject();
   return (
     <View className="flex flex-1 justify-between pt-4">
       <View className="gap-4">

@@ -8,28 +8,28 @@ export const notRequiredValidationBoolean = z.boolean().optional();
 export const emailValidation = z
   .string({ message: 'validations.required' })
   .email({ message: 'validations.invalid' })
-  .max(100, { message: 'validations.email-max-length' });
+  .max(100, { message: 'validations.emailMaxLength' });
 
 export const passwordValidation = z
   .string({ message: 'validations.required' })
-  .min(8, { message: 'validations.password-min-length' })
-  .regex(/[a-z]/, { message: 'validations.password-lowercase' })
-  .regex(/[A-Z]/, { message: 'validations.password-uppercase' })
-  .regex(/[0-9]/, { message: 'validations.password-digit' })
-  .regex(/[^a-zA-Z0-9]/, { message: 'validations.password-special-char' });
+  .min(8, { message: 'validations.passwordMinLength' })
+  .regex(/[a-z]/, { message: 'validations.passwordLowercase' })
+  .regex(/[A-Z]/, { message: 'validations.passwordUppercase' })
+  .regex(/[0-9]/, { message: 'validations.passwordDigit' })
+  .regex(/[^a-zA-Z0-9]/, { message: 'validations.passwordSpecialChar' });
 
 export const fieldValidation = z
   .string({ message: 'validations.required' })
-  .min(3, { message: 'validations.field-min-length' })
-  .max(50, { message: 'validations.field-max-length' })
-  .regex(/^[a-zA-Z0-9_]+$/, { message: 'validations.field-shape' });
+  .min(3, { message: 'validations.fieldMinLength' })
+  .max(50, { message: 'validations.fieldMaxLength' })
+  .regex(/^[a-zA-Z0-9_]+$/, { message: 'validations.fieldShape' });
 
 export const phoneValidation = z
   .string({ message: 'validations.required' })
   .min(1, { message: 'validations.required' })
-  .regex(/^\d+$/, { message: 'validations.phone-number-digits' })
-  .min(8, { message: 'validations.phone-number-min-length' })
-  .max(15, { message: 'validations.phone-number-max-length' });
+  .regex(/^\d+$/, { message: 'validations.phoneNumberDigits' })
+  .min(8, { message: 'validations.phoneNumberMinLength' })
+  .max(15, { message: 'validations.phoneNumberMaxLength' });
 
 export const requiredValidationNumber = z
   .number()

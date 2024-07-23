@@ -1,36 +1,14 @@
 import React from 'react';
 
-import type { TxKeyPath } from '@/core';
-import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
 
 import { PreferredStyleData } from '../dump-data';
-import { CreateAnnouncementStepNineSchema } from '../schemas';
+import { usePreferredStyle } from '../hooks';
 
 export function ChoosePreferredStyle() {
-  const { onHandleBack, onHandleNext, setFormData, formData } =
-    useFormStepper<AnnouncementType>();
-  const { handleSubmit, control, errors } = useCustomForm(
-    CreateAnnouncementStepNineSchema,
-    { architecturalStyle: formData?.architecturalStyle }
-  );
-
-  type architecturalStyleFormType = Pick<
-    AnnouncementType,
-    'architecturalStyle'
-  >;
-  const onSubmit = (data: architecturalStyleFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    onHandleNext();
-  };
-
-  const error = errors?.architecturalStyle?.message as TxKeyPath | undefined;
+  const { onHandleBack, handleSubmit, control, error, onSubmit } =
+    usePreferredStyle();
   return (
     <View className="flex flex-1 justify-between pt-8">
       <View className=" gap-4">

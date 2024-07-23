@@ -1,30 +1,14 @@
 import React from 'react';
 
-import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Counter, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
 
 import { RenovateData } from '../dump-data';
-import { CreateAnnouncementStepSixSchema } from '../schemas';
+import { useRoomsToRenovate } from '../hooks';
 
 export function ChooseRoomsToRenovate() {
-  const { onHandleBack, onHandleNext, setFormData, formData } =
-    useFormStepper<AnnouncementType>();
-  const { handleSubmit, control } = useCustomForm(
-    CreateAnnouncementStepSixSchema,
-    { piecesRenovate: formData?.piecesRenovate }
-  );
-  type piecesRenovateFormType = Pick<AnnouncementType, 'piecesRenovate'>;
-  const onSubmit = (data: piecesRenovateFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    onHandleNext();
-  };
-
+  const { onHandleBack, handleSubmit, control, onSubmit } =
+    useRoomsToRenovate();
   return (
     <View className="flex flex-1 items-center justify-between pt-8">
       <View className="gap-4">
