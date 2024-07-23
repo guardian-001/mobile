@@ -5,9 +5,9 @@ import { SplashScreen, Stack, useNavigationContainerRef } from 'expo-router';
 import { hydrateAuth, loadSelectedTheme } from '@/core';
 
 export { ErrorBoundary } from 'expo-router';
-
 import '../../global.css';
 
+import { ScreenOptions } from '@/shared/components';
 import AppProvider from '@/shared/providers/app-provider';
 
 export const unstable_settings = {
@@ -24,10 +24,22 @@ export default function RootLayout() {
   return (
     <AppProvider>
       <Stack initialRouteName="(app)">
-        <Stack.Screen name="(app)" options={{ headerShown: false }} />
-        <Stack.Screen name="(architect)" options={{ headerShown: false }} />
-        <Stack.Screen name="(client)" options={{ headerShown: false }} />
-        <Stack.Screen name="(supplier)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="(app)"
+          options={ScreenOptions({ type: 'custom' })}
+        />
+        <Stack.Screen
+          name="(architect)"
+          options={ScreenOptions({ type: 'custom' })}
+        />
+        <Stack.Screen
+          name="(client)"
+          options={ScreenOptions({ type: 'custom' })}
+        />
+        <Stack.Screen
+          name="(supplier)"
+          options={ScreenOptions({ type: 'custom' })}
+        />
       </Stack>
     </AppProvider>
   );

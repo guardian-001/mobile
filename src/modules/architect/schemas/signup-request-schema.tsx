@@ -31,8 +31,3 @@ export const CreateAccountSchema = z.object({
 export const SpecialityFormSchema = z.object({
   architectSpeciality: specialityValidation,
 });
-
-export const DemoFormSchema = z.object({
-  date: dateValidation,
-  timeSlot: timeValidation,
-});

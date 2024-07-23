@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import {
+  dateValidation,
   emailValidation,
   fieldValidation,
   notRequiredValidationBoolean,
@@ -9,6 +10,7 @@ import {
   requiredValidation,
   requiredValidationBoolean,
   specialityValidation,
+  timeValidation,
 } from './shared-validations';
 
 export const ConfirmPasswordSchema = z
@@ -21,7 +23,7 @@ export const ConfirmPasswordSchema = z
       return values.password === values.confirmPassword;
     },
     {
-      message: 'validations.confirm-password',
+      message: 'validations.confirmPassword',
       path: ['confirmPassword'],
     }
   );
@@ -74,4 +76,8 @@ export const ResetPassFormSchema = z.object({
   email: emailValidation,
   password: passwordValidation,
   confirmPassword: passwordValidation,
+});
+export const CalendarFormSchema = z.object({
+  date: dateValidation,
+  timeSlot: timeValidation,
 });

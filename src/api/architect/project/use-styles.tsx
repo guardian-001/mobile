@@ -15,7 +15,6 @@ export const useStylesApi = createQuery<Response, Variables, AxiosError>({
       const response = await client.get(`/api/users/architectural-styles`);
       return response.data;
     } catch (error) {
-      console.error('Error fetching styles:', error);
       throw error;
     }
   },

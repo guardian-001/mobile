@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import { Close } from '@/assets/icons';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 
 import type { ProjectRealizationType } from '../architect/types';
 
@@ -23,7 +23,7 @@ export default function StepperPercentageBar() {
       >
         <Close />
       </TouchableOpacity>
-      {step !== 5 && (
+      {step !== maxStep && (
         <View>
           <Text className="mb-2 font-bold">
             {percentage} {'%'}

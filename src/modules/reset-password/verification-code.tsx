@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button, Text, TouchableOpacity, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 import { translate } from '@/translations/i18n';
 import type { ResetPassFormType } from '@/types';
 import { OTPSchema } from '@/validations';
