@@ -10,5 +10,11 @@
   "field-min-length": "Field must be at least 3 characters",
   "field-max-length": "Field must be at most 50 characters",
   "field-shape": "Field must follow the required format",
-  "confirm-password": "Passwords must match"
+  "confirm-password": "Passwords must match",
+  "phone-number-digits": "Phone number must contain only digits",
+  "phone-number-min-length": "Phone number must be at least 8 characters",
+  "phone-number-max-length": "Phone number must be at most 15 characters",
+  "arrayNonEmptyNumbers": "You have to pick at least one option",
+  "uploadedImageType": "Please upload only image files.",
+  "arrayNonEmptyImage": "You have to upload at least one image"
 }

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { translate, useCustomForm } from '@/core';
 import { StepperButton } from '@/modules/shared';
-import { ControlledInput, View } from '@/shared/components';
+import { CheckboxInput, ControlledInput, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
 import { useFormStepper } from '@/shared/providers';
 import type { AnnouncementType } from '@/types/announcement';
@@ -40,10 +40,9 @@ export function SaveProject() {
     }));
     router.back();
   };
-
   return (
-    <View className="flex flex-1 items-center justify-between pt-8">
-      <View className=" flex h-fit w-[90%] gap-5 rounded-3xl bg-white px-4 py-5 shadow-md">
+    <View className="flex flex-1 justify-between pt-4">
+      <View className="gap-4">
         <ControlledInput
           testID="name-input"
           control={control}
@@ -69,7 +68,18 @@ export function SaveProject() {
           name="phoneNumber"
           control={control}
           label={translate('labels.phone')}
-          rules={{ required: 'Phone number is required' }}
+        />
+        <CheckboxInput
+          name="rules"
+          control={control}
+          accessibilityLabel={translate('announcement.rules')}
+          label={translate('announcement.rules')}
+        />
+        <CheckboxInput
+          name="receiveNotifications"
+          control={control}
+          accessibilityLabel={translate('announcement.receiveNotifications')}
+          label={translate('announcement.receiveNotifications')}
         />
       </View>
       <StepperButton
