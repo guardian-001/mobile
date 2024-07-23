@@ -1,18 +1,22 @@
-type ItemType = { [key: number]: number };
+type IdCountType = { [key: number]: number };
 
-const findInitialValue = (values: ItemType[], id: number): number => {
-  return values?.find((item) => Object.keys(item)[0] === String(id))?.[id] ?? 0;
+const findValue = (values: IdCountType[], id: number): number => {
+  return (
+    values?.find((value) => Object.keys(value)[0] === String(id))?.[id] ?? 0
+  );
 };
 
 const updateArray = (
-  arr: ItemType[],
+  arr: IdCountType[],
   id: number,
   newCount: number
-): ItemType[] => {
+): IdCountType[] => {
   if (newCount === 0) {
-    return arr.filter((item) => Object.keys(item)[0] !== String(id));
+    return arr.filter((value) => Object.keys(value)[0] !== String(id));
   } else {
-    const index = arr.findIndex((item) => Object.keys(item)[0] === String(id));
+    const index = arr.findIndex(
+      (value) => Object.keys(value)[0] === String(id)
+    );
     if (index !== -1) {
       arr[index] = { [id]: newCount };
     } else {
@@ -24,7 +28,7 @@ const updateArray = (
 
 export const useCounterUtils = () => {
   return {
-    findInitialValue,
+    findValue,
     updateArray,
   };
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   type Control,
   type FieldValues,
@@ -36,23 +36,20 @@ export const Counter = <T extends FieldValues>({
   control,
   rules,
 }: CounterProps<T>) => {
-  const { findInitialValue, updateArray } = useCounterUtils();
+  const { findValue, updateArray } = useCounterUtils();
   const { field } = useController({ control, name, rules });
-  const initialValue = findInitialValue(field.value, id);
-  const [count, setCount] = useState<number>(initialValue);
+  const value = findValue(field.value, id);
 
   const handleAdd = () => {
-    if (count < 50) {
-      const updatedValue = updateArray(field.value, id, count + 1);
+    if (value < 100) {
+      const updatedValue = updateArray(field.value, id, value + 1);
       field.onChange(updatedValue);
-      setCount((prev) => prev + 1);
     }
   };
   const handleMin = () => {
-    if (count > 0) {
-      const updatedValue = updateArray(field.value, id, count - 1);
+    if (value > 0) {
+      const updatedValue = updateArray(field.value, id, value - 1);
       field.onChange(updatedValue);
-      setCount((prev) => prev - 1);
     }
   };
 
@@ -80,7 +77,7 @@ export const Counter = <T extends FieldValues>({
           className="h-10 w-10 rounded bg-sky-blue"
           onPressHandler={handleMin}
         />
-        <Text className="w-8 text-center text-xs font-medium">{count}</Text>
+        <Text className="w-8 text-center text-xs font-medium">{value}</Text>
         <Button
           icon={<Plus />}
           className="h-10 w-10 rounded bg-sky-blue"

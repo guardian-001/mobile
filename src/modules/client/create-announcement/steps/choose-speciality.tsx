@@ -5,17 +5,15 @@ import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import type { StepperFormProps } from '@/types';
+import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { toggleCardData } from '../dump-data';
 import { CreateAnnouncementStepOneSchema } from '../schemas';
 
-export function ChooseSpeciality({
-  onHandleNext,
-  setFormData,
-  formData,
-}: StepperFormProps) {
+export function ChooseSpeciality() {
+  const { onHandleNext, setFormData, formData } =
+    useFormStepper<AnnouncementType>();
   const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepOneSchema,
     { architectSpeciality: formData.architectSpeciality }

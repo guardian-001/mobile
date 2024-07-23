@@ -4,18 +4,15 @@ import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import type { StepperFormProps } from '@/types';
+import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { CategoryData } from '../dump-data';
 import { CreateAnnouncementStepThreeSchema } from '../schemas';
 
-export function ChooseCategory({
-  onHandleBack,
-  onHandleNext,
-  setFormData,
-  formData,
-}: StepperFormProps) {
+export function ChooseCategory() {
+  const { onHandleBack, onHandleNext, setFormData, formData } =
+    useFormStepper<AnnouncementType>();
   const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepThreeSchema,
     { projectCategory: formData?.projectCategory }

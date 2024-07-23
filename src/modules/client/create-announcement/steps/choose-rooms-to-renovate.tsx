@@ -3,18 +3,15 @@ import React from 'react';
 import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Counter, View } from '@/shared/components';
-import type { StepperFormProps } from '@/types';
+import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { RenovateData } from '../dump-data';
 import { CreateAnnouncementStepSixSchema } from '../schemas';
 
-export function ChooseRoomsToRenovate({
-  onHandleBack,
-  onHandleNext,
-  setFormData,
-  formData,
-}: StepperFormProps) {
+export function ChooseRoomsToRenovate() {
+  const { onHandleBack, onHandleNext, setFormData, formData } =
+    useFormStepper<AnnouncementType>();
   const { handleSubmit, control } = useCustomForm(
     CreateAnnouncementStepSixSchema,
     { piecesRenovate: formData?.piecesRenovate }

@@ -3,11 +3,10 @@ import React from 'react';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { View } from '@/shared/components';
-import type { StepperFormProps } from '@/types';
-export function ChooseExecutionDetails({
-  onHandleBack,
-  onHandleNext,
-}: StepperFormProps) {
+import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import type { AnnouncementType } from '@/types/announcement';
+export function ChooseExecutionDetails() {
+  const { onHandleBack, onHandleNext } = useFormStepper<AnnouncementType>();
   return (
     <View className="flex flex-1 items-center justify-between pt-8">
       <View className="h-3/4" />

@@ -10,10 +10,3 @@ export type LoginFormType = z.infer<typeof EmailSchema>;
 export type LoginFormProps = {
   onSubmit: SubmitHandler<LoginFormType>;
 };
-
-export type StepperFormProps = {
-  onHandleBack: () => void;
-  onHandleNext: () => void;
-  setFormData: (data: any) => void;
-  formData: any;
-};

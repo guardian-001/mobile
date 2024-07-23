@@ -4,8 +4,7 @@ import React from 'react';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { View } from '@/shared/components';
-import type { StepperFormProps } from '@/types';
-export function SaveProject({}: StepperFormProps) {
+export function SaveProject() {
   const router = useRouter();
   return (
     <View className="flex flex-1 items-center justify-between pt-8">
