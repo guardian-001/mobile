@@ -1,51 +1,18 @@
 import React from 'react';
-import type { SvgProps } from 'react-native-svg';
 
-import { Home } from '@/assets/icons';
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import type { StepperFormProps } from '@/types';
+import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
 import type { AnnouncementType } from '@/types/announcement';
 
+import { CategoryData } from '../dump-data';
 import { CreateAnnouncementStepThreeSchema } from '../schemas';
 
-type CategoryData = {
-  id: number;
-  label: string;
-  icon: React.FunctionComponent<SvgProps>;
-};
-
-const CategoryData: CategoryData[] = [
-  {
-    id: 1,
-    label: 'Construction logement',
-    icon: Home,
-  },
-  {
-    id: 2,
-    label: 'Point vente et commercial',
-    icon: Home,
-  },
-  {
-    id: 3,
-    label: 'Grand oeuvre immobilier',
-    icon: Home,
-  },
-  {
-    id: 4,
-    label: 'Industrielle',
-    icon: Home,
-  },
-];
-
-export function ChooseCategory({
-  onHandleBack,
-  onHandleNext,
-  setFormData,
-  formData,
-}: StepperFormProps) {
+export function ChooseCategory() {
+  const { onHandleBack, onHandleNext, setFormData, formData } =
+    useFormStepper<AnnouncementType>();
   const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepThreeSchema,
     { projectCategory: formData?.projectCategory }

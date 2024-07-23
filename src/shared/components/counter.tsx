@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   type Control,
   type FieldValues,
@@ -10,6 +10,7 @@ import { View } from 'react-native';
 
 import { Minus, Plus } from '@/assets/icons';
 
+import { useCounterUtils } from '../hooks';
 import { Button } from './button';
 import { Image } from './image';
 import { Text } from './text';
@@ -25,30 +26,6 @@ type CounterProps<T extends FieldValues> = {
   rules?: RegisterOptions;
 };
 
-type PiecesRenovateType = { [key: number]: number };
-
-const findInitialValue = (values: PiecesRenovateType[], id: number): number => {
-  return values?.find((item) => Object.keys(item)[0] === String(id))?.[id] ?? 0;
-};
-
-const updateArray = (
-  arr: PiecesRenovateType[],
-  id: number,
-  newCount: number
-): PiecesRenovateType[] => {
-  if (newCount === 0) {
-    return arr.filter((item) => Object.keys(item)[0] !== String(id));
-  } else {
-    const index = arr.findIndex((item) => Object.keys(item)[0] === String(id));
-    if (index !== -1) {
-      arr[index] = { [id]: newCount };
-    } else {
-      arr.push({ [id]: newCount });
-    }
-    return [...arr];
-  }
-};
-
 export const Counter = <T extends FieldValues>({
   title,
   image,
@@ -59,20 +36,20 @@ export const Counter = <T extends FieldValues>({
   control,
   rules,
 }: CounterProps<T>) => {
+  const { findValue, updateArray } = useCounterUtils();
   const { field } = useController({ control, name, rules });
-  const initialValue = findInitialValue(field.value, id);
-  const [count, setCount] = useState<number>(initialValue);
+  const value = findValue(field.value, id);
 
   const handleAdd = () => {
-    const updatedValue = updateArray(field.value, id, count + 1);
-    field.onChange(updatedValue);
-    setCount((prev) => prev + 1);
+    if (value < 100) {
+      const updatedValue = updateArray(field.value, id, value + 1);
+      field.onChange(updatedValue);
+    }
   };
   const handleMin = () => {
-    if (count > 0) {
-      const updatedValue = updateArray(field.value, id, count - 1);
+    if (value > 0) {
+      const updatedValue = updateArray(field.value, id, value - 1);
       field.onChange(updatedValue);
-      setCount((prev) => prev - 1);
     }
   };
 
@@ -100,7 +77,7 @@ export const Counter = <T extends FieldValues>({
           className="h-10 w-10 rounded bg-sky-blue"
           onPressHandler={handleMin}
         />
-        <Text className="w-8 text-center text-xs font-medium">{count}</Text>
+        <Text className="w-8 text-center text-xs font-medium">{value}</Text>
         <Button
           icon={<Plus />}
           className="h-10 w-10 rounded bg-sky-blue"

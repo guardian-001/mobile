@@ -1,49 +1,49 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
 
-import { translate } from '@/core';
+import { translate, useCustomForm } from '@/core';
 import { StepperButton } from '@/modules/shared';
-import { View } from '@/shared/components';
-import type { StepperFormProps } from '@/types';
-/*import { AnnouncementType } from '@/types/announcement';
+import { ControlledInput, View } from '@/shared/components';
+import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
+import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import type { AnnouncementType } from '@/types/announcement';
+
 import { CreateAnnouncementStepTwelveSchema } from '../schemas';
-import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';*/
-export function SaveProject({}: // onHandleBack,
-//onHandleNext,
-//setFormData,
-//formData,
-StepperFormProps) {
+
+export function SaveProject() {
   const router = useRouter();
-  /*const { handleSubmit, control, errors } = useCustomForm(
+  const { setFormData, formData } = useFormStepper<AnnouncementType>();
+  const { handleSubmit, control } = useCustomForm(
     CreateAnnouncementStepTwelveSchema,
-    { firstName: formData?.firstName,
+    {
+      firstName: formData?.firstName,
       lastName: formData?.lastName,
       email: formData?.email,
-      phoneNumber: formData?.phoneNumber, 
+      phoneNumber: formData?.phoneNumber,
       rules: formData?.rules,
-      receiveNotifications: formData?.receiveNotifications
+      receiveNotifications: formData?.receiveNotifications,
     }
   );
-  type CreateProfileFormType = Pick<AnnouncementType, 
-  | 'firstName'
-  | 'lastName'
-  | 'email'
-  | 'phoneNumber'
-  | 'rules'
-  | 'receiveNotifications'
-    >;
-
+  type CreateProfileFormType = Pick<
+    AnnouncementType,
+    | 'firstName'
+    | 'lastName'
+    | 'email'
+    | 'phoneNumber'
+    | 'rules'
+    | 'receiveNotifications'
+  >;
   const onSubmit = (data: CreateProfileFormType) => {
     setFormData((prev: any) => ({
       ...prev,
       ...data,
     }));
-    onHandleNext();
+    router.back();
   };
-*/
+
   return (
     <View className="flex flex-1 items-center justify-between pt-8">
-      {/*     <View className=" flex h-fit w-[90%] gap-5 rounded-3xl bg-white px-4 py-5 shadow-md">
+      <View className=" flex h-fit w-[90%] gap-5 rounded-3xl bg-white px-4 py-5 shadow-md">
         <ControlledInput
           testID="name-input"
           control={control}
@@ -71,12 +71,9 @@ StepperFormProps) {
           label={translate('labels.phone')}
           rules={{ required: 'Phone number is required' }}
         />
-  
-      </View>*/}
+      </View>
       <StepperButton
-        onPressHandler={() => {
-          router.back();
-        }}
+        onPressHandler={handleSubmit(onSubmit)}
         label={translate('announcement.buttonLabel')}
       />
     </View>
