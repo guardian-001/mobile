@@ -5,7 +5,7 @@ import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { toggleCardData } from '../dump-data';

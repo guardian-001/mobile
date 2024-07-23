@@ -3,7 +3,7 @@ import React from 'react';
 import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Counter, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { RenovateData } from '../dump-data';

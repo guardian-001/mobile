@@ -6,7 +6,7 @@ import { StepButtons } from '@/modules/shared';
 import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
 import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 import type { SignupFormSchema } from '@/shared/validations';
 import { createAccountSchema } from '@/shared/validations';
 import type { SignupFormDataType } from '@/types';

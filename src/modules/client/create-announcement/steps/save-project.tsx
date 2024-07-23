@@ -5,7 +5,7 @@ import { translate, useCustomForm } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { ControlledInput, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 import type { AnnouncementType } from '@/types/announcement';
 
 import { CreateAnnouncementStepTwelveSchema } from '../schemas';
