@@ -25,7 +25,7 @@ export default function AdoptedStyle() {
   );
 
   const { data, isPending, isError } = useStylesApi();
-  console.log(data);
+
   const renderItem = ({ item }: any) => (
     <ToggleCard
       key={item.id}

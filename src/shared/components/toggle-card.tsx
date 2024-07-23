@@ -39,7 +39,6 @@ export const ToggleCard = <T extends FieldValues>({
     field.onChange(value);
   };
 
-  console.log(`${Env.API_URL}${image}`);
   return (
     <>
       <Pressable

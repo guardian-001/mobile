@@ -32,7 +32,7 @@ export const LoginForm = () => {
     login.mutate(data, {
       onSuccess: (response) => {
         signIn({ access: response.access, refresh: response.refresh });
-        console.log(response.user);
+
         router.push(`/(${space})/(private)/profile`);
       },
       onError: () => {},

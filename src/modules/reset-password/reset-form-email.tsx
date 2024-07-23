@@ -24,8 +24,7 @@ export default function ResetFormEmail() {
     }));
 
     sendOTP.mutate(data, {
-      onSuccess: (response) => {
-        console.log(response);
+      onSuccess: () => {
         onHandleNext();
       },
       onError: () => {},

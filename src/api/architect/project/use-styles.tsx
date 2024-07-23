@@ -12,7 +12,6 @@ export const useStylesApi = createQuery<Response, Variables, AxiosError>({
   queryKey: ['styles'],
   fetcher: async () => {
     const token = getToken();
-    console.log(token.access);
     if (!token) {
       throw new Error('User is not authenticated');
     }
@@ -25,7 +24,6 @@ export const useStylesApi = createQuery<Response, Variables, AxiosError>({
       });
       return response.data;
     } catch (error) {
-      console.error('Error fetching styles:', error);
       throw error;
     }
   },
