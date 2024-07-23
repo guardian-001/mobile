@@ -51,15 +51,15 @@ export default function AdoptedStyle() {
               <Text>Pending</Text>
             </View>
           ) : (
-            <>
+            <View>
               <View>
                 <Text
-                  tx={'realisation.categoryStep.title'}
-                  className="mb-2 text-center text-2xl font-extrabold"
+                  tx={'realisation.styleStep.title'}
+                  className="mb-2 text-start text-2xl font-extrabold"
                 />
                 <Text
-                  tx={'realisation.categoryStep.description'}
-                  className="max-w-xs text-center text-sm text-description"
+                  tx={'realisation.styleStep.description'}
+                  className="max-w-xs text-start text-sm text-description"
                 />
               </View>
 
@@ -67,14 +67,13 @@ export default function AdoptedStyle() {
                 data={data}
                 renderItem={({ item }) => (
                   <ProjectStyleComp
+                    classname="my-3"
                     name="architecturalStyle"
                     item={item}
                     control={control}
                   />
                 )}
                 keyExtractor={(item) => item.id.toString()}
-                numColumns={2}
-                columnWrapperStyle={styles.columnWrapperListStyle}
                 contentContainerStyle={styles.contentContainerListStyle}
               />
 
@@ -88,7 +87,7 @@ export default function AdoptedStyle() {
                   label: 'signup.suivant',
                 }}
               />
-            </>
+            </View>
           )}
         </>
       )}
@@ -98,10 +97,8 @@ export default function AdoptedStyle() {
 }
 
 const styles = StyleSheet.create({
-  columnWrapperListStyle: {
-    justifyContent: 'space-between',
-    gap: 8,
+  contentContainerListStyle: {
+    paddingHorizontal: 16,
     width: '100%',
   },
-  contentContainerListStyle: { paddingHorizontal: 16, width: '100%' },
 });

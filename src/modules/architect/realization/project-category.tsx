@@ -53,11 +53,11 @@ export default function ProjectCategory() {
               <View>
                 <Text
                   tx={'realisation.categoryStep.title'}
-                  className="mb-2 text-center text-2xl font-extrabold"
+                  className="mb-2 text-start text-2xl font-extrabold"
                 />
                 <Text
                   tx={'realisation.categoryStep.description'}
-                  className="max-w-xs text-center text-sm text-description"
+                  className="max-w-xs text-start text-sm text-description"
                 />
               </View>
 

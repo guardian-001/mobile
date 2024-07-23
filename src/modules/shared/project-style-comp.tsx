@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import type { Control, FieldValues, Path } from 'react-hook-form';
 
@@ -8,18 +9,22 @@ interface ProjectStyleCompProps<T extends FieldValues> {
   item: Style;
   control: Control<T>;
   name: Path<T>;
+  classname: string;
 }
 
 const ProjectStyleComp = <T extends FieldValues>({
   item,
   control,
   name,
+  classname,
 }: ProjectStyleCompProps<T>) => (
   <ToggleCard
     key={item.id}
-    className="mx-2 mb-7 h-32 w-36 rounded-2xl"
+    className={clsx(
+      classname,
+      ' flex h-12 w-full items-center justify-center rounded-lg'
+    )}
     title={item.label}
-    image={item.icon}
     name={name}
     control={control}
     value={item.id}

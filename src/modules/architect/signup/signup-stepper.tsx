@@ -5,6 +5,7 @@ import {
   FormProvider,
   useFormStepper,
 } from '@/shared/providers/use-form-stepper-provider';
+import { formatDateBackend } from '@/shared/utils';
 
 import type { SignupFormDataType } from '../types';
 import ChooseSpeciality from './choose-speciality';
@@ -49,8 +50,8 @@ export default function SignupStepper() {
     address: '',
     architectIdentifier: '',
     architectSpeciality: 0,
-    date: '',
-    timeSlot: '',
+    date: formatDateBackend(new Date()),
+    timeSlot: '08:00',
   };
 
   return (
