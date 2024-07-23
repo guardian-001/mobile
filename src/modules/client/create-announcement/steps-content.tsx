@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { type TxKeyPath } from '@/core';
-import type { StepperFormProps } from '@/types';
 
 import {
   AddPhotos,
@@ -21,72 +20,68 @@ import {
 interface StepContent {
   title: TxKeyPath;
   subtitle: TxKeyPath;
-  component: (props: StepperFormProps) => React.ReactElement;
+  component: React.ReactElement;
 }
 
 export const stepsContent: StepContent[] = [
   {
     title: 'announcement.searchProjetTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => <ChooseSpeciality {...props} />,
+    component: <ChooseSpeciality />,
   },
   {
     title: 'announcement.needsTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => <ChooseNeeds {...props} />,
+    component: <ChooseNeeds />,
   },
   {
     title: 'announcement.projectCategoryTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => <ChooseCategory {...props} />,
+    component: <ChooseCategory />,
   },
   {
     title: 'announcement.propertyTypeTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => <ChoosePropertyType {...props} />,
+    component: <ChoosePropertyType />,
   },
   {
     title: 'announcement.workTypeTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => <ChooseWorkType {...props} />,
+    component: <ChooseWorkType />,
   },
   {
     title: 'announcement.roomsToRenovateTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => (
-      <ChooseRoomsToRenovate {...props} />
-    ),
+    component: <ChooseRoomsToRenovate />,
   },
   {
     title: 'announcement.detailsTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => <ChooseAreaDetails {...props} />,
+    component: <ChooseAreaDetails />,
   },
   {
     title: 'announcement.executionDetailsTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => (
-      <ChooseExecutionDetails {...props} />
-    ),
+    component: <ChooseExecutionDetails />,
   },
   {
     title: 'announcement.preferredStyleTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => <ChoosePreferredStyle {...props} />,
+    component: <ChoosePreferredStyle />,
   },
   {
     title: 'announcement.additionalInfoTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => <ChooseAdditionalInfo {...props} />,
+    component: <ChooseAdditionalInfo />,
   },
   {
     title: 'announcement.uploadPhotosTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => <AddPhotos {...props} />,
+    component: <AddPhotos />,
   },
   {
     title: 'announcement.saveProjectTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
-    component: (props: StepperFormProps) => <SaveProject {...props} />,
+    component: <SaveProject />,
   },
 ];

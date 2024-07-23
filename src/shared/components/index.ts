@@ -10,6 +10,7 @@ export * from './calendar-days-list';
 export * from './checkbox';
 export * from './checkbox-input';
 export * from './controlled-input';
+export * from './counter';
 export * from './focus-aware-status-bar';
 export * from './gradient-background';
 export * from './header-title';

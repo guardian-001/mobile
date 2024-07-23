@@ -1,22 +1,19 @@
 import React from 'react';
-import type { SvgProps } from 'react-native-svg';
 
-import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
 import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import type { StepperFormProps } from '@/types';
+import { useFormStepper } from '@/shared/providers';
 import type { AnnouncementType } from '@/types/announcement';
 
+import { toggleCardData } from '../dump-data';
 import { CreateAnnouncementStepOneSchema } from '../schemas';
 
-export function ChooseSpeciality({
-  onHandleNext,
-  setFormData,
-  formData,
-}: StepperFormProps) {
+export function ChooseSpeciality() {
+  const { onHandleNext, setFormData, formData } =
+    useFormStepper<AnnouncementType>();
   const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepOneSchema,
     { architectSpeciality: formData.architectSpeciality }
@@ -30,32 +27,6 @@ export function ChooseSpeciality({
     }));
     onHandleNext();
   };
-  type ToggleCardData = {
-    id: number;
-    label: string;
-    icon: React.FunctionComponent<SvgProps>;
-    selectedSpeciality: string;
-  };
-  const toggleCardData: ToggleCardData[] = [
-    {
-      id: 1,
-      label: 'Architecte de construction	',
-      icon: HouseModel,
-      selectedSpeciality: 'constructionArchitect',
-    },
-    {
-      id: 2,
-      label: "Designer d'interieur",
-      icon: InteriorHouseModel,
-      selectedSpeciality: 'interiorArchitect',
-    },
-    {
-      id: 3,
-      label: 'Artisan de construction',
-      icon: InteriorHouseModel,
-      selectedSpeciality: 'Artisan de construction',
-    },
-  ];
 
   const error = errors?.architectSpeciality?.message as TxKeyPath | undefined;
   return (

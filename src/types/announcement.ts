@@ -6,7 +6,7 @@ export type AnnouncementType = {
   workType: number;
   piecesRenovate?: {
     [key: number]: number;
-  };
+  }[];
   address: string;
   city: string;
   terrainSurface?: string;

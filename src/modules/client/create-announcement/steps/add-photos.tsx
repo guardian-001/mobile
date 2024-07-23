@@ -3,8 +3,10 @@ import React from 'react';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { View } from '@/shared/components';
-import type { StepperFormProps } from '@/types';
-export function AddPhotos({ onHandleBack, onHandleNext }: StepperFormProps) {
+import { useFormStepper } from '@/shared/providers';
+import type { AnnouncementType } from '@/types/announcement';
+export function AddPhotos() {
+  const { onHandleBack, onHandleNext } = useFormStepper<AnnouncementType>();
   return (
     <View className="flex flex-1 items-center justify-between pt-8">
       <View className="h-3/4" />

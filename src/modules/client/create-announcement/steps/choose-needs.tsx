@@ -1,21 +1,18 @@
 import React from 'react';
-import type { SvgProps } from 'react-native-svg';
 
-import { Trafic } from '@/assets/icons';
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import type { StepperFormProps } from '@/types';
+import { useFormStepper } from '@/shared/providers';
 import type { AnnouncementType } from '@/types/announcement';
 
+import { NeedsData } from '../dump-data';
 import { CreateAnnouncementStepTwoSchema } from '../schemas';
-export function ChooseNeeds({
-  onHandleBack,
-  onHandleNext,
-  setFormData,
-  formData,
-}: StepperFormProps) {
+
+export function ChooseNeeds() {
+  const { onHandleBack, onHandleNext, setFormData, formData } =
+    useFormStepper<AnnouncementType>();
   const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepTwoSchema,
     { needs: formData?.needs || [] }
@@ -29,50 +26,7 @@ export function ChooseNeeds({
     }));
     onHandleNext();
   };
-  type NeedsData = {
-    id: number;
-    label: string;
-    icon: React.FunctionComponent<SvgProps>;
-    selectedNeeds: string;
-  };
-  const NeedsData: NeedsData[] = [
-    {
-      id: 1,
-      label: 'Plans permis et suivi chantier',
-      icon: Trafic,
-      selectedNeeds: 'Chantier',
-    },
-    {
-      id: 2,
-      label: 'Plan 3d de décoration extérieur',
-      icon: Trafic,
-      selectedNeeds: 'interiorArchitect',
-    },
-    {
-      id: 3,
-      label: 'Plans et permis de construire',
-      icon: Trafic,
-      selectedNeeds: 'buildingPermit',
-    },
-    {
-      id: 4,
-      label: 'Plan 3d de décoration intérieur',
-      icon: Trafic,
-      selectedNeeds: 'interiorDesign',
-    },
-    {
-      id: 5,
-      label: 'Plans permis et suivi chantier',
-      icon: Trafic,
-      selectedNeeds: 'constructionArchitect',
-    },
-    {
-      id: 6,
-      label: 'Plan 3d de décoration intérieur',
-      icon: Trafic,
-      selectedNeeds: 'interiorDecoration',
-    },
-  ];
+
   const error = errors?.needs?.message as TxKeyPath | undefined;
   return (
     <View className="flex flex-1 justify-between pt-4">

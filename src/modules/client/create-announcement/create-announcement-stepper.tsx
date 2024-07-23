@@ -20,9 +20,7 @@ import { stepsContent } from './steps-content';
 const CreateAnnouncementInner = () => {
   const router = useRouter();
   const lastStep = 11;
-  const { step, onHandleBack, onHandleNext, setFormData, formData } =
-    useFormStepper<AnnouncementType>();
-
+  const { step } = useFormStepper<AnnouncementType>();
   const { title, subtitle, component } = stepsContent[step];
   const percentageCompleted = Math.round(((step + 1) / lastStep) * 100);
   return (
@@ -61,12 +59,7 @@ const CreateAnnouncementInner = () => {
       >
         <Text tx={title} className="mb-2 text-xl font-bold" />
         <Text tx={subtitle} className="text-base text-description" />
-        {component({
-          onHandleBack,
-          onHandleNext,
-          setFormData,
-          formData,
-        })}
+        {component}
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -78,7 +71,7 @@ export default function CreateAnnouncementStepper() {
     projectCategory: 0,
     propertyType: 0,
     workType: 0,
-    piecesRenovate: {},
+    piecesRenovate: [],
     address: '',
     city: '',
     terrainSurface: '',

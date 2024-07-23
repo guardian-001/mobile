@@ -5,7 +5,7 @@ import { Clock } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import StepperButton from '@/modules/shared/stepper-button';
 import { Text, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 import { formatDate } from '@/shared/utils';
 import type { SignupFormDataType } from '@/types';
 
