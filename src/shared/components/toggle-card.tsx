@@ -17,7 +17,7 @@ type CardProps<T extends FieldValues> = {
   classNameText?: string;
   svgComponent?: React.ComponentType;
   name: Path<T>;
-  value: number;
+  value?: number;
   control: Control<T>;
   rules?: RegisterOptions;
 };
@@ -38,8 +38,8 @@ export const ToggleCard = <T extends FieldValues>({
   const handlePress = () => {
     field.onChange(value);
   };
-
   console.log(`${Env.API_URL}${image}`);
+
   return (
     <>
       <Pressable

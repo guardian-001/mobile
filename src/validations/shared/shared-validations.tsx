@@ -17,8 +17,7 @@ export const integerValidation = z
   .number({
     message: 'validations.required',
   })
-  .int({ message: 'validations.invalid-integer' })
-  .optional();
+  .int({ message: 'validations.invalid-integer' });
 
 export const intArrayValidation = z.array(
   z.number().int({

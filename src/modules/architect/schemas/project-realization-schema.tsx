@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import {
+  categoryValidation,
   cityValidation,
   workSurfaceValidation,
 } from '@/modules/architect/validations';
@@ -22,7 +23,7 @@ export const ProjectRealizationSchema = z.object({
   description: fieldValidation,
   architecturalStyle: integerValidation,
   realizationImages: imagesValidation,
-  projectCategory: integerValidation,
+  projectCategory: categoryValidation,
 });
 
 export const ProjectCategorySchema = z.object({

@@ -5,7 +5,7 @@ import { FlatList, StyleSheet } from 'react-native';
 import { useCategoriesApi } from '@/api/architect/project';
 import type { TxKeyPath } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
+import { Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
 
@@ -33,13 +33,14 @@ export default function ProjectCategory() {
       image={item.icon}
       name="projectCategory"
       control={control}
-      value={item.id}
+      value={item.id as number | undefined}
     />
   );
   const onHandleBack = () => {
     router.back();
   };
   const onSubmit = (selectedData: CategoryFormType) => {
+    console.log('selectedData: ', selectedData);
     setFormData((prev: any) => ({
       ...prev,
       ...selectedData,
@@ -72,18 +73,15 @@ export default function ProjectCategory() {
                   className="max-w-xs text-center text-sm text-description"
                 />
               </View>
-              <ScrollView className="w-full">
-                <View className="grid w-full grid-cols-2 gap-4">
-                  <FlatList
-                    data={data}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id.toString()}
-                    numColumns={2}
-                    columnWrapperStyle={styles.columnWrapperListStyle}
-                    contentContainerStyle={styles.contentContainerListStyle}
-                  />
-                </View>
-              </ScrollView>
+
+              <FlatList
+                data={data}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id.toString()}
+                numColumns={2}
+                columnWrapperStyle={styles.columnWrapperListStyle}
+                contentContainerStyle={styles.contentContainerListStyle}
+              />
 
               <StepButtons
                 previous={{
@@ -105,6 +103,10 @@ export default function ProjectCategory() {
 }
 
 const styles = StyleSheet.create({
-  columnWrapperListStyle: { justifyContent: 'space-between' },
-  contentContainerListStyle: { paddingHorizontal: 16 },
+  columnWrapperListStyle: {
+    justifyContent: 'space-between',
+    gap: 8,
+    width: '100%',
+  },
+  contentContainerListStyle: { paddingHorizontal: 16, width: '100%' },
 });

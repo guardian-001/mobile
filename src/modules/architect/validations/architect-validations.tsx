@@ -29,3 +29,7 @@ export const imagesValidation = z
   .refine((images) => new Set(images).size === images.length, {
     message: 'validations.unique-items',
   });
+
+export const categoryValidation = z.number().refine((value) => value > 0, {
+  message: 'validations.required',
+});
