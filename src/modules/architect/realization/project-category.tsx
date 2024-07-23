@@ -33,7 +33,7 @@ export default function ProjectCategory() {
       image={item.icon}
       name="projectCategory"
       control={control}
-      value={item.id as number | undefined}
+      value={item.id}
     />
   );
   const onHandleBack = () => {
@@ -82,22 +82,23 @@ export default function ProjectCategory() {
                 columnWrapperStyle={styles.columnWrapperListStyle}
                 contentContainerStyle={styles.contentContainerListStyle}
               />
-
-              <StepButtons
-                previous={{
-                  handlePreviousStep: onHandleBack,
-                  label: 'signup.retour',
-                }}
-                next={{
-                  handleSubmit: handleSubmit(onSubmit),
-                  label: 'signup.suivant',
-                }}
-              />
+              {error && <Text tx={error} className="text-sm text-error" />}
+              <View className="flex h-fit w-full items-center">
+                <StepButtons
+                  previous={{
+                    handlePreviousStep: onHandleBack,
+                    label: 'signup.retour',
+                  }}
+                  next={{
+                    handleSubmit: handleSubmit(onSubmit),
+                    label: 'signup.suivant',
+                  }}
+                />
+              </View>
             </>
           )}
         </>
       )}
-      {error && <Text tx={error} className="text-sm text-error" />}
     </View>
   );
 }

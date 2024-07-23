@@ -30,6 +30,6 @@ export const imagesValidation = z
     message: 'validations.unique-items',
   });
 
-export const categoryValidation = z.number().refine((value) => value > 0, {
+export const idValidation = z.number().refine((value) => value > 0, {
   message: 'validations.required',
 });

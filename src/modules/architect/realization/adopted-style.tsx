@@ -78,8 +78,6 @@ export default function AdoptedStyle() {
                 data={data}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id.toString()}
-                numColumns={2}
-                columnWrapperStyle={styles.columnWrapperListStyle}
                 contentContainerStyle={styles.contentContainerListStyle}
               />
 

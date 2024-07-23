@@ -1,28 +1,18 @@
+// api/styles.ts
 import type { AxiosError } from 'axios';
 import { createQuery } from 'react-query-kit';
 
 import { client } from '@/api/common';
-import { getToken } from '@/core/auth/utils';
-
-import type { Style } from './types';
+import type { Style } from '@/types';
 
 type Response = Style[];
 type Variables = void;
+
 export const useStylesApi = createQuery<Response, Variables, AxiosError>({
   queryKey: ['styles'],
   fetcher: async () => {
-    const token = getToken();
-    console.log(token.access);
-    if (!token) {
-      throw new Error('User is not authenticated');
-    }
-
     try {
-      const response = await client.get(`/api/users/architectural-styles`, {
-        headers: {
-          Authorization: `Bearer ${token.access}`,
-        },
-      });
+      const response = await client.get(`/api/users/architectural-styles`);
       return response.data;
     } catch (error) {
       console.error('Error fetching styles:', error);

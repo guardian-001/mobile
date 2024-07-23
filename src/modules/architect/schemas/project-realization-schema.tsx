@@ -1,15 +1,14 @@
 import { z } from 'zod';
 
 import {
-  categoryValidation,
   cityValidation,
+  idValidation,
   workSurfaceValidation,
 } from '@/modules/architect/validations';
 import {
   fieldValidation,
   imagesValidation,
   intArrayValidation,
-  integerValidation,
   requiredIntegerValidation,
 } from '@/validations';
 
@@ -21,15 +20,15 @@ export const ProjectRealizationSchema = z.object({
   city: cityValidation,
   workSurface: workSurfaceValidation,
   description: fieldValidation,
-  architecturalStyle: integerValidation,
+  architecturalStyle: idValidation,
   realizationImages: imagesValidation,
-  projectCategory: categoryValidation,
+  projectCategory: idValidation,
 });
 
 export const ProjectCategorySchema = z.object({
-  projectCategory: integerValidation,
+  projectCategory: idValidation,
 });
 
 export const ArchitecturalStyleSchema = z.object({
-  architecturalStyle: integerValidation,
+  architecturalStyle: idValidation,
 });
