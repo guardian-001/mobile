@@ -7,11 +7,13 @@ export const requiredValidationBoolean = z
 export const notRequiredValidationBoolean = z.boolean().optional();
 export const emailValidation = z
   .string({ message: 'validations.required' })
+  .min(1, { message: 'validations.required' })
   .email({ message: 'validations.invalid' })
   .max(100, { message: 'validations.emailMaxLength' });
 
 export const passwordValidation = z
   .string({ message: 'validations.required' })
+  .min(1, { message: 'validations.required' })
   .min(8, { message: 'validations.passwordMinLength' })
   .regex(/[a-z]/, { message: 'validations.passwordLowercase' })
   .regex(/[A-Z]/, { message: 'validations.passwordUppercase' })
@@ -20,6 +22,7 @@ export const passwordValidation = z
 
 export const fieldValidation = z
   .string({ message: 'validations.required' })
+  .min(1, { message: 'validations.required' })
   .min(3, { message: 'validations.fieldMinLength' })
   .max(50, { message: 'validations.fieldMaxLength' })
   .regex(/^[a-zA-Z0-9_]+$/, { message: 'validations.fieldShape' });
