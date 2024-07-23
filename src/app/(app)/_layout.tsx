@@ -2,6 +2,7 @@ import { SplashScreen, Stack } from 'expo-router';
 import React, { useCallback, useEffect } from 'react';
 
 import { useAuth } from '@/core';
+import { ScreenOptions } from '@/shared/components';
 
 export default function TabLayout() {
   const status = useAuth.use.status();
@@ -18,7 +19,7 @@ export default function TabLayout() {
 
   return (
     <Stack initialRouteName="index">
-      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="index" options={ScreenOptions({ type: 'custom' })} />
     </Stack>
   );
 }

@@ -2,8 +2,7 @@ import type { AxiosError } from 'axios';
 import { createQuery } from 'react-query-kit';
 
 import { client } from '@/api/common';
-
-import type { Category } from './types';
+import type { Category } from '@/types';
 
 type Response = Category[];
 type Variables = void;

@@ -3,7 +3,7 @@ import React from 'react';
 import { StepButtons } from '@/modules/shared';
 import { Text, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 
 import { ProjectRealizationSchema } from '../schemas';
 import type { ProjectRealizationType } from '../types';

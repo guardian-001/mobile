@@ -49,7 +49,7 @@ export default function ProjectRealizationStepper() {
     workSurface: undefined,
     description: '',
     architecturalStyle: 0,
-    realizationImages: [] as number[],
+    realizationImages: [],
     projectCategory: 0,
   };
 

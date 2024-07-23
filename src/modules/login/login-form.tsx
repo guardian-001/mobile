@@ -35,7 +35,9 @@ export const LoginForm = () => {
 
         router.push(`/(${space})/(private)/profile`);
       },
-      onError: () => {},
+      onError: (error) => {
+        throw error;
+      },
     });
   };
 

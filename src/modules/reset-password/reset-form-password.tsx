@@ -3,7 +3,7 @@ import React from 'react';
 import { translate } from '@/core';
 import { Button, ControlledInput, Text, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 import type { TxKeyPath } from '@/translations/i18n';
 import type { ResetPassFormType } from '@/types';
 import { ResetPassFormSchema } from '@/validations';
@@ -33,25 +33,25 @@ export default function ResetFormPassword() {
   const passwordRequirements: { isValid: boolean; message: TxKeyPath }[] = [
     {
       isValid: form.watch('password')?.length >= 8,
-      message: 'resetpass.password-min-length',
+      message: 'resetpass.passwordMinLength',
     },
     {
       isValid:
         /[a-z]/.test(form.watch('password')) &&
         form.watch('password')?.length >= 1,
-      message: 'resetpass.password-lowercase',
+      message: 'resetpass.passwordLowercase',
     },
     {
       isValid: /[A-Z]/.test(form.watch('password')),
-      message: 'resetpass.password-uppercase',
+      message: 'resetpass.passwordUppercase',
     },
     {
       isValid: /[0-9]/.test(form.watch('password')),
-      message: 'resetpass.password-digit',
+      message: 'resetpass.passwordDigit',
     },
     {
       isValid: /[^a-zA-Z0-9]/.test(form.watch('password')),
-      message: 'resetpass.password-special-char',
+      message: 'resetpass.passwordSpecialChar',
     },
     {
       isValid:

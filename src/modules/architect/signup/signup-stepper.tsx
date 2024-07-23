@@ -33,9 +33,9 @@ const SignupStepperInner = () => {
   const { component } = stepsContent[step];
 
   return (
-    <View className="items-between flex h-full bg-background dark:bg-black">
+    <View className="items-between flex h-full bg-background">
       <HeaderTitle text="signup.headerTitle" type="custom" />
-      <View className=" h-full flex-1 p-6 py-12">{component}</View>
+      <View className=" h-full flex-1 p-6">{component}</View>
     </View>
   );
 };

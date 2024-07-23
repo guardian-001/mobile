@@ -4,10 +4,11 @@ import { FlatList, StyleSheet } from 'react-native';
 
 import { useCategoriesApi } from '@/api/architect/project';
 import type { TxKeyPath } from '@/core';
-import { StepButtons } from '@/modules/shared';
-import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
+import { ProjectCategoryComp, StepButtons } from '@/modules/shared';
+import { ScrollView, Text, View } from '@/shared/components';
+import { ErrorData, PendingData } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 
 import { ProjectCategorySchema } from '../schemas';
 import type { ProjectRealizationType } from '../types';
@@ -25,17 +26,7 @@ export default function ProjectCategory() {
   );
 
   const { data, isPending, isError } = useCategoriesApi();
-  const renderItem = ({ item }: any) => (
-    <ToggleCard
-      key={item.id}
-      className="mx-2 mb-7 h-32 w-36 rounded-2xl"
-      title={item.label}
-      image={item.icon}
-      name="projectCategory"
-      control={control}
-      value={item.id}
-    />
-  );
+
   const onHandleBack = () => {
     router.back();
   };
@@ -51,15 +42,11 @@ export default function ProjectCategory() {
   return (
     <View className="mb-5 flex h-full flex-1 items-start justify-between gap-16  ">
       {isError ? (
-        <View>
-          <Text>Error Loading Data</Text>
-        </View>
+        <ErrorData message="Error Loading Data" />
       ) : (
         <>
           {isPending ? (
-            <View>
-              <Text>Pending</Text>
-            </View>
+            <PendingData message="Pending" />
           ) : (
             <>
               <View>
@@ -76,7 +63,13 @@ export default function ProjectCategory() {
                 <View className="grid w-full grid-cols-2 gap-4">
                   <FlatList
                     data={data}
-                    renderItem={renderItem}
+                    renderItem={({ item }) => (
+                      <ProjectCategoryComp
+                        name="projectCategory"
+                        item={item}
+                        control={control}
+                      />
+                    )}
                     keyExtractor={(item) => item.id.toString()}
                     numColumns={2}
                     columnWrapperStyle={styles.columnWrapperListStyle}

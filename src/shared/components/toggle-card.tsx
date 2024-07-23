@@ -1,4 +1,3 @@
-import { Env } from '@env';
 import * as React from 'react';
 import {
   type Control,
@@ -8,6 +7,7 @@ import {
   useController,
 } from 'react-hook-form';
 
+import useImageUrl from '../hooks/use-image-url';
 import { Image, Pressable, Text, View } from './';
 
 type CardProps<T extends FieldValues> = {
@@ -39,6 +39,8 @@ export const ToggleCard = <T extends FieldValues>({
     field.onChange(value);
   };
 
+  const imageUrl = useImageUrl(image);
+
   return (
     <>
       <Pressable
@@ -57,7 +59,7 @@ export const ToggleCard = <T extends FieldValues>({
         ) : (
           <Image
             className="h-2/3 w-4/6 overflow-hidden rounded-2xl"
-            source={{ uri: `${Env.API_URL}${image}` }}
+            source={{ uri: imageUrl }}
           />
         )}
         <Text className={`${classNameText} text-center text-xs font-bold`}>

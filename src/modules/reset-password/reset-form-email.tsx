@@ -4,7 +4,7 @@ import { useResetPassOTPApi } from '@/api/auth';
 import { translate } from '@/core';
 import { Button, ControlledInput, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers/use-form-stepper-provider';
+import { useFormStepper } from '@/shared/providers';
 import type { ResetPassFormType } from '@/types';
 import { EmailSchema } from '@/validations';
 
@@ -27,7 +27,9 @@ export default function ResetFormEmail() {
       onSuccess: () => {
         onHandleNext();
       },
-      onError: () => {},
+      onError: (error) => {
+        throw error;
+      },
     });
   };
   return (
