@@ -28,7 +28,7 @@ const inputTv = tv({
     error: {
       true: {
         input: 'border-danger-600',
-        label: 'text-danger-600 dark:text-danger-600',
+        label: 'text-danger-600 dark:text-error',
       },
     },
     disabled: {

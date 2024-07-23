@@ -4,9 +4,9 @@ import { translate } from '@/core';
 import { Button, ControlledInput, Text, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers';
+import { ResetPassFormSchema } from '@/shared/validations';
 import type { TxKeyPath } from '@/translations/i18n';
 import type { ResetPassFormType } from '@/types';
-import { ResetPassFormSchema } from '@/validations';
 
 import PasswordRequirementItem from './password-requirement-item';
 

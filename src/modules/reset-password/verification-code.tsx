@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { translate } from '@/core';
+import { useFormStepper } from '@/shared';
 import { Button, Text, TouchableOpacity, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers';
-import { translate } from '@/translations/i18n';
+import { OTPSchema } from '@/shared/validations';
 import type { ResetPassFormType } from '@/types';
-import { OTPSchema } from '@/validations';
 
 import { OTPInput } from './otp-input';
 

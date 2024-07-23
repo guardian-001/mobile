@@ -5,12 +5,12 @@ import { ArrowLeft, ArrowRight, Globe } from '@/assets/icons';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import colors from '@/theme/colors';
-import { CalendarFormSchema } from '@/validations';
 
 import { DAYS } from '../constants/constants';
 import { useCalendar, useCustomForm, useTimezone } from '../hooks';
 import { useFormStepper } from '../providers/use-form-stepper-provider';
 import { capitalizeFirstLetter } from '../utils';
+import { CalendarFormSchema } from '../validations';
 import { CalendarDaysList } from './';
 import { RenderTimeSlots } from './time-slots';
 type CalendarFormType = Zod.infer<typeof CalendarFormSchema>;
