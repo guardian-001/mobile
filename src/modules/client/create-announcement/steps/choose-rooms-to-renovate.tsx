@@ -1,34 +1,13 @@
 import React from 'react';
-import type { SvgProps } from 'react-native-svg';
 
-import { Home } from '@/assets/icons';
 import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Counter, View } from '@/shared/components';
 import type { StepperFormProps } from '@/types';
 import type { AnnouncementType } from '@/types/announcement';
 
+import { RenovateData } from '../dump-data';
 import { CreateAnnouncementStepSixSchema } from '../schemas';
-
-type RenovateTypeData = {
-  id: number;
-  label: string;
-  icon: React.FunctionComponent<SvgProps>;
-};
-const RenovateData: RenovateTypeData[] = [
-  { id: 1, label: 'Suite parentale', icon: Home },
-  { id: 2, label: 'Chambre', icon: Home },
-  { id: 3, label: 'Chambre enfant', icon: Home },
-  { id: 4, label: 'Salon', icon: Home },
-  { id: 5, label: 'Cuisine', icon: Home },
-  { id: 6, label: 'Salle à manger', icon: Home },
-  { id: 7, label: 'Salle de bain', icon: Home },
-  { id: 8, label: 'Bureau', icon: Home },
-  { id: 9, label: 'Terrasse', icon: Home },
-  { id: 10, label: 'Jardin', icon: Home },
-  { id: 11, label: 'Hall ou Entrée', icon: Home },
-  { id: 12, label: 'Garage', icon: Home },
-];
 
 export function ChooseRoomsToRenovate({
   onHandleBack,

@@ -10,6 +10,7 @@ import { View } from 'react-native';
 
 import { Minus, Plus } from '@/assets/icons';
 
+import { useCounterUtils } from '../hooks';
 import { Button } from './button';
 import { Image } from './image';
 import { Text } from './text';
@@ -25,30 +26,6 @@ type CounterProps<T extends FieldValues> = {
   rules?: RegisterOptions;
 };
 
-type PiecesRenovateType = { [key: number]: number };
-
-const findInitialValue = (values: PiecesRenovateType[], id: number): number => {
-  return values?.find((item) => Object.keys(item)[0] === String(id))?.[id] ?? 0;
-};
-
-const updateArray = (
-  arr: PiecesRenovateType[],
-  id: number,
-  newCount: number
-): PiecesRenovateType[] => {
-  if (newCount === 0) {
-    return arr.filter((item) => Object.keys(item)[0] !== String(id));
-  } else {
-    const index = arr.findIndex((item) => Object.keys(item)[0] === String(id));
-    if (index !== -1) {
-      arr[index] = { [id]: newCount };
-    } else {
-      arr.push({ [id]: newCount });
-    }
-    return [...arr];
-  }
-};
-
 export const Counter = <T extends FieldValues>({
   title,
   image,
@@ -59,14 +36,17 @@ export const Counter = <T extends FieldValues>({
   control,
   rules,
 }: CounterProps<T>) => {
+  const { findInitialValue, updateArray } = useCounterUtils();
   const { field } = useController({ control, name, rules });
   const initialValue = findInitialValue(field.value, id);
   const [count, setCount] = useState<number>(initialValue);
 
   const handleAdd = () => {
-    const updatedValue = updateArray(field.value, id, count + 1);
-    field.onChange(updatedValue);
-    setCount((prev) => prev + 1);
+    if (count < 50) {
+      const updatedValue = updateArray(field.value, id, count + 1);
+      field.onChange(updatedValue);
+      setCount((prev) => prev + 1);
+    }
   };
   const handleMin = () => {
     if (count > 0) {
