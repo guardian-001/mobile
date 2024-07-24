@@ -76,7 +76,7 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
         />
       </View>
       {error && (
-        <Text className="text-xs text-red-400 dark:text-red-600" tx={error} />
+        <Text className="text-xs text-error dark:text-red-600" tx={error} />
       )}
     </View>
   );
