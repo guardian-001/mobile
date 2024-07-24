@@ -29,6 +29,8 @@ export * from './screen-options';
 export * from './select';
 export * from './switch';
 export * from './switch-input';
+export * from './tag';
+export * from './tag-group';
 export * from './text';
 export * from './title';
 export * from './toggle-button';
