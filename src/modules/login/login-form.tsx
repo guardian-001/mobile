@@ -1,9 +1,9 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import type { SubmitHandler } from 'react-hook-form';
 import { View } from 'react-native';
 import type * as z from 'zod';
 
+import { useLoginApi } from '@/api/auth';
 import { translate, useAuth } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
@@ -14,26 +14,33 @@ import { LoginFormSchema } from '@/shared/validations';
 import { Container } from '../shared';
 import LoginButton from '../shared/login-button';
 export type LoginFormType = z.infer<typeof LoginFormSchema>;
-export type LoginFormProps = {
-  onSubmit: SubmitHandler<LoginFormType>;
-};
+
 export type LoginType = {
   name: string;
   data: string;
 };
 
-export const LoginForm = ({ onSubmit }: LoginFormProps) => {
-  const { handleSubmit, control } = useCustomForm(LoginFormSchema);
+export const LoginForm = () => {
   const router = useRouter();
-  const signIn = useAuth.use.signIn();
   const space = useRouteName();
+  const signIn = useAuth.use.signIn();
   const [checked, setChecked] = useState(true);
+  const { handleSubmit, control } = useCustomForm(LoginFormSchema);
+  const login = useLoginApi();
 
-  const handleResetPassword: SubmitHandler<LoginFormType> = (data) => {
-    signIn({ access: 'access-token', refresh: 'refresh-token' });
-    router.push(`/(${space})/(private)`);
-    onSubmit(data);
+  const onSubmit = (data: LoginFormType) => {
+    login.mutate(data, {
+      onSuccess: (response) => {
+        signIn({ access: response.access, refresh: response.refresh });
+
+        router.push(`/(${space})/(private)/profile`);
+      },
+      onError: (error) => {
+        throw error;
+      },
+    });
   };
+
   const handleResetPass = () => {
     router.push(`/(${space})/(public)/reset-password`);
   };
@@ -82,7 +89,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
       <LoginButton
         type="button"
         label={translate('login.connectBtn')}
-        loginFunction={handleSubmit(handleResetPassword)}
+        loginFunction={handleSubmit(onSubmit)}
         radius="rounded-lg"
         width="w-full"
         height="h-12"

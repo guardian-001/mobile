@@ -1,20 +1,19 @@
-/* eslint-disable react/no-unstable-nested-components */
-import { Tabs } from 'expo-router';
+import { Stack } from 'expo-router';
 import React from 'react';
 
-import { Feed as FeedIcon } from '@/assets/icons';
+import { ScreenOptions } from '@/shared/components';
 
 export default function ArchitectPrivateLayout() {
   return (
-    <Tabs initialRouteName="index">
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Architect Space',
-          tabBarIcon: ({ color }) => <FeedIcon color={color} />,
-          tabBarTestID: 'feed-tab',
-        }}
+    <Stack initialRouteName="profile">
+      <Stack.Screen
+        name="profile"
+        options={ScreenOptions({ type: 'custom' })}
       />
-    </Tabs>
+      <Stack.Screen
+        name="realize-project"
+        options={ScreenOptions({ type: 'custom' })}
+      />
+    </Stack>
   );
 }

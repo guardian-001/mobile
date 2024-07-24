@@ -6,6 +6,7 @@ import loginSupplier from './loginSupplier.json';
 import notification from './notification.json';
 import onBoarding from './onboarding.json';
 import profile from './profile.json';
+import realisation from './realisation-architect.json';
 import resetpass from './resetpass.json';
 import settings from './settings.json';
 import signup from './signup.json';
@@ -14,10 +15,12 @@ import signupStepCreateProfile from './signup-step2.json';
 import signupStepDemoPlanning from './signup-step3.json';
 import signupStepDemoPlanningConfirmation from './signup-step4.json';
 import validations from './validations.json';
+
 export default {
-  loginSupplier,
   announcement,
   notification,
+  loginSupplier,
+  realisation,
   profile,
   login,
   labels,

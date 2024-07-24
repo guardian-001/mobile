@@ -4,29 +4,28 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { ArrowLeft, ArrowRight, Globe } from '@/assets/icons';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { DemoFormSchema } from '@/shared/validations';
 import colors from '@/theme/colors';
-import type { SignupFormDataType } from '@/types';
 
 import { DAYS } from '../constants/constants';
 import { useCalendar, useCustomForm, useTimezone } from '../hooks';
 import { useFormStepper } from '../providers/use-form-stepper-provider';
 import { capitalizeFirstLetter } from '../utils';
+import { CalendarFormSchema } from '../validations';
 import { CalendarDaysList } from './';
 import { RenderTimeSlots } from './time-slots';
-type DemoPlanningFormType = Pick<SignupFormDataType, 'date' | 'timeSlot'>;
+type CalendarFormType = Zod.infer<typeof CalendarFormSchema>;
 export const Calendar = () => {
   const { currentMonth, currentYear, handlePreviousMonth, handleNextMonth } =
     useCalendar();
   const [formattedTimezone] = useTimezone();
   const { selectedDate } = useCalendar();
   const { formData, setFormData, onHandleNext, onHandleBack } =
-    useFormStepper<SignupFormDataType>();
-  const { handleSubmit, errors, control } = useCustomForm(DemoFormSchema, {
+    useFormStepper<CalendarFormType>();
+  const { handleSubmit, errors, control } = useCustomForm(CalendarFormSchema, {
     date: formData?.date,
     timeSlot: formData?.timeSlot,
   });
-  const onSubmit = (data: DemoPlanningFormType) => {
+  const onSubmit = (data: CalendarFormType) => {
     setFormData((prev: any) => ({
       ...prev,
       ...data,

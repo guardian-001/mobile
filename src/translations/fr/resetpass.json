@@ -8,10 +8,11 @@
   "resetPasswordDescription": "Créez un mot de passe sécurisé pour protéger votre compte.",
   "passwordConditions": "Votre mot de passe doit contenir au moins :",
   "passwordLength": "Votre mot de passe doit contenir au moins :",
-  "password-min-length": "8 caractères",
-  "password-lowercase": "une lettre minuscule",
-  "password-uppercase": "une lettre majuscule",
-  "password-digit": "un chiffre",
-  "password-special-char": "un caractère spécial (#?!$&@)",
+  "passwordMinLength": "8 caractères",
+  "passwordLowercase": "une lettre minuscule",
+  "passwordUppercase": "une lettre majuscule",
+  "passwordDigit": "un chiffre",
+  "passwordSpecialChar": "un caractère spécial (#?!$&@)",
+  "passwordConfirmation": "confirmer le mot de passe",
   "resendCode": "Renvoyer le code"
 }

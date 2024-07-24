@@ -1,11 +1,11 @@
-import { Redirect, SplashScreen } from 'expo-router';
+import { SplashScreen, Stack } from 'expo-router';
 import React, { useCallback, useEffect } from 'react';
 
-import { useAuth, useIsFirstTime } from '@/core';
+import { useAuth } from '@/core';
+import { ScreenOptions } from '@/shared/components';
 
 export default function TabLayout() {
   const status = useAuth.use.status();
-  const [isFirstTime] = useIsFirstTime();
   const hideSplash = useCallback(async () => {
     await SplashScreen.hideAsync();
   }, []);
@@ -17,11 +17,9 @@ export default function TabLayout() {
     }
   }, [hideSplash, status]);
 
-  if (isFirstTime) {
-    return <Redirect href="/onboarding" />;
-  }
-  if (status === 'signOut') {
-    return <Redirect href="/login" />;
-  }
-  return <Redirect href="/onboarding" />;
+  return (
+    <Stack initialRouteName="index">
+      <Stack.Screen name="index" options={ScreenOptions({ type: 'custom' })} />
+    </Stack>
+  );
 }

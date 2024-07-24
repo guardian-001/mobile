@@ -1,0 +1,33 @@
+{
+  "categoryStep": {
+    "title": "Choisissez la Catégorie de Projet",
+    "description": "Pour commencer, veuillez sélectionner votre spécialité"
+  },
+  "styleStep": {
+    "title": "Quel style adopter pour le projet ?",
+    "description": "Pour commencer, veuillez sélectionner votre spécialité"
+  },
+  "detailsStep": {
+    "title": "Plus de détails",
+    "description": "Pour commencer, veuillez sélectionner votre spécialité",
+    "inputLabel": "Titre de projet",
+    "inputPlaceholder": "Titrez votre projet ",
+    "localisationLabel": "Localisation du projet",
+    "surfaceLabel": "Surface de travaux",
+    "descriptionLabel": "Description du projet ",
+    "descriptionPlaceholder": "Write a short introduction..."
+  },
+  "servicesStep": {
+    "title": "Les services approuvée",
+    "description": "Pour commencer, veuillez sélectionner votre spécialité"
+  },
+  "galleryStep": {
+    "title": "Galerie",
+    "description": "Pour commencer, veuillez sélectionner votre spécialité",
+    "imgSelectorPlaceholder": "Télécharger minimum 5 photos",
+    "buttonTitle": "Télécharger photos",
+    "imgLoaderTitle": "Nous organisons vos photos pour mettre en valeur votre vision architecturale",
+    "imgLoaderDescriptionSur": "sur",
+    "imgLoaderDescription": "photos importés"
+  }
+}

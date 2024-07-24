@@ -1,12 +1,22 @@
-import type { SubmitHandler } from 'react-hook-form';
 import type { z } from 'zod';
 
-import type { EmailSchema } from '@/shared/validations';
-import type { SignupFormSchema } from '@/shared/validations';
+import type { EmailSchema, ResetPassFormSchema } from '@/shared/validations';
 
-export type SignupFormDataType = z.infer<typeof SignupFormSchema>;
+export type LoginFormSupplierType = z.infer<typeof EmailSchema>;
+export type ResetPassFormType = z.infer<typeof ResetPassFormSchema>;
+export type Category = {
+  id: number;
+  label: string;
+  icon: string;
+};
 
-export type LoginFormType = z.infer<typeof EmailSchema>;
-export type LoginFormProps = {
-  onSubmit: SubmitHandler<LoginFormType>;
+export type Style = {
+  id: number;
+  label: string;
+  icon: string;
+};
+
+export type Image = {
+  name: string;
+  ulr: string;
 };

@@ -1,4 +1,4 @@
-import { MONTHS } from '../components';
+import { MONTHS } from '../constants';
 
 export function capitalizeFirstLetter(string: string): string {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -28,3 +28,13 @@ export const formatDateBackend = (date: Date) => {
 
   return `${year}-${month}-${day}`;
 };
+
+export function add30Minutes(time: string) {
+  const [hours, minutes] = time.split(':').map(Number);
+  const date = new Date();
+  date.setHours(hours, minutes);
+  date.setMinutes(date.getMinutes() + 30);
+  const newHours = String(date.getHours()).padStart(2, '0');
+  const newMinutes = String(date.getMinutes()).padStart(2, '0');
+  return `${newHours}:${newMinutes}`;
+}

@@ -7,6 +7,7 @@ interface IFormContext<T> {
   onHandleBack: () => void;
   onHandleNext: () => void;
   step: number;
+  maxStep?: number;
 }
 
 const defaultContext: IFormContext<any> = {
@@ -15,6 +16,7 @@ const defaultContext: IFormContext<any> = {
   onHandleNext: () => {},
   setFormData: () => {},
   step: 0,
+  maxStep: 0,
 };
 
 export const FormContext = createContext<IFormContext<any>>(defaultContext);
@@ -22,9 +24,10 @@ export const FormContext = createContext<IFormContext<any>>(defaultContext);
 interface IProps<T> {
   children: ReactNode;
   initialData: T;
+  maxStep?: number;
 }
 
-export function FormProvider<T>({ children, initialData }: IProps<T>) {
+export function FormProvider<T>({ children, initialData, maxStep }: IProps<T>) {
   const [formData, setFormData] = useState<T>(initialData);
   const [step, setStep] = useState(0);
 
@@ -46,6 +49,7 @@ export function FormProvider<T>({ children, initialData }: IProps<T>) {
         onHandleBack,
         onHandleNext,
         step,
+        maxStep,
       }}
     >
       {children}
