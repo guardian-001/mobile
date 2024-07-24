@@ -1,15 +1,11 @@
 import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 
-import { showErrorMessage } from '@/shared/components';
-
 import { LoginHeader, Welcome } from '../Components';
 import { AuthFooter, Conditions, Container } from '../shared';
 import { LoginForm } from './login-form';
 
 export default function LoginShared() {
-  showErrorMessage(' gff ff'); // Display a generic error message using showErrorMessage
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
