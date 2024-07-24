@@ -1,68 +1,64 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 
 import { translate } from '@/core';
-import { StepperButton } from '@/modules/shared';
-import { Button, TagGroup, Text, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
+import { StepButtons } from '@/modules/shared';
+import {
+  Cities,
+  ControlledInput,
+  SizeCategories,
+  TagGroup,
+  Text,
+  View,
+} from '@/shared/components';
+
+import { useAreaDetails } from '../hooks/use-area-details.';
 export function ChooseAreaDetails() {
-  const { onHandleBack, onHandleNext } = useFormStepper<AnnouncementType>();
-  const methods = useForm({
-    defaultValues: {
-      cities: [],
-      areas: [],
-    },
-  });
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
+  const { onHandleBack, handleSubmit, control, onSubmit } = useAreaDetails();
   return (
-    <View className="flex flex-1 items-center justify-between pt-8">
-      <View className="p-4">
-        <Text className="mb-4 text-xl font-bold">Select Cities:</Text>
+    <View className="flex flex-1 justify-between pt-4">
+      <View className="gap-4">
+        <ControlledInput
+          control={control}
+          name="address"
+          label={translate('announcement.addressLabel')}
+          placeholder={translate('announcement.addressPlaceholder')}
+        />
         <TagGroup
-          name="cities"
-          control={methods.control}
-          tags={[
-            'Tunis',
-            'Ariana',
-            'Sousse',
-            'Bizerte',
-            'Gabès',
-            'Kairouan',
-            'Sfax',
-            'Monastir',
-          ]}
+          name="city"
+          control={control}
+          tags={Cities}
+          label="announcement.cityLabel"
         />
-
-        <Text className="my-4 text-xl font-bold">Select Area:</Text>
+        <View className="my-1">
+          <Text
+            tx="announcement.areaDetailsTitle"
+            className="text-xl font-bold"
+          />
+          <Text
+            tx="announcement.areaInformationTitle"
+            className="text-base text-description"
+          />
+        </View>
         <TagGroup
-          name="areas"
-          control={methods.control}
-          tags={[
-            '< 40m²',
-            '40m² - 90m²',
-            '90m² - 200m²',
-            '200m² - 500m²',
-            '> 500m²',
-          ]}
+          name="terrainSurface"
+          control={control}
+          tags={SizeCategories}
+          label="announcement.totalLandAreaLabel"
         />
-
-        <Button label="Submit" onPress={methods.handleSubmit(onSubmit)} />
-      </View>
-      <View className="flex flex-row">
-        <StepperButton
-          width="w-[45%]"
-          onPressHandler={onHandleBack}
-          label={translate('signup.retour')}
-        />
-        <StepperButton
-          width="w-[45%]"
-          onPressHandler={onHandleNext}
-          label={translate('signup.suivant')}
+        <TagGroup
+          name="workSurface"
+          control={control}
+          tags={SizeCategories}
+          label="announcement.workAreaLabel"
         />
       </View>
+      <StepButtons
+        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
+        next={{
+          handleSubmit: handleSubmit(onSubmit),
+          label: 'signup.suivant',
+        }}
+      />
     </View>
   );
 }

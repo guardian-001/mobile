@@ -40,3 +40,7 @@ export type CreateProfileFormType = Pick<
   | 'rules'
   | 'receiveNotifications'
 >;
+export type AreaDetailsFormType = Pick<
+  AnnouncementType,
+  'address' | 'city' | 'terrainSurface' | 'workSurface'
+>;

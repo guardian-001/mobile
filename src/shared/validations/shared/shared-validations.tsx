@@ -1,6 +1,9 @@
 import { z } from 'zod';
 
-export const requiredValidation = z.string({ message: 'validations.required' });
+export const requiredValidation = z
+  .string({ message: 'validations.required' })
+  .min(1, { message: 'validations.required' });
+
 export const requiredValidationBoolean = z
   .boolean()
   .refine((value) => value === true, { message: 'validations.required' });

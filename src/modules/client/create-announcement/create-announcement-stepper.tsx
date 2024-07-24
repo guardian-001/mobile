@@ -21,7 +21,7 @@ const CreateAnnouncementInner = () => {
   const router = useRouter();
   const lastStep = 11;
   const { step } = useFormStepper<AnnouncementType>();
-  const { title, subtitle, component } = stepsContent[step];
+  const { title, subtitle, component } = stepsContent[6];
   const percentageCompleted = Math.round(((step + 1) / lastStep) * 100);
   return (
     <KeyboardAvoidingView

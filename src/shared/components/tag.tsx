@@ -17,8 +17,8 @@ export const Tag: React.FC<TagProps> = ({ label, selected, onSelect }) => {
     <TouchableOpacity
       onPress={handlePress}
       className={clsx(
-        'm-1 rounded-full px-4 py-2',
-        selected ? 'bg-blue-500' : 'bg-gray-200'
+        'm-1 min-w-[22%] rounded-full border border-color-border px-4 py-3',
+        selected ? 'bg-primary' : 'bg-white'
       )}
     >
       <Text
