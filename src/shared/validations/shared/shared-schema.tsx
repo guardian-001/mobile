@@ -8,6 +8,7 @@ import {
   passwordValidation,
   phoneValidation,
   requiredValidation,
+  requiredValidationBoolean,
   requiredValidationNumber,
   specialityValidation,
   timeValidation,

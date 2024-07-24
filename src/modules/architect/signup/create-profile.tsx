@@ -2,8 +2,13 @@ import React from 'react';
 
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
-import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
+import {
+  ControlledInput,
+  ControlledPhoneNumberInput,
+  ScrollView,
+  Text,
+  View,
+} from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers';
 
