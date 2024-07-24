@@ -2,14 +2,8 @@ import React from 'react';
 
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import {
-  Cities,
-  ControlledInput,
-  SizeCategories,
-  TagGroup,
-  Text,
-  View,
-} from '@/shared/components';
+import { ControlledInput, TagGroup, Text, View } from '@/shared/components';
+import { Cities, SizeCategories } from '@/shared/constants';
 
 import { useAreaDetails } from '../hooks/use-area-details.';
 export function ChooseAreaDetails() {

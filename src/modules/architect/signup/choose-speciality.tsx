@@ -9,7 +9,8 @@ import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers';
 import { SpecialityFormSchema } from '@/shared/validations';
-import type { SignupFormDataType } from '@/types';
+
+import type { SignupFormDataType } from '../types';
 
 export default function ChooseSpeciality() {
   const route = useRouter();
@@ -49,9 +50,9 @@ export default function ChooseSpeciality() {
         />
       </View>
 
-      <ScrollView className="flex h-fit gap-5">
+      <ScrollView className="flex h-fit ">
         <ToggleCard
-          className="h-38 mb-7 w-64 rounded-2xl"
+          className="h-38 mb-10 w-64 rounded-2xl"
           title={translate('signupStepSpeciality.constructionArchitect')}
           svgComponent={HouseModel}
           name="architectSpeciality"

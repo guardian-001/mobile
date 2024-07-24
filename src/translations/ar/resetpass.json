@@ -8,10 +8,11 @@
   "resetPasswordDescription": ".أنشئ كلمة مرور آمنة لحماية حسابك",
   "passwordConditions": ": يجب أن تحتوي كلمة المرور الخاصة بك على الأقل على",
   "passwordLength": ": يجب أن تحتوي كلمة مرورك على الأقل على",
-  "password-min-length": "8 أحرف",
-  "password-lowercase": "حرف صغير واحد",
-  "password-uppercase": "حرف كبير واحد",
-  "password-digit": "رقم واحد",
-  "password-special-char": "حرف خاص واحد (#?!$&@)",
+  "passwordMinLength": "8 أحرف",
+  "passwordLowercase": "حرف صغير واحد",
+  "passwordUppercase": "حرف كبير واحد",
+  "passwordDigit": "رقم واحد",
+  "passwordSpecialChar": "حرف خاص واحد (#?!$&@)",
+  "passwordConfirmation": "تأكيد كلمة المرور",
   "resendCode": "إعادة إرسال الرمز"
 }

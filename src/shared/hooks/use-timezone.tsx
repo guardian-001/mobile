@@ -1,3 +1,4 @@
+import { timezone } from 'expo-localization';
 import { useEffect, useState } from 'react';
 
 export const useTimezone = () => {
@@ -18,5 +19,5 @@ export const useTimezone = () => {
     fetchTimezoneInfo();
   }, []);
 
-  return [formattedTimezone];
+  return [timezone, formattedTimezone];
 };
