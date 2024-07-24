@@ -9,6 +9,7 @@ export * from './calendar-days-list';
 export * from './checkbox';
 export * from './checkbox-input';
 export * from './controlled-input';
+export * from './controlled-phone-number-input';
 export * from './counter';
 export * from './error-data';
 export * from './focus-aware-status-bar';
