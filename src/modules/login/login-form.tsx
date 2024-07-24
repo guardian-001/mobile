@@ -31,7 +31,11 @@ export const LoginForm = () => {
   const onSubmit = (data: LoginFormType) => {
     login.mutate(data, {
       onSuccess: (response) => {
-        signIn({ access: response.access, refresh: response.refresh });
+        console.log(response);
+        signIn({
+          token: { access: response.access, refresh: response.refresh },
+          user: response.user,
+        });
 
         router.push(`/(${space})/(private)/profile`);
       },
