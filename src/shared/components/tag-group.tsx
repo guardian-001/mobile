@@ -5,7 +5,6 @@ import type {
   Path,
   RegisterOptions,
 } from 'react-hook-form';
-import { useController } from 'react-hook-form';
 import { View } from 'react-native';
 
 import type { TxKeyPath } from '@/core';
@@ -19,6 +18,8 @@ interface TagGroupProps<T extends FieldValues> {
   tags: string[];
   rules?: RegisterOptions;
   label: TxKeyPath;
+  error?: TxKeyPath;
+  multi?: boolean;
 }
 
 export const TagGroup = <T extends FieldValues>({
@@ -27,23 +28,13 @@ export const TagGroup = <T extends FieldValues>({
   tags,
   rules,
   label,
+  error,
+  multi = false,
 }: TagGroupProps<T>) => {
-  const { field, fieldState } = useController({
-    name,
-    control,
-    rules,
-  });
   const [visibleItems, setVisibleItems] = useState(8);
   const loadMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 6);
   };
-
-  const handleTagSelect = (selectedTag: string) => {
-    if (field.value === selectedTag) field.onChange('');
-    else field.onChange(selectedTag);
-  };
-  const error = fieldState.error?.message as TxKeyPath | undefined;
-
   return (
     <View className="w-full">
       <Text tx={label} className="mb-1 text-base font-bold" />
@@ -52,8 +43,10 @@ export const TagGroup = <T extends FieldValues>({
           <Tag
             key={tag}
             label={tag}
-            selected={field.value === tag}
-            onSelect={handleTagSelect}
+            name={name}
+            control={control}
+            rules={rules}
+            multi={multi}
           />
         ))}
       </View>

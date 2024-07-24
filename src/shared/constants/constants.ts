@@ -33,42 +33,6 @@ export const MONTHS = [
   'November',
   'December',
 ];
-export const Cities = [
-  'Tunis',
-  'Ariana',
-  'Sousse',
-  'Bizerte',
-  'Gabès',
-  'Kairouan',
-  'Sfax',
-  'Monastir',
-  'Carthage',
-  'Hammamet',
-  'Nabeul',
-  'El Kef',
-  'Mahdia',
-  'Gafsa',
-  'Tozeur',
-  'Tataouine',
-  'Medenine',
-  'Siliana',
-  'Jendouba',
-  'Kebili',
-  'Zaghouan',
-  'Beja',
-  'Ben Arous',
-  'Manouba',
-  'Kasserine',
-  'Sidi Bouzid',
-];
-
-export const SizeCategories = [
-  '< 40m²',
-  '40m² - 90m²',
-  '90m² - 200m²',
-  '200m² - 500m²',
-  '> 500m²',
-];
 export const VALID_CITIES = [
   'Tunis',
   'Sfax',

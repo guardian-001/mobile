@@ -3,11 +3,19 @@ import React from 'react';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { ControlledInput, TagGroup, Text, View } from '@/shared/components';
-import { Cities, SizeCategories } from '@/shared/constants';
+import { VALID_CITIES, VALID_WORK_SURFACES } from '@/shared/constants';
 
 import { useAreaDetails } from '../hooks/use-area-details.';
 export function ChooseAreaDetails() {
-  const { onHandleBack, handleSubmit, control, onSubmit } = useAreaDetails();
+  const {
+    onHandleBack,
+    handleSubmit,
+    control,
+    onSubmit,
+    errorCity,
+    errorTerrainSurface,
+    errorWorkSurface,
+  } = useAreaDetails();
   return (
     <View className="flex flex-1 justify-between pt-4">
       <View className="gap-4">
@@ -20,8 +28,9 @@ export function ChooseAreaDetails() {
         <TagGroup
           name="city"
           control={control}
-          tags={Cities}
+          tags={[...VALID_CITIES]}
           label="announcement.cityLabel"
+          error={errorCity}
         />
         <View className="my-1">
           <Text
@@ -36,14 +45,16 @@ export function ChooseAreaDetails() {
         <TagGroup
           name="terrainSurface"
           control={control}
-          tags={SizeCategories}
+          tags={[...VALID_WORK_SURFACES]}
           label="announcement.totalLandAreaLabel"
+          error={errorTerrainSurface}
         />
         <TagGroup
           name="workSurface"
           control={control}
-          tags={SizeCategories}
+          tags={[...VALID_WORK_SURFACES]}
           label="announcement.workAreaLabel"
+          error={errorWorkSurface}
         />
       </View>
       <StepButtons

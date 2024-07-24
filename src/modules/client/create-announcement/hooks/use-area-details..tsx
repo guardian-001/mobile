@@ -1,3 +1,4 @@
+import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
 import type { AnnouncementType } from '@/types/announcement';
@@ -8,7 +9,7 @@ import type { AreaDetailsFormType } from '../types';
 export const useAreaDetails = () => {
   const { onHandleBack, onHandleNext, setFormData, formData } =
     useFormStepper<AnnouncementType>();
-  const { handleSubmit, control } = useCustomForm(
+  const { handleSubmit, control, errors } = useCustomForm(
     CreateAnnouncementStepSevenSchema,
     {
       address: formData?.address,
@@ -17,6 +18,13 @@ export const useAreaDetails = () => {
       workSurface: formData?.workSurface,
     }
   );
+  const errorCity = errors?.city?.message as TxKeyPath | undefined;
+  const errorTerrainSurface = errors?.terrainSurface?.message as
+    | TxKeyPath
+    | undefined;
+  const errorWorkSurface = errors?.workSurface?.message as
+    | TxKeyPath
+    | undefined;
 
   const onSubmit = (data: AreaDetailsFormType) => {
     setFormData((prev: any) => ({
@@ -34,5 +42,8 @@ export const useAreaDetails = () => {
     handleSubmit,
     control,
     onSubmit,
+    errorCity,
+    errorTerrainSurface,
+    errorWorkSurface,
   };
 };
