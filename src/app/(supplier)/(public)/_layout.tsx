@@ -5,9 +5,8 @@ import { ScreenOptions } from '@/shared/components';
 
 export default function SupplierPublicLayout() {
   return (
-    <Stack initialRouteName="login"> 
+    <Stack initialRouteName="login">
       <Stack.Screen name="login" options={ScreenOptions({})} />
- 
     </Stack>
   );
 }

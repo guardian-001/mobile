@@ -3,18 +3,18 @@ import { z } from 'zod';
 import {
   cityValidation,
   idValidation,
+  imagesValidation,
   workSurfaceValidation,
 } from '@/modules/architect/validations';
 import {
   fieldValidation,
-  imagesValidation,
   intArrayValidation,
-  requiredIntegerValidation,
-} from '@/validations';
+  integerValidation,
+} from '@/shared/validations';
 
 export const ProjectRealizationSchema = z.object({
   projectName: fieldValidation,
-  architect: requiredIntegerValidation,
+  architect: integerValidation,
   needs: intArrayValidation,
   address: fieldValidation,
   city: cityValidation,

@@ -12,6 +12,8 @@ export * from './home';
 export * from './inspiration';
 export * from './language';
 export * from './logout';
+export * from './minus';
+export * from './plus';
 export * from './projet';
 export * from './rate';
 export * from './search';

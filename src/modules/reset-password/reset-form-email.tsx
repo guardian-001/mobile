@@ -5,8 +5,8 @@ import { translate } from '@/core';
 import { Button, ControlledInput, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers';
+import { EmailSchema } from '@/shared/validations';
 import type { ResetPassFormType } from '@/types';
-import { EmailSchema } from '@/validations';
 
 export default function ResetFormEmail() {
   type EmailFormType = Pick<ResetPassFormType, 'email'>;

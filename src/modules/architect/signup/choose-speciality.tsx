@@ -8,7 +8,7 @@ import { StepButtons } from '@/modules/shared';
 import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers';
-import { SpecialityFormSchema } from '@/validations';
+import { SpecialityFormSchema } from '@/shared/validations';
 
 import type { SignupFormDataType } from '../types';
 
@@ -61,7 +61,7 @@ export default function ChooseSpeciality() {
         />
 
         <ToggleCard
-          className="h-38 w-64 rounded-2xl"
+          className="h-38 mb-7 w-64 rounded-2xl"
           title={translate('signupStepSpeciality.interiorArchitect')}
           svgComponent={InteriorHouseModel}
           name="architectSpeciality"

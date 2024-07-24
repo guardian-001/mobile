@@ -34,9 +34,9 @@ const selectTv = tv({
     },
     error: {
       true: {
-        input: 'border-danger-600',
-        label: 'text-danger-600 dark:text-danger-600',
-        inputValue: 'text-danger-600',
+        input: 'border-error',
+        label: 'text-error dark:text-error',
+        inputValue: 'text-error',
       },
     },
     disabled: {
@@ -204,7 +204,7 @@ export const Select = (props: SelectProps) => {
         {error && (
           <Text
             testID={`${testID}-error`}
-            className="text-danger-300 dark:text-danger-600 text-sm"
+            className="text-sm text-error dark:text-error"
           >
             {error}
           </Text>

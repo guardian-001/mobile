@@ -9,7 +9,7 @@ import { Checkbox, ControlledInput, Text } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useRouteName } from '@/shared/hooks/use-get-route';
 import { useLoginForm } from '@/shared/providers/use-login-form';
-import { LoginFormSchema } from '@/validations';
+import { LoginFormSchema } from '@/shared/validations';
 
 import { Container } from '../shared';
 import LoginButton from '../shared/login-button';

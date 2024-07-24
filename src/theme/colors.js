@@ -94,7 +94,8 @@ module.exports = {
   background: '#fafbff',
   'light-blue': '#E5EBFF',
   'extra-light-blue': '#DFF6FF',
-
+  'ice-Blue': '#F0FBFF',
   description: '#888FA7',
   green: '#00B031',
+  error: '#ff0000',
 };
