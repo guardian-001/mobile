@@ -7,6 +7,7 @@ import {
   useController,
 } from 'react-hook-form';
 
+import useImageUrl from '../hooks/use-image-url';
 import { Image, Pressable, Text, View } from './';
 
 type CardProps<T extends FieldValues> = {
@@ -40,10 +41,11 @@ export const ToggleCard = <T extends FieldValues>({
   ...props
 }: CardProps<T>) => {
   const { field } = useController({ control, name, rules });
-
   const handlePress = () => {
     field.onChange(value);
   };
+
+  const imageUrl = useImageUrl(image);
 
   const handleChangeMulti = () => {
     if (field.value.includes(value)) {
@@ -71,8 +73,8 @@ export const ToggleCard = <T extends FieldValues>({
         )}
         {image && (
           <Image
-            className="h-1/3 w-1/3 overflow-hidden rounded-2xl"
-            source={{ uri: image }}
+            className="h-2/3 w-4/6 overflow-hidden rounded-2xl"
+            source={{ uri: imageUrl }}
           />
         )}
         <Text className={`${classNameText} text-center text-xs font-bold`}>

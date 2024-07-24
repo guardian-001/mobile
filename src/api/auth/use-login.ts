@@ -10,7 +10,7 @@ type Response = LoginResponse;
 export const useLoginApi = createMutation<Response, Request, AxiosError>({
   mutationFn: async (request) =>
     client({
-      url: 'api/users/login-email/',
+      url: '/api/users/login-email/',
       method: 'POST',
       data: request,
     })

@@ -1,49 +1,70 @@
 import React from 'react';
-import type { SubmitHandler } from 'react-hook-form';
-import type * as z from 'zod';
 
+import { translate } from '@/core';
 import { Button, ControlledInput, Text, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { PasswordSchema } from '@/shared/validations';
+import { useFormStepper } from '@/shared/providers';
+import { ResetPassFormSchema } from '@/shared/validations';
 import type { TxKeyPath } from '@/translations/i18n';
-import { translate } from '@/translations/i18n';
+import type { ResetPassFormType } from '@/types';
 
 import PasswordRequirementItem from './password-requirement-item';
 
-type ResetFormType = z.infer<typeof PasswordSchema>;
+export default function ResetFormPassword() {
+  type PasswordFormType = Pick<
+    ResetPassFormType,
+    'password' | 'confirmPassword'
+  >;
+  const { formData, setFormData, onHandleNext } =
+    useFormStepper<ResetPassFormType>();
+  const { handleSubmit, control, form } = useCustomForm(ResetPassFormSchema, {
+    password: formData.password,
+    confirmPassword: formData.confirmPassword,
+  });
 
-type ResetFormPasswordProps = {
-  onSubmit: SubmitHandler<ResetFormType>;
-};
-export default function ResetFormPassword({
-  onSubmit = () => {},
-}: ResetFormPasswordProps) {
-  const { handleSubmit, control, form } = useCustomForm(PasswordSchema);
-
-  const password = form.watch('password');
+  const onSubmit = (data: PasswordFormType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
+    onHandleNext();
+  };
 
   const passwordRequirements: { isValid: boolean; message: TxKeyPath }[] = [
     {
-      isValid: password?.length >= 8,
-      message: 'resetpass.password-min-length',
+      isValid: form.watch('password')?.length >= 8,
+      message: 'resetpass.passwordMinLength',
     },
     {
-      isValid: /[a-z]/.test(password) && password?.length >= 1,
-      message: 'resetpass.password-lowercase',
+      isValid:
+        /[a-z]/.test(form.watch('password')) &&
+        form.watch('password')?.length >= 1,
+      message: 'resetpass.passwordLowercase',
     },
     {
-      isValid: /[A-Z]/.test(password),
-      message: 'resetpass.password-uppercase',
+      isValid: /[A-Z]/.test(form.watch('password')),
+      message: 'resetpass.passwordUppercase',
     },
     {
-      isValid: /[0-9]/.test(password),
-      message: 'resetpass.password-digit',
+      isValid: /[0-9]/.test(form.watch('password')),
+      message: 'resetpass.passwordDigit',
     },
     {
-      isValid: /[^a-zA-Z0-9]/.test(password),
-      message: 'resetpass.password-special-char',
+      isValid: /[^a-zA-Z0-9]/.test(form.watch('password')),
+      message: 'resetpass.passwordSpecialChar',
+    },
+    {
+      isValid:
+        form.watch('confirmPassword') === form.watch('password') &&
+        form.watch('confirmPassword') !== '' &&
+        form.watch('password') !== '',
+      message: 'resetpass.passwordConfirmation',
     },
   ];
+
+  const allRequirementsValid = passwordRequirements.every(
+    (requirement) => requirement.isValid
+  );
 
   return (
     <View className="flex-1">
@@ -52,7 +73,16 @@ export default function ResetFormPassword({
         name="password"
         label={translate('common.choosePassword')}
         placeholder={translate('common.enterPassword')}
-        className="my-8"
+        className="mt-8"
+        secureTextEntry={true}
+      />
+
+      <ControlledInput
+        control={control}
+        name="confirmPassword"
+        label={translate('common.confirmPassword')}
+        placeholder={translate('common.enterPassword')}
+        className="mb-8"
         secureTextEntry={true}
       />
       <View className="mb-4">
@@ -69,7 +99,7 @@ export default function ResetFormPassword({
         label={translate('resetpass.reset')}
         onPress={handleSubmit(onSubmit)}
         className="h-12 rounded-md"
-        disabled={!form.formState.isValid}
+        disabled={!allRequirementsValid}
       />
     </View>
   );

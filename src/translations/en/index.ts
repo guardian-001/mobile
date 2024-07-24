@@ -6,6 +6,7 @@ import loginSupplier from './loginSupplier.json';
 import notification from './notification.json';
 import onBoarding from './onboarding.json';
 import profile from './profile.json';
+import realisation from './realisation-architect.json';
 import resetpass from './resetpass.json';
 import settings from './settings.json';
 import signup from './signup.json';
@@ -19,6 +20,7 @@ export default {
   announcement,
   notification,
   loginSupplier,
+  realisation,
   profile,
   login,
   labels,

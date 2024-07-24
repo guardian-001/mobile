@@ -1,5 +1,20 @@
 import { z } from 'zod';
 
+export const integerValidation = z
+  .number({
+    message: 'validations.required',
+  })
+  .int({ message: 'validations.invalid-integer' });
+
+export const intArrayValidation = z.array(
+  z.number().int({
+    message: 'validations.invalid-integer',
+  }),
+  {
+    message: 'validations.required',
+  }
+);
+
 export const requiredValidation = z.string({ message: 'validations.required' });
 export const requiredValidationBoolean = z
   .boolean()
@@ -65,3 +80,27 @@ export const dateValidation = z
 export const timeValidation = z
   .string({ message: 'validations.required' })
   .regex(/^\d{2}:\d{2}$/, { message: 'validations.invalid-time-format' });
+export const imagesValidation = z
+  .array(
+    z.object({
+      name: z.string({
+        message: 'validations.invalid-name',
+      }),
+      url: z.string().url({
+        message: 'validations.invalid-url',
+      }),
+    }),
+    {
+      message: 'validations.required',
+    }
+  )
+  .refine(
+    (images) =>
+      new Set(images.map((image) => image.url)).size === images.length,
+    {
+      message: 'validations.unique-items',
+    }
+  );
+export const specialityValidation = z.number().refine((value) => value > 0, {
+  message: 'validations.required',
+});
