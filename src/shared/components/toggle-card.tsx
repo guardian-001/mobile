@@ -72,10 +72,7 @@ export const ToggleCard = <T extends FieldValues>({
           </View>
         )}
         {image && (
-          <Image
-            className="h-2/3 w-4/6 overflow-hidden rounded-2xl"
-            source={{ uri: imageUrl }}
-          />
+          <Image className="h-[57%] w-1/2 " source={{ uri: imageUrl }} />
         )}
         <Text className={`${classNameText} text-center text-xs font-bold`}>
           {title}
