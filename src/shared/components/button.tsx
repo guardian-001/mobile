@@ -18,6 +18,7 @@ interface Props extends Omit<TouchableOpacityProps, 'disabled'> {
   className?: string;
   alternativeBg?: string;
   textClassName?: string;
+  iconClassName?: string;
   disabled?: boolean;
   type?: 'pill' | 'button';
   icon?: React.ReactNode;
@@ -34,6 +35,7 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
       className = '',
       testID,
       textClassName = '',
+      iconClassName = '',
       icon,
       ...props
     },
@@ -87,7 +89,7 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
                     style={{
                       transform: I18nManager.isRTL ? 'rotate(180deg)' : '',
                     }}
-                    className="mr-2 "
+                    className={`${iconClassName}`}
                   >
                     {icon}
                   </View>

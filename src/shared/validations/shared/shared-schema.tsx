@@ -1,13 +1,17 @@
 import { z } from 'zod';
 
 import {
+  dateValidation,
   emailValidation,
   fieldValidation,
   notRequiredValidationBoolean,
   passwordValidation,
   phoneValidation,
   requiredValidation,
+  requiredValidationBoolean,
+  requiredValidationNumber,
   specialityValidation,
+  timeValidation,
 } from './shared-validations';
 
 export const ConfirmPasswordSchema = z
@@ -20,7 +24,7 @@ export const ConfirmPasswordSchema = z
       return values.password === values.confirmPassword;
     },
     {
-      message: 'validations.confirm-password',
+      message: 'validations.confirmPassword',
       path: ['confirmPassword'],
     }
   );
@@ -38,17 +42,6 @@ export const LoginFormSchema = z.object({
   password: requiredValidation,
 });
 
-export const SignupFormSchema = z.object({
-  name: fieldValidation,
-  surname: fieldValidation,
-  email: emailValidation,
-  phone: phoneValidation,
-  address: fieldValidation,
-  matricule: fieldValidation, //matriculeValidation
-  password: passwordValidation,
-  speciality: specialityValidation,
-});
-
 export const OTPSchema = z.object({
   OTP: requiredValidation,
 });
@@ -64,4 +57,31 @@ export const NotificationFormSchema = z.object({
   new: notRequiredValidationBoolean,
   activity: notRequiredValidationBoolean,
   newNavigator: notRequiredValidationBoolean,
+});
+
+export const AnnouncementFormSchema = z.object({
+  firstName: fieldValidation,
+  lastName: fieldValidation,
+  email: emailValidation,
+  phoneNumber: phoneValidation,
+  acceptTerms: requiredValidationBoolean,
+  receiveQuotes: notRequiredValidationBoolean,
+  speciality: requiredValidationNumber,
+  needs: requiredValidationNumber,
+  categories: requiredValidationNumber,
+  properties: requiredValidationNumber,
+});
+
+export const SpecialityFormSchema = z.object({
+  architectSpeciality: specialityValidation,
+});
+
+export const ResetPassFormSchema = z.object({
+  email: emailValidation,
+  password: passwordValidation,
+  confirmPassword: passwordValidation,
+});
+export const CalendarFormSchema = z.object({
+  date: dateValidation,
+  timeSlot: timeValidation,
 });

@@ -1,11 +1,15 @@
 import { useRouter } from 'expo-router';
 import * as React from 'react';
 import { View } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import { LogoArchi } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
-import { Image, ImageContainer, Text } from '@/shared/components';
+import {
+  GradientBackground,
+  Image,
+  ImageContainer,
+  Text,
+} from '@/shared/components';
 import colors from '@/theme/colors';
 
 import { MainButtons, OrDevider } from '../Components';
@@ -18,9 +22,7 @@ export function StartScreen() {
   };
 
   return (
-    <LinearGradient
-      start={{ x: 0, y: 1 }}
-      end={{ x: 0, y: 0 }}
+    <GradientBackground
       colors={[colors['light-blue'], colors['extra-light-blue']]}
       className="flex-1 items-center justify-center"
     >
@@ -56,9 +58,7 @@ export function StartScreen() {
             </Text>
           </Container>
           <MainButton
-            onPressHandler={() =>
-              onPressHandler('/(client)/(public)/login-email')
-            }
+            onPressHandler={() => onPressHandler('(client)/(private)/(tab)/')}
             label={translate('onBoarding.clientBtn')}
             type="button"
             width="w-[88%]"
@@ -70,6 +70,6 @@ export function StartScreen() {
 
         <MainButtons />
       </Container>
-    </LinearGradient>
+    </GradientBackground>
   );
 }

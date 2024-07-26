@@ -16,6 +16,10 @@ type TRule = Omit<
   RegisterOptions,
   'valueAsNumber' | 'valueAsDate' | 'setValueAs'
 >;
+export type CreateProfileType = {
+  name: string;
+  data: string;
+};
 export type InputControllerType<T extends FieldValues> = {
   label: string;
   name: Path<T>;
@@ -47,17 +51,27 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
       <View>
         <PhoneInput
           value={(field.value as string) || ''}
+          onChangeText={(value) => {
+            field.onChange(value);
+          }}
           onChangePhoneNumber={field.onChange}
           placeholder="111-222-333-444"
           selectedCountry={selectedCountry}
           onChangeSelectedCountry={handleSelectedCountry}
           phoneInputStyles={{
-            container: { height: 35, backgroundColor: colors.white },
+            container: {
+              height: 35,
+              backgroundColor: colors.white,
+              paddingBottom: 1,
+            },
             input: { fontSize: 12 },
             callingCode: { fontSize: 12 },
             caret: { fontSize: 12, backgroundColor: colors.white },
             flag: { fontSize: 12 },
-            flagContainer: { width: 100, backgroundColor: colors.white },
+            flagContainer: {
+              width: 100,
+              backgroundColor: colors.white,
+            },
           }}
         />
       </View>

@@ -4,4 +4,7 @@ export { default as Conditions } from './conditions';
 export { default as Container } from './container';
 export { default as Devider } from './devider';
 export { default as MainButton } from './main-button';
+export { default as ProjectCategoryComp } from './project-category-comp';
+export { default as ProjectStyleComp } from './project-style-comp';
 export { default as StepButtons } from './step-buttons';
+export { default as StepperButton } from './stepper-button';

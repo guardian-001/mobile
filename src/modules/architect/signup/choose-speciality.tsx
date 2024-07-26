@@ -1,35 +1,44 @@
-import React, { useState } from 'react';
+import { useRouter } from 'expo-router';
+import React from 'react';
 
 import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
+import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
-import { SignupFormSchema } from '@/validations';
+import { useCustomForm } from '@/shared/hooks';
+import { useFormStepper } from '@/shared/providers';
+import { SpecialityFormSchema } from '@/shared/validations';
 
-export type ResetFormProps = {
-  handlePreviousStep?: () => void;
-  handleNextStep?: () => void;
-};
+import type { SignupFormDataType } from '../types';
 
-export default function ChooseSpeciality({
-  handlePreviousStep,
-  handleNextStep,
-}: ResetFormProps) {
-  const { control } = useCustomForm(SignupFormSchema, {
-    speciality: 'speciality',
-  });
+export default function ChooseSpeciality() {
+  const route = useRouter();
 
-  const [selectedSpeciality, setSelectedSpeciality] = useState<string | null>(
-    null
+  type SpecialityFormType = Pick<SignupFormDataType, 'architectSpeciality'>;
+  const { formData, setFormData, onHandleNext } =
+    useFormStepper<SignupFormDataType>();
+  const { handleSubmit, control, errors } = useCustomForm(
+    SpecialityFormSchema,
+    {
+      architectSpeciality: formData.architectSpeciality,
+    }
   );
 
-  const handleSelectSpeciality = (speciality: string) => {
-    setSelectedSpeciality(speciality);
+  const onHandleBack = () => {
+    route.push('/(architect)/(public)/login');
   };
 
+  const onSubmit = (data: SpecialityFormType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
+    onHandleNext();
+  };
+  const error = errors.architectSpeciality?.message as TxKeyPath | undefined;
   return (
-    <View className="flex h-fit items-center justify-between gap-16">
+    <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
       <View>
         <Text
           tx={'signupStepSpeciality.title'}
@@ -41,30 +50,29 @@ export default function ChooseSpeciality({
         />
       </View>
 
-      <ScrollView className="flex h-fit gap-5">
+      <ScrollView className="flex h-fit ">
         <ToggleCard
-          className="h-38 w-64 rounded-2xl"
+          className="h-38 mb-10 w-64 rounded-2xl"
           title={translate('signupStepSpeciality.constructionArchitect')}
           svgComponent={HouseModel}
-          name="speciality"
+          name="architectSpeciality"
           control={control}
-          isSelected={selectedSpeciality === 'constructionArchitect'}
-          onSelect={() => handleSelectSpeciality('constructionArchitect')}
+          value={1}
         />
 
         <ToggleCard
-          className="h-38 w-64 rounded-2xl"
+          className="h-38 mb-7 w-64 rounded-2xl"
           title={translate('signupStepSpeciality.interiorArchitect')}
           svgComponent={InteriorHouseModel}
-          name="speciality"
+          name="architectSpeciality"
           control={control}
-          isSelected={selectedSpeciality === 'interiorArchitect'}
-          onSelect={() => handleSelectSpeciality('interiorArchitect')}
+          value={2}
         />
       </ScrollView>
+      {error && <Text tx={error} className="text-sm text-error" />}
       <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.ignorer' }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'signup.ignorer' }}
+        next={{ handleSubmit: handleSubmit(onSubmit), label: 'signup.suivant' }}
       />
     </View>
   );

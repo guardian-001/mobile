@@ -1,22 +1,37 @@
 import React from 'react';
-import type { SubmitHandler } from 'react-hook-form';
-import type * as z from 'zod';
 
+import { useResetPassOTPApi } from '@/api/auth';
+import { translate } from '@/core';
 import { Button, ControlledInput, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
-import { translate } from '@/translations/i18n';
-import { EmailSchema } from '@/validations';
+import { useCustomForm } from '@/shared/hooks';
+import { useFormStepper } from '@/shared/providers';
+import { EmailSchema } from '@/shared/validations';
+import type { ResetPassFormType } from '@/types';
 
-type EmailFormType = z.infer<typeof EmailSchema>;
+export default function ResetFormEmail() {
+  type EmailFormType = Pick<ResetPassFormType, 'email'>;
+  const { formData, setFormData, onHandleNext } =
+    useFormStepper<ResetPassFormType>();
+  const { handleSubmit, control, form } = useCustomForm(EmailSchema, {
+    email: formData.email,
+  });
+  const sendOTP = useResetPassOTPApi();
 
-type ResetFormProps = {
-  onSubmit: SubmitHandler<EmailFormType>;
-};
-export default function ResetFormEmail({
-  onSubmit = () => {},
-}: ResetFormProps) {
-  const { handleSubmit, control, form } = useCustomForm(EmailSchema);
+  const onSubmit = (data: EmailFormType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      ...data,
+    }));
 
+    sendOTP.mutate(data, {
+      onSuccess: () => {
+        onHandleNext();
+      },
+      onError: (error) => {
+        throw error;
+      },
+    });
+  };
   return (
     <View className="flex-1">
       <ControlledInput
@@ -26,6 +41,7 @@ export default function ResetFormEmail({
         placeholder={translate('common.yourEmail')}
         className="my-8"
       />
+
       <Button
         label={translate('resetpass.reset')}
         onPress={handleSubmit(onSubmit)}

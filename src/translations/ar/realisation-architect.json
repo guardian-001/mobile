@@ -1,0 +1,33 @@
+{
+  "categoryStep": {
+    "title": "اختر فئة المشروع",
+    "description": "لبدء، يرجى اختيار تخصصك"
+  },
+  "styleStep": {
+    "title": "ما هو الأسلوب المعتمد للمشروع؟",
+    "description": "لبدء، يرجى اختيار تخصصك"
+  },
+  "detailsStep": {
+    "title": "مزيد من التفاصيل",
+    "description": "لبدء، يرجى اختيار تخصصك",
+    "inputLabel": "عنوان المشروع",
+    "inputPlaceholder": "ضع عنوانًا لمشروعك",
+    "localisationLabel": "موقع المشروع",
+    "surfaceLabel": "مساحة الأعمال",
+    "descriptionLabel": "وصف المشروع",
+    "descriptionPlaceholder": "اكتب مقدمة قصيرة..."
+  },
+  "servicesStep": {
+    "title": "الخدمات المعتمدة",
+    "description": "لبدء، يرجى اختيار تخصصك"
+  },
+  "galleryStep": {
+    "title": "معرض الصور",
+    "description": "لبدء، يرجى اختيار تخصصك",
+    "imgSelectorPlaceholder": "تحميل حد أدنى 5 صور",
+    "buttonTitle": "تحميل الصور",
+    "imgLoaderTitle": "نقوم بتنظيم صورك لإبراز رؤيتك المعمارية",
+    "imgLoaderDescriptionSur": "على",
+    "imgLoaderDescription": "صور محملة"
+  }
+}

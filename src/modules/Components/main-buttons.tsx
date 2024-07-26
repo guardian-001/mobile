@@ -18,6 +18,7 @@ export default function MainButtons() {
         onPressHandler={() => onPressHandler('/(architect)/(public)/login')}
         label={translate('onBoarding.architectBtn')}
         icon={<ArrowRightLong />}
+        iconClassName="mr-2"
         width="w-[86%]"
         height="h-14"
         radius="rounded-full"
@@ -30,7 +31,7 @@ export default function MainButtons() {
         }
         label={translate('onBoarding.supplierBtn')}
         icon={<ArrowRightLong />}
-        // textPosition="text-center" //by default center
+        iconClassName="mr-2"
         width="w-[86%]"
         height="h-14"
         radius="rounded-full"

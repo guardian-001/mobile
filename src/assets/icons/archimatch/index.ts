@@ -1,3 +1,4 @@
+export * from './clock';
 export * from './complete-logo';
 export * from './complete-logo-client';
 export * from './house-model';

@@ -5,10 +5,9 @@ import { SplashScreen, Stack, useNavigationContainerRef } from 'expo-router';
 import { hydrateAuth, loadSelectedTheme } from '@/core';
 
 export { ErrorBoundary } from 'expo-router';
-
-// Import  global CSS file
 import '../../global.css';
 
+import { ScreenOptions } from '@/shared/components';
 import AppProvider from '@/shared/providers/app-provider';
 
 export const unstable_settings = {
@@ -17,7 +16,6 @@ export const unstable_settings = {
 
 hydrateAuth();
 loadSelectedTheme();
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -25,12 +23,23 @@ export default function RootLayout() {
   useReactNavigationDevTools(navigationRef);
   return (
     <AppProvider>
-      <Stack>
-        <Stack.Screen name="(app)" options={{ headerShown: false }} />
-        <Stack.Screen name="(architect)" options={{ headerShown: false }} />
-        <Stack.Screen name="(client)" options={{ headerShown: false }} />
-        <Stack.Screen name="(supplier)" options={{ headerShown: false }} />
-        <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+      <Stack initialRouteName="(app)">
+        <Stack.Screen
+          name="(app)"
+          options={ScreenOptions({ type: 'custom' })}
+        />
+        <Stack.Screen
+          name="(architect)"
+          options={ScreenOptions({ type: 'custom' })}
+        />
+        <Stack.Screen
+          name="(client)"
+          options={ScreenOptions({ type: 'custom' })}
+        />
+        <Stack.Screen
+          name="(supplier)"
+          options={ScreenOptions({ type: 'custom' })}
+        />
       </Stack>
     </AppProvider>
   );
