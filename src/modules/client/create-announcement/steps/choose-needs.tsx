@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { useNeedsApi } from '@/api/client';
 import { StepButtons } from '@/modules/shared';
 import {
   EmptyList,
@@ -13,15 +12,17 @@ import {
 import { useNeeds } from '../hooks';
 
 export function ChooseNeeds() {
-  const { onRollBack, handleSubmit, control, error, onSubmit, formData } =
-    useNeeds();
   const {
-    data: NeedsData,
+    onRollBack,
+    handleSubmit,
+    control,
+    error,
+    onSubmit,
+    NeedsData,
     isError,
     isLoading,
-  } = useNeedsApi({
-    variables: { architectSpeciality: formData.architectSpeciality },
-  });
+  } = useNeeds();
+
   return (
     <View className="flex-1 pt-4">
       {isError ? (

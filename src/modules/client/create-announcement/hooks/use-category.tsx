@@ -1,3 +1,4 @@
+import { useCategoriesApi } from '@/api/client';
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
@@ -14,6 +15,7 @@ export const useCategory = () => {
     CreateAnnouncementStepThreeSchema,
     { projectCategory: formData?.projectCategory }
   );
+  const { data: CategoryData, isError, isLoading } = useCategoriesApi();
 
   const error = errors?.projectCategory?.message as TxKeyPath | undefined;
 
@@ -37,5 +39,8 @@ export const useCategory = () => {
     control,
     error,
     onSubmit,
+    CategoryData,
+    isError,
+    isLoading,
   };
 };

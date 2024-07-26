@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { useCategoriesApi } from '@/api/client';
 import { StepButtons } from '@/modules/shared';
 import {
   EmptyList,
@@ -13,8 +12,16 @@ import {
 import { useCategory } from '../hooks';
 
 export function ChooseCategory() {
-  const { onRollBack, handleSubmit, control, error, onSubmit } = useCategory();
-  const { data: CategoryData, isError, isLoading } = useCategoriesApi();
+  const {
+    onRollBack,
+    handleSubmit,
+    control,
+    error,
+    onSubmit,
+    CategoryData,
+    isError,
+    isLoading,
+  } = useCategory();
   return (
     <View className="flex-1 pt-8">
       {isError ? (

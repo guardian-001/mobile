@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { useStylesApi } from '@/api/client';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import {
@@ -14,8 +13,15 @@ import {
 import { useSpeciality } from '../hooks';
 
 export function ChooseSpeciality() {
-  const { handleSubmit, control, error, onSubmit } = useSpeciality();
-  const { data: SpecialityData, isError, isLoading } = useStylesApi();
+  const {
+    handleSubmit,
+    control,
+    error,
+    onSubmit,
+    SpecialityData,
+    isError,
+    isLoading,
+  } = useSpeciality();
   return (
     <View className="flex-1 pt-4">
       {isError ? (
