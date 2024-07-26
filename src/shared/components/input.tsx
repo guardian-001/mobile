@@ -13,10 +13,10 @@ const inputTv = tv({
   slots: {
     container: 'mb-2',
     label:
-      'mb-1 text-xs font-medium text-primary-txt dark:text-white md:text-lg',
+      'mb-1 text-base font-medium text-primary-txt dark:text-white md:text-lg',
 
     input:
-      'mt-0 h-10 rounded-lg border border-description bg-white px-4 py-3 font-lato text-xs font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white md:text-lg',
+      'mt-0 h-12 rounded-lg border border-description bg-white px-4 py-3 font-lato text-base font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white md:text-lg',
   },
 
   variants: {
