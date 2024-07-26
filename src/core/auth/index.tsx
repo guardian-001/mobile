@@ -4,7 +4,14 @@ import type { User } from '@/api/auth';
 
 import { createSelectors } from '../utils';
 import type { TokenType } from './utils';
-import { getToken, getUser, removeToken, setToken } from './utils';
+import {
+  getToken,
+  getUser,
+  removeToken,
+  removeUser,
+  setToken,
+  setUser,
+} from './utils';
 type SignIn = {
   token: TokenType | null;
   user: User | null;
@@ -25,11 +32,13 @@ const _useAuth = create<AuthState>((set, get) => ({
   signIn: ({ token, user }) => {
     if (token && user) {
       setToken(token);
+      setUser(user);
       set({ status: 'signIn', token, user });
     }
   },
   signOut: () => {
     removeToken();
+    removeUser();
     set({ status: 'signOut', token: null });
   },
   hydrate: () => {

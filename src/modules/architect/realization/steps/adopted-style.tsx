@@ -1,14 +1,15 @@
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import { useStylesApi } from '@/api/architect/project';
 import { translate, type TxKeyPath } from '@/core';
-import { ProjectStyleComp, StepButtons } from '@/modules/shared';
+import { StepButtons } from '@/modules/shared';
 import { ErrorData, PendingData, Text, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers';
 
 import { ArchitecturalStyleSchema } from '../schemas';
+import { ProjectStyleComp } from '../shared/components';
 import type { ProjectRealizationType } from '../types';
 
 export function AdoptedStyle() {
@@ -53,21 +54,23 @@ export function AdoptedStyle() {
                   className="max-w-xs text-start text-sm text-description"
                 />
               </View>
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                className="flex w-full "
+              >
+                {data.map((item) => {
+                  return (
+                    <ProjectStyleComp
+                      key={item.id.toString()}
+                      classname="my-3 min-w-full"
+                      name="architecturalStyle"
+                      item={item}
+                      control={control}
+                    />
+                  );
+                })}
+              </ScrollView>
 
-              <FlatList
-                data={[...data, ...data]}
-                renderItem={({ item }) => (
-                  <ProjectStyleComp
-                    classname="my-3 min-w-full"
-                    name="architecturalStyle"
-                    item={item}
-                    control={control}
-                  />
-                )}
-                showsHorizontalScrollIndicator={false}
-                keyExtractor={(item) => item.id.toString()}
-                contentContainerStyle={styles.contentContainerListStyle}
-              />
               <View className="flex h-fit w-full items-center ">
                 <Text className="w-11/12 text-left text-sm text-error">
                   {error ? translate(error) : ''}
@@ -90,11 +93,3 @@ export function AdoptedStyle() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  contentContainerListStyle: {
-    paddingHorizontal: 16,
-    width: '100%',
-    flex: 1,
-  },
-});

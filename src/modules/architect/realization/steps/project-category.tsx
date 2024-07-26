@@ -4,13 +4,14 @@ import { FlatList, StyleSheet } from 'react-native';
 
 import { useCategoriesApi } from '@/api/architect/project';
 import { translate, type TxKeyPath } from '@/core';
-import { ProjectCategoryComp, StepButtons } from '@/modules/shared';
+import { StepButtons } from '@/modules/shared';
 import { Text, View } from '@/shared/components';
 import { ErrorData, PendingData } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers';
 
 import { ProjectCategorySchema } from '../schemas';
+import { ProjectCategoryComp } from '../shared/components';
 import type { ProjectRealizationType } from '../types';
 
 export function ProjectCategory() {

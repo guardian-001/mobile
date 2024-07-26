@@ -13,6 +13,7 @@ import { Checkbox, Image, Pressable, Text, View } from './';
 type CardProps<T extends FieldValues> = {
   title?: string;
   image?: string;
+  imageIcon?: string;
   className?: string;
   classNameText?: string;
   containerClassName?: string;
@@ -29,6 +30,7 @@ type CardProps<T extends FieldValues> = {
 export const ToggleCard = <T extends FieldValues>({
   title,
   image,
+  imageIcon,
   className,
   classNameText,
   containerClassName,
@@ -47,6 +49,7 @@ export const ToggleCard = <T extends FieldValues>({
     field.onChange(value);
   };
 
+  const imageIconUrl = useImageUrl(imageIcon);
   const imageUrl = useImageUrl(image);
 
   const handleChangeMulti = () => {
@@ -90,10 +93,17 @@ export const ToggleCard = <T extends FieldValues>({
             contentFit="cover"
           />
         )}
+        {imageIcon && (
+          <Image
+            className="  mr-5 h-full w-1/12   overflow-hidden object-cover "
+            source={{ uri: imageIconUrl }}
+            contentFit="cover"
+          />
+        )}
         <Text
           className={`${classNameText} ${image && 'flex-1'} ${
             checkbox && 'w-full'
-          } text-center text-xs font-bold`}
+          } max-w-[85%] text-center text-xs font-bold`}
         >
           {title}
         </Text>

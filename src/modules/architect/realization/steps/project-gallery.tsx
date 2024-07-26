@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { type TxKeyPath } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
@@ -15,12 +16,9 @@ export function ProjectGallery() {
   const {
     handleSubmit,
     // control,
-    // errors
+    errors,
   } = useCustomForm(ProjectRealizationSchema, {
-    projectName: formData.projectName,
-    city: formData.city,
-    workSurface: formData.workSurface,
-    description: formData.description,
+    projectName: formData.realizationImages,
   });
 
   const onSubmit = (data: DetailsFormType) => {
@@ -30,24 +28,34 @@ export function ProjectGallery() {
     }));
     onHandleNext();
   };
-  // const error = errors.architectSpeciality?.message as TxKeyPath | undefined;
+
+  const error = errors.realizationImages?.message as TxKeyPath | undefined;
   return (
-    <View className="mb-5 flex h-full flex-1 items-start justify-between gap-16  ">
-      <View>
+    <View className="mb-5 flex h-full w-full flex-1 items-start justify-between gap-6  ">
+      <View className="mb-2">
         <Text
-          tx={'realisation.servicesStep.title'}
-          className="mb-2 text-center text-2xl font-extrabold"
+          tx={'realisation.galleryStep.title'}
+          className="mb-2 text-start text-2xl font-extrabold"
         />
         <Text
-          tx={'realisation.servicesStep.description'}
-          className="max-w-xs text-center text-sm text-description"
+          tx={'realisation.galleryStep.description'}
+          className="max-w-xs text-start text-sm text-description"
         />
       </View>
 
-      <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'signup.ignorer' }}
-        next={{ handleSubmit: handleSubmit(onSubmit), label: 'signup.suivant' }}
-      />
+      <View className="flex h-fit w-full items-center ">
+        <Text className="w-11/12 text-left text-sm text-error">{error}</Text>
+        <StepButtons
+          previous={{
+            handlePreviousStep: onHandleBack,
+            label: 'signup.retour',
+          }}
+          next={{
+            handleSubmit: handleSubmit(onSubmit),
+            label: 'signup.suivant',
+          }}
+        />
+      </View>
     </View>
   );
 }

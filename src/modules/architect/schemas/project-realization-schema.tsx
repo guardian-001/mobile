@@ -32,3 +32,10 @@ export const ProjectCategorySchema = z.object({
 export const ArchitecturalStyleSchema = z.object({
   architecturalStyle: idValidation,
 });
+
+export const ProjectDetailsSchema = z.object({
+  projectName: fieldValidation,
+  city: cityValidation,
+  workSurface: workSurfaceValidation,
+  description: fieldValidation,
+});

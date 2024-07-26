@@ -32,3 +32,7 @@ export const ProjectCategorySchema = z.object({
 export const ArchitecturalStyleSchema = z.object({
   architecturalStyle: idValidation,
 });
+
+export const NeedsSchema = z.object({
+  needs: intArrayValidation,
+});

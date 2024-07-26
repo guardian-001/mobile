@@ -1,4 +1,5 @@
-import React from 'react';
+import { first } from 'lodash';
+import React, { useEffect } from 'react';
 
 import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
@@ -14,7 +15,7 @@ import { VALID_CITIES, VALID_WORK_SURFACES } from '@/shared/constants';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers';
 
-import { ProjectRealizationSchema } from '../schemas';
+import { ProjectDetailsSchema } from '../../schemas';
 import type { ProjectRealizationType } from '../types';
 
 export function ProjectDetails() {
@@ -25,14 +26,18 @@ export function ProjectDetails() {
   const { formData, setFormData, onHandleNext, onHandleBack } =
     useFormStepper<ProjectRealizationType>();
   const { handleSubmit, control, errors } = useCustomForm(
-    ProjectRealizationSchema,
+    ProjectDetailsSchema,
     {
-      projectName: formData.projectName,
-      city: formData.city,
-      workSurface: formData.workSurface,
-      description: formData.description,
+      projectName: formData?.projectName,
+      city: formData?.city,
+      workSurface: formData?.workSurface,
+      description: formData?.description,
     }
   );
+
+  useEffect(() => {
+    console.log(errors);
+  });
   const onSubmit = (data: DetailsFormType) => {
     console.log(data);
     setFormData((prev: any) => ({
@@ -42,6 +47,7 @@ export function ProjectDetails() {
     onHandleNext();
   };
   // const projectNameError = errors.description?.message as TxKeyPath | undefined;
+  console.log(first);
   const errorCity = errors.city?.message as TxKeyPath | undefined;
   const errorWorkSurface = errors.workSurface?.message as TxKeyPath | undefined;
 
@@ -57,8 +63,9 @@ export function ProjectDetails() {
           className="max-w-xs text-start text-sm text-description"
         />
       </View>
-      <ScrollView className="flex gap-4">
+      <ScrollView className="flex gap-4" showsVerticalScrollIndicator={false}>
         <ControlledInput
+          required={true}
           control={control}
           name="projectName"
           labelStyle="mb-1 text-base font-bold"
@@ -71,6 +78,7 @@ export function ProjectDetails() {
           tags={[...VALID_CITIES]}
           label="realisation.detailsStep.localisationLabel"
           error={errorCity}
+          required={true}
         />
 
         <TagGroup
@@ -79,11 +87,14 @@ export function ProjectDetails() {
           tags={[...VALID_WORK_SURFACES]}
           label="realisation.detailsStep.surfaceLabel"
           error={errorWorkSurface}
+          required={true}
         />
         <ControlledInput
+          required={true}
           control={control}
           name="description"
           labelStyle="mb-1 text-base font-bold"
+          className="mb-7 h-40 align-text-top"
           inputAreaType="textArea"
           label={translate('realisation.detailsStep.descriptionLabel')}
           placeholder={translate(

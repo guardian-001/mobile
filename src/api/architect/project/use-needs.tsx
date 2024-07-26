@@ -5,16 +5,13 @@ import { client } from '@/api/common';
 import type { Need } from '@/types';
 
 type Response = Need[];
-type Variables = { id: number };
+type Variables = void;
 
 export const useNeedsApi = createQuery<Response, Variables, AxiosError>({
   queryKey: ['categories'],
-  fetcher: ({ id }) => {
-    // const [_key, { id }] = queryKey; // Destructure to get the id from queryKey
+  fetcher: () => {
     return client
-      .get(
-        `/api/announcement/architect-speciality-needs?architect_speciality_id=${id}`
-      )
+      .get(`/api/architect-realization/needs/`)
       .then((response) => response.data);
   },
 });

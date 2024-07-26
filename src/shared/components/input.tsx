@@ -48,6 +48,7 @@ export interface NInputProps extends TextInputProps {
   label?: string;
   labelStyle?: string;
   disabled?: boolean;
+  required?: boolean;
   error?: TxKeyPath;
   className?: string;
   inputAreaType?: 'textInput' | 'textArea';
@@ -60,6 +61,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
     testID,
     className,
     labelStyle,
+    required = false,
     inputAreaType = 'textInput',
     ...inputProps
   } = props;
@@ -80,12 +82,18 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
   return (
     <View className={styles.container({ className })}>
       {label && (
-        <Text
-          testID={testID ? `${testID}-label` : undefined}
-          className={clsx(styles.label(), labelStyle ? labelStyle : 'text-xs')}
-        >
-          {label}
-        </Text>
+        <View className="flex w-full flex-row justify-start">
+          <Text
+            testID={testID ? `${testID}-label` : undefined}
+            className={clsx(
+              styles.label(),
+              labelStyle ? labelStyle : 'text-xs'
+            )}
+          >
+            {label}
+          </Text>
+          {required && <Text className="text-primary">*</Text>}
+        </View>
       )}
       <NTextInput
         multiline={inputAreaType === 'textArea'}
@@ -93,7 +101,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
         testID={testID}
         ref={ref}
         placeholderTextColor={colors.neutral[400]}
-        className={styles.input()}
+        className={clsx(styles.input(), className)}
         onBlur={onBlur}
         onFocus={onFocus}
         {...inputProps}
