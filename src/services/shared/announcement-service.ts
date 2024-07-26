@@ -8,41 +8,41 @@ function isAxiosError(error: unknown): error is AxiosError {
 }
 
 export async function getAnnouncementStep1(): Promise<resultType[]> {
-  try {
-    const url = `/api/announcement/architect-specialities`;
-    const response = await client.get(url);
-    return response.data;
-  } catch (error: unknown) {
-    if (isAxiosError(error)) {
-      throw new Error(
-        `API request failed with status ${error.response?.status}`
-      );
-    } else {
-      throw new Error(
-        `API request failed: ${
-          error instanceof Error ? error.message : 'Unknown error'
-        }`
-      );
-    }
-  }
+  const url = `/api/announcement/architect-specialities`;
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error: unknown) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
 }
 
 export async function getAnnouncementStep3(): Promise<resultType[]> {
-  try {
-    const url = `/api/announcement/project-categories`;
-    const response = await client.get(url);
-    return response.data;
-  } catch (error: unknown) {
-    if (isAxiosError(error)) {
-      throw new Error(
-        `API request failed with status ${error.response?.status}`
-      );
-    } else {
-      throw new Error(
-        `API request failed: ${
-          error instanceof Error ? error.message : 'Unknown error'
-        }`
-      );
-    }
-  }
+  const url = `/api/announcement/project-categories`;
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error: unknown) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
 }
