@@ -17,7 +17,7 @@ const ProjectCategoryComp = <T extends FieldValues>({
 }: ProjectCategoryCompProps<T>) => (
   <ToggleCard
     key={item.id}
-    className="mx-2 mb-7 h-32 w-36 rounded-2xl"
+    className="mx-2 mb-2 h-32 w-full rounded-2xl"
     title={item.label}
     image={item.icon}
     name={name}

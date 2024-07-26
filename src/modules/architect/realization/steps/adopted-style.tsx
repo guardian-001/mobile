@@ -1,37 +1,30 @@
-import { useRouter } from 'expo-router';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
-import { useCategoriesApi } from '@/api/architect/project';
-import type { TxKeyPath } from '@/core';
-import { ProjectCategoryComp, StepButtons } from '@/modules/shared';
-import { Text, View } from '@/shared/components';
-import { ErrorData, PendingData } from '@/shared/components';
+import { useStylesApi } from '@/api/architect/project';
+import { translate, type TxKeyPath } from '@/core';
+import { ProjectStyleComp, StepButtons } from '@/modules/shared';
+import { ErrorData, PendingData, Text, View } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useFormStepper } from '@/shared/providers';
 
-import { ProjectCategorySchema } from '../schemas';
+import { ArchitecturalStyleSchema } from '../schemas';
 import type { ProjectRealizationType } from '../types';
 
-export default function ProjectCategory() {
-  const router = useRouter();
-  type CategoryFormType = Pick<ProjectRealizationType, 'projectCategory'>;
-  const { formData, setFormData, onHandleNext } =
+export function AdoptedStyle() {
+  type CategoryFormType = Pick<ProjectRealizationType, 'architecturalStyle'>;
+  const { formData, setFormData, onHandleNext, onHandleBack } =
     useFormStepper<ProjectRealizationType>();
   const { handleSubmit, control, errors } = useCustomForm(
-    ProjectCategorySchema,
+    ArchitecturalStyleSchema,
     {
-      projectCategory: formData.projectCategory,
+      architecturalStyle: formData.architecturalStyle,
     }
   );
 
-  const { data, isPending, isError } = useCategoriesApi();
+  const { data, isPending, isError } = useStylesApi();
 
-  const onHandleBack = () => {
-    router.back();
-  };
   const onSubmit = (selectedData: CategoryFormType) => {
-    console.log('selectedData: ', selectedData);
     setFormData((prev: any) => ({
       ...prev,
       ...selectedData,
@@ -39,9 +32,9 @@ export default function ProjectCategory() {
     onHandleNext();
   };
 
-  const error = errors.projectCategory?.message as TxKeyPath | undefined;
+  const error = errors.architecturalStyle?.message as TxKeyPath | undefined;
   return (
-    <View className="mb-5 flex h-full flex-1 items-start justify-between gap-16  ">
+    <View className="mb-5 flex h-full w-full flex-1 items-center justify-between gap-6  ">
       {isError ? (
         <ErrorData message="Error Loading Data" />
       ) : (
@@ -50,34 +43,35 @@ export default function ProjectCategory() {
             <PendingData message="Pending" />
           ) : (
             <>
-              <View>
+              <View className="mb-2">
                 <Text
-                  tx={'realisation.categoryStep.title'}
+                  tx={'realisation.styleStep.title'}
                   className="mb-2 text-start text-2xl font-extrabold"
                 />
                 <Text
-                  tx={'realisation.categoryStep.description'}
+                  tx={'realisation.styleStep.description'}
                   className="max-w-xs text-start text-sm text-description"
                 />
               </View>
 
               <FlatList
-                data={data}
+                data={[...data, ...data]}
                 renderItem={({ item }) => (
-                  <ProjectCategoryComp
-                    name="projectCategory"
+                  <ProjectStyleComp
+                    classname="my-3 min-w-full"
+                    name="architecturalStyle"
                     item={item}
                     control={control}
                   />
                 )}
+                showsHorizontalScrollIndicator={false}
                 keyExtractor={(item) => item.id.toString()}
-                numColumns={2}
-                columnWrapperStyle={styles.columnWrapperListStyle}
                 contentContainerStyle={styles.contentContainerListStyle}
               />
-
-              {error && <Text tx={error} className="text-sm text-error" />}
-              <View className="flex h-fit w-full items-center">
+              <View className="flex h-fit w-full items-center ">
+                <Text className="w-11/12 text-left text-sm text-error">
+                  {error ? translate(error) : ''}
+                </Text>
                 <StepButtons
                   previous={{
                     handlePreviousStep: onHandleBack,
@@ -98,10 +92,9 @@ export default function ProjectCategory() {
 }
 
 const styles = StyleSheet.create({
-  columnWrapperListStyle: {
-    justifyContent: 'space-between',
-    gap: 8,
+  contentContainerListStyle: {
+    paddingHorizontal: 16,
     width: '100%',
+    flex: 1,
   },
-  contentContainerListStyle: { paddingHorizontal: 16, width: '100%' },
 });

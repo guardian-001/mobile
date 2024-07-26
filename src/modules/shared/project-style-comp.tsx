@@ -24,6 +24,7 @@ const ProjectStyleComp = <T extends FieldValues>({
       classname,
       ' flex h-12 w-full items-center justify-center rounded-lg'
     )}
+    checkbox={true}
     title={item.label}
     name={name}
     control={control}

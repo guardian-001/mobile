@@ -2,7 +2,7 @@ import { MotiView } from 'moti';
 import React, { useCallback } from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-import type { TxKeyPath } from '@/core';
+import { type TxKeyPath, useRouteName } from '@/core';
 import colors from '@/theme/colors';
 
 import { Pressable, type PressableProps, View } from './';
@@ -12,12 +12,14 @@ export interface RootProps extends Omit<PressableProps, 'onPress'> {
   onChange: (checked: boolean) => void;
   checked?: boolean;
   className?: string;
+  complex?: boolean;
   accessibilityLabel: string;
   error?: TxKeyPath;
 }
 
 export type IconProps = {
   checked: boolean;
+  complex?: boolean;
 };
 
 export const Root = ({
@@ -67,8 +69,16 @@ const Label = ({ text, testID, className = '' }: LabelProps) => {
   );
 };
 
-export const CheckboxIcon = ({ checked = false }: IconProps) => {
-  const color = checked ? colors.primary[300] : colors.gray[600];
+export const CheckboxIcon = ({
+  checked = false,
+  complex = false,
+}: IconProps) => {
+  const space = useRouteName();
+  const color = checked
+    ? space === 'architect' || 'supplier'
+      ? colors.architect
+      : colors.client
+    : colors.gray[600];
   return (
     <MotiView
       style={{
@@ -80,15 +90,26 @@ export const CheckboxIcon = ({ checked = false }: IconProps) => {
         backgroundColor: checked ? color : 'transparent',
         borderColor: color,
       }}
-      transition={{
-        backgroundColor: { type: 'timing', duration: 100 },
-        borderColor: { type: 'timing', duration: 100 },
-      }}
+      transition={
+        complex
+          ? {
+              backgroundColor: { type: 'timing', duration: 0 },
+              borderColor: { type: 'timing', duration: 0 },
+            }
+          : {
+              backgroundColor: { type: 'timing', duration: 100 },
+              borderColor: { type: 'timing', duration: 100 },
+            }
+      }
     >
       <MotiView
         from={{ opacity: 0 }}
         animate={{ opacity: checked ? 1 : 0 }}
-        transition={{ opacity: { type: 'timing', duration: 100 } }}
+        transition={
+          complex
+            ? { opacity: { type: 'timing', duration: 0 } }
+            : { opacity: { type: 'timing', duration: 100 } }
+        }
       >
         <Svg className="h-7 w-7" viewBox="0 0 24 24" fill="none">
           <Path
@@ -101,9 +122,19 @@ export const CheckboxIcon = ({ checked = false }: IconProps) => {
   );
 };
 
-const CheckboxRoot = ({ checked = false, children, ...props }: RootProps) => {
+const CheckboxRoot = ({
+  checked = false,
+  complex = false,
+  children,
+  ...props
+}: RootProps) => {
   return (
-    <Root checked={checked} accessibilityRole="checkbox" {...props}>
+    <Root
+      checked={checked}
+      complex={complex}
+      accessibilityRole="checkbox"
+      {...props}
+    >
       {children}
     </Root>
   );
@@ -113,12 +144,17 @@ const CheckboxBase = ({
   checked = false,
   testID,
   label,
-
+  complex = false,
   ...props
 }: RootProps & { label?: string }) => {
   return (
-    <CheckboxRoot checked={checked} testID={testID} {...props}>
-      <CheckboxIcon checked={checked} />
+    <CheckboxRoot
+      checked={checked}
+      complex={complex}
+      testID={testID}
+      {...props}
+    >
+      <CheckboxIcon checked={checked} complex={complex} />
       {label ? (
         <Label
           text={label}

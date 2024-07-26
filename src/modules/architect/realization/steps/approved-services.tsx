@@ -1,36 +1,37 @@
 import React from 'react';
+import { View } from 'react-native';
 
+import type { TxKeyPath } from '@/core';
+import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { Text, View } from '@/shared/components';
-import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers';
+import { useFormStepper } from '@/shared';
+import { Text } from '@/shared/components';
 
 import { ProjectRealizationSchema } from '../schemas';
 import type { ProjectRealizationType } from '../types';
 
-export default function ProjectGallery() {
-  type DetailsFormType = Pick<ProjectRealizationType, 'realizationImages'>;
+export function ApprovedServices() {
+  type ServicesFormType = Pick<ProjectRealizationType, 'needs'>;
   const { formData, setFormData, onHandleNext, onHandleBack } =
     useFormStepper<ProjectRealizationType>();
   const {
     handleSubmit,
     // control,
-    // errors
+    errors,
   } = useCustomForm(ProjectRealizationSchema, {
-    projectName: formData.projectName,
-    city: formData.city,
-    workSurface: formData.workSurface,
-    description: formData.description,
+    needs: formData.needs,
   });
-
-  const onSubmit = (data: DetailsFormType) => {
+  // const { data, isPending, isError } = useNeedsApi({id:});
+  console.log(formData);
+  const onSubmit = (data: ServicesFormType) => {
     setFormData((prev: any) => ({
       ...prev,
       ...data,
     }));
     onHandleNext();
   };
-  // const error = errors.architectSpeciality?.message as TxKeyPath | undefined;
+  const error = errors?.needs?.message as TxKeyPath | undefined;
+
   return (
     <View className="mb-5 flex h-full flex-1 items-start justify-between gap-16  ">
       <View>
@@ -43,7 +44,23 @@ export default function ProjectGallery() {
           className="max-w-xs text-center text-sm text-description"
         />
       </View>
-
+      <View className="gap-4">
+        {/* {NeedsData.map((cardData, index) => (
+          <ToggleCard
+            key={index}
+            className="flex h-16  w-full flex-row rounded-lg"
+            title={cardData.label}
+            svgComponent={cardData.icon}
+            name="needs"
+            control={control}
+            multi={true}
+            value={cardData.id}
+          />
+        ))} */}
+        {error && (
+          <Text className="text-sm text-error dark:text-error" tx={error} />
+        )}
+      </View>
       <StepButtons
         previous={{ handlePreviousStep: onHandleBack, label: 'signup.ignorer' }}
         next={{ handleSubmit: handleSubmit(onSubmit), label: 'signup.suivant' }}
