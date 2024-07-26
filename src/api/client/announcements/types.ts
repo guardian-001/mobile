@@ -5,3 +5,4 @@ export type resultType = {
 };
 export type Response = resultType[];
 export type Variables = void;
+export type VariablesStep2 = { architectSpeciality: number };
