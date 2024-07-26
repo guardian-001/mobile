@@ -9,7 +9,8 @@ export const WIDTH = width;
 export const HEIGHT = height;
 
 export const showError = (error: AxiosError) => {
-  const description = extractError(error?.response?.status).trimEnd();
+  const description = extractError(error?.response?.data).trimEnd();
+
   showMessage({
     message: 'Error',
     description,
@@ -29,7 +30,7 @@ export const showErrorMessage = (message: string = 'Something went wrong ') => {
 
 export const extractError = (data: unknown): string => {
   if (typeof data === 'string') {
-    return 'API request failed with status ' + data;
+    return data;
   }
   if (Array.isArray(data)) {
     const messages = data.map((item) => {
