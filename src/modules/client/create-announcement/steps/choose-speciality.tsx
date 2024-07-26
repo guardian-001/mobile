@@ -21,7 +21,7 @@ export function ChooseSpeciality() {
       {isError ? (
         <ErrorData message="Error Loading Data" />
       ) : (
-        <View className="justify-betwee flex flex-1">
+        <View className="flex flex-1 justify-between">
           {isLoading || SpecialityData?.length === 0 ? (
             <EmptyList isLoading={isLoading} />
           ) : (
