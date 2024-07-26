@@ -1,7 +1,6 @@
-import { Env } from '@env';
 import type { AxiosError } from 'axios';
-import axios from 'axios';
 
+import { client } from '@/api';
 import type { resultType } from '@/api/client';
 import { showError } from '@/shared/components';
 
@@ -11,8 +10,8 @@ function isAxiosError(error: unknown): error is AxiosError {
 
 export async function getAnnouncementStep1(): Promise<resultType[]> {
   try {
-    const url = `${Env.API_URL}/api/announcement/architect-specialities`;
-    const response = await axios.get(url);
+    const url = `/api/announcement/architect-specialities`;
+    const response = await client.get(url);
     return response.data;
   } catch (error: unknown) {
     if (isAxiosError(error)) {
@@ -32,8 +31,8 @@ export async function getAnnouncementStep1(): Promise<resultType[]> {
 
 export async function getAnnouncementStep3(): Promise<resultType[]> {
   try {
-    const url = `${Env.API_URL}/api/announcement/project-categories`;
-    const response = await axios.get(url);
+    const url = `/api/announcement/project-categories`;
+    const response = await client.get(url);
     return response.data;
   } catch (error: unknown) {
     if (isAxiosError(error)) {
