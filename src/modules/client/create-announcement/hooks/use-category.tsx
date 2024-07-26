@@ -24,8 +24,12 @@ export const useCategory = () => {
     }));
     onHandleNext();
   };
+  const onRollBack = () => {
+    formData.projectCategory = 0;
+    onHandleBack();
+  };
   return {
-    onHandleBack,
+    onRollBack,
     onHandleNext,
     setFormData,
     formData,

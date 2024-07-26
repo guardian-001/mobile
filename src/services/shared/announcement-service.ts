@@ -28,7 +28,6 @@ export async function getAnnouncementStep1(): Promise<resultType[]> {
 }
 export async function getAnnouncementStep2(id: number): Promise<resultType[]> {
   const url = `api/announcement/architect-speciality-needs?architect_speciality_id=${id}`;
-  console.log('r', url);
   return client
     .get(url)
     .then((response) => response.data)

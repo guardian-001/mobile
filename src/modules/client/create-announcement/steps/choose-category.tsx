@@ -13,8 +13,7 @@ import {
 import { useCategory } from '../hooks';
 
 export function ChooseCategory() {
-  const { onHandleBack, handleSubmit, control, error, onSubmit } =
-    useCategory();
+  const { onRollBack, handleSubmit, control, error, onSubmit } = useCategory();
   const { data: CategoryData, isError, isLoading } = useCategoriesApi();
   return (
     <View className="flex-1 pt-8">
@@ -45,7 +44,7 @@ export function ChooseCategory() {
           )}
           <StepButtons
             previous={{
-              handlePreviousStep: onHandleBack,
+              handlePreviousStep: onRollBack,
               label: 'signup.retour',
             }}
             next={{

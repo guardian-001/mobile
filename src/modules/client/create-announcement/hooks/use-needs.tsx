@@ -24,8 +24,12 @@ export const useNeeds = () => {
     }));
     onHandleNext();
   };
+  const onRollBack = () => {
+    formData.needs = [];
+    onHandleBack();
+  };
   return {
-    onHandleBack,
+    onRollBack,
     onHandleNext,
     setFormData,
     formData,
