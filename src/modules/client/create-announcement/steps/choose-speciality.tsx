@@ -1,23 +1,24 @@
 import React from 'react';
 
+import { useStylesApi } from '@/api/client';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
 
-import { toggleCardData } from '../dump-data';
 import { useSpeciality } from '../hooks';
 
 export function ChooseSpeciality() {
   const { handleSubmit, control, error, onSubmit } = useSpeciality();
+  const { data: SpecialityData } = useStylesApi();
   return (
     <View className="flex flex-1 justify-between pt-4">
       <View className="h-[85%] items-center gap-4">
-        {toggleCardData.map((cardData, index) => (
+        {SpecialityData?.map((cardData, index) => (
           <ToggleCard
             key={index}
-            className=" h-40 w-64 rounded-2xl"
+            className="h-56 w-60 rounded-2xl"
             title={cardData.label}
-            svgComponent={cardData.icon}
+            image={cardData.icon}
             name="architectSpeciality"
             control={control}
             value={cardData.id}
