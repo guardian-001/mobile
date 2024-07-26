@@ -1,33 +1,14 @@
 import React from 'react';
 
-import type { TxKeyPath } from '@/core';
-import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
 
 import { ExtensionsData } from '../dump-data';
-import { CreateAnnouncementStepTenSchema } from '../schemas';
+import { useAdditionalInfo } from '../hooks';
 
 export function ChooseAdditionalInfo() {
-  const { onHandleBack, onHandleNext, setFormData, formData } =
-    useFormStepper<AnnouncementType>();
-  const { handleSubmit, control, errors } = useCustomForm(
-    CreateAnnouncementStepTenSchema,
-    { projectExtensions: formData?.projectExtensions || [] }
-  );
-
-  type projectExtensionsFormType = Pick<AnnouncementType, 'projectExtensions'>;
-  const onSubmit = (data: projectExtensionsFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    onHandleNext();
-  };
-
-  const error = errors?.projectExtensions?.message as TxKeyPath | undefined;
+  const { onHandleBack, handleSubmit, control, error, onSubmit } =
+    useAdditionalInfo();
   return (
     <View className="flex flex-1 justify-between pt-4">
       <View className="flex flex-1  flex-wrap gap-4 px-1">

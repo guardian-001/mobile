@@ -33,7 +33,6 @@ export const MONTHS = [
   'November',
   'December',
 ];
-
 export const VALID_CITIES = [
   'Tunis',
   'Sfax',

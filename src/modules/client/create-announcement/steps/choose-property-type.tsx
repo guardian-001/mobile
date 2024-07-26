@@ -1,34 +1,14 @@
 import React from 'react';
 
-import type { TxKeyPath } from '@/core';
-import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
 
 import { PropertyData } from '../dump-data';
-import { CreateAnnouncementStepFourSchema } from '../schemas';
+import { usePropertyType } from '../hooks';
 
 export function ChoosePropertyType() {
-  const { onHandleBack, onHandleNext, setFormData, formData } =
-    useFormStepper<AnnouncementType>();
-  const { handleSubmit, control, errors } = useCustomForm(
-    CreateAnnouncementStepFourSchema,
-    { propertyType: formData?.propertyType }
-  );
-
-  type propertyTypeFormType = Pick<AnnouncementType, 'propertyType'>;
-  const onSubmit = (data: propertyTypeFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    onHandleNext();
-  };
-
-  const error = errors?.propertyType?.message as TxKeyPath | undefined;
-
+  const { onHandleBack, handleSubmit, control, error, onSubmit } =
+    usePropertyType();
   return (
     <View className="flex flex-1 justify-between pt-8">
       <View className="gap-4">

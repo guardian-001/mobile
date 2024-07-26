@@ -16,11 +16,8 @@ type TRule = Omit<
   RegisterOptions,
   'valueAsNumber' | 'valueAsDate' | 'setValueAs'
 >;
-export type CreateProfileType = {
-  name: string;
-  data: string;
-};
-export type InputControllerType<T extends FieldValues> = {
+
+type InputControllerType<T extends FieldValues> = {
   label: string;
   name: Path<T>;
   control: Control<T>;
@@ -63,6 +60,7 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
               height: 35,
               backgroundColor: colors.white,
               paddingBottom: 1,
+              borderColor: error ? colors.error : colors.description,
             },
             input: { fontSize: 12 },
             callingCode: { fontSize: 12 },
@@ -76,7 +74,7 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
         />
       </View>
       {error && (
-        <Text className="text-xs text-red-400 dark:text-red-600" tx={error} />
+        <Text className="text-xs text-error dark:text-error" tx={error} />
       )}
     </View>
   );

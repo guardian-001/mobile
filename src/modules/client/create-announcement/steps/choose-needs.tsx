@@ -1,33 +1,13 @@
 import React from 'react';
 
-import type { TxKeyPath } from '@/core';
-import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
 
 import { NeedsData } from '../dump-data';
-import { CreateAnnouncementStepTwoSchema } from '../schemas';
+import { useNeeds } from '../hooks';
 
 export function ChooseNeeds() {
-  const { onHandleBack, onHandleNext, setFormData, formData } =
-    useFormStepper<AnnouncementType>();
-  const { handleSubmit, control, errors } = useCustomForm(
-    CreateAnnouncementStepTwoSchema,
-    { needs: formData?.needs || [] }
-  );
-
-  type needsFormType = Pick<AnnouncementType, 'needs'>;
-  const onSubmit = (data: needsFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    onHandleNext();
-  };
-
-  const error = errors?.needs?.message as TxKeyPath | undefined;
+  const { onHandleBack, handleSubmit, control, error, onSubmit } = useNeeds();
   return (
     <View className="flex flex-1 justify-between pt-4">
       <View className="gap-4">

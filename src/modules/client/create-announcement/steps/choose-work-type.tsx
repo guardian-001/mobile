@@ -1,32 +1,14 @@
 import React from 'react';
 
-import type { TxKeyPath } from '@/core';
-import { useCustomForm } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard, View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
 
 import { workTypeData } from '../dump-data';
-import { CreateAnnouncementStepFiveSchema } from '../schemas';
+import { useWorkType } from '../hooks/use-work-type';
 
 export function ChooseWorkType() {
-  const { onHandleBack, onHandleNext, setFormData, formData } =
-    useFormStepper<AnnouncementType>();
-  const { handleSubmit, control, errors } = useCustomForm(
-    CreateAnnouncementStepFiveSchema,
-    { workType: formData?.workType }
-  );
-
-  type workTypeFormType = Pick<AnnouncementType, 'workType'>;
-  const onSubmit = (data: workTypeFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    onHandleNext();
-  };
-  const error = errors?.workType?.message as TxKeyPath | undefined;
+  const { onHandleBack, handleSubmit, control, error, onSubmit } =
+    useWorkType();
   return (
     <View className="flex flex-1 justify-between pt-4">
       <View className="gap-4">

@@ -16,7 +16,7 @@ const inputTv = tv({
       'mb-1 text-xs font-medium text-primary-txt dark:text-white md:text-lg',
 
     input:
-      'mt-0 h-10 rounded-lg border border-color-border bg-white px-4 py-3 font-lato text-xs font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white md:text-lg',
+      'mt-0 h-10 rounded-lg border border-description bg-white px-4 py-3 font-lato text-xs font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white md:text-lg',
   },
 
   variants: {
@@ -27,8 +27,8 @@ const inputTv = tv({
     },
     error: {
       true: {
-        input: 'border-danger-600',
-        label: 'text-danger-600 dark:text-error',
+        input: 'border-error',
+        label: 'text-error dark:text-error',
       },
     },
     disabled: {
@@ -93,7 +93,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
       {error && (
         <Text
           testID={testID ? `${testID}-error` : undefined}
-          className="text-xs text-red-400 dark:text-red-600"
+          className="text-xs text-error dark:text-red-600"
           tx={error}
         />
       )}
