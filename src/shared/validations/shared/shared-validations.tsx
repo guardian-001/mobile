@@ -18,6 +18,7 @@ export const intArrayValidation = z.array(
 export const requiredValidation = z
   .string({ message: 'validations.required' })
   .min(1, { message: 'validations.required' });
+export const notRequiredValidation = z.string().optional();
 
 export const requiredValidationBoolean = z
   .boolean()

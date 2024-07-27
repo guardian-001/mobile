@@ -50,6 +50,7 @@ export const useRoomsToRenovate = () => {
   ]);
 
   const onSubmit = (data: piecesRenovateFormType) => {
+    formData.newConstruction = newConstruction;
     setFormData((prev: any) => ({
       ...prev,
       ...data,
@@ -57,7 +58,7 @@ export const useRoomsToRenovate = () => {
     onHandleNext();
   };
   const onRollBack = () => {
-    formData.needs = [];
+    formData.piecesRenovate = [];
     onHandleBack();
   };
 

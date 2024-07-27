@@ -7,7 +7,7 @@ import { ExtensionsData } from '../dump-data';
 import { useAdditionalInfo } from '../hooks';
 
 export function ChooseAdditionalInfo() {
-  const { onHandleBack, handleSubmit, control, error, onSubmit } =
+  const { onRollBack, handleSubmit, control, error, onSubmit } =
     useAdditionalInfo();
   return (
     <View className="flex flex-1 justify-between pt-4">
@@ -31,7 +31,7 @@ export function ChooseAdditionalInfo() {
         <Text className="text-sm text-error dark:text-error" tx={error} />
       )}
       <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
+        previous={{ handlePreviousStep: onRollBack, label: 'signup.retour' }}
         next={{
           handleSubmit: handleSubmit(onSubmit),
           label: 'signup.suivant',

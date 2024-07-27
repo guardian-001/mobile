@@ -1,10 +1,15 @@
 import { z } from 'zod';
 
-import { fieldValidation, requiredValidation } from '@/shared/validations';
+import {
+  fieldValidation,
+  notRequiredValidation,
+  requiredValidation,
+} from '@/shared/validations';
 
 export const CreateAnnouncementStepSevenSchema = z.object({
   address: fieldValidation,
   city: requiredValidation,
-  terrainSurface: requiredValidation,
+  terrainSurface: notRequiredValidation,
   workSurface: requiredValidation,
+  numberFloors: z.number().optional(),
 });

@@ -33,7 +33,7 @@ export const usePropertyType = () => {
     onHandleNext();
   };
   const onRollBack = () => {
-    formData.needs = [];
+    formData.propertyType = 0;
     onHandleBack();
   };
 

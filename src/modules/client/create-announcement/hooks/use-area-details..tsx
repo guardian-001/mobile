@@ -17,6 +17,7 @@ export const useAreaDetails = () => {
       city: formData?.city,
       terrainSurface: formData?.terrainSurface,
       workSurface: formData?.workSurface,
+      numberFloors: formData?.numberFloors,
     }
   );
   const errorCity = errors?.city?.message as TxKeyPath | undefined;
@@ -36,10 +37,20 @@ export const useAreaDetails = () => {
       ...prev,
       ...data,
     }));
+    if (!formData?.newConstruction) {
+      delete formData.terrainSurface;
+    }
     onHandleNext();
   };
   const onRollBack = () => {
-    formData.needs = [];
+    if (formData?.newConstruction) {
+      formData.terrainSurface = '';
+    }
+    formData.address = '';
+    formData.city = '';
+    formData.workSurface = '';
+    formData.numberFloors = 0;
+    formData.rollback = true;
     onHandleBack();
   };
 

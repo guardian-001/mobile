@@ -15,6 +15,8 @@ export type VariablesStep2 = { architectSpeciality: number };
 export type VariablesStep4 = { projectCategory: number };
 export type VariablesStep5 = { propertyType: number };
 export type VariablesStep6 = { propertyType: number; workType: number };
+export type VariablesStep9 = { propertyType: number };
+
 export type ToggleButtonType = {
   value: string;
   displayName: string;
@@ -36,4 +38,8 @@ export type PropertyResponse = {
   data: PropertyFeature[];
   eliminateStep: boolean;
   newConstruction: boolean;
+};
+export type ArchitecturalStyleResponse = {
+  data: resultType[];
+  eliminateStep: boolean;
 };

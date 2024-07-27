@@ -88,6 +88,8 @@ export default function CreateAnnouncementStepper() {
     rules: false,
     receiveNotifications: false,
     currentLanguage: '',
+    numberFloors: 0,
+    newConstruction: false,
   };
 
   return (

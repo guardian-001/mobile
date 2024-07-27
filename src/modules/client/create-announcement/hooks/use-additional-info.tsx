@@ -22,9 +22,12 @@ export const useAdditionalInfo = () => {
     }));
     onHandleNext();
   };
-
+  const onRollBack = () => {
+    formData.projectExtensions = [];
+    onHandleBack();
+  };
   return {
-    onHandleBack,
+    onRollBack,
     onHandleNext,
     setFormData,
     formData,

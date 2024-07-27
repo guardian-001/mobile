@@ -42,5 +42,5 @@ export type CreateProfileFormType = Pick<
 >;
 export type AreaDetailsFormType = Pick<
   AnnouncementType,
-  'address' | 'city' | 'terrainSurface' | 'workSurface'
+  'address' | 'city' | 'terrainSurface' | 'workSurface' | 'numberFloors'
 >;

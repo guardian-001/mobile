@@ -9,7 +9,7 @@ export type AnnouncementType = {
   }[];
   address: string;
   city: string;
-  terrainSurface: string;
+  terrainSurface?: string;
   workSurface: string;
   budget: string;
   description: string;
@@ -25,4 +25,5 @@ export type AnnouncementType = {
   rollback?: boolean;
   newConstruction?: boolean;
   currentLanguage: string;
+  numberFloors?: number;
 };

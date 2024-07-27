@@ -2,6 +2,7 @@ import type { AxiosError } from 'axios';
 
 import { client } from '@/api';
 import type {
+  ArchitecturalStyleResponse,
   PropertyResponse,
   Response,
   ResponseWorkType,
@@ -92,6 +93,7 @@ export async function getAnnouncementStep5(
   id: number
 ): Promise<ResponseWorkType> {
   const url = `api/announcement/work-types?property_type_id=${id}`;
+  console.log('url :', url);
   return client
     .get(url)
     .then((response) => response.data)
@@ -177,6 +179,68 @@ export async function getAnnouncementStep7WorkSurfaces(): Promise<
   ToggleButtonType[]
 > {
   const url = `/api/announcement/work-surfaces`;
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error: unknown) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
+}
+export async function getAnnouncementStep8(): Promise<ToggleButtonType[]> {
+  const url = `/api/announcement/budgets`;
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error: unknown) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
+}
+export async function getAnnouncementStep9(
+  id: number
+): Promise<ArchitecturalStyleResponse> {
+  const url = `/api/announcement/architectural-styles?property_type_id=${id}`;
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error: unknown) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
+}
+export async function getAnnouncementStep10(
+  propertyId: number,
+  workId: number
+): Promise<{ data: any }> {
+  const url = `/api/announcement/project-extensions?property_type_id=${propertyId}&work_type_id=${workId}`;
   return client
     .get(url)
     .then((response) => response.data)
