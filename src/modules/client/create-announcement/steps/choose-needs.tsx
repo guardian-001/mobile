@@ -34,9 +34,9 @@ export function ChooseNeeds() {
               <EmptyList isLoading={isLoading} />
             ) : (
               <View className="gap-4">
-                {NeedsData?.map((cardData, index) => (
+                {NeedsData?.map((cardData) => (
                   <ToggleCard
-                    key={index}
+                    key={cardData.id}
                     className="flex h-16  w-full flex-row rounded-lg"
                     title={cardData.label}
                     image={cardData.icon}

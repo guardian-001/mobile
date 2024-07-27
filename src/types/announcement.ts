@@ -22,5 +22,7 @@ export type AnnouncementType = {
   phoneNumber: string;
   rules: boolean;
   receiveNotifications?: boolean;
+  rollback?: boolean;
+  newConstruction?: boolean;
   currentLanguage: string;
 };

@@ -11,6 +11,7 @@ import { View } from 'react-native';
 import { Minus, Plus } from '@/assets/icons';
 
 import { useCounterUtils } from '../hooks';
+import useImageUrl from '../hooks/use-image-url';
 import { Button } from './button';
 import { Image } from './image';
 import { Text } from './text';
@@ -39,6 +40,7 @@ export const Counter = <T extends FieldValues>({
   const { findValue, updateArray } = useCounterUtils();
   const { field } = useController({ control, name, rules });
   const value = findValue(field.value, id);
+  const imageUrl = useImageUrl(image);
 
   const handleAdd = () => {
     if (value < 100) {
@@ -65,8 +67,9 @@ export const Counter = <T extends FieldValues>({
         )}
         {image && (
           <Image
-            className="h-1/3 w-1/3 overflow-hidden rounded-2xl"
-            source={{ uri: image }}
+            className="h-10 w-10 overflow-hidden object-cover "
+            source={{ uri: imageUrl }}
+            contentFit="cover"
           />
         )}
         <Text className="text-xs font-bold">{title}</Text>

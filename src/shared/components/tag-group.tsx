@@ -8,6 +8,7 @@ import type {
 import { View } from 'react-native';
 
 import type { TxKeyPath } from '@/core';
+import type { TagType } from '@/types';
 
 import { Tag } from './tag';
 import { Text } from './text';
@@ -15,7 +16,7 @@ import { Text } from './text';
 interface TagGroupProps<T extends FieldValues> {
   name: Path<T>;
   control: Control<T>;
-  tags: string[];
+  tags: TagType[];
   rules?: RegisterOptions;
   label: TxKeyPath;
   error?: TxKeyPath;
@@ -41,8 +42,8 @@ export const TagGroup = <T extends FieldValues>({
       <View className="flex flex-row flex-wrap">
         {tags.slice(0, visibleItems).map((tag) => (
           <Tag
-            key={tag}
-            label={tag}
+            key={tag.value}
+            label={tag.displayName}
             name={name}
             control={control}
             rules={rules}
