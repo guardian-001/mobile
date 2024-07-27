@@ -32,9 +32,9 @@ export function ChooseCategory() {
             <EmptyList isLoading={isLoading} />
           ) : (
             <View className="flex flex-row flex-wrap items-center gap-4">
-              {CategoryData?.map((cardData, index) => (
+              {CategoryData?.map((cardData) => (
                 <ToggleCard
-                  key={index}
+                  key={cardData.id}
                   className="h-full w-full rounded-lg"
                   containerClassName="min-h-[40%] min-w-[40%] max-w-[48%] max-h-[48%] rounded-lg"
                   title={cardData.label}

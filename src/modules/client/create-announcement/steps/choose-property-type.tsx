@@ -32,9 +32,9 @@ export function ChoosePropertyType() {
             <EmptyList isLoading={isLoading} />
           ) : (
             <View className="gap-4">
-              {PropertyData?.map((cardData, index) => (
+              {PropertyData?.map((cardData) => (
                 <ToggleCard
-                  key={index}
+                  key={cardData.id}
                   className="flex h-16 w-full flex-row-reverse justify-between rounded-lg pl-8 pr-0"
                   title={cardData.label}
                   image={cardData.icon}

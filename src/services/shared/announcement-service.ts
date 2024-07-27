@@ -5,8 +5,8 @@ import type {
   PropertyResponse,
   Response,
   ResponseWorkType,
-  ToggleButtonType,
-} from '@/api/client';
+} from '@/api/client/announcements/types';
+import type { TagType } from '@/types';
 
 function isAxiosError(error: unknown): error is AxiosError {
   return (error as AxiosError).isAxiosError !== undefined;
@@ -131,9 +131,7 @@ export async function getAnnouncementStep6(
       }
     });
 }
-export async function getAnnouncementStep7Cities(): Promise<
-  ToggleButtonType[]
-> {
+export async function getAnnouncementStep7Cities(): Promise<TagType[]> {
   const url = `/api/announcement/cities`;
   return client
     .get(url)
@@ -153,7 +151,7 @@ export async function getAnnouncementStep7Cities(): Promise<
     });
 }
 export async function getAnnouncementStep7TerrainSurfaces(): Promise<
-  ToggleButtonType[]
+  TagType[]
 > {
   const url = `/api/announcement/terrain-surfaces`;
   return client
@@ -173,9 +171,7 @@ export async function getAnnouncementStep7TerrainSurfaces(): Promise<
       }
     });
 }
-export async function getAnnouncementStep7WorkSurfaces(): Promise<
-  ToggleButtonType[]
-> {
+export async function getAnnouncementStep7WorkSurfaces(): Promise<TagType[]> {
   const url = `/api/announcement/work-surfaces`;
   return client
     .get(url)

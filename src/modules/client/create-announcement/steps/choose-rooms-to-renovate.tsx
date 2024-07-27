@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { resultType } from '@/api/client';
+import type { resultType } from '@/api/client/announcements/types';
 import { StepButtons } from '@/modules/shared';
 import { Counter, EmptyList, ErrorData, View } from '@/shared/components';
 
@@ -28,14 +28,14 @@ export function ChooseRoomsToRenovate() {
             <EmptyList isLoading={isLoading || isFetchedAfterMount} />
           ) : (
             <View className="gap-4">
-              {RenovateData?.map((item: resultType, index: number) => (
+              {RenovateData?.map((cardData: resultType) => (
                 <Counter
-                  key={index}
-                  title={item.label}
-                  image={item.icon}
+                  key={cardData.id}
+                  title={cardData.label}
+                  image={cardData.icon}
                   name="piecesRenovate"
                   control={control}
-                  id={item.id}
+                  id={cardData.id}
                 />
               ))}
             </View>

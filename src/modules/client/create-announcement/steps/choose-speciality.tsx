@@ -32,9 +32,9 @@ export function ChooseSpeciality() {
             <EmptyList isLoading={isLoading} />
           ) : (
             <View className="h-[85%] items-center gap-4">
-              {SpecialityData?.map((cardData, index) => (
+              {SpecialityData?.map((cardData) => (
                 <ToggleCard
-                  key={index}
+                  key={cardData.id}
                   className="h-56 w-60 rounded-2xl"
                   title={cardData.label}
                   image={cardData.icon}

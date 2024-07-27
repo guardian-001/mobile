@@ -7,8 +7,8 @@ import type {
 } from 'react-hook-form';
 import { View } from 'react-native';
 
-import type { ToggleButtonType } from '@/api/client';
 import type { TxKeyPath } from '@/core';
+import type { TagType } from '@/types';
 
 import { Tag } from './tag';
 import { Text } from './text';
@@ -16,7 +16,7 @@ import { Text } from './text';
 interface TagGroupProps<T extends FieldValues> {
   name: Path<T>;
   control: Control<T>;
-  tags: ToggleButtonType[];
+  tags: TagType[];
   rules?: RegisterOptions;
   label: TxKeyPath;
   error?: TxKeyPath;
