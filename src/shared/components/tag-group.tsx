@@ -7,6 +7,7 @@ import type {
 } from 'react-hook-form';
 import { View } from 'react-native';
 
+import type { ToggleButtonType } from '@/api/client';
 import type { TxKeyPath } from '@/core';
 
 import { Tag } from './tag';
@@ -15,7 +16,7 @@ import { Text } from './text';
 interface TagGroupProps<T extends FieldValues> {
   name: Path<T>;
   control: Control<T>;
-  tags: string[];
+  tags: ToggleButtonType[];
   rules?: RegisterOptions;
   label: TxKeyPath;
   error?: TxKeyPath;
@@ -41,8 +42,8 @@ export const TagGroup = <T extends FieldValues>({
       <View className="flex flex-row flex-wrap">
         {tags.slice(0, visibleItems).map((tag) => (
           <Tag
-            key={tag}
-            label={tag}
+            key={tag.value}
+            label={tag.displayName}
             name={name}
             control={control}
             rules={rules}
