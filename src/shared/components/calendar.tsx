@@ -102,8 +102,8 @@ export const Calendar = () => {
       {errors?.date && <Text>{errors.date.message}</Text>}
       {errors?.timeSlot && <Text>{errors.timeSlot.message}</Text>}
       <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
-        next={{ handleSubmit: handleSubmit(onSubmit), label: 'signup.suivant' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'common.retour' }}
+        next={{ handleSubmit: handleSubmit(onSubmit), label: 'common.suivant' }}
       />
     </>
   );

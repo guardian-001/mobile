@@ -4,11 +4,11 @@ export const integerValidation = z
   .number({
     message: 'validations.required',
   })
-  .int({ message: 'validations.invalid-integer' });
+  .int({ message: 'validations.invalidInteger' });
 
 export const intArrayValidation = z.array(
   z.number().int({
-    message: 'validations.invalid-integer',
+    message: 'validations.invalidInteger',
   }),
   {
     message: 'validations.required',
@@ -78,20 +78,21 @@ export const arrayOfNonEmptyNumbers = z
   });
 export const dateValidation = z
   .string({ message: 'validations.required' })
-  .regex(/^\d{4}-\d{2}-\d{2}$/, { message: 'validations.invalid-date-format' });
+  .regex(/^\d{4}-\d{2}-\d{2}$/, { message: 'validations.invalidDateFormat' });
 
 export const timeValidation = z
   .string({ message: 'validations.required' })
-  .regex(/^\d{2}:\d{2}$/, { message: 'validations.invalid-time-format' });
+  .regex(/^\d{2}:\d{2}$/, { message: 'validations.invalidTimeFormat' });
 export const imagesValidation = z
   .array(
     z.object({
       name: z.string({
-        message: 'validations.invalid-name',
+        message: 'validations.invalidName',
       }),
-      url: z.string().url({
-        message: 'validations.invalid-url',
+      uri: z.string().url({
+        message: 'validations.invalidUrl',
       }),
+      type: z.string({ message: 'validations.invalidType' }),
     }),
     {
       message: 'validations.required',
@@ -99,9 +100,9 @@ export const imagesValidation = z
   )
   .refine(
     (images) =>
-      new Set(images.map((image) => image.url)).size === images.length,
+      new Set(images.map((image) => image.uri)).size === images.length,
     {
-      message: 'validations.unique-items',
+      message: 'validations.uniqueItems',
     }
   );
 export const specialityValidation = z.number().refine((value) => value > 0, {

@@ -1,40 +1,24 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 
-import { useNeedsApi } from '@/api/architect/project/use-needs';
-import { translate, useCustomForm } from '@/core';
-import { getUser } from '@/core/auth/utils';
+import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { useFormStepper } from '@/shared';
 import { ErrorData, PendingData, Text, ToggleCard } from '@/shared/components';
 
-import { NeedsSchema } from '../schemas';
-import type { ProjectRealizationType } from '../types';
+import { useServices } from '../shared/hooks/use-services';
 
 export function ApprovedServices() {
-  type NeedsFormType = Pick<ProjectRealizationType, 'needs'>;
-  const { formData, setFormData, onHandleNext, onHandleBack } =
-    useFormStepper<ProjectRealizationType>();
   const {
+    onSubmit,
+    data,
+    isPending,
+    isError,
+    error,
     handleSubmit,
     control,
-    // errors
-  } = useCustomForm(NeedsSchema, {
-    needs: formData.needs,
-  });
-  console.log(getUser());
-  const { data, isPending, isError, error } = useNeedsApi();
-  console.log('error: ', error);
+    onHandleBack,
+  } = useServices();
 
-  const onSubmit = (selectedData: NeedsFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...selectedData,
-    }));
-    onHandleNext();
-  };
-
-  // const error = errors.needs?.message as TxKeyPath | undefined;
   return (
     <View className="mb-5 flex h-full w-full flex-1 items-start justify-between gap-6  ">
       {isError ? (
@@ -59,8 +43,7 @@ export function ApprovedServices() {
                 showsVerticalScrollIndicator={false}
                 className="flex w-full gap-2"
               >
-                {data.map((item) => {
-                  console.log('item: ', item);
+                {data?.map((item) => {
                   return (
                     <ToggleCard
                       key={item.id.toString()}
@@ -82,11 +65,11 @@ export function ApprovedServices() {
                 <StepButtons
                   previous={{
                     handlePreviousStep: onHandleBack,
-                    label: 'signup.retour',
+                    label: 'common.retour',
                   }}
                   next={{
                     handleSubmit: handleSubmit(onSubmit),
-                    label: 'signup.suivant',
+                    label: 'common.suivant',
                   }}
                 />
               </View>

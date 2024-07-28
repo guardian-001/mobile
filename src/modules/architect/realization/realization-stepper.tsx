@@ -7,7 +7,7 @@ import {
   useFormStepper,
 } from '@/shared/providers/use-form-stepper-provider';
 
-import type { ProjectRealizationType } from '../types';
+import type { ProjectRealizationType } from '../shared/types';
 import { stepsContent } from './steps-content';
 
 const ProjectRealizationStepperInner = () => {
@@ -37,7 +37,7 @@ export default function ProjectRealizationStepper() {
   };
 
   return (
-    <FormProvider<ProjectRealizationType> initialData={initialData} maxStep={5}>
+    <FormProvider<ProjectRealizationType> initialData={initialData} maxStep={6}>
       <ProjectRealizationStepperInner />
     </FormProvider>
   );

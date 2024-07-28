@@ -27,10 +27,10 @@ export function ChoosePreferredStyle() {
         <Text className="text-sm text-error dark:text-error" tx={error} />
       )}
       <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'common.retour' }}
         next={{
           handleSubmit: handleSubmit(onSubmit),
-          label: 'signup.suivant',
+          label: 'common.suivant',
         }}
       />
     </View>

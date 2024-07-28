@@ -4,5 +4,10 @@
   "choosePassword": "Choisir un mot de passe",
   "confirmPassword": "confirmer le mot de passe",
   "enterPassword": "Saisirez le mot de passe",
-  "start": "Commencer"
+  "start": "Commencer",
+  "ignorer": "Ignorer",
+  "retour": "Retour",
+  "suivant": "Suivant",
+  "modifier": "Modifier",
+  "publier": "Publier"
 }

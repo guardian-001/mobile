@@ -8,7 +8,7 @@ type Response = Need[];
 type Variables = void;
 
 export const useNeedsApi = createQuery<Response, Variables, AxiosError>({
-  queryKey: ['categories'],
+  queryKey: ['needs'],
   fetcher: () => {
     return client
       .get(`/api/architect-realization/needs/`)

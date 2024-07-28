@@ -22,5 +22,5 @@ export type Need = {
 };
 export type Image = {
   name: string;
-  ulr: string;
+  url: string;
 };

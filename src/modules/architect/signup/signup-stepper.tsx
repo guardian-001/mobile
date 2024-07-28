@@ -7,29 +7,11 @@ import {
 } from '@/shared/providers/use-form-stepper-provider';
 import { formatDateBackend } from '@/shared/utils';
 
-import type { SignupFormDataType } from '../types';
-import ChooseSpeciality from './choose-speciality';
-import CreateProfile from './create-profile';
-import DemoPlanning from './demo-planning';
-import DemoPlanningConfirmation from './demo-planning-confirmation';
+import type { SignupFormDataType } from '../shared/types';
+import { stepsContent } from './steps-content';
 
 const SignupStepperInner = () => {
   const { step } = useFormStepper<SignupFormDataType>();
-
-  const stepsContent: { component: React.ReactNode }[] = [
-    {
-      component: <ChooseSpeciality />,
-    },
-    {
-      component: <CreateProfile />,
-    },
-    {
-      component: <DemoPlanning />,
-    },
-    {
-      component: <DemoPlanningConfirmation />,
-    },
-  ];
 
   const { component } = stepsContent[step];
 

@@ -45,7 +45,6 @@ export function ControlledInput<T extends FieldValues>(
     labelStyle,
     inputAreaType = 'textInput',
     required = false,
-
     ...inputProps
   } = props;
 

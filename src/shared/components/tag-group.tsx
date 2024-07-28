@@ -39,9 +39,9 @@ export const TagGroup = <T extends FieldValues>({
   };
 
   return (
-    <View className="w-full">
+    <View className="mt-5 w-full">
       <View className="flex w-full flex-row justify-start">
-        <Text tx={label} className="mb-1 text-base font-bold" />
+        <Text tx={label} className="mb-2 text-base font-bold" />
         {required && <Text className="text-primary">*</Text>}
       </View>
       <View className="flex flex-row flex-wrap">

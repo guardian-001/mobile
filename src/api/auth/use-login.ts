@@ -13,7 +13,5 @@ export const useLoginApi = createMutation<Response, Request, AxiosError>({
       url: '/api/users/login-email/',
       method: 'POST',
       data: request,
-    })
-      .then((response) => response.data)
-      .catch((response) => response.data),
+    }).then((response) => response.data),
 });

@@ -30,7 +30,7 @@ export function ChooseSpeciality() {
       )}
       <StepperButton
         onPressHandler={handleSubmit(onSubmit)}
-        label={translate('signup.suivant')}
+        label={translate('common.suivant')}
       />
     </View>
   );

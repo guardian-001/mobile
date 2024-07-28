@@ -4,5 +4,10 @@
   "choosePassword": "Choose a password",
   "enterPassword": "Enter the password",
   "confirmPassword": "confirm password",
-  "start": "Start"
+  "start": "Start",
+  "ignorer": "Skip",
+  "retour": "Back",
+  "suivant": "Next",
+  "modifier": "Edit",
+  "publier": "Publish"
 }

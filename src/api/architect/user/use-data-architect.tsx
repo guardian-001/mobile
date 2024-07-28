@@ -1,4 +1,3 @@
-// api/styles.ts
 import type { AxiosError } from 'axios';
 import { createQuery } from 'react-query-kit';
 

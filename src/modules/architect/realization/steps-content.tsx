@@ -3,6 +3,7 @@ import React from 'react';
 import {
   AdoptedStyle,
   ApprovedServices,
+  FinalStep,
   ProjectCategory,
   ProjectDetails,
   ProjectGallery,
@@ -23,5 +24,8 @@ export const stepsContent: { component: React.ReactNode }[] = [
   },
   {
     component: <ProjectGallery />,
+  },
+  {
+    component: <FinalStep />,
   },
 ];

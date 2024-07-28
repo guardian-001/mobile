@@ -4,5 +4,10 @@
   "choosePassword": "اختر كلمة المرور",
   "enterPassword": "أدخل كلمة المرور",
   "confirmPassword": "تأكيد كلمة المرور",
-  "start": "بدأ"
+  "start": "بدأ",
+  "ignorer": "تخطي",
+  "retour": "عودة",
+  "suivant": "التالي",
+  "modifier": "تعديل",
+  "publier": "نشر"
 }

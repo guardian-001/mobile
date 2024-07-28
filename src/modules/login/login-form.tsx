@@ -25,13 +25,13 @@ export const LoginForm = () => {
   const space = useRouteName();
   const signIn = useAuth.use.signIn();
   const [checked, setChecked] = useState(true);
+  const [errors, setErrors] = useState('');
   const { handleSubmit, control } = useCustomForm(LoginFormSchema);
   const login = useLoginApi();
 
   const onSubmit = (data: LoginFormType) => {
     login.mutate(data, {
       onSuccess: (response) => {
-        console.log(response);
         signIn({
           token: { access: response.access, refresh: response.refresh },
           user: response.user,
@@ -40,6 +40,7 @@ export const LoginForm = () => {
         router.push(`/(${space})/(private)/profile`);
       },
       onError: (error) => {
+        setErrors(error.message);
         throw error;
       },
     });
@@ -56,6 +57,7 @@ export const LoginForm = () => {
       [name]: data,
     }));
   };
+
   return (
     <View className="flex w-full justify-center ">
       <ControlledInput
@@ -90,6 +92,12 @@ export const LoginForm = () => {
           {translate('login.mdpOublier')}
         </Text>
       </Container>
+      <Text
+        onPress={handleResetPass}
+        className={`font-lato text-xs font-semibold text-primary `}
+      >
+        {errors !== '' && translate('login.loginError')}
+      </Text>
       <LoginButton
         type="button"
         label={translate('login.connectBtn')}
