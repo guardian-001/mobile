@@ -1,12 +1,11 @@
 import React from 'react';
 import type { z } from 'zod';
 
-import { translate } from '@/core';
-import { StepButtons } from '@/modules/shared';
+import { translate, useCustomForm } from '@/core';
 import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
-import useCustomForm from '@/shared/hooks/use-custom-form';
-import { SignupFormSchema } from '@/validations';
+
+import { SignupFormSchema } from '../supplier/schema/signup-request-schema-supplier';
 
 export type SignupFormType = z.infer<typeof SignupFormSchema>;
 
@@ -15,10 +14,9 @@ export type ResetFormProps = {
   handleNextStep?: () => void;
 };
 
-export default function CreateProfile({
-  handlePreviousStep,
-  handleNextStep,
-}: ResetFormProps) {
+export default function CreateProfile({}: // handlePreviousStep,
+// handleNextStep,
+ResetFormProps) {
   const { control } = useCustomForm(SignupFormSchema);
 
   return (
@@ -38,19 +36,19 @@ export default function CreateProfile({
         <ControlledInput
           testID="name-input"
           control={control}
-          name="name"
+          name="firstName"
           label={translate('labels.name')}
           placeholder={translate('labels.name')}
         />
         <ControlledInput
           testID="surname-input"
           control={control}
-          name="surname"
+          name="lastName"
           label={translate('labels.surname')}
           placeholder={translate('labels.surname')}
         />
         <ControlledPhoneNumberInput
-          name="phone"
+          name="phoneNumber"
           control={control}
           label={translate('labels.phone')}
           rules={{ required: 'Phone number is required' }}
@@ -64,10 +62,6 @@ export default function CreateProfile({
           placeholder={translate('labels.address')}
         />
       </ScrollView>
-      <StepButtons
-        previous={{ handlePreviousStep, label: 'signup.retour' }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
-      />
     </View>
   );
 }

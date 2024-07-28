@@ -50,7 +50,8 @@ export default function ResetStepper({ initialStep = 0 }: Props) {
     {
       title: 'resetpass.resetPasswordDescription',
       subtitle: 'resetpass.resetPasswordDescription',
-      component: <InterestPick onSubmit={handleNextStep} />, // Use the InterestPick component here
+      // component: <InterestPick onSubmit={handleNextStep} />, // Use the InterestPick component here
+      component: <InterestPick />, // Use the InterestPick component here
     },
   ];
 

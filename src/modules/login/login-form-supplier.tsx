@@ -40,7 +40,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormSupplierProps) => {
         >
           {translate('loginSupplier.kitPartenariatPro')}
         </Text>
-        <Container style="flex w-[100%] h-[28%] items-center mb-0 justify-between gap-3 bg-white  pb-2">
+        <Container style="flex w-[80%] h-[28%] items-center mb-0 justify-between gap-3 bg-white  pb-2">
           <ImageContainer className="flex  w-full items-center justify-center">
             <Image
               className="h-full w-full overflow-hidden rounded-t-xl "

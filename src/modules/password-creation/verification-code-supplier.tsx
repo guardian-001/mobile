@@ -2,10 +2,10 @@ import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import type * as z from 'zod';
 
+import { useCustomForm } from '@/core';
 import { Button, Text, TouchableOpacity, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import { OTPSchema } from '@/shared/validations';
 import { translate } from '@/translations/i18n';
-import { OTPSchema } from '@/validations';
 
 import { OTPInput } from '../reset-password/otp-input';
 

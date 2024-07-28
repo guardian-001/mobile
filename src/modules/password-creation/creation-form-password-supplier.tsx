@@ -2,11 +2,11 @@ import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import type * as z from 'zod';
 
+import { useCustomForm } from '@/core';
 import { Button, ControlledInput, Text, View } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
+import { PasswordSchema } from '@/shared/validations';
 import type { TxKeyPath } from '@/translations/i18n';
 import { translate } from '@/translations/i18n';
-import { PasswordSchema } from '@/validations';
 
 import PasswordRequirementItem from '../reset-password/password-requirement-item';
 
@@ -25,23 +25,23 @@ export default function ResetFormPassword({
   const passwordRequirements: { isValid: boolean; message: TxKeyPath }[] = [
     {
       isValid: password?.length >= 8,
-      message: 'resetpass.password-min-length',
+      message: 'resetpass.passwordMinLength',
     },
     {
       isValid: /[a-z]/.test(password) && password?.length >= 1,
-      message: 'resetpass.password-lowercase',
+      message: 'resetpass.passwordLowercase',
     },
     {
       isValid: /[A-Z]/.test(password),
-      message: 'resetpass.password-uppercase',
+      message: 'resetpass.passwordUppercase',
     },
     {
       isValid: /[0-9]/.test(password),
-      message: 'resetpass.password-digit',
+      message: 'resetpass.passwordDigit',
     },
     {
       isValid: /[^a-zA-Z0-9]/.test(password),
-      message: 'resetpass.password-special-char',
+      message: 'resetpass.passwordSpecialChar',
     },
   ];
 

@@ -7,7 +7,7 @@ import { useAuth } from '@/core';
 import { useSoftKeyboardEffect } from '@/core/keyboard';
 import { LoginForm } from '@/modules/login/login-pass-supplier';
 import { FocusAwareStatusBar } from '@/shared/components';
-import type { PasswordSchema } from '@/validations';
+import type { PasswordSchema } from '@/shared/validations';
 
 export default function Login() {
   const router = useRouter();

@@ -1,9 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Button, ScrollView, Text, View } from 'react-native';
-
-import { StepButtons } from '@/modules/shared';
 
 export type ResetFormProps = {
   handlePreviousStep?: () => void;
@@ -14,20 +11,25 @@ type InterestPickFormType = {
   interests: string[];
 };
 
-type InterestPickProps = {
-  onSubmit: (data: InterestPickFormType) => void;
-  handlePreviousStep?: () => void;
-  handleNextStep?: () => void;
-};
+// type InterestPickProps = {
+//   onSubmit: (data: InterestPickFormType) => void;
+//   handlePreviousStep?: () => void;
+//   handleNextStep?: () => void;
+// };
 
-const InterestPick = ({ handleNextStep }: InterestPickProps) => {
+const InterestPick = () => {
   const { control } = useForm<InterestPickFormType>({
     defaultValues: {
       interests: [],
     },
   });
-
-  const navigation = useNavigation();
+  // const InterestPick = ({ handleNextStep }: InterestPickProps) => {
+  //   const { control } = useForm<InterestPickFormType>({
+  //     defaultValues: {
+  //       interests: [],
+  //     },
+  //   });
+  // const navigation = useNavigation();
 
   const interests = [
     'Technology',
@@ -68,13 +70,13 @@ const InterestPick = ({ handleNextStep }: InterestPickProps) => {
           ))}
         </View>
       </ScrollView>
-      <StepButtons
+      {/* <StepButtons
         previous={{
           handlePreviousStep: () => navigation.goBack(),
           label: 'signup.retour',
         }}
         next={{ handleNextStep, label: 'signup.suivant' }}
-      />
+      /> */}
     </View>
   );
 };

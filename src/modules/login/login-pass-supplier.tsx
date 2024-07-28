@@ -4,11 +4,10 @@ import { View } from 'react-native';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import type * as z from 'zod';
 
-import { translate } from '@/core';
+import { translate, useCustomForm } from '@/core';
 import { Image, ImageContainer } from '@/shared/components';
 import { ControlledInput, Text } from '@/shared/components';
-import useCustomForm from '@/shared/hooks/use-custom-form';
-import { PasswordSchema } from '@/validations';
+import { PasswordSchema } from '@/shared/validations';
 
 import { Container } from '../shared';
 import LoginButton from '../shared/login-button';
@@ -27,21 +26,21 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
       className="mt-5 flex-1 items-center justify-start bg-secondary"
     >
       <Text className="text-lato-regular my-2 flex-row items-center justify-between text-xl font-bold">
-        {translate('loginSupplier.BienvenuesurArchimatch')}
+        {translate('loginSupplier.bienvenueSurArchimatch')}
       </Text>
       <Text className="text-lato-regular flex-row items-center justify-between text-xl font-bold">
-        {translate('loginSupplier.KitPartenariatPRO')}
+        {translate('loginSupplier.kitPartenariatPro')}
       </Text>
       <Container style="flex w-[100%] h-[50%] items-center mb-0 justify-between gap-3 bg-white  pb-2">
         <ImageContainer className="w-full flex-1">
           <Image
             className="h-full w-full overflow-hidden rounded-t-xl"
             contentFit="cover"
-            source={require('@/assets/Supplier-login.png')}
+            source={require('@/assets/supplier-login-screen.png')}
           />
         </ImageContainer>
       </Container>
-      <View className="w-9/10 mt-5 flex justify-center">
+      <View className="mt-5 flex w-4/5 justify-center">
         <ControlledInput
           testID="email-input"
           control={control}
