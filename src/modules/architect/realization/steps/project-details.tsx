@@ -9,7 +9,6 @@ import {
   Text,
   View,
 } from '@/shared/components';
-import { VALID_CITIES, VALID_WORK_SURFACES } from '@/shared/constants';
 
 import { useDetails } from '../shared/hooks/use-details';
 
@@ -21,6 +20,8 @@ export function ProjectDetails() {
     handleSubmit,
     control,
     onHandleBack,
+    cities,
+    workSurfaces,
   } = useDetails();
 
   return (
@@ -48,7 +49,7 @@ export function ProjectDetails() {
         <TagGroup
           name="city"
           control={control}
-          tags={[...VALID_CITIES]}
+          tags={cities}
           label="realisation.detailsStep.localisationLabel"
           error={errorCity}
           required={true}
@@ -57,7 +58,7 @@ export function ProjectDetails() {
         <TagGroup
           name="workSurface"
           control={control}
-          tags={[...VALID_WORK_SURFACES]}
+          tags={workSurfaces}
           label="realisation.detailsStep.surfaceLabel"
           error={errorWorkSurface}
           required={true}

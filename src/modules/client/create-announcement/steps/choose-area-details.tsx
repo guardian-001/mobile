@@ -3,18 +3,20 @@ import React from 'react';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { ControlledInput, TagGroup, Text, View } from '@/shared/components';
-import { VALID_CITIES, VALID_WORK_SURFACES } from '@/shared/constants';
 
 import { useAreaDetails } from '../hooks/use-area-details.';
 export function ChooseAreaDetails() {
   const {
-    onHandleBack,
+    onRollBack,
     handleSubmit,
     control,
     onSubmit,
     errorCity,
     errorTerrainSurface,
     errorWorkSurface,
+    cities,
+    terrainSurfaces,
+    workSurfaces,
   } = useAreaDetails();
   return (
     <View className="flex flex-1 justify-between pt-4">
@@ -28,7 +30,7 @@ export function ChooseAreaDetails() {
         <TagGroup
           name="city"
           control={control}
-          tags={[...VALID_CITIES]}
+          tags={cities}
           label="announcement.cityLabel"
           error={errorCity}
         />
@@ -45,20 +47,20 @@ export function ChooseAreaDetails() {
         <TagGroup
           name="terrainSurface"
           control={control}
-          tags={[...VALID_WORK_SURFACES]}
+          tags={terrainSurfaces}
           label="announcement.totalLandAreaLabel"
           error={errorTerrainSurface}
         />
         <TagGroup
           name="workSurface"
           control={control}
-          tags={[...VALID_WORK_SURFACES]}
+          tags={workSurfaces}
           label="announcement.workAreaLabel"
           error={errorWorkSurface}
         />
       </View>
       <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'common.retour' }}
+        previous={{ handlePreviousStep: onRollBack, label: 'common.retour' }}
         next={{
           handleSubmit: handleSubmit(onSubmit),
           label: 'common.suivant',

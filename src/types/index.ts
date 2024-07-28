@@ -24,3 +24,7 @@ export type Image = {
   name: string;
   url: string;
 };
+export type TagType = {
+  value: string;
+  displayName: string;
+};

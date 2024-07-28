@@ -1,3 +1,4 @@
+import { useAnnouncementStep7Data } from '@/api/client';
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { ProjectDetailsSchema } from '@/modules/architect/shared/schemas';
@@ -21,7 +22,9 @@ export const useDetails = () => {
       description: formData?.description,
     }
   );
-
+  const { data } = useAnnouncementStep7Data();
+  const cities = data?.cities ?? [];
+  const workSurfaces = data?.workSurfaces ?? [];
   const onSubmit = (data: DetailsFormType) => {
     setFormData((prev: ProjectRealizationType) => ({
       ...prev,
@@ -43,5 +46,7 @@ export const useDetails = () => {
     setFormData,
     onHandleNext,
     onHandleBack,
+    cities,
+    workSurfaces,
   };
 };

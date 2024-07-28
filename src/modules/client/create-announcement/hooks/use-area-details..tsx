@@ -1,3 +1,4 @@
+import { useAnnouncementStep7Data } from '@/api/client';
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
@@ -26,6 +27,10 @@ export const useAreaDetails = () => {
     | TxKeyPath
     | undefined;
 
+  const { data, isError, isLoading } = useAnnouncementStep7Data();
+  const cities = data?.cities ?? [];
+  const terrainSurfaces = data?.terrainSurfaces ?? [];
+  const workSurfaces = data?.workSurfaces ?? [];
   const onSubmit = (data: AreaDetailsFormType) => {
     setFormData((prev: any) => ({
       ...prev,
@@ -33,9 +38,13 @@ export const useAreaDetails = () => {
     }));
     onHandleNext();
   };
+  const onRollBack = () => {
+    formData.needs = [];
+    onHandleBack();
+  };
 
   return {
-    onHandleBack,
+    onRollBack,
     onHandleNext,
     setFormData,
     formData,
@@ -45,5 +54,10 @@ export const useAreaDetails = () => {
     errorCity,
     errorTerrainSurface,
     errorWorkSurface,
+    cities,
+    terrainSurfaces,
+    workSurfaces,
+    isError,
+    isLoading,
   };
 };
