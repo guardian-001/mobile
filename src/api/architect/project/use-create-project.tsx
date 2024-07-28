@@ -1,30 +1,15 @@
 import type { AxiosError, AxiosResponse } from 'axios';
 import { createMutation } from 'react-query-kit';
 
-import { client } from '@/api/common';
+import { createProject } from '@/services/shared/project-realization-services';
 
-type Response = AxiosResponse;
-type Variables = FormData;
+import type { VariablesCreateProject } from './types';
 
 export const useCreateProjectApi = createMutation<
-  Response,
-  Variables,
+  AxiosResponse,
+  VariablesCreateProject,
   AxiosError
 >({
   mutationKey: ['createProject'],
-  mutationFn: async (formData: FormData) => {
-    try {
-      const response = await client({
-        url: 'api/architect-realization/create-realization/',
-        method: 'POST',
-        data: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
+  mutationFn: createProject,
 });

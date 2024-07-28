@@ -30,6 +30,7 @@ export const LoginForm = () => {
   const login = useLoginApi();
 
   const onSubmit = (data: LoginFormType) => {
+    console.log(data);
     login.mutate(data, {
       onSuccess: (response) => {
         signIn({

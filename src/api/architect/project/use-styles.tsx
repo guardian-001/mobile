@@ -1,20 +1,11 @@
 import type { AxiosError } from 'axios';
 import { createQuery } from 'react-query-kit';
 
-import { client } from '@/api/common';
-import type { Style } from '@/types';
+import { getStyles } from '@/services/shared/project-realization-services';
 
-type Response = Style[];
-type Variables = void;
+import type { ResponseStyle, Variables } from './types';
 
-export const useStylesApi = createQuery<Response, Variables, AxiosError>({
+export const useStylesApi = createQuery<ResponseStyle, Variables, AxiosError>({
   queryKey: ['styles'],
-  fetcher: async () => {
-    try {
-      const response = await client.get(`/api/users/architectural-styles`);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  },
+  fetcher: getStyles,
 });

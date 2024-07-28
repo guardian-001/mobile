@@ -1,36 +1,26 @@
+import { useRouter } from 'expo-router';
+
 import {
   useCategoriesApi,
   useNeedsApi,
   useStylesApi,
 } from '@/api/architect/project';
 import { useCreateProjectApi } from '@/api/architect/project/use-create-project';
-import { useCustomForm } from '@/core';
+import { useRouteName } from '@/core';
 import { useFormStepper } from '@/shared';
 import { fetchAllImages } from '@/shared/constants';
 
-import { ProjectRealizationSchema } from '../schemas';
 import type { ProjectRealizationType } from '../types';
 
 export const useFinalStep = () => {
   const { formData, onHandleBack, onHandleNext } =
     useFormStepper<ProjectRealizationType>();
 
-  const { handleSubmit, control } = useCustomForm(ProjectRealizationSchema, {
-    projectName: formData.projectName,
-    architect: formData.architect,
-    needs: formData.needs,
-    address: formData.address,
-    city: formData.city,
-    workSurface: formData.workSurface,
-    description: formData.description,
-    architecturalStyle: formData.architecturalStyle,
-    realizationImages: formData.realizationImages,
-    projectCategory: formData.projectCategory,
-  });
-
   const { mutate, isError, error, isSuccess, data } = useCreateProjectApi();
+  const router = useRouter();
+  const space = useRouteName();
 
-  const onSubmit = async () => {
+  const handleProject = async () => {
     await fetchAllImages(formData.realizationImages).then(async (files) => {
       let newData = new FormData();
       newData.append(
@@ -49,7 +39,14 @@ export const useFinalStep = () => {
       files.forEach((file) => {
         newData.append('realizationImages', file);
       });
-      mutate(newData);
+      mutate(newData, {
+        onSuccess: () => {
+          router.push(`/(${space})/(private)/profile`);
+        },
+        onError: (errorApi) => {
+          throw errorApi;
+        },
+      });
     });
   };
 
@@ -70,12 +67,10 @@ export const useFinalStep = () => {
   );
 
   return {
-    onSubmit,
+    handleProject,
     formData,
     onHandleBack,
     onHandleNext,
-    handleSubmit,
-    control,
     categoryName,
     styleName,
     servicesObjects,

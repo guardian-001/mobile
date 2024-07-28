@@ -1,17 +1,11 @@
 import type { AxiosError } from 'axios';
 import { createQuery } from 'react-query-kit';
 
-import { client } from '@/api/common';
-import type { Need } from '@/types';
+import { getNeeds } from '@/services/shared/project-realization-services';
 
-type Response = Need[];
-type Variables = void;
+import type { ResponseNeeds, Variables } from './types';
 
-export const useNeedsApi = createQuery<Response, Variables, AxiosError>({
+export const useNeedsApi = createQuery<ResponseNeeds, Variables, AxiosError>({
   queryKey: ['needs'],
-  fetcher: () => {
-    return client
-      .get(`/api/architect-realization/needs/`)
-      .then((response) => response.data);
-  },
+  fetcher: getNeeds,
 });

@@ -8,7 +8,7 @@ import { Gallery, GeneralInfos, Services } from '../shared/components';
 import { useFinalStep } from '../shared/hooks';
 
 export function FinalStep() {
-  const { onSubmit, formData, onHandleBack, handleSubmit } = useFinalStep();
+  const { formData, onHandleBack, handleProject } = useFinalStep();
   return (
     <View className="mb-5 flex h-full flex-1 items-start justify-between gap-5  ">
       <ScrollView className="w-full ">
@@ -56,7 +56,7 @@ export function FinalStep() {
             label: 'common.modifier',
           }}
           next={{
-            handleSubmit: handleSubmit(onSubmit),
+            handleSubmit: handleProject,
             label: 'common.publier',
           }}
         />
