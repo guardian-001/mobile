@@ -1,3 +1,5 @@
+import type { TagType } from '@/types';
+
 export type resultType = {
   id: number;
   label: string;
@@ -16,15 +18,12 @@ export type VariablesStep4 = { projectCategory: number };
 export type VariablesStep5 = { propertyType: number };
 export type VariablesStep6 = { propertyType: number; workType: number };
 export type VariablesStep9 = { propertyType: number };
+export type VariablesStep10 = { propertyType: number; workType: number };
 
-export type ToggleButtonType = {
-  value: string;
-  displayName: string;
-};
 export type CombinedData = {
-  cities: ToggleButtonType[];
-  terrainSurfaces: ToggleButtonType[];
-  workSurfaces: ToggleButtonType[];
+  cities: TagType[];
+  terrainSurfaces: TagType[];
+  workSurfaces: TagType[];
 };
 
 export type PropertyFeature = {
@@ -41,5 +40,9 @@ export type PropertyResponse = {
 };
 export type ArchitecturalStyleResponse = {
   data: resultType[];
+  eliminateStep: boolean;
+};
+export type ProjectExtensionsResponse = {
+  data: PropertyFeature[];
   eliminateStep: boolean;
 };

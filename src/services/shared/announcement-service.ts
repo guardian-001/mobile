@@ -3,11 +3,12 @@ import type { AxiosError } from 'axios';
 import { client } from '@/api';
 import type {
   ArchitecturalStyleResponse,
+  ProjectExtensionsResponse,
   PropertyResponse,
   Response,
   ResponseWorkType,
-  ToggleButtonType,
-} from '@/api/client';
+} from '@/api/client/announcements/types';
+import type { TagType } from '@/types';
 
 function isAxiosError(error: unknown): error is AxiosError {
   return (error as AxiosError).isAxiosError !== undefined;
@@ -93,7 +94,6 @@ export async function getAnnouncementStep5(
   id: number
 ): Promise<ResponseWorkType> {
   const url = `api/announcement/work-types?property_type_id=${id}`;
-  console.log('url :', url);
   return client
     .get(url)
     .then((response) => response.data)
@@ -133,9 +133,7 @@ export async function getAnnouncementStep6(
       }
     });
 }
-export async function getAnnouncementStep7Cities(): Promise<
-  ToggleButtonType[]
-> {
+export async function getAnnouncementStep7Cities(): Promise<TagType[]> {
   const url = `/api/announcement/cities`;
   return client
     .get(url)
@@ -155,7 +153,7 @@ export async function getAnnouncementStep7Cities(): Promise<
     });
 }
 export async function getAnnouncementStep7TerrainSurfaces(): Promise<
-  ToggleButtonType[]
+  TagType[]
 > {
   const url = `/api/announcement/terrain-surfaces`;
   return client
@@ -175,9 +173,7 @@ export async function getAnnouncementStep7TerrainSurfaces(): Promise<
       }
     });
 }
-export async function getAnnouncementStep7WorkSurfaces(): Promise<
-  ToggleButtonType[]
-> {
+export async function getAnnouncementStep7WorkSurfaces(): Promise<TagType[]> {
   const url = `/api/announcement/work-surfaces`;
   return client
     .get(url)
@@ -196,7 +192,7 @@ export async function getAnnouncementStep7WorkSurfaces(): Promise<
       }
     });
 }
-export async function getAnnouncementStep8(): Promise<ToggleButtonType[]> {
+export async function getAnnouncementStep8(): Promise<TagType[]> {
   const url = `/api/announcement/budgets`;
   return client
     .get(url)
@@ -239,7 +235,7 @@ export async function getAnnouncementStep9(
 export async function getAnnouncementStep10(
   propertyId: number,
   workId: number
-): Promise<{ data: any }> {
+): Promise<ProjectExtensionsResponse> {
   const url = `/api/announcement/project-extensions?property_type_id=${propertyId}&work_type_id=${workId}`;
   return client
     .get(url)

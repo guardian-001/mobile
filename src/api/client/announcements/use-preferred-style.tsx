@@ -17,7 +17,7 @@ export const usePreferredStyleApi = createQuery<
   AxiosError
 >({
   queryKey: [
-    'announcement-step5',
+    'announcement-step9',
     (variables: VariablesStep9) => variables.propertyType,
   ],
   fetcher: fetchAnnouncementStep9,

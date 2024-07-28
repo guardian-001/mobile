@@ -44,3 +44,7 @@ export type AreaDetailsFormType = Pick<
   AnnouncementType,
   'address' | 'city' | 'terrainSurface' | 'workSurface' | 'numberFloors'
 >;
+export type ExecutionDetailsFormType = Pick<
+  AnnouncementType,
+  'budget' | 'description'
+>;

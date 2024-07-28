@@ -33,9 +33,9 @@ export function ChooseWorkType() {
               <EmptyList isLoading={isLoading} />
             ) : (
               <View className="gap-4">
-                {workTypeData?.map((cardData, index) => (
+                {workTypeData?.map((cardData) => (
                   <ToggleCard
-                    key={index}
+                    key={cardData.id}
                     className="h-16 w-full !items-start rounded-lg"
                     title={cardData.header}
                     description={cardData.description}

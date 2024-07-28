@@ -22,7 +22,6 @@ export const useWorkType = () => {
   } = useWorkTypeApi({
     variables: { propertyType: formData.propertyType },
   });
-  console.log('workTypeData :', workTypeData);
   const onSubmit = (data: workTypeFormType) => {
     setFormData((prev: any) => ({
       ...prev,

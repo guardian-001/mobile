@@ -34,9 +34,9 @@ export function ChoosePreferredStyle() {
               <EmptyList isLoading={isLoading || isFetchedAfterMount} />
             ) : (
               <View className=" gap-4">
-                {architecturalStyles.map((cardData, index) => (
+                {architecturalStyles.map((cardData) => (
                   <ToggleCard
-                    key={index}
+                    key={cardData.id}
                     className="h-16 w-full !items-start rounded-lg"
                     title={cardData.label}
                     name="architecturalStyle"

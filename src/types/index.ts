@@ -20,3 +20,7 @@ export type Image = {
   name: string;
   ulr: string;
 };
+export type TagType = {
+  value: string;
+  displayName: string;
+};

@@ -1,5 +1,6 @@
 export * from './use-additional-info';
 export * from './use-category';
+export * from './use-execution-details';
 export * from './use-needs';
 export * from './use-preferred-style';
 export * from './use-project';

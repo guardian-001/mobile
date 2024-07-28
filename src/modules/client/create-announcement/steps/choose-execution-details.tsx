@@ -1,27 +1,52 @@
 import React from 'react';
 
-import { translate } from '@/core';
-import { StepperButton } from '@/modules/shared';
-import { View } from '@/shared/components';
-import { useFormStepper } from '@/shared/providers';
-import type { AnnouncementType } from '@/types/announcement';
+import { StepButtons } from '@/modules/shared';
+import { EmptyList, ErrorData, TagGroup, View } from '@/shared/components';
+
+import { useExecutionDetails } from '../hooks';
 export function ChooseExecutionDetails() {
-  const { onHandleBack, onHandleNext } = useFormStepper<AnnouncementType>();
+  const {
+    onRollBack,
+    handleSubmit,
+    control,
+    onSubmit,
+    budgets,
+
+    errorBudget,
+    isError,
+    isLoading,
+  } = useExecutionDetails();
   return (
-    <View className="flex flex-1 items-center justify-between pt-8">
-      <View className="h-3/4" />
-      <View className="flex flex-row">
-        <StepperButton
-          width="w-[45%]"
-          onPressHandler={onHandleBack}
-          label={translate('signup.retour')}
-        />
-        <StepperButton
-          width="w-[45%]"
-          onPressHandler={onHandleNext}
-          label={translate('signup.suivant')}
-        />
-      </View>
+    <View className="flex-1 pt-4">
+      {isError ? (
+        <ErrorData message="Error Loading Data" />
+      ) : (
+        <View className="flex flex-1 justify-between">
+          {isLoading || budgets?.length === 0 ? (
+            <EmptyList isLoading={isLoading} />
+          ) : (
+            <View className="gap-4">
+              <TagGroup
+                name="budget"
+                control={control}
+                tags={budgets ?? []}
+                label="announcement.budgetLabel"
+                error={errorBudget}
+              />
+            </View>
+          )}
+          <StepButtons
+            previous={{
+              handlePreviousStep: onRollBack,
+              label: 'signup.retour',
+            }}
+            next={{
+              handleSubmit: handleSubmit(onSubmit),
+              label: 'signup.suivant',
+            }}
+          />
+        </View>
+      )}
     </View>
   );
 }
