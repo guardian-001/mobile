@@ -1,3 +1,4 @@
+import { useNeedsApi } from '@/api/client';
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
@@ -16,7 +17,13 @@ export const useNeeds = () => {
   );
 
   const error = errors?.needs?.message as TxKeyPath | undefined;
-
+  const {
+    data: NeedsData,
+    isError,
+    isLoading,
+  } = useNeedsApi({
+    variables: { architectSpeciality: formData.architectSpeciality },
+  });
   const onSubmit = (data: needsFormType) => {
     setFormData((prev: any) => ({
       ...prev,
@@ -24,8 +31,12 @@ export const useNeeds = () => {
     }));
     onHandleNext();
   };
+  const onRollBack = () => {
+    formData.needs = [];
+    onHandleBack();
+  };
   return {
-    onHandleBack,
+    onRollBack,
     onHandleNext,
     setFormData,
     formData,
@@ -33,5 +44,8 @@ export const useNeeds = () => {
     control,
     error,
     onSubmit,
+    NeedsData,
+    isError,
+    isLoading,
   };
 };

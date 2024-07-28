@@ -2,7 +2,6 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 
-import { useAuth } from '@/core';
 import { useSoftKeyboardEffect } from '@/core/keyboard';
 import { LoginForm } from '@/modules/login/login-form-supplier';
 import { FocusAwareStatusBar } from '@/shared/components';
@@ -13,11 +12,9 @@ export type LoginFormSupplierProps = {
 };
 export default function Login() {
   const router = useRouter();
-  const signIn = useAuth.use.signIn();
   useSoftKeyboardEffect();
 
   const onSubmit: LoginFormSupplierProps['onSubmit'] = () => {
-    signIn({ access: 'access-token', refresh: 'refresh-token' });
     router.push('/(supplier)/(public)/login-pass');
   };
   return (

@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import type * as z from 'zod';
 
 import { useLoginApi } from '@/api/auth';
-import { translate, useAuth } from '@/core';
+import { translate } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useRouteName } from '@/shared/hooks/use-get-route';
@@ -23,19 +23,15 @@ export type LoginType = {
 export const LoginForm = () => {
   const router = useRouter();
   const space = useRouteName();
-  const signIn = useAuth.use.signIn();
   const [checked, setChecked] = useState(true);
+  const [errors, setErrors] = useState('');
   const { handleSubmit, control } = useCustomForm(LoginFormSchema);
   const login = useLoginApi();
 
   const onSubmit = (data: LoginFormType) => {
     login.mutate(data, {
-      onSuccess: (response) => {
-        signIn({ access: response.access, refresh: response.refresh });
-
-        router.push(`/(${space})/(private)/profile`);
-      },
       onError: (error) => {
+        setErrors(error.message);
         throw error;
       },
     });
@@ -52,6 +48,7 @@ export const LoginForm = () => {
       [name]: data,
     }));
   };
+
   return (
     <View className="flex w-full justify-center ">
       <ControlledInput
@@ -86,6 +83,12 @@ export const LoginForm = () => {
           {translate('login.mdpOublier')}
         </Text>
       </Container>
+      <Text
+        onPress={handleResetPass}
+        className={`font-lato text-xs font-semibold text-primary `}
+      >
+        {errors !== '' && translate('login.loginError')}
+      </Text>
       <LoginButton
         type="button"
         label={translate('login.connectBtn')}

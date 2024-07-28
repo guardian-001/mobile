@@ -1,3 +1,4 @@
+import { useStylesApi } from '@/api/client';
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
@@ -14,6 +15,7 @@ export const useSpeciality = () => {
     { architectSpeciality: formData.architectSpeciality }
   );
   const error = errors?.architectSpeciality?.message as TxKeyPath | undefined;
+  const { data: SpecialityData, isError, isLoading } = useStylesApi();
 
   const onSubmit = (data: SpecialityFormType) => {
     setFormData((prev: any) => ({
@@ -31,5 +33,8 @@ export const useSpeciality = () => {
     control,
     error,
     onSubmit,
+    SpecialityData,
+    isError,
+    isLoading,
   };
 };

@@ -1,4 +1,5 @@
 import type { AxiosError } from 'axios';
+import { useRouter } from 'expo-router';
 import { createMutation } from 'react-query-kit';
 
 import { client } from '../common';
@@ -13,6 +14,10 @@ export const useSignupApi = createMutation<Response, Request, AxiosError>({
       method: 'POST',
       data: request,
     })
-      .then((response) => response.data)
+      .then((response) => {
+        const router = useRouter();
+        router.push('(architect)/(public)/login');
+        return response.data;
+      })
       .catch((response) => response.data),
 });

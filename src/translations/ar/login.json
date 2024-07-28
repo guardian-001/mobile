@@ -13,5 +13,6 @@
   "haveAccountQuestion": "ليس لديك حساب؟",
   "signupLink": "سجل",
   "codeVerif": "رمز التحقق",
-  "saisirCode": "أدخل الرمز المرسل إليه"
+  "saisirCode": "أدخل الرمز المرسل إليه",
+  "loginError": "email ou mot de passe incorrect"
 }

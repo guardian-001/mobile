@@ -1,16 +1,15 @@
 import type { AxiosError } from 'axios';
 import { createQuery } from 'react-query-kit';
 
-import { client } from '@/api/common';
-import type { Category } from '@/types';
+import { getCategories } from '@/services/shared/project-realization-services';
 
-type Response = Category[];
-type Variables = void;
-export const useCategoriesApi = createQuery<Response, Variables, AxiosError>({
+import type { ResponseCategory, Variables } from './types';
+
+export const useCategoriesApi = createQuery<
+  ResponseCategory,
+  Variables,
+  AxiosError
+>({
   queryKey: ['categories'],
-  fetcher: () => {
-    return client
-      .get(`/api/announcement/project-categories`)
-      .then((response) => response.data);
-  },
+  fetcher: getCategories,
 });

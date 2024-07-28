@@ -12,9 +12,9 @@ export function ChoosePreferredStyle() {
   return (
     <View className="flex flex-1 justify-between pt-8">
       <View className=" gap-4">
-        {PreferredStyleData.map((cardData, index) => (
+        {PreferredStyleData.map((cardData) => (
           <ToggleCard
-            key={index}
+            key={cardData.id}
             className="h-16 w-full !items-start rounded-lg"
             title={cardData.label}
             name="architecturalStyle"
@@ -27,10 +27,10 @@ export function ChoosePreferredStyle() {
         <Text className="text-sm text-error dark:text-error" tx={error} />
       )}
       <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'common.back' }}
         next={{
           handleSubmit: handleSubmit(onSubmit),
-          label: 'signup.suivant',
+          label: 'common.next',
         }}
       />
     </View>

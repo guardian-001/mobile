@@ -29,5 +29,15 @@
     "imgLoaderTitle": "Nous organisons vos photos pour mettre en valeur votre vision architecturale",
     "imgLoaderDescriptionSur": "sur",
     "imgLoaderDescription": "photos importés"
+  },
+  "finalStep": {
+    "title": "Terminé !",
+    "description": "Voici un aperçu de votre projet nouvellement créée",
+    "categorie": "Catégorie",
+    "localisation": "Localisation",
+    "style": "style",
+    "superficie": "superficie",
+    "services": "Les services",
+    "servicesDescription": "Services approuvés requis pour le projet :"
   }
 }
