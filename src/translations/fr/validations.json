@@ -16,5 +16,14 @@
   "phoneNumberMaxLength": "Le numéro de téléphone doit comporter au maximum 15 caractères",
   "arrayNonEmptyString": "Vous devez choisir au moins une option",
   "uploadedImageType": "Veuillez télécharger uniquement des fichiers image.",
-  "arrayNonEmptyImage": "Vous devez charger au moins une image"
+  "arrayNonEmptyImage": "Vous devez charger au moins une image",
+  "invalidType": "type d'image invalide",
+  "invalidCity": "ville invalide",
+  "invalidWorkSurface": "surface invalide",
+  "invalidInteger": "entier invalide",
+  "uniqueItems": "objet pas unique",
+  "invalidDateFormat": " format date invalide",
+  "invalidTimeFormat": " format temps invalide",
+  "invalidName": "nom invalide",
+  "invalidUrl": "url invalide"
 }

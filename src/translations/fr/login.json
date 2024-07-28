@@ -11,5 +11,6 @@
   "termsConditionsPart3": "et reconnaissez avoir lu notre",
   "termsConditionsPart4": "politique de confidentialité.",
   "haveAccountQuestion": "Vous n’avez pas de compte?",
-  "signupLink": "S’inscrire"
+  "signupLink": "S’inscrire",
+  "loginError": "email ou mot de passe incorrect"
 }

@@ -60,10 +60,10 @@ export function ChooseAreaDetails() {
         />
       </View>
       <StepButtons
-        previous={{ handlePreviousStep: onRollBack, label: 'signup.retour' }}
+        previous={{ handlePreviousStep: onRollBack, label: 'common.back' }}
         next={{
           handleSubmit: handleSubmit(onSubmit),
-          label: 'signup.suivant',
+          label: 'common.next',
         }}
       />
     </View>
