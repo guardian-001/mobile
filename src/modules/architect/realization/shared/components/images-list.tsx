@@ -10,8 +10,8 @@ import CloseBtn from './close-btn';
 
 interface ImagesListProps {
   images: ImageInfo[];
-  removeImage: (index: number) => void;
-  handleImagePress: (index: number) => void;
+  removeImage: (index: number, subIndex: number) => void;
+  handleImagePress: (index: number, subIndex: number) => void;
   pickImages: () => void;
 }
 
@@ -33,20 +33,8 @@ const ImagesList: React.FC<ImagesListProps> = ({
           {pair.map((item: ImageInfo, subIndex: number) => (
             <React.Fragment key={index + '-' + subIndex}>
               <View className="h-fit w-44">
-                <CloseBtn
-                  handleAction={() =>
-                    removeImage(
-                      index > 0 ? index + 1 + subIndex : index + subIndex
-                    )
-                  }
-                />
-                <Pressable
-                  onPress={() =>
-                    handleImagePress(
-                      index > 0 ? index + 1 + subIndex : index + subIndex
-                    )
-                  }
-                >
+                <CloseBtn handleAction={() => removeImage(index, subIndex)} />
+                <Pressable onPress={() => handleImagePress(index, subIndex)}>
                   <Image
                     contentFit="fill"
                     source={{ uri: item.uri }}

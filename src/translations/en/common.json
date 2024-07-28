@@ -5,9 +5,9 @@
   "enterPassword": "Enter the password",
   "confirmPassword": "confirm password",
   "start": "Start",
-  "ignorer": "Skip",
-  "retour": "Back",
-  "suivant": "Next",
-  "modifier": "Edit",
-  "publier": "Publish"
+  "ignore": "Skip",
+  "back": "Back",
+  "next": "Next",
+  "modify": "Edit",
+  "publish": "Publish"
 }

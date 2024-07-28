@@ -12,14 +12,9 @@ export type LoginFormSupplierProps = {
 };
 export default function Login() {
   const router = useRouter();
-  // const signIn = useAuth.use.signIn();
   useSoftKeyboardEffect();
 
   const onSubmit: LoginFormSupplierProps['onSubmit'] = () => {
-    // signIn({
-    //   token: { access: 'access-token', refresh: 'refresh-token' },
-    //   user: user,
-    // });
     router.push('/(supplier)/(public)/reset-password.tsx');
   };
   return (

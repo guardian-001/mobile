@@ -31,10 +31,10 @@ export function ChooseAdditionalInfo() {
         <Text className="text-sm text-error dark:text-error" tx={error} />
       )}
       <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'common.retour' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'common.back' }}
         next={{
           handleSubmit: handleSubmit(onSubmit),
-          label: 'common.suivant',
+          label: 'common.next',
         }}
       />
     </View>

@@ -74,8 +74,8 @@ export function CreateProfile() {
       </View>
 
       <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'common.retour' }}
-        next={{ handleSubmit: handleSubmit(onSubmit), label: 'common.suivant' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'common.back' }}
+        next={{ handleSubmit: handleSubmit(onSubmit), label: 'common.next' }}
       />
     </View>
   );

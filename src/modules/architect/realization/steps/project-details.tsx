@@ -79,11 +79,11 @@ export function ProjectDetails() {
         <StepButtons
           previous={{
             handlePreviousStep: onHandleBack,
-            label: 'common.retour',
+            label: 'common.back',
           }}
           next={{
             handleSubmit: handleSubmit(onSubmit),
-            label: 'common.suivant',
+            label: 'common.next',
           }}
         />
       </View>

@@ -53,11 +53,11 @@ export function FinalStep() {
         <StepButtons
           previous={{
             handlePreviousStep: onHandleBack,
-            label: 'common.modifier',
+            label: 'common.modify',
           }}
           next={{
             handleSubmit: handleProject,
-            label: 'common.publier',
+            label: 'common.publish',
           }}
         />
       </View>

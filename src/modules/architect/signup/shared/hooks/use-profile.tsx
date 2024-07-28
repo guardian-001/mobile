@@ -26,7 +26,7 @@ export const useProfile = () => {
   });
 
   const onSubmit = (data: CreateAccountFormType) => {
-    setFormData((prev: any) => ({
+    setFormData((prev: SignupFormDataType) => ({
       ...prev,
       ...data,
     }));

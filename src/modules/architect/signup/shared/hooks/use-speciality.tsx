@@ -25,7 +25,7 @@ export const useSpeciality = () => {
   };
 
   const onSubmit = (data: SpecialityFormType) => {
-    setFormData((prev: any) => ({
+    setFormData((prev: SignupFormDataType) => ({
       ...prev,
       ...data,
     }));

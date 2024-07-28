@@ -1,5 +1,8 @@
 import type { AxiosError } from 'axios';
+import { useRouter } from 'expo-router';
 import { createMutation } from 'react-query-kit';
+
+import { useAuth, useRouteName } from '@/core';
 
 import { client } from '../common';
 import type { LoginRequest, LoginResponse } from './types';
@@ -13,5 +16,24 @@ export const useLoginApi = createMutation<Response, Request, AxiosError>({
       url: '/api/users/login-email/',
       method: 'POST',
       data: request,
-    }).then((response) => response.data),
+    })
+      .then((response) => {
+        const router = useRouter();
+        const space = useRouteName();
+        const signIn = useAuth.use.signIn();
+
+        signIn({
+          token: {
+            access: response.data.access,
+            refresh: response.data.refresh,
+          },
+          user: response.data.user,
+        });
+
+        router.push(`/(${space})/(private)/profile`);
+        return response.data;
+      })
+      .catch((error) => {
+        return error.message;
+      }),
 });

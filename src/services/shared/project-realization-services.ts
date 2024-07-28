@@ -79,7 +79,6 @@ export async function createProject(
     return response.data;
   } catch (error: unknown) {
     if (isAxiosError(error)) {
-      console.log('errrrrr: ', error.message);
       throw new Error(
         `API request failed with status ${error.status}\n API request failed with message ${error.message}`
       );

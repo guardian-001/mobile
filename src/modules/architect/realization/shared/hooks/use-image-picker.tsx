@@ -61,13 +61,15 @@ export const useImagePicker = <T extends FieldValues>({
     }
   };
 
-  const removeImage = (index: number) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+  const removeImage = (index: number, subIndex: number) => {
+    const calculation = index > 0 ? index + 1 + subIndex : index + subIndex;
+    setImages((prevImages) => prevImages.filter((_, i) => i !== calculation));
     setSelectedImage(images[0]);
   };
 
-  const handleImagePress = (index: number) => {
-    setSelectedImage(images[index]);
+  const handleImagePress = (index: number, subIndex: number) => {
+    const calculation = index > 0 ? index + 1 + subIndex : index + subIndex;
+    setSelectedImage(images[calculation]);
   };
 
   return {

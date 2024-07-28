@@ -5,9 +5,9 @@
   "confirmPassword": "confirmer le mot de passe",
   "enterPassword": "Saisirez le mot de passe",
   "start": "Commencer",
-  "ignorer": "Ignorer",
-  "retour": "Retour",
-  "suivant": "Suivant",
-  "modifier": "Modifier",
-  "publier": "Publier"
+  "ignore": "Ignorer",
+  "back": "Retour",
+  "next": "Suivant",
+  "modify": "Modifier",
+  "publish": "Publier"
 }

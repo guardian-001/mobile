@@ -24,7 +24,7 @@ export default function GeneralInfos() {
             className="mb-2 text-start text-sm  font-extrabold"
           />
           <Text className="mb-2 text-start text-sm font-extrabold  text-description">
-            {formData.city}
+            {formData?.city}
           </Text>
         </View>
       </View>
@@ -44,7 +44,7 @@ export default function GeneralInfos() {
             className="mb-2 text-start text-sm  font-extrabold"
           />
           <Text className="mb-2 text-start text-sm font-extrabold  text-description">
-            {formData.workSurface}
+            {formData?.workSurface}
           </Text>
         </View>
       </View>

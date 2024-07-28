@@ -44,8 +44,8 @@ export function ChooseSpeciality() {
       </ScrollView>
       {error && <Text tx={error} className="text-sm text-error" />}
       <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'common.ignorer' }}
-        next={{ handleSubmit: handleSubmit(onSubmit), label: 'common.suivant' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'common.ignore' }}
+        next={{ handleSubmit: handleSubmit(onSubmit), label: 'common.next' }}
       />
     </View>
   );

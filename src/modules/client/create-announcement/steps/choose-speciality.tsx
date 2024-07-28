@@ -51,7 +51,7 @@ export function ChooseSpeciality() {
           )}
           <StepperButton
             onPressHandler={handleSubmit(onSubmit)}
-            label={translate('common.suivant')}
+            label={translate('common.next')}
           />
         </View>
       )}

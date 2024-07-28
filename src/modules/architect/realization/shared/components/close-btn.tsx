@@ -11,7 +11,6 @@ export default function CloseBtn({ handleAction }: closeProps) {
         onPress={handleAction}
       >
         <Text>X</Text>
-        {/* <Close color={colors.blue} /> */}
       </TouchableOpacity>
     </View>
   );
