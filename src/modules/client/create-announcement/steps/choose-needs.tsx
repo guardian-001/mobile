@@ -39,7 +39,7 @@ export function ChooseNeeds() {
                     key={cardData.id}
                     className="flex h-16  w-full flex-row rounded-lg"
                     title={cardData.label}
-                    image={cardData.icon}
+                    imageIcon={cardData.icon}
                     name="needs"
                     control={control}
                     multi={true}

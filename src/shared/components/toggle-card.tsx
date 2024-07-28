@@ -88,20 +88,20 @@ export const ToggleCard = <T extends FieldValues>({
         )}
         {image && (
           <Image
-            className="flex-2 mt-2 h-3/5 w-2/5 overflow-hidden   "
+            className="flex-2 mt-2 h-3/5 w-2/5 overflow-hidden"
             source={{ uri: imageUrl }}
             contentFit="contain"
           />
         )}
         {imageIcon && (
           <Image
-            className="  mr-5 h-full w-1/12   overflow-hidden   "
+            className="mr-5 h-full w-1/12   overflow-hidden"
             source={{ uri: imageIconUrl }}
             contentFit="contain"
           />
         )}
         <Text
-          className={`${classNameText} ${image && 'flex-1'} ${
+          className={`${classNameText} ${imageIcon && 'flex-1'} ${
             checkbox && 'w-full'
           } max-w-[85%] text-center text-xs font-bold`}
         >

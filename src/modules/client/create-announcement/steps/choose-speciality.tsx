@@ -35,7 +35,7 @@ export function ChooseSpeciality() {
               {SpecialityData?.map((cardData) => (
                 <ToggleCard
                   key={cardData.id}
-                  className="h-56 w-60 rounded-2xl"
+                  className="mb-4 h-56 w-60 rounded-2xl"
                   title={cardData.label}
                   image={cardData.icon}
                   name="architectSpeciality"

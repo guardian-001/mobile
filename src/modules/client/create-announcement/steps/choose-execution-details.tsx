@@ -1,7 +1,14 @@
 import React from 'react';
 
+import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { EmptyList, ErrorData, TagGroup, View } from '@/shared/components';
+import {
+  ControlledInput,
+  EmptyList,
+  ErrorData,
+  TagGroup,
+  View,
+} from '@/shared/components';
 
 import { useExecutionDetails } from '../hooks';
 export function ChooseExecutionDetails() {
@@ -32,6 +39,17 @@ export function ChooseExecutionDetails() {
                 tags={budgets ?? []}
                 label="announcement.budgetLabel"
                 error={errorBudget}
+              />
+              <ControlledInput
+                required={true}
+                control={control}
+                name="description"
+                labelStyle="mb-1 text-base font-bold"
+                className="mb-7 mt-5 gap-2"
+                label={translate('announcement.projectDetailsLabel')}
+                placeholder={translate(
+                  'announcement.projectDetailsPlaceholder'
+                )}
               />
             </View>
           )}

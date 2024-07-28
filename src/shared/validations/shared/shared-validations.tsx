@@ -56,7 +56,7 @@ export const phoneValidation = z
 export const requiredValidationNumber = z
   .number()
   .refine((value) => value > 0, {
-    message: 'validations.required',
+    message: 'validations.chooseOption',
   });
 
 export const arrayOfNonEmptyImage = z
@@ -75,7 +75,7 @@ export const arrayOfNonEmptyNumbers = z
     })
   )
   .refine((arr) => arr.length > 0, {
-    message: 'validations.arrayNonEmptyNumbers',
+    message: 'validations.arrayNonEmpty',
   });
 export const dateValidation = z
   .string({ message: 'validations.required' })
