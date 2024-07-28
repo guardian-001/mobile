@@ -4,24 +4,24 @@ import { Text, TouchableOpacity, View } from 'react-native';
 
 import { Close } from '@/assets/icons';
 import { useFormStepper } from '@/shared/providers';
+import colors from '@/theme/colors';
 
-import type { ProjectRealizationType } from '../architect/types';
+import type { ProjectRealizationType } from '../architect/shared/types';
 
 export default function StepperPercentageBar() {
   const router = useRouter();
   const { step, maxStep } = useFormStepper<ProjectRealizationType>();
 
-  const percentage = maxStep && (step / maxStep) * 100;
-
+  const percentage = maxStep && (step / (maxStep - 1)) * 100;
   return (
-    <View className="px-4 py-6">
+    <View className="  px-4 py-6">
       <TouchableOpacity
-        className="items-end"
+        className="  absolute right-5 top-5 z-10 float-right h-5 w-5   "
         onPress={() => {
           router.back();
         }}
       >
-        <Close />
+        <Close color={colors.blue} />
       </TouchableOpacity>
       {step !== maxStep && (
         <View>

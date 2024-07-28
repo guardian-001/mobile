@@ -55,11 +55,11 @@ export function ChooseNeeds() {
           <StepButtons
             previous={{
               handlePreviousStep: onRollBack,
-              label: 'signup.retour',
+              label: 'common.back',
             }}
             next={{
               handleSubmit: handleSubmit(onSubmit),
-              label: 'signup.suivant',
+              label: 'common.next',
             }}
           />
         </View>

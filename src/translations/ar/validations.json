@@ -16,5 +16,6 @@
   "phoneNumberMaxLength": "يجب أن يحتوي رقم الهاتف على 15 حرفًا كحد أقصى",
   "arrayNonEmptyString": "يجب عليك اختيار خيار واحد على الأقل",
   "uploadedImageType": ".الرجاء تحميل ملفات الصور فقط",
-  "arrayNonEmptyImage": "يجب عليك رفع صورة واحدة على الأقل"
+  "arrayNonEmptyImage": "يجب عليك رفع صورة واحدة على الأقل",
+  "invalidType": "نوع صورة غير صالح"
 }

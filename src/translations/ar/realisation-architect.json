@@ -28,6 +28,18 @@
     "buttonTitle": "تحميل الصور",
     "imgLoaderTitle": "نقوم بتنظيم صورك لإبراز رؤيتك المعمارية",
     "imgLoaderDescriptionSur": "على",
-    "imgLoaderDescription": "صور محملة"
+    "imgLoaderDescription": "صور محملة",
+    "typeFileError": "يمكنك اختيار الصور فقط"
+  },
+
+  "finalStep": {
+    "title": "انتهى!",
+    "description": "إليك نظرة عامة على مشروعك الجديد",
+    "categorie": "الفئة",
+    "localisation": "الموقع",
+    "style": "النمط",
+    "superficie": "المساحة",
+    "services": "الخدمات",
+    "servicesDescription": "الخدمات المعتمدة المطلوبة للمشروع :"
   }
 }

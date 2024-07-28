@@ -28,6 +28,17 @@
     "buttonTitle": "Upload photos",
     "imgLoaderTitle": "We are organizing your photos to showcase your architectural vision",
     "imgLoaderDescriptionSur": "on",
-    "imgLoaderDescription": "photos uploaded"
+    "imgLoaderDescription": "photos uploaded",
+    "typeFileError": "you can only select images"
+  },
+  "finalStep": {
+    "title": "Finished!",
+    "description": "Here is an overview of your newly created project",
+    "categorie": "Category",
+    "localisation": "Location",
+    "style": "Style",
+    "superficie": "Area",
+    "services": "Services",
+    "servicesDescription": "Approved services required for the project:"
   }
 }
