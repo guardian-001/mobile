@@ -1,7 +1,7 @@
 import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
 
-import { CreateAccountSchema } from '../schemas';
+import { FirstConnectionSchema } from '../schemas';
 import type { SignupFormDataType } from '../types';
 
 export const useProfile = () => {
@@ -16,7 +16,7 @@ export const useProfile = () => {
   >;
   const { formData, setFormData, onHandleNext, onHandleBack } =
     useFormStepper<SignupFormDataType>();
-  const { handleSubmit, control } = useCustomForm(CreateAccountSchema, {
+  const { handleSubmit, control } = useCustomForm(FirstConnectionSchema, {
     firstName: formData?.firstName,
     lastName: formData?.lastName,
     email: formData?.email,

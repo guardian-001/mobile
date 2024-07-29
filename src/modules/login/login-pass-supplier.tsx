@@ -9,7 +9,7 @@ import { Image, ImageContainer } from '@/shared/components';
 import { ControlledInput, Text } from '@/shared/components';
 import { PasswordSchema } from '@/shared/validations';
 
-import { Container } from '../shared';
+import { Conditions, Container } from '../shared';
 import LoginButton from '../shared/login-button';
 
 export type LoginFormType = z.infer<typeof PasswordSchema>;
@@ -25,12 +25,14 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="mt-5 flex-1 items-center justify-start bg-secondary"
     >
-      <Text className="text-lato-regular my-2 flex-row items-center justify-between text-xl font-bold">
-        {translate('loginSupplier.bienvenueSurArchimatch')}
-      </Text>
-      <Text className="text-lato-regular flex-row items-center justify-between text-xl font-bold">
-        {translate('loginSupplier.kitPartenariatPro')}
-      </Text>
+      <View>
+        <Text className="text-center font-lato text-2xl font-extrabold text-primary-txt ">
+          {translate('loginSupplier.bienvenueSurArchimatch')}
+        </Text>
+        <Text className="max-w-60 my-2 text-center font-lato text-sm text-description">
+          {translate('loginSupplier.kitPartenariatPro')}
+        </Text>
+      </View>
       <Container style="flex w-[100%] h-[50%] items-center mb-0 justify-between gap-3 bg-white  pb-2">
         <ImageContainer className="w-full flex-1">
           <Image
@@ -58,22 +60,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
           alternativeStyle="my-5"
         />
       </View>
-      <Text
-        tx={'login.termsConditionsPart1'}
-        className="items-center text-base text-description"
-      />
-      <Text
-        tx={'login.termsConditionsPart2'}
-        className="items-center text-base text-description"
-      />
-      <Text
-        tx={'login.termsConditionsPart3'}
-        className="items-center text-base text-description"
-      />
-      <Text
-        tx={'login.termsConditionsPart4'}
-        className="items-center text-base text-description"
-      />
+      <Conditions />
     </KeyboardAvoidingView>
   );
 };

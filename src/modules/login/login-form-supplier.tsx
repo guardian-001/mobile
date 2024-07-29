@@ -13,7 +13,7 @@ import {
 } from '@/shared/components';
 import { EmailSchema } from '@/shared/validations';
 
-import { Container } from '../shared';
+import { Conditions, Container } from '../shared';
 import LoginButton from '../shared/login-button';
 
 export type LoginFormType = z.infer<typeof EmailSchema>;
@@ -25,21 +25,20 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormSupplierProps) => {
   const { handleSubmit, control } = useCustomForm(EmailSchema);
 
   return (
-    <>
+    <View className="flex h-full w-full items-center justify-center">
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        className={`mt-20 flex-1 items-center justify-start bg-secondary`}
+        className={` my-20 flex w-[90%] flex-1 items-center justify-start bg-secondary`}
       >
-        <Text
-          className={`text-lato-regular my-2 flex-row items-center justify-between text-xl font-bold`}
-        >
-          {translate('loginSupplier.bienvenueSurArchimatch')}
-        </Text>
-        <Text
-          className={`text-lato-regular flex-row items-center justify-between text-xl font-bold`}
-        >
-          {translate('loginSupplier.kitPartenariatPro')}
-        </Text>
+        <View>
+          <Text className="text-center font-lato text-2xl font-extrabold text-primary-txt ">
+            {translate('loginSupplier.bienvenueSurArchimatch')}
+          </Text>
+          <Text className="max-w-60 my-2 text-center font-lato text-sm text-description">
+            {translate('loginSupplier.kitPartenariatPro')}
+          </Text>
+        </View>
+
         <Container style="flex w-[80%] h-[28%] items-center mb-0 justify-between gap-3 bg-white  pb-2">
           <ImageContainer className="flex  w-full items-center justify-center">
             <Image
@@ -50,7 +49,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormSupplierProps) => {
           </ImageContainer>
         </Container>
 
-        <View className="w-9/10 mt-5 flex justify-center">
+        <View className="w-8/10 mt-5 flex justify-center">
           <ControlledInput
             testID="email-input"
             control={control}
@@ -68,23 +67,8 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormSupplierProps) => {
             alternativeStyle="my-5"
           />
         </View>
-        <Text
-          tx={'login.termsConditionsPart1'}
-          className="items-center text-base text-description"
-        />
-        <Text
-          tx={'login.termsConditionsPart2'}
-          className="items-center text-base text-description"
-        />
-        <Text
-          tx={'login.termsConditionsPart3'}
-          className="items-center text-base text-description"
-        />
-        <Text
-          tx={'login.termsConditionsPart4'}
-          className="items-center text-base text-description"
-        />
+        <Conditions />
       </KeyboardAvoidingView>
-    </>
+    </View>
   );
 };

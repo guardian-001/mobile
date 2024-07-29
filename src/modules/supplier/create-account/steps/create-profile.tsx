@@ -1,11 +1,13 @@
 import React from 'react';
 import type { z } from 'zod';
 
-import { translate, useCustomForm } from '@/core';
+import { translate } from '@/core';
 import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
 
-import { SignupFormSchema } from '../supplier/schema/signup-request-schema-supplier';
+import { StepButtons } from '../../../shared';
+import type { SignupFormSchema } from '../../schema/signup-request-schema-supplier';
+import { useCreateAccount } from '../hooks/use-create-account';
 
 export type SignupFormType = z.infer<typeof SignupFormSchema>;
 
@@ -14,10 +16,8 @@ export type ResetFormProps = {
   handleNextStep?: () => void;
 };
 
-export default function CreateProfile({}: // handlePreviousStep,
-// handleNextStep,
-ResetFormProps) {
-  const { control } = useCustomForm(SignupFormSchema);
+export default function CreateProfile() {
+  const { onHandleBack, handleSubmit, control, onSubmit } = useCreateAccount();
 
   return (
     <View className="flex h-fit items-center justify-between gap-8">
@@ -26,29 +26,26 @@ ResetFormProps) {
           tx={'signupStepCreateProfile.title'}
           className="mb-2 text-center text-2xl font-extrabold"
         />
-        {/* <Text
-          tx={'signupStepCreateProfile.description'}
-          className="max-w-xs text-center text-sm text-description"
-        /> */}
       </View>
 
       <ScrollView className=" flex h-fit w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
         <ControlledInput
           testID="name-input"
           control={control}
-          name="firstName"
+          name="entrepriseName"
           label={translate('labels.name')}
           placeholder={translate('labels.name')}
         />
+
         <ControlledInput
           testID="surname-input"
           control={control}
-          name="lastName"
+          name="specialty"
           label={translate('labels.surname')}
           placeholder={translate('labels.surname')}
         />
         <ControlledPhoneNumberInput
-          name="phoneNumber"
+          name="phone"
           control={control}
           label={translate('labels.phone')}
           rules={{ required: 'Phone number is required' }}
@@ -57,11 +54,23 @@ ResetFormProps) {
         <ControlledInput
           testID="address-input"
           control={control}
-          name="address"
+          name="AdresseBureau"
           label={translate('labels.address')}
           placeholder={translate('labels.address')}
         />
       </ScrollView>
+      <View className="flex h-fit w-full items-center ">
+        <StepButtons
+          previous={{
+            handlePreviousStep: onHandleBack,
+            label: 'common.ignore',
+          }}
+          next={{
+            handleSubmit: handleSubmit(onSubmit),
+            label: 'common.next',
+          }}
+        />
+      </View>
     </View>
   );
 }

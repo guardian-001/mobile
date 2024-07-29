@@ -20,7 +20,7 @@ export const SignupFormSchema = z.object({
   date: dateValidation,
   timeSlot: timeValidation,
 });
-export const CreateAccountSchema = z.object({
+export const FirstConnectionSchema = z.object({
   firstName: fieldValidation,
   lastName: fieldValidation,
   email: emailValidation,
