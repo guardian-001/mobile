@@ -12,7 +12,7 @@ export const useCreatePassword = () => {
 
   const onSubmit = () => {
     //add login here
-    router.push('(supplier)/(private)/complete-account');
+    router.push('(supplier)/(private)/(complete)/complete-account');
   };
 
   return {

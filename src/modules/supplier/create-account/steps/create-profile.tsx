@@ -33,16 +33,16 @@ export default function CreateProfile() {
           testID="name-input"
           control={control}
           name="entrepriseName"
-          label={translate('labels.name')}
-          placeholder={translate('labels.name')}
+          label="Nom de la société " //translate
+          placeholder={translate('labels.name')} //translate
         />
 
         <ControlledInput
           testID="surname-input"
           control={control}
           name="specialty"
-          label={translate('labels.surname')}
-          placeholder={translate('labels.surname')}
+          label="Spécialité" //translate
+          placeholder={translate('labels.surname')} //translate
         />
         <ControlledPhoneNumberInput
           name="phone"

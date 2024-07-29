@@ -1,84 +1,76 @@
 import React from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { Button, ScrollView, Text, View } from 'react-native';
+import type { z } from 'zod';
+
+import { translate } from '@/core';
+import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
+import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
+
+import { StepButtons } from '../../../shared';
+import type { SignupFormSchema } from '../../schema/signup-request-schema-supplier';
+import { useCreateAccount } from '../hooks/use-create-account';
+
+export type SignupFormType = z.infer<typeof SignupFormSchema>;
 
 export type ResetFormProps = {
   handlePreviousStep?: () => void;
   handleNextStep?: () => void;
 };
 
-type InterestPickFormType = {
-  interests: string[];
-};
-
-// type InterestPickProps = {
-//   onSubmit: (data: InterestPickFormType) => void;
-//   handlePreviousStep?: () => void;
-//   handleNextStep?: () => void;
-// };
-
-const InterestPick = () => {
-  const { control } = useForm<InterestPickFormType>({
-    defaultValues: {
-      interests: [],
-    },
-  });
-  // const InterestPick = ({ handleNextStep }: InterestPickProps) => {
-  //   const { control } = useForm<InterestPickFormType>({
-  //     defaultValues: {
-  //       interests: [],
-  //     },
-  //   });
-  // const navigation = useNavigation();
-
-  const interests = [
-    'Technology',
-    'Health',
-    'Finance',
-    'Education',
-    'Entertainment',
-  ];
+export default function InterestPick() {
+  const { onHandleBack, handleSubmit, control, onSubmit } = useCreateAccount();
 
   return (
-    <View className="flex-1 items-center justify-between gap-8 p-4">
-      <ScrollView
-        contentContainerStyle={{ padding: 16 }}
-        className="w-4/5 flex-1 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md"
-      >
-        <Text className="text-lg font-bold">Choose Your Interests</Text>
-        <View className="my-4">
-          {interests.map((interest, index) => (
-            <Controller
-              key={index}
-              name="interests"
-              control={control}
-              render={({ field }) => (
-                <View className="my-2">
-                  <Button
-                    title={interest}
-                    onPress={() => {
-                      const selected = field.value.includes(interest)
-                        ? field.value.filter((i) => i !== interest)
-                        : [...field.value, interest];
-                      field.onChange(selected);
-                    }}
-                    color={field.value.includes(interest) ? 'blue' : 'gray'}
-                  />
-                </View>
-              )}
-            />
-          ))}
-        </View>
+    <View className="flex h-fit items-center justify-between gap-8">
+      <View>
+        <Text
+          tx={'signupStepCreateProfile.title'}
+          className="mb-2 text-center text-2xl font-extrabold"
+        />
+      </View>
+
+      <ScrollView className=" flex  w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
+        <ControlledInput
+          testID="name-input"
+          control={control}
+          name="entrepriseName"
+          label="Nom de la société " //translate
+          placeholder={translate('labels.name')} //translate
+        />
+
+        <ControlledInput
+          testID="surname-input"
+          control={control}
+          name="specialty"
+          label="Spécialité" //translate
+          placeholder={translate('labels.surname')} //translate
+        />
+        <ControlledPhoneNumberInput
+          name="phone"
+          control={control}
+          label={translate('labels.phone')}
+          rules={{ required: 'Phone number is required' }}
+        />
+
+        <ControlledInput
+          testID="address-input"
+          control={control}
+          name="AdresseBureau"
+          label={translate('labels.address')}
+          placeholder={translate('labels.address')}
+        />
       </ScrollView>
-      {/* <StepButtons
-        previous={{
-          handlePreviousStep: () => navigation.goBack(),
-          label: 'signup.retour',
-        }}
-        next={{ handleNextStep, label: 'signup.suivant' }}
-      /> */}
+      <View className="flex h-fit w-full items-center ">
+        <StepButtons
+          previous={{
+            handlePreviousStep: onHandleBack,
+            label: 'common.ignore',
+          }}
+          next={{
+            handleSubmit: handleSubmit(onSubmit),
+            label: 'common.next',
+          }}
+        />
+      </View>
     </View>
   );
-};
-
-export default InterestPick;
+}

@@ -1,20 +1,19 @@
-/* eslint-disable react/no-unstable-nested-components */
-import { Tabs } from 'expo-router';
+import { Stack } from 'expo-router';
 import React from 'react';
 
-import { Feed as FeedIcon } from '@/assets/icons';
+import { ScreenOptions } from '@/shared/components';
 
 export default function SupplierPrivateLayout() {
   return (
-    <Tabs initialRouteName="index">
-      <Tabs.Screen
+    <Stack initialRouteName="index">
+      <Stack.Screen
         name="index"
         options={{
           title: 'Supplier Space',
-          tabBarIcon: ({ color }) => <FeedIcon color={color} />,
-          tabBarTestID: 'feed-tab',
         }}
       />
-    </Tabs>
+      <Stack.Screen name="(complete)" options={ScreenOptions({})} />
+      <Stack.Screen name="(profile)" options={ScreenOptions({})} />
+    </Stack>
   );
 }

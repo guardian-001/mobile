@@ -1,6 +1,7 @@
 import React from 'react';
 import type { z } from 'zod';
 
+import { UserImg } from '@/assets/icons/archimatch/user-img';
 import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
 import PasswordRequirementItem from '@/modules/reset-password/password-requirement-item';
@@ -48,15 +49,26 @@ export default function CreatePassFromLink() {
   );
 
   return (
-    <View className="flex h-fit items-center justify-between gap-8">
-      <View>
+    <View className="flex  w-full items-center justify-between gap-5">
+      <View className="flex w-4/5">
         <Text
           tx={'signupStepCreateProfile.title'}
-          className="mb-2 text-center text-2xl font-extrabold"
+          className="mb-2 text-start text-2xl font-extrabold"
         />
+        <Text className="mb-2 text-start text-base font-normal text-description">
+          Créez un mot de passe sécurisé pour protéger votre compte.
+        </Text>
       </View>
 
-      <View className="flex-1">
+      <View className="flex w-4/5 flex-row items-center justify-start gap-2">
+        <UserImg />
+        <View>
+          <Text className="font-bold text-primary-txt">Adam Legrand</Text>
+          <Text className=" text-cyan-400">A.Legrand@gmail.com</Text>
+        </View>
+      </View>
+
+      <View className="w-4/5">
         <ControlledInput
           control={control}
           name="password"
