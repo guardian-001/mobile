@@ -11,10 +11,6 @@ export async function postLogin(request: LoginRequest): Promise<LoginResponse> {
     data: request,
   })
     .then((response) => {
-      console.log('first');
-
-      console.log('firstff');
-
       const signIn = useAuth.use.signIn();
 
       signIn({
