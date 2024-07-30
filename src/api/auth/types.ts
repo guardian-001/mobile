@@ -29,9 +29,8 @@ export type User = {
 };
 
 export type LoginResponse = {
-  access: string;
-  refresh: string;
-  user: User;
+  state: boolean;
+  error?: string;
 };
 
 export type ForgetPassRequest = {
