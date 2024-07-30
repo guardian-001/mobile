@@ -20,7 +20,7 @@
   "arrayNonEmptyImage": "You must upload at least one image",
   "invalidType": "Invalid image type",
   "invalidCity": "Invalid city",
-  "invalidWorkSurface": "Invalid work surface",
+  "invalidWorkSurface": "Invalid surface",
   "invalidInteger": "Invalid integer",
   "uniqueItems": "Item is not unique",
   "invalidDateFormat": "Invalid date format",

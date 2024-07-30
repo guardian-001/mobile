@@ -30,9 +30,11 @@ export const LoginForm = () => {
 
   const onSubmit = (data: LoginFormType) => {
     login.mutate(data, {
+      onSuccess: () => {
+        router.push(`/(${space})/(private)/profile`);
+      },
       onError: (error) => {
         setErrors(error.message);
-        throw error;
       },
     });
   };
@@ -40,6 +42,7 @@ export const LoginForm = () => {
   const handleResetPass = () => {
     router.push(`/(${space})/(public)/reset-password`);
   };
+
   const { setFormData } = useLoginForm();
 
   const handleData = ({ name, data }: LoginType) => {
@@ -50,7 +53,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <View className="flex w-full justify-center ">
+    <View className="flex w-full justify-center">
       <ControlledInput
         testID="email-input"
         control={control}
@@ -68,8 +71,7 @@ export const LoginForm = () => {
         secureTextEntry={true}
         handleOnChange={handleData}
       />
-
-      <Container style="flex-row justify-between my-3 ">
+      <Container style="flex-row justify-between my-3">
         <Checkbox
           checked={checked}
           onChange={setChecked}
@@ -78,16 +80,13 @@ export const LoginForm = () => {
         />
         <Text
           onPress={handleResetPass}
-          className={`font-lato text-xs font-semibold text-primary `}
+          className="font-lato text-xs font-semibold text-primary"
         >
           {translate('login.mdpOublier')}
         </Text>
       </Container>
-      <Text
-        onPress={handleResetPass}
-        className={`font-lato text-xs font-semibold text-primary `}
-      >
-        {errors !== '' && translate('login.loginError')}
+      <Text className="font-lato text-xs font-semibold text-primary">
+        {errors && translate('login.loginError')}
       </Text>
       <LoginButton
         type="button"
