@@ -6,6 +6,7 @@ import {
   CheckboxInput,
   ControlledInput,
   ControlledPhoneNumberInput,
+  ScrollView,
   View,
 } from '@/shared/components';
 
@@ -15,7 +16,10 @@ export function SaveProject() {
   const { handleSubmit, control, onSubmit } = useProject();
   return (
     <View className="flex flex-1 justify-between pt-4">
-      <View className="gap-4">
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerClassName="gap-4"
+      >
         <ControlledInput
           testID="name-input"
           control={control}
@@ -54,7 +58,7 @@ export function SaveProject() {
           accessibilityLabel={translate('announcement.receiveNotifications')}
           label={translate('announcement.receiveNotifications')}
         />
-      </View>
+      </ScrollView>
       <StepperButton
         onPressHandler={handleSubmit(onSubmit)}
         label={translate('announcement.buttonLabel')}

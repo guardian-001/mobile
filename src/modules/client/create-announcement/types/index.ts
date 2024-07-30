@@ -1,6 +1,6 @@
 import type { SvgProps } from 'react-native-svg';
 
-import type { AnnouncementType } from '@/types/announcement';
+import type { AnnouncementType, Image } from '@/types/announcement';
 
 export type sharedType = {
   id: number;
@@ -32,7 +32,7 @@ export type projectExtensionsFormType = Pick<
 export type propertyTypeFormType = Pick<AnnouncementType, 'propertyType'>;
 export type piecesRenovateFormType = Pick<AnnouncementType, 'piecesRenovate'>;
 export type CreateProfileFormType = Pick<
-  AnnouncementType,
+  AnnouncementType['client']['user'],
   | 'firstName'
   | 'lastName'
   | 'email'
@@ -48,3 +48,6 @@ export type ExecutionDetailsFormType = Pick<
   AnnouncementType,
   'budget' | 'description'
 >;
+export type ImagesFormType = {
+  projectImages: Image[];
+};

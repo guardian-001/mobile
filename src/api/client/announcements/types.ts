@@ -19,6 +19,7 @@ export type VariablesStep5 = { propertyType: number };
 export type VariablesStep6 = { propertyType: number; workType: number };
 export type VariablesStep9 = { propertyType: number };
 export type VariablesStep10 = { propertyType: number; workType: number };
+export type VariablesImagesMutation = { imgs: FormData; id: string };
 
 export type CombinedData = {
   cities: TagType[];

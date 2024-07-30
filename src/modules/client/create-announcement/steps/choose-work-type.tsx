@@ -4,6 +4,7 @@ import { StepButtons } from '@/modules/shared';
 import {
   EmptyList,
   ErrorData,
+  ScrollView,
   Text,
   ToggleCard,
   View,
@@ -32,7 +33,10 @@ export function ChooseWorkType() {
             {isLoading || workTypeData?.length === 0 ? (
               <EmptyList isLoading={isLoading} />
             ) : (
-              <View className="gap-4">
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerClassName="gap-4"
+              >
                 {workTypeData?.map((cardData) => (
                   <ToggleCard
                     key={cardData.id}
@@ -44,7 +48,7 @@ export function ChooseWorkType() {
                     value={cardData.id}
                   />
                 ))}
-              </View>
+              </ScrollView>
             )}
             {error && (
               <Text className="text-sm text-error dark:text-error" tx={error} />

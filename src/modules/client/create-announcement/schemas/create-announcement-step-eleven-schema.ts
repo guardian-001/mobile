@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { arrayOfNonEmptyImage } from '@/shared/validations';
+import { imagesValidation } from '@/shared/validations';
 
 export const CreateAnnouncementStepElevenSchema = z.object({
-  projectImages: arrayOfNonEmptyImage,
+  projectImages: imagesValidation,
 });

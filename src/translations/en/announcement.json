@@ -35,5 +35,16 @@
   "saveProjectTitle": "To save your project and access our online estimator",
   "rules": "I accept the terms and conditions of use of Archimatch",
   "receiveNotifications": "I want to receive quotes from other architects regarding my work.",
-  "buttonLabel": "start your project"
+  "buttonLabel": "start your project",
+  "OtpButtonLabel": "Verify",
+  "congratulations": "Congratulations, your project has been",
+  "published": "published successfully on",
+  "archiMatch": "ArchiMatch!",
+  "buttonLabelSuivre": "Follow my project's progress",
+  "cardOneTitle": "Explore architect profiles",
+  "cardOneDescription": "Discover available architects by browsing their profiles on ArchiMatch",
+  "cardTwoTitle": "Receive and negotiate quotes",
+  "cardTwoDescription": "Receive detailed proposals from architects interested in your project",
+  "cardThreeTitle": "Select your ideal architect",
+  "cardThreeDescription": "Select the architect whose quote best matches your needs and start your project."
 }

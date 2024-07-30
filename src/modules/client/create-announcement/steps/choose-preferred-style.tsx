@@ -4,6 +4,7 @@ import { StepButtons } from '@/modules/shared';
 import {
   EmptyList,
   ErrorData,
+  ScrollView,
   Text,
   ToggleCard,
   View,
@@ -33,7 +34,10 @@ export function ChoosePreferredStyle() {
             {isLoading || architecturalStyles?.length === 0 ? (
               <EmptyList isLoading={isLoading || isFetchedAfterMount} />
             ) : (
-              <View className=" gap-4">
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerClassName="gap-4"
+              >
                 {architecturalStyles.map((cardData) => (
                   <ToggleCard
                     key={cardData.id}
@@ -44,7 +48,7 @@ export function ChoosePreferredStyle() {
                     value={cardData.id}
                   />
                 ))}
-              </View>
+              </ScrollView>
             )}
             {error && (
               <Text className="text-sm text-error dark:text-error" tx={error} />

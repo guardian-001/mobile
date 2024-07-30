@@ -103,7 +103,7 @@ export const ToggleCard = <T extends FieldValues>({
         <Text
           className={`${classNameText} ${imageIcon && 'flex-1'} ${
             checkbox && 'w-full'
-          } max-w-[85%] text-center text-xs font-bold`}
+          } max-w-[85%] text-xs font-bold`}
         >
           {title}
         </Text>

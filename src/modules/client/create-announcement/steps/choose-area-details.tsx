@@ -7,6 +7,7 @@ import {
   CounterSimple,
   EmptyList,
   ErrorData,
+  ScrollView,
   TagGroup,
   Text,
   View,
@@ -38,7 +39,10 @@ export function ChooseAreaDetails() {
           {isLoading ? (
             <EmptyList isLoading={isLoading} />
           ) : (
-            <View className="gap-4">
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerClassName="gap-4"
+            >
               <ControlledInput
                 control={control}
                 name="address"
@@ -85,7 +89,7 @@ export function ChooseAreaDetails() {
                   control={control}
                 />
               )}
-            </View>
+            </ScrollView>
           )}
           <StepButtons
             previous={{

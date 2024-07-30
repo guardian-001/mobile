@@ -4,6 +4,7 @@ import { StepButtons } from '@/modules/shared';
 import {
   EmptyList,
   ErrorData,
+  ScrollView,
   Text,
   ToggleCard,
   View,
@@ -21,7 +22,6 @@ export function ChooseAdditionalInfo() {
     ExtensionsData,
     isError,
     isLoading,
-    isFetchedAfterMount,
   } = useAdditionalInfo();
   return (
     <View className="flex-1 pt-4">
@@ -31,14 +31,17 @@ export function ChooseAdditionalInfo() {
         <View className="flex flex-1 justify-between">
           <View className="flex-1">
             {isLoading || ExtensionsData?.length === 0 ? (
-              <EmptyList isLoading={isLoading || isFetchedAfterMount} />
+              <EmptyList isLoading={isLoading} />
             ) : (
-              <View className="flex flex-1 flex-row flex-wrap gap-4 px-1">
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerClassName="flex flex-1 flex-row flex-wrap gap-4 justify-center "
+              >
                 {ExtensionsData.map((cardData) => (
                   <ToggleCard
                     key={cardData.id}
-                    className="flex flex-row-reverse !justify-end rounded-lg"
-                    containerClassName="h-8 min-h-[15%] max-h-[17%] min-w-[45%] max-w-[47%]"
+                    className="flex h-full w-full flex-row-reverse !justify-end rounded-lg"
+                    containerClassName="h-8 min-h-[15%] max-h-[17%] min-w-[45%] max-w-[48%]"
                     classNameText="w-3/5"
                     title={cardData.label}
                     image={cardData.icon}
@@ -48,7 +51,7 @@ export function ChooseAdditionalInfo() {
                     value={cardData.id}
                   />
                 ))}
-              </View>
+              </ScrollView>
             )}
 
             {error && (

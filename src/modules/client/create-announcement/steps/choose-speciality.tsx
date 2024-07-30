@@ -5,6 +5,7 @@ import { StepperButton } from '@/modules/shared';
 import {
   EmptyList,
   ErrorData,
+  ScrollView,
   Text,
   ToggleCard,
   View,
@@ -31,11 +32,14 @@ export function ChooseSpeciality() {
           {isLoading || SpecialityData?.length === 0 ? (
             <EmptyList isLoading={isLoading} />
           ) : (
-            <View className="h-[85%] items-center gap-4">
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerClassName="gap-4"
+            >
               {SpecialityData?.map((cardData) => (
                 <ToggleCard
                   key={cardData.id}
-                  className="mb-4 h-56 w-60 rounded-2xl"
+                  className="h-56 w-60 rounded-2xl"
                   title={cardData.label}
                   image={cardData.icon}
                   name="architectSpeciality"
@@ -44,7 +48,7 @@ export function ChooseSpeciality() {
                   classNameText="my-3"
                 />
               ))}
-            </View>
+            </ScrollView>
           )}
           {error && (
             <Text className="text-sm text-error dark:text-error" tx={error} />

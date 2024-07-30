@@ -34,5 +34,16 @@
   "saveProjectTitle": "لحفظ مشروعك والوصول إلى مقدرنا عبر الإنترنت",
   "rules": "Archimatch أوافق على الشروط والأحكام لاستخدام",
   "receiveNotifications": ".أرغب في تلقي عروض أسعار من مهندسين معماريين آخرين بخصوص عملي",
-  "buttonLabel": "ابدأ مشروعك"
+  "buttonLabel": "ابدأ مشروعك",
+  "OtpButtonLabel": "تحقق",
+  "congratulations": "تهانينا، لقد تم",
+  "published": "نشر مشروعك بنجاح على",
+  "archiMatch": "ArchiMatch!",
+  "buttonLabelSuivre": "متابعة تقدم مشروعي",
+  "cardOneTitle": "استكشاف ملفات تعريف المهندسين المعماريين",
+  "cardOneDescription": "اكتشف المهندسين المعماريين المتاحين من خلال تصفح ملفاتهم الشخصية على ArchiMatch",
+  "cardTwoTitle": "استلام والتفاوض على العروض",
+  "cardTwoDescription": "احصل على عروض تفصيلية من المهندسين المعماريين المهتمين بمشروعك",
+  "cardThreeTitle": "اختر المهندس المعماري المثالي",
+  "cardThreeDescription": "اختر المهندس المعماري الذي يتناسب عرضه مع احتياجاتك وابدأ مشروعك."
 }

@@ -49,7 +49,7 @@ export const fieldValidation = z
 export const phoneValidation = z
   .string({ message: 'validations.required' })
   .min(1, { message: 'validations.required' })
-  .regex(/^\d+$/, { message: 'validations.phoneNumberDigits' })
+  .regex(/^\+?\d+$/, { message: 'validations.phoneNumberDigits' })
   .min(8, { message: 'validations.phoneNumberMinLength' })
   .max(15, { message: 'validations.phoneNumberMaxLength' });
 

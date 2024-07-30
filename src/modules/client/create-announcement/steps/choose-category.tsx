@@ -4,6 +4,7 @@ import { StepButtons } from '@/modules/shared';
 import {
   EmptyList,
   ErrorData,
+  ScrollView,
   Text,
   ToggleCard,
   View,
@@ -31,7 +32,10 @@ export function ChooseCategory() {
           {isLoading || CategoryData?.length === 0 ? (
             <EmptyList isLoading={isLoading} />
           ) : (
-            <View className="flex flex-row flex-wrap items-center gap-4">
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerClassName="min-h-[85%] flex flex-row flex-wrap items-center gap-4"
+            >
               {CategoryData?.map((cardData) => (
                 <ToggleCard
                   key={cardData.id}
@@ -44,7 +48,7 @@ export function ChooseCategory() {
                   value={cardData.id}
                 />
               ))}
-            </View>
+            </ScrollView>
           )}
           {error && (
             <Text className="text-sm text-error dark:text-error" tx={error} />

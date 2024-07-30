@@ -6,6 +6,7 @@ import {
   ControlledInput,
   EmptyList,
   ErrorData,
+  ScrollView,
   TagGroup,
   View,
 } from '@/shared/components';
@@ -32,7 +33,10 @@ export function ChooseExecutionDetails() {
           {isLoading || budgets?.length === 0 ? (
             <EmptyList isLoading={isLoading} />
           ) : (
-            <View className="gap-4">
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerClassName="gap-4"
+            >
               <TagGroup
                 name="budget"
                 control={control}
@@ -44,14 +48,15 @@ export function ChooseExecutionDetails() {
                 required={true}
                 control={control}
                 name="description"
-                labelStyle="mb-1 text-base font-bold"
+                labelStyle="text-base font-bold"
                 className="mb-7 mt-5 gap-2"
                 label={translate('announcement.projectDetailsLabel')}
                 placeholder={translate(
                   'announcement.projectDetailsPlaceholder'
                 )}
+                inputAreaType="textArea"
               />
-            </View>
+            </ScrollView>
           )}
           <StepButtons
             previous={{

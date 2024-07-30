@@ -9,4 +9,6 @@ export * from './choose-property-type';
 export * from './choose-rooms-to-renovate';
 export * from './choose-speciality';
 export * from './choose-work-type';
+export * from './last-step';
+export * from './phone-verification-code';
 export * from './save-project';

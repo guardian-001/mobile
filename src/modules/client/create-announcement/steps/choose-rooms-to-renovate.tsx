@@ -2,7 +2,13 @@ import React from 'react';
 
 import type { resultType } from '@/api/client/announcements/types';
 import { StepButtons } from '@/modules/shared';
-import { Counter, EmptyList, ErrorData, View } from '@/shared/components';
+import {
+  Counter,
+  EmptyList,
+  ErrorData,
+  ScrollView,
+  View,
+} from '@/shared/components';
 
 import { useRoomsToRenovate } from '../hooks';
 
@@ -27,7 +33,10 @@ export function ChooseRoomsToRenovate() {
           {isLoading || RenovateData?.length === 0 ? (
             <EmptyList isLoading={isLoading || isFetchedAfterMount} />
           ) : (
-            <View className="gap-4">
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerClassName="gap-4"
+            >
               {RenovateData?.map((cardData: resultType) => (
                 <Counter
                   key={cardData.id}
@@ -38,7 +47,7 @@ export function ChooseRoomsToRenovate() {
                   id={cardData.id}
                 />
               ))}
-            </View>
+            </ScrollView>
           )}
 
           <StepButtons

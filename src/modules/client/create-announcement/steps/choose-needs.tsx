@@ -4,6 +4,7 @@ import { StepButtons } from '@/modules/shared';
 import {
   EmptyList,
   ErrorData,
+  ScrollView,
   Text,
   ToggleCard,
   View,
@@ -33,11 +34,14 @@ export function ChooseNeeds() {
             {isLoading || NeedsData?.length === 0 ? (
               <EmptyList isLoading={isLoading} />
             ) : (
-              <View className="gap-4">
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerClassName="gap-4"
+              >
                 {NeedsData?.map((cardData) => (
                   <ToggleCard
                     key={cardData.id}
-                    className="flex h-16  w-full flex-row rounded-lg"
+                    className="flex h-16 w-full flex-row rounded-lg"
                     title={cardData.label}
                     imageIcon={cardData.icon}
                     name="needs"
@@ -46,7 +50,7 @@ export function ChooseNeeds() {
                     value={cardData.id}
                   />
                 ))}
-              </View>
+              </ScrollView>
             )}
             {error && (
               <Text className="text-sm text-error dark:text-error" tx={error} />
