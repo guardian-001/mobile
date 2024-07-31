@@ -1,73 +1,33 @@
 import React from 'react';
+import { Platform } from 'react-native';
 
 import { translate } from '@/core';
 import {
   Button,
   ControlledInput,
   HeaderTitle,
+  KeyboardAvoidingView,
   ScrollView,
   Text,
   View,
 } from '@/shared/components';
-import { useCustomForm } from '@/shared/hooks';
-import type { TxKeyPath } from '@/translations/i18n';
 
 import PasswordRequirementItem from '../reset-password/password-requirement-item';
-import { ChangePasswordFormSchema } from './schemas';
-import type { PasswordFormType } from './type';
+import { useUpdatePassword } from './hooks/use-update-password';
 
-export default function ResetFormPasswordProfile() {
-  const { handleSubmit, control, form } = useCustomForm(
-    ChangePasswordFormSchema,
-    {
-      oldPassword: '',
-      newPassword: '',
-      confirmNewPassword: '',
-    }
-  );
-
-  const onSubmit = (data: PasswordFormType) => {
-    console.log(data);
-  };
-
-  const passwordRequirements: { isValid: boolean; message: TxKeyPath }[] = [
-    {
-      isValid: form.watch('newPassword')?.length >= 8,
-      message: 'resetpass.passwordMinLength',
-    },
-    {
-      isValid:
-        /[a-z]/.test(form.watch('newPassword')) &&
-        form.watch('newPassword')?.length >= 1,
-      message: 'resetpass.passwordLowercase',
-    },
-    {
-      isValid: /[A-Z]/.test(form.watch('newPassword')),
-      message: 'resetpass.passwordUppercase',
-    },
-    {
-      isValid: /[0-9]/.test(form.watch('newPassword')),
-      message: 'resetpass.passwordDigit',
-    },
-    {
-      isValid: /[^a-zA-Z0-9]/.test(form.watch('newPassword')),
-      message: 'resetpass.passwordSpecialChar',
-    },
-    {
-      isValid:
-        form.watch('confirmNewPassword') === form.watch('newPassword') &&
-        form.watch('confirmNewPassword') !== '' &&
-        form.watch('newPassword') !== '',
-      message: 'resetpass.passwordConfirmation',
-    },
-  ];
-
-  const allRequirementsValid = passwordRequirements.every(
-    (requirement) => requirement.isValid
-  );
-
+export default function UpdatePasswordProfile() {
+  const {
+    allRequirementsValid,
+    passwordRequirements,
+    onSubmit,
+    handleSubmit,
+    control,
+  } = useUpdatePassword();
   return (
-    <View className="flex-1 p-4">
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      className="flex-1 bg-white p-4 dark:bg-black"
+    >
       <HeaderTitle text="resetpass.reset" type="transparent" />
       <ScrollView
         contentContainerClassName="gap-4"
@@ -113,6 +73,6 @@ export default function ResetFormPasswordProfile() {
         className="h-12 rounded-md"
         disabled={!allRequirementsValid}
       />
-    </View>
+    </KeyboardAvoidingView>
   );
 }

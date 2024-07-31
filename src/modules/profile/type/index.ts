@@ -1,9 +1,9 @@
 import type { z } from 'zod';
 
-import type { ChangePasswordFormSchema } from '../schemas';
+import type {
+  BasicInformationSchema,
+  ChangePasswordFormSchema,
+} from '../schemas';
 
 export type ResetPassFormProfileType = z.infer<typeof ChangePasswordFormSchema>;
-export type PasswordFormType = Pick<
-  ResetPassFormProfileType,
-  'oldPassword' | 'newPassword' | 'confirmNewPassword'
->;
+export type BasicInfoFormType = z.infer<typeof BasicInformationSchema>;
