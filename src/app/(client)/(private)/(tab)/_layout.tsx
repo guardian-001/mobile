@@ -36,7 +36,7 @@ export default function TabLayout() {
         name="home"
         options={{
           title: 'Lancer un projet',
-          href: '/(client)/(private)/(tab)',
+          href: '/(client)/(private)/(announcement)/create-announcement',
           tabBarIcon: ({ color }) => <ConstructionHelmet color={color} />,
           tabBarTestID: 'home-tab',
           tabBarIconStyle: {

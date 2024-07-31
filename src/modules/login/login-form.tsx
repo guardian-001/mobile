@@ -31,7 +31,7 @@ export const LoginForm = () => {
   const onSubmit = (data: LoginFormType) => {
     login.mutate(data, {
       onSuccess: () => {
-        router.push(`/(${space})/(private)/profile`);
+        router.replace(`/(${space})/(private)/profile`);
       },
       onError: (error) => {
         setErrors(error.message);
