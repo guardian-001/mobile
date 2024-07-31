@@ -10,7 +10,7 @@ export const UserImg = (props: SvgProps) => (
     </G>
     <Defs>
       <ClipPath id="clip0_1084_8339">
-        <Rect width={32} height={32} rx={16} fill="#fff" />
+        <Rect width="100%" height="100%" rx={16} fill="#fff" />
       </ClipPath>
     </Defs>
   </Svg>
