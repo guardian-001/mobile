@@ -5,7 +5,7 @@ import type { GestureResponderEvent } from 'react-native';
 import { Button } from '@/shared/components';
 
 interface MainButtonProps {
-  onPressHandler?: (event: GestureResponderEvent) => void;
+  onPressHandler?: (event?: GestureResponderEvent) => void;
   label: string;
   width?: string;
   height?: string;
