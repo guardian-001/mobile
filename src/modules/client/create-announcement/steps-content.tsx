@@ -14,6 +14,8 @@ import {
   ChooseRoomsToRenovate,
   ChooseSpeciality,
   ChooseWorkType,
+  LastStep,
+  PhoneVerificationCode,
   SaveProject,
 } from './steps';
 
@@ -83,5 +85,15 @@ export const stepsContent: StepContent[] = [
     title: 'announcement.saveProjectTitle',
     subtitle: 'announcement.selectSpecialitéTitle',
     component: <SaveProject />,
+  },
+  {
+    title: 'resetpass.verificationCodeTitle',
+    subtitle: 'resetpass.verificationCodeDescription',
+    component: <PhoneVerificationCode />,
+  },
+  {
+    title: 'resetpass.verificationCodeTitle',
+    subtitle: 'resetpass.verificationCodeDescription',
+    component: <LastStep />,
   },
 ];

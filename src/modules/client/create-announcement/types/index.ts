@@ -1,6 +1,7 @@
 import type { SvgProps } from 'react-native-svg';
 
-import type { AnnouncementType } from '@/types/announcement';
+import type { TxKeyPath } from '@/core';
+import type { AnnouncementType, Image } from '@/types/announcement';
 
 export type sharedType = {
   id: number;
@@ -32,7 +33,7 @@ export type projectExtensionsFormType = Pick<
 export type propertyTypeFormType = Pick<AnnouncementType, 'propertyType'>;
 export type piecesRenovateFormType = Pick<AnnouncementType, 'piecesRenovate'>;
 export type CreateProfileFormType = Pick<
-  AnnouncementType,
+  AnnouncementType['client']['user'],
   | 'firstName'
   | 'lastName'
   | 'email'
@@ -42,5 +43,17 @@ export type CreateProfileFormType = Pick<
 >;
 export type AreaDetailsFormType = Pick<
   AnnouncementType,
-  'address' | 'city' | 'terrainSurface' | 'workSurface'
+  'address' | 'city' | 'terrainSurface' | 'workSurface' | 'numberFloors'
 >;
+export type ExecutionDetailsFormType = Pick<
+  AnnouncementType,
+  'budget' | 'description'
+>;
+export type ImagesFormType = {
+  projectImages: Image[];
+};
+export type LastStepCardType = {
+  title: TxKeyPath;
+  description: TxKeyPath;
+  SvgComponent: React.ComponentType;
+};

@@ -1,3 +1,4 @@
+export * from './announcement';
 export * from './clock';
 export * from './complete-logo';
 export * from './complete-logo-client';

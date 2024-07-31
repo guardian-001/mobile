@@ -44,7 +44,7 @@ export const Tag = <T extends FieldValues>({
   return (
     <TouchableOpacity
       onPress={multi ? handleChangeMulti : handlePress}
-      className={`m-1 min-w-[22%] rounded-full border border-color-border px-4 py-3
+      className={`m-1 min-w-[22%] rounded-full border border-color-border p-3
         ${isSelected ? 'bg-primary' : 'bg-white'}`}
     >
       <Text

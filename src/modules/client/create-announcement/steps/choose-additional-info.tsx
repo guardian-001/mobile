@@ -1,42 +1,76 @@
 import React from 'react';
 
+import type { PropertyFeature } from '@/api/client/announcements/types';
 import { StepButtons } from '@/modules/shared';
-import { Text, ToggleCard, View } from '@/shared/components';
+import {
+  EmptyList,
+  ErrorData,
+  ScrollView,
+  Text,
+  ToggleCard,
+  View,
+} from '@/shared/components';
 
-import { ExtensionsData } from '../dump-data';
 import { useAdditionalInfo } from '../hooks';
 
 export function ChooseAdditionalInfo() {
-  const { onHandleBack, handleSubmit, control, error, onSubmit } =
-    useAdditionalInfo();
+  const {
+    onRollBack,
+    handleSubmit,
+    control,
+    error,
+    onSubmit,
+    ExtensionsData,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useAdditionalInfo();
   return (
-    <View className="flex flex-1 justify-between pt-4">
-      <View className="flex flex-1  flex-wrap gap-4 px-1">
-        {ExtensionsData.map((cardData) => (
-          <ToggleCard
-            key={cardData.id}
-            className="flex flex-row-reverse !justify-end rounded-lg"
-            containerClassName="h-8 min-h-[15%] max-h-[17%] min-w-[45%] max-w-[47%]"
-            classNameText="w-3/5"
-            title={cardData.label}
-            svgComponent={cardData.icon}
-            name="projectExtensions"
-            control={control}
-            multi={true}
-            value={cardData.id}
-          />
-        ))}
+    <View className="flex-1 pt-4">
+      {isError && <ErrorData message="Error Loading Data" />}
+      <View className="flex flex-1 justify-between">
+        <View className="flex-1">
+          {(isLoading || ExtensionsData?.length === 0) && (
+            <EmptyList isLoading={isLoading} />
+          )}
+          {isSuccess && (
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerClassName="flex flex-1 flex-row flex-wrap gap-4 justify-center "
+            >
+              {ExtensionsData.map((projectExtension: PropertyFeature) => (
+                <ToggleCard
+                  key={projectExtension.id}
+                  className="flex h-full w-full flex-row-reverse !justify-end rounded-lg"
+                  containerClassName="h-8 min-h-[15%] max-h-[17%] min-w-[45%] max-w-[48%]"
+                  classNameText="w-3/5"
+                  title={projectExtension.label}
+                  image={projectExtension.icon}
+                  name="projectExtensions"
+                  control={control}
+                  multi={true}
+                  value={projectExtension.id}
+                />
+              ))}
+            </ScrollView>
+          )}
+
+          {error && (
+            <Text className="text-sm text-error dark:text-error" tx={error} />
+          )}
+        </View>
+
+        <StepButtons
+          previous={{
+            handlePreviousStep: onRollBack,
+            label: 'common.back',
+          }}
+          next={{
+            handleSubmit: handleSubmit(onSubmit),
+            label: 'common.next',
+          }}
+        />
       </View>
-      {error && (
-        <Text className="text-sm text-error dark:text-error" tx={error} />
-      )}
-      <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'common.back' }}
-        next={{
-          handleSubmit: handleSubmit(onSubmit),
-          label: 'common.next',
-        }}
-      />
     </View>
   );
 }

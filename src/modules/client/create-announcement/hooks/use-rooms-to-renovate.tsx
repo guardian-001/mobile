@@ -17,7 +17,7 @@ export const useRoomsToRenovate = () => {
     { piecesRenovate: formData?.piecesRenovate }
   );
 
-  const { data, isError, isLoading, isFetchedAfterMount } =
+  const { data, isError, isLoading, isFetchedAfterMount, isSuccess } =
     useRoomsToRenovateApi({
       variables: {
         propertyType: formData.propertyType,
@@ -50,6 +50,7 @@ export const useRoomsToRenovate = () => {
   ]);
 
   const onSubmit = (data: piecesRenovateFormType) => {
+    formData.newConstruction = newConstruction;
     setFormData((prev: any) => ({
       ...prev,
       ...data,
@@ -57,7 +58,7 @@ export const useRoomsToRenovate = () => {
     onHandleNext();
   };
   const onRollBack = () => {
-    formData.needs = [];
+    formData.piecesRenovate = [];
     onHandleBack();
   };
 
@@ -75,5 +76,6 @@ export const useRoomsToRenovate = () => {
     eliminateStep,
     newConstruction,
     isFetchedAfterMount,
+    isSuccess,
   };
 };

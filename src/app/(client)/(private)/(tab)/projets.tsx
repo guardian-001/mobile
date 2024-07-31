@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 
 import { Button, FocusAwareStatusBar, View } from '@/shared/components';
+
 export default function Projets() {
   const router = useRouter();
   return (

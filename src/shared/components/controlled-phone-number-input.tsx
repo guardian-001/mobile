@@ -34,10 +34,12 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
   const { field, fieldState } = useController({ control, name, rules });
   const error = fieldState.error?.message as TxKeyPath | undefined;
   const [selectedCountry, setSelectedCountry] = useState<ICountry>();
+  const [number, setNumber] = useState<string>('');
 
   function handleSelectedCountry(country: ICountry) {
     setSelectedCountry(country);
   }
+
   return (
     <View className="mb-2 w-full gap-1">
       {label && (
@@ -47,9 +49,10 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
       )}
       <View>
         <PhoneInput
-          value={(field.value as string) || ''}
+          value={number}
           onChangeText={(value) => {
-            field.onChange(value);
+            setNumber(value);
+            field.onChange(`${selectedCountry?.callingCode}${value}`);
           }}
           onChangePhoneNumber={field.onChange}
           placeholder="111-222-333-444"
@@ -67,7 +70,7 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
             caret: { fontSize: 16, backgroundColor: colors.white },
             flag: { fontSize: 16 },
             flagContainer: {
-              width: 100,
+              width: 120,
               backgroundColor: colors.white,
             },
           }}

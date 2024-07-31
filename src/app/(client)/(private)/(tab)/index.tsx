@@ -11,6 +11,7 @@ export default function Explorer() {
   return (
     <View className="flex-1 ">
       <FocusAwareStatusBar />
+
       {status && (
         <Button
           label={'profile'}
@@ -20,6 +21,7 @@ export default function Explorer() {
           className="mt-20 h-12 rounded-md"
         />
       )}
+
     </View>
   );
 }
