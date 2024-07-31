@@ -4,7 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-
 dependencies:
   '@expo/metro-runtime':
     specifier: ^3.2.1
@@ -289,6 +288,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^2.9.11
         version: 2.9.11(react-hook-form@7.51.4(react@18.2.0))
+      '@marceloterreiro/flash-calendar':
+        specifier: ^1.0.0
+        version: 1.0.0(@shopify/flash-list@1.6.4(@babel/runtime@7.24.7)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       '@react-navigation/bottom-tabs':
         specifier: ^6.5.20
         version: 6.5.20(@react-navigation/native@6.1.17(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-safe-area-context@4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-screens@3.31.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
@@ -547,6 +549,7 @@ importers:
         version: 5.3.3
 
 packages:
+
   '@adobe/css-tools@4.4.0':
     resolution: {integrity: sha512-Ff9+ksdQQB3rMncgqDK78uLznstjyfIf2Arnh22pW8kBpLs6rpKDwgnZT46hin5Hl1WzazzK64DOrhSwYpS7bQ==}
 
@@ -1872,6 +1875,13 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
+
+  '@marceloterreiro/flash-calendar@1.0.0':
+    resolution: {integrity: sha512-ibp7CPCgTlG0qMuN8PJnF3qmLqG2NVgPJo44N+4GkZgQCAW7IabyxU5zq8N7ZTheob0nzgWUwi3Yy1Kjyo8Gxg==}
+    peerDependencies:
+      '@shopify/flash-list': '*'
+      react: '*'
+      react-native: '*'
 
   '@motionone/animation@10.18.0':
     resolution: {integrity: sha512-9z2p5GFGCm0gBsZbi8rVMOAJCtw1WqBTIPw3ozk06gDvZInBPIsQcHgYogEJ4yuHJ+akuW8g1SEIOpTOvYs8hw==}
@@ -5651,6 +5661,9 @@ packages:
     resolution: {integrity: sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==}
     engines: {node: '>= 8'}
 
+  mitt@3.0.1:
+    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
+
   mkdirp@0.5.6:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
     hasBin: true
@@ -8959,7 +8972,7 @@ snapshots:
       '@types/node': 20.5.1
       chalk: 4.1.2
       cosmiconfig: 8.3.6(typescript@5.3.3)
-      cosmiconfig-typescript-loader: 4.4.0(@types/node@20.5.1)(cosmiconfig@8.3.6(typescript@5.3.3))(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.3.3))(typescript@5.3.3)
+      cosmiconfig-typescript-loader: 4.4.0(@types/node@20.5.1)(cosmiconfig@8.3.6(typescript@5.3.3))(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.3.3))(typescript@5.3.3)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -9902,20 +9915,12 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-
-  /@marceloterreiro/flash-calendar@1.0.0(@shopify/flash-list@1.6.4)(react-native@0.74.1)(react@18.2.0):
-    resolution: {integrity: sha512-ibp7CPCgTlG0qMuN8PJnF3qmLqG2NVgPJo44N+4GkZgQCAW7IabyxU5zq8N7ZTheob0nzgWUwi3Yy1Kjyo8Gxg==}
-    peerDependencies:
-      '@shopify/flash-list': '*'
-      react: '*'
-      react-native: '*'
+  '@marceloterreiro/flash-calendar@1.0.0(@shopify/flash-list@1.6.4(@babel/runtime@7.24.7)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@shopify/flash-list': 1.6.4(@babel/runtime@7.24.7)(react-native@0.74.1)(react@18.2.0)
+      '@shopify/flash-list': 1.6.4(@babel/runtime@7.24.7)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       mitt: 3.0.1
       react: 18.2.0
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7)(@types/react@18.2.79)(react@18.2.0)
-    dev: false
-
+      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.2.79)(react@18.2.0)
 
   '@motionone/animation@10.18.0':
     dependencies:
@@ -11677,7 +11682,7 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  cosmiconfig-typescript-loader@4.4.0(@types/node@20.5.1)(cosmiconfig@8.3.6(typescript@5.3.3))(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.3.3))(typescript@5.3.3):
+  cosmiconfig-typescript-loader@4.4.0(@types/node@20.5.1)(cosmiconfig@8.3.6(typescript@5.3.3))(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.3.3))(typescript@5.3.3):
     dependencies:
       '@types/node': 20.5.1
       cosmiconfig: 8.3.6(typescript@5.3.3)
@@ -14717,12 +14722,9 @@ snapshots:
       minipass: 3.3.6
       yallist: 4.0.0
 
-  /mitt@3.0.1:
-    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
-    dev: false
+  mitt@3.0.1: {}
 
   mkdirp@0.5.6:
-
     dependencies:
       minimist: 1.2.8
 
