@@ -21,15 +21,11 @@ export const useUpdatePassword = () => {
   const updatePassword = useUpdatePasswordApi();
 
   const onSubmit = (data: ResetPassFormProfileType) => {
-    console.log(data);
     updatePassword.mutate(data, {
       onSuccess: () => {
         showSuccesMessage();
         reset({ oldPassword: '', newPassword: '', confirmNewPassword: '' });
         router.back();
-      },
-      onError: (error: any) => {
-        console.log('error', error);
       },
     });
   };
