@@ -18,8 +18,13 @@ export const useLoginApi = createMutation<Response, Request, AxiosError>({
       data: request,
     })
       .then((response) => {
-        const router = useRouter();
         const space = useRouteName();
+
+        console.log(space);
+        console.log(request);
+
+        const router = useRouter();
+        // const space = useRouteName();
         const signIn = useAuth.use.signIn();
 
         signIn({
@@ -29,7 +34,7 @@ export const useLoginApi = createMutation<Response, Request, AxiosError>({
           },
           user: response.data.user,
         });
-
+        console.log(space);
         router.push(`/(${space})/(private)/profile`);
         return response.data;
       })
