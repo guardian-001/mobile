@@ -13,13 +13,14 @@ import {
   ScrollView,
 } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
-import { BasicInfoFormSchema } from '@/shared/validations';
 
-type BasicInfoFormType = z.infer<typeof BasicInfoFormSchema>;
+import { BasicInformationSchema } from './schemas';
+
+type BasicInfoFormType = z.infer<typeof BasicInformationSchema>;
 type BasicInfoFormProps = {};
 
 export const BasicInfoForm = ({}: BasicInfoFormProps) => {
-  const { handleSubmit, control, form } = useCustomForm(BasicInfoFormSchema);
+  const { handleSubmit, control, form } = useCustomForm(BasicInformationSchema);
   const router = useRouter();
 
   const handleFormSubmit: SubmitHandler<BasicInfoFormType> = () => {
@@ -37,11 +38,11 @@ export const BasicInfoForm = ({}: BasicInfoFormProps) => {
         contentContainerClassName="gap-4"
       >
         <ControlledInput
-          testID="name-input"
+          testID="firstName-input"
           control={control}
-          name="name"
-          label={'Name'}
-          placeholder={'Name'}
+          name="firstName"
+          label={'firstName'}
+          placeholder={'firstName'}
         />
         <ControlledInput
           testID="LastName-input"
@@ -58,11 +59,11 @@ export const BasicInfoForm = ({}: BasicInfoFormProps) => {
           placeholder={translate('login.email')}
         />
         <ControlledInput
-          testID="number-input"
+          testID="phoneNumber-input"
           control={control}
-          name="number"
-          label="number"
-          placeholder="number"
+          name="phoneNumber"
+          label="phoneNumber"
+          placeholder="phoneNumber"
           secureTextEntry={true}
         />
         <Button
