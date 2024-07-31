@@ -11,6 +11,7 @@ import {
 } from '@/shared/components';
 
 import { useWorkType } from '../hooks/use-work-type';
+import type { workType } from '../types';
 
 export function ChooseWorkType() {
   const {
@@ -37,15 +38,15 @@ export function ChooseWorkType() {
                 showsVerticalScrollIndicator={false}
                 contentContainerClassName="gap-4"
               >
-                {workTypeData?.map((cardData) => (
+                {workTypeData?.map((workType: workType) => (
                   <ToggleCard
-                    key={cardData.id}
+                    key={workType.id}
                     className="h-16 w-full !items-start rounded-lg"
-                    title={cardData.header}
-                    description={cardData.description}
+                    title={workType.header}
+                    description={workType.description}
                     name="workType"
                     control={control}
-                    value={cardData.id}
+                    value={workType.id}
                   />
                 ))}
               </ScrollView>

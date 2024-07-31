@@ -17,7 +17,7 @@ export const useAdditionalInfo = () => {
     { projectExtensions: formData?.projectExtensions || [] }
   );
   const error = errors?.projectExtensions?.message as TxKeyPath | undefined;
-  const { data, isError, isLoading, isFetchedAfterMount } =
+  const { data, isError, isLoading, isFetchedAfterMount, isSuccess } =
     useAdditionalInfoApi({
       variables: {
         propertyType: formData.propertyType,
@@ -68,5 +68,6 @@ export const useAdditionalInfo = () => {
     isLoading,
     eliminateStep,
     isFetchedAfterMount,
+    isSuccess,
   };
 };

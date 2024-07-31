@@ -3,23 +3,26 @@ import { createQuery } from 'react-query-kit';
 
 import { getAnnouncementStep10 } from '@/services/shared/announcement-service';
 
-import type { ProjectExtensionsResponse, VariablesStep10 } from './types';
+import type {
+  ProjectExtensionsResponse,
+  PropertyAndWorkTypeVariables,
+} from './types';
 
 const fetchAnnouncementStep10 = async ({
   propertyType,
   workType,
-}: VariablesStep10): Promise<ProjectExtensionsResponse> => {
+}: PropertyAndWorkTypeVariables): Promise<ProjectExtensionsResponse> => {
   return getAnnouncementStep10(propertyType, workType);
 };
 
 export const useAdditionalInfoApi = createQuery<
   ProjectExtensionsResponse,
-  VariablesStep10,
+  PropertyAndWorkTypeVariables,
   AxiosError
 >({
   queryKey: [
     'announcement-step10',
-    (variables: VariablesStep10) => {
+    (variables: PropertyAndWorkTypeVariables) => {
       variables.propertyType, variables.workType;
     },
   ],

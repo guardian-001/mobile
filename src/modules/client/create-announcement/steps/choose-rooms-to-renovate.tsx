@@ -22,46 +22,45 @@ export function ChooseRoomsToRenovate() {
     isError,
     isLoading,
     isFetchedAfterMount,
+    isSuccess,
   } = useRoomsToRenovate();
 
   return (
     <View className="flex-1 pt-4">
-      {isError ? (
-        <ErrorData message="Error Loading Data" />
-      ) : (
-        <View className="flex flex-1 items-center justify-between">
-          {isLoading || RenovateData?.length === 0 ? (
-            <EmptyList isLoading={isLoading || isFetchedAfterMount} />
-          ) : (
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              contentContainerClassName="gap-4"
-            >
-              {RenovateData?.map((cardData: resultType) => (
-                <Counter
-                  key={cardData.id}
-                  title={cardData.label}
-                  image={cardData.icon}
-                  name="piecesRenovate"
-                  control={control}
-                  id={cardData.id}
-                />
-              ))}
-            </ScrollView>
-          )}
+      {isError && <ErrorData message="Error Loading Data" />}
+      <View className="flex flex-1 items-center justify-between">
+        {(isLoading || RenovateData?.length === 0) && (
+          <EmptyList isLoading={isLoading || isFetchedAfterMount} />
+        )}
+        {isSuccess && (
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerClassName="gap-4"
+          >
+            {RenovateData?.map((cardData: resultType) => (
+              <Counter
+                key={cardData.id}
+                title={cardData.label}
+                image={cardData.icon}
+                name="piecesRenovate"
+                control={control}
+                id={cardData.id}
+              />
+            ))}
+          </ScrollView>
+        )}
 
-          <StepButtons
-            previous={{
-              handlePreviousStep: onRollBack,
-              label: 'common.back',
-            }}
-            next={{
-              handleSubmit: handleSubmit(onSubmit),
-              label: 'common.next',
-            }}
-          />
-        </View>
-      )}
+        <StepButtons
+          previous={{
+            handlePreviousStep: onRollBack,
+            label: 'common.back',
+          }}
+          next={{
+            handleSubmit: handleSubmit(onSubmit),
+            label: 'common.next',
+          }}
+        />
+      </View>
     </View>
   );
 }

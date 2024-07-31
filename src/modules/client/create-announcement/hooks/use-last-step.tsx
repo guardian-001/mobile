@@ -5,16 +5,13 @@ import {
   LastStepIcon2,
   LastStepIcon3,
 } from '@/assets/icons/archimatch';
-import type { TxKeyPath } from '@/core';
+
+import type { LastStepCardType } from '../types';
 
 export const useLastStep = () => {
   const router = useRouter();
-  type cardType = {
-    title: TxKeyPath;
-    description: TxKeyPath;
-    SvgComponent: React.ComponentType;
-  };
-  const cards: cardType[] = [
+
+  const LastStepCards: LastStepCardType[] = [
     {
       SvgComponent: LastStepIcon1,
       title: 'announcement.cardOneTitle',
@@ -33,6 +30,6 @@ export const useLastStep = () => {
   ];
   return {
     router,
-    cards,
+    LastStepCards,
   };
 };

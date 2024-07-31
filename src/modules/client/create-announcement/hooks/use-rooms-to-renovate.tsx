@@ -17,7 +17,7 @@ export const useRoomsToRenovate = () => {
     { piecesRenovate: formData?.piecesRenovate }
   );
 
-  const { data, isError, isLoading, isFetchedAfterMount } =
+  const { data, isError, isLoading, isFetchedAfterMount, isSuccess } =
     useRoomsToRenovateApi({
       variables: {
         propertyType: formData.propertyType,
@@ -76,5 +76,6 @@ export const useRoomsToRenovate = () => {
     eliminateStep,
     newConstruction,
     isFetchedAfterMount,
+    isSuccess,
   };
 };

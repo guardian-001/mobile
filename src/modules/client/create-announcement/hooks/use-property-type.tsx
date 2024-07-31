@@ -21,6 +21,7 @@ export const usePropertyType = () => {
     data: PropertyData,
     isError,
     isLoading,
+    isSuccess,
   } = usePropertyTypesApi({
     variables: { projectCategory: formData.projectCategory },
   });
@@ -49,5 +50,6 @@ export const usePropertyType = () => {
     PropertyData,
     isError,
     isLoading,
+    isSuccess,
   };
 };

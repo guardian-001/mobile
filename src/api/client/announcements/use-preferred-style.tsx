@@ -3,22 +3,25 @@ import { createQuery } from 'react-query-kit';
 
 import { getAnnouncementStep9 } from '@/services/shared/announcement-service';
 
-import type { ArchitecturalStyleResponse, VariablesStep9 } from './types';
+import type {
+  ArchitecturalStyleResponse,
+  PropertyTypeVariables,
+} from './types';
 
 const fetchAnnouncementStep9 = async ({
   propertyType,
-}: VariablesStep9): Promise<ArchitecturalStyleResponse> => {
+}: PropertyTypeVariables): Promise<ArchitecturalStyleResponse> => {
   return getAnnouncementStep9(propertyType);
 };
 
 export const usePreferredStyleApi = createQuery<
   ArchitecturalStyleResponse,
-  VariablesStep9,
+  PropertyTypeVariables,
   AxiosError
 >({
   queryKey: [
     'announcement-step9',
-    (variables: VariablesStep9) => variables.propertyType,
+    (variables: PropertyTypeVariables) => variables.propertyType,
   ],
   fetcher: fetchAnnouncementStep9,
 });

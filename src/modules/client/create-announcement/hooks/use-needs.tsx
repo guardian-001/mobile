@@ -21,6 +21,7 @@ export const useNeeds = () => {
     data: NeedsData,
     isError,
     isLoading,
+    isSuccess,
   } = useNeedsApi({
     variables: { architectSpeciality: formData.architectSpeciality },
   });
@@ -47,5 +48,6 @@ export const useNeeds = () => {
     NeedsData,
     isError,
     isLoading,
+    isSuccess,
   };
 };

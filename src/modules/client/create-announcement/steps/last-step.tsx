@@ -6,9 +6,10 @@ import { Image, ScrollView, Text, View } from '@/shared/components';
 
 import { LastStepCard } from '../components/last-step-card';
 import { useLastStep } from '../hooks';
+import type { LastStepCardType } from '../types';
 
 export function LastStep() {
-  const { router, cards } = useLastStep();
+  const { router, LastStepCards } = useLastStep();
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -26,7 +27,7 @@ export function LastStep() {
           className=" text-xl font-bold text-primary"
         />
       </View>
-      {cards.map((card, index) => (
+      {LastStepCards.map((card: LastStepCardType, index) => (
         <LastStepCard
           key={index}
           SvgComponent={card.SvgComponent}
