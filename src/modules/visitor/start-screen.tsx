@@ -63,6 +63,7 @@ export function StartScreen() {
             type="button"
             width="w-[88%]"
             height="h-12"
+            backgroundColor='bg-blue-500'
           />
         </Container>
 
