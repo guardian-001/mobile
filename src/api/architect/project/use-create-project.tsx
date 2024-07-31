@@ -1,7 +1,7 @@
 import type { AxiosError, AxiosResponse } from 'axios';
 import { createMutation } from 'react-query-kit';
 
-import { createProject } from '@/services/shared/project-realization-services';
+import { useCreateProject } from '@/services/shared/project-realization-services';
 
 import type { VariablesCreateProject } from './types';
 
@@ -11,5 +11,11 @@ export const useCreateProjectApi = createMutation<
   AxiosError
 >({
   mutationKey: ['createProject'],
-  mutationFn: createProject,
+  mutationFn: useCreateProject,
+  onSuccess: (data) => {
+    return data;
+  },
+  onError: (error) => {
+    return error;
+  },
 });
