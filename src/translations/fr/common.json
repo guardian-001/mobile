@@ -9,5 +9,6 @@
   "back": "Retour",
   "next": "Suivant",
   "modify": "Modifier",
-  "publish": "Publier"
+  "publish": "Publier",
+  "logout": "déconnecter"
 }

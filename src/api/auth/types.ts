@@ -1,3 +1,5 @@
+import type { AxiosResponse } from 'axios';
+
 import type { Image } from '@/types';
 
 export type SignupRequest = {
@@ -29,8 +31,9 @@ export type User = {
 };
 
 export type LoginResponse = {
-  state: boolean;
+  // state: boolean;
   error?: string;
+  response?: AxiosResponse;
 };
 
 export type ForgetPassRequest = {
