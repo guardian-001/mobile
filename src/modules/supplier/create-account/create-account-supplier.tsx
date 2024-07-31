@@ -5,7 +5,6 @@ import { FormProvider, useFormStepper } from '@/shared';
 import { Image, KeyboardAvoidingView, ScrollView } from '@/shared/components';
 import { useRouteName } from '@/shared/hooks/use-get-route';
 
-// Import the InterestPick component
 import { stepsContent } from './steps-content';
 import type { FirstConnectionType } from './types';
 
