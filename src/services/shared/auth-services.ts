@@ -1,33 +1,31 @@
 import { client } from '@/api';
-import type { LoginRequest, LoginResponse } from '@/api/auth';
-import { useAuth } from '@/core';
+import type { LoginRequest, LoginResponse, SignupRequest } from '@/api/auth';
 
 export async function postLogin(request: LoginRequest): Promise<LoginResponse> {
-  console.log('first');
   const url = '/api/users/login-email/';
+
   return client({
     url: url,
     method: 'POST',
     data: request,
   })
     .then((response) => {
-      console.log('first');
-
-      console.log('firstff');
-
-      const signIn = useAuth.use.signIn();
-
-      signIn({
-        token: {
-          access: response.data.access,
-          refresh: response.data.refresh,
-        },
-        user: response.data.user,
-      });
-
-      return { state: true };
+      return { error: '', response };
     })
     .catch((error) => {
-      return { state: false, error: error.message };
+      return { error: error.message };
     });
+}
+
+export async function postSignup(request: SignupRequest): Promise<Response> {
+  const url = '/api/architect-request/create-architect-request/';
+  return client({
+    url: url,
+    method: 'POST',
+    data: request,
+  })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((response) => response.data);
 }

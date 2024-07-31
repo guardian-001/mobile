@@ -15,7 +15,7 @@ import { useProfile } from '../shared/hooks';
 export function CreateProfile() {
   const { onSubmit, handleSubmit, control, onHandleBack } = useProfile();
   return (
-    <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16   ">
+    <View className="mb-5 flex h-full flex-1 items-center justify-between gap-6  ">
       <View>
         <Text
           tx={'signupStepCreateProfile.title'}
@@ -27,8 +27,11 @@ export function CreateProfile() {
         />
       </View>
 
-      <View className=" flex h-3/5  w-[90%]   items-center justify-center   rounded-3xl bg-white px-4 py-2 shadow-md">
-        <ScrollView className=" flex gap-5 rounded-3xl bg-white px-4   ">
+      <View className=" flex h-[70%]  w-[90%]   items-center justify-center   rounded-3xl bg-white px-4 py-2 shadow-md">
+        <ScrollView
+          className=" flex gap-5 rounded-3xl bg-white p-4"
+          contentContainerClassName="justify-center"
+        >
           <ControlledInput
             testID="name-input"
             control={control}
