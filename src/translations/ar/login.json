@@ -14,5 +14,5 @@
   "signupLink": "سجل",
   "codeVerif": "رمز التحقق",
   "saisirCode": "أدخل الرمز المرسل إليه",
-  "loginError": "email ou mot de passe incorrect"
+  "loginError": "بريد أو كلمة مرورغير صحيحة"
 }

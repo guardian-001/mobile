@@ -63,12 +63,13 @@ export async function getCategories(): Promise<ResponseCategory> {
     });
 }
 
-export async function createProject(
+export async function useCreateProject(
   formData: FormData
 ): Promise<AxiosResponse> {
   try {
+    const url = 'api/architect-realization/create-realization/';
     const response = await client({
-      url: 'api/architect-realization/create-realization/',
+      url: url,
       method: 'POST',
       data: formData,
       headers: {
