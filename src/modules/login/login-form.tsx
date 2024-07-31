@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import type * as z from 'zod';
 
 import { useLoginApi } from '@/api/auth';
-import { translate, useAuth } from '@/core';
+import { translate } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useRouteName } from '@/shared/hooks/use-get-route';
@@ -23,20 +23,18 @@ export type LoginType = {
 export const LoginForm = () => {
   const router = useRouter();
   const space = useRouteName();
-  const signIn = useAuth.use.signIn();
   const [checked, setChecked] = useState(true);
+  const [errors, setErrors] = useState('');
   const { handleSubmit, control } = useCustomForm(LoginFormSchema);
   const login = useLoginApi();
 
   const onSubmit = (data: LoginFormType) => {
     login.mutate(data, {
-      onSuccess: (response) => {
-        signIn({ access: response.access, refresh: response.refresh });
-
+      onSuccess: () => {
         router.push(`/(${space})/(private)/profile`);
       },
       onError: (error) => {
-        throw error;
+        setErrors(error.message);
       },
     });
   };
@@ -44,6 +42,7 @@ export const LoginForm = () => {
   const handleResetPass = () => {
     router.push(`/(${space})/(public)/reset-password`);
   };
+
   const { setFormData } = useLoginForm();
 
   const handleData = ({ name, data }: LoginType) => {
@@ -52,8 +51,9 @@ export const LoginForm = () => {
       [name]: data,
     }));
   };
+
   return (
-    <View className="flex w-full justify-center ">
+    <View className="flex w-full justify-center">
       <ControlledInput
         testID="email-input"
         control={control}
@@ -71,8 +71,7 @@ export const LoginForm = () => {
         secureTextEntry={true}
         handleOnChange={handleData}
       />
-
-      <Container style="flex-row justify-between my-3 ">
+      <Container style="flex-row justify-between my-3">
         <Checkbox
           checked={checked}
           onChange={setChecked}
@@ -81,11 +80,14 @@ export const LoginForm = () => {
         />
         <Text
           onPress={handleResetPass}
-          className={`font-lato text-xs font-semibold text-primary `}
+          className="font-lato text-xs font-semibold text-primary"
         >
           {translate('login.mdpOublier')}
         </Text>
       </Container>
+      <Text className="font-lato text-xs font-semibold text-primary">
+        {errors && translate('login.loginError')}
+      </Text>
       <LoginButton
         type="button"
         label={translate('login.connectBtn')}

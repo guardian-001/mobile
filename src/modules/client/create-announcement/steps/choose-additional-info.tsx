@@ -12,9 +12,9 @@ export function ChooseAdditionalInfo() {
   return (
     <View className="flex flex-1 justify-between pt-4">
       <View className="flex flex-1  flex-wrap gap-4 px-1">
-        {ExtensionsData.map((cardData, index) => (
+        {ExtensionsData.map((cardData) => (
           <ToggleCard
-            key={index}
+            key={cardData.id}
             className="flex flex-row-reverse !justify-end rounded-lg"
             containerClassName="h-8 min-h-[15%] max-h-[17%] min-w-[45%] max-w-[47%]"
             classNameText="w-3/5"
@@ -31,10 +31,10 @@ export function ChooseAdditionalInfo() {
         <Text className="text-sm text-error dark:text-error" tx={error} />
       )}
       <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'signup.retour' }}
+        previous={{ handlePreviousStep: onHandleBack, label: 'common.back' }}
         next={{
           handleSubmit: handleSubmit(onSubmit),
-          label: 'signup.suivant',
+          label: 'common.next',
         }}
       />
     </View>

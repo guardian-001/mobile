@@ -15,12 +15,12 @@ export function AddPhotos() {
         <StepperButton
           width="w-[45%]"
           onPressHandler={onHandleBack}
-          label={translate('signup.retour')}
+          label={translate('common.back')}
         />
         <StepperButton
           width="w-[45%]"
           onPressHandler={onHandleNext}
-          label={translate('signup.suivant')}
+          label={translate('common.next')}
         />
       </View>
     </View>

@@ -4,6 +4,7 @@ import { Platform, TouchableOpacity } from 'react-native';
 
 import { Close } from '@/assets/icons';
 import {
+  colors,
   KeyboardAvoidingView,
   ScrollView,
   Text,
@@ -28,14 +29,14 @@ const CreateAnnouncementInner = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="mt-12 w-full flex-1 rounded-t-3xl bg-white dark:bg-black "
     >
-      <View className="p-4">
+      <View className="p-4 py-6">
         <TouchableOpacity
-          className="items-end"
+          className=" absolute right-5 top-5 z-10 float-right h-5 w-5   "
           onPress={() => {
             router.back();
           }}
         >
-          <Close />
+          <Close color={colors.blue} />
         </TouchableOpacity>
         {step !== lastStep && (
           <View>

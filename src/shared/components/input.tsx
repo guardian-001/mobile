@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import type { TextInput, TextInputProps } from 'react-native';
 import { I18nManager, StyleSheet, View } from 'react-native';
@@ -13,10 +14,10 @@ const inputTv = tv({
   slots: {
     container: 'mb-2',
     label:
-      'mb-1 text-xs font-medium text-primary-txt dark:text-white md:text-lg',
+      'mb-1 text-base font-medium text-primary-txt dark:text-white md:text-lg',
 
     input:
-      'mt-0 h-10 rounded-lg border border-description bg-white px-4 py-3 font-lato text-xs font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white md:text-lg',
+      'mt-0 h-12 rounded-lg border border-description bg-white px-4 py-3 font-lato text-base font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white md:text-lg',
   },
 
   variants: {
@@ -46,13 +47,25 @@ const inputTv = tv({
 
 export interface NInputProps extends TextInputProps {
   label?: string;
+  labelStyle?: string;
   disabled?: boolean;
+  required?: boolean;
   error?: TxKeyPath;
   className?: string;
+  inputAreaType?: 'textInput' | 'textArea';
 }
 
 export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
-  const { label, error, testID, className, ...inputProps } = props;
+  const {
+    label,
+    error,
+    testID,
+    className,
+    labelStyle,
+    required = false,
+    inputAreaType = 'textInput',
+    ...inputProps
+  } = props;
   const [isFocussed, setIsFocussed] = React.useState(false);
   const onBlur = React.useCallback(() => setIsFocussed(false), []);
   const onFocus = React.useCallback(() => setIsFocussed(true), []);
@@ -70,14 +83,22 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
   return (
     <View className={styles.container({ className })}>
       {label && (
-        <Text
-          testID={testID ? `${testID}-label` : undefined}
-          className={styles.label()}
-        >
-          {label}
-        </Text>
+        <View className="flex w-full flex-row justify-start">
+          <Text
+            testID={testID ? `${testID}-label` : undefined}
+            className={clsx(
+              styles.label(),
+              labelStyle ? labelStyle : 'text-xs'
+            )}
+          >
+            {label}
+          </Text>
+          {required && <Text className="text-primary">*</Text>}
+        </View>
       )}
       <NTextInput
+        multiline={inputAreaType === 'textArea'}
+        numberOfLines={4}
         testID={testID}
         ref={ref}
         placeholderTextColor={colors.neutral[400]}

@@ -24,6 +24,9 @@ export type InputControllerType<T extends FieldValues> = {
   name: Path<T>;
   control: Control<T>;
   rules?: TRule;
+  required?: boolean;
+  labelStyle?: string;
+  inputAreaType?: 'textInput' | 'textArea';
   handleOnChange?: ({ name, data }: CreateProfileType) => void;
 };
 
@@ -34,13 +37,25 @@ interface ControlledInputProps<T extends FieldValues>
 export function ControlledInput<T extends FieldValues>(
   props: ControlledInputProps<T>
 ) {
-  const { name, control, rules, handleOnChange, ...inputProps } = props;
+  const {
+    name,
+    control,
+    rules,
+    handleOnChange,
+    labelStyle,
+    inputAreaType = 'textInput',
+    required = false,
+    ...inputProps
+  } = props;
 
   const { field, fieldState } = useController({ control, name, rules });
   const error = fieldState.error?.message as TxKeyPath | undefined;
 
   return (
     <Input
+      required={required}
+      inputAreaType={inputAreaType}
+      labelStyle={labelStyle}
       ref={field.ref}
       autoCapitalize="none"
       onChangeText={(value) => {
