@@ -18,7 +18,12 @@ export const useExecutionDetails = () => {
   const errorDescription = errors?.description?.message as
     | TxKeyPath
     | undefined;
-  const { data: budgets, isError, isLoading } = useExecutionDetailsApi();
+  const {
+    data: budgets,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useExecutionDetailsApi();
 
   const onSubmit = (data: ExecutionDetailsFormType) => {
     setFormData((prev: any) => ({
@@ -46,5 +51,6 @@ export const useExecutionDetails = () => {
     errorBudget,
     isError,
     isLoading,
+    isSuccess,
   };
 };

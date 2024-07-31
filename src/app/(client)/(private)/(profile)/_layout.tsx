@@ -8,7 +8,7 @@ export default function ProfileLayout() {
     <Stack initialRouteName="profile">
       <Stack.Screen
         name="profile"
-        options={ScreenOptions({ route: '/(client)/(private)/' })}
+        options={ScreenOptions({ route: '(client)/(private)/(tab)' })}
       />
       <Stack.Screen name="basic-information" options={ScreenOptions({})} />
       <Stack.Screen name="notification" options={ScreenOptions({})} />

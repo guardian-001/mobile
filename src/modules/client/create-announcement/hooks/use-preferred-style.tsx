@@ -19,7 +19,7 @@ export const usePreferredStyle = () => {
   );
 
   const error = errors?.architecturalStyle?.message as TxKeyPath | undefined;
-  const { data, isError, isLoading, isFetchedAfterMount } =
+  const { data, isError, isLoading, isFetchedAfterMount, isSuccess } =
     usePreferredStyleApi({
       variables: { propertyType: formData.propertyType },
     });
@@ -68,5 +68,6 @@ export const usePreferredStyle = () => {
     isLoading,
     eliminateStep,
     isFetchedAfterMount,
+    isSuccess,
   };
 };

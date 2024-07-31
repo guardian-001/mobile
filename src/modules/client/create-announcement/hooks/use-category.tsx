@@ -15,7 +15,12 @@ export const useCategory = () => {
     CreateAnnouncementStepThreeSchema,
     { projectCategory: formData?.projectCategory }
   );
-  const { data: CategoryData, isError, isLoading } = useCategoriesApi();
+  const {
+    data: CategoryData,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useCategoriesApi();
 
   const error = errors?.projectCategory?.message as TxKeyPath | undefined;
 
@@ -42,5 +47,6 @@ export const useCategory = () => {
     CategoryData,
     isError,
     isLoading,
+    isSuccess,
   };
 };

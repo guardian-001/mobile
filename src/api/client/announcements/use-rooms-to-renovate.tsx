@@ -3,23 +3,23 @@ import { createQuery } from 'react-query-kit';
 
 import { getAnnouncementStep6 } from '@/services/shared/announcement-service';
 
-import type { PropertyResponse, VariablesStep6 } from './types';
+import type { PropertyAndWorkTypeVariables, PropertyResponse } from './types';
 
 const fetchAnnouncementStep6 = async ({
   propertyType,
   workType,
-}: VariablesStep6): Promise<PropertyResponse> => {
+}: PropertyAndWorkTypeVariables): Promise<PropertyResponse> => {
   return getAnnouncementStep6(propertyType, workType);
 };
 
 export const useRoomsToRenovateApi = createQuery<
   PropertyResponse,
-  VariablesStep6,
+  PropertyAndWorkTypeVariables,
   AxiosError
 >({
   queryKey: [
     'announcement-step6',
-    (variables: VariablesStep6) => {
+    (variables: PropertyAndWorkTypeVariables) => {
       variables.propertyType, variables.workType;
     },
   ],

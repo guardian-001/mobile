@@ -1,5 +1,6 @@
 import type { SvgProps } from 'react-native-svg';
 
+import type { TxKeyPath } from '@/core';
 import type { AnnouncementType, Image } from '@/types/announcement';
 
 export type sharedType = {
@@ -50,4 +51,9 @@ export type ExecutionDetailsFormType = Pick<
 >;
 export type ImagesFormType = {
   projectImages: Image[];
+};
+export type LastStepCardType = {
+  title: TxKeyPath;
+  description: TxKeyPath;
+  SvgComponent: React.ComponentType;
 };

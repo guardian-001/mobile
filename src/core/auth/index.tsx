@@ -7,8 +7,10 @@ import type { TokenType } from './utils';
 import {
   getToken,
   getUser,
+  removeStatus,
   removeToken,
   removeUser,
+  setStatus,
   setToken,
   setUser,
 } from './utils';
@@ -33,12 +35,14 @@ const _useAuth = create<AuthState>((set, get) => ({
     if (token && user) {
       setToken(token);
       setUser(user);
+      setStatus('signIn');
       set({ status: 'signIn', token, user });
     }
   },
   signOut: () => {
     removeToken();
     removeUser();
+    removeStatus();
     set({ status: 'signOut', token: null });
   },
   hydrate: () => {

@@ -1,4 +1,3 @@
-import { useRouter } from 'expo-router';
 import * as React from 'react';
 
 import {
@@ -10,7 +9,7 @@ import {
   Terms,
   User,
 } from '@/assets/icons';
-import { translate, useAuth } from '@/core';
+import { translate } from '@/core';
 import {
   colors,
   GradientBackground,
@@ -25,14 +24,11 @@ import {
 } from '@/shared/components';
 
 import { Container, MainButton } from '../shared';
+import { useProfileClient } from './shared/hooks/use-profile';
 
 type Props = {};
 export default function ClientProfile({}: Props) {
-  const signOut = useAuth.use.signOut();
-  const router = useRouter();
-  const navigateTo = (path: string) => {
-    router.push(`/(client)/(private)/${path}`);
-  };
+  const { navigateTo, logoutHandler } = useProfileClient();
   return (
     <GradientBackground
       colors={[colors.white, colors['extra-light-blue']]}
@@ -97,7 +93,11 @@ export default function ClientProfile({}: Props) {
           <Item text="profile.report" icon={<Flag />} onPress={() => {}} />
         </ItemsContainer>
         <ItemsContainer title="profile.connection">
-          <Item text="profile.logout" icon={<Logout />} onPress={signOut} />
+          <Item
+            text="profile.logout"
+            icon={<Logout />}
+            onPress={() => logoutHandler('(client)/(public)/login')}
+          />
         </ItemsContainer>
       </ScrollView>
     </GradientBackground>

@@ -28,7 +28,7 @@ export const useAreaDetails = () => {
     | TxKeyPath
     | undefined;
 
-  const { data, isError, isLoading } = useAnnouncementStep7Data();
+  const { data, isError, isLoading, isSuccess } = useAnnouncementStep7Data();
   const cities = data?.cities ?? [];
   const terrainSurfaces = data?.terrainSurfaces ?? [];
   const workSurfaces = data?.workSurfaces ?? [];
@@ -70,5 +70,6 @@ export const useAreaDetails = () => {
     workSurfaces,
     isError,
     isLoading,
+    isSuccess,
   };
 };

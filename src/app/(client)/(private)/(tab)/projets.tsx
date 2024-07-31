@@ -5,7 +5,6 @@ import { Button, FocusAwareStatusBar, View } from '@/shared/components';
 
 export default function Projets() {
   const router = useRouter();
-
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
