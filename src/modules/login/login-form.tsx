@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import type * as z from 'zod';
 
 import { useLoginApi } from '@/api/auth';
-import { translate } from '@/core';
+import { translate, useAuth } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
 import { useCustomForm } from '@/shared/hooks';
 import { useRouteName } from '@/shared/hooks/use-get-route';
@@ -27,10 +27,18 @@ export const LoginForm = () => {
   const [errors, setErrors] = useState('');
   const { handleSubmit, control } = useCustomForm(LoginFormSchema);
   const login = useLoginApi();
+  const signIn = useAuth.use.signIn();
 
   const onSubmit = (data: LoginFormType) => {
     login.mutate(data, {
-      onSuccess: () => {
+      onSuccess: (ResponseData) => {
+        signIn({
+          token: {
+            access: ResponseData.response?.data.access,
+            refresh: ResponseData.response?.data.refresh,
+          },
+          user: ResponseData.response?.data.user,
+        });
         router.push(`/(${space})/(private)/profile`);
       },
       onError: (error) => {

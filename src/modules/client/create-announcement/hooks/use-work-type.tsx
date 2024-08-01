@@ -31,7 +31,7 @@ export const useWorkType = () => {
   };
 
   const onRollBack = () => {
-    formData.needs = [];
+    formData.workType = 0;
     onHandleBack();
   };
   return {

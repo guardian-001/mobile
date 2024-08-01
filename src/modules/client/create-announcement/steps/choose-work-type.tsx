@@ -4,12 +4,14 @@ import { StepButtons } from '@/modules/shared';
 import {
   EmptyList,
   ErrorData,
+  ScrollView,
   Text,
   ToggleCard,
   View,
 } from '@/shared/components';
 
 import { useWorkType } from '../hooks/use-work-type';
+import type { workType } from '../types';
 
 export function ChooseWorkType() {
   const {
@@ -32,19 +34,22 @@ export function ChooseWorkType() {
             {isLoading || workTypeData?.length === 0 ? (
               <EmptyList isLoading={isLoading} />
             ) : (
-              <View className="gap-4">
-                {workTypeData?.map((cardData) => (
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerClassName="gap-4"
+              >
+                {workTypeData?.map((workType: workType) => (
                   <ToggleCard
-                    key={cardData.id}
+                    key={workType.id}
                     className="h-16 w-full !items-start rounded-lg"
-                    title={cardData.header}
-                    description={cardData.description}
+                    title={workType.header}
+                    description={workType.description}
                     name="workType"
                     control={control}
-                    value={cardData.id}
+                    value={workType.id}
                   />
                 ))}
-              </View>
+              </ScrollView>
             )}
             {error && (
               <Text className="text-sm text-error dark:text-error" tx={error} />

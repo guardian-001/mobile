@@ -18,6 +18,7 @@
   "areaInformationTitle": "Informations sur la Superficie ",
   "totalLandAreaLabel": "Surface totale du terrain",
   "workAreaLabel": "Surface des travaux",
+  "nbFloorLabel": "Nombre d'étages",
   "executionDetailsTitle": "Détails d'exécution",
   "budgetLabel": "Votre budget",
   "projectDetailsLabel": "Voulez-vous décrire plus en détail votre projet ?",
@@ -34,5 +35,16 @@
   "saveProjectTitle": "Pour sauvegarder votre projet et accéder à notre estimateur en ligne",
   "rules": "J'accepte les règles et les Conditions générales d'utilisation d'archimatch",
   "receiveNotifications": "Je souhaite recevoir des devis d'autres architectes concernant mes travaux.",
-  "buttonLabel": "démarrer votre projet"
+  "buttonLabel": "démarrer votre projet",
+  "OtpButtonLabel": "Vérifier",
+  "congratulations": "Félicitations, votre projet a été",
+  "published": "publié avec succès sur",
+  "archiMatch": "ArchiMatch!",
+  "buttonLabelSuivre": "Suivre l'évolution de mon projet",
+  "cardOneTitle": "Explorez les profils darchitectes",
+  "cardOneDescription": "  Découvrez les architectes disponibles en parcourant leurs profils sur ArchiMatch",
+  "cardTwoTitle": "Recevez et négociez les devis",
+  "cardTwoDescription": " Recevez des propositions détaillées des architectes intéressés pour votre projet",
+  "cardThreeTitle": "Sélectionnez votre architecte idéal",
+  "cardThreeDescription": " Sélectionnez larchitecte dont le devis correspond le mieux à vos besoins et lancez votre projet."
 }

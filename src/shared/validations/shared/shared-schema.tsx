@@ -3,13 +3,9 @@ import { z } from 'zod';
 import {
   dateValidation,
   emailValidation,
-  fieldValidation,
   notRequiredValidationBoolean,
   passwordValidation,
-  phoneValidation,
   requiredValidation,
-  requiredValidationBoolean,
-  requiredValidationNumber,
   specialityValidation,
   timeValidation,
 } from './shared-validations';
@@ -57,19 +53,6 @@ export const NotificationFormSchema = z.object({
   new: notRequiredValidationBoolean,
   activity: notRequiredValidationBoolean,
   newNavigator: notRequiredValidationBoolean,
-});
-
-export const AnnouncementFormSchema = z.object({
-  firstName: fieldValidation,
-  lastName: fieldValidation,
-  email: emailValidation,
-  phoneNumber: phoneValidation,
-  acceptTerms: requiredValidationBoolean,
-  receiveQuotes: notRequiredValidationBoolean,
-  speciality: requiredValidationNumber,
-  needs: requiredValidationNumber,
-  categories: requiredValidationNumber,
-  properties: requiredValidationNumber,
 });
 
 export const SpecialityFormSchema = z.object({

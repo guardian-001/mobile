@@ -1,3 +1,8 @@
+export type Image = {
+  name: string;
+  uri: string;
+  type: string;
+};
 export type AnnouncementType = {
   architectSpeciality: number;
   needs: number[];
@@ -9,20 +14,26 @@ export type AnnouncementType = {
   }[];
   address: string;
   city: string;
-  terrainSurface: string;
+  terrainSurface?: string;
   workSurface: string;
   budget: string;
   description: string;
   architecturalStyle?: number;
   projectExtensions?: number[];
-  projectImages: string[];
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  rules: boolean;
-  receiveNotifications?: boolean;
+  projectImages?: Image[];
   rollback?: boolean;
   newConstruction?: boolean;
   currentLanguage: string;
+  numberFloors?: number;
+  client: {
+    user: {
+      firstName: string;
+      lastName: string;
+      email: string;
+      phoneNumber: string;
+      rules: boolean;
+      receiveNotifications?: boolean;
+      userType: string;
+    };
+  };
 };

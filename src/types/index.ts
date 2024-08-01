@@ -28,3 +28,22 @@ export type TagType = {
   value: string;
   displayName: string;
 };
+export type ImageInfo = {
+  name: string | null | undefined;
+  uri: string;
+  type?: string | undefined;
+};
+export type SendCodeRequest = {
+  phoneNumber: string;
+};
+export type VerificationCodeRequest = {
+  phoneNumber: string | undefined;
+  verificationCode: string;
+};
+export type EmailPhoneType = {
+  email: string;
+  phoneNumber: string;
+};
+export type verificationCodeType = {
+  verificationCode: string;
+};

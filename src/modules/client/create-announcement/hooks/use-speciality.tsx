@@ -15,7 +15,12 @@ export const useSpeciality = () => {
     { architectSpeciality: formData.architectSpeciality }
   );
   const error = errors?.architectSpeciality?.message as TxKeyPath | undefined;
-  const { data: SpecialityData, isError, isLoading } = useStylesApi();
+  const {
+    data: SpecialityData,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useStylesApi();
 
   const onSubmit = (data: SpecialityFormType) => {
     setFormData((prev: any) => ({
@@ -36,5 +41,6 @@ export const useSpeciality = () => {
     SpecialityData,
     isError,
     isLoading,
+    isSuccess,
   };
 };

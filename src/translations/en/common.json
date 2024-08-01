@@ -9,5 +9,6 @@
   "back": "Back",
   "next": "Next",
   "modify": "Edit",
-  "publish": "Publish"
+  "publish": "Publish",
+  "logout": "logout"
 }

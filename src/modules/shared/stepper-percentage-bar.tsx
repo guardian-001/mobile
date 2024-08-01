@@ -23,7 +23,7 @@ export default function StepperPercentageBar() {
       >
         <Close color={colors.blue} />
       </TouchableOpacity>
-      {step !== maxStep && (
+      {maxStep && step < maxStep && (
         <View>
           <Text className="mb-2 font-bold">
             {percentage} {'%'}

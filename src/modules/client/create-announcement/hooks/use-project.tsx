@@ -1,5 +1,5 @@
-import { useRouter } from 'expo-router';
-
+import { useIsUserFound } from '@/api/auth';
+import { useSendPhoneVerificationCodeApi } from '@/api/client/announcements/mutation';
 import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
 import type { AnnouncementType } from '@/types/announcement';
@@ -8,27 +8,48 @@ import { CreateAnnouncementStepTwelveSchema } from '../schemas';
 import type { CreateProfileFormType } from '../types';
 
 export const useProject = () => {
-  const router = useRouter();
   const { onHandleBack, onHandleNext, setFormData, formData } =
     useFormStepper<AnnouncementType>();
   const { handleSubmit, control } = useCustomForm(
     CreateAnnouncementStepTwelveSchema,
     {
-      firstName: formData?.firstName,
-      lastName: formData?.lastName,
-      email: formData?.email,
-      phoneNumber: formData?.phoneNumber,
-      rules: formData?.rules,
-      receiveNotifications: formData?.receiveNotifications,
+      firstName: formData?.client.user.firstName,
+      lastName: formData?.client.user.lastName,
+      email: formData?.client.user.email,
+      phoneNumber: formData?.client.user.phoneNumber,
+      rules: formData?.client.user.rules,
+      receiveNotifications: formData?.client.user.receiveNotifications,
     }
   );
+  const SendPhoneVerificationCode = useSendPhoneVerificationCodeApi();
+  const isUserFound = useIsUserFound();
 
   const onSubmit = (data: CreateProfileFormType) => {
     setFormData((prev: any) => ({
       ...prev,
-      ...data,
+      client: { user: { ...data, userType: 'Client' } },
     }));
-    router.back();
+    isUserFound.mutate(
+      { email: data.email, phoneNumber: data.phoneNumber },
+      {
+        onSuccess: () => {
+          SendPhoneVerificationCode.mutate(
+            { phoneNumber: data.phoneNumber },
+            {
+              onSuccess: () => {
+                onHandleNext();
+              },
+              onError: (errorApi) => {
+                throw errorApi;
+              },
+            }
+          );
+        },
+        onError: (errorApi) => {
+          throw errorApi;
+        },
+      }
+    );
   };
   return {
     onHandleBack,

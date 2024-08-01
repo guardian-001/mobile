@@ -88,7 +88,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
             testID={testID ? `${testID}-label` : undefined}
             className={clsx(
               styles.label(),
-              labelStyle ? labelStyle : 'text-xs'
+              labelStyle ? labelStyle : 'text-base'
             )}
           >
             {label}
