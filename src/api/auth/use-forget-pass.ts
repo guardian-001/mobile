@@ -7,15 +7,12 @@ import {
 } from '@/services/shared/reset-password-service';
 
 import type { ForgetPassRequest } from './types';
-
 type Response = ForgetPassRequest;
 type ResponseOTPass = void;
 type RequestOTP = {
   email: string;
 };
-
 type Request = void;
-
 export const useResetPassOTPApi = createMutation<
   ResponseOTPass,
   RequestOTP,
@@ -23,7 +20,6 @@ export const useResetPassOTPApi = createMutation<
 >({
   mutationFn: resetPassOTP,
 });
-
 export const useForgetPassApi = createMutation<Response, Request, AxiosError>({
   mutationFn: forgetPass,
 });

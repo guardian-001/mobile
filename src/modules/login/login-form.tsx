@@ -1,14 +1,16 @@
-import React from 'react';
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import type * as z from 'zod';
 
-import { translate } from '@/core';
+import { useLoginApi } from '@/api/auth';
+import { translate, useAuth, useCustomForm, useRouteName } from '@/core';
+import { useLoginForm } from '@/shared';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
-import type { LoginFormSchema } from '@/shared/validations';
+import { LoginFormSchema } from '@/shared/validations';
 
 import { Container } from '../shared';
 import LoginButton from '../shared/login-button';
-import { useLoginShared } from './shared/hooks/use-login';
 export type LoginFormType = z.infer<typeof LoginFormSchema>;
 
 export type LoginType = {
@@ -17,16 +19,51 @@ export type LoginType = {
 };
 
 export const LoginForm = () => {
-  const {
-    handleData,
-    handleResetPass,
-    errors,
-    checked,
-    setChecked,
-    handleSubmit,
-    control,
-    onSubmit,
-  } = useLoginShared();
+  const router = useRouter();
+  const space = useRouteName();
+  const [checked, setChecked] = useState(true);
+  const [errors, setErrors] = useState('');
+  const { handleSubmit, control } = useCustomForm(LoginFormSchema);
+  const login = useLoginApi();
+  const signIn = useAuth.use.signIn();
+
+  const onSubmit = (data: LoginFormType) => {
+    login.mutate(data, {
+      onSuccess: (response) => {
+        if (response.error) {
+          setErrors(translate('login.loginError'));
+          return;
+        }
+
+        signIn({
+          token: {
+            access: response.response?.data.access,
+            refresh: response.response?.data.refresh,
+          },
+          user: response.response?.data.user,
+        });
+        router.replace(`/(${space})/(private)/profile`);
+      },
+      onError: (error) => {
+        setErrors(translate('login.loginError'));
+        console.error('Login error:', error);
+      },
+    });
+  };
+
+  const handleResetPass = () => {
+    router.push(`/(${space})/(public)/reset-password`);
+  };
+
+  const { setFormData } = useLoginForm();
+
+  const handleData = ({ name, data }: LoginType) => {
+    setFormData((prev: any) => ({
+      ...prev,
+      [name]: data,
+    }));
+  };
+
   return (
     <View className="flex w-full justify-center">
       <ControlledInput

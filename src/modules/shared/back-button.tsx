@@ -11,7 +11,7 @@ export default function BackButton({ route }: RouteProp) {
   const router = useRouter();
   const handleBack = () => {
     if (route) {
-      router.push(route);
+      router.replace(route);
     } else {
       router.back();
     }

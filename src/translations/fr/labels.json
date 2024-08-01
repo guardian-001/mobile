@@ -10,6 +10,8 @@
   "addressPlaceHolder": "Entrer L’adresse du bureau",
   "matricule": "Matricule ficale de votre sociéte",
   "matriculePlaceHolder": "votre Matricule fiscale",
+  "city": "ville",
+  "cityPlaceholder": "selectionné une ville",
   "date": "Date",
   "time": "Temps"
 }

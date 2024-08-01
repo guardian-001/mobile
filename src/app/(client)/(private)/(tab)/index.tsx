@@ -7,7 +7,6 @@ import { Button, FocusAwareStatusBar, View } from '@/shared/components';
 export default function Explorer() {
   const router = useRouter();
   const status = getStatus();
-
   return (
     <View className="flex-1 ">
       <FocusAwareStatusBar />
@@ -21,7 +20,6 @@ export default function Explorer() {
           className="mt-20 h-12 rounded-md"
         />
       )}
-
     </View>
   );
 }
