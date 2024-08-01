@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 
 import { useUpdatePasswordApi } from '@/api/profileSettings';
 import { getPasswordRequirements, useCustomForm } from '@/core';
+import { showSuccesMessage } from '@/shared/components';
 
 import { ChangePasswordFormSchema } from '../schemas';
 import type { ResetPassFormProfileType } from '../type';
@@ -20,7 +21,8 @@ export const useUpdatePassword = () => {
 
   const onSubmit = (data: ResetPassFormProfileType) => {
     updatePassword.mutate(data, {
-      onSuccess: () => {
+      onSuccess: (response) => {
+        showSuccesMessage(response.data.message);
         reset({ oldPassword: '', newPassword: '', confirmNewPassword: '' });
         router.back();
       },
