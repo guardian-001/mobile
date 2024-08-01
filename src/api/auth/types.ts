@@ -31,7 +31,6 @@ export type User = {
 };
 
 export type LoginResponse = {
-  // state: boolean;
   error?: string;
   response?: AxiosResponse;
 };

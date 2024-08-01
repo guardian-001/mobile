@@ -31,19 +31,25 @@ export const LoginForm = () => {
 
   const onSubmit = (data: LoginFormType) => {
     login.mutate(data, {
-      onSuccess: (ResponseData) => {
+      onSuccess: (response) => {
+        if (response.error) {
+          setErrors(translate('login.loginError'));
+          return;
+        }
+
         signIn({
           token: {
-            access: ResponseData.response?.data.access,
-            refresh: ResponseData.response?.data.refresh,
+            access: response.response?.data.access,
+            refresh: response.response?.data.refresh,
           },
-          user: ResponseData.response?.data.user,
+          user: response.response?.data.user,
         });
+
         router.push(`/(${space})/(private)/profile`);
       },
       onError: (error) => {
-        setErrors(error.message);
-        throw error;
+        setErrors(translate('login.loginError'));
+        console.error('Login error:', error);
       },
     });
   };

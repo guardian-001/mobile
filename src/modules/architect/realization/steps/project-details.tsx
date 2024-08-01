@@ -24,8 +24,6 @@ export function ProjectDetails() {
     workSurfaces,
   } = useDetails();
 
-  console.log('cities: ', cities);
-
   return (
     <View className="mb-5 flex h-full flex-1 items-start justify-between gap-5  ">
       <View>

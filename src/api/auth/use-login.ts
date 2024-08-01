@@ -10,10 +10,4 @@ type Response = LoginResponse;
 
 export const useLoginApi = createMutation<Response, Request, AxiosError>({
   mutationFn: postLogin,
-  onSuccess: (data) => {
-    return data;
-  },
-  onError: (error) => {
-    return error;
-  },
 });
