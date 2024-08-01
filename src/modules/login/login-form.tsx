@@ -1,18 +1,14 @@
-import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import type * as z from 'zod';
 
-import { useLoginApi } from '@/api/auth';
-import { translate, useAuth } from '@/core';
+import { translate } from '@/core';
 import { Checkbox, ControlledInput, Text } from '@/shared/components';
-import { useCustomForm } from '@/shared/hooks';
-import { useRouteName } from '@/shared/hooks/use-get-route';
-import { useLoginForm } from '@/shared/providers/use-login-form';
-import { LoginFormSchema } from '@/shared/validations';
+import type { LoginFormSchema } from '@/shared/validations';
 
 import { Container } from '../shared';
 import LoginButton from '../shared/login-button';
+import { useLoginShared } from './shared/hooks/use-login';
 export type LoginFormType = z.infer<typeof LoginFormSchema>;
 
 export type LoginType = {
@@ -21,45 +17,16 @@ export type LoginType = {
 };
 
 export const LoginForm = () => {
-  const router = useRouter();
-  const space = useRouteName();
-  const [checked, setChecked] = useState(true);
-  const [errors, setErrors] = useState('');
-  const { handleSubmit, control } = useCustomForm(LoginFormSchema);
-  const login = useLoginApi();
-  const signIn = useAuth.use.signIn();
-
-  const onSubmit = (data: LoginFormType) => {
-    login.mutate(data, {
-      onSuccess: (ResponseData) => {
-        signIn({
-          token: {
-            access: ResponseData.response?.data.access,
-            refresh: ResponseData.response?.data.refresh,
-          },
-          user: ResponseData.response?.data.user,
-        });
-        router.push(`/(${space})/(private)/profile`);
-      },
-      onError: (error) => {
-        setErrors(error.message);
-      },
-    });
-  };
-
-  const handleResetPass = () => {
-    router.push(`/(${space})/(public)/reset-password`);
-  };
-
-  const { setFormData } = useLoginForm();
-
-  const handleData = ({ name, data }: LoginType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      [name]: data,
-    }));
-  };
-
+  const {
+    handleData,
+    handleResetPass,
+    errors,
+    checked,
+    setChecked,
+    handleSubmit,
+    control,
+    onSubmit,
+  } = useLoginShared();
   return (
     <View className="flex w-full justify-center">
       <ControlledInput

@@ -30,3 +30,12 @@ client.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export const post = async (url: string, data: any) => {
+  return client
+    .post(url, data)
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error.response?.data || error.message;
+    });
+};

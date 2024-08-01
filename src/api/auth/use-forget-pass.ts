@@ -1,11 +1,15 @@
 import type { AxiosError } from 'axios';
 import { createMutation } from 'react-query-kit';
 
-import { client } from '../common';
+import {
+  forgetPass,
+  resetPassOTP,
+} from '@/services/shared/reset-password-service';
+
 import type { ForgetPassRequest } from './types';
 
 type Response = ForgetPassRequest;
-type ResponseOTP = void;
+type ResponseOTPass = void;
 type RequestOTP = {
   email: string;
 };
@@ -13,27 +17,13 @@ type RequestOTP = {
 type Request = void;
 
 export const useResetPassOTPApi = createMutation<
-  ResponseOTP,
+  ResponseOTPass,
   RequestOTP,
   AxiosError
 >({
-  mutationFn: async (request) =>
-    client({
-      url: '/api/users/architect/send-reset-password-link/',
-      method: 'POST',
-      data: request,
-    })
-      .then((response) => response.data)
-      .catch((response) => response.data),
+  mutationFn: resetPassOTP,
 });
 
 export const useForgetPassApi = createMutation<Response, Request, AxiosError>({
-  mutationFn: async (request) =>
-    client({
-      url: 'api/users/archimatch-user/reset-password/',
-      method: 'POST',
-      data: request,
-    })
-      .then((response) => response.data)
-      .catch((response) => response.data),
+  mutationFn: forgetPass,
 });

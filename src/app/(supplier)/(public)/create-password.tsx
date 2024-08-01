@@ -2,7 +2,7 @@
 // import type { SubmitHandler } from 'react-hook-form';
 
 // import { useSoftKeyboardEffect } from '@/core/keyboard';
-// import CreateAccountStepper from '@/modules/supplier/create-account/create-account-supplier';
+// import CreatePassFromLink from '@/modules/supplier/password-creation/create-password';
 // import { FocusAwareStatusBar } from '@/shared/components';
 // import type { LoginFormSupplierType } from '@/types';
 
@@ -15,7 +15,7 @@
 //   return (
 //     <>
 //       <FocusAwareStatusBar />
-//       <CreateAccountStepper />
+//       <CreatePassFromLink />
 //     </>
 //   );
 // }

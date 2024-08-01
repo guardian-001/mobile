@@ -2,7 +2,7 @@
 // import type { SubmitHandler } from 'react-hook-form';
 
 // import { useSoftKeyboardEffect } from '@/core/keyboard';
-// import CreateAccountStepper from '@/modules/supplier/create-account/create-account-supplier';
+// import CheckMailBanner from '@/modules/supplier/login/check-mail-banner';
 // import { FocusAwareStatusBar } from '@/shared/components';
 // import type { LoginFormSupplierType } from '@/types';
 
@@ -15,7 +15,7 @@
 //   return (
 //     <>
 //       <FocusAwareStatusBar />
-//       <CreateAccountStepper />
+//       <CheckMailBanner />
 //     </>
 //   );
 // }

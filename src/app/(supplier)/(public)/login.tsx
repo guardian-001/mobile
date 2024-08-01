@@ -1,26 +1,23 @@
-import { useRouter } from 'expo-router';
-import React from 'react';
-import type { SubmitHandler } from 'react-hook-form';
+// import React from 'react';
 
-import { useSoftKeyboardEffect } from '@/core/keyboard';
-import { LoginForm } from '@/modules/login/login-form-supplier';
-import { FocusAwareStatusBar } from '@/shared/components';
-import type { LoginFormSupplierType } from '@/types';
+// import { useSoftKeyboardEffect } from '@/core/keyboard';
+// import LoginSupplier from '@/modules/supplier/login/login-supplier';
+// import { FocusAwareStatusBar } from '@/shared/components';
+// import { FormProvider } from '@/shared/providers/use-form-stepper-provider';
+// import type { LoginFormType } from '@/types';
 
-export type LoginFormSupplierProps = {
-  onSubmit: SubmitHandler<LoginFormSupplierType>;
-};
-export default function Login() {
-  const router = useRouter();
-  useSoftKeyboardEffect();
-
-  const onSubmit: LoginFormSupplierProps['onSubmit'] = () => {
-    router.push('/(supplier)/(public)/reset-password');
-  };
-  return (
-    <>
-      <FocusAwareStatusBar />
-      <LoginForm onSubmit={onSubmit} />
-    </>
-  );
-}
+// export default function Login() {
+//   useSoftKeyboardEffect();
+//   const initialData = {
+//     email: '',
+//     password: '',
+//   };
+//   return (
+//     <>
+//       <FocusAwareStatusBar />
+//       <FormProvider<LoginFormType> initialData={initialData}>
+//         <LoginSupplier />
+//       </FormProvider>
+//     </>
+//   );
+// }
