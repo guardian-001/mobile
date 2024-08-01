@@ -13,10 +13,16 @@ export type LoginFormSupplierProps = {
 export default function Login() {
   const router = useRouter();
   useSoftKeyboardEffect();
+  const verifEmail = true;
 
   const onSubmit: LoginFormSupplierProps['onSubmit'] = () => {
-    router.push('/(supplier)/(public)/reset-password');
+    if (verifEmail) {
+      router.push('/(supplier)/(public)/login-pass');
+    } else {
+      router.push('/(supplier)/(public)/create-pass');
+    }
   };
+
   return (
     <>
       <FocusAwareStatusBar />

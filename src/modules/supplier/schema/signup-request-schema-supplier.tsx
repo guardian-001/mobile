@@ -5,10 +5,9 @@ import {
   emailValidation,
   fieldValidation,
   phoneValidation,
+  specialityValidation,
   timeValidation,
 } from '@/shared/validations';
-
-import { specialityValidation } from '../validations';
 
 export const SignupFormSchema = z.object({
   firstName: fieldValidation,
