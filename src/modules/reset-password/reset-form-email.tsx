@@ -1,37 +1,12 @@
 import React from 'react';
 
-import { useResetPassOTPApi } from '@/api/auth';
 import { translate } from '@/core';
 import { Button, ControlledInput, View } from '@/shared/components';
-import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers';
-import { EmailSchema } from '@/shared/validations';
-import type { ResetPassFormType } from '@/types';
+
+import { useResetEmail } from './hooks';
 
 export default function ResetFormEmail() {
-  type EmailFormType = Pick<ResetPassFormType, 'email'>;
-  const { formData, setFormData, onHandleNext } =
-    useFormStepper<ResetPassFormType>();
-  const { handleSubmit, control, form } = useCustomForm(EmailSchema, {
-    email: formData.email,
-  });
-  const sendOTP = useResetPassOTPApi();
-
-  const onSubmit = (data: EmailFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-
-    sendOTP.mutate(data, {
-      onSuccess: () => {
-        onHandleNext();
-      },
-      onError: (error) => {
-        throw error;
-      },
-    });
-  };
+  const { onSubmit, handleSubmit, control, form } = useResetEmail();
   return (
     <View className="flex-1">
       <ControlledInput

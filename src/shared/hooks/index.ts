@@ -1,6 +1,7 @@
 export * from './use-calendar';
 export * from './use-counter-utils';
 export * from './use-custom-form';
+export * from './use-get-password-requirement';
 export * from './use-get-route';
 export * from './use-image-url';
 export * from './use-is-first-time';

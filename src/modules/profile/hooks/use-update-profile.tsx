@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import type { User } from '@/api/auth';
 import { useUpdateProfileApi, useUserProfileApi } from '@/api/profileSettings';
 import { useCustomForm } from '@/core';
-import { showSuccesMessage } from '@/shared/components';
 
 import { BasicInformationSchema } from '../schemas';
 import type { BasicInfoFormType } from '../type';
@@ -39,7 +38,6 @@ export const useUpdateProfile = () => {
     ) {
       updateProfile.mutate(data, {
         onSuccess: () => {
-          showSuccesMessage('success updateProfile');
           router.back();
         },
       });

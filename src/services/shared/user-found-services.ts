@@ -1,37 +1,19 @@
-import type { AxiosError, AxiosResponse } from 'axios';
+import type { AxiosResponse } from 'axios';
 
 import { client } from '@/api';
+import { showErrorMessage } from '@/shared/components';
 import type { EmailPhoneType } from '@/types';
-
-function isAxiosError(error: unknown): error is AxiosError {
-  return (error as AxiosError).isAxiosError !== undefined;
-}
 
 export const isUserFoundAsync = async (
   emailPhoneData: EmailPhoneType
 ): Promise<AxiosResponse> => {
-  try {
-    const response = await client({
-      url: '/api/users/archimatch-user/verify-credentials/',
-      method: 'POST',
-      data: emailPhoneData,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+  return client
+    .post('/api/users/archimatch-user/verify-credentials/', emailPhoneData)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      showErrorMessage(error.response.data.errors[0].detail);
+      throw error.response?.data || error.message;
     });
-
-    return response.data;
-  } catch (error: unknown) {
-    if (isAxiosError(error)) {
-      throw new Error(
-        `API request failed with status ${error.status}\n API request failed with message ${error.message}`
-      );
-    } else {
-      throw new Error(
-        `API request failed: ${
-          error instanceof Error ? error.message : 'Unknown error'
-        }`
-      );
-    }
-  }
 };
