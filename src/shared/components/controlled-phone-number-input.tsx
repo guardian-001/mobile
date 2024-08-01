@@ -41,7 +41,7 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
   return (
     <View className="mb-2 w-full gap-1">
       {label && (
-        <Text className="font-lato text-xs font-medium text-primary-txt md:text-lg">
+        <Text className="font-lato text-base font-medium text-primary-txt md:text-lg">
           {label}
         </Text>
       )}
@@ -57,15 +57,15 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
           onChangeSelectedCountry={handleSelectedCountry}
           phoneInputStyles={{
             container: {
-              height: 35,
+              height: 43,
               backgroundColor: colors.white,
               paddingBottom: 1,
               borderColor: error ? colors.error : colors.description,
             },
-            input: { fontSize: 12 },
-            callingCode: { fontSize: 12 },
-            caret: { fontSize: 12, backgroundColor: colors.white },
-            flag: { fontSize: 12 },
+            input: { fontSize: 16 },
+            callingCode: { fontSize: 16 },
+            caret: { fontSize: 16, backgroundColor: colors.white },
+            flag: { fontSize: 16 },
             flagContainer: {
               width: 100,
               backgroundColor: colors.white,

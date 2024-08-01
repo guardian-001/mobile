@@ -14,13 +14,13 @@ export function ChooseExecutionDetails() {
         <StepperButton
           width="w-[45%]"
           onPressHandler={onHandleBack}
-          label={translate('signup.retour')}
+          label={translate('common.back')}
         />
-        <View className="mr-1"></View>
+        <View className="mr-1" />
         <StepperButton
           width="w-[45%]"
           onPressHandler={onHandleNext}
-          label={translate('signup.suivant')}
+          label={translate('common.next')}
         />
       </View>
     </View>

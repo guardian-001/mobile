@@ -1,3 +1,4 @@
+import { useWorkTypeApi } from '@/api/client';
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
@@ -14,7 +15,13 @@ export const useWorkType = () => {
     { workType: formData?.workType }
   );
   const error = errors?.workType?.message as TxKeyPath | undefined;
-
+  const {
+    data: workTypeData,
+    isError,
+    isLoading,
+  } = useWorkTypeApi({
+    variables: { propertyType: formData.propertyType },
+  });
   const onSubmit = (data: workTypeFormType) => {
     setFormData((prev: any) => ({
       ...prev,
@@ -23,8 +30,12 @@ export const useWorkType = () => {
     onHandleNext();
   };
 
+  const onRollBack = () => {
+    formData.needs = [];
+    onHandleBack();
+  };
   return {
-    onHandleBack,
+    onRollBack,
     onHandleNext,
     setFormData,
     formData,
@@ -32,5 +43,8 @@ export const useWorkType = () => {
     control,
     error,
     onSubmit,
+    workTypeData,
+    isError,
+    isLoading,
   };
 };

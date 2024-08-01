@@ -3,7 +3,7 @@ import { useState } from 'react';
 export const useCalendar = () => {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today);
-  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedTime, setSelectedTime] = useState('08:00');
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
 

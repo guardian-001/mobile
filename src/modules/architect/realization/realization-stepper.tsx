@@ -7,28 +7,11 @@ import {
   useFormStepper,
 } from '@/shared/providers/use-form-stepper-provider';
 
-import DemoPlanning from '../signup/demo-planning';
-import type { ProjectRealizationType } from '../types';
-import AdoptedStyle from './adopted-style';
-import ApprovedServices from './approved-services';
-import ProjectCategory from './project-category';
+import type { ProjectRealizationType } from '../shared/types';
+import { stepsContent } from './steps-content';
 
 const ProjectRealizationStepperInner = () => {
   const { step } = useFormStepper<ProjectRealizationType>();
-  const stepsContent: { component: React.ReactNode }[] = [
-    {
-      component: <ProjectCategory />,
-    },
-    {
-      component: <AdoptedStyle />,
-    },
-    {
-      component: <DemoPlanning />,
-    },
-    {
-      component: <ApprovedServices />,
-    },
-  ];
 
   const { component } = stepsContent[step];
   return (
@@ -54,7 +37,7 @@ export default function ProjectRealizationStepper() {
   };
 
   return (
-    <FormProvider<ProjectRealizationType> initialData={initialData} maxStep={5}>
+    <FormProvider<ProjectRealizationType> initialData={initialData} maxStep={6}>
       <ProjectRealizationStepperInner />
     </FormProvider>
   );

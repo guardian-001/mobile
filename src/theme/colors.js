@@ -89,7 +89,8 @@ module.exports = {
     900: '#212121',
     950: '#121212',
   },
-
+  client: '#11ABEC',
+  architect: '#FC5C63',
   blue: '#344054',
   background: '#fafbff',
   'light-blue': '#E5EBFF',

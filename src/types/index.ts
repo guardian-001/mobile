@@ -15,8 +15,16 @@ export type Style = {
   label: string;
   icon: string;
 };
-
+export type Need = {
+  id: number;
+  label: string;
+  icon: string;
+};
 export type Image = {
   name: string;
-  ulr: string;
+  url: string;
+};
+export type TagType = {
+  value: string;
+  displayName: string;
 };

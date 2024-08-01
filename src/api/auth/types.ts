@@ -1,3 +1,5 @@
+import type { Image } from '@/types';
+
 export type SignupRequest = {
   architectSpeciality: number;
   firstName: string;
@@ -23,13 +25,12 @@ export type User = {
   lastName?: string;
   phoneNumber?: string;
   userType?: string;
-  image?: string;
+  image?: Image;
 };
 
 export type LoginResponse = {
-  access: string;
-  refresh: string;
-  user: User;
+  state: boolean;
+  error?: string;
 };
 
 export type ForgetPassRequest = {
