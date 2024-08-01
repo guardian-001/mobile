@@ -15,15 +15,23 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
   return (
     <>
       {type === 'custom' ? (
-        <GradientBackground className="flex h-[13%] w-full items-center justify-end bg-white pb-6">
-          <Text className="text-2xl font-bold text-primary-txt ">
+        <GradientBackground style={{
+          position: 'absolute',
+          display: 'flex',
+          height: '13%',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          backgroundColor: 'white'}}>
+          <Text style={{
+           marginTop: 40}} className="text-2xl font-bold text-primary-txt ">
             {translate(text)}
           </Text>
         </GradientBackground>
       ) : (
         <>
           {type === 'transparent' ? (
-            <View className="flex h-[14%] w-full items-center justify-end bg-transparent pb-6">
+            <View className=" flex h-[14%] w-full items-center justify-end bg-transparent pb-6">
               <Text className="text-2xl font-bold text-primary-txt ">
                 {translate(text)}
               </Text>

@@ -17,6 +17,7 @@ export function AddPhotos() {
           onPressHandler={onHandleBack}
           label={translate('signup.retour')}
         />
+        <View className="mr-1"></View>
         <StepperButton
           width="w-[45%]"
           onPressHandler={onHandleNext}

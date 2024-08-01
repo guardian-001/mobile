@@ -16,7 +16,7 @@ interface MainButtonProps {
   alternativeStyle?: string;
   icon?: React.ReactNode;
   iconClassName?: string;
-  backgroundColor?: string; // Add this prop for dynamic background color
+  backgroundColor?: string; 
 }
 
 export default function MainButton({
@@ -31,7 +31,7 @@ export default function MainButton({
   shadow,
   alternativeStyle,
   iconClassName,
-  backgroundColor, // Default background color
+  backgroundColor, 
 }: MainButtonProps) {
   return (
     <Button

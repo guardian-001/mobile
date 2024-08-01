@@ -46,7 +46,7 @@ export default function CreateProfile() {
 
   return (
     <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16   ">
-      <View>
+      <View className='mt-[11vh]'>
         <Text
           tx={'signupStepCreateProfile.title'}
           className="mb-2 text-center text-2xl font-extrabold"
