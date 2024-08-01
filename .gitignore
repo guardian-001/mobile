@@ -12,6 +12,7 @@ web-build/
 yarn-error.log
 pnpm-lock.yaml
 /coverage
+.env.development
 # macOS
 .DS_Store
 

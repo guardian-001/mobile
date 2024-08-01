@@ -2,69 +2,18 @@ import React from 'react';
 
 import { translate } from '@/core';
 import { Button, ControlledInput, Text, View } from '@/shared/components';
-import { useCustomForm } from '@/shared/hooks';
-import { useFormStepper } from '@/shared/providers';
-import { ResetPassFormSchema } from '@/shared/validations';
-import type { TxKeyPath } from '@/translations/i18n';
-import type { ResetPassFormType } from '@/types';
 
+import { useResetPassword } from './hooks';
 import PasswordRequirementItem from './password-requirement-item';
 
 export default function ResetFormPassword() {
-  type PasswordFormType = Pick<
-    ResetPassFormType,
-    'password' | 'confirmPassword'
-  >;
-  const { formData, setFormData, onHandleNext } =
-    useFormStepper<ResetPassFormType>();
-  const { handleSubmit, control, form } = useCustomForm(ResetPassFormSchema, {
-    password: formData.password,
-    confirmPassword: formData.confirmPassword,
-  });
-
-  const onSubmit = (data: PasswordFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    onHandleNext();
-  };
-
-  const passwordRequirements: { isValid: boolean; message: TxKeyPath }[] = [
-    {
-      isValid: form.watch('password')?.length >= 8,
-      message: 'resetpass.passwordMinLength',
-    },
-    {
-      isValid:
-        /[a-z]/.test(form.watch('password')) &&
-        form.watch('password')?.length >= 1,
-      message: 'resetpass.passwordLowercase',
-    },
-    {
-      isValid: /[A-Z]/.test(form.watch('password')),
-      message: 'resetpass.passwordUppercase',
-    },
-    {
-      isValid: /[0-9]/.test(form.watch('password')),
-      message: 'resetpass.passwordDigit',
-    },
-    {
-      isValid: /[^a-zA-Z0-9]/.test(form.watch('password')),
-      message: 'resetpass.passwordSpecialChar',
-    },
-    {
-      isValid:
-        form.watch('confirmPassword') === form.watch('password') &&
-        form.watch('confirmPassword') !== '' &&
-        form.watch('password') !== '',
-      message: 'resetpass.passwordConfirmation',
-    },
-  ];
-
-  const allRequirementsValid = passwordRequirements.every(
-    (requirement) => requirement.isValid
-  );
+  const {
+    allRequirementsValid,
+    passwordRequirements,
+    onSubmit,
+    handleSubmit,
+    control,
+  } = useResetPassword();
 
   return (
     <View className="flex-1">

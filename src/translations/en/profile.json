@@ -9,5 +9,11 @@
   "terms": "Terms and Policies",
   "report": "Report a Problem",
   "logout": "Logout",
-  "connection": "Connection"
+  "connection": "Connection",
+  "currentPassword-label": "Current Password",
+  "currentPassword-placeholder": "Enter your current password",
+  "newPassword-label": "New Password",
+  "newPassword-placeholder": "New password",
+  "confirmNewPassword-label": "Confirm Password",
+  "confirmNewPassword-placeholder": "Confirm the new password"
 }

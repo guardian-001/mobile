@@ -11,7 +11,7 @@ export const useProfileClient = () => {
   };
   const logoutHandler = (route: string) => {
     logOut();
-    router.push(route);
+    router.replace(route);
   };
   return {
     navigateTo,

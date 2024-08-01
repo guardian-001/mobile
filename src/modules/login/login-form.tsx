@@ -44,8 +44,7 @@ export const LoginForm = () => {
           },
           user: response.response?.data.user,
         });
-
-        router.push(`/(${space})/(private)/profile`);
+        router.replace(`/(${space})/(private)/profile`);
       },
       onError: (error) => {
         setErrors(translate('login.loginError'));
