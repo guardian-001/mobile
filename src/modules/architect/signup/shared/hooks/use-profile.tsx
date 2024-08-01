@@ -1,28 +1,29 @@
 import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
+import { VALID_CITIES } from '@/shared/constants';
 
-import { CreateAccountSchema } from '../schemas';
+import { FirstConnectionSchema } from '../schemas';
 import type { SignupFormDataType } from '../types';
 
 export const useProfile = () => {
   type CreateAccountFormType = Pick<
     SignupFormDataType,
-    | 'firstName'
-    | 'lastName'
-    | 'email'
-    | 'phoneNumber'
-    | 'address'
-    | 'architectIdentifier'
+    'firstName' | 'lastName' | 'email' | 'phoneNumber' | 'address' | 'city'
   >;
+
+  const cityOptions = VALID_CITIES.map((city) => ({
+    label: city,
+    value: city,
+  }));
   const { formData, setFormData, onHandleNext, onHandleBack } =
     useFormStepper<SignupFormDataType>();
-  const { handleSubmit, control } = useCustomForm(CreateAccountSchema, {
+  const { handleSubmit, control } = useCustomForm(FirstConnectionSchema, {
     firstName: formData?.firstName,
     lastName: formData?.lastName,
     email: formData?.email,
     phoneNumber: formData?.phoneNumber,
     address: formData?.address,
-    architectIdentifier: formData?.architectIdentifier,
+    city: formData?.city,
   });
 
   const onSubmit = (data: CreateAccountFormType) => {
@@ -41,5 +42,6 @@ export const useProfile = () => {
     setFormData,
     onHandleNext,
     onHandleBack,
+    cityOptions,
   };
 };

@@ -12,5 +12,7 @@
   "termsConditionsPart4": "politique de confidentialité.",
   "haveAccountQuestion": "Vous n’avez pas de compte?",
   "signupLink": "S’inscrire",
+  "codeVerif": "Verification code",
+  "saisirCode": "saisissez le code envoyé à",
   "loginError": "email ou mot de passe incorrect"
 }

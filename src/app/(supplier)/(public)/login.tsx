@@ -15,7 +15,7 @@ export default function Login() {
   useSoftKeyboardEffect();
 
   const onSubmit: LoginFormSupplierProps['onSubmit'] = () => {
-    router.push('/(supplier)/(public)/reset-password.tsx');
+    router.push('/(supplier)/(public)/reset-password');
   };
   return (
     <>

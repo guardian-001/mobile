@@ -9,7 +9,7 @@ export type SignupRequest = {
   email: string;
   phoneNumber: string;
   address: string;
-  architectIdentifier: string;
+  city: string;
   date: string;
   timeSlot: string;
 };
@@ -31,7 +31,6 @@ export type User = {
 };
 
 export type LoginResponse = {
-  // state: boolean;
   error?: string;
   response?: AxiosResponse;
 };
