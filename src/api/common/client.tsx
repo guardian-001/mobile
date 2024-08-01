@@ -27,6 +27,9 @@ client.interceptors.response.use(
     if (error.response?.status === 401) {
       throw error;
     }
+    if (error.response?.status === 404) {
+      throw error;
+    }
     return Promise.reject(error);
   }
 );

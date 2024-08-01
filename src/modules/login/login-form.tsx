@@ -43,6 +43,7 @@ export const LoginForm = () => {
       },
       onError: (error) => {
         setErrors(error.message);
+        throw error;
       },
     });
   };

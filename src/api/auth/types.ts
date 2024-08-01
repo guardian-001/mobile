@@ -9,7 +9,7 @@ export type SignupRequest = {
   email: string;
   phoneNumber: string;
   address: string;
-  architectIdentifier: string;
+  city: string;
   date: string;
   timeSlot: string;
 };
