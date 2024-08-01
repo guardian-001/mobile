@@ -1,6 +1,5 @@
 import { client } from '@/api';
 import type { LoginRequest, LoginResponse, SignupRequest } from '@/api/auth';
-
 export async function postLogin(request: LoginRequest): Promise<LoginResponse> {
   const url = '/api/users/login-email/';
 
@@ -8,13 +7,7 @@ export async function postLogin(request: LoginRequest): Promise<LoginResponse> {
     url: url,
     method: 'POST',
     data: request,
-  })
-    .then((response) => {
-      return { error: '', response };
-    })
-    .catch((error) => {
-      return { error: error.message };
-    });
+  });
 }
 
 export async function postSignup(request: SignupRequest): Promise<Response> {
