@@ -25,6 +25,7 @@ export type InputControllerType<T extends FieldValues> = {
   control: Control<T>;
   rules?: TRule;
   required?: boolean;
+  disabled?: boolean;
   labelStyle?: string;
   inputAreaType?: 'textInput' | 'textArea';
   handleOnChange?: ({ name, data }: CreateProfileType) => void;
@@ -43,6 +44,7 @@ export function ControlledInput<T extends FieldValues>(
     rules,
     handleOnChange,
     labelStyle,
+    disabled = false,
     inputAreaType = 'textInput',
     required = false,
     ...inputProps
@@ -53,6 +55,7 @@ export function ControlledInput<T extends FieldValues>(
 
   return (
     <Input
+      disabled={disabled}
       required={required}
       inputAreaType={inputAreaType}
       labelStyle={labelStyle}

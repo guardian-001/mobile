@@ -1,16 +1,16 @@
 import React from 'react';
 
 import { useSoftKeyboardEffect } from '@/core/keyboard';
-import CreateAccountStepper from '@/modules/supplier/create-account/create-account-supplier';
+import CheckMailBanner from '@/modules/supplier/login/check-mail-banner';
 import { FocusAwareStatusBar } from '@/shared/components';
 
-export default function Login() {
+export default function MailNotFound() {
   useSoftKeyboardEffect();
 
   return (
     <>
       <FocusAwareStatusBar />
-      <CreateAccountStepper />
+      <CheckMailBanner />
     </>
   );
 }

@@ -52,7 +52,15 @@ export const phoneValidation = z
   .regex(/^\+?\d+$/, { message: 'validations.phoneNumberDigits' })
   .min(8, { message: 'validations.phoneNumberMinLength' })
   .max(15, { message: 'validations.phoneNumberMaxLength' });
-
+export const arrayOfNonEmptyStrings = z
+  .array(
+    z.string().nonempty({
+      message: 'Required',
+    })
+  )
+  .refine((arr) => arr.length > 0, {
+    message: 'arrayNonEmptyString',
+  });
 export const requiredValidationNumber = z
   .number()
   .refine((value) => value > 0, {

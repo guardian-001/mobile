@@ -4,23 +4,23 @@ import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
 import { error } from '@/theme/colors';
 
-import { CreateAccountSchema } from '../schemas/create-account-schemas';
-import type { CreateAccountType, FirstConnectionType } from '../types';
+import { DetailsSchema } from '../schemas/create-account-schemas';
+import type { DetailsType, FirstConnectionType } from '../types';
 
-export const useCreateAccount = () => {
+export const useDetails = () => {
   const router = useRouter();
 
   const { formData, setFormData, onHandleNext } =
     useFormStepper<FirstConnectionType>();
 
-  const { handleSubmit, control } = useCustomForm(CreateAccountSchema, {
-    entrepriseName: formData.entrepriseName,
-    specialty: formData.entrepriseName,
-    phone: formData.entrepriseName,
-    AdresseBureau: formData.entrepriseName,
+  const { handleSubmit, control } = useCustomForm(DetailsSchema, {
+    companyName: formData.companyName,
+    companySpeciality: formData.companyName,
+    phoneNumber: formData.phoneNumber,
+    companyAddress: formData.companyAddress,
   });
 
-  const onSubmit = (selectedData: CreateAccountType) => {
+  const onSubmit = (selectedData: DetailsType) => {
     setFormData((prev: FirstConnectionType) => ({
       ...prev,
       ...selectedData,
