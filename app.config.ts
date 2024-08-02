@@ -22,6 +22,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     fallbackToCacheTimeout: 0,
     url: 'https://u.expo.dev/68260e1d-246b-438c-8d7e-26bf234fd97b',
   },
+  runtimeVersion: '1.0.0',
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
