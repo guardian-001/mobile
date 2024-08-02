@@ -1,5 +1,3 @@
-import type { AxiosResponse } from 'axios';
-
 import type { Image } from '@/types';
 
 export type SignupRequest = {
@@ -37,11 +35,6 @@ export type User = {
   phoneNumber?: string;
   userType?: string;
   image?: Image;
-};
-
-export type LoginResponse = {
-  error?: string;
-  response?: AxiosResponse;
 };
 
 export type ForgetPassRequest = {

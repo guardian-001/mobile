@@ -113,6 +113,8 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
           { writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr' },
           inputProps.style,
         ])}
+        showSoftInputOnFocus={!disabled}
+        caretHidden={disabled}
       />
       {error && (
         <Text
