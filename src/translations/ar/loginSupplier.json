@@ -4,5 +4,6 @@
   "seConnecter": "تسجيل الدخول",
   "bienvenueSurArchimatch": "مرحبًا بك في",
   "kitPartenariatPro": "مجموعة شراكة PRO",
-  "createPass": "قم بإنشاء كلمة مرور آمنة لحماية حسابك."
+  "createPass": "قم بإنشاء كلمة مرور آمنة لحماية حسابك.",
+  "errorLoginPage": "لا توجد حسابات مطابقة لهذا البريد الإلكتروني"
 }

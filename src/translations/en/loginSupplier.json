@@ -4,5 +4,6 @@
   "seConnecter": "Login",
   "bienvenueSurArchimatch": "Welcome to Archimatch",
   "kitPartenariatPro": "PRO Partnership Kit",
-  "createPass": "Create a secure password to protect your account."
+  "createPass": "Create a secure password to protect your account.",
+  "errorLoginPage": "There are no account matches with this email"
 }

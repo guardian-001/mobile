@@ -34,15 +34,14 @@ export const useLoginEmailSupplier = () => {
     console.log(data);
     console.log({ email: formData.email });
     emailCheck.mutate(data, {
-      onError: (error) => {
-        console.log(error);
-        router.push(`(${space})/(public)/check-mail-banner`);
-      },
       onSuccess: () => {
         setFormData((prev: LoginSupplierFormType) => ({
           ...prev,
           state: 'pass',
         }));
+      },
+      onError: () => {
+        router.push(`(${space})/(public)/check-mail-banner`);
       },
     });
   };
