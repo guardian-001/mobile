@@ -10,6 +10,8 @@
   "addressPlaceHolder": "Enter office address",
   "matricule": "Tax identification number",
   "matriculePlaceHolder": "Enter your tax identification number",
+  "city": "city",
+  "cityPlaceholder": "select a city",
   "date": "Date",
   "time": "Time"
 }

@@ -33,12 +33,12 @@ export function FormProvider<T>({ children, initialData, maxStep }: IProps<T>) {
 
   function onHandleNext() {
     setStep((prev) => prev + 1);
-    setFormData((prev) => ({ ...prev, rollback: false }));
+    setFormData((prev) => ({ ...prev }));
   }
 
   function onHandleBack() {
     setStep((prev) => prev - 1);
-    setFormData((prev) => ({ ...prev, rollback: true }));
+    setFormData((prev) => ({ ...prev }));
   }
 
   return (

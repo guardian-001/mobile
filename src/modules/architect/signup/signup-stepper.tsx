@@ -30,7 +30,7 @@ export default function SignupStepper() {
     email: '',
     phoneNumber: '',
     address: '',
-    architectIdentifier: '',
+    city: '',
     architectSpeciality: 0,
     date: formatDateBackend(new Date()),
     timeSlot: '08:00',

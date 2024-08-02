@@ -109,3 +109,7 @@ export const imagesValidation = z
 export const specialityValidation = z.number().refine((value) => value > 0, {
   message: 'validations.required',
 });
+
+export const idValidation = z.number().refine((value) => value > 0, {
+  message: 'validations.required',
+});

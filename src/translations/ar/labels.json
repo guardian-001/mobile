@@ -10,6 +10,8 @@
   "addressPlaceHolder": "أدخل عنوان المكتب",
   "matricule": "الرقم الضريبي",
   "matriculePlaceHolder": "أدخل رقمك الضريبي",
+  "city": "مدينة",
+  "cityPlaceholder": "اختر مدينة",
   "date": "تاريخ",
   "time": "وقت"
 }

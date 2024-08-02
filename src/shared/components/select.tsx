@@ -3,6 +3,7 @@ import {
   type BottomSheetModal,
 } from '@gorhom/bottom-sheet';
 import { FlashList } from '@shopify/flash-list';
+import clsx from 'clsx';
 import * as React from 'react';
 import { type FieldValues, useController } from 'react-hook-form';
 import { Platform } from 'react-native';
@@ -22,7 +23,7 @@ const selectTv = tv({
     container: 'mb-4',
     label: 'text-grey-100 mb-1 text-lg dark:text-neutral-100',
     input:
-      'border-grey-50 mt-0 flex-row items-center justify-center rounded-xl border-[0.5px] p-3  dark:border-neutral-500 dark:bg-neutral-800',
+      'mt-0 flex-row items-center justify-center rounded-lg border border-description p-3  dark:border-neutral-500 dark:bg-neutral-800',
     inputValue: 'dark:text-neutral-100',
   },
 
@@ -133,9 +134,12 @@ export interface SelectProps {
   disabled?: boolean;
   error?: string;
   options?: Option[];
+  required?: boolean;
+
   onSelect?: (value: string | number) => void;
   placeholder?: string;
   testID?: string;
+  labelStyle?: string;
 }
 interface ControlledSelectProps<T extends FieldValues>
   extends SelectProps,
@@ -150,6 +154,8 @@ export const Select = (props: SelectProps) => {
     placeholder = 'select...',
     disabled = false,
     onSelect,
+    labelStyle,
+    required = false,
     testID,
   } = props;
   const modal = useModal();
@@ -182,14 +188,18 @@ export const Select = (props: SelectProps) => {
   return (
     <>
       <View className={styles.container()}>
-        {label && (
+        <View className="flex w-full flex-row justify-start">
           <Text
             testID={testID ? `${testID}-label` : undefined}
-            className={styles.label()}
+            className={clsx(
+              styles.label(),
+              labelStyle ? labelStyle : 'text-base'
+            )}
           >
             {label}
           </Text>
-        )}
+          {required && <Text className="text-primary">*</Text>}
+        </View>
         <TouchableOpacity
           className={styles.input()}
           disabled={disabled}
