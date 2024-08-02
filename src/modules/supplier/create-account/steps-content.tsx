@@ -1,13 +1,12 @@
-import CreateProfile from './steps/create-profile';
-import InterestPick from './steps/intrest-pick';
+import { Details, SpecialityTypes } from './steps';
 
 export const stepsContent: {
   component: React.ReactNode;
 }[] = [
   {
-    component: <CreateProfile />,
+    component: <Details />,
   },
   {
-    component: <InterestPick />,
+    component: <SpecialityTypes />,
   },
 ];

@@ -1,11 +1,13 @@
 import type { z } from 'zod';
 
 import type {
-  CreateAccountSchema,
+  appearanceSchema,
+  DetailsSchema,
   FirstConnectionSchema,
-  IntrestSchema,
+  specialityTypeSchema,
 } from '../schemas/create-account-schemas';
 
-export type CreateAccountType = z.infer<typeof CreateAccountSchema>;
-export type IntrestType = z.infer<typeof IntrestSchema>;
+export type DetailsType = z.infer<typeof DetailsSchema>;
+export type SpecialityType = z.infer<typeof specialityTypeSchema>;
+export type AppearanceType = z.infer<typeof appearanceSchema>;
 export type FirstConnectionType = z.infer<typeof FirstConnectionSchema>;

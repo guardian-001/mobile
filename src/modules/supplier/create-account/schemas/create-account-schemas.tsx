@@ -1,26 +1,29 @@
 import { z } from 'zod';
 
 import {
-  fieldValidation,
-  idValidation,
+  arrayOfNonEmptyStrings,
   phoneValidation,
+  requiredValidation,
 } from '@/shared/validations';
 
 export const FirstConnectionSchema = z.object({
-  entrepriseName: fieldValidation,
-  specialty: fieldValidation,
-  phone: phoneValidation,
-  AdresseBureau: fieldValidation,
-  entrepriseCategory: idValidation,
+  companyName: requiredValidation,
+  phoneNumber: phoneValidation,
+  companySpeciality: requiredValidation,
+  companyAddress: requiredValidation,
+  specialityType: arrayOfNonEmptyStrings,
+  appearance: requiredValidation,
+});
+export const DetailsSchema = z.object({
+  companyName: requiredValidation,
+  phoneNumber: phoneValidation,
+  companySpeciality: requiredValidation,
+  companyAddress: requiredValidation,
 });
 
-export const CreateAccountSchema = z.object({
-  entrepriseName: fieldValidation,
-  specialty: fieldValidation,
-  phone: phoneValidation,
-  AdresseBureau: fieldValidation,
+export const specialityTypeSchema = z.object({
+  specialityType: arrayOfNonEmptyStrings,
 });
-
-export const IntrestSchema = z.object({
-  entrepriseCategory: idValidation,
+export const appearanceSchema = z.object({
+  appearance: requiredValidation,
 });

@@ -1,23 +1,20 @@
 import React from 'react';
-import type { z } from 'zod';
 
 import { translate } from '@/core';
 import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
 import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
 
 import { StepButtons } from '../../../shared';
-import type { SignupFormSchema } from '../../schema/signup-request-schema-supplier';
-import { useCreateAccount } from '../hooks/use-create-account';
+import { useDetails } from '../hooks';
 
-export type SignupFormType = z.infer<typeof SignupFormSchema>;
+export function Details() {
+  const {
+    onHandleBack,
 
-export type ResetFormProps = {
-  handlePreviousStep?: () => void;
-  handleNextStep?: () => void;
-};
-
-export default function CreateProfile() {
-  const { onHandleBack, handleSubmit, control, onSubmit } = useCreateAccount();
+    handleSubmit,
+    control,
+    onSubmit,
+  } = useDetails();
 
   return (
     <View className="flex h-fit items-center justify-between gap-8">
@@ -32,20 +29,20 @@ export default function CreateProfile() {
         <ControlledInput
           testID="name-input"
           control={control}
-          name="entrepriseName"
-          label="Nom de la société " //translate
-          placeholder={translate('labels.name')} //translate
+          name="companyName"
+          label={translate('labels.companyName')}
+          placeholder={translate('labels.companyName')} //translate
         />
 
         <ControlledInput
           testID="surname-input"
           control={control}
-          name="specialty"
-          label="Spécialité" //translate
-          placeholder={translate('labels.surname')} //translate
+          name="companySpeciality"
+          label={translate('labels.companySpeciality')}
+          placeholder={translate('labels.companySpeciality')} //translate
         />
         <ControlledPhoneNumberInput
-          name="phone"
+          name="phoneNumber"
           control={control}
           label={translate('labels.phone')}
           rules={{ required: 'Phone number is required' }}
@@ -54,11 +51,12 @@ export default function CreateProfile() {
         <ControlledInput
           testID="address-input"
           control={control}
-          name="AdresseBureau"
+          name="companyAddress"
           label={translate('labels.address')}
           placeholder={translate('labels.address')}
         />
       </ScrollView>
+
       <View className="flex h-fit w-full items-center ">
         <StepButtons
           previous={{

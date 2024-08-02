@@ -14,5 +14,6 @@
   "signupLink": "S’inscrire",
   "codeVerif": "Verification code",
   "saisirCode": "saisissez le code envoyé à",
-  "loginError": "email ou mot de passe incorrect"
+  "loginError": "email ou mot de passe incorrect",
+  "userNotFound": "Utilisateur non trouvé"
 }
