@@ -12,7 +12,7 @@ export default function CreateAnnouncement() {
     <GradientBackground
       start={{ x: 1, y: 0 }}
       end={{ x: 0, y: 0 }}
-      className="flex-1 items-center"
+      style={{ flex: 1, alignItems: 'center' }}
       colors={[colors['ice-Blue'], colors['light-blue']]}
     >
       <FocusAwareStatusBar />

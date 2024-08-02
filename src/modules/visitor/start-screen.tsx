@@ -24,7 +24,7 @@ export function StartScreen() {
   return (
     <GradientBackground
       colors={[colors['light-blue'], colors['extra-light-blue']]}
-      className="flex-1 items-center justify-center"
+      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
     >
       <Container style="flex-1 items-center justify-center w-full my-4 pt-5">
         <Container style="flex items-start justify-center w-[86%]">
@@ -63,6 +63,7 @@ export function StartScreen() {
             type="button"
             width="w-[88%]"
             height="h-12"
+            backgroundColor='bg-blue-500'
           />
         </Container>
 

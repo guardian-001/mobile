@@ -31,7 +31,7 @@ export default function ClientProfile() {
   return (
     <GradientBackground
       colors={[colors.white, colors['extra-light-blue']]}
-      className="flex-1"
+      style={{ flex: 1 }}
     >
       <HeaderTitle text="profile.profile" type="transparent" />
 
