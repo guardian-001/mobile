@@ -1,11 +1,12 @@
+import type { AxiosResponse } from 'axios';
+
 import { client } from '@/api';
 import type {
   LoginEmailRequest,
   LoginRequest,
-  LoginResponse,
   SignupRequest,
 } from '@/api/auth';
-export async function postLogin(request: LoginRequest): Promise<LoginResponse> {
+export async function postLogin(request: LoginRequest): Promise<AxiosResponse> {
   const url = '/api/users/login-email/';
   return client.post(url, request);
 }
@@ -17,7 +18,7 @@ export async function postSignup(request: SignupRequest): Promise<Response> {
 
 export async function postEmailCheck(
   request: LoginEmailRequest
-): Promise<LoginResponse> {
+): Promise<AxiosResponse> {
   const url = 'api/users/supplier/login/';
   return client.post(url, request);
 }

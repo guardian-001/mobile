@@ -30,16 +30,12 @@ export const LoginForm = () => {
   const onSubmit = (data: LoginFormType) => {
     login.mutate(data, {
       onSuccess: (response) => {
-        if (response.error) {
-          setErrors(translate('login.loginError'));
-          return;
-        }
         signIn({
           token: {
-            access: response.response?.data.access,
-            refresh: response.response?.data.refresh,
+            access: response.data.access,
+            refresh: response.data.refresh,
           },
-          user: response.response?.data.user,
+          user: response.data.user,
         });
         router.replace(`/(${space})/(private)/profile`);
       },
