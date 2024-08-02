@@ -83,7 +83,7 @@ export default function ImagePickerComponent() {
         {error && (
           <Text
             tx={'realisation.galleryStep.typeFileError'}
-            className="text-xs text-error dark:text-red-600"
+            className="text-xs text-error  "
           />
         )}
       </View>

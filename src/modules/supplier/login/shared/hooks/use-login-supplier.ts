@@ -35,6 +35,9 @@ export const useLoginSupplier = () => {
         setError(axiosError.message);
         throw new Error(axiosError.message);
       },
+      onSuccess: () => {
+        router.push('/(supplier)/(private)/(complete)/complete-account');
+      },
     });
   };
 

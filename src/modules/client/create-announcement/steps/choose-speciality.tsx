@@ -51,9 +51,7 @@ export function ChooseSpeciality() {
             ))}
           </ScrollView>
         )}
-        {error && (
-          <Text className="text-sm text-error dark:text-error" tx={error} />
-        )}
+        {error && <Text className="text-sm text-error " tx={error} />}
         <StepperButton
           onPressHandler={handleSubmit(onSubmit)}
           label={translate('common.next')}

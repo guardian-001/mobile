@@ -26,7 +26,7 @@ export default function UpdatePasswordProfile() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="flex-1 bg-white p-4 dark:bg-black"
+      className="flex-1 bg-white p-4 "
     >
       <HeaderTitle text="resetpass.reset" type="transparent" />
       <ScrollView

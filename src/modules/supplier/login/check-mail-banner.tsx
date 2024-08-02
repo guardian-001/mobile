@@ -1,14 +1,15 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { HeaderTitle } from '@/shared/components';
+import { ErrorImg } from '@/assets/icons/archimatch';
 
 export default function CheckMailBanner() {
   return (
-    <View>
-      <HeaderTitle text="signup.headerTitle" type="custom" />
-
-      <Text>There are no account matches with this email</Text>
+    <View className="flex h-full w-full items-center justify-center gap-5">
+      <ErrorImg />
+      <Text className="text-center text-xl">
+        There are no account matches with this email
+      </Text>
     </View>
   );
 }

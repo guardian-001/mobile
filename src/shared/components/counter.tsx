@@ -57,7 +57,7 @@ export const Counter = <T extends FieldValues>({
 
   return (
     <View
-      className={`${className}flex h-16 w-full flex-row justify-between rounded-lg border border-description px-4 dark:border-white`}
+      className={`${className}flex h-16 w-full flex-row justify-between rounded-lg border border-description px-4 `}
     >
       <View className="flex flex-row items-center gap-4">
         {SvgComponent && (

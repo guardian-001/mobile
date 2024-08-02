@@ -18,7 +18,7 @@ export const NotificationForm = ({
   const { handleSubmit, control } = useCustomForm(NotificationFormSchema);
 
   return (
-    <View className="flex-1 items-center bg-white dark:bg-black">
+    <View className="flex-1 items-center bg-white ">
       <HeaderTitle text="profile.info" type="default" />
       <View className="flex h-full flex-1 justify-between p-6">
         <View className="h-1/3">

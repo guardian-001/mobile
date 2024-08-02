@@ -15,7 +15,7 @@ const ProjectRealizationStepperInner = () => {
 
   const { component } = stepsContent[step];
   return (
-    <View className="items-between mt-16 flex h-full w-full rounded-t-3xl bg-background dark:bg-black">
+    <View className="items-between mt-16 flex h-full w-full rounded-t-3xl bg-background  ">
       <StepperPercentageBar />
       <View className=" h-full flex-1 p-6 py-12">{component}</View>
     </View>

@@ -51,9 +51,7 @@ export function ChooseCategory() {
             ))}
           </ScrollView>
         )}
-        {error && (
-          <Text className="text-sm text-error dark:text-error" tx={error} />
-        )}
+        {error && <Text className="text-sm text-error " tx={error} />}
         <StepButtons
           previous={{
             handlePreviousStep: onRollBack,

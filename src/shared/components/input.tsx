@@ -13,23 +13,22 @@ import { Text } from './text';
 const inputTv = tv({
   slots: {
     container: 'mb-2',
-    label:
-      'mb-1 text-base font-medium text-primary-txt dark:text-white md:text-lg',
+    label: 'mb-1 text-base font-medium text-primary-txt  md:text-lg',
 
     input:
-      'mt-0 h-12 rounded-lg border border-description bg-white px-4 py-3 font-lato text-base font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white md:text-lg',
+      'mt-0 h-12 rounded-lg border border-description bg-white px-4 py-3 font-lato text-base font-medium leading-5  md:text-lg',
   },
 
   variants: {
     focused: {
       true: {
-        input: 'border-neutral-400 dark:border-neutral-300',
+        input: 'border-neutral-400 ',
       },
     },
     error: {
       true: {
         input: 'border-error',
-        label: 'text-error dark:text-error',
+        label: 'text-error ',
       },
     },
     disabled: {
@@ -117,7 +116,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
       {error && (
         <Text
           testID={testID ? `${testID}-error` : undefined}
-          className="text-xs text-error dark:text-red-600"
+          className="text-xs text-error  "
           tx={error}
         />
       )}
