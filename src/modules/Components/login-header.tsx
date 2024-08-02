@@ -9,7 +9,7 @@ export default function LoginHeader() {
     <>
       <Image
         source={require('@/assets/images/login-banner.png')}
-        className=" h-56 w-full bg-black"
+        className="h-52 w-full"
       />
       <ImageContainer className="flex-center h-1/8 -mt-5 flex justify-center">
         {space === 'client' ? <CompleteLogoClient /> : <CompleteLogo />}

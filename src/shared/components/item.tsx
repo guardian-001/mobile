@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ArrowRight } from '@/assets/icons';
 import type { TxKeyPath } from '@/core';
-import { Pressable, Text, View } from '@/shared/components';
+import { Text, TouchableOpacity, View } from '@/shared/components';
 
 type ItemProps = {
   text: TxKeyPath;
@@ -14,9 +14,8 @@ type ItemProps = {
 export const Item = ({ text, value, icon, onPress }: ItemProps) => {
   const isPressable = onPress !== undefined;
   return (
-    <Pressable
+    <TouchableOpacity
       onPress={onPress}
-      pointerEvents={isPressable ? 'auto' : 'none'}
       className="h-fit flex-1 flex-row items-center justify-between px-4 py-2"
     >
       <View className="flex-row items-center">
@@ -31,6 +30,6 @@ export const Item = ({ text, value, icon, onPress }: ItemProps) => {
           </View>
         )}
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 };

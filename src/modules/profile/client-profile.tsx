@@ -26,8 +26,7 @@ import {
 import { Container, MainButton } from '../shared';
 import { useProfileClient } from './hooks/use-profile';
 
-type Props = {};
-export default function ClientProfile({}: Props) {
+export default function ClientProfile() {
   const { navigateTo, logoutHandler } = useProfileClient();
   return (
     <GradientBackground
@@ -36,8 +35,11 @@ export default function ClientProfile({}: Props) {
     >
       <HeaderTitle text="profile.profile" type="transparent" />
 
-      <ScrollView contentContainerClassName="p-6 pb-20 ">
-        <Container style="flex flex-row w-full h-[30%] items-center bg-white  rounded-3xl px-5">
+      <ScrollView
+        contentContainerClassName="min-h-[80%] p-6 pb-20 dark:bg-black"
+        showsVerticalScrollIndicator={false}
+      >
+        <Container style="flex flex-row w-full h-[30%] items-center bg-white dark:bg-primary-txt rounded-3xl px-5">
           <View className="flex h-4/5 w-7/12">
             <View className="flex flex-row">
               <Text

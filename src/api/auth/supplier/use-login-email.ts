@@ -1,14 +1,17 @@
-import type { AxiosError } from 'axios';
+import type { AxiosError, AxiosResponse } from 'axios';
 import { createMutation } from 'react-query-kit';
 
 import { postEmailCheck } from '@/services/shared/auth-services';
 
-import type { LoginEmailRequest, LoginResponse } from '../types';
+import type { LoginEmailRequest } from '../types';
 
 type Request = LoginEmailRequest;
-type Response = LoginResponse;
 
-export const useEmailCheckApi = createMutation<Response, Request, AxiosError>({
+export const useEmailCheckApi = createMutation<
+  AxiosResponse,
+  Request,
+  AxiosError
+>({
   mutationFn: postEmailCheck,
   onError: (error) => {
     return error;
