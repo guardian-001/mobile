@@ -13,5 +13,7 @@
   "city": "ville",
   "cityPlaceholder": "selectionné une ville",
   "date": "Date",
-  "time": "Temps"
+  "time": "Temps",
+  "companyName": "Nom de la société",
+  "companySpeciality": "Spécialité"
 }

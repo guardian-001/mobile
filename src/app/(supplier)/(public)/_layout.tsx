@@ -7,10 +7,14 @@ export default function SupplierPublicLayout() {
   return (
     <Stack initialRouteName="login">
       <Stack.Screen name="login" options={ScreenOptions({ route: '/(app)' })} />
+      <Stack.Screen
+        name="check-mail-banner"
+        options={ScreenOptions({ route: '/(app)' })}
+      />
       <Stack.Screen name="create-password" options={ScreenOptions({})} />
       <Stack.Screen
-        name="check-mail"
-        options={ScreenOptions({ route: '/(app)' })}
+        name="reset-password-supplier"
+        options={ScreenOptions({})}
       />
     </Stack>
   );

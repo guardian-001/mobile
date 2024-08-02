@@ -19,6 +19,15 @@ export type LoginRequest = {
   password: string;
 };
 
+export type LoginEmailRequest = {
+  email: string;
+};
+export type SpecialityTypeResponse = {
+  id: number;
+  label: string;
+  icon: string;
+  content: string;
+};
 export type User = {
   id?: number;
   username?: string;

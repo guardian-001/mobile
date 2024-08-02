@@ -1,16 +1,16 @@
 import React from 'react';
 
 import { useSoftKeyboardEffect } from '@/core/keyboard';
-import CreatePassFromLink from '@/modules/supplier/password-creation/create-password';
+import CheckMailBanner from '@/modules/supplier/login/check-mail-banner';
 import { FocusAwareStatusBar } from '@/shared/components';
 
-export default function CreatePassword() {
+export default function MailNotFound() {
   useSoftKeyboardEffect();
 
   return (
     <>
       <FocusAwareStatusBar />
-      <CreatePassFromLink />
+      <CheckMailBanner />
     </>
   );
 }
