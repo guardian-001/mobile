@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
 import { useLoginApi } from '@/api/auth';
-import { useAuth, useCustomForm, useRouteName } from '@/core';
+import { translate, useAuth, useCustomForm, useRouteName } from '@/core';
 import { useLoginForm } from '@/shared';
 import { LoginFormSchema } from '@/shared/validations';
 
@@ -22,15 +22,15 @@ export const useLoginShared = () => {
       onSuccess: (ResponseData) => {
         signIn({
           token: {
-            access: ResponseData.response?.data.access,
-            refresh: ResponseData.response?.data.refresh,
+            access: ResponseData.data.access,
+            refresh: ResponseData.data.refresh,
           },
-          user: ResponseData.response?.data.user,
+          user: ResponseData.data.user,
         });
-        router.push(`/(${space})/(private)/profile`);
+        router.replace(`/(${space})/(private)/profile`);
       },
-      onError: (error) => {
-        setErrors(error.message);
+      onError: () => {
+        setErrors(translate('login.loginError'));
       },
     });
   };
