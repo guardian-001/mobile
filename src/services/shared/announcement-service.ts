@@ -259,33 +259,18 @@ export async function getAnnouncementStep10(
 export const createAnnouncementAsync = async (
   formData: AnnouncementType
 ): Promise<AxiosResponse> => {
-  try {
-    const response = await client({
-      url: '/api/announcement/create-announcement/',
-      method: 'POST',
-      data: formData,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept-Language': formData.currentLanguage,
-      },
-    });
-
-    return response.data;
-  } catch (error: unknown) {
-    if (isAxiosError(error)) {
-      throw new Error(
-        `API request failed with status ${error.status}\n API request failed with message ${error.message}`
-      );
-    } else {
-      throw new Error(
-        `API request failed: ${
-          error instanceof Error ? error.message : 'Unknown error'
-        }`
-      );
-    }
-  }
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept-Language': formData.currentLanguage,
+    },
+  };
+  return client.post(
+    '/api/announcement/create-announcement/',
+    formData,
+    config
+  );
 };
-
 export const sendAnnouncementImagesDataAsync = async (
   imgs: FormData,
   id: string

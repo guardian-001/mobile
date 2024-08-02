@@ -4,7 +4,7 @@ import {
 } from '@/api/client/announcements/mutation';
 import { useCustomForm, useRouteName } from '@/core';
 import { useFormStepper } from '@/shared';
-import { showError } from '@/shared/components';
+import { showError, showSuccesMessage } from '@/shared/components';
 import { fetchAllImages } from '@/shared/constants';
 import type { verificationCodeType } from '@/types';
 import type { AnnouncementType } from '@/types/announcement';
@@ -46,7 +46,8 @@ export const usePhoneVerificationCode = () => {
         {
           onSuccess: () => {
             createAnnouncement.mutate(newData, {
-              onSuccess: () => {
+              onSuccess: (response) => {
+                showSuccesMessage(response.data.message);
                 onHandleNext();
               },
               onError: (errorApi) => {
