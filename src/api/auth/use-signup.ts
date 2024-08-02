@@ -9,4 +9,10 @@ type Request = SignupRequest;
 
 export const useSignupApi = createMutation<Response, Request, AxiosError>({
   mutationFn: postSignup,
+  onSuccess: (response) => {
+    return { error: '', response };
+  },
+  onError: (error) => {
+    return { error: error.message };
+  },
 });

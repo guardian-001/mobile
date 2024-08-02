@@ -12,12 +12,7 @@ export async function postLogin(request: LoginRequest): Promise<LoginResponse> {
 
 export async function postSignup(request: SignupRequest): Promise<Response> {
   const url = '/api/architect-request/create-architect-request/';
-  return client
-    .post(url, request)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((response) => response.data);
+  return client.post(url, request);
 }
 
 export async function postEmailCheck(
