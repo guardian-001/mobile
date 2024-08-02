@@ -7,7 +7,7 @@ import {
 } from '@/shared/providers/use-form-stepper-provider';
 import { formatDateBackend } from '@/shared/utils';
 
-import type { SignupFormDataType } from '../shared/types';
+import type { SignupFormDataType } from './shared/types';
 import { stepsContent } from './steps-content';
 
 const SignupStepperInner = () => {

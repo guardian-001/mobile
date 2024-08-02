@@ -47,7 +47,7 @@ export function ProjectDetails() {
           placeholder={translate('realisation.detailsStep.inputPlaceholder')}
         />
         <TagGroup
-          name="city"
+          name="address"
           control={control}
           tags={cities}
           label="realisation.detailsStep.localisationLabel"

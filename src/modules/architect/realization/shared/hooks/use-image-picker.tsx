@@ -22,9 +22,11 @@ export const useImagePicker = <T extends FieldValues>({
   rules,
 }: ImagesPickerProps<T>) => {
   const { formData } = useFormStepper<ProjectRealizationType>();
-  const [images, setImages] = useState<ImageInfo[]>(formData.realizationImages);
+  const [images, setImages] = useState<ImageInfo[]>(
+    formData.realizationImages ?? []
+  );
   const [selectedImage, setSelectedImage] = useState<ImageInfo>(
-    formData.realizationImages[0]
+    formData?.realizationImages?.[0] ?? { name: null, uri: '', type: undefined }
   );
   const [error, setError] = useState<string>('');
   const { field } = useController({ control, name, rules });

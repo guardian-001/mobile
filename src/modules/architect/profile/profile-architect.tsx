@@ -17,7 +17,7 @@ export function ProfileArchitect() {
         onPressHandler={() =>
           onPressHandler('(architect)/(private)/realize-project/')
         }
-        label={translate('onBoarding.clientBtn')}
+        label={translate('architectProfile.createProject')}
         type="button"
         width="w-[88%]"
         height="h-12"

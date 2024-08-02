@@ -6,7 +6,7 @@ import { Close } from '@/assets/icons';
 import { useFormStepper } from '@/shared/providers';
 import colors from '@/theme/colors';
 
-import type { ProjectRealizationType } from '../architect/shared/types';
+import type { ProjectRealizationType } from '../architect/realization/shared/types';
 
 export default function StepperPercentageBar() {
   const router = useRouter();

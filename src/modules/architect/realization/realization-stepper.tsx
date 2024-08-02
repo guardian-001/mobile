@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { getUser } from '@/core/auth/utils';
 import StepperPercentageBar from '@/modules/shared/stepper-percentage-bar';
 import { View } from '@/shared/components';
 import {
@@ -7,7 +8,7 @@ import {
   useFormStepper,
 } from '@/shared/providers/use-form-stepper-provider';
 
-import type { ProjectRealizationType } from '../shared/types';
+import type { ProjectRealizationType } from './shared/types';
 import { stepsContent } from './steps-content';
 
 const ProjectRealizationStepperInner = () => {
@@ -23,12 +24,12 @@ const ProjectRealizationStepperInner = () => {
 };
 
 export default function ProjectRealizationStepper() {
+  const user = getUser();
+  console.log(user.id);
   const initialData = {
     projectName: '',
-    architect: 0,
     needs: [] as number[],
-    address: '',
-    city: undefined,
+    address: undefined,
     workSurface: undefined,
     description: '',
     architecturalStyle: 0,

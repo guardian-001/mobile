@@ -24,7 +24,7 @@ export default function GeneralInfos() {
             className="mb-2 text-start text-sm  font-extrabold"
           />
           <Text className="mb-2 text-start text-sm font-extrabold  text-description">
-            {formData?.city}
+            {formData?.address}
           </Text>
         </View>
       </View>

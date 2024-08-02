@@ -6,14 +6,18 @@ export const integerValidation = z
   })
   .int({ message: 'validations.invalidInteger' });
 
-export const intArrayValidation = z.array(
-  z.number().int({
-    message: 'validations.invalidInteger',
-  }),
-  {
-    message: 'validations.required',
-  }
-);
+export const intArrayValidation = z
+  .array(
+    z.number().int({
+      message: 'validations.invalidInteger',
+    }),
+    {
+      message: 'validations.required',
+    }
+  )
+  .refine((arr) => arr.length > 0, {
+    message: 'validations.arrayNonEmpty',
+  });
 
 export const requiredValidation = z
   .string({ message: 'validations.required' })
