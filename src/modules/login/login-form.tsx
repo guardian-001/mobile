@@ -34,7 +34,6 @@ export const LoginForm = () => {
           setErrors(translate('login.loginError'));
           return;
         }
-
         signIn({
           token: {
             access: response.response?.data.access,
@@ -44,9 +43,8 @@ export const LoginForm = () => {
         });
         router.replace(`/(${space})/(private)/profile`);
       },
-      onError: (error) => {
+      onError: () => {
         setErrors(translate('login.loginError'));
-        console.error('Login error:', error);
       },
     });
   };
@@ -73,8 +71,6 @@ export const LoginForm = () => {
         label={translate('login.email')}
         placeholder={translate('login.email')}
         handleOnChange={handleData}
-        showSoftInputOnFocus={false}
-        caretHidden={true}
       />
       <ControlledInput
         testID="password-input"
@@ -99,7 +95,7 @@ export const LoginForm = () => {
           {translate('login.mdpOublier')}
         </Text>
       </Container>
-      <Text className="font-lato text-xs font-semibold text-primary">
+      <Text className="font-lato text-xs font-semibold text-error">
         {errors && translate('login.loginError')}
       </Text>
       <LoginButton
