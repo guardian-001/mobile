@@ -75,6 +75,8 @@ export const LoginForm = () => {
         label={translate('login.email')}
         placeholder={translate('login.email')}
         handleOnChange={handleData}
+        showSoftInputOnFocus={false}
+        caretHidden={true}
       />
       <ControlledInput
         testID="password-input"
