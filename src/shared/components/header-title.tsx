@@ -10,21 +10,28 @@ interface HeaderTitleProps {
   text: TxKeyPath;
   type: 'custom' | 'transparent' | 'default';
 }
-
+//the GradientBackground component class<name was removed and that styles are correctly applied, which solves the problem where the gradient background was not displaying as expected in IOS.
 export function HeaderTitle({ text, type }: HeaderTitleProps) {
   return (
     <>
       {type === 'custom' ? (
-        <GradientBackground style={{
-          position: 'absolute',
-          display: 'flex',
-          height: '13%',
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-          backgroundColor: 'white'}}>
-          <Text style={{
-           marginTop: 40}} className="text-2xl font-bold text-primary-txt ">
+        <GradientBackground
+          style={{
+            position: 'absolute',
+            display: 'flex',
+            height: '13%',
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            backgroundColor: 'white',
+          }}
+        >
+          <Text
+            style={{
+              marginTop: 40,
+            }}
+            className="text-2xl font-bold text-primary-txt "
+          >
             {translate(text)}
           </Text>
         </GradientBackground>
