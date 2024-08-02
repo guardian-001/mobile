@@ -14,7 +14,7 @@ export function CreateAccountStepperInner() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="flex-1 bg-white dark:bg-black"
+      className="flex-1 bg-white "
     >
       <ScrollView
         className="flex-1 pt-12 "

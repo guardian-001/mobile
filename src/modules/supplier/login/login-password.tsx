@@ -26,18 +26,14 @@ export const LoginPassword = () => {
     checked,
     setChecked,
     error,
+    formData,
   } = useLoginSupplier();
 
   return (
     <View className="flex w-full justify-center">
-      <ControlledInput
-        disabled={true}
-        testID="email-input"
-        control={control}
-        name="email"
-        label={translate('login.email')}
-        placeholder={translate('login.email')}
-      />
+      <View className="mb-5 w-full">
+        <Text className="text-primary">{formData.email}</Text>
+      </View>
       <ControlledInput
         testID="password-input"
         control={control}

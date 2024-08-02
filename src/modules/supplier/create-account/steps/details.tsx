@@ -17,7 +17,7 @@ export function Details() {
   } = useDetails();
 
   return (
-    <View className="flex h-fit items-center justify-between gap-8">
+    <View className="flex h-full flex-1 items-center justify-between gap-8 bg-black">
       <View>
         <Text
           tx={'signupStepCreateProfile.title'}
@@ -31,7 +31,7 @@ export function Details() {
           control={control}
           name="companyName"
           label={translate('labels.companyName')}
-          placeholder={translate('labels.companyName')} //translate
+          placeholder={translate('labels.companyName')}
         />
 
         <ControlledInput
@@ -39,7 +39,7 @@ export function Details() {
           control={control}
           name="companySpeciality"
           label={translate('labels.companySpeciality')}
-          placeholder={translate('labels.companySpeciality')} //translate
+          placeholder={translate('labels.companySpeciality')}
         />
         <ControlledPhoneNumberInput
           name="phoneNumber"
@@ -57,7 +57,7 @@ export function Details() {
         />
       </ScrollView>
 
-      <View className="flex h-fit w-full items-center ">
+      <View className="flex h-fit w-full items-center self-end ">
         <StepButtons
           previous={{
             handlePreviousStep: onHandleBack,

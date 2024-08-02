@@ -57,9 +57,7 @@ export const TagGroup = <T extends FieldValues>({
           />
         ))}
       </View>
-      {error && (
-        <Text className="text-xs text-error dark:text-error" tx={error} />
-      )}
+      {error && <Text className="text-xs text-error " tx={error} />}
       {visibleItems < tags.length && (
         <Text className="mt-2 text-primary underline" onPress={loadMore}>
           Afficher plus

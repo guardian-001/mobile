@@ -6,6 +6,7 @@ import { useCustomForm, useRouteName } from '@/core';
 import type { LoginSupplierFormType } from '@/modules/supplier/shared/types';
 import { useFormStepper } from '@/shared';
 import { EmailSchema } from '@/shared/validations';
+import { error } from '@/theme/colors';
 import type { EmailType } from '@/types';
 
 export const useLoginEmailSupplier = () => {
@@ -14,7 +15,7 @@ export const useLoginEmailSupplier = () => {
     email: formData.email,
   });
 
-  const [error, setError] = useState<string>('');
+  // const [error, setError] = useState<string>('');
 
   const router = useRouter();
   const space = useRouteName();
@@ -29,13 +30,18 @@ export const useLoginEmailSupplier = () => {
   };
   const onSubmit = async (data: EmailType) => {
     await updateData(data);
-    emailCheck.mutate(formData, {
-      onError: (axiosError) => {
-        if (axiosError.status === 404) {
-          router.push(`(${space})/(public)/check-mail-banner`);
-        } else {
-          setError(axiosError.message);
-        }
+    console.log(formData);
+    console.log(data);
+    console.log({ email: formData.email });
+    emailCheck.mutate(data, {
+      onSuccess: () => {
+        setFormData((prev: LoginSupplierFormType) => ({
+          ...prev,
+          state: 'pass',
+        }));
+      },
+      onError: () => {
+        router.push(`(${space})/(public)/check-mail-banner`);
       },
     });
   };

@@ -5,13 +5,7 @@ import { ScreenOptions } from '@/shared/components';
 
 export default function SupplierPrivateLayout() {
   return (
-    <Stack initialRouteName="index">
-      <Stack.Screen
-        name="index"
-        options={{
-          title: 'Supplier Space',
-        }}
-      />
+    <Stack>
       <Stack.Screen name="(complete)" options={ScreenOptions({})} />
       <Stack.Screen name="(profile)" options={ScreenOptions({})} />
     </Stack>

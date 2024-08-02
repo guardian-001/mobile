@@ -19,7 +19,7 @@ export const BasicInfoForm = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="flex-1 bg-white dark:bg-black"
+      className="flex-1 bg-white  "
     >
       <HeaderTitle text="profile.info" type="default" />
       {isLoading && <ActivityIndicator />}

@@ -47,7 +47,7 @@ function ResetStepperInner() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="flex-1 bg-white dark:bg-black"
+      className="flex-1 bg-white "
     >
       <HeaderTitle text="resetpass.reset" type="default" />
 

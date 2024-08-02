@@ -15,8 +15,8 @@ export default function Login() {
   };
   return (
     <>
-      <FocusAwareStatusBar />
       <FormProvider<LoginSupplierFormType> initialData={initialData}>
+        <FocusAwareStatusBar />
         <LoginSupplier />
       </FormProvider>
     </>

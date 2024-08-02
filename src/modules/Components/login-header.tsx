@@ -3,7 +3,6 @@ import React from 'react';
 import { CompleteLogo, CompleteLogoClient } from '@/assets/icons/archimatch';
 import { Image, ImageContainer } from '@/shared/components';
 import { useRouteName } from '@/shared/hooks/use-get-route';
-
 export default function LoginHeader() {
   const space = useRouteName();
   return (

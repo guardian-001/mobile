@@ -21,9 +21,9 @@ import { Text } from './text';
 const selectTv = tv({
   slots: {
     container: 'mb-4',
-    label: 'text-grey-100 mb-1 text-lg dark:text-neutral-100',
+    label: 'text-grey-100 mb-1 text-lg ',
     input:
-      'mt-0 flex-row items-center justify-center rounded-lg border border-description p-3  dark:border-neutral-500 dark:bg-neutral-800',
+      'mt-0 flex-row items-center justify-center rounded-lg border border-description p-3 ',
     inputValue: 'dark:text-neutral-100',
   },
 
@@ -36,7 +36,7 @@ const selectTv = tv({
     error: {
       true: {
         input: 'border-error',
-        label: 'text-error dark:text-error',
+        label: 'text-error ',
         inputValue: 'text-error',
       },
     },
@@ -118,10 +118,10 @@ const Option = React.memo(
   }) => {
     return (
       <Pressable
-        className="flex-row items-center border-b border-neutral-300 bg-white px-3 py-2 dark:border-neutral-700 dark:bg-neutral-800"
+        className="flex-row items-center border-b border-neutral-300 bg-white px-3 py-2  "
         {...props}
       >
-        <Text className="flex-1 dark:text-neutral-100 ">{label}</Text>
+        <Text className="flex-1  ">{label}</Text>
         {selected && <Check />}
       </Pressable>
     );
@@ -212,10 +212,7 @@ export const Select = (props: SelectProps) => {
           <CaretDown />
         </TouchableOpacity>
         {error && (
-          <Text
-            testID={`${testID}-error`}
-            className="text-sm text-error dark:text-error"
-          >
+          <Text testID={`${testID}-error`} className="text-sm text-error ">
             {error}
           </Text>
         )}
@@ -260,7 +257,7 @@ const Check = ({ ...props }: SvgProps) => (
     fill="none"
     viewBox="0 0 25 24"
     {...props}
-    className="stroke-black dark:stroke-white"
+    className="stroke-black "
   >
     <Path
       d="m20.256 6.75-10.5 10.5L4.506 12"

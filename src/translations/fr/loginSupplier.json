@@ -4,5 +4,6 @@
   "seConnecter": "Se connecter",
   "bienvenueSurArchimatch": "Bienvenue sur Archimatch",
   "kitPartenariatPro": "Kit Partenariat PRO",
-  "createPass": "Créez un mot de passe sécurisé pour protéger votre compte."
+  "createPass": "Créez un mot de passe sécurisé pour protéger votre compte.",
+  "errorLoginPage": "Aucun compte ne correspond à cet e-mail"
 }

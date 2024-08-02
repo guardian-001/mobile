@@ -55,9 +55,7 @@ export function ChooseAdditionalInfo() {
             </ScrollView>
           )}
 
-          {error && (
-            <Text className="text-sm text-error dark:text-error" tx={error} />
-          )}
+          {error && <Text className="text-sm text-error  " tx={error} />}
         </View>
 
         <StepButtons

@@ -17,7 +17,7 @@ const CreateAnnouncementInner = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="mt-12 w-full flex-1 rounded-t-3xl bg-white dark:bg-black "
+      className="mt-12 w-full flex-1 rounded-t-3xl bg-white  "
     >
       <StepperPercentageBar />
       <View className="h-full flex-1 px-4">

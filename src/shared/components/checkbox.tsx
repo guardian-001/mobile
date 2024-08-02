@@ -48,9 +48,7 @@ export const Root = ({
       >
         {children}
       </Pressable>
-      {error && (
-        <Text className="text-xs text-error dark:text-error" tx={error} />
-      )}
+      {error && <Text className="text-xs text-error " tx={error} />}
     </View>
   );
 };
