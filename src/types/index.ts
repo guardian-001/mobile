@@ -1,8 +1,11 @@
 import type { z } from 'zod';
 
-import type { EmailSchema, ResetPassFormSchema } from '@/shared/validations';
+import type {
+  LoginFormSchema,
+  ResetPassFormSchema,
+} from '@/shared/validations';
 
-export type LoginFormSupplierType = z.infer<typeof EmailSchema>;
+export type LoginFormType = z.infer<typeof LoginFormSchema>;
 export type ResetPassFormType = z.infer<typeof ResetPassFormSchema>;
 export type Category = {
   id: number;
@@ -43,6 +46,10 @@ export type VerificationCodeRequest = {
 export type EmailPhoneType = {
   email: string;
   phoneNumber: string;
+};
+
+export type EmailType = {
+  email: string;
 };
 export type verificationCodeType = {
   verificationCode: string;

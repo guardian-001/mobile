@@ -62,6 +62,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
     testID,
     className,
     labelStyle,
+    disabled = false,
     required = false,
     inputAreaType = 'textInput',
     ...inputProps
@@ -88,7 +89,8 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
             testID={testID ? `${testID}-label` : undefined}
             className={clsx(
               styles.label(),
-              labelStyle ? labelStyle : 'text-base'
+              labelStyle ? labelStyle : 'text-base',
+              disabled && 'text-description'
             )}
           >
             {label}
@@ -105,6 +107,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
         className={styles.input()}
         onBlur={onBlur}
         onFocus={onFocus}
+        aria-disabled={disabled}
         {...inputProps}
         style={StyleSheet.flatten([
           { writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr' },

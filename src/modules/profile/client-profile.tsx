@@ -24,7 +24,7 @@ import {
 } from '@/shared/components';
 
 import { Container, MainButton } from '../shared';
-import { useProfileClient } from './shared/hooks/use-profile';
+import { useProfileClient } from './hooks/use-profile';
 
 type Props = {};
 export default function ClientProfile({}: Props) {

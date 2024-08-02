@@ -5,6 +5,7 @@ import { StepButtons } from '@/modules/shared';
 import {
   ControlledInput,
   ControlledPhoneNumberInput,
+  ControlledSelect,
   ScrollView,
   Text,
   View,
@@ -13,7 +14,8 @@ import {
 import { useProfile } from '../shared/hooks';
 
 export function CreateProfile() {
-  const { onSubmit, handleSubmit, control, onHandleBack } = useProfile();
+  const { onSubmit, handleSubmit, control, onHandleBack, cityOptions } =
+    useProfile();
   return (
     <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16   ">
       <View className="mt-[11vh]">
@@ -27,7 +29,7 @@ export function CreateProfile() {
         />
       </View>
 
-      <View className=" flex h-[70%]  w-[90%]   items-center justify-center   rounded-3xl bg-white px-4 py-2 shadow-md">
+      <View className=" flex h-[50%]  w-[90%]   items-center justify-center   rounded-3xl bg-white px-4 py-2 shadow-md">
         <ScrollView
           className=" flex gap-5 rounded-3xl bg-white p-4"
           contentContainerClassName="justify-center"
@@ -66,12 +68,13 @@ export function CreateProfile() {
             label={translate('labels.address')}
             placeholder={translate('labels.address')}
           />
-          <ControlledInput
-            testID="matricule-input"
+          <ControlledSelect
+            testID="city-input"
             control={control}
-            name="architectIdentifier"
-            label={translate('labels.matricule')}
-            placeholder={translate('labels.matricule')}
+            name="city"
+            label={translate('labels.city')}
+            placeholder={translate('labels.city')}
+            options={cityOptions}
           />
         </ScrollView>
       </View>

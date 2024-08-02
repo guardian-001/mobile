@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSoftKeyboardEffect } from '@/core/keyboard';
-import ResetStepper from '@/modules/reset-password/reset-stepper';
+import UpdatePasswordProfile from '@/modules/profile/update-password-profile';
 import { FocusAwareStatusBar, View } from '@/shared/components';
 
 export default function ResetPasswordClient() {
@@ -10,7 +10,7 @@ export default function ResetPasswordClient() {
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
-      <ResetStepper />
+      <UpdatePasswordProfile />
     </View>
   );
 }

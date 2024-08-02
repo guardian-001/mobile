@@ -51,3 +51,14 @@ export const extractError = (data: unknown): string => {
   }
   return 'Something went wrong ';
 };
+
+export const showSuccesMessage = (message: string = 'Success!') => {
+  showMessage({
+    message,
+    type: 'success',
+    duration: 3000,
+    icon: 'success',
+    animated: true,
+    animationDuration: 1000,
+  });
+};

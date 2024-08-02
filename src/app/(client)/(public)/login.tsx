@@ -6,11 +6,9 @@ import { FocusAwareStatusBar } from '@/shared/components';
 
 export default function Login() {
   useSoftKeyboardEffect();
-
   return (
     <>
       <FocusAwareStatusBar />
-
       <LoginShared />
     </>
   );

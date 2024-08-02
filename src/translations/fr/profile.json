@@ -9,5 +9,11 @@
   "terms": "Conditions et politiques",
   "report": "Signaler un problème",
   "logout": "Se déconnecter",
-  "connection": "Connexion"
+  "connection": "Connexion",
+  "currentPassword-label": "Mot de passe actuel",
+  "currentPassword-placeholder": "Saisir votre mot de passe actuel",
+  "newPassword-label": "Nouveau Mot de passe",
+  "newPassword-placeholder": "Nouveau mot de passe",
+  "confirmNewPassword-label": "Confirmer votre mot de passe",
+  "confirmNewPassword-placeholder": "Confirmer le nouveau mot de passe"
 }

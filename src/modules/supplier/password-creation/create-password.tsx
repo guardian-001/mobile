@@ -7,7 +7,7 @@ import { translate } from '@/core';
 import PasswordRequirementItem from '@/modules/reset-password/password-requirement-item';
 import { Button, ControlledInput, Text, View } from '@/shared/components';
 
-import type { SignupFormSchema } from '../schema/signup-request-schema-supplier';
+import type { SignupFormSchema } from '../shared/schema/signup-request-schema-supplier';
 import { useCreatePassword } from './hooks/use-create-account';
 
 export type SignupFormType = z.infer<typeof SignupFormSchema>;
@@ -56,7 +56,7 @@ export default function CreatePassFromLink() {
           className="mb-2 text-start text-2xl font-extrabold"
         />
         <Text className="mb-2 text-start text-base font-normal text-description">
-          Créez un mot de passe sécurisé pour protéger votre compte.
+          {translate('loginSupplier.createPass')}
         </Text>
       </View>
 
