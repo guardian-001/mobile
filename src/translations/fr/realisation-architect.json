@@ -38,6 +38,7 @@
     "style": "style",
     "superficie": "superficie",
     "services": "Les services",
-    "servicesDescription": "Services approuvés requis pour le projet :"
+    "servicesDescription": "Services approuvés requis pour le projet :",
+    "success": "Réalisation créée avec succès"
   }
 }

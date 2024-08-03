@@ -23,7 +23,7 @@ export function ChooseSpeciality() {
         />
       </View>
 
-      <ScrollView className="flex h-fit ">
+      <ScrollView className="flex flex-1">
         <ToggleCard
           className="h-38 mb-10 w-64 rounded-2xl"
           title={translate('signupStepSpeciality.constructionArchitect')}

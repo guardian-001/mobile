@@ -17,7 +17,7 @@ export const useDetails = () => {
     ProjectDetailsSchema,
     {
       projectName: formData?.projectName,
-      city: formData?.address,
+      address: formData?.address,
       workSurface: formData?.workSurface,
       description: formData?.description,
     }

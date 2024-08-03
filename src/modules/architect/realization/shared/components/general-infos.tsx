@@ -12,7 +12,7 @@ export default function GeneralInfos() {
         <View className="flex flex-1 justify-start">
           <Text
             tx={'realisation.finalStep.categorie'}
-            className="mb-2 text-start text-sm  font-extrabold"
+            className="text-md mb-2 text-start  font-extrabold"
           />
           <Text className="mb-2 text-start text-sm font-extrabold  text-description">
             {categoryName}
@@ -21,7 +21,7 @@ export default function GeneralInfos() {
         <View className="flex flex-1 justify-start">
           <Text
             tx={'realisation.finalStep.localisation'}
-            className="mb-2 text-start text-sm  font-extrabold"
+            className="text-md mb-2 text-start  font-extrabold"
           />
           <Text className="mb-2 text-start text-sm font-extrabold  text-description">
             {formData?.address}
@@ -32,7 +32,7 @@ export default function GeneralInfos() {
         <View className="flex flex-1 justify-start">
           <Text
             tx={'realisation.finalStep.style'}
-            className="mb-2 text-start text-sm  font-extrabold"
+            className="text-md mb-2 text-start  font-extrabold"
           />
           <Text className="mb-2 text-start text-sm font-extrabold  text-description">
             {styleName}
@@ -41,7 +41,7 @@ export default function GeneralInfos() {
         <View className="flex flex-1 justify-start">
           <Text
             tx={'realisation.finalStep.superficie'}
-            className="mb-2 text-start text-sm  font-extrabold"
+            className="text-md mb-2 text-start  font-extrabold"
           />
           <Text className="mb-2 text-start text-sm font-extrabold  text-description">
             {formData?.workSurface}

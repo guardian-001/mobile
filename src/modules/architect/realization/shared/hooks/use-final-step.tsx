@@ -1,16 +1,14 @@
 import { useRouter } from 'expo-router';
 
-import type { Response } from '@/api/architect/project';
 import {
   useCategoriesApi,
   useNeedsApi,
   useStylesApi,
 } from '@/api/architect/project';
-import {
-  useCreateProjectApi,
-  useCreateProjectImagesApi,
-} from '@/api/architect/project/use-create-project';
+import { useCreateProjectApi } from '@/api/architect/project/use-create-project';
+import { translate } from '@/core';
 import { useFormStepper } from '@/shared';
+import { showSuccesMessage } from '@/shared/components';
 import { fetchAllImages } from '@/shared/constants';
 
 import type { ProjectRealizationType } from '../types';
@@ -20,7 +18,7 @@ export const useFinalStep = () => {
     useFormStepper<ProjectRealizationType>();
 
   const { mutate, isError, error, isSuccess, data } = useCreateProjectApi();
-  const imageUpload = useCreateProjectImagesApi();
+  // const imageUpload = useCreateProjectImagesApi();
   const router = useRouter();
 
   const handleProject = async () => {
@@ -35,26 +33,29 @@ export const useFinalStep = () => {
       });
 
       mutate(project, {
-        onSuccess: (dataResponse: Response) => {
-          console.log(dataResponse.data.id);
-          console.log({
-            imgs: newData,
-            id: dataResponse.data.id,
-          });
-          imageUpload.mutate(
-            {
-              imgs: newData,
-              id: dataResponse.data.id,
-            },
-            {
-              onSuccess: () => {
-                router.replace(`(architect)/(private)/profile`);
-              },
-              onError: (error) => {
-                console.log('&:', error);
-              },
-            }
-          );
+        onSuccess: () => {
+          showSuccesMessage(translate('realisation.finalStep.success'));
+          router.replace(`(architect)/(private)/profile`);
+          // dataResponse: Response
+          // console.log(dataResponse.data.id);
+          // console.log({
+          //   imgs: newData,
+          //   id: dataResponse.data.id,
+          // });
+          // imageUpload.mutate(
+          //   {
+          //     imgs: newData,
+          //     id: dataResponse.data.id,
+          //   },
+          //   {
+          //     onSuccess: () => {
+          //       router.replace(`(architect)/(private)/profile`);
+          //     },
+          //     onError: (error) => {
+          //       console.log('&:', error);
+          //     },
+          //   }
+          // );
         },
         onError: (error) => {
           console.log('z:', error);

@@ -100,9 +100,9 @@ export const useCreateProjectImages = ({
       url: url,
       method: 'PUT',
       data: { imgs, id },
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',
+      // },
     });
 
     return response;

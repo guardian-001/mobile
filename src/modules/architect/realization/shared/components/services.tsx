@@ -8,21 +8,21 @@ import { useFinalStep } from '../hooks';
 export default function Services() {
   const { servicesObjects } = useFinalStep();
   return (
-    <View className="flex w-full gap-8">
+    <View className="mt-6 flex w-full gap-8">
       {servicesObjects?.map((item) => {
         const imgUrl = `${Env.API_URL}${item.icon}`;
 
         return (
           <View
-            className="flex flex-row items-start justify-start gap-2"
+            className="flex flex-row items-center justify-start gap-2"
             key={item.id}
           >
             <Image
-              className="  h-5  w-5"
+              className="  mt-1  h-5 w-5"
               source={{ uri: imgUrl }}
               contentFit="contain"
             />
-            <Text>{item.label}</Text>
+            <Text className="max-w-xs">{item.label}</Text>
           </View>
         );
       })}

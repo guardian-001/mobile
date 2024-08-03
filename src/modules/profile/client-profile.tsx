@@ -36,7 +36,7 @@ export default function ClientProfile() {
       <HeaderTitle text="profile.profile" type="transparent" />
 
       <ScrollView
-        contentContainerClassName="min-h-[80%] p-6 pb-20 dark:bg-black"
+        contentContainerClassName="min-h-[80%] p-6 pb-20  "
         showsVerticalScrollIndicator={false}
       >
         <Container style="flex flex-row w-full h-[30%] items-center bg-white dark:bg-primary-txt rounded-3xl px-5">
