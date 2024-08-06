@@ -10,7 +10,7 @@ export function DemoPlanning() {
       className="h-fit w-full"
       contentContainerStyle={styles.scrollContainer}
     >
-      <View>
+      <View className="mt-[12vh]">
         <Text
           tx={'signupStepDemoPlanning.title'}
           className="mb-2 text-center text-2xl font-extrabold"

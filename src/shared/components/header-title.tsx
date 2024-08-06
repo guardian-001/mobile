@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
 import type { TxKeyPath } from '@/core';
 import { translate } from '@/core';
@@ -15,8 +15,11 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
   return (
     <>
       {type === 'custom' ? (
-        <GradientBackground className="flex h-[13%] w-full items-center justify-end bg-white pb-6">
-          <Text className="text-2xl font-bold text-primary-txt ">
+        <GradientBackground style={styles.gradientBackground}>
+          <Text
+            style={styles.marginTop}
+            className="text-2xl font-bold text-primary-txt"
+          >
             {translate(text)}
           </Text>
         </GradientBackground>
@@ -24,13 +27,13 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
         <>
           {type === 'transparent' ? (
             <View className="flex h-[14%] w-full items-center justify-end bg-transparent pb-6">
-              <Text className="text-2xl font-bold text-primary-txt ">
+              <Text className="text-2xl font-bold text-primary-txt">
                 {translate(text)}
               </Text>
             </View>
           ) : (
             <View className="flex h-[14%] w-full items-center justify-end bg-white pb-6">
-              <Text className="text-2xl font-bold text-primary-txt ">
+              <Text className="text-2xl font-bold text-primary-txt">
                 {translate(text)}
               </Text>
             </View>
@@ -40,3 +43,18 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  gradientBackground: {
+    position: 'absolute',
+    display: 'flex',
+    height: '13%',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    backgroundColor: 'white',
+  },
+  marginTop: {
+    marginTop: 40,
+  },
+});

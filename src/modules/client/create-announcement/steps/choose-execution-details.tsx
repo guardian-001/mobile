@@ -26,6 +26,7 @@ export function ChooseExecutionDetails() {
     isSuccess,
   } = useExecutionDetails();
   return (
+
     <View className="flex-1 pt-4">
       {isError && <ErrorData message="Error Loading Data" />}
       <View className="flex flex-1 justify-between">

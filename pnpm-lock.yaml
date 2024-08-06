@@ -1,4 +1,7 @@
-lockfileVersion: '6.1'
+ 
+
+lockfileVersion: '9.0'
+ 
 
 settings:
   autoInstallPeers: true
@@ -14138,5 +14141,7 @@ packages:
     dependencies:
       '@types/react': 18.2.79
       react: 18.2.0
+ 
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
+ 

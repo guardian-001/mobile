@@ -5,8 +5,9 @@ import ProjectRealizationStepper from '@/modules/architect/realization/realizati
 import { FocusAwareStatusBar, GradientBackground } from '@/shared/components';
 
 export default function RealizeProjet() {
-  return (
+  return ( 
     <GradientBackground style={styles.gradientBachgroud}>
+ 
       <FocusAwareStatusBar />
       <ProjectRealizationStepper />
     </GradientBackground>

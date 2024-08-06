@@ -17,6 +17,7 @@ interface MainButtonProps {
   alternativeStyle?: string;
   icon?: React.ReactNode;
   iconClassName?: string;
+  backgroundColor?: string; 
 }
 
 export default function MainButton({
@@ -31,14 +32,16 @@ export default function MainButton({
   shadow,
   alternativeStyle,
   iconClassName,
+ 
   alternativeBg,
+ 
 }: MainButtonProps) {
   return (
     <Button
       onPress={onPressHandler}
       label={label}
       type={type}
-      className={clsx(height, width, radius, 'flex ', shadow, alternativeStyle)}
+      className={clsx(height, width, radius, 'flex', shadow, alternativeStyle, backgroundColor)}
       textClassName={clsx(
         'flex w-11/12 font-lato text-xs font-bold md:text-lg',
         textPosition

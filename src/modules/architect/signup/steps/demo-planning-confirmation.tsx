@@ -13,7 +13,7 @@ export function DemoPlanningConfirmation() {
 
   return (
     <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
-      <View>
+      <View className="mt-[11vh]">
         <Text
           tx={'signupStepDemoPlanningConfirmation.title'}
           className="mb-2 text-center text-2xl font-extrabold"
@@ -36,6 +36,7 @@ export function DemoPlanningConfirmation() {
                 {formatDate(formData.date)}
               </Text>
             </View>
+ 
             <View className="w-4/5   flex-1  items-start justify-between">
               <Text className="font-bold text-description">
                 {translate('labels.time')}
@@ -43,11 +44,15 @@ export function DemoPlanningConfirmation() {
               <Text className="max-w-sm  ">
                 <Text className="flex-row font-bold text-primary-txt ">
                   {`${formData.timeSlot} - ${add30Minutes(formData.timeSlot)} `}
+
                 </Text>
-                <Text className="font-light text-description">
+
+                <Text className="space-y-4 font-light text-description">
                   ({timezone})
                 </Text>
+ 
               </Text>
+ 
             </View>
           </View>
         </View>

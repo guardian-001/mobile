@@ -12,7 +12,7 @@ export function ChooseSpeciality() {
     useSpeciality();
   return (
     <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
-      <View>
+      <View className="mt-[15vh]">
         <Text
           tx={'signupStepSpeciality.title'}
           className="mb-2 text-center text-2xl font-extrabold"
