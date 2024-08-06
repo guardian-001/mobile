@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { StyleSheet } from 'react-native';
 
 import {
   Flag,
@@ -31,7 +32,7 @@ export default function ClientProfile() {
   return (
     <GradientBackground
       colors={[colors.white, colors['extra-light-blue']]}
-      className="flex-1"
+      style={styles.gradientBachgroud}
     >
       <HeaderTitle text="profile.profile" type="transparent" />
 
@@ -39,7 +40,7 @@ export default function ClientProfile() {
         contentContainerClassName="min-h-[80%] p-6 pb-20  "
         showsVerticalScrollIndicator={false}
       >
-        <Container style="flex flex-row w-full h-[30%] items-center bg-white dark:bg-primary-txt rounded-3xl px-5">
+        <Container style="flex flex-row w-full h-[30%] items-center bg-white   rounded-3xl px-5">
           <View className="flex h-4/5 w-7/12">
             <View className="flex flex-row">
               <Text
@@ -105,3 +106,7 @@ export default function ClientProfile() {
     </GradientBackground>
   );
 }
+
+const styles = StyleSheet.create({
+  gradientBachgroud: { flex: 1 },
+});

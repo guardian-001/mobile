@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { useColorScheme } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
 import Svg, { Path } from 'react-native-svg';
 
 import colors from '@/theme/colors';
 
 export const Settings = ({ ...props }: SvgProps) => {
-  const colorScheme = useColorScheme();
-  const color = colorScheme === 'dark' ? colors.white : colors.blue;
+  const color = colors.blue;
   return (
     <Svg className="h-6 w-6" fill="none" {...props}>
       <Path

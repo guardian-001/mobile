@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 
 import CreateAnnouncementStepper from '@/modules/client/create-announcement/create-announcement-stepper';
 import {
@@ -12,7 +13,7 @@ export default function CreateAnnouncement() {
     <GradientBackground
       start={{ x: 1, y: 0 }}
       end={{ x: 0, y: 0 }}
-      className="flex-1 items-center"
+      style={styles.gradientBachgroud}
       colors={[colors['ice-Blue'], colors['light-blue']]}
     >
       <FocusAwareStatusBar />
@@ -20,3 +21,7 @@ export default function CreateAnnouncement() {
     </GradientBackground>
   );
 }
+
+const styles = StyleSheet.create({
+  gradientBachgroud: { flex: 1, alignItems: 'center' },
+});

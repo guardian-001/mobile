@@ -15,8 +15,6 @@ export const useLoginEmailSupplier = () => {
     email: formData.email,
   });
 
-  // const [error, setError] = useState<string>('');
-
   const router = useRouter();
   const space = useRouteName();
 
@@ -30,9 +28,7 @@ export const useLoginEmailSupplier = () => {
   };
   const onSubmit = async (data: EmailType) => {
     await updateData(data);
-    console.log(formData);
-    console.log(data);
-    console.log({ email: formData.email });
+
     emailCheck.mutate(data, {
       onSuccess: () => {
         setFormData((prev: LoginSupplierFormType) => ({

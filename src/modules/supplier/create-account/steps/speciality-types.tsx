@@ -41,7 +41,6 @@ export function SpecialityTypes() {
             control={control}
             tags={specialityTypesData}
             label="realisation.detailsStep.localisationLabel"
-            // error={error}
             required={true}
           />
         )}
