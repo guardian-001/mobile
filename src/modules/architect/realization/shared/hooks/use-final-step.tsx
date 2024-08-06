@@ -6,8 +6,9 @@ import {
   useStylesApi,
 } from '@/api/architect/project';
 import { useCreateProjectApi } from '@/api/architect/project/use-create-project';
-import { useRouteName } from '@/core';
+import { translate } from '@/core';
 import { useFormStepper } from '@/shared';
+import { showSuccesMessage } from '@/shared/components';
 import { fetchAllImages } from '@/shared/constants';
 
 import type { ProjectRealizationType } from '../types';
@@ -17,34 +18,48 @@ export const useFinalStep = () => {
     useFormStepper<ProjectRealizationType>();
 
   const { mutate, isError, error, isSuccess, data } = useCreateProjectApi();
+  // const imageUpload = useCreateProjectImagesApi();
   const router = useRouter();
-  const space = useRouteName();
 
   const handleProject = async () => {
-    await fetchAllImages(formData.realizationImages).then(async (files) => {
+    await fetchAllImages(formData?.realizationImages ?? []).then((files) => {
       let newData = new FormData();
-      newData.append(
-        'architectural_style',
-        String(formData.architecturalStyle)
-      );
-      newData.append('address', String(formData.city));
-      newData.append('description', formData.description);
-      newData.append('project_category', String(formData.projectCategory));
-      newData.append('project_name', formData.projectName);
-      newData.append('workSurface', String(formData.workSurface));
 
-      formData.needs.forEach((need: any, index: number) => {
-        newData.append(`needs[${index}]`, need);
-      });
+      const project = { ...formData };
+      delete project.realizationImages;
+      console.log(project);
       files.forEach((file) => {
-        newData.append('realizationImages', file);
+        newData.append('realization_images', file);
       });
-      mutate(newData, {
+
+      mutate(project, {
         onSuccess: () => {
-          router.push(`/(${space})/(private)/profile`);
+          showSuccesMessage(translate('realisation.finalStep.success'));
+          router.replace(`(architect)/(private)/profile`);
+          // dataResponse: Response
+          // console.log(dataResponse.data.id);
+          // console.log({
+          //   imgs: newData,
+          //   id: dataResponse.data.id,
+          // });
+          // imageUpload.mutate(
+          //   {
+          //     imgs: newData,
+          //     id: dataResponse.data.id,
+          //   },
+          //   {
+          //     onSuccess: () => {
+          //       router.replace(`(architect)/(private)/profile`);
+          //     },
+          //     onError: (error) => {
+          //       console.log('&:', error);
+          //     },
+          //   }
+          // );
         },
-        onError: (errorApi) => {
-          throw errorApi;
+        onError: (error) => {
+          console.log('z:', error);
+          // router.replace(`(architect)/(private)/profile`);
         },
       });
     });

@@ -1,8 +1,8 @@
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
-import { ImagesRealizationSchema } from '@/modules/architect/shared/schemas';
 import { useFormStepper } from '@/shared';
 
+import { ImagesRealizationSchema } from '../schemas';
 import type { ProjectRealizationType } from '../types';
 import { useImagePicker } from './use-image-picker';
 

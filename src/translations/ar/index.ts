@@ -1,4 +1,5 @@
 import announcement from './announcement.json';
+import architectProfile from './architect-profile.json';
 import common from './common.json';
 import createYourPass from './createPass.json';
 import labels from './labels.json';
@@ -16,6 +17,7 @@ import signupStepDemoPlanningConfirmation from './signup-step4.json';
 import validations from './validations.json';
 
 export default {
+  architectProfile,
   createYourPass,
   loginSupplier,
   announcement,

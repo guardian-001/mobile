@@ -39,6 +39,7 @@
     "style": "Style",
     "superficie": "Area",
     "services": "Services",
-    "servicesDescription": "Approved services required for the project:"
+    "servicesDescription": "Approved services required for the project:",
+    "success": "Realization Created Seccessfully"
   }
 }

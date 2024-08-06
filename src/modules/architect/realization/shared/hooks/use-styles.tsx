@@ -17,7 +17,7 @@ export const useStyles = () => {
     }
   );
 
-  const { data, isPending, isError } = useStylesApi();
+  const { data, isPending, isError, isSuccess } = useStylesApi();
 
   const onSubmit = (selectedData: CategoryFormType) => {
     setFormData((prev: ProjectRealizationType) => ({
@@ -41,5 +41,6 @@ export const useStyles = () => {
     setFormData,
     onHandleNext,
     onHandleBack,
+    isSuccess,
   };
 };

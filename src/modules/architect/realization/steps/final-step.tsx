@@ -11,7 +11,7 @@ export function FinalStep() {
   const { formData, onHandleBack, handleProject } = useFinalStep();
   return (
     <View className="mb-5 flex h-full flex-1 items-start justify-between gap-5  ">
-      <ScrollView className="w-full ">
+      <ScrollView className="w-full " showsVerticalScrollIndicator={false}>
         <View>
           <View className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-primary">
             <TickIcon color={colors.white} width="100%" height="100%" />

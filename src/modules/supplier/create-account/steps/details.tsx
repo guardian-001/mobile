@@ -17,7 +17,7 @@ export function Details() {
   } = useDetails();
 
   return (
-    <View className="flex h-full flex-1 items-center justify-between gap-8 bg-black">
+    <View className="flex h-full flex-1 items-center justify-between gap-8 ">
       <View>
         <Text
           tx={'signupStepCreateProfile.title'}

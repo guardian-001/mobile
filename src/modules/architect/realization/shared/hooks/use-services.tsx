@@ -10,10 +10,11 @@ export const useServices = () => {
   type NeedsFormType = Pick<ProjectRealizationType, 'needs'>;
   const { formData, setFormData, onHandleNext, onHandleBack } =
     useFormStepper<ProjectRealizationType>();
-  const { handleSubmit, control } = useCustomForm(NeedsSchema, {
+  const { handleSubmit, control, errors } = useCustomForm(NeedsSchema, {
     needs: formData.needs,
   });
-  const { data, isPending, isError, error } = useNeedsApi();
+
+  const { data, isPending, isError, error, isSuccess } = useNeedsApi();
 
   const onSubmit = (selectedData: NeedsFormType) => {
     setFormData((prev: ProjectRealizationType) => ({
@@ -24,6 +25,7 @@ export const useServices = () => {
   };
 
   const errorApi = error?.message as TxKeyPath | undefined;
+  const errorValidation = errors?.needs?.message as TxKeyPath | undefined;
   return {
     onSubmit,
     data,
@@ -36,5 +38,7 @@ export const useServices = () => {
     setFormData,
     onHandleNext,
     onHandleBack,
+    isSuccess,
+    errorValidation,
   };
 };

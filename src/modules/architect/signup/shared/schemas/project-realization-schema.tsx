@@ -1,16 +1,17 @@
 import { z } from 'zod';
 
 import {
-  cityValidation,
-  idValidation,
-  imagesValidation,
-  workSurfaceValidation,
-} from '@/modules/architect/shared/validations';
-import {
   fieldValidation,
   intArrayValidation,
   integerValidation,
 } from '@/shared/validations';
+
+import {
+  cityValidation,
+  idValidation,
+  imagesValidation,
+  workSurfaceValidation,
+} from '../validations';
 
 export const ProjectRealizationSchema = z.object({
   projectName: fieldValidation,

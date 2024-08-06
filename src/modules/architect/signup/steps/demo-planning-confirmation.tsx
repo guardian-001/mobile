@@ -28,7 +28,7 @@ export function DemoPlanningConfirmation() {
         <View className="flex h-fit w-full items-center  justify-between gap-5">
           <Clock />
           <View className="flex h-fit w-4/5 flex-row items-center justify-between rounded-xl bg-white p-4 shadow-md">
-            <View className="w-4/5  flex-1  items-start justify-between   ">
+            <View className="w-4/5  flex-1  items-start justify-between">
               <Text className="font-bold text-description">
                 {translate('labels.date')}
               </Text>
@@ -36,22 +36,23 @@ export function DemoPlanningConfirmation() {
                 {formatDate(formData.date)}
               </Text>
             </View>
+ 
+            <View className="w-4/5   flex-1  items-start justify-between">
+              <Text className="font-bold text-description">
+                {translate('labels.time')}
+              </Text>
+              <Text className="max-w-sm  ">
+                <Text className="flex-row font-bold text-primary-txt ">
+                  {`${formData.timeSlot} - ${add30Minutes(formData.timeSlot)} `}
 
-            <View className="w-4/5 flex-1  items-start justify-between   ">
-              <View className="flex-row">
-                <Text className="mr-1 font-bold text-description">
-                  {translate('labels.time')}
                 </Text>
 
                 <Text className="space-y-4 font-light text-description">
                   ({timezone})
                 </Text>
-              </View>
-              <View>
-                <Text className="flex-row font-bold text-primary-txt ">
-                  {`${formData.timeSlot} - ${add30Minutes(formData.timeSlot)} `}
-                </Text>
-              </View>
+ 
+              </Text>
+ 
             </View>
           </View>
         </View>

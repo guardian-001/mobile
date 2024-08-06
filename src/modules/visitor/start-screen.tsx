@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { LogoArchi } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
@@ -24,7 +24,9 @@ export function StartScreen() {
   return (
     <GradientBackground
       colors={[colors['light-blue'], colors['extra-light-blue']]}
-      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+ 
+      style={styles.gradientBachgroud}
+ 
     >
       <Container style="flex-1 items-center justify-center w-full my-4 pt-5">
         <Container style="flex items-start justify-center w-[86%]">
@@ -58,6 +60,7 @@ export function StartScreen() {
             </Text>
           </Container>
           <MainButton
+            alternativeBg="bg-blue-500"
             onPressHandler={() => onPressHandler('(client)/(private)/(tab)/')}
             label={translate('onBoarding.clientBtn')}
             type="button"
@@ -66,11 +69,18 @@ export function StartScreen() {
             backgroundColor='bg-blue-500'
           />
         </Container>
-
+        s
         <OrDevider />
-
         <MainButtons />
       </Container>
     </GradientBackground>
   );
 }
+
+const styles = StyleSheet.create({
+  gradientBachgroud: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

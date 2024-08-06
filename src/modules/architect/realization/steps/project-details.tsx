@@ -28,11 +28,11 @@ export function ProjectDetails() {
     <View className="mb-5 flex h-full flex-1 items-start justify-between gap-5  ">
       <View>
         <Text
-          tx={'realisation.categoryStep.title'}
+          tx={'realisation.detailsStep.title'}
           className="mb-2 text-start text-2xl font-extrabold"
         />
         <Text
-          tx={'realisation.categoryStep.description'}
+          tx={'realisation.detailsStep.description'}
           className="max-w-xs text-start text-sm text-description"
         />
       </View>
@@ -47,7 +47,7 @@ export function ProjectDetails() {
           placeholder={translate('realisation.detailsStep.inputPlaceholder')}
         />
         <TagGroup
-          name="city"
+          name="address"
           control={control}
           tags={cities}
           label="realisation.detailsStep.localisationLabel"

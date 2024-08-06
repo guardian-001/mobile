@@ -1,5 +1,6 @@
 {
   "title": "Planification démo",
   "description": "Une invitation à venir vous a été envoyée à votre adresse e-mail",
-  "confirmBtn": "Confirmer"
+  "confirmBtn": "Confirmer",
+  "requestSend": "Demande créée avec succès"
 }

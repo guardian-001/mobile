@@ -1,23 +1,21 @@
 import { z } from 'zod';
 
 import {
-  cityValidation,
-  idValidation,
-  workSurfaceValidation,
-} from '@/modules/architect/shared/validations';
-import {
   fieldValidation,
-  imagesValidation,
+  idValidation,
   intArrayValidation,
-  integerValidation,
 } from '@/shared/validations';
+
+import {
+  cityValidation,
+  imagesValidation,
+  workSurfaceValidation,
+} from '../validations';
 
 export const ProjectRealizationSchema = z.object({
   projectName: fieldValidation,
-  architect: integerValidation,
   needs: intArrayValidation,
-  address: fieldValidation,
-  city: cityValidation,
+  address: cityValidation,
   workSurface: workSurfaceValidation,
   description: fieldValidation,
   architecturalStyle: idValidation,
@@ -35,4 +33,14 @@ export const ArchitecturalStyleSchema = z.object({
 
 export const NeedsSchema = z.object({
   needs: intArrayValidation,
+});
+export const ProjectDetailsSchema = z.object({
+  projectName: fieldValidation,
+  address: cityValidation,
+  workSurface: workSurfaceValidation,
+  description: fieldValidation,
+});
+
+export const ImagesRealizationSchema = z.object({
+  realizationImages: imagesValidation,
 });

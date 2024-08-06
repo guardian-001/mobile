@@ -11,7 +11,7 @@ import type { ProjectRealizationType } from '../types';
 export const useCategory = () => {
   const router = useRouter();
 
-  const { data, isPending, isError } = useCategoriesApi();
+  const { data, isPending, isError, isSuccess } = useCategoriesApi();
 
   type CategoryFormType = Pick<ProjectRealizationType, 'projectCategory'>;
   const { formData, setFormData, onHandleNext } =
@@ -49,5 +49,6 @@ export const useCategory = () => {
     data,
     isPending,
     isError,
+    isSuccess,
   };
 };

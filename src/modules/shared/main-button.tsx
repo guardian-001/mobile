@@ -11,6 +11,7 @@ interface MainButtonProps {
   height?: string;
   radius?: string;
   shadow?: string;
+  alternativeBg?: string;
   textPosition?: string;
   type?: 'pill' | 'button';
   alternativeStyle?: string;
@@ -31,7 +32,9 @@ export default function MainButton({
   shadow,
   alternativeStyle,
   iconClassName,
-  backgroundColor, 
+ 
+  alternativeBg,
+ 
 }: MainButtonProps) {
   return (
     <Button
@@ -45,6 +48,7 @@ export default function MainButton({
       )}
       icon={icon}
       iconClassName={iconClassName}
+      alternativeBg={alternativeBg}
     />
   );
 }

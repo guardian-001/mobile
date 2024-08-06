@@ -40,6 +40,7 @@
     "style": "النمط",
     "superficie": "المساحة",
     "services": "الخدمات",
-    "servicesDescription": "الخدمات المعتمدة المطلوبة للمشروع :"
+    "servicesDescription": "الخدمات المعتمدة المطلوبة للمشروع :",
+    "success": "تم إنشاء الإنجاز بنجاح"
   }
 }

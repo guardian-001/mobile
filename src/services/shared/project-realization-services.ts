@@ -6,6 +6,7 @@ import type {
   ResponseNeeds,
   ResponseStyle,
 } from '@/api/architect/project';
+import type { ProjectRealizationType } from '@/modules/architect/realization/shared/types';
 
 export async function getStyles(): Promise<ResponseStyle> {
   try {
@@ -64,18 +65,11 @@ export async function getCategories(): Promise<ResponseCategory> {
 }
 
 export async function useCreateProject(
-  formData: FormData
+  formData: ProjectRealizationType
 ): Promise<AxiosResponse> {
   try {
     const url = 'api/architect-realization/create-realization/';
-    const response = await client({
-      url: url,
-      method: 'POST',
-      data: formData,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    const response = await client.post(url, formData);
 
     return response.data;
   } catch (error: unknown) {
@@ -92,3 +86,37 @@ export async function useCreateProject(
     }
   }
 }
+
+export const useCreateProjectImages = ({
+  imgs,
+  id,
+}: {
+  imgs: FormData;
+  id: string;
+}) => {
+  try {
+    const url = `api/architect-realization/update-realization-images/${id}/`;
+    const response = client({
+      url: url,
+      method: 'PUT',
+      data: { imgs, id },
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',
+      // },
+    });
+
+    return response;
+  } catch (error: unknown) {
+    if (isAxiosError(error)) {
+      throw new Error(
+        `API request failed with status ${error.status}\n API request failed with message ${error.message}`
+      );
+    } else {
+      throw new Error(
+        `API request failed: ${
+          error instanceof Error ? error.message : 'Unknown error'
+        }`
+      );
+    }
+  }
+};
