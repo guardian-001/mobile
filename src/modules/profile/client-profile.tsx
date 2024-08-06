@@ -32,9 +32,7 @@ export default function ClientProfile() {
   return (
     <GradientBackground
       colors={[colors.white, colors['extra-light-blue']]}
- 
       style={styles.gradientBachgroud}
- 
     >
       <HeaderTitle text="profile.profile" type="transparent" />
 

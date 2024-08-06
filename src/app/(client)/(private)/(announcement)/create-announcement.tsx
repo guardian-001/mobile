@@ -12,9 +12,8 @@ export default function CreateAnnouncement() {
   return (
     <GradientBackground
       start={{ x: 1, y: 0 }}
-      end={{ x: 0, y: 0 }} 
+      end={{ x: 0, y: 0 }}
       style={styles.gradientBachgroud}
- 
       colors={[colors['ice-Blue'], colors['light-blue']]}
     >
       <FocusAwareStatusBar />
