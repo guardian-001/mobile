@@ -1,6 +1,7 @@
 import announcement from './announcement.json';
 import architectProfile from './architect-profile.json';
 import common from './common.json';
+import explore from './explore.json';
 import labels from './labels.json';
 import login from './login.json';
 import loginSupplier from './loginSupplier.json';
@@ -18,6 +19,7 @@ import signupStepDemoPlanningConfirmation from './signup-step4.json';
 import validations from './validations.json';
 
 export default {
+  explore,
   architectProfile,
   announcement,
   notification,

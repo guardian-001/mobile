@@ -21,6 +21,7 @@ module.exports = {
         error: '#ff0000',
         'color-border': '#aeaeae',
         'sky-blue': '#92D8F6',
+        'main-project-blue': '#11ABEC',
       },
     },
   },
