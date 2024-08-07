@@ -1,7 +1,7 @@
 import * as SecureStore from 'expo-secure-store';
 import { useEffect, useState } from 'react';
 
-const IS_FIRST_TIME = 'IS_FIRST_TIME';
+import { IS_FIRST_TIME } from '../constants';
 
 export const useIsFirstTime = () => {
   const [isFirstTime, setIsFirstTime] = useState<boolean | null>(null);
