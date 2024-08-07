@@ -10,7 +10,7 @@ export const useProfile = () => {
   };
   const logoutHandler = (route: string) => {
     logOut();
-    router.push(route);
+    router.replace(route);
   };
   return {
     onPressHandler,

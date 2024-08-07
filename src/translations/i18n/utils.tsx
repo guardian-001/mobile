@@ -1,12 +1,11 @@
+import * as SecureStore from 'expo-secure-store';
 import type TranslateOptions from 'i18next';
 import i18n from 'i18next';
 import memoize from 'lodash.memoize';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { I18nManager, NativeModules, Platform } from 'react-native';
-import { useMMKVString } from 'react-native-mmkv';
 import RNRestart from 'react-native-restart';
 
-import { storage } from '../../core/storage';
 import type { Language, resources } from './resources';
 import type { RecursiveKeyOf } from './types';
 
@@ -15,7 +14,10 @@ export type TxKeyPath = RecursiveKeyOf<DefaultLocale>;
 
 export const LOCAL = 'local';
 
-export const getLanguage = () => storage.getString(LOCAL); // 'Marc' getItem<Language | undefined>(LOCAL);
+export const getLanguage = async () => {
+  const language = await SecureStore.getItemAsync(LOCAL);
+  return language as string;
+};
 
 export const translate = memoize(
   (key: TxKeyPath, options = undefined) =>
@@ -40,15 +42,23 @@ export const changeLanguage = (lang: Language) => {
 };
 
 export const useSelectedLanguage = () => {
-  const [language, setLang] = useMMKVString(LOCAL);
+  const [language, setLanguageState] = useState<Language | null>(null);
 
-  const setLanguage = useCallback(
-    (lang: Language) => {
-      setLang(lang);
-      if (lang !== undefined) changeLanguage(lang as Language);
-    },
-    [setLang]
-  );
+  useEffect(() => {
+    const loadLanguage = async () => {
+      const storedLanguage = await SecureStore.getItemAsync(LOCAL);
+      if (storedLanguage) {
+        setLanguageState(storedLanguage as Language);
+      }
+    };
+    loadLanguage();
+  }, []);
+
+  const setLanguage = useCallback(async (lang: Language) => {
+    await SecureStore.setItemAsync(LOCAL, lang);
+    setLanguageState(lang);
+    changeLanguage(lang);
+  }, []);
 
   return { language: language as Language, setLanguage };
 };

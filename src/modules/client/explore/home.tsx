@@ -1,8 +1,6 @@
-import { useRouter } from 'expo-router';
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { getStatus } from '@/core/auth/utils';
 import { StartProject } from '@/modules/shared';
 import {
   Button,
@@ -12,9 +10,11 @@ import {
   Text,
 } from '@/shared/components';
 
+import { useHome } from './hooks/use-home';
+
 export default function Home() {
-  const router = useRouter();
-  const status = getStatus();
+  const { appStatus, router } = useHome();
+
   return (
     <ScrollView
       contentContainerClassName="min-h-full"
@@ -24,7 +24,7 @@ export default function Home() {
         colors={[colors.white, colors['extra-light-blue']]}
         style={styles.gradientBachgroud}
       >
-        {status && (
+        {appStatus && (
           <Button
             label={'profile'}
             onPress={() => {

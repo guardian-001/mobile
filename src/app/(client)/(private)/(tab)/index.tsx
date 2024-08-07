@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Home from '@/modules/client/explore/home';
 import { FocusAwareStatusBar, View } from '@/shared/components';
 
