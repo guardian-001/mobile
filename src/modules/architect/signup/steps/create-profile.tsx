@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
@@ -6,6 +7,7 @@ import {
   ControlledInput,
   ControlledPhoneNumberInput,
   ControlledSelect,
+  KeyboardAvoidingView,
   ScrollView,
   Text,
   View,
@@ -17,7 +19,10 @@ export function CreateProfile() {
   const { onSubmit, handleSubmit, control, onHandleBack, cityOptions } =
     useProfile();
   return (
-    <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16   ">
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      className={`mb-5 flex h-full flex-1 items-center justify-between gap-16`}
+    >
       <View className="mt-[11vh]">
         <Text
           tx={'signupStepCreateProfile.title'}
@@ -84,6 +89,6 @@ export function CreateProfile() {
         previous={{ handlePreviousStep: onHandleBack, label: 'common.back' }}
         next={{ handleSubmit: handleSubmit(onSubmit), label: 'common.next' }}
       />
-    </View>
+    </KeyboardAvoidingView>
   );
 }

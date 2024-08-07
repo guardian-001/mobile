@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { getUser } from '@/core/auth/utils';
 import StepperPercentageBar from '@/modules/shared/stepper-percentage-bar';
 import { View } from '@/shared/components';
 import {
@@ -24,8 +23,6 @@ const ProjectRealizationStepperInner = () => {
 };
 
 export default function ProjectRealizationStepper() {
-  const user = getUser();
-  console.log(user.id);
   const initialData = {
     projectName: '',
     needs: [] as number[],
