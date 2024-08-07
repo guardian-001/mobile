@@ -66,7 +66,6 @@ export function StartScreen() {
             height="h-12"
           />
         </Container>
-        s
         <OrDevider />
         <MainButtons />
       </Container>
