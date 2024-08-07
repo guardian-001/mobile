@@ -6,13 +6,13 @@ import { useCallback, useEffect, useState } from 'react';
 import { I18nManager, NativeModules, Platform } from 'react-native';
 import RNRestart from 'react-native-restart';
 
+import { LOCAL } from '@/shared/constants';
+
 import type { Language, resources } from './resources';
 import type { RecursiveKeyOf } from './types';
 
 type DefaultLocale = typeof resources.en.translation;
 export type TxKeyPath = RecursiveKeyOf<DefaultLocale>;
-
-export const LOCAL = 'local';
 
 export const getLanguage = async () => {
   const language = await SecureStore.getItemAsync(LOCAL);

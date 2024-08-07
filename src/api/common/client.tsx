@@ -9,7 +9,6 @@ client.interceptors.request.use(
   async (config) => {
     const token = await getToken();
     if (token && token.access) {
-      console.log(token.access);
       config.headers.Authorization = `Bearer ${token.access}`;
     }
     return config;
