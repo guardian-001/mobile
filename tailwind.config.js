@@ -22,6 +22,7 @@ module.exports = {
         'color-border': '#aeaeae',
         'sky-blue': '#92D8F6',
         'main-project-blue': '#11ABEC',
+        'color-shadow': '#919eab33',
         'light-blue': '#E5ECFF',
       },
     },

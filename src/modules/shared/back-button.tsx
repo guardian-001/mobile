@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
-import { ArrowLeft } from '@/assets/icons/arrow-left';
+import { ArrowLeft } from '@/assets/icons';
 import colors from '@/theme/colors';
 type RouteProp = {
   route?: string;

@@ -14,7 +14,7 @@ export const ArrowRight = ({ color = '#CCC', style, ...props }: SvgProps) => (
     {...props}
     style={StyleSheet.flatten([
       style,
-      { transform: [{ scaleX: isRTL ? -1 : 1 }] },
+      { transform: [{ scaleX: isRTL ? 1 : -1 }] },
     ])}
   >
     <Path

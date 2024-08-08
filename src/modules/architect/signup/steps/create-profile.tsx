@@ -34,7 +34,10 @@ export function CreateProfile() {
         />
       </View>
 
-      <View className=" max-h-3/5 flex h-3/5  w-[90%]   items-center justify-center   rounded-3xl bg-white px-4 py-2 shadow-md">
+      <View
+        className=" max-h-4/5 flex  h-3/5   w-full items-center   justify-center rounded-3xl bg-white  py-2 shadow-md
+shadow-color-shadow"
+      >
         <ScrollView
           className=" flex gap-5 rounded-3xl bg-white p-4"
           contentContainerClassName="justify-center"
