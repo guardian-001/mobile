@@ -55,12 +55,12 @@ export const Tag = <T extends FieldValues>({
   return (
     <TouchableOpacity
       onPress={multi ? handleChangeMulti : handlePress}
-      className={`${className} m-1 min-w-[22%] rounded-full border border-color-border p-3
+      className={`${className} m-1 min-w-[85px] rounded-full border border-color-border p-3
         ${isSelected ? 'bg-primary' : 'bg-white'}`}
     >
       {imageIcon && (
         <Image
-          className="h-full w-[10%] overflow-hidden"
+          className="mr-2 h-full w-[10%] overflow-hidden"
           source={{ uri: imageIconUrl }}
           contentFit="contain"
         />
