@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Notification, User } from '@/assets/icons';
@@ -14,8 +14,17 @@ import {
 } from '@/shared/components';
 
 export default function MesProjets() {
-  const status = getStatus();
   const router = useRouter();
+  const [appStatus, setAppStatus] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchStatus = async () => {
+      const status = await getStatus();
+      setAppStatus(status?.toString() || null);
+    };
+
+    fetchStatus();
+  }, []);
 
   return (
     <ScrollView
@@ -26,7 +35,7 @@ export default function MesProjets() {
         colors={[colors.white, colors['extra-light-blue']]}
         style={styles.gradientBachgroud}
       >
-        {status && (
+        {appStatus ? (
           <View className="flex flex-row justify-between">
             <Button
               icon={<User color="white" />}
@@ -41,6 +50,8 @@ export default function MesProjets() {
               className="my-8 h-12 w-12 rounded-lg bg-white"
             />
           </View>
+        ) : (
+          <View className="h-10" />
         )}
         <Text className="mt-4 text-base font-bold" tx="explore.explore" />
       </GradientBackground>

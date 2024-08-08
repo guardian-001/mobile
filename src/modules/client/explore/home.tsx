@@ -41,7 +41,7 @@ export default function Home() {
         colors={[colors.white, colors['extra-light-blue']]}
         style={styles.gradientBachgroud}
       >
-        {appStatus && (
+        {appStatus ? (
           <View className="flex flex-row justify-between">
             <Button
               icon={<User color="white" />}
@@ -56,6 +56,8 @@ export default function Home() {
               className="my-8 h-12 w-12 rounded-lg bg-white"
             />
           </View>
+        ) : (
+          <View className="h-10" />
         )}
         <StartProject />
         <Text className="mt-4 text-base font-bold" tx="explore.explore" />
