@@ -53,7 +53,7 @@ export default function MesProjets() {
         ) : (
           <View className="h-10" />
         )}
-        <Text className="mt-4 text-base font-bold" tx="explore.explore" />
+        <Text className="mt-4 text-base font-bold" tx="projets.HeaderTitle" />
       </GradientBackground>
     </ScrollView>
   );

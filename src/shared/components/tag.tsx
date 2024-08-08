@@ -60,7 +60,7 @@ export const Tag = <T extends FieldValues>({
     >
       {imageIcon && (
         <Image
-          className="mr-2 h-full w-[10%] overflow-hidden"
+          className="h-full w-[10%] overflow-hidden"
           source={{ uri: imageIconUrl }}
           contentFit="contain"
         />
