@@ -79,7 +79,7 @@ export default function Home() {
                 name="projectCategory"
                 control={control}
                 imageIcon={tag.icon}
-                className="flex h-12 max-w-xs flex-row items-center justify-evenly"
+                className="flex h-12 max-w-xl flex-row items-center justify-evenly"
                 obligation={true}
               />
             ))}
