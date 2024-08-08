@@ -36,7 +36,7 @@ export function DemoPlanningConfirmation() {
                 {formatDate(formData.date)}
               </Text>
             </View>
- 
+
             <View className="w-4/5   flex-1  items-start justify-between">
               <Text className="font-bold text-description">
                 {translate('labels.time')}
@@ -44,15 +44,12 @@ export function DemoPlanningConfirmation() {
               <Text className="max-w-sm  ">
                 <Text className="flex-row font-bold text-primary-txt ">
                   {`${formData.timeSlot} - ${add30Minutes(formData.timeSlot)} `}
-
                 </Text>
 
                 <Text className="space-y-4 font-light text-description">
                   ({timezone})
                 </Text>
- 
               </Text>
- 
             </View>
           </View>
         </View>

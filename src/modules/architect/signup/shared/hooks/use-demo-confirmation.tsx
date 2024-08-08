@@ -16,7 +16,6 @@ export const useDemoConfirmation = () => {
   const space = useRouteName();
   const [timezone] = useTimezone();
   const handleConfirmationStep = () => {
-    console.log(formData);
     signup.mutate(formData, {
       onSuccess: () => {
         showSuccesMessage(

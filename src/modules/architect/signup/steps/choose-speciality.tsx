@@ -1,9 +1,16 @@
 import React from 'react';
+import { Platform } from 'react-native';
 
 import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { ScrollView, Text, ToggleCard, View } from '@/shared/components';
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  Text,
+  ToggleCard,
+  View,
+} from '@/shared/components';
 
 import { useSpeciality } from '../shared/hooks';
 
@@ -11,7 +18,10 @@ export function ChooseSpeciality() {
   const { handleSubmit, control, onHandleBack, onSubmit, error } =
     useSpeciality();
   return (
-    <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      className={`mb-5 flex h-full flex-1 items-center justify-between gap-16`}
+    >
       <View className="mt-[15vh]">
         <Text
           tx={'signupStepSpeciality.title'}
@@ -47,6 +57,6 @@ export function ChooseSpeciality() {
         previous={{ handlePreviousStep: onHandleBack, label: 'common.ignore' }}
         next={{ handleSubmit: handleSubmit(onSubmit), label: 'common.next' }}
       />
-    </View>
+    </KeyboardAvoidingView>
   );
 }

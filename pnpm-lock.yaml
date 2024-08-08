@@ -1,7 +1,4 @@
- 
-
-lockfileVersion: '9.0'
- 
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
@@ -65,6 +62,9 @@ dependencies:
   expo-image-picker:
     specifier: ^15.0.7
     version: 15.0.7(expo@51.0.8)
+  expo-linear-gradient:
+    specifier: ^13.0.2
+    version: 13.0.2(expo@51.0.8)
   expo-linking:
     specifier: ~6.3.1
     version: 6.3.1(expo@51.0.8)
@@ -74,6 +74,9 @@ dependencies:
   expo-router:
     specifier: ~3.5.14
     version: 3.5.14(expo-constants@16.0.1)(expo-linking@6.3.1)(expo-modules-autolinking@1.11.1)(expo-status-bar@1.12.1)(expo@51.0.8)(react-native-reanimated@3.10.1)(react-native-safe-area-context@4.10.1)(react-native-screens@3.31.1)(react-native@0.74.1)(react@18.2.0)(typescript@5.3.3)
+  expo-secure-store:
+    specifier: ^13.0.2
+    version: 13.0.2(expo@51.0.8)
   expo-splash-screen:
     specifier: 0.27.4
     version: 0.27.4(expo-modules-autolinking@1.11.1)(expo@51.0.8)
@@ -128,12 +131,6 @@ dependencies:
   react-native-international-phone-number:
     specifier: ^0.7.6
     version: 0.7.6(react-native@0.74.1)(react@18.2.0)
-  react-native-linear-gradient:
-    specifier: ^2.8.3
-    version: 2.8.3(react-native@0.74.1)(react@18.2.0)
-  react-native-mmkv:
-    specifier: 2.6.3
-    version: 2.6.3(react-native@0.74.1)(react@18.2.0)
   react-native-reanimated:
     specifier: ~3.10.1
     version: 3.10.1(@babel/core@7.24.5)(react-native@0.74.1)(react@18.2.0)
@@ -7113,6 +7110,14 @@ packages:
     dependencies:
       expo: 51.0.8(@babel/core@7.24.5)(@babel/preset-env@7.24.7)
 
+  /expo-linear-gradient@13.0.2(expo@51.0.8):
+    resolution: {integrity: sha512-EDcILUjRKu4P1rtWcwciN6CSyGtH7Bq4ll3oTRV7h3h8oSzSilH1g6z7kTAMlacPBKvMnkkWOGzW6KtgMKEiTg==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 51.0.8(@babel/core@7.24.5)(@babel/preset-env@7.24.7)
+    dev: false
+
   /expo-linking@6.3.1(expo@51.0.8):
     resolution: {integrity: sha512-xuZCntSBGWCD/95iZ+mTUGTwHdy8Sx+immCqbUBxdvZ2TN61P02kKg7SaLS8A4a/hLrSCwrg5tMMwu5wfKr35g==}
     dependencies:
@@ -7202,6 +7207,14 @@ packages:
       - react-native
       - supports-color
       - typescript
+    dev: false
+
+  /expo-secure-store@13.0.2(expo@51.0.8):
+    resolution: {integrity: sha512-3QYgoneo8p8yeeBPBiAfokNNc2xq6+n8+Ob4fAlErEcf4H7Y72LH+K/dx0nQyWau2ZKZUXBxyyfuHFyVKrEVLg==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 51.0.8(@babel/core@7.24.5)(@babel/preset-env@7.24.7)
     dev: false
 
   /expo-splash-screen@0.27.4(expo-modules-autolinking@1.11.1)(expo@51.0.8):
@@ -11766,26 +11779,6 @@ packages:
       react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7)(@types/react@18.2.79)(react@18.2.0)
     dev: false
 
-  /react-native-linear-gradient@2.8.3(react-native@0.74.1)(react@18.2.0):
-    resolution: {integrity: sha512-KflAXZcEg54PXkLyflaSZQ3PJp4uC4whM7nT/Uot9m0e/qxFV3p6uor1983D1YOBJbJN7rrWdqIjq0T42jOJyA==}
-    peerDependencies:
-      react: '*'
-      react-native: '*'
-    dependencies:
-      react: 18.2.0
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7)(@types/react@18.2.79)(react@18.2.0)
-    dev: false
-
-  /react-native-mmkv@2.6.3(react-native@0.74.1)(react@18.2.0):
-    resolution: {integrity: sha512-CkLAU5EX18eDw0Q+h6qEXPvynb+NVDu54cOY3h4h9VUhaaflfAmGWBJRQCBQz5M0VdnS8utjgJNryTAWKUTqpw==}
-    peerDependencies:
-      react: '*'
-      react-native: '>=0.71.0'
-    dependencies:
-      react: 18.2.0
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.7)(@types/react@18.2.79)(react@18.2.0)
-    dev: false
-
   /react-native-reanimated@3.10.1(@babel/core@7.24.5)(react-native@0.74.1)(react@18.2.0):
     resolution: {integrity: sha512-sfxg6vYphrDc/g4jf/7iJ7NRi+26z2+BszPmvmk0Vnrz6FL7HYljJqTf531F1x6tFmsf+FEAmuCtTUIXFLVo9w==}
     peerDependencies:
@@ -14141,7 +14134,5 @@ packages:
     dependencies:
       '@types/react': 18.2.79
       react: 18.2.0
- 
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
- 

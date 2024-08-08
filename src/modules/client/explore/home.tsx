@@ -20,7 +20,7 @@ import { useExplore } from './hooks/use-explore';
 export default function Home() {
   const {
     router,
-    status,
+    appStatus,
     CategoryData,
     isErrorCategory,
     isLoadingCategory,
@@ -41,7 +41,7 @@ export default function Home() {
         colors={[colors.white, colors['extra-light-blue']]}
         style={styles.gradientBachgroud}
       >
-        {status && (
+        {appStatus && (
           <View className="flex flex-row justify-between">
             <Button
               icon={<User color="white" />}
