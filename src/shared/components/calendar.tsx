@@ -7,7 +7,8 @@ import { StepButtons } from '@/modules/shared';
 import colors from '@/theme/colors';
 
 import { DAYS } from '../constants/constants';
-import { useCalendar, useCustomForm, useTimezone } from '../hooks';
+import { useCustomForm, useTimezone } from '../hooks';
+import { useCalendar } from '../providers/use-calendar-provider';
 import { useFormStepper } from '../providers/use-form-stepper-provider';
 import { capitalizeFirstLetter } from '../utils';
 import { CalendarFormSchema } from '../validations';
@@ -15,10 +16,14 @@ import { CalendarDaysList } from './';
 import { RenderTimeSlots } from './time-slots';
 type CalendarFormType = Zod.infer<typeof CalendarFormSchema>;
 export const Calendar = () => {
-  const { currentMonth, currentYear, handlePreviousMonth, handleNextMonth } =
-    useCalendar();
+  const {
+    selectedDate,
+    currentMonth,
+    currentYear,
+    handlePreviousMonth,
+    handleNextMonth,
+  } = useCalendar();
   const [formattedTimezone] = useTimezone();
-  const { selectedDate } = useCalendar();
   const { formData, setFormData, onHandleNext, onHandleBack } =
     useFormStepper<CalendarFormType>();
   const { handleSubmit, errors, control } = useCustomForm(CalendarFormSchema, {
@@ -34,7 +39,7 @@ export const Calendar = () => {
   };
   return (
     <>
-      <View className="my-5 flex h-fit w-4/5 rounded-3xl bg-white px-3 py-5 shadow-md">
+      <View className="my-5 flex h-fit w-4/5 rounded-3xl bg-white px-3 py-5 shadow-md shadow-color-shadow">
         <View className="flex-1 items-center justify-center bg-white">
           <View className="px-4">
             <View className="mb-4 flex-row items-start justify-between py-2">

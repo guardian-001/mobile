@@ -57,6 +57,7 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
           onChangePhoneNumber={field.onChange}
           placeholder="111-222-333-444"
           selectedCountry={selectedCountry}
+          defaultCountry="TN"
           onChangeSelectedCountry={handleSelectedCountry}
           phoneInputStyles={{
             container: {

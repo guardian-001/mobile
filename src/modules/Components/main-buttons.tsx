@@ -22,7 +22,7 @@ export default function MainButtons() {
         width="w-[86%]"
         height="h-14"
         radius="rounded-full"
-        shadow="shadow-md"
+        shadow="shadow-md shadow-color-shadow"
         type="pill"
       />
       <MainButton
@@ -33,7 +33,7 @@ export default function MainButtons() {
         width="w-[86%]"
         height="h-14"
         radius="rounded-full"
-        shadow="shadow-md"
+        shadow="shadow-md shadow-color-shadow"
         type="pill"
       />
     </>

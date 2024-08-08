@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { Control, RegisterOptions } from 'react-hook-form';
 import { type FieldValues, type Path, useController } from 'react-hook-form';
 
-import { useCalendar } from '../hooks';
+import { useCalendar } from '../providers/use-calendar-provider';
 import { formatDateBackend, splitList } from '../utils';
 import { CalendarDayItem, Text, View } from './';
 
@@ -10,6 +10,7 @@ type CalendarDaysListProps<T extends FieldValues> = {
   name: Path<T>;
   control: Control<T>;
   rules?: RegisterOptions;
+  previousDaysCount?: number;
 };
 
 const generateCalendarDays = (
@@ -18,11 +19,13 @@ const generateCalendarDays = (
     currentYear,
     currentMonth,
     isNext,
+    isPrevious,
   }: {
     daysCount: number;
     currentYear: number;
     currentMonth: number;
     isNext?: boolean;
+    isPrevious?: boolean;
   },
   {
     selectedDate,
@@ -48,7 +51,14 @@ const generateCalendarDays = (
           currentMonth === 11 ? 0 : currentMonth + 1,
           i + 1
         )
+      : isPrevious
+      ? new Date(
+          currentMonth === 0 ? currentYear - 1 : currentYear,
+          currentMonth === 0 ? 11 : currentMonth - 1,
+          new Date(currentYear, currentMonth, 0).getDate() - daysCount + i + 1
+        )
       : new Date(currentYear, currentMonth, i + 1);
+
     const isToday =
       date.getDate() === currentDate.getDate() &&
       date.getMonth() === currentDate.getMonth() &&
@@ -56,7 +66,7 @@ const generateCalendarDays = (
 
     return (
       <CalendarDayItem
-        key={`day-${isNext ? 'next-' : ''}${i + 1}`}
+        key={`day-${isNext ? 'next-' : ''}${isPrevious ? 'prev-' : ''}${i + 1}`}
         date={date}
         isSelected={
           date.getDate() === selectedDate.getDate() &&
@@ -76,6 +86,7 @@ const generateCalendarDays = (
         }}
         isDisabled={isDisabledCondition(date)}
         isNext={isNext}
+        isPrevious={isPrevious}
       />
     );
   });
@@ -85,6 +96,7 @@ export const CalendarDaysList = <T extends FieldValues>({
   name,
   control,
   rules,
+  previousDaysCount = 0,
 }: CalendarDaysListProps<T>) => {
   const {
     selectedDate,
@@ -100,19 +112,24 @@ export const CalendarDaysList = <T extends FieldValues>({
     currentMonth + 1,
     0
   ).getDate();
+
   const firstDayOfCurrentMonth = new Date(
     currentYear,
     currentMonth,
     1
   ).getDay();
+
   const lastDayOfCurrentMonth = new Date(
     currentYear,
     currentMonth + 1,
     0
   ).getDay();
+
   const daysFromPreviousMonth =
-    firstDayOfCurrentMonth === 0 ? 6 : firstDayOfCurrentMonth - 1;
+    previousDaysCount ||
+    (firstDayOfCurrentMonth === 0 ? 6 : firstDayOfCurrentMonth - 1);
   const daysFromNextMonth = (7 - lastDayOfCurrentMonth) % 7;
+
   const currentDate = new Date();
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -125,9 +142,20 @@ export const CalendarDaysList = <T extends FieldValues>({
   };
 
   const previousMonthDays = generateCalendarDays(
-    { daysCount: daysFromPreviousMonth, currentYear, currentMonth },
+    {
+      daysCount: daysFromPreviousMonth,
+      currentYear,
+      currentMonth,
+      isPrevious: true,
+    },
     { ...commonProps, handleChangeMonth: handlePreviousMonth },
-    (date) => date.getMonth() < currentDate.getMonth()
+    (date) => {
+      return (
+        date.getFullYear() < currentDate.getFullYear() ||
+        (date.getFullYear() === currentDate.getFullYear() &&
+          date.getMonth() < currentDate.getMonth())
+      );
+    }
   );
 
   const currentMonthDays = generateCalendarDays(
