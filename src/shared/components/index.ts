@@ -6,6 +6,7 @@ export * from './button';
 export * from './calendar';
 export * from './calendar-day';
 export * from './calendar-days-list';
+export * from './card';
 export * from './checkbox';
 export * from './checkbox-input';
 export * from './controlled-input';

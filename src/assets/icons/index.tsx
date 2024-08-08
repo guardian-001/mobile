@@ -13,6 +13,7 @@ export * from './inspiration';
 export * from './language';
 export * from './logout';
 export * from './minus';
+export * from './notification';
 export * from './plus';
 export * from './projet';
 export * from './rate';

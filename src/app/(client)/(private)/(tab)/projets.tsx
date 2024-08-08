@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 
 import { getStatus } from '@/core/auth/utils';
+import MesProjets from '@/modules/client/projets/projets';
 import { Button, FocusAwareStatusBar, View } from '@/shared/components';
 
 export default function Projets() {
@@ -11,7 +12,9 @@ export default function Projets() {
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
-      {!status && (
+      {status ? (
+        <MesProjets />
+      ) : (
         <Button
           label={'login'}
           onPress={() => {

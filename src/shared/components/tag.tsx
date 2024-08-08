@@ -7,12 +7,18 @@ import type {
 } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 import { Text, TouchableOpacity } from 'react-native';
+
+import useImageUrl from '../hooks/use-image-url';
+import { Image } from './image';
 interface TagProps<T extends FieldValues> {
   label: string;
   name: Path<T>;
   control: Control<T>;
   rules?: RegisterOptions;
   multi?: boolean;
+  imageIcon?: string;
+  className?: string;
+  obligation?: boolean;
 }
 
 export const Tag = <T extends FieldValues>({
@@ -21,11 +27,14 @@ export const Tag = <T extends FieldValues>({
   control,
   rules,
   multi = false,
+  imageIcon,
+  obligation = false,
+  className,
 }: TagProps<T>) => {
   const { field } = useController({ name, control, rules });
 
   const handlePress = () => {
-    if (field.value === label) field.onChange('');
+    if (field.value === label && !obligation) field.onChange('');
     else field.onChange(label);
   };
   const handleChangeMulti = () => {
@@ -41,12 +50,21 @@ export const Tag = <T extends FieldValues>({
     ? field.value.includes(label)
     : field.value === label;
 
+  const imageIconUrl = useImageUrl(imageIcon);
+
   return (
     <TouchableOpacity
       onPress={multi ? handleChangeMulti : handlePress}
-      className={`m-1 min-w-[22%] rounded-full border border-color-border p-3
+      className={`${className} m-1 min-w-[22%] rounded-full border border-color-border p-3
         ${isSelected ? 'bg-primary' : 'bg-white'}`}
     >
+      {imageIcon && (
+        <Image
+          className="h-full w-[10%] overflow-hidden"
+          source={{ uri: imageIconUrl }}
+          contentFit="contain"
+        />
+      )}
       <Text
         className={`text-center ${
           isSelected ? 'text-white' : 'text-primary-txt'
