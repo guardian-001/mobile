@@ -41,34 +41,36 @@ export default function Home() {
         colors={[colors.white, colors['extra-light-blue']]}
         style={styles.gradientBachgroud}
       >
-        {appStatus ? (
-          <View className="flex flex-row justify-between">
-            <Button
-              icon={<User color="white" />}
-              onPress={() => {
-                router.push(`/(client)/(profile)/profile`);
-              }}
-              className="my-8 h-12 w-12 rounded-lg"
-            />
-            <Button
-              icon={<Notification />}
-              onPress={() => {}}
-              className="my-8 h-12 w-12 rounded-lg bg-white"
-            />
-          </View>
-        ) : (
-          <View className="h-10" />
-        )}
-        <StartProject />
-        <Text className="mt-4 text-base font-bold" tx="explore.explore" />
-        {isErrorCategory && <ErrorData message="Error Loading Data" />}
-        {isLoadingCategory && <ActivityIndicator />}
+        <View className="p-4">
+          {appStatus ? (
+            <View className="flex flex-row justify-between">
+              <Button
+                icon={<User color="white" />}
+                onPress={() => {
+                  router.push(`/(client)/(profile)/profile`);
+                }}
+                className="my-8 h-12 w-12 rounded-lg"
+              />
+              <Button
+                icon={<Notification />}
+                onPress={() => {}}
+                className="my-8 h-12 w-12 rounded-lg bg-white"
+              />
+            </View>
+          ) : (
+            <View className="h-10" />
+          )}
+          <StartProject />
+          <Text className="mt-4 text-base font-bold" tx="explore.explore" />
+          {isErrorCategory && <ErrorData message="Error Loading Data" />}
+          {isLoadingCategory && <ActivityIndicator />}
+        </View>
         {isSuccessCategory && (
           <ScrollView
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            contentContainerClassName="min-w-[1210px]"
-            className="mt-2 max-h-16"
+            contentContainerClassName="px-4"
+            className="max-h-16 "
           >
             {CategoryData?.map((tag) => (
               <Tag
@@ -77,7 +79,7 @@ export default function Home() {
                 name="projectCategory"
                 control={control}
                 imageIcon={tag.icon}
-                className="flex h-12 flex-row items-center justify-evenly"
+                className="flex h-12 max-w-xs flex-row items-center justify-evenly"
                 obligation={true}
               />
             ))}
@@ -107,5 +109,5 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  gradientBachgroud: { padding: 16, height: 350 },
+  gradientBachgroud: { height: 350 },
 });
