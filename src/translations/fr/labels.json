@@ -16,5 +16,6 @@
   "date": "Date",
   "time": "Temps",
   "companyName": "Nom de la société",
-  "companySpeciality": "Spécialité"
+  "companySpeciality": "Spécialité",
+  "showMore": "Afficher plus"
 }

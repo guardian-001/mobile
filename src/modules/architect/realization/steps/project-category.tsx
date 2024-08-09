@@ -4,7 +4,7 @@ import { FlatList, StyleSheet } from 'react-native';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, View } from '@/shared/components';
-import { EmptyList } from '@/shared/components/emptylist-architect';
+import { EmptyList } from '@/shared/components/emptylist-custom';
 
 import { ProjectCategoryComp } from '../shared/components';
 import { useCategory } from '../shared/hooks';

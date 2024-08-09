@@ -16,9 +16,11 @@ import signupStepSpeciality from './signup-step1.json';
 import signupStepCreateProfile from './signup-step2.json';
 import signupStepDemoPlanning from './signup-step3.json';
 import signupStepDemoPlanningConfirmation from './signup-step4.json';
+import signupSupplier from './signup-supplier.json';
 import validations from './validations.json';
 
 export default {
+  signupSupplier,
   explore,
   architectProfile,
   announcement,

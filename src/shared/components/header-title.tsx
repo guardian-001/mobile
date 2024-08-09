@@ -18,7 +18,7 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
         <GradientBackground style={styles.gradientBackground}>
           <Text
             style={styles.marginTop}
-            className="text-2xl font-bold text-primary-txt"
+            className="text-xl font-bold text-primary-txt"
           >
             {translate(text)}
           </Text>
@@ -26,14 +26,14 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
       ) : (
         <>
           {type === 'transparent' ? (
-            <View className="flex h-[14%] w-full items-center justify-end bg-transparent pb-6">
-              <Text className="text-2xl font-bold text-primary-txt">
+            <View className="flex h-[12%] w-full items-center justify-end bg-transparent pb-6">
+              <Text className="text-xl font-bold text-primary-txt">
                 {translate(text)}
               </Text>
             </View>
           ) : (
-            <View className="flex h-[14%] w-full items-center justify-end bg-white pb-6">
-              <Text className="text-2xl font-bold text-primary-txt">
+            <View className="flex h-[12%] w-full items-center justify-end bg-white pb-6">
+              <Text className="text-xl font-bold text-primary-txt">
                 {translate(text)}
               </Text>
             </View>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   gradientBackground: {
     position: 'absolute',
     display: 'flex',
-    height: '13%',
+    height: '12%',
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',

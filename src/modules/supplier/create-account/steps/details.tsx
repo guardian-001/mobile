@@ -1,8 +1,15 @@
 import React from 'react';
+import { Platform } from 'react-native';
 
 import { translate } from '@/core';
-import { ControlledInput, ScrollView, Text, View } from '@/shared/components';
-import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
+import {
+  ControlledInput,
+  ControlledPhoneNumberInput,
+  KeyboardAvoidingView,
+  ScrollView,
+  Text,
+  View,
+} from '@/shared/components';
 
 import { StepButtons } from '../../../shared';
 import { useDetails } from '../hooks';
@@ -17,58 +24,63 @@ export function Details() {
   } = useDetails();
 
   return (
-    <View className="flex h-full flex-1 items-center justify-between gap-8 ">
-      <View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      className={`mb-5 flex h-full flex-1 items-center justify-between `}
+    >
+      <View className="mt-32">
         <Text
-          tx={'signupStepCreateProfile.title'}
+          tx={'signupSupplier.profileDetails.title'}
+          className="mb-2 text-center text-2xl font-extrabold"
+        />
+        <Text
+          tx={'signupSupplier.profileDetails.partenariat'}
           className="mb-2 text-center text-2xl font-extrabold"
         />
       </View>
 
-      <ScrollView className=" flex h-fit w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
-        <ControlledInput
-          testID="name-input"
-          control={control}
-          name="companyName"
-          label={translate('labels.companyName')}
-          placeholder={translate('labels.companyName')}
-        />
+      <View className=" max-h-4/5 h-120 flex w-full items-center justify-center  ">
+        <ScrollView
+          className=" flex gap-5 rounded-3xl   p-4"
+          contentContainerClassName="justify-center"
+          showsVerticalScrollIndicator={false}
+        >
+          <ControlledInput
+            testID="name-input"
+            control={control}
+            name="companyName"
+            label={translate('labels.companyName')}
+            placeholder={translate('labels.companyName')}
+          />
 
-        <ControlledInput
-          testID="surname-input"
-          control={control}
-          name="companySpeciality"
-          label={translate('labels.companySpeciality')}
-          placeholder={translate('labels.companySpeciality')}
-        />
-        <ControlledPhoneNumberInput
-          name="phoneNumber"
-          control={control}
-          label={translate('labels.phone')}
-          rules={{ required: 'Phone number is required' }}
-        />
+          <ControlledInput
+            testID="surname-input"
+            control={control}
+            name="companySpeciality"
+            label={translate('labels.companySpeciality')}
+            placeholder={translate('labels.companySpeciality')}
+          />
+          <ControlledPhoneNumberInput
+            name="phoneNumber"
+            control={control}
+            label={translate('labels.phone')}
+            rules={{ required: 'Phone number is required' }}
+          />
 
-        <ControlledInput
-          testID="address-input"
-          control={control}
-          name="companyAddress"
-          label={translate('labels.address')}
-          placeholder={translate('labels.address')}
-        />
-      </ScrollView>
-
-      <View className="flex h-fit w-full items-center self-end ">
-        <StepButtons
-          previous={{
-            handlePreviousStep: onHandleBack,
-            label: 'common.ignore',
-          }}
-          next={{
-            handleSubmit: handleSubmit(onSubmit),
-            label: 'common.next',
-          }}
-        />
+          <ControlledInput
+            testID="address-input"
+            control={control}
+            name="companyAddress"
+            label={translate('labels.address')}
+            placeholder={translate('labels.address')}
+          />
+        </ScrollView>
       </View>
-    </View>
+
+      <StepButtons
+        previous={{ handlePreviousStep: onHandleBack, label: 'common.back' }}
+        next={{ handleSubmit: handleSubmit(onSubmit), label: 'common.next' }}
+      />
+    </KeyboardAvoidingView>
   );
 }

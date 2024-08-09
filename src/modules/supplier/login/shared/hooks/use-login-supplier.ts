@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 
 import { useLoginApi } from '@/api/auth';
-import { useCustomForm, useRouteName } from '@/core';
+import { signIn, useCustomForm, useRouteName } from '@/core';
 import type { LoginSupplierFormType } from '@/modules/supplier/shared/types';
 import { useFormStepper } from '@/shared';
 import { LoginFormSchema } from '@/shared/validations';
@@ -35,8 +35,19 @@ export const useLoginSupplier = () => {
         setError(axiosError.message);
         throw new Error(axiosError.message);
       },
-      onSuccess: () => {
-        router.push('/(supplier)/(private)/(complete)/complete-account');
+      onSuccess: (ResponseData) => {
+        signIn({
+          token: {
+            access: ResponseData.data.access,
+            refresh: ResponseData.data.refresh,
+          },
+          user: ResponseData.data.user,
+        });
+        if (!ResponseData.data.user.phoneNumber) {
+          router.push('/(supplier)/(private)/(complete)/complete-account');
+        } else {
+          router.push('/(supplier)/(private)/(profile)/profile');
+        }
       },
     });
   };
