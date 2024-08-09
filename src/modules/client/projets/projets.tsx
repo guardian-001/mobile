@@ -1,31 +1,22 @@
-import { useRouter } from 'expo-router';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { Notification, User } from '@/assets/icons';
-import { getStatus } from '@/core/auth/utils';
+import { Cube, Filter, Notification, User } from '@/assets/icons';
+import { translate } from '@/core';
 import {
   Button,
   colors,
+  ControlledSelect,
   GradientBackground,
   ScrollView,
   Text,
   View,
 } from '@/shared/components';
 
-export default function MesProjets() {
-  const router = useRouter();
-  const [appStatus, setAppStatus] = useState<string | null>(null);
+import { useMyProjects } from './hooks/use-project';
 
-  useEffect(() => {
-    const fetchStatus = async () => {
-      const status = await getStatus();
-      setAppStatus(status?.toString() || null);
-    };
-
-    fetchStatus();
-  }, []);
-
+export default function MyProjects() {
+  const { control, router, appStatus, statusOptions } = useMyProjects();
   return (
     <ScrollView
       contentContainerClassName="min-h-full bg-white"
@@ -53,12 +44,26 @@ export default function MesProjets() {
         ) : (
           <View className="h-10" />
         )}
-        <Text className="mt-4 text-base font-bold" tx="projets.HeaderTitle" />
+        <Text className="mt-4 text-base font-bold" tx="projets.headerTitle" />
       </GradientBackground>
+      <View className="flex flex-row px-4">
+        <View className="mr-4 flex h-12 w-12 items-center justify-center rounded-lg bg-light-blue">
+          <Filter />
+        </View>
+        <View className="w-7/12">
+          <ControlledSelect
+            control={control}
+            name="status"
+            placeholder={translate('projets.status')}
+            options={statusOptions}
+            icon={<Cube />}
+          />
+        </View>
+      </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  gradientBachgroud: { padding: 16, height: 330 },
+  gradientBachgroud: { padding: 16 },
 });

@@ -52,6 +52,12 @@ To run the app on Android
 pnpm android
 ```
 
+To run the app on Expo go
+
+```sh
+npx expo start -c
+```
+
 ## ✍️ Documentation
 
 - [Rules and Conventions](https://starter.obytes.com/getting-started/rules-and-conventions/)

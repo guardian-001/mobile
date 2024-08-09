@@ -6,7 +6,7 @@ import { FlashList } from '@shopify/flash-list';
 import clsx from 'clsx';
 import * as React from 'react';
 import { type FieldValues, useController } from 'react-hook-form';
-import { Platform } from 'react-native';
+import { I18nManager, Platform } from 'react-native';
 import Svg, { Path, type SvgProps } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
@@ -140,6 +140,7 @@ export interface SelectProps {
   placeholder?: string;
   testID?: string;
   labelStyle?: string;
+  icon?: React.ReactNode;
 }
 interface ControlledSelectProps<T extends FieldValues>
   extends SelectProps,
@@ -157,6 +158,7 @@ export const Select = (props: SelectProps) => {
     labelStyle,
     required = false,
     testID,
+    icon,
   } = props;
   const modal = useModal();
 
@@ -188,24 +190,36 @@ export const Select = (props: SelectProps) => {
   return (
     <>
       <View className={styles.container()}>
-        <View className="flex w-full flex-row justify-start">
-          <Text
-            testID={testID ? `${testID}-label` : undefined}
-            className={clsx(
-              styles.label(),
-              labelStyle ? labelStyle : 'text-base'
-            )}
-          >
-            {label}
-          </Text>
-          {required && <Text className="text-primary">*</Text>}
-        </View>
+        {label && (
+          <View className="flex w-full flex-row justify-start">
+            <Text
+              testID={testID ? `${testID}-label` : undefined}
+              className={clsx(
+                styles.label(),
+                labelStyle ? labelStyle : 'text-base'
+              )}
+            >
+              {label}
+            </Text>
+            {required && <Text className="text-primary">*</Text>}
+          </View>
+        )}
         <TouchableOpacity
           className={styles.input()}
           disabled={disabled}
           onPress={modal.present}
           testID={testID ? `${testID}-trigger` : undefined}
         >
+          {icon && (
+            <View
+              style={{
+                transform: I18nManager.isRTL ? 'rotate(180deg)' : '',
+              }}
+              className="mr-2"
+            >
+              {icon}
+            </View>
+          )}
           <View className="flex-1">
             <Text className={styles.inputValue()}>{textValue}</Text>
           </View>
