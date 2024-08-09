@@ -1,7 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
-import { StyleSheet } from 'react-native';
 
 import { colors } from '@/shared/components';
 
@@ -26,16 +25,10 @@ export const GradientBackground = ({
       start={start}
       end={end}
       colors={gradientColors}
-      style={[styles.gradient, style]}
+      style={style}
       {...props}
     >
       {children}
     </LinearGradient>
   );
 };
-
-const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-  },
-});

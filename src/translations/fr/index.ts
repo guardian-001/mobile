@@ -8,6 +8,7 @@ import loginSupplier from './loginSupplier.json';
 import notification from './notification.json';
 import onBoarding from './onboarding.json';
 import profile from './profile.json';
+import projets from './projets.json';
 import realisation from './realisation-architect.json';
 import resetpass from './resetpass.json';
 import settings from './settings.json';
@@ -20,6 +21,7 @@ import signupSupplier from './signup-supplier.json';
 import validations from './validations.json';
 
 export default {
+  projets,
   explore,
   signupSupplier,
 

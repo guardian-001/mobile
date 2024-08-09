@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 
 import { getStatus } from '@/core/auth/utils';
-import MesProjets from '@/modules/client/projets/projets';
+import MyProjects from '@/modules/client/projets/projets';
 import { Button, FocusAwareStatusBar, View } from '@/shared/components';
 
 export default function Projets() {
@@ -21,7 +21,7 @@ export default function Projets() {
     <View className="flex-1">
       <FocusAwareStatusBar />
       {appStatus ? (
-        <MesProjets />
+        <MyProjects />
       ) : (
         <Button
           label={'login'}

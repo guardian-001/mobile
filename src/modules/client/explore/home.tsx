@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ActivityIndicator, StyleSheet } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 
 import { Notification, User } from '@/assets/icons';
 import { StartProject } from '@/modules/shared';
@@ -37,10 +37,7 @@ export default function Home() {
       contentContainerClassName="min-h-full bg-white"
       showsVerticalScrollIndicator={false}
     >
-      <GradientBackground
-        colors={[colors.white, colors['extra-light-blue']]}
-        style={styles.gradientBachgroud}
-      >
+      <GradientBackground colors={[colors.white, colors['extra-light-blue']]}>
         <View className="p-4">
           {appStatus ? (
             <View className="flex flex-row justify-between">
@@ -79,7 +76,7 @@ export default function Home() {
                 name="projectCategory"
                 control={control}
                 imageIcon={tag.icon}
-                className="flex h-12 max-w-xs flex-row items-center justify-evenly"
+                className="flex h-12 max-w-xl flex-row items-center justify-evenly"
                 obligation={true}
               />
             ))}
@@ -107,7 +104,3 @@ export default function Home() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  gradientBachgroud: { height: 350 },
-});
