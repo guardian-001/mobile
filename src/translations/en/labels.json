@@ -16,5 +16,6 @@
   "date": "Date",
   "time": "Time",
   "companyName": "Company Name",
-  "companySpeciality": "Specialty"
+  "companySpeciality": "Specialty",
+  "showMore": "Show more"
 }

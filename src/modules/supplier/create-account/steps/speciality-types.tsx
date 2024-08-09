@@ -1,8 +1,10 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 
+import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
-import { ErrorData, PendingData, TagGroup, Text } from '@/shared/components';
+import { TagGroup, Text } from '@/shared/components';
+import { EmptyList } from '@/shared/components/emptylist-custom';
 
 import { useSpecialityTypes } from '../hooks';
 
@@ -20,40 +22,53 @@ export function SpecialityTypes() {
     onSubmit,
     isPending,
     isError,
+    isSuccess,
+    errorType,
+    errorValidation,
     specialityTypesData,
+    apiError,
   } = useSpecialityTypes();
 
   return (
-    <View className="flex h-fit items-center justify-between gap-8">
-      <View>
+    <View className="mb-5 mt-32 flex h-full flex-1 items-center justify-between gap-5  ">
+      <View className="flex items-center">
         <Text
-          tx={'signupStepCreateProfile.title'}
-          className="mb-2 text-center text-2xl font-extrabold"
+          tx={'signupSupplier.categories.title'}
+          className="mb-2 text-start text-2xl font-extrabold"
+        />
+        <Text
+          tx={'signupSupplier.categories.subtitle'}
+          className="mb-2 text-start text-2xl font-extrabold"
         />
       </View>
-
-      <ScrollView className=" flex  w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
-        {isPending && <PendingData message="Pending Data" />}
-        {isError && <ErrorData message="Error Loading Data" />}
-        {specialityTypesData && (
+      <ScrollView className="flex gap-4" showsVerticalScrollIndicator={false}>
+        {isPending && <EmptyList isError={isError} isPending={isPending} />}
+        {isSuccess && (
           <TagGroup
             name="specialityType"
             control={control}
             tags={specialityTypesData}
             label="realisation.detailsStep.localisationLabel"
+            error={errorType}
             required={true}
+            sliced={false}
+            multi={true}
           />
         )}
       </ScrollView>
-      <View className="flex h-fit w-full items-center ">
+      <Text className="w-11/12 text-left text-sm text-error">
+        {errorValidation ? translate(errorValidation) : ''}
+        {apiError ? translate(apiError) : ''}
+      </Text>
+      <View className="flex h-fit w-full items-center">
         <StepButtons
           previous={{
             handlePreviousStep: onHandleBack,
-            label: 'common.ignore',
+            label: 'common.back',
           }}
           next={{
             handleSubmit: handleSubmit(onSubmit),
-            label: 'common.next',
+            label: 'common.start',
           }}
         />
       </View>

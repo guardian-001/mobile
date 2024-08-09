@@ -15,7 +15,7 @@ import { useProject } from '../hooks';
 export function SaveProject() {
   const { handleSubmit, control, onSubmit } = useProject();
   return (
-    <View className="flex flex-1 justify-between pt-4">
+    <View className="flex flex-1 justify-between pb-6 pt-4">
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerClassName="gap-4"

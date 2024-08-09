@@ -1,5 +1,6 @@
-import { Details, SpecialityTypes } from './steps';
+import React from 'react';
 
+import { Details, SpecialityTypes } from './steps';
 export const stepsContent: {
   component: React.ReactNode;
 }[] = [

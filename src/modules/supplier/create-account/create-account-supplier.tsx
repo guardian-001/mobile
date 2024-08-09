@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Platform } from 'react-native';
+import { View } from 'react-native';
 
 import { FormProvider, useFormStepper } from '@/shared';
-import { KeyboardAvoidingView, ScrollView } from '@/shared/components';
+import { HeaderTitle } from '@/shared/components';
 
 import { stepsContent } from './steps-content';
 import type { FirstConnectionType } from './types';
@@ -12,17 +12,10 @@ export function CreateAccountStepperInner() {
   const { component } = stepsContent[step];
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="flex-1 bg-white "
-    >
-      <ScrollView
-        className="flex-1 pt-12 "
-        contentContainerClassName="items-center"
-      >
-        {component}
-      </ScrollView>
-    </KeyboardAvoidingView>
+    <View className="items-between flex h-full bg-background">
+      <HeaderTitle text="signup.headerTitle" type="custom" />
+      <View className=" h-full flex-1 p-6">{component}</View>
+    </View>
   );
 }
 
@@ -33,7 +26,7 @@ export default function CreateAccountStepper() {
     companySpeciality: '',
     companyAddress: '',
     specialityType: [],
-    appearance: '',
+    appearance: 'default',
     email: '',
   };
 

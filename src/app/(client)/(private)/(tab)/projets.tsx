@@ -26,7 +26,7 @@ export default function Projets() {
         <Button
           label={'login'}
           onPress={() => {
-            router.push(`/(client)/(public)/login`);
+            router.replace(`/(client)/(public)/login`);
           }}
           className="mx-4 mt-20 h-12 rounded-md"
         />
