@@ -9,9 +9,10 @@ import {
 import type { ListRenderItemInfo } from 'react-native';
 import { Dimensions, FlatList, View } from 'react-native';
 
-import { useCalendar, usePagination } from '@/shared/hooks';
+import { usePagination } from '@/shared/hooks';
 
 import { TIMESLOTS } from '../constants/constants';
+import { useCalendar } from '../providers';
 import { RenderPagination, ToggleButton } from './';
 
 type RenderTimeSlotsProps<T extends FieldValues> = {

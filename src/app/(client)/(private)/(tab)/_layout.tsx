@@ -53,6 +53,7 @@ export default function TabLayout() {
           title: 'Projets',
           tabBarIcon: ({ color }) => <Projet color={color} />,
           tabBarTestID: 'projets-tab',
+          headerShown: false,
         }}
       />
       <Tabs.Screen

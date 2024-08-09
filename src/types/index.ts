@@ -28,8 +28,10 @@ export type Image = {
   url: string;
 };
 export type TagType = {
+  id?: number;
   value: string;
   displayName: string;
+  imageIcon?: string;
 };
 export type ImageInfo = {
   name: string | null | undefined;

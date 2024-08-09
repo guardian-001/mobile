@@ -6,6 +6,7 @@
   "mail": "E-mail",
   "mailPlaceHolder": "Enter your e-mail",
   "phone": "Phone number",
+  "phonePlaceHolder": "Add your phone number",
   "address": "Office address",
   "addressPlaceHolder": "Enter office address",
   "matricule": "Tax identification number",
@@ -15,5 +16,6 @@
   "date": "Date",
   "time": "Time",
   "companyName": "Company Name",
-  "companySpeciality": "Specialty"
+  "companySpeciality": "Specialty",
+  "showMore": "Show more"
 }

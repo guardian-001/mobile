@@ -1,14 +1,15 @@
 import React from 'react';
+import { Platform } from 'react-native';
 
 import { translate } from '@/core';
 import {
   ControlledInput,
-  HeaderTitle,
+  ControlledPhoneNumberInput,
+  KeyboardAvoidingView,
   ScrollView,
   Text,
   View,
 } from '@/shared/components';
-import { ControlledPhoneNumberInput } from '@/shared/components/controlled-phone-number-input';
 
 import { StepButtons } from '../../../shared';
 import { useDetails } from '../hooks';
@@ -23,19 +24,27 @@ export function Details() {
   } = useDetails();
 
   return (
-    <>
-      <HeaderTitle text="signup.headerTitle" type="custom" />
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      className={`mb-5 flex h-full flex-1 items-center justify-between `}
+    >
+      <View className="mt-32">
+        <Text
+          tx={'signupSupplier.profileDetails.title'}
+          className="mb-2 text-center text-2xl font-extrabold"
+        />
+        <Text
+          tx={'signupSupplier.profileDetails.partenariat'}
+          className="mb-2 text-center text-2xl font-extrabold"
+        />
+      </View>
 
-      <Text>jjjjjjj</Text>
-      <View className="flex h-full flex-1 items-center justify-between gap-8 ">
-        <View>
-          <Text
-            tx={'signupStepCreateProfile.title'}
-            className="mb-2 text-center text-2xl font-extrabold"
-          />
-        </View>
-
-        <ScrollView className=" flex h-fit w-4/5 gap-5 rounded-3xl bg-white px-3 py-5 shadow-md">
+      <View className=" max-h-4/5 h-120 flex w-full items-center justify-center  ">
+        <ScrollView
+          className=" flex gap-5 rounded-3xl   p-4"
+          contentContainerClassName="justify-center"
+          showsVerticalScrollIndicator={false}
+        >
           <ControlledInput
             testID="name-input"
             control={control}
@@ -66,20 +75,12 @@ export function Details() {
             placeholder={translate('labels.address')}
           />
         </ScrollView>
-
-        <View className="flex h-fit w-full items-center self-end ">
-          <StepButtons
-            previous={{
-              handlePreviousStep: onHandleBack,
-              label: 'common.ignore',
-            }}
-            next={{
-              handleSubmit: handleSubmit(onSubmit),
-              label: 'common.next',
-            }}
-          />
-        </View>
       </View>
-    </>
+
+      <StepButtons
+        previous={{ handlePreviousStep: onHandleBack, label: 'common.back' }}
+        next={{ handleSubmit: handleSubmit(onSubmit), label: 'common.next' }}
+      />
+    </KeyboardAvoidingView>
   );
 }

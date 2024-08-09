@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import {
-  arrayOfNonEmptyStrings,
+  arrayOfNonEmptyNumbers,
   phoneValidation,
   requiredValidation,
 } from '@/shared/validations';
@@ -11,7 +11,7 @@ export const FirstConnectionSchema = z.object({
   phoneNumber: phoneValidation,
   companySpeciality: requiredValidation,
   companyAddress: requiredValidation,
-  specialityType: arrayOfNonEmptyStrings,
+  specialityType: arrayOfNonEmptyNumbers,
   appearance: requiredValidation,
 });
 export const DetailsSchema = z.object({
@@ -22,7 +22,7 @@ export const DetailsSchema = z.object({
 });
 
 export const specialityTypeSchema = z.object({
-  specialityType: arrayOfNonEmptyStrings,
+  specialityType: arrayOfNonEmptyNumbers,
 });
 export const appearanceSchema = z.object({
   appearance: requiredValidation,

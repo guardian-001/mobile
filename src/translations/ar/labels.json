@@ -6,6 +6,8 @@
   "mail": "البريد الإلكتروني",
   "mailPlaceHolder": "أدخل بريدك الإلكتروني",
   "phone": "رقم الهاتف",
+  "phonePlaceHolder": "أضف رقم هاتفك",
+
   "address": "عنوان المكتب",
   "addressPlaceHolder": "أدخل عنوان المكتب",
   "matricule": "الرقم الضريبي",
@@ -15,5 +17,6 @@
   "date": "تاريخ",
   "time": "وقت",
   "companyName": "اسم الشركة",
-  "companySpeciality": "التخصص"
+  "companySpeciality": "التخصص",
+  "showMore": "أظهر المزيد"
 }

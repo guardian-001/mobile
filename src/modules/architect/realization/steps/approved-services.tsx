@@ -4,7 +4,7 @@ import { ScrollView, View } from 'react-native';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import { Text, ToggleCard } from '@/shared/components';
-import { EmptyList } from '@/shared/components/emptylist-architect';
+import { EmptyList } from '@/shared/components/emptylist-custom';
 
 import { useServices } from '../shared/hooks/use-services';
 

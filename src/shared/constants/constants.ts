@@ -70,3 +70,12 @@ export const VALID_WORK_SURFACES = [
   '200m² - 500m²',
   '> 500m²',
 ] as const;
+
+export const IS_FIRST_TIME = 'IS_FIRST_TIME';
+export const LOCAL = 'local';
+
+export const STATUS_OF_PROJECT = [
+  'Projets en cours',
+  'Projets validés',
+  'Projets abandonnés',
+] as const;

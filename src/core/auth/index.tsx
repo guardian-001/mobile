@@ -45,10 +45,10 @@ const _useAuth = create<AuthState>((set, get) => ({
     removeStatus();
     set({ status: 'signOut', token: null });
   },
-  hydrate: () => {
+  hydrate: async () => {
     try {
-      const token = getToken();
-      const user = getUser();
+      const token = await getToken();
+      const user = await getUser();
       if (token !== null) {
         get().signIn({ token, user });
       } else {

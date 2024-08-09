@@ -26,13 +26,13 @@ export function StartScreen() {
       colors={[colors['light-blue'], colors['extra-light-blue']]}
       style={styles.gradientBachgroud}
     >
-      <Container style="flex-1 items-center justify-center w-full my-4 pt-5">
+      <Container style="flex-1 items-center justify-center w-full my-4 pt-4">
         <Container style="flex items-start justify-center w-[86%]">
           <ImageContainer className="flex-start mb-5 flex h-10 w-10 justify-center">
             <LogoArchi />
           </ImageContainer>
         </Container>
-        <Container style="flex w-[86%] h-[50%] items-center mb-2 justify-between gap-3 bg-white rounded-3xl pb-5">
+        <Container style="flex w-[86%] h-[53%] items-center mb-2 justify-between gap-3 bg-white rounded-3xl pb-5">
           <ImageContainer className="flex h-3/5 w-full items-center justify-center">
             <Image
               className="h-full w-full overflow-hidden rounded-t-xl"
@@ -58,7 +58,7 @@ export function StartScreen() {
             </Text>
           </Container>
           <MainButton
-            alternativeBg="bg-blue-500"
+            alternativeBg="bg-main-project-blue"
             onPressHandler={() => onPressHandler('(client)/(private)/(tab)/')}
             label={translate('onBoarding.clientBtn')}
             type="button"

@@ -9,7 +9,7 @@ import { useController } from 'react-hook-form';
 import type { ICountry } from 'react-native-international-phone-number';
 import PhoneInput from 'react-native-international-phone-number';
 
-import type { TxKeyPath } from '@/core';
+import { translate, type TxKeyPath } from '@/core';
 
 import { colors, Text, View } from './';
 type TRule = Omit<
@@ -55,8 +55,9 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
             field.onChange(`${selectedCountry?.callingCode}${value}`);
           }}
           onChangePhoneNumber={field.onChange}
-          placeholder="111-222-333-444"
+          placeholder={translate('labels.phonePlaceHolder')}
           selectedCountry={selectedCountry}
+          defaultCountry="TN"
           onChangeSelectedCountry={handleSelectedCountry}
           phoneInputStyles={{
             container: {

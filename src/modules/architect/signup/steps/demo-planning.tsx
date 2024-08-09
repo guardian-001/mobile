@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import { ScrollView, Text, View } from '@/shared/components';
 import { Calendar } from '@/shared/components';
+import { CalendarProvider } from '@/shared/providers/use-calendar-provider';
 
 export function DemoPlanning() {
   return (
@@ -20,8 +21,9 @@ export function DemoPlanning() {
           className="max-w-xs text-center text-sm text-description"
         />
       </View>
-
-      <Calendar />
+      <CalendarProvider>
+        <Calendar />
+      </CalendarProvider>
     </ScrollView>
   );
 }

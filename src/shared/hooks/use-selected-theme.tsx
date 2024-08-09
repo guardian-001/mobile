@@ -1,37 +1,41 @@
+import * as SecureStore from 'expo-secure-store';
 import { colorScheme, useColorScheme } from 'nativewind';
-import React from 'react';
-import { useMMKVString } from 'react-native-mmkv';
-
-import { storage } from '../../core/storage';
+import { useCallback, useEffect, useState } from 'react';
 
 const SELECTED_THEME = 'SELECTED_THEME';
 export type ColorSchemeType = 'client' | 'architect' | 'supplier' | 'default';
-/**
- * this hooks should only be used while selecting the theme
- * This hooks will return the selected theme which is stored in MMKV
- * selectedTheme should be one of the following values 'light', 'dark' or 'system'
- * don't use this hooks if you want to use it to style your component based on the theme use useColorScheme from nativewind instead
- *
- */
+
 export const useSelectedTheme = () => {
   const { colorScheme: _color, setColorScheme } = useColorScheme();
-  const [theme, _setTheme] = useMMKVString(SELECTED_THEME, storage);
+  const [theme, setTheme] = useState<ColorSchemeType>('default');
 
-  const setSelectedTheme = React.useCallback(
-    (t: ColorSchemeType) => {
+  useEffect(() => {
+    const fetchTheme = async () => {
+      const storedTheme = await SecureStore.getItemAsync(SELECTED_THEME);
+      if (storedTheme) {
+        setTheme(storedTheme as ColorSchemeType);
+      }
+    };
+
+    fetchTheme();
+  }, []);
+
+  const setSelectedTheme = useCallback(
+    async (t: ColorSchemeType) => {
       setColorScheme(t);
-      _setTheme(t);
+      setTheme(t);
+      await SecureStore.setItemAsync(SELECTED_THEME, t);
     },
-    [setColorScheme, _setTheme]
+    [setColorScheme]
   );
 
-  const selectedTheme = (theme ?? 'system') as ColorSchemeType;
-  return { selectedTheme, setSelectedTheme } as const;
+  return { selectedTheme: theme, setSelectedTheme } as const;
 };
-// to be used in the root file to load the selected theme from MMKV
-export const loadSelectedTheme = () => {
-  const theme = storage.getString(SELECTED_THEME);
-  if (theme !== undefined) {
+
+// to be used in the root file to load the selected theme from SecureStore
+export const loadSelectedTheme = async () => {
+  const theme = await SecureStore.getItemAsync(SELECTED_THEME);
+  if (theme) {
     colorScheme.set(theme as ColorSchemeType);
   }
 };

@@ -1,23 +1,34 @@
 import { useRouter } from 'expo-router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { getStatus } from '@/core/auth/utils';
+import MyProjects from '@/modules/client/projets/projets';
 import { Button, FocusAwareStatusBar, View } from '@/shared/components';
 
 export default function Projets() {
   const router = useRouter();
-  const status = getStatus();
+  const [appStatus, setAppStatus] = useState<string | null>(null);
 
+  useEffect(() => {
+    const fetchStatus = async () => {
+      const status = await getStatus();
+      setAppStatus(status?.toString() || null);
+    };
+
+    fetchStatus();
+  }, []);
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
-      {!status && (
+      {appStatus ? (
+        <MyProjects />
+      ) : (
         <Button
           label={'login'}
           onPress={() => {
-            router.push(`/(client)/(public)/login`);
+            router.replace(`/(client)/(public)/login`);
           }}
-          className="mt-20 h-12 rounded-md"
+          className="mx-4 mt-20 h-12 rounded-md"
         />
       )}
     </View>

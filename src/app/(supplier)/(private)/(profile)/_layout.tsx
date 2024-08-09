@@ -6,7 +6,10 @@ import { ScreenOptions } from '@/shared/components';
 export default function ProfileLayout() {
   return (
     <Stack initialRouteName="profile">
-      <Stack.Screen name="profile" options={ScreenOptions({})} />
+      <Stack.Screen
+        name="profile"
+        options={ScreenOptions({ type: 'custom' })}
+      />
       <Stack.Screen name="basic-information" options={ScreenOptions({})} />
       <Stack.Screen name="notification" options={ScreenOptions({})} />
       <Stack.Screen name="reset-password-client" options={ScreenOptions({})} />
