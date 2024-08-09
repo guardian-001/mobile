@@ -27,7 +27,11 @@ export const useLoginShared = () => {
           },
           user: ResponseData.data.user,
         });
-        router.replace(`/(${space})/(private)/profile`);
+        if (space === 'supplier') {
+          router.replace(`/(supplier)/(private)/(tab)/(profile)/profile`);
+        } else {
+          router.replace(`/(${space})/(private)/profile`);
+        }
       },
       onError: () => {
         setErrors(translate('login.loginError'));
