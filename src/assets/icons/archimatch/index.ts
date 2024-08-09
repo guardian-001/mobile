@@ -1,5 +1,7 @@
 export * from './announcement';
+export * from './catalogue';
 export * from './clock';
+export * from './collection';
 export * from './complete-logo';
 export * from './complete-logo-client';
 export * from './error/error-img';
@@ -8,3 +10,6 @@ export * from './img-uploader/img-uploader';
 export * from './interior-house-model';
 export * from './login-banner';
 export * from './logo-archi';
+export * from './plus-supplier';
+export * from './profile';
+export * from './share';

@@ -11,6 +11,7 @@ export default function ProfileLayout() {
         options={ScreenOptions({ type: 'custom' })}
       />
       <Stack.Screen name="basic-information" options={ScreenOptions({})} />
+      <Stack.Screen name="company-information" options={ScreenOptions({})} />
       <Stack.Screen name="notification" options={ScreenOptions({})} />
       <Stack.Screen name="reset-password-client" options={ScreenOptions({})} />
     </Stack>
