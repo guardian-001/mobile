@@ -13,6 +13,7 @@ import {
 import {
   colors,
   GradientBackground,
+  HeaderTitle,
   Item,
   ItemsContainer,
   ScrollView,
@@ -28,6 +29,7 @@ export default function ClientProfile() {
       colors={[colors.white, colors['extra-light-blue']]}
       style={styles.gradientBachgroud}
     >
+      <HeaderTitle text="profile.profile" type="transparent" />
       <ScrollView
         contentContainerClassName="min-h-[80%] p-6 pb-20  "
         showsVerticalScrollIndicator={false}
