@@ -5,7 +5,7 @@ import Svg, { Path } from 'react-native-svg';
 import colors from '@/theme/colors';
 export const User = ({ color = colors.blue, ...props }: SvgProps) => {
   return (
-    <Svg className="h-6 w-5" fill="none" {...props}>
+    <Svg className="h-6 w-6" fill="none" {...props}>
       <Path
         fill={color}
         stroke={color}

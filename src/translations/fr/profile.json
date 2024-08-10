@@ -15,5 +15,15 @@
   "newPassword-label": "Nouveau Mot de passe",
   "newPassword-placeholder": "Nouveau mot de passe",
   "confirmNewPassword-label": "Confirmer votre mot de passe",
-  "confirmNewPassword-placeholder": "Confirmer le nouveau mot de passe"
+  "confirmNewPassword-placeholder": "Confirmer le nouveau mot de passe",
+  "info-company": "Informations Entreprise",
+  "sociaux": "liens sociaux",
+  "subscription": "Abonnement",
+  "subscribe": "Gestion d'abonnement",
+  "Facturation": "Facturation",
+  "payement": "Modes de paiement",
+  "assistance": "Assistance et informations",
+  "aide": "Centre d’aide",
+  "conditions": "Conditions et politiques",
+  "problem": "Signaler un problème"
 }

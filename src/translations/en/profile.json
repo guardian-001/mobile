@@ -15,5 +15,15 @@
   "newPassword-label": "New Password",
   "newPassword-placeholder": "New password",
   "confirmNewPassword-label": "Confirm Password",
-  "confirmNewPassword-placeholder": "Confirm the new password"
+  "confirmNewPassword-placeholder": "Confirm the new password",
+  "info-company": "Company Information",
+  "sociaux": "Social Links",
+  "subscription": "Subscription",
+  "subscribe": "Manage Subscription",
+  "Facturation": "Billing",
+  "payement": "Payment Methods",
+  "assistance": "Support and Information",
+  "aide": "Help Center",
+  "conditions": "Terms and Policies",
+  "problem": "Report a Problem"
 }

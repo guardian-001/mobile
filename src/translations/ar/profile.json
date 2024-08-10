@@ -15,5 +15,15 @@
   "newPassword-label": "كلمة المرور الجديدة",
   "newPassword-placeholder": "كلمة مرور جديدة",
   "confirmNewPassword-label": "تأكيد كلمة المرور",
-  "confirmNewPassword-placeholder": "تأكيد كلمة المرور الجديدة"
+  "confirmNewPassword-placeholder": "تأكيد كلمة المرور الجديدة",
+  "info-company": "معلومات الشركة",
+  "sociaux": "روابط اجتماعية",
+  "subscription": "الاشتراك",
+  "subscribe": "إدارة الاشتراك",
+  "Facturation": "الفوترة",
+  "payement": "طرق الدفع",
+  "assistance": "الدعم والمعلومات",
+  "aide": "مركز المساعدة",
+  "conditions": "الشروط والسياسات",
+  "problem": "الإبلاغ عن مشكلة"
 }

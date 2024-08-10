@@ -6,7 +6,7 @@ import Svg, { Path } from 'react-native-svg';
 import colors from '@/theme/colors';
 
 export const Collection = ({ color = colors.black, ...props }: SvgProps) => (
-  <View className="h-5 w-5">
+  <View className="h-7 w-7">
     <Svg width="100%" height="100%" viewBox="0 0 21 21" fill="none" {...props}>
       <Path
         fill={color}

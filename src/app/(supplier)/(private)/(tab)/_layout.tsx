@@ -15,6 +15,8 @@ export default function TabLayout() {
     <Tabs
       initialRouteName="(profile)"
       screenOptions={{
+        headerShown: false,
+
         tabBarItemStyle: {
           paddingBottom: 3,
         },
@@ -42,11 +44,10 @@ export default function TabLayout() {
         name="add"
         options={{
           title: '',
-          href: '/',
           tabBarIcon: ({ color }) => <PlusSupplier color={color} />,
           tabBarTestID: 'add-tab',
           tabBarIconStyle: {
-            paddingBottom: 20,
+            paddingBottom: 10,
           },
           tabBarLabelStyle: {
             width: 90,
