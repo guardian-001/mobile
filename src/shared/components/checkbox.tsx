@@ -73,7 +73,7 @@ export const CheckboxIcon = ({
 }: IconProps) => {
   const space = useRouteName();
   const color = checked
-    ? space === ('architect' || 'supplier')
+    ? space == 'architect' || space == 'supplier'
       ? colors.architect
       : colors.client
     : colors.gray[600];

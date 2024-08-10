@@ -10,7 +10,7 @@ export default function MainButtons() {
   const router = useRouter();
 
   const onPressHandler = (route: string) => {
-    router.replace(route);
+    router.push(route);
   };
   return (
     <>

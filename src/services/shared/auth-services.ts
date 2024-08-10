@@ -19,6 +19,6 @@ export async function postSignup(request: SignupRequest): Promise<Response> {
 export async function postEmailCheck(
   request: LoginEmailRequest
 ): Promise<AxiosResponse> {
-  const url = 'api/users/supplier/login/';
+  const url = '/api/users/supplier/login/';
   return client.post(url, request);
 }
