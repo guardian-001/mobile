@@ -7,7 +7,7 @@ export const useProfileSupplier = () => {
   const logOut = useAuth.use.signOut();
 
   const navigateTo = (path: string) => {
-    router.push(`/(supplier)/(private)/${path}`);
+    router.push(`/(supplier)/(private)/(tab)/${path}`);
   };
   const logoutHandler = (route: string) => {
     logOut();

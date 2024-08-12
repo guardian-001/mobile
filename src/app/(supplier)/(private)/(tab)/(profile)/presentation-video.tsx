@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { BasicInfoForm } from '@/modules/supplier/profile/basic-info-form';
+import { UpdatePresentationVideoForm } from '@/modules/supplier/profile/update-video-form';
 import { FocusAwareStatusBar, View } from '@/shared/components';
 
-export default function BasicInformation() {
+export default function PresentationVideo() {
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
-      <BasicInfoForm />
+      <UpdatePresentationVideoForm />
     </View>
   );
 }
