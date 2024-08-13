@@ -1,20 +1,19 @@
 import React from 'react';
-import { ActivityIndicator, Platform } from 'react-native';
+import { Platform } from 'react-native';
 
 import { translate } from '@/core';
 import {
-  Button,
-  ControlledInput,
   HeaderTitle,
+  Item,
+  ItemsContainer,
   KeyboardAvoidingView,
   ScrollView,
 } from '@/shared/components';
 
-import { useUpdateProfile } from './hooks/use-update-profile';
+import { useBasicInfo } from './hooks/use-basic-info';
 
 export const BasicInfoForm = () => {
-  const { control, form, handleSubmit, onSubmit, isSuccess, isLoading } =
-    useUpdateProfile();
+  const { navigateTo, user } = useBasicInfo();
 
   return (
     <KeyboardAvoidingView
@@ -22,47 +21,39 @@ export const BasicInfoForm = () => {
       className="flex-1 bg-white  "
     >
       <HeaderTitle text="profile.info" type="default" />
-      {isLoading && <ActivityIndicator />}
-      {isSuccess && (
-        <ScrollView
-          className="flex-1 p-6 pt-12"
-          contentContainerClassName="gap-4"
-        >
-          <ControlledInput
-            testID="firstName-input"
-            control={control}
-            name="firstName"
-            label={translate('labels.name')}
-            placeholder={translate('labels.name')}
+      <ScrollView
+        className="flex-1 bg-background p-6 pt-12"
+        contentContainerClassName="gap-4"
+      >
+        <ItemsContainer>
+          <Item
+            type="basicInformation"
+            text="labels.mail"
+            value={user?.email}
+            onPress={() => navigateTo(`email-form/`)}
           />
-          <ControlledInput
-            testID="LastName-input"
-            control={control}
-            name="lastName"
-            label={translate('labels.surname')}
-            placeholder={translate('labels.surname')}
+          <Item
+            text="labels.phone"
+            type="basicInformation"
+            value={user?.phoneNumber}
+            onPress={() => navigateTo(`phone-number-form/`)}
           />
-          <ControlledInput
-            testID="email-input"
-            control={control}
-            name="email"
-            label={translate('labels.mail')}
-            placeholder={translate('labels.mail')}
+        </ItemsContainer>
+        <ItemsContainer title="supplierProfile.about">
+          <Item
+            text="supplierProfile.bio"
+            type="basicInformation"
+            value={translate('supplierProfile.presentationBio')}
+            onPress={() => navigateTo(`bio-form/`)}
           />
-          <ControlledInput
-            name="phoneNumber"
-            control={control}
-            label={translate('labels.phone')}
-            placeholder={translate('labels.phone')}
+          <Item
+            text="supplierProfile.video"
+            type="basicInformation"
+            value={translate('supplierProfile.presentationVideo')}
+            onPress={() => navigateTo(`presentation-video/`)}
           />
-          <Button
-            label="Enregistrer"
-            onPress={handleSubmit(onSubmit)}
-            className="my-8 h-12 rounded-lg"
-            disabled={!form.formState.isValid}
-          />
-        </ScrollView>
-      )}
+        </ItemsContainer>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };

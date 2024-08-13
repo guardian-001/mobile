@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { BasicInfoForm } from '@/modules/supplier/profile/basic-info-form';
+import { UpdateBioForm } from '@/modules/supplier/profile/update-bio-form';
 import { FocusAwareStatusBar, View } from '@/shared/components';
 
-export default function BasicInformation() {
+export default function BioForm() {
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
-      <BasicInfoForm />
+      <UpdateBioForm />
     </View>
   );
 }

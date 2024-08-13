@@ -5,16 +5,24 @@ import { translate } from '@/core';
 import {
   Button,
   ControlledInput,
+  ErrorData,
   HeaderTitle,
   KeyboardAvoidingView,
   ScrollView,
 } from '@/shared/components';
 
-import { useUpdateProfile } from './hooks/use-update-profile';
+import { useCompanyInformation } from './hooks/use-company-information';
 
 export const CompanyInfoForm = () => {
-  const { control, form, handleSubmit, onSubmit, isSuccess, isLoading } =
-    useUpdateProfile();
+  const {
+    control,
+    form,
+    handleSubmit,
+    onSubmit,
+    isSuccess,
+    isLoading,
+    isError,
+  } = useCompanyInformation();
 
   return (
     <KeyboardAvoidingView
@@ -22,6 +30,7 @@ export const CompanyInfoForm = () => {
       className="flex-1 bg-white pt-5 "
     >
       <HeaderTitle text="profile.info-company" type="default" />
+      {isError && <ErrorData message="Error Loading Data" />}
       {isLoading && <ActivityIndicator />}
       {isSuccess && (
         <ScrollView
@@ -29,31 +38,25 @@ export const CompanyInfoForm = () => {
           contentContainerClassName="gap-4"
         >
           <ControlledInput
-            testID="firstName-input"
+            testID="companyName-input"
             control={control}
-            name="firstName"
-            label={translate('labels.name')}
-            placeholder={translate('labels.name')}
+            name="companyName"
+            label={translate('labels.companyName')}
+            placeholder={translate('labels.companyName')}
           />
           <ControlledInput
-            testID="LastName-input"
+            testID="companySpeciality-input"
             control={control}
-            name="lastName"
-            label={translate('labels.surname')}
-            placeholder={translate('labels.surname')}
+            name="companySpeciality"
+            label={translate('labels.companySpeciality')}
+            placeholder={translate('labels.companySpeciality')}
           />
           <ControlledInput
-            testID="email-input"
+            testID="companyAddress-input"
             control={control}
-            name="email"
-            label={translate('labels.mail')}
-            placeholder={translate('labels.mail')}
-          />
-          <ControlledInput
-            name="phoneNumber"
-            control={control}
-            label={translate('labels.phone')}
-            placeholder={translate('labels.phone')}
+            name="companyAddress"
+            label={translate('labels.address')}
+            placeholder={translate('labels.address')}
           />
           <Button
             label="Enregistrer"

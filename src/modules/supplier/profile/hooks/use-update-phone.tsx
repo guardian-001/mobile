@@ -4,25 +4,22 @@ import { useEffect } from 'react';
 import type { User } from '@/api/auth';
 import { useUpdateProfileApi, useUserProfileApi } from '@/api/profileSettings';
 import { useCustomForm } from '@/core';
+import { setUser } from '@/core/auth/utils';
 import { showSuccesMessage } from '@/shared/components';
 
-import { BasicInformationSchema } from '../schemas';
-import type { BasicInfoFormType } from '../type';
+import { PhoneNumberSchema } from '../schemas';
+import type { PhoneFormType } from '../type';
 
-export const useUpdateProfile = () => {
-  const { handleSubmit, control, form, reset } = useCustomForm(
-    BasicInformationSchema
-  );
+export const useUpdatephone = () => {
+  const { handleSubmit, control, form, reset } =
+    useCustomForm(PhoneNumberSchema);
   const router = useRouter();
-  const { data, isSuccess, isLoading } = useUserProfileApi();
+  const { data, isSuccess } = useUserProfileApi();
   let user: User | undefined = data?.user;
 
   useEffect(() => {
     if (isSuccess && data) {
       reset({
-        firstName: user?.firstName,
-        lastName: user?.lastName,
-        email: user?.email,
         phoneNumber: user?.phoneNumber,
       });
     }
@@ -30,20 +27,19 @@ export const useUpdateProfile = () => {
 
   const updateProfile = useUpdateProfileApi();
 
-  const onSubmit = (data: BasicInfoFormType) => {
-    if (
-      data.firstName !== user?.firstName ||
-      data.lastName !== user?.lastName ||
-      data.email !== user?.email ||
-      data.phoneNumber !== user?.phoneNumber
-    ) {
+  const onSubmit = (data: PhoneFormType) => {
+    if (data.phoneNumber !== user?.phoneNumber) {
       updateProfile.mutate(data, {
         onSuccess: (response) => {
           showSuccesMessage(response.data.message);
+          setUser(response.data.user);
+          router.back();
           router.back();
         },
       });
-    } else router.back();
+    } else {
+      router.back(), router.back();
+    }
   };
   return {
     control,
@@ -51,7 +47,5 @@ export const useUpdateProfile = () => {
     reset,
     handleSubmit,
     onSubmit,
-    isSuccess,
-    isLoading,
   };
 };

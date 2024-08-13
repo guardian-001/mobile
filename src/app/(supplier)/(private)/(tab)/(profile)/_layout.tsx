@@ -14,6 +14,10 @@ export default function ProfileLayout() {
       <Stack.Screen name="company-information" options={ScreenOptions({})} />
       <Stack.Screen name="notification" options={ScreenOptions({})} />
       <Stack.Screen name="reset-password-client" options={ScreenOptions({})} />
+      <Stack.Screen name="email-form" options={ScreenOptions({})} />
+      <Stack.Screen name="phone-number-form" options={ScreenOptions({})} />
+      <Stack.Screen name="bio-form" options={ScreenOptions({})} />
+      <Stack.Screen name="presentation-video" options={ScreenOptions({})} />
     </Stack>
   );
 }
