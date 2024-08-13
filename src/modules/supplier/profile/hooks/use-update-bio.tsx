@@ -27,7 +27,6 @@ export const useUpdateBio = () => {
   const updateProfile = useUpdateSupplierBioApi();
 
   const onSubmit = (data: BioFormType) => {
-    console.log(data, supplier?.bio);
     if (data.bio !== supplier?.bio) {
       updateProfile.mutate(data, {
         onSuccess: (response) => {
