@@ -27,18 +27,17 @@ export const useUpdatephone = () => {
 
   const updateProfile = useUpdateProfileApi();
 
-  const onSubmit = (data: PhoneFormType) => {
-    if (data.phoneNumber !== user?.phoneNumber) {
-      updateProfile.mutate(data, {
+  const onSubmit = (dataPhone: PhoneFormType) => {
+    if (dataPhone.phoneNumber !== user?.phoneNumber) {
+      updateProfile.mutate(dataPhone, {
         onSuccess: (response) => {
           showSuccesMessage(response.data.message);
           setUser(response.data.user);
           router.back();
-          router.back();
         },
       });
     } else {
-      router.back(), router.back();
+      router.back();
     }
   };
   return {

@@ -79,3 +79,8 @@ export const STATUS_OF_PROJECT = [
   'Projets validés',
   'Projets abandonnés',
 ] as const;
+
+export enum ImageKeys {
+  COVER_IMAGE = 'cover_image',
+  PROFILE_IMAGE = 'profile_image',
+}
