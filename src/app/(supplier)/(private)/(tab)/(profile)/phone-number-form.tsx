@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { BasicInfoForm } from '@/modules/supplier/profile/basic-info-form';
+import { UpdatePhoneNumberForm } from '@/modules/supplier/profile/update-phone-number-form';
 import { FocusAwareStatusBar, View } from '@/shared/components';
 
-export default function BasicInformation() {
+export default function PhoneNumberForm() {
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
-      <BasicInfoForm />
+      <UpdatePhoneNumberForm />
     </View>
   );
 }

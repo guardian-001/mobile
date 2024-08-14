@@ -1,8 +1,11 @@
 import type { z } from 'zod';
 
 import type {
-  BasicInformationSchema,
+  BioSchema,
   ChangePasswordFormSchema,
+  CompanyInformationSchema,
+  EmailSchema,
+  PhoneNumberSchema,
 } from '../schemas';
 import type {
   supplierProfileInfoSchema,
@@ -10,6 +13,11 @@ import type {
 } from '../schemas/profile-info-schema';
 
 export type ResetPassFormProfileType = z.infer<typeof ChangePasswordFormSchema>;
-export type BasicInfoFormType = z.infer<typeof BasicInformationSchema>;
 export type supplierProfileInfoType = z.infer<typeof supplierProfileInfoSchema>;
 export type supplierSocialMediaType = z.infer<typeof supplierSocialMediaSchema>;
+export type EmailFormType = z.infer<typeof EmailSchema>;
+export type PhoneFormType = z.infer<typeof PhoneNumberSchema>;
+export type BioFormType = z.infer<typeof BioSchema>;
+export type CompanyInformationFormType = z.infer<
+  typeof CompanyInformationSchema
+>;
