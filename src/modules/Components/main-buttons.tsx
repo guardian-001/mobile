@@ -26,7 +26,9 @@ export default function MainButtons() {
         type="pill"
       />
       <MainButton
-        onPressHandler={() => onPressHandler('/(supplier)/(public)/login')}
+        onPressHandler={() =>
+          onPressHandler('/(supplier)/(private)/(tab)/(profile)/profile')
+        }
         label={translate('onBoarding.supplierBtn')}
         icon={<ArrowRightLong />}
         iconClassName="mr-2"

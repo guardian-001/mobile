@@ -21,10 +21,9 @@ export const UpdatePhoneNumberForm = () => {
       <HeaderTitle text="profile.info" type="default" />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        className="flex-1 bg-white pt-5 "
+        className="flex-1 bg-white "
       >
-        <HeaderTitle text="profile.info" type="default" />
-        <ScrollView className="flex-1 p-6" contentContainerClassName="gap-4">
+        <ScrollView className="flex-1" contentContainerClassName="gap-4 p-6">
           <Text tx="labels.phone" className="mb-1 text-2xl font-extrabold" />
           <Text
             tx="supplierProfile.updatePhoneDescription"
@@ -37,14 +36,14 @@ export const UpdatePhoneNumberForm = () => {
             label={translate('labels.phone')}
             placeholder={translate('labels.phonePlaceHolder')}
           />
-          <Button
-            label="Enregistrer"
-            onPress={handleSubmit(onSubmit)}
-            className="my-8 h-12 rounded-lg"
-            disabled={!form.formState.isValid}
-          />
         </ScrollView>
-      </KeyboardAvoidingView>{' '}
+        <Button
+          label="Enregistrer"
+          onPress={handleSubmit(onSubmit)}
+          className="mx-4 mb-10 h-12 rounded-lg"
+          disabled={!form.formState.isValid}
+        />
+      </KeyboardAvoidingView>
     </>
   );
 };
