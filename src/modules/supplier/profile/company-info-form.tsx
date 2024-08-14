@@ -35,8 +35,8 @@ export const CompanyInfoForm = () => {
         {isLoading && <ActivityIndicator />}
         {isSuccess && (
           <ScrollView
-            className="flex-1 p-6 pt-12"
-            contentContainerClassName="gap-4"
+            className="flex-1"
+            contentContainerClassName="gap-4 p-6 pt-12"
           >
             <ControlledInput
               testID="companyName-input"
@@ -59,14 +59,14 @@ export const CompanyInfoForm = () => {
               label={translate('labels.address')}
               placeholder={translate('labels.address')}
             />
-            <Button
-              label="Enregistrer"
-              onPress={handleSubmit(onSubmit)}
-              className="my-8 h-12 rounded-lg"
-              disabled={!form.formState.isValid}
-            />
           </ScrollView>
         )}
+        <Button
+          label="Enregistrer"
+          onPress={handleSubmit(onSubmit)}
+          className="mx-4 mb-10 h-12 rounded-lg"
+          disabled={!form.formState.isValid}
+        />
       </KeyboardAvoidingView>
     </>
   );

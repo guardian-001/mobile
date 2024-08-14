@@ -127,3 +127,22 @@ export const specialityValidation = z.number().refine((value) => value > 0, {
 export const idValidation = z.number().refine((value) => value > 0, {
   message: 'validations.required',
 });
+
+export const facebookValidation = z
+  .string()
+  .regex(/^https:\/\/(www\.)?facebook\.com\/[a-zA-Z0-9(\.\?)?]/, {
+    message: 'invalidFacebookUrl',
+  });
+
+export const websiteValidation = z
+  .string()
+  .regex(/^(https?:\/\/)?([\w\-]+\.)+[\w\-]+(\/[\w\-]*)*\/?$/, {
+    message: 'invalidWebsiteUrl',
+  })
+  .optional();
+
+export const instagramValidation = z
+  .string()
+  .regex(/^https:\/\/(www\.)?instagram\.com\/[a-zA-Z0-9(\.\?)?]/, {
+    message: 'invalidInstagramUrl',
+  });

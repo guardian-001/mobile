@@ -3,11 +3,14 @@ import { z } from 'zod';
 import {
   dateValidation,
   emailValidation,
+  facebookValidation,
+  instagramValidation,
   notRequiredValidationBoolean,
   passwordValidation,
   requiredValidation,
   specialityValidation,
   timeValidation,
+  websiteValidation,
 } from './shared-validations';
 
 export const ConfirmPasswordSchema = z
@@ -67,4 +70,10 @@ export const ResetPassFormSchema = z.object({
 export const CalendarFormSchema = z.object({
   date: dateValidation,
   timeSlot: timeValidation,
+});
+
+export const SocialLinksSchema = z.object({
+  facebook: facebookValidation,
+  website: websiteValidation,
+  instagram: instagramValidation,
 });
