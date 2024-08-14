@@ -7,9 +7,10 @@ export const resetPassOTP = async (request: { email: string }) => {
       throw error.response?.data || error.message;
     });
 };
+
 export const forgetPass = async (request: void) => {
   return client
-    .post('api/users/archimatch-user/reset-password/', request)
+    .post('/api/users/archimatch-user/reset-password/', request)
     .then((response) => response.data)
     .catch((error) => {
       throw error.response?.data || error.message;

@@ -7,14 +7,6 @@ import { useUpdateCoverPictureApi } from '@/api/supplier/profile/use-update-cove
 import { useUpdateProfilePictureApi } from '@/api/supplier/profile/use-update-profile-picture';
 
 export const useProfileInfo = () => {
-  // const { handleSubmit, control, form, reset } = useCustomForm(
-  //   ChangePasswordFormSchema,
-  //   {
-  //     oldPassword: '',
-  //     newPassword: '',
-  //     confirmNewPassword: '',
-  //   }
-  // );
   const { data, isError, isLoading, isPending, isSuccess } =
     useSupplierProfileApi();
   const {

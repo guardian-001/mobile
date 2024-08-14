@@ -11,14 +11,6 @@ import { useProfileInfo } from './hooks/use-profile-info';
 export default function ProfileHeader() {
   const { data, pickImage, selectedCoverImage, selectedProfileImage } =
     useProfileInfo();
-  // const [user, setUser] = useState<User | null>(null);
-  // useEffect(() => {
-  //   const getUserData = async () => {
-  //     const userDataObj = await getUser();
-  //     setUser(userDataObj ?? null);
-  //   };
-  //   getUserData();
-  // }, []);
 
   return (
     <View>

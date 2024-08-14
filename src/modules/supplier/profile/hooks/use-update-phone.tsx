@@ -34,11 +34,10 @@ export const useUpdatephone = () => {
           showSuccesMessage(response.data.message);
           setUser(response.data.user);
           router.back();
-          router.back();
         },
       });
     } else {
-      router.back(), router.back();
+      router.back();
     }
   };
   return {

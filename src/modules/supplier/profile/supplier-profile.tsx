@@ -43,7 +43,7 @@ export default function SupplierProfile() {
           <Item
             text="profile.password"
             icon={<Security />}
-            onPress={() => navigateTo(`(profile)/reset-password-client/`)}
+            onPress={() => navigateTo(`(profile)/update-password-supplier/`)}
           />
         </ItemsContainer>
         <ItemsContainer title="profile.subscription">
