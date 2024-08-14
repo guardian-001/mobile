@@ -1,5 +1,7 @@
 import type { z } from 'zod';
 
+import type { SocialLinksSchema } from '@/shared/validations';
+
 import type {
   BioSchema,
   ChangePasswordFormSchema,
@@ -21,3 +23,9 @@ export type BioFormType = z.infer<typeof BioSchema>;
 export type CompanyInformationFormType = z.infer<
   typeof CompanyInformationSchema
 >;
+export type SocialLinksFormType = z.infer<typeof SocialLinksSchema>;
+
+export type SocialLink = {
+  Icon: React.ComponentType;
+  name: 'facebook' | 'website' | 'instagram';
+};

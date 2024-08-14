@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { NotificationForm } from '@/modules/profile/notification-form';
+import { UpdateSocialLinks } from '@/modules/supplier/profile/update-social-links';
 import { FocusAwareStatusBar, View } from '@/shared/components';
 
-export default function Notification() {
+export default function SocialLinks() {
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
-      <NotificationForm onSubmit={() => {}} />
+      <UpdateSocialLinks />
     </View>
   );
 }

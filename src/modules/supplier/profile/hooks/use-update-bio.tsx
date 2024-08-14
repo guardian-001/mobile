@@ -1,10 +1,8 @@
 import { useRouter } from 'expo-router';
 import { useEffect } from 'react';
 
-import {
-  useSupplierProfileApi,
-  useUpdateSupplierBioApi,
-} from '@/api/profileSettings';
+import { useSupplierProfileApi } from '@/api/supplier/profile/use-profile';
+import { useUpdateSupplierBioApi } from '@/api/supplier/profile/use-update-supplier-bio';
 import { useCustomForm } from '@/core';
 import { showSuccesMessage } from '@/shared/components';
 

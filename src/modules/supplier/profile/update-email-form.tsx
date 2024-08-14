@@ -21,9 +21,9 @@ export const UpdateEmailForm = () => {
       <HeaderTitle text="profile.info" type="default" />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        className="flex-1 bg-white pt-5 "
+        className="flex-1 bg-white"
       >
-        <ScrollView className="flex-1 p-6" contentContainerClassName="gap-4">
+        <ScrollView className="flex-1" contentContainerClassName="gap-4 p-6">
           <Text tx="labels.mail" className="mb-1 text-2xl font-extrabold" />
           <Text
             tx="supplierProfile.updateEmailDescription"
@@ -36,13 +36,13 @@ export const UpdateEmailForm = () => {
             label={translate('labels.mail')}
             placeholder={translate('labels.mailPlaceHolder')}
           />
-          <Button
-            label="Enregistrer"
-            onPress={handleSubmit(onSubmit)}
-            className="my-8 h-12 rounded-lg"
-            disabled={!form.formState.isValid}
-          />
         </ScrollView>
+        <Button
+          label="Enregistrer"
+          onPress={handleSubmit(onSubmit)}
+          className="mx-4 mb-10 h-12 rounded-lg"
+          disabled={!form.formState.isValid}
+        />
       </KeyboardAvoidingView>
     </>
   );

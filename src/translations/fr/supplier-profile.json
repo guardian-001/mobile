@@ -8,5 +8,7 @@
   "updateEmailDescription": "Mettez à jour votre adresse e-mail pour rester en contact.",
   "updatePhoneDescription": "Modifiez votre numéro de téléphone pour rester joignable et recevoir des notifications importantes.",
   "updateBioTitle": "Biographie",
-  "updateBioDescription": "Aperçu des Services et Offres Approuvés par Votre Bureau d'Architecture."
+  "updateBioDescription": "Aperçu des Services et Offres Approuvés par Votre Bureau d'Architecture.",
+  "updateSocilaLinksTitle": "Autres profil",
+  "updateSocialLinksDescription": "Ajoutez ou modifiez vos liens de réseaux sociaux pour vous connecter avec d'autres et partager vos profils."
 }

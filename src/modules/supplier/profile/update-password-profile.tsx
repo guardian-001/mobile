@@ -25,13 +25,13 @@ export default function UpdatePasswordProfile() {
   } = useUpdatePassword();
   return (
     <>
-      <HeaderTitle text="resetpass.reset" type="transparent" />
+      <HeaderTitle text="resetpass.reset" type="default" />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        className="flex-1 bg-white p-6 "
+        className="flex-1 bg-white"
       >
         <ScrollView
-          contentContainerClassName="gap-4"
+          contentContainerClassName="gap-4 px-4"
           showsVerticalScrollIndicator={false}
         >
           <ControlledInput
@@ -39,7 +39,7 @@ export default function UpdatePasswordProfile() {
             name="oldPassword"
             label={translate('profile.currentPassword-label')}
             placeholder={translate('profile.currentPassword-placeholder')}
-            className="mt-8"
+            className="mt-4"
             secureTextEntry={true}
           />
           <ControlledInput
@@ -57,7 +57,7 @@ export default function UpdatePasswordProfile() {
             className="mb-8"
             secureTextEntry={true}
           />
-          <View className="mb-4">
+          <View>
             <Text tx="resetpass.passwordConditions" />
             {passwordRequirements.map((requirement, index) => (
               <PasswordRequirementItem
@@ -71,7 +71,7 @@ export default function UpdatePasswordProfile() {
         <Button
           label={translate('resetpass.reset')}
           onPress={handleSubmit(onSubmit)}
-          className="mb-10 h-12 rounded-md"
+          className="mx-4 mb-10 h-12 rounded-md"
           disabled={!allRequirementsValid}
         />
       </KeyboardAvoidingView>

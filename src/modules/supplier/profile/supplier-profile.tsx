@@ -38,7 +38,7 @@ export default function SupplierProfile() {
           <Item
             text="profile.sociaux"
             icon={<Sociaux />}
-            onPress={() => navigateTo(`(profile)/company-information/`)}
+            onPress={() => navigateTo(`(profile)/social-links/`)}
           />
           <Item
             text="profile.password"

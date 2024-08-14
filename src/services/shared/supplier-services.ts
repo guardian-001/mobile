@@ -3,8 +3,13 @@ import { isAxiosError } from 'axios';
 
 import { client } from '@/api';
 import type { SpecialityTypeResponse } from '@/api/auth';
+import type { ProfileSocialLinksFormData } from '@/api/profileSettings/type';
 import type { FirstConnectionRequest } from '@/api/supplier/createAccount/types';
 import type { SupplierProfileInfoType } from '@/api/supplier/profile/types';
+import type {
+  BioFormType,
+  CompanyInformationFormType,
+} from '@/modules/supplier/profile/type';
 
 export async function getSupplierProfile(): Promise<SupplierProfileInfoType> {
   const url = 'api/users/supplier/get-profile/';
@@ -75,4 +80,23 @@ export async function putUpdateProfilePicture(
       'Content-Type': 'image/png',
     },
   });
+}
+export async function updateSupplierProfileAsync(
+  formData: CompanyInformationFormType
+): Promise<AxiosResponse> {
+  const url = `api/users/supplier/update-profile/`;
+  return client.put(url, formData);
+}
+
+export async function updateSupplierBioAsync(
+  formData: BioFormType
+): Promise<AxiosResponse> {
+  const url = `/api/users/supplier/update-bio/`;
+  return client.put(url, formData);
+}
+export async function updateSocialLinkAsync(
+  formData: ProfileSocialLinksFormData
+): Promise<AxiosResponse> {
+  const url = `api/users/supplier/update-links/`;
+  return client.put(url, formData);
 }
