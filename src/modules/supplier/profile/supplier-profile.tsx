@@ -18,11 +18,12 @@ export default function SupplierProfile() {
   const { navigateTo, logoutHandler } = useProfileSupplier();
   return (
     <View className={'bg-secondary'} style={styles.gradientBachgroud}>
+      <ProfileHeader />
+
       <ScrollView
         contentContainerClassName="min-h-[80%] p-6 pb-20  "
         showsVerticalScrollIndicator={false}
       >
-        <ProfileHeader />
         <ItemsContainer title="profile.account">
           <Item
             text="profile.info"
@@ -71,7 +72,7 @@ export default function SupplierProfile() {
           <Item
             text="profile.logout"
             icon={<Logout />}
-            onPress={() => logoutHandler('(SUPPLIER)/(public)/login')}
+            onPress={() => logoutHandler('(supplier)/(public)/login')}
           />
         </ItemsContainer>
       </ScrollView>

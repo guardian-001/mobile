@@ -32,8 +32,10 @@ client.interceptors.request.use(
           throw new Error(
             'Internal Server Error: An error occurred on the server.'
           );
-        default:
+        default: {
+          console.log('errorrrrr: error.response.message');
           throw new Error(`Unexpected error: ${error.response.status}`);
+        }
       }
     }
     return Promise.reject(error);

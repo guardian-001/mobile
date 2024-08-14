@@ -30,14 +30,14 @@ export const useUpdateProfile = () => {
 
   const updateProfile = useUpdateProfileApi();
 
-  const onSubmit = (data: BasicInfoFormType) => {
+  const onSubmit = (dataBasic: BasicInfoFormType) => {
     if (
-      data.firstName !== user?.firstName ||
-      data.lastName !== user?.lastName ||
-      data.email !== user?.email ||
-      data.phoneNumber !== user?.phoneNumber
+      dataBasic.firstName !== user?.firstName ||
+      dataBasic.lastName !== user?.lastName ||
+      dataBasic.email !== user?.email ||
+      dataBasic.phoneNumber !== user?.phoneNumber
     ) {
-      updateProfile.mutate(data, {
+      updateProfile.mutate(dataBasic, {
         onSuccess: (response) => {
           showSuccesMessage(response.data.message);
           router.back();

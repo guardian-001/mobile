@@ -17,16 +17,6 @@ export type LoginRequest = {
   password: string;
 };
 
-export type FirstConnectionRequest = {
-  companyAddress: string;
-  companyName: string;
-  companySpeciality: string;
-  email: string;
-  phoneNumber: string;
-  appearance: string;
-  specialityType: number[];
-};
-
 export type LoginEmailRequest = {
   email: string;
 };

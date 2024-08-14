@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 
 import type { User } from '@/api/auth';
-import { useFirstConnectionApi } from '@/api/auth/use-first-connection';
+import { useFirstConnectionApi } from '@/api/supplier/createAccount/use-first-connection';
 import { useSpecialityTypesApi } from '@/api/supplier/createAccount/use-speciality-types';
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
