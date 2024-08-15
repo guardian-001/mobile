@@ -14,7 +14,7 @@ export const useUpdateProfilePictureApi = createMutation<
   onSuccess(data) {
     //, variables, context
     console.log('success');
-    console.log(data);
+    console.log('data : ', data);
   },
   onError(error) {
     //, variables, context

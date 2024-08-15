@@ -4,11 +4,14 @@
   "bioPlaceHolder": "Écrivez une courte introduction...",
   "presentationBio": "Ajouter une présentation",
   "video": "Vidéo de présentation",
-  "presentationVideo": "Ajouter une vidéo de présentation",
+  "videoDescription": "Aperçu des Services et Offres Approuvés par Votre Bureau d'Architecture",
+  "presentationVideoDescription": "Ajouter une vidéo de présentation. Cela permettra aux utilisateurs de mieux comprendre votre parcours et vos compétences ",
   "updateEmailDescription": "Mettez à jour votre adresse e-mail pour rester en contact.",
   "updatePhoneDescription": "Modifiez votre numéro de téléphone pour rester joignable et recevoir des notifications importantes.",
   "updateBioTitle": "Biographie",
   "updateBioDescription": "Aperçu des Services et Offres Approuvés par Votre Bureau d'Architecture.",
   "updateSocilaLinksTitle": "Autres profil",
-  "updateSocialLinksDescription": "Ajoutez ou modifiez vos liens de réseaux sociaux pour vous connecter avec d'autres et partager vos profils."
+  "updateSocialLinksDescription": "Ajoutez ou modifiez vos liens de réseaux sociaux pour vous connecter avec d'autres et partager vos profils.",
+  "presentationVideoButton": "Ajouter un vidéo",
+  "descriptionVideoInfoSection": "Ajouter une vidéo de présentation"
 }

@@ -45,12 +45,15 @@ export const useProfileInfo = () => {
       return result.assets[0];
     }
   };
-  async function convertImagePickerAssetToBlobPart(
+  async function convertImagePickerAssetToFile(
     asset: ImagePicker.ImagePickerAsset
-  ): Promise<BlobPart> {
+  ): Promise<File> {
     const response = await fetch(asset.uri);
     const blob = await response.blob();
-    return blob;
+    const file = new File([blob], asset.fileName || 'image.png', {
+      type: blob.type || 'image/png',
+    });
+    return file;
   }
   const uploadImage = async (
     image: ImagePicker.ImagePickerAsset,
@@ -58,12 +61,13 @@ export const useProfileInfo = () => {
   ) => {
     console.log(image);
     const formData = new FormData();
-    const blobPart = await convertImagePickerAssetToBlobPart(image);
-    formData.append('file', new File([blobPart], image?.fileName ?? ''));
+    const file = await convertImagePickerAssetToFile(image);
+    // const blobNew = new Blob([image.uri]);
+    console.log(file);
+    formData.append('profile_image', file);
     if (type === 'profile') {
       try {
         const response = await mutateProfile(formData);
-        console.log(dataProfile);
         console.log(isLoading);
         console.log('data profile after updata : ', dataProfile);
         return response;
@@ -77,9 +81,7 @@ export const useProfileInfo = () => {
     }
   };
   const onSubmitPickImage = async (type: 'profile' | 'cover') => {
-    console.log('inside on submit');
     const image = await pickImage();
-    console.log('outside on if');
     console.log(image);
     if (image) {
       await uploadImage(image, type);

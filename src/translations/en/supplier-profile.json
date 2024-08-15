@@ -3,12 +3,15 @@
   "bio": "Bio",
   "bioPlaceHolder": "Write a short introduction...",
   "presentationBio": "Add a presentation",
-  "video": "Presentation video",
-  "presentationVideo": "Add a presentation video",
+  "video": "Presentation Video",
+  "videoDescription": "Overview of Services and Offers Approved by Your Architecture Office",
+  "presentationVideoDescription": "Add a presentation video. This will help users better understand your background and skills.",
   "updateEmailDescription": "Update your email address to stay in touch.",
   "updatePhoneDescription": "Change your phone number to stay reachable and receive important notifications.",
   "updateBioTitle": "Biography",
   "updateBioDescription": "Overview of Services and Offers Approved by Your Architecture Office.",
   "updateSocilaLinksTitle": "Other Profiles",
-  "updateSocialLinksDescription": " Add or modify your social media links to connect with others and share your profiles."
+  "updateSocialLinksDescription": " Add or modify your social media links to connect with others and share your profiles.",
+  "presentationVideoButton": "Add a video",
+  "descriptionVideoInfoSection": "Add a presentation video"
 }

@@ -56,7 +56,7 @@ export const BasicInfoForm = () => {
             placeholder={translate('labels.phone')}
           />
           <Button
-            label="Enregistrer"
+            label={translate('notification.save')}
             onPress={handleSubmit(onSubmit)}
             className="my-8 h-12 rounded-lg"
             disabled={!form.formState.isValid}

@@ -48,7 +48,7 @@ export const NotificationForm = ({
           />
         </View>
         <Button
-          label={translate('notification.Save')}
+          label={translate('notification.save')}
           onPress={handleSubmit(onSubmit)}
           className="h-12 rounded-md"
         />

@@ -1,5 +1,6 @@
 export * from './announcement';
 export * from './billing';
+export * from './camera';
 export * from './card';
 export * from './catalogue';
 export * from './clock';
@@ -18,3 +19,5 @@ export * from './plus-supplier';
 export * from './profile';
 export * from './share';
 export * from './sociaux';
+export * from './video';
+export * from './video-upload';
