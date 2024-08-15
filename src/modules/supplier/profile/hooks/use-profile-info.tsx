@@ -13,15 +13,12 @@ export const useProfileInfo = () => {
     mutate: mutateCover,
     isError: errorCover,
     isPending: PendingCover,
-    data: dataCover,
   } = useUpdateCoverPictureApi();
   const {
     mutate: mutateProfile,
     isError: errorProfile,
     isPending: PendingProfile,
-    data: dataProfile,
   } = useUpdateProfilePictureApi();
-  console.log(data);
   const requestPermissions = async () => {
     await ImagePicker.requestMediaLibraryPermissionsAsync();
   };
@@ -59,30 +56,24 @@ export const useProfileInfo = () => {
     image: ImagePicker.ImagePickerAsset,
     type: 'profile' | 'cover'
   ) => {
-    console.log(image);
     const formData = new FormData();
     const file = await convertImagePickerAssetToFile(image);
-    // const blobNew = new Blob([image.uri]);
-    console.log(file);
+    // TODO: const blobNew = new Blob([image.uri]);
     formData.append('profile_image', file);
     if (type === 'profile') {
       try {
         const response = await mutateProfile(formData);
-        console.log(isLoading);
-        console.log('data profile after updata : ', dataProfile);
         return response;
       } catch (error) {
         console.error('Error uploading image:', error);
       }
     } else {
-      console.log(dataCover);
       const response = mutateCover(formData);
       return response;
     }
   };
   const onSubmitPickImage = async (type: 'profile' | 'cover') => {
     const image = await pickImage();
-    console.log(image);
     if (image) {
       await uploadImage(image, type);
     }

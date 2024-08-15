@@ -72,8 +72,6 @@ export async function putUpdateCoverPicture(
 export async function putUpdateProfilePicture(
   request: FormData
 ): Promise<AxiosResponse> {
-  console.log('hello request : ', request);
-
   const url = '/api/users/supplier/update-profile-image/';
   return client.put(url, request, {
     headers: {
@@ -85,8 +83,6 @@ export async function putUpdateProfilePicture(
 export async function updateSupplierVideoAsync(
   request: FormData
 ): Promise<AxiosResponse> {
-  console.log('hello request : ', request);
-
   const url = '/api/users/supplier/update-presentation-video/';
   return client.put(url, request, {
     headers: {

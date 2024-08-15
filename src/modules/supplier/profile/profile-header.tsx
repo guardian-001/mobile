@@ -27,8 +27,6 @@ export default function ProfileHeader() {
             <View className=" absolute  flex h-full w-full items-center justify-center ">
               <ImageUploader />
             </View>
-
-            {/* <Text className=" text-lg font-semibold opacity-50">Cover Photo</Text> */}
           </Pressable>
         )}
         <TouchableOpacity
@@ -65,8 +63,6 @@ export default function ProfileHeader() {
               <View className=" absolute -z-10 flex h-full w-full items-center justify-center ">
                 <Profile width={40} height={50} color={colors.gray[400]} />
               </View>
-
-              {/* <Text className=" text-lg font-semibold opacity-50">Cover Photo</Text> */}
             </Pressable>
           )}
         </View>
