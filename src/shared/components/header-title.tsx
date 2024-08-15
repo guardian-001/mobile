@@ -32,7 +32,7 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
               </Text>
             </View>
           ) : (
-            <View className="flex h-[12%] w-full items-center justify-end bg-white pb-6">
+            <View className="flex h-[12%] w-full items-center justify-end bg-white">
               <Text className="text-xl font-bold text-primary-txt">
                 {translate(text)}
               </Text>

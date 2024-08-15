@@ -50,7 +50,7 @@ export const BasicInfoForm = () => {
             <Item
               text="supplierProfile.video"
               type="basicInformation"
-              value={translate('supplierProfile.presentationVideo')}
+              value={translate('supplierProfile.descriptionVideoInfoSection')}
               onPress={() => navigateTo(`presentation-video/`)}
             />
           </ItemsContainer>

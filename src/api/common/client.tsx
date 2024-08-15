@@ -33,7 +33,6 @@ client.interceptors.request.use(
             'Internal Server Error: An error occurred on the server.'
           );
         default: {
-          console.log('errorrrrr: error.response.message');
           throw new Error(`Unexpected error: ${error.response.status}`);
         }
       }

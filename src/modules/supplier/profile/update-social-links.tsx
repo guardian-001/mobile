@@ -63,7 +63,7 @@ export const UpdateSocialLinks = () => {
           </ScrollView>
         )}
         <Button
-          label="Enregistrer"
+          label={translate('notification.save')}
           onPress={handleSubmit(onSubmit)}
           className="mx-4 mb-10 h-12 rounded-lg"
           disabled={!form.formState.isValid}

@@ -19,9 +19,11 @@ interface Props extends Omit<TouchableOpacityProps, 'disabled'> {
   alternativeBg?: string;
   textClassName?: string;
   iconClassName?: string;
+  leftIconClassName?: string;
   disabled?: boolean;
   type?: 'pill' | 'button';
   icon?: React.ReactNode;
+  leftIcon?: React.ReactNode;
 }
 export const Button = React.forwardRef<TouchableOpacity, Props>(
   (
@@ -36,7 +38,9 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
       testID,
       textClassName = '',
       iconClassName = '',
+      leftIconClassName = '',
       icon,
+      leftIcon,
       ...props
     },
     ref
@@ -75,15 +79,27 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
               />
             ) : (
               <>
-                <Text
-                  testID={testID ? `${testID}-label` : undefined}
-                  className={clsx(
-                    `font-lato text-base font-semibold ${textClassName}`,
-                    labelClassname
-                  )}
-                >
-                  {text}
-                </Text>
+                {leftIcon && (
+                  <View
+                    style={{
+                      transform: I18nManager.isRTL ? 'rotate(180deg)' : '',
+                    }}
+                    className={`${leftIconClassName}`}
+                  >
+                    {leftIcon}
+                  </View>
+                )}
+                {text && (
+                  <Text
+                    testID={testID ? `${testID}-label` : undefined}
+                    className={clsx(
+                      `font-lato text-base font-semibold ${textClassName}`,
+                      labelClassname
+                    )}
+                  >
+                    {text}
+                  </Text>
+                )}
                 {icon && (
                   <View
                     style={{

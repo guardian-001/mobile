@@ -40,6 +40,8 @@ export * from './title';
 export * from './toggle-button';
 export * from './toggle-card';
 export * from './utils';
+export * from './video';
+export * from './video-uploader';
 export {
   ActivityIndicator,
   KeyboardAvoidingView,

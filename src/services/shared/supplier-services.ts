@@ -72,15 +72,25 @@ export async function putUpdateCoverPicture(
 export async function putUpdateProfilePicture(
   request: FormData
 ): Promise<AxiosResponse> {
-  console.log('hello request : ', request);
-
   const url = '/api/users/supplier/update-profile-image/';
   return client.put(url, request, {
     headers: {
-      'Content-Type': 'image/png',
+      'Content-Type': 'multipart/form-data',
     },
   });
 }
+
+export async function updateSupplierVideoAsync(
+  request: FormData
+): Promise<AxiosResponse> {
+  const url = '/api/users/supplier/update-presentation-video/';
+  return client.put(url, request, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+}
+
 export async function updateSupplierProfileAsync(
   formData: CompanyInformationFormType
 ): Promise<AxiosResponse> {

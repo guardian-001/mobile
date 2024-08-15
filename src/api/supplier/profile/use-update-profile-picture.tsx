@@ -11,13 +11,4 @@ export const useUpdateProfilePictureApi = createMutation<
   AxiosError
 >({
   mutationFn: putUpdateProfilePicture,
-  onSuccess(data) {
-    //, variables, context
-    console.log('success');
-    console.log(data);
-  },
-  onError(error) {
-    //, variables, context
-    console.log('error: ', error);
-  },
 });

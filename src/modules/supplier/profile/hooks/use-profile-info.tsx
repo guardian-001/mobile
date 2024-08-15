@@ -13,21 +13,15 @@ export const useProfileInfo = () => {
     mutate: mutateCover,
     isError: errorCover,
     isPending: PendingCover,
-    data: dataCover,
   } = useUpdateCoverPictureApi();
   const {
     mutate: mutateProfile,
     isError: errorProfile,
     isPending: PendingProfile,
-    data: dataProfile,
   } = useUpdateProfilePictureApi();
-
-  console.log(data);
-
   const requestPermissions = async () => {
     await ImagePicker.requestMediaLibraryPermissionsAsync();
   };
-
   const [selectedProfileImage, setSelectedProfileImage] = useState<string>(
     data?.profileImage ? `${Env.API_URL}${data?.profileImage}` : ''
   );
@@ -35,47 +29,55 @@ export const useProfileInfo = () => {
     data?.coverImage ? `${Env.API_URL}${data?.coverImage}` : ''
   );
   const [error, setError] = useState<string>('');
-
-  const pickImage = async (type: 'profile' | 'cover') => {
+  const pickImage = async () => {
     await requestPermissions();
-
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsMultipleSelection: false,
+      allowsEditing: true,
+      aspect: [4, 3],
       quality: 1,
+      allowsMultipleSelection: false,
     });
-
-    if (!result.canceled && result.assets.length > 0) {
-      if (result.assets[0].mimeType?.split('/')[0] !== 'image') {
-        setError('realisation.galleryStep.typeFileError');
-      }
-      const selectedImage = {
-        name: result.assets[0].fileName,
-        uri: result.assets[0].uri,
-        type: result.assets[0].mimeType,
-      };
-      console.log(selectedImage);
-
-      const formData = new FormData();
-      formData.append('file', result.assets[0].uri);
-      console.log(formData);
-      if (type === 'profile') {
-        const response = mutateProfile(formData);
-
-        console.log(dataProfile);
-        console.log(isLoading);
-        return response;
-      } else {
-        console.log(dataCover);
-        const response = mutateCover(formData);
-
-        return response;
-      }
-    } else {
-      setError('error');
+    if (!result.canceled) {
+      return result.assets[0];
     }
   };
-
+  async function convertImagePickerAssetToFile(
+    asset: ImagePicker.ImagePickerAsset
+  ): Promise<File> {
+    const response = await fetch(asset.uri);
+    const blob = await response.blob();
+    const file = new File([blob], asset.fileName || 'image.png', {
+      type: blob.type || 'image/png',
+    });
+    return file;
+  }
+  const uploadImage = async (
+    image: ImagePicker.ImagePickerAsset,
+    type: 'profile' | 'cover'
+  ) => {
+    const formData = new FormData();
+    const file = await convertImagePickerAssetToFile(image);
+    // TODO: const blobNew = new Blob([image.uri]);
+    formData.append('profile_image', file);
+    if (type === 'profile') {
+      try {
+        const response = await mutateProfile(formData);
+        return response;
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      }
+    } else {
+      const response = mutateCover(formData);
+      return response;
+    }
+  };
+  const onSubmitPickImage = async (type: 'profile' | 'cover') => {
+    const image = await pickImage();
+    if (image) {
+      await uploadImage(image, type);
+    }
+  };
   return {
     error,
     data,
@@ -83,7 +85,7 @@ export const useProfileInfo = () => {
     isLoading,
     isPending,
     isSuccess,
-    pickImage,
+    onSubmitPickImage,
     PendingProfile,
     errorProfile,
     PendingCover,
@@ -92,5 +94,6 @@ export const useProfileInfo = () => {
     selectedProfileImage,
     setSelectedCoverImage,
     setSelectedProfileImage,
+    setError,
   };
 };
