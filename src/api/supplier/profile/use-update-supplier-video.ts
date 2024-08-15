@@ -8,6 +8,6 @@ export const useUpdateSupplierVideoApi = createMutation<
   Request,
   AxiosError
 >({
-  mutationKey: ['updateSupplierBio'],
+  mutationKey: ['updateSupplierVideo'],
   mutationFn: updateSupplierVideoAsync,
 });
