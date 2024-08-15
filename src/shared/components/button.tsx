@@ -89,15 +89,17 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
                     {leftIcon}
                   </View>
                 )}
-                <Text
-                  testID={testID ? `${testID}-label` : undefined}
-                  className={clsx(
-                    `font-lato text-base font-semibold ${textClassName}`,
-                    labelClassname
-                  )}
-                >
-                  {text}
-                </Text>
+                {text && (
+                  <Text
+                    testID={testID ? `${testID}-label` : undefined}
+                    className={clsx(
+                      `font-lato text-base font-semibold ${textClassName}`,
+                      labelClassname
+                    )}
+                  >
+                    {text}
+                  </Text>
+                )}
                 {icon && (
                   <View
                     style={{

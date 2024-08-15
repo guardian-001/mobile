@@ -37,7 +37,7 @@ export default function ProfileHeader() {
           }}
           className=" absolute bottom-0 right-0 m-3 flex h-8 w-8 items-center justify-center rounded-full bg-slate-400"
         >
-          <Pen width={20} height={25} />
+          <Pen color={colors.gray[200]} width={20} height={25} />
         </TouchableOpacity>
       </View>
       <View className="  flex  w-full items-center justify-center  ">

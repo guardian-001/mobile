@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { useUpdateSupplierVideoApi } from '@/api/supplier/profile/use-update-supplier-video';
 export const useUpdateVideo = () => {
-  const [selectedVideo, setSelectedVideo] = useState<string>();
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [newVideo, setNewVideo] = useState<boolean>(false);
   const { data: supplierData } = useUpdateSupplierVideoApi();
   const { mutate, isError, isPending, data } = useUpdateSupplierVideoApi();
@@ -43,6 +43,12 @@ export const useUpdateVideo = () => {
       await uploadVideo(selectedVideo);
     }
   };
+  const onDelete = async () => {
+    if (selectedVideo) {
+      setSelectedVideo(null);
+      setNewVideo(false);
+    }
+  };
 
   return {
     selectedVideo,
@@ -53,5 +59,6 @@ export const useUpdateVideo = () => {
     pickVideo,
     onSubmit,
     newVideo,
+    onDelete,
   };
 };
