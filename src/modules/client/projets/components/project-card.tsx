@@ -5,18 +5,9 @@ import { translate } from '@/core';
 import { Button, Image, Switch, Text, View } from '@/shared/components';
 import useFormattedDate from '@/shared/hooks/use-formatted-date';
 
-import type { HeaderProps, ProjectCardProps } from '../types';
+import type { ProjectCardProps } from '../types';
+import { Header } from './header';
 
-const Header = ({ formattedDate, status }: HeaderProps) => (
-  <View className="flex flex-row justify-between">
-    <Text className="text-xs text-description">
-      {translate('projets.publishedOn')} {formattedDate}
-    </Text>
-    <View className="rounded bg-green-400 px-3 py-[2px]">
-      <Text className="text-center text-sm text-primary-txt">{status}</Text>
-    </View>
-  </View>
-);
 export const ProjectCard = ({
   date,
   status,
