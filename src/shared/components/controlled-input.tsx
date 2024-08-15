@@ -47,6 +47,7 @@ export function ControlledInput<T extends FieldValues>(
     disabled = false,
     inputAreaType = 'textInput',
     required = false,
+    autoCapitalize = 'none',
     ...inputProps
   } = props;
 
@@ -60,7 +61,7 @@ export function ControlledInput<T extends FieldValues>(
       inputAreaType={inputAreaType}
       labelStyle={labelStyle}
       ref={field.ref}
-      autoCapitalize="none"
+      autoCapitalize={autoCapitalize}
       onChangeText={(value) => {
         field.onChange(value);
         if (handleOnChange) {

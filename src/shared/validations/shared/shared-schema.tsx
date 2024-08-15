@@ -1,8 +1,12 @@
 import { z } from 'zod';
 
 import {
+  cardNameValidation,
+  cardNumberValidation,
+  cvvValidation,
   dateValidation,
   emailValidation,
+  expirationDateValidation,
   facebookValidation,
   instagramValidation,
   notRequiredValidationBoolean,
@@ -76,4 +80,11 @@ export const SocialLinksSchema = z.object({
   facebook: facebookValidation,
   website: websiteValidation,
   instagram: instagramValidation,
+});
+
+export const BankCardSchema = z.object({
+  cardName: cardNameValidation,
+  cvv: cvvValidation,
+  cardNumber: cardNumberValidation,
+  expirationDate: expirationDateValidation,
 });

@@ -19,5 +19,12 @@
   "paymentMethodOption": "Payment Method",
   "transactionHistoryOption": "Transaction History",
   "invoices": "Invoices",
-  "upgradeToPremium": "Upgrade to Premium"
+  "upgradeToPremium": "Upgrade to Premium",
+  "card": {
+    "title": "Add Bank Account",
+    "cardOwner": "Card Holder",
+    "cardNumber": "Card Number",
+    "cvv": "CVV",
+    "expiration": "Expiration"
+  }
 }

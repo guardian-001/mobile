@@ -146,3 +146,16 @@ export const instagramValidation = z
   .regex(/^https:\/\/(www\.)?instagram\.com\/[a-zA-Z0-9(\.\?)?]/, {
     message: 'invalidInstagramUrl',
   });
+
+export const cardNameValidation = z
+  .string()
+  .min(1, 'Cardholder name is required');
+export const cvvValidation = z
+  .string()
+  .regex(/^\d{3,4}$/, 'CVV must be 3 or 4 digits');
+export const cardNumberValidation = z
+  .string()
+  .regex(/^\d{16}$/, 'Card number must be 16 digits');
+export const expirationDateValidation = z
+  .string()
+  .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, 'Expiration date must be in MM/YY format');
