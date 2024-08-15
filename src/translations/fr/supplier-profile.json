@@ -19,5 +19,12 @@
   "paymentMethodOption": "Mode de versement",
   "transactionHistoryOption": "Historique de transactions",
   "invoices": "Factures",
-  "upgradeToPremium": "Passer au Premium !"
+  "upgradeToPremium": "Passer au Premium !",
+  "card": {
+    "title": "Ajouter compte bancaire",
+    "cardOwner": "Titulaire de la carte",
+    "cardNumber": "Numero de la carte",
+    "cvv": "CVV",
+    "expiration": "Expiration"
+  }
 }

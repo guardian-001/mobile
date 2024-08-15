@@ -19,5 +19,12 @@
   "paymentMethodOption": "طريقة الدفع",
   "transactionHistoryOption": "تاريخ المعاملات",
   "invoices": "فواتير",
-  "upgradeToPremium": "!ترقية إلى البريميوم"
+  "upgradeToPremium": "!ترقية إلى البريميوم",
+  "card": {
+    "title": "إضافة حساب مصرفي",
+    "cardOwner": "مالك البطاقة",
+    "cardNumber": "رقم البطاقة",
+    "cvv": "CVV",
+    "expiration": "تاريخ الانتهاء"
+  }
 }
