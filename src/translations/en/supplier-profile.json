@@ -18,5 +18,6 @@
   "bankCardOption": "Bank Card",
   "paymentMethodOption": "Payment Method",
   "transactionHistoryOption": "Transaction History",
-  "invoices": "Invoices"
+  "invoices": "Invoices",
+  "upgradeToPremium": "Upgrade to Premium"
 }
