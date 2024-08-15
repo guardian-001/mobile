@@ -15,5 +15,6 @@
   "bankCardOption": "Carte bancaire",
   "paymentMethodOption": "Mode de versement",
   "transactionHistoryOption": "Historique de transactions",
-  "invoices": "Factures"
+  "invoices": "Factures",
+  "upgradeToPremium": "Passer au Premium !"
 }
