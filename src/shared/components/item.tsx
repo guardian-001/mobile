@@ -10,6 +10,7 @@ type ItemProps = {
   onPress?: () => void;
   icon?: React.ReactNode;
   type?: 'Default' | 'basicInformation';
+  className?: string;
 };
 
 export const Item = ({
@@ -18,12 +19,13 @@ export const Item = ({
   icon,
   onPress,
   type = 'Default',
+  className,
 }: ItemProps) => {
   const isPressable = onPress !== undefined;
   return (
     <TouchableOpacity
       onPress={onPress}
-      className="h-fit flex-1 flex-row items-center justify-between px-4 py-2"
+      className={`${className} h-fit flex-1 flex-row items-center justify-between px-4 py-2`}
     >
       {type === 'basicInformation' ? (
         <>

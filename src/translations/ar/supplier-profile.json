@@ -13,5 +13,10 @@
   "updateSocilaLinksTitle": "ملفات أخرى",
   "updateSocialLinksDescription": ".أضف أو عدل روابط وسائل التواصل الاجتماعي الخاصة بك للتواصل مع الآخرين ومشاركة ملفاتك الشخصية",
   "presentationVideoButton": "أضف فيديو",
-  "descriptionVideoInfoSection": "إضافة فيديو تعريفي"
+  "descriptionVideoInfoSection": "إضافة فيديو تعريفي",
+  "paymentDetailsTitle": "تفاصيل الدفع",
+  "bankCardOption": "بطاقة بنكية",
+  "paymentMethodOption": "طريقة الدفع",
+  "transactionHistoryOption": "تاريخ المعاملات",
+  "invoices": "فواتير"
 }

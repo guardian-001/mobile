@@ -50,17 +50,17 @@ export default function SupplierProfile() {
           <Item
             text="profile.subscribe"
             icon={<ManageSubscription />}
-            onPress={() => {}}
+            onPress={() => navigateTo(`(profile)/subscription/`)}
           />
           <Item
             text="profile.Facturation"
             icon={<Billing />}
-            onPress={() => {}}
+            onPress={() => navigateTo(`(profile)/billing/`)}
           />
           <Item
             text="profile.payement"
             icon={<CardIcon />}
-            onPress={() => {}}
+            onPress={() => navigateTo(`(profile)/payment/`)}
           />
         </ItemsContainer>
         <ItemsContainer title="profile.assistance">

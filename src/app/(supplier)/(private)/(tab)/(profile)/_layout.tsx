@@ -18,10 +18,16 @@ export default function ProfileLayout() {
       <Stack.Screen name="bio-form" options={ScreenOptions({})} />
       <Stack.Screen name="presentation-video" options={ScreenOptions({})} />
       <Stack.Screen name="social-links" options={ScreenOptions({})} />
+      <Stack.Screen name="subscription" options={ScreenOptions({})} />
+      <Stack.Screen name="billing" options={ScreenOptions({})} />
+      <Stack.Screen name="payment" options={ScreenOptions({})} />
       <Stack.Screen
         name="update-password-supplier"
         options={ScreenOptions({})}
       />
+      <Stack.Screen name="bank-card" options={ScreenOptions({})} />
+      <Stack.Screen name="transaction" options={ScreenOptions({})} />
+      <Stack.Screen name="transfer" options={ScreenOptions({})} />
     </Stack>
   );
 }

@@ -13,5 +13,10 @@
   "updateSocilaLinksTitle": "Autres profil",
   "updateSocialLinksDescription": "Ajoutez ou modifiez vos liens de réseaux sociaux pour vous connecter avec d'autres et partager vos profils.",
   "presentationVideoButton": "Ajouter un vidéo",
-  "descriptionVideoInfoSection": "Ajouter une vidéo de présentation"
+  "descriptionVideoInfoSection": "Ajouter une vidéo de présentation",
+  "paymentDetailsTitle": "Payment Details",
+  "bankCardOption": "Carte bancaire",
+  "paymentMethodOption": "Mode de versement",
+  "transactionHistoryOption": "Historique de transactions",
+  "invoices": "Factures"
 }
