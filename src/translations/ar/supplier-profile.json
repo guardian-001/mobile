@@ -15,5 +15,6 @@
   "bankCardOption": "بطاقة بنكية",
   "paymentMethodOption": "طريقة الدفع",
   "transactionHistoryOption": "تاريخ المعاملات",
-  "invoices": "فواتير"
+  "invoices": "فواتير",
+  "upgradeToPremium": "!ترقية إلى البريميوم"
 }
