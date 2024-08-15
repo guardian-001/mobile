@@ -1,4 +1,10 @@
 {
   "headerTitle": "Gestion des projets",
-  "status": "Statut"
+  "status": "Statut",
+  "publishedOn": "Publié le",
+  "interestedArchitects": "Architectes intéressés par le projet",
+  "signalArchitectFound": "Veuillez signaler si vous avez trouvé un architecte",
+  "searchStatus": "Statuts de recherche",
+  "viewArchitects": "Voir les architectes",
+  "cancelProject": "Annuler le projet"
 }

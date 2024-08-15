@@ -1,4 +1,10 @@
 {
   "headerTitle": "إدارة المشاريع",
-  "status": "الحالة"
+  "status": "الحالة",
+  "publishedOn": "نُشر في",
+  "interestedArchitects": "المهندسون المعماريون المهتمون بالمشروع",
+  "signalArchitectFound": "يرجى الإبلاغ إذا وجدت مهندسًا معماريًا",
+  "searchStatus": "حالة البحث",
+  "viewArchitects": "عرض المهندسين المعماريين",
+  "cancelProject": "إلغاء المشروع"
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { HeaderTitle, ScrollView } from '@/shared/components';
 
-import { InvoiceCard } from './component/invoice-card';
+import { InvoiceCard } from './components/invoice-card';
 import { invoicesList } from './dump-data';
 
 export const HistoricalBilling = () => {

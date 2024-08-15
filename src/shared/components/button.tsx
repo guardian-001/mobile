@@ -17,6 +17,7 @@ interface Props extends Omit<TouchableOpacityProps, 'disabled'> {
   loading?: boolean;
   className?: string;
   alternativeBg?: string;
+  alternativeTextColor?: string;
   textClassName?: string;
   iconClassName?: string;
   leftIconClassName?: string;
@@ -33,6 +34,7 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
       loading = false,
       disabled = false,
       alternativeBg,
+      alternativeTextColor,
       type = 'button',
       className = '',
       testID,
@@ -94,7 +96,9 @@ export const Button = React.forwardRef<TouchableOpacity, Props>(
                     testID={testID ? `${testID}-label` : undefined}
                     className={clsx(
                       `font-lato text-base font-semibold ${textClassName}`,
-                      labelClassname
+                      alternativeTextColor
+                        ? alternativeTextColor
+                        : labelClassname
                     )}
                   >
                     {text}

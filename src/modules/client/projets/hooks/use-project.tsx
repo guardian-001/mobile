@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 
+import { useGetAnnouncementsApi } from '@/api/client';
 import { useCustomForm } from '@/core';
 import { getStatus } from '@/core/auth/utils';
 import { STATUS_OF_PROJECT } from '@/shared/constants';
@@ -26,10 +27,21 @@ export const useMyProjects = () => {
     label: status,
     value: status,
   }));
+
+  const {
+    data: projects,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useGetAnnouncementsApi();
   return {
     control,
     router,
     appStatus,
     statusOptions,
+    projects,
+    isError,
+    isLoading,
+    isSuccess,
   };
 };

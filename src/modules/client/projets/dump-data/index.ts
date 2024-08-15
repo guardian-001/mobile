@@ -39,3 +39,8 @@ export const ProjectData: sharedType[] = [
     SearchStatus: true,
   },
 ];
+export const ArchitectesImages = [
+  '@/assets/images/architecteImage.jpg',
+  '@/assets/images/architecteImage.jpg',
+  '@/assets/images/architecteImage.jpg',
+];

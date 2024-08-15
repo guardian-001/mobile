@@ -4,6 +4,7 @@ import { I18nManager, View } from 'react-native';
 
 import colors from '@/theme/colors';
 
+import { useRouteName } from '../hooks';
 import { type IconProps, Root, type RootProps } from './checkbox';
 import { Text } from './text';
 
@@ -24,8 +25,12 @@ const Label = ({ text, testID, className = '' }: LabelProps) => {
 export const SwitchIcon = ({ checked = false }: IconProps) => {
   const translateX = checked ? 4 : 24;
 
-  const backgroundColor = checked ? colors.primary[300] : colors.gray[600];
-
+  const space = useRouteName();
+  const backgroundColor = checked
+    ? space === 'architect' || space === 'supplier'
+      ? colors.architect
+      : colors.client
+    : colors.gray[600];
   return (
     <View className="w-14 justify-center">
       <View className="overflow-hidden rounded-full">
