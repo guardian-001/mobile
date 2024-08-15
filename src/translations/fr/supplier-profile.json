@@ -10,5 +10,10 @@
   "updateBioTitle": "Biographie",
   "updateBioDescription": "Aperçu des Services et Offres Approuvés par Votre Bureau d'Architecture.",
   "updateSocilaLinksTitle": "Autres profil",
-  "updateSocialLinksDescription": "Ajoutez ou modifiez vos liens de réseaux sociaux pour vous connecter avec d'autres et partager vos profils."
+  "updateSocialLinksDescription": "Ajoutez ou modifiez vos liens de réseaux sociaux pour vous connecter avec d'autres et partager vos profils.",
+  "paymentDetailsTitle": "Payment Details",
+  "bankCardOption": "Carte bancaire",
+  "paymentMethodOption": "Mode de versement",
+  "transactionHistoryOption": "Historique de transactions",
+  "invoices": "Factures"
 }

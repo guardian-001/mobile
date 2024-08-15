@@ -10,5 +10,10 @@
   "updateBioTitle": "السيرة الذاتية",
   "updateBioDescription": ".نظرة عامة على الخدمات والعروض المعتمدة من مكتب الهندسة المعمارية الخاص بك",
   "updateSocilaLinksTitle": "ملفات أخرى",
-  "updateSocialLinksDescription": ".أضف أو عدل روابط وسائل التواصل الاجتماعي الخاصة بك للتواصل مع الآخرين ومشاركة ملفاتك الشخصية"
+  "updateSocialLinksDescription": ".أضف أو عدل روابط وسائل التواصل الاجتماعي الخاصة بك للتواصل مع الآخرين ومشاركة ملفاتك الشخصية",
+  "paymentDetailsTitle": "تفاصيل الدفع",
+  "bankCardOption": "بطاقة بنكية",
+  "paymentMethodOption": "طريقة الدفع",
+  "transactionHistoryOption": "تاريخ المعاملات",
+  "invoices": "فواتير"
 }
