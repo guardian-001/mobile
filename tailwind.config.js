@@ -24,6 +24,8 @@ module.exports = {
         'main-project-blue': '#11ABEC',
         'color-shadow': '#919eab33',
         'light-blue': '#E5ECFF',
+        'light-blue-linear': '#F4FDFF',
+        'lighter-blue-linear': '#E5ECFF',
       },
     },
   },

@@ -18,6 +18,7 @@ import signupStepCreateProfile from './signup-step2.json';
 import signupStepDemoPlanning from './signup-step3.json';
 import signupStepDemoPlanningConfirmation from './signup-step4.json';
 import signupSupplier from './signup-supplier.json';
+import subscription from './subscription.json';
 import supplierProfile from './supplier-profile.json';
 import validations from './validations.json';
 
@@ -26,7 +27,7 @@ export default {
   projets,
   explore,
   signupSupplier,
-
+  subscription,
   architectProfile,
   announcement,
   notification,

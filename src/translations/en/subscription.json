@@ -1,0 +1,18 @@
+{
+  "basic": {
+    "basicTag": "basic",
+    "free": "free",
+    "descriptionOne": "Unlock a category to get started",
+    "descriptionTwo": "Post up to three products per category, perfect for beginners"
+  },
+  "premium": {
+    "basicTag": "premium",
+    "month": "/month",
+    "descriptionOne": "Feature your products for maximum visibility",
+    "descriptionTwo": "Easily share your profile with a personalized QR code",
+    "descriptionThree": "Showcase your achievements on ArchiMatch",
+    "descriptionFour": "Unlimited categories to organize your offerings without limits",
+    "descriptionFive": "Unlimited products per category for an endless catalog"
+  },
+  "subscribeBtn": "subscribe"
+}

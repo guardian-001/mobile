@@ -1,11 +1,10 @@
-import { useRouter } from 'expo-router';
 import React from 'react';
+import { ScrollView } from 'react-native';
 
-import { translate } from '@/core';
-import { Button, Image, Text, View } from '@/shared/components';
+import { BasicSubscription, PremiumSubscription } from '@/modules/shared';
+import { Image, Text, View } from '@/shared/components';
 
 export const SubscriptionManagement = () => {
-  const router = useRouter();
   return (
     <View className="flex-1">
       <Image
@@ -16,16 +15,13 @@ export const SubscriptionManagement = () => {
         tx="supplierProfile.upgradeToPremium"
         className="-mt-8 text-center text-3xl font-extrabold"
       />
-      <View className="flex-1 p-6 pb-8">
-        <View className="flex-1" />
-        <Button
-          label={translate('common.subscribe')}
-          onPress={() => {
-            router.back();
-          }}
-          className="h-12 rounded-lg"
-        />
-      </View>
+      <ScrollView
+        className="mb-11 flex flex-1 gap-2 p-6 pb-8"
+        contentContainerClassName="justify-center"
+      >
+        <BasicSubscription />
+        <PremiumSubscription />
+      </ScrollView>
     </View>
   );
 };
