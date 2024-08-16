@@ -1,0 +1,18 @@
+{
+  "basic": {
+    "basicTag": "أساسي",
+    "free": "مجاني",
+    "descriptionOne": "افتح فئة للبدء",
+    "descriptionTwo": "انشر ما يصل إلى ثلاثة منتجات لكل فئة، مثالي للمبتدئين"
+  },
+  "premium": {
+    "basicTag": "بريميوم",
+    "month": "/شهر",
+    "descriptionOne": "عرض منتجاتك لأقصى قدر من الرؤية",
+    "descriptionTwo": "مشاركة ملفك الشخصي بسهولة باستخدام رمز QR مخصص",
+    "descriptionThree": "عرض إنجازاتك على ArchiMatch",
+    "descriptionFour": "فئات غير محدودة لتنظيم عروضك دون قيود",
+    "descriptionFive": "منتجات غير محدودة لكل فئة، من أجل كتالوج لا نهاية له"
+  },
+  "subscribeBtn": "اشترك"
+}

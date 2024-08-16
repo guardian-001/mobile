@@ -1,0 +1,18 @@
+{
+  "basic": {
+    "basicTag": "basique",
+    "free": "gratuit",
+    "descriptionOne": "Débloquez une catégorie pour commencer",
+    "descriptionTwo": "Publiez jusqu'à trois produits par catégorie, parfait pour débuter"
+  },
+  "premium": {
+    "basicTag": "premium",
+    "month": "/mois",
+    "descriptionOne": "Mise en vedette de vos produits pour une visibilité maximale",
+    "descriptionTwo": "Partage simplifié de votre profil avec un QR code personnalisé",
+    "descriptionThree": "Exposition de vos réalisations sur ArchiMatch",
+    "descriptionFour": "Catégories illimitées pour organiser votre offre sans limites",
+    "descriptionFive": "Produits illimités par catégorie, pour un catalogue sans fin"
+  },
+  "subscribeBtn": "s'abonner"
+}
