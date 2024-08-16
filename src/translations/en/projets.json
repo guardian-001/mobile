@@ -1,4 +1,10 @@
 {
   "headerTitle": "Project Management",
-  "status": "Status"
+  "status": "Status",
+  "publishedOn": "Published on",
+  "interestedArchitects": "Architects interested in the project",
+  "signalArchitectFound": "Please report if you found an architect",
+  "searchStatus": "Search status",
+  "viewArchitects": "View architects",
+  "cancelProject": "Cancel the project"
 }

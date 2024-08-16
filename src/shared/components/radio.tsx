@@ -3,6 +3,7 @@ import React from 'react';
 
 import colors from '@/theme/colors';
 
+import { useRouteName } from '../hooks';
 import { type IconProps, Root, type RootProps, Text } from './';
 type LabelProps = {
   text: string;
@@ -19,7 +20,13 @@ const Label = ({ text, testID, className = '' }: LabelProps) => {
 };
 
 export const RadioIcon = ({ checked = false }: IconProps) => {
-  const color = checked ? colors.primary[300] : colors.gray[600];
+  const space = useRouteName();
+  const color = checked
+    ? space === 'architect' || space === 'supplier'
+      ? colors.architect
+      : colors.client
+    : colors.gray[600];
+
   return (
     <MotiView
       style={{

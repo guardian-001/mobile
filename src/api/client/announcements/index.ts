@@ -2,6 +2,7 @@ export * from './use-additional-info';
 export * from './use-announcement-step7-data ';
 export * from './use-categories';
 export * from './use-execution-details';
+export * from './use-get-announcements';
 export * from './use-needs';
 export * from './use-preferred-style';
 export * from './use-property-types';

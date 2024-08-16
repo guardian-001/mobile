@@ -1,4 +1,6 @@
+import type { User } from '@/api/auth';
 import type { TagType } from '@/types';
+import type { Image } from '@/types/announcement';
 
 export type resultType = {
   id: number;
@@ -48,3 +50,38 @@ export type ProjectExtensionsResponse = {
   data: PropertyFeature[];
   eliminateStep: boolean;
 };
+
+export type PieceRenovateDetail = {
+  pieceRenovate: resultType;
+  number: number;
+};
+export type Project = {
+  address: string;
+  adminNote: string | null;
+  architectSpeciality: resultType;
+  architecturalStyle: resultType;
+  budget: string;
+  city: string;
+  client: {
+    id: number;
+    isVerified: boolean;
+    user: User;
+  };
+  createdAt: string;
+  description: string;
+  id: number;
+  needs: Response;
+  notes: any[];
+  numberFloors: number;
+  piecesRenovate: PieceRenovateDetail[];
+  projectCategory: resultType;
+  projectExtensions: Response;
+  projectImages: Image[];
+  propertyType: resultType;
+  status: string;
+  terrainSurface: string;
+  workSurface: string;
+  workType: workType;
+};
+
+export type ProjectList = Project[];

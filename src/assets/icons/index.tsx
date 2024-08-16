@@ -1,6 +1,7 @@
 export * from './arrow-left';
 export * from './arrow-right';
 export * from './caret-down';
+export * from './cash';
 export * from './close';
 export * from './construction-helmet';
 export * from './cube';
@@ -15,7 +16,9 @@ export * from './home';
 export * from './inspiration';
 export * from './instagram';
 export * from './language';
+export * from './location';
 export * from './logout';
+export * from './map';
 export * from './minus';
 export * from './notification';
 export * from './plus';

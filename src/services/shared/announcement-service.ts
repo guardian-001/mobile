@@ -4,10 +4,12 @@ import { client } from '@/api';
 import type {
   ArchitecturalStyleResponse,
   ProjectExtensionsResponse,
+  ProjectList,
   PropertyResponse,
   Response,
   ResponseWorkType,
 } from '@/api/client/announcements/types';
+import { showErrorMessage } from '@/shared/components';
 import type { TagType } from '@/types';
 import type { AnnouncementType } from '@/types/announcement';
 
@@ -300,3 +302,14 @@ export const sendAnnouncementImagesDataAsync = async (
     }
   }
 };
+
+export async function getAnnouncements(): Promise<ProjectList> {
+  const url = `/api/announcement/client-announcement`;
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      showErrorMessage(error.response.data.errors[0].detail);
+      throw error.response?.data || error.message;
+    });
+}
