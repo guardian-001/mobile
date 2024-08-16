@@ -9,7 +9,6 @@ const useFormattedDate = (dateString: string): string => {
       year: 'numeric',
     };
 
-    // Format the date using French locale
     return new Intl.DateTimeFormat('fr-FR', options).format(date);
   }, [dateString]);
 
