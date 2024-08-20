@@ -28,7 +28,7 @@ export default function StepperPercentageBar() {
           <Text className="mb-2 font-bold">
             {percentage} {'%'}
           </Text>
-          <View className="h-2 w-full rounded-2xl bg-white shadow-md shadow-color-shadow">
+          <View className="h-2 w-full rounded-2xl bg-background shadow-md shadow-color-shadow">
             <View
               className="rounded-2xl bg-primary"
               style={{ width: `${percentage ? percentage : 0}%` }}

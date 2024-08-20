@@ -1,20 +1,18 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 
-import { Cube, Filter, Notification, User } from '@/assets/icons';
+import { Cube, Filter } from '@/assets/icons';
 import { translate } from '@/core';
 import {
   Button,
-  colors,
   ControlledSelect,
   EmptyList,
   ErrorData,
-  GradientBackground,
   ScrollView,
   Text,
   View,
 } from '@/shared/components';
 
+import { Layout } from '../components/layout';
 import { ProjectCard } from './components/project-card';
 import { ArchitectesImages } from './dump-data';
 import { useMyProjects } from './hooks/use-project';
@@ -42,29 +40,12 @@ export default function MyProjects() {
         />
       ) : (
         <View className="flex-1">
-          <GradientBackground
-            colors={[colors.white, colors['extra-light-blue']]}
-            style={styles.gradientBachgroud}
-          >
-            <View className="flex flex-row justify-between">
-              <Button
-                icon={<User color="white" />}
-                onPress={() => {
-                  router.push(`/(client)/(profile)/profile`);
-                }}
-                className="my-8 h-12 w-12 rounded-lg"
-              />
-              <Button
-                icon={<Notification />}
-                onPress={() => {}}
-                className="my-8 h-12 w-12 rounded-lg bg-white"
-              />
-            </View>
+          <Layout>
             <Text
-              className="mt-4 text-base font-bold"
+              className="m-4 text-base font-bold"
               tx="projets.headerTitle"
             />
-          </GradientBackground>
+          </Layout>
           <View className="flex flex-row px-4">
             <View className="mr-4 flex h-12 w-12 items-center justify-center rounded-lg bg-light-blue">
               <Filter />
@@ -109,6 +90,3 @@ export default function MyProjects() {
     </View>
   );
 }
-const styles = StyleSheet.create({
-  gradientBachgroud: { padding: 16 },
-});
