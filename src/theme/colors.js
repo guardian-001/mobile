@@ -98,6 +98,7 @@ module.exports = {
   'light-blue-linear': '#F4FDFF',
   'lighter-blue-linear': '#E5ECFF',
   'ice-Blue': '#F0FBFF',
+  'Pale-Sky-Blue': '#CEF0FF',
   description: '#888FA7',
   green: '#00B031',
   error: '#ff0000',
