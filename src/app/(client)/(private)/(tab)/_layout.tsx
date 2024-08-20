@@ -30,6 +30,7 @@ export default function TabLayout() {
           title: 'Inspiration',
           tabBarIcon: ({ color }) => <Inspiration color={color} />,
           tabBarTestID: 'inspiration-tab',
+          headerShown: false,
         }}
       />
       <Tabs.Screen
