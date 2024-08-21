@@ -63,6 +63,7 @@ export default function TabLayout() {
           title: 'Fournisseur',
           tabBarIcon: ({ color }) => <Fournisseur color={color} />,
           tabBarTestID: 'fournisseur-tab',
+          headerShown: false,
         }}
       />
     </Tabs>
