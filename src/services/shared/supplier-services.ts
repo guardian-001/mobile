@@ -13,6 +13,7 @@ import type {
   BioFormType,
   CompanyInformationFormType,
 } from '@/modules/supplier/profile/type';
+import { showErrorMessage } from '@/shared/components';
 
 export async function getSupplierProfile(): Promise<SupplierProfileInfoType> {
   const url = 'api/users/supplier/get-profile/';
@@ -120,16 +121,7 @@ export async function getAllSuppliers(): Promise<SupplierProfileInfoListType> {
     .get(url)
     .then((response) => response.data)
     .catch((error) => {
-      if (isAxiosError(error)) {
-        throw new Error(
-          `API request failed with status ${error.response?.status}`
-        );
-      } else {
-        throw new Error(
-          `API request failed: ${
-            error instanceof Error ? error.message : 'Unknown error'
-          }`
-        );
-      }
+      showErrorMessage(error.response.data.errors[0].detail);
+      throw error.response?.data || error.message;
     });
 }
