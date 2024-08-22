@@ -41,7 +41,7 @@ export function ChoosePropertyType() {
         />
       </GradientBackground>
       {isError && <ErrorData message="Error Loading Data" />}
-      <View className="flex flex-1 justify-between p-4">
+      <View className="flex flex-1 justify-between p-4 pb-8">
         <View className="flex-1">
           {(isLoading || PropertyData?.length === 0) && (
             <EmptyList isLoading={isLoading} />

@@ -42,20 +42,20 @@ export function ChooseCategory() {
         />
       </GradientBackground>
       {isError && <ErrorData message="Error Loading Data" />}
-      <View className="-mt-8 flex flex-1 justify-between p-4 pt-0">
+      <View className="-mt-8 flex flex-1 justify-between px-4 pb-8 ">
         {(isLoading || CategoryData?.length === 0) && (
           <EmptyList isLoading={isLoading} />
         )}
         {isSuccess && (
           <ScrollView
             showsVerticalScrollIndicator={false}
-            contentContainerClassName="min-h-[85%] flex  flex-wrap flex-row items-center  justify-center gap-4"
+            contentContainerClassName="min-h-[80%] flex flex-wrap flex-row items-center justify-center gap-4"
           >
             {CategoryData?.map((Category: resultType) => (
               <ToggleCard
                 key={Category.id}
                 className="h-full w-full rounded-lg bg-white"
-                containerClassName="min-h-[26%] min-w-[32%] max-w-[44%] max-h-[36%] rounded-lg"
+                containerClassName="min-h-[26%] min-w-[32%] max-w-[44%] max-h-[36%] rounded-lg shadow-md shadow-color-shadow"
                 title={Category.label}
                 image={Category.icon}
                 name="projectCategory"
