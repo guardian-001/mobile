@@ -5,11 +5,15 @@ import { client } from '@/api';
 import type { SpecialityTypeResponse } from '@/api/auth';
 import type { ProfileSocialLinksFormData } from '@/api/profileSettings/type';
 import type { FirstConnectionRequest } from '@/api/supplier/createAccount/types';
-import type { SupplierProfileInfoType } from '@/api/supplier/profile/types';
+import type {
+  SupplierProfileInfoListType,
+  SupplierProfileInfoType,
+} from '@/api/supplier/profile/types';
 import type {
   BioFormType,
   CompanyInformationFormType,
 } from '@/modules/supplier/profile/type';
+import { showErrorMessage } from '@/shared/components';
 
 export async function getSupplierProfile(): Promise<SupplierProfileInfoType> {
   const url = 'api/users/supplier/get-profile/';
@@ -109,4 +113,15 @@ export async function updateSocialLinkAsync(
 ): Promise<AxiosResponse> {
   const url = `api/users/supplier/update-links/`;
   return client.put(url, formData);
+}
+
+export async function getAllSuppliers(): Promise<SupplierProfileInfoListType> {
+  const url = '/api/users/supplier/get-all-suppliers/';
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      showErrorMessage(error.response.data.errors[0].detail);
+      throw error.response?.data || error.message;
+    });
 }

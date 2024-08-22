@@ -3,7 +3,6 @@ import { View } from 'react-native';
 
 import { ArrowRightLong } from '@/assets/icons/long-arrow-right';
 
-import useImageUrl from '../hooks/use-image-url';
 import { Button } from './button';
 import { Image } from './image';
 import { Text } from './text';
@@ -22,8 +21,6 @@ export const Card = ({
   classNameText,
   ...props
 }: CardProps) => {
-  const imageIconUrl = useImageUrl(imageIcon);
-
   return (
     <View className={`${className} h-52 w-60 gap-2`} {...props}>
       <Image
@@ -35,7 +32,7 @@ export const Card = ({
           {imageIcon && (
             <Image
               className="h-4/6 w-1/6 overflow-hidden"
-              source={{ uri: imageIconUrl }}
+              source={{ uri: imageIcon }}
               contentFit="contain"
             />
           )}

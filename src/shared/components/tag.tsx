@@ -8,7 +8,6 @@ import type {
 import { useController } from 'react-hook-form';
 import { Text, TouchableOpacity } from 'react-native';
 
-import useImageUrl from '../hooks/use-image-url';
 import { Image } from './image';
 interface TagProps<T extends FieldValues> {
   label: string;
@@ -50,8 +49,6 @@ export const Tag = <T extends FieldValues>({
   };
   const isSelected = multi ? field.value.includes(id) : field.value === label;
 
-  const imageIconUrl = useImageUrl(imageIcon);
-
   return (
     <TouchableOpacity
       onPress={multi ? handleChangeMulti : handlePress}
@@ -61,7 +58,7 @@ export const Tag = <T extends FieldValues>({
       {imageIcon && (
         <Image
           className="mr-2 h-full w-10 overflow-hidden"
-          source={{ uri: imageIconUrl }}
+          source={{ uri: imageIcon }}
           contentFit="contain"
         />
       )}

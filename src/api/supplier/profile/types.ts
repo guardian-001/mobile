@@ -15,23 +15,6 @@ export type supplierSocialMedia = {
   instagram: string;
   website: string;
 };
-export type SupplierRequest = {
-  id: number;
-  user: User;
-  socialLinks: supplierSocialMedia;
-  specialityType: SpecialityType;
-  createdAt: string;
-  updatedAt: string;
-  profileImage: string;
-  coverImage: string;
-  isPublic: boolean;
-  companyAddress: string;
-  companySpeciality: string;
-  bio: string;
-  companyName: string;
-  presentationVideo: string;
-  appearance: string;
-};
 
 export type SupplierProfileInfoType = {
   id: number;
@@ -50,3 +33,4 @@ export type SupplierProfileInfoType = {
   presentationVideo: string;
   appearance: string;
 };
+export type SupplierProfileInfoListType = SupplierProfileInfoType[];

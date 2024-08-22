@@ -12,6 +12,7 @@ import profile from './profile.json';
 import projets from './projets.json';
 import realisation from './realisation-architect.json';
 import resetpass from './resetpass.json';
+import searchSupplier from './search-supplier.json';
 import settings from './settings.json';
 import signup from './signup.json';
 import signupStepSpeciality from './signup-step1.json';
@@ -24,6 +25,7 @@ import supplierProfile from './supplier-profile.json';
 import validations from './validations.json';
 
 export default {
+  searchSupplier,
   inspiration,
   supplierProfile,
   signupSupplier,

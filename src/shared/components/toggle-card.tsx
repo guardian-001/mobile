@@ -7,7 +7,6 @@ import {
   useController,
 } from 'react-hook-form';
 
-import useImageUrl from '../hooks/use-image-url';
 import { Checkbox, Image, Pressable, Text, View } from './';
 
 type CardProps<T extends FieldValues> = {
@@ -49,9 +48,6 @@ export const ToggleCard = <T extends FieldValues>({
     field.onChange(value);
   };
 
-  const imageIconUrl = useImageUrl(imageIcon);
-  const imageUrl = useImageUrl(image);
-
   const handleChangeMulti = () => {
     if (field.value.includes(value)) {
       field.onChange(field.value.filter((item: number) => item !== value));
@@ -89,14 +85,14 @@ export const ToggleCard = <T extends FieldValues>({
         {image && (
           <Image
             className="flex-2 mt-2 h-3/5 w-2/5 overflow-hidden"
-            source={{ uri: imageUrl }}
+            source={{ uri: image }}
             contentFit="contain"
           />
         )}
         {imageIcon && (
           <Image
             className="mr-5 h-full w-1/12   overflow-hidden"
-            source={{ uri: imageIconUrl }}
+            source={{ uri: imageIcon }}
             contentFit="contain"
           />
         )}
