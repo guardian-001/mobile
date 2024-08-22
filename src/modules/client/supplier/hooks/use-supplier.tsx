@@ -14,9 +14,7 @@ import {
   CategoryData,
   PropertyData,
 } from '../../create-announcement/dump-data';
-import { specialityTypeSchema } from '../schema/speciality-schema';
-import { cityTypeSchema } from '../schema/speciality-schema copy';
-
+import { citySchema, specialityTypeSchema } from '../schema';
 export const useSupplier = () => {
   const {
     data,
@@ -51,7 +49,7 @@ export const useSupplier = () => {
       label: city.displayName,
       value: city.value,
     })) || [];
-  const { control: controlCity } = useCustomForm(cityTypeSchema, {
+  const { control: controlCity } = useCustomForm(citySchema, {
     city: cityOptions[0]?.label,
   });
 
