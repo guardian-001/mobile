@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import type {
   ListRenderItemInfo,
   NativeScrollEvent,
@@ -8,14 +8,17 @@ import type {
 
 import { Image, WIDTH } from '@/shared/components';
 
-import { projectList } from '../dump-data';
-import type { ProjectItemProps } from '../types';
+import type { ProjectItemProps } from '../../types';
 
 export const useProjectItem = ({ item }: ProjectItemProps) => {
-  const snapToOffsets = projectList.map((_, index) => index * WIDTH);
+  const snapToOffsets = item?.projectImages.map((_, index) => index * WIDTH);
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<string>) => (
-      <Image source={{ uri: item }} className="h-screen w-screen" />
+      <Image
+        source={{ uri: item }}
+        className="h-96"
+        style={{ width: WIDTH - 16 }}
+      />
     ),
     []
   );
@@ -28,8 +31,8 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
   };
 
   const router = useRouter();
-  const navigateToProfile = () => {
-    router.push('(client)/(private)/(architect-profile)/profile');
+  const navigateToProjectDetails = () => {
+    router.push('(client)/(private)/(architect-profile)/project');
   };
   return {
     snapToOffsets,
@@ -37,6 +40,6 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
     handleScroll,
     currentIndex,
     totalImages,
-    navigateToProfile,
+    navigateToProjectDetails,
   };
 };

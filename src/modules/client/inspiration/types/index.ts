@@ -1,3 +1,5 @@
+import type { TxKeyPath } from '@/core';
+
 export type InspirationRequestType = {
   projectCategory: number;
   propertyType: number[];
@@ -28,3 +30,14 @@ type Project = {
   projectImages: string[];
 };
 export type ProjectItemProps = { item?: Project };
+
+export type Tab = {
+  id: string;
+  label: TxKeyPath;
+  icon: React.ComponentType<{ color: string }>;
+};
+export type details = {
+  title: TxKeyPath;
+  value: string;
+  icon: React.ComponentType;
+};
