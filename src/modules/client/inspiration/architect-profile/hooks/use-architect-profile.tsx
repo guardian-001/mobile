@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { Avis, Card, GalerieIcon } from '@/assets/icons';
 

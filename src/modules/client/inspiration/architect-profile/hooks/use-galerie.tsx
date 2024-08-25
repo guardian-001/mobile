@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import type { ProjectItemProps } from '../../types';
 import { ProjectItem } from '../components/project-item';
