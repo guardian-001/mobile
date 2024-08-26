@@ -1,5 +1,6 @@
 import announcement from './announcement.json';
 import architectProfile from './architect-profile.json';
+import collection from './collection.json';
 import common from './common.json';
 import createYourPass from './createPass.json';
 import explore from './explore.json';
@@ -23,6 +24,7 @@ import supplierProfile from './supplier-profile.json';
 import validations from './validations.json';
 
 export default {
+  collection,
   inspiration,
   supplierProfile,
   signupSupplier,

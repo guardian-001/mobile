@@ -1,13 +1,27 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { FocusAwareStatusBar, View } from '@/shared/components';
+import { CollectionManagement } from '@/modules/supplier/collections/collections';
+import {
+  colors,
+  FocusAwareStatusBar,
+  GradientBackground,
+} from '@/shared/components';
 
-export default function Inspiration() {
+export default function Collection() {
   return (
-    <View className="h-full w-full flex-1 items-center justify-center">
+    <GradientBackground
+      start={{ x: 1, y: 0 }}
+      end={{ x: 0, y: 0 }}
+      style={styles.gradientBachgroud}
+      colors={[colors['ice-Blue'], colors['light-blue']]}
+    >
       <FocusAwareStatusBar />
-      <Text>Collection</Text>
-    </View>
+      <CollectionManagement />
+    </GradientBackground>
   );
 }
+
+const styles = StyleSheet.create({
+  gradientBachgroud: { flex: 1, alignItems: 'center' },
+});
