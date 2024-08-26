@@ -1,5 +1,6 @@
 import announcement from './announcement.json';
 import architectProfile from './architect-profile.json';
+import catalogue from './catalogue.json';
 import common from './common.json';
 import createYourPass from './createPass.json';
 import explore from './explore.json';
@@ -27,6 +28,7 @@ export default {
   projets,
   subscription,
   explore,
+  catalogue,
   architectProfile,
   createYourPass,
   loginSupplier,

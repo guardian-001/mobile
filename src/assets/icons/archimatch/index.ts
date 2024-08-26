@@ -9,6 +9,7 @@ export * from './company-info';
 export * from './complete-logo';
 export * from './complete-logo-client';
 export * from './error/error-img';
+export * from './eye';
 export * from './house-model';
 export * from './img-uploader/img-uploader';
 export * from './interior-house-model';
