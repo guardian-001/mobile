@@ -1,18 +1,17 @@
-import { useCallback, useState } from 'react';
-import type {
-  ListRenderItemInfo,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-} from 'react-native';
+import React, { useCallback } from 'react';
+import type { ListRenderItemInfo } from 'react-native';
 
 import { Category, Location, StyleIcon, SuperficieIcon } from '@/assets/icons';
+import { useImageSlider } from '@/core';
 import { Image, WIDTH } from '@/shared/components';
 
 import { projectList } from '../../dump-data';
 import type { details, ProjectItemProps } from '../../types';
 
 export const useProjectDetails = ({ item }: ProjectItemProps) => {
-  const snapToOffsets = item?.projectImages.map((_, index) => index * WIDTH);
+  const { handleScroll, currentIndex, snapToOffsets, totalImages } =
+    useImageSlider(item?.projectImages);
+
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<string>) => (
       <Image
@@ -23,14 +22,6 @@ export const useProjectDetails = ({ item }: ProjectItemProps) => {
     ),
     []
   );
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const totalImages = item?.projectImages?.length ?? 0;
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const offsetX = event.nativeEvent.contentOffset.x;
-    const index = Math.round(offsetX / WIDTH);
-    setCurrentIndex(index);
-  };
-
   const details: details[] = [
     {
       icon: Category,
