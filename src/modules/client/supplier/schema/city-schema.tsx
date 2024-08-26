@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
 import { fieldValidation } from '@/shared/validations';
-export const cityTypeSchema = z.object({
+export const citySchema = z.object({
   city: fieldValidation,
 });

@@ -3,6 +3,7 @@ export * from './use-custom-form';
 export * from './use-formatted-date';
 export * from './use-get-password-requirement';
 export * from './use-get-route';
+export * from './use-image-slider';
 export * from './use-image-url';
 export * from './use-is-first-time';
 export * from './use-pagination';

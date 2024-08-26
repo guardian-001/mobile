@@ -1,3 +1,5 @@
+import { Dimensions } from 'react-native';
+
 import { MONTHS } from '../constants';
 
 export function capitalizeFirstLetter(string: string): string {
@@ -38,3 +40,6 @@ export function add30Minutes(time: string) {
   const newMinutes = String(date.getMinutes()).padStart(2, '0');
   return `${newHours}:${newMinutes}`;
 }
+
+export const WIDTH = Dimensions.get('window').width;
+export const HEIGHT = Dimensions.get('window').height;

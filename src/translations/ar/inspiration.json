@@ -1,10 +1,18 @@
 {
-  "headerTitle": "إلهام",
+  "headerTitle": "الإلهام",
   "chooseInspiration": "اختر ما يلهمك",
   "swipeUpTitle": "اسحب للأعلى",
   "swipeUpSubtitle": "استمتع باقتراحات المشاريع التي تناسبك",
   "swipeRightTitle": "اسحب لليمين",
   "swipeRightSubtitle": "تصفح صور هذا المشروع",
   "startWatching": "ابدأ المشاهدة",
-  "launchYourProject": "أطلق مشروعك"
+  "launchYourProject": "أطلق مشروعك",
+  "aboutUs": "معلومات عنا",
+  "services": "الخدمات",
+  "approvedServicesRequired": "الخدمات المعتمدة المطلوبة للمشروع",
+  "about": "حول",
+  "gallery": "معرض",
+  "reviews": "المراجعات",
+  "projectDetails": "تفاصيل المشروع",
+  "submitYourProject": "قدّم مشروعك"
 }

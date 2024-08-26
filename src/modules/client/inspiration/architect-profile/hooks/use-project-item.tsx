@@ -3,9 +3,9 @@ import React, { useCallback } from 'react';
 import type { ListRenderItemInfo } from 'react-native';
 
 import { useImageSlider } from '@/core';
-import { Image } from '@/shared/components';
+import { Image, WIDTH } from '@/shared/components';
 
-import type { ProjectItemProps } from '../types';
+import type { ProjectItemProps } from '../../types';
 
 export const useProjectItem = ({ item }: ProjectItemProps) => {
   const { handleScroll, currentIndex, snapToOffsets, totalImages } =
@@ -13,14 +13,18 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<string>) => (
-      <Image source={{ uri: item }} className="h-screen w-screen" />
+      <Image
+        source={{ uri: item }}
+        className="h-96"
+        style={{ width: WIDTH - 16 }}
+      />
     ),
     []
   );
 
   const router = useRouter();
-  const navigateToProfile = () => {
-    router.push('(client)/(private)/(architect-profile)/profile');
+  const navigateToProjectDetails = () => {
+    router.push('(client)/(private)/(architect-profile)/project');
   };
   return {
     snapToOffsets,
@@ -28,6 +32,6 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
     handleScroll,
     currentIndex,
     totalImages,
-    navigateToProfile,
+    navigateToProjectDetails,
   };
 };

@@ -4,7 +4,15 @@
   "swipeUpTitle": "Swipe up",
   "swipeUpSubtitle": "Enjoy project suggestions that suit you",
   "swipeRightTitle": "Swipe right",
-  "swipeRightSubtitle": "Browse through images of this project",
+  "swipeRightSubtitle": "Browse the images of this project",
   "startWatching": "Start watching",
-  "launchYourProject": "Launch your project"
+  "launchYourProject": "Launch your project",
+  "aboutUs": "About us",
+  "services": "Services",
+  "approvedServicesRequired": "Approved services required for the project",
+  "about": "About",
+  "gallery": "Gallery",
+  "reviews": "Reviews",
+  "projectDetails": "Project details",
+  "submitYourProject": "Submit your project"
 }

@@ -1,10 +1,18 @@
 {
   "headerTitle": "Inspiration",
   "chooseInspiration": "Choisissez ce qui vous inspire",
-  "swipeUpTitle": "Swipe up",
+  "swipeUpTitle": "Balayez vers le haut",
   "swipeUpSubtitle": "Profitez de suggestions de projets qui vous ressemblent",
-  "swipeRightTitle": "Swipe right",
+  "swipeRightTitle": "Balayez vers la droite",
   "swipeRightSubtitle": "Parcourez les images de ce projet",
   "startWatching": "Commencez à regarder",
-  "launchYourProject": "Lancez votre projet"
+  "launchYourProject": "Lancez votre projet",
+  "aboutUs": "À propos de nous",
+  "services": "Les services",
+  "approvedServicesRequired": "Services approuvés requis pour le projet",
+  "about": "À Propos",
+  "gallery": "Galerie",
+  "reviews": "Avis",
+  "projectDetails": "Détails projet",
+  "submitYourProject": "Postuler votre projet"
 }
