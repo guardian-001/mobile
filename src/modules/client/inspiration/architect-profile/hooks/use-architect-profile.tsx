@@ -17,11 +17,11 @@ export const useArchitectProfile = () => {
   ];
   const renderContent = () => {
     switch (activeTab) {
-      case 'a-propos':
+      case tabs[0].id:
         return <About />;
-      case 'gallerie':
+      case tabs[1].id:
         return <Galerie />;
-      case 'avis':
+      case tabs[2].id:
         return <Reviews reviews={architect.reviews} />;
       default:
         return null;
