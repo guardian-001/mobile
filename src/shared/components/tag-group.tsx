@@ -18,7 +18,7 @@ interface TagGroupProps<T extends FieldValues> {
   control: Control<T>;
   tags: TagType[];
   rules?: RegisterOptions;
-  label: TxKeyPath;
+  label?: TxKeyPath;
   error?: TxKeyPath;
   multi?: boolean;
   required?: boolean;

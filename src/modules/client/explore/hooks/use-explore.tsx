@@ -1,25 +1,9 @@
-import { useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
-
 import { useCategoriesApi, usePropertyTypesApi } from '@/api/client';
 import { useCustomForm } from '@/core';
-import { getStatus } from '@/core/auth/utils';
 
 import { ProjectCategorySchema } from '../schema/project-category-schema';
 
 export const useExplore = () => {
-  const router = useRouter();
-  const [appStatus, setAppStatus] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchStatus = async () => {
-      const status = await getStatus();
-      setAppStatus(status?.toString() || null);
-    };
-
-    fetchStatus();
-  }, []);
-
   const {
     data: CategoryData,
     isError: isErrorCategory,
@@ -43,8 +27,6 @@ export const useExplore = () => {
     variables: { projectCategory: selectedCategoryId },
   });
   return {
-    router,
-    appStatus,
     CategoryData,
     isErrorCategory,
     isLoadingCategory,

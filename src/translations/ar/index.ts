@@ -4,6 +4,7 @@ import catalogue from './catalogue.json';
 import common from './common.json';
 import createYourPass from './createPass.json';
 import explore from './explore.json';
+import inspiration from './inspiration.json';
 import labels from './labels.json';
 import loginSupplier from './loginSupplier.json';
 import notification from './notification.json';
@@ -23,6 +24,7 @@ import supplierProfile from './supplier-profile.json';
 import validations from './validations.json';
 
 export default {
+  inspiration,
   supplierProfile,
   signupSupplier,
   projets,

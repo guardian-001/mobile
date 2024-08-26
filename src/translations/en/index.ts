@@ -3,6 +3,7 @@ import architectProfile from './architect-profile.json';
 import catalogue from './catalogue.json';
 import common from './common.json';
 import explore from './explore.json';
+import inspiration from './inspiration.json';
 import labels from './labels.json';
 import login from './login.json';
 import loginSupplier from './loginSupplier.json';
@@ -12,6 +13,7 @@ import profile from './profile.json';
 import projets from './projets.json';
 import realisation from './realisation-architect.json';
 import resetpass from './resetpass.json';
+import searchSupplier from './search-supplier.json';
 import settings from './settings.json';
 import signup from './signup.json';
 import signupStepSpeciality from './signup-step1.json';
@@ -24,6 +26,8 @@ import supplierProfile from './supplier-profile.json';
 import validations from './validations.json';
 
 export default {
+  searchSupplier,
+  inspiration,
   supplierProfile,
   signupSupplier,
   projets,
