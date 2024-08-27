@@ -21,5 +21,6 @@ export * from './profile';
 export * from './share';
 export * from './sociaux';
 export * from './three-dots';
+export * from './trash';
 export * from './video';
 export * from './video-upload';

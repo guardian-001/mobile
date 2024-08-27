@@ -1,7 +1,9 @@
 import React from 'react';
+import { View } from 'react-native';
 
 import type { TxKeyPath } from '@/core';
-import { Text, View } from '@/shared/components';
+
+import { Text } from './text';
 
 type Props = {
   children: React.ReactNode;

@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { CollectionManagement } from '@/modules/supplier/collections/collections';
+import { EditCollection } from '@/modules/supplier/collections/edit-collection';
 import {
   colors,
   FocusAwareStatusBar,
   GradientBackground,
 } from '@/shared/components';
 
-export default function Collection() {
+export default function CompleteAccount() {
   return (
     <GradientBackground
       start={{ x: 1, y: 0 }}
@@ -17,11 +17,10 @@ export default function Collection() {
       colors={[colors['ice-Blue'], colors['light-blue']]}
     >
       <FocusAwareStatusBar />
-      <CollectionManagement />
+      <EditCollection />
     </GradientBackground>
   );
 }
-
 const styles = StyleSheet.create({
-  gradientBachgroud: { flex: 1, alignItems: 'center' },
+  gradientBachgroud: { flex: 1 },
 });

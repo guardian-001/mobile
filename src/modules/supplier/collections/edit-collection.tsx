@@ -1,10 +1,9 @@
 import React from 'react';
 import { Platform } from 'react-native';
 
-import { Filter, Plus } from '@/assets/icons';
+import { Filter } from '@/assets/icons';
 import {
   Button,
-  colors,
   Image,
   KeyboardAvoidingView,
   ScrollView,
@@ -13,30 +12,24 @@ import {
   View,
 } from '@/shared/components';
 
-import { CollectionCard } from './components/collection-card';
-import { collections } from './dump-data';
-import { useCollection } from './hooks/use-collection';
+import { ProductCard } from './components/product-card';
+import { products } from './dump-data';
 
-export const CollectionManagement = () => {
-  const { navigateTo } = useCollection();
-
+export const EditCollection = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1"
     >
-      <View className="my-6 w-full flex-row items-center justify-between px-4">
-        <Text
-          tx="collection.manageCollections"
-          className="text-lg font-extrabold"
-        />
+      <View className="my-6 w-11/12 flex-row items-center justify-between self-end px-4">
+        <Text tx="collection.collection" className="text-lg font-extrabold" />
         <Image
           source={require('@/assets/images/architecteImage.jpg')}
           className="mb-3 h-14 w-14 rounded-full"
           contentFit="cover"
         />
       </View>
-      <View className="h-full w-full flex-1 rounded-t-3xl bg-white p-4">
+      <View className="h-full w-full flex-1 rounded-t-3xl bg-white p-4 pb-0">
         <View className="my-2 flex flex-row ">
           <Button
             icon={<Filter />}
@@ -49,19 +42,23 @@ export const CollectionManagement = () => {
           className="mb-4 h-14 w-full flex-row items-center justify-center gap-3 rounded-lg border border-dashed border-description"
           onPress={() => {}}
         >
-          <Plus color={colors.blue} />
-          <Text tx="collection.addCollection" className=" font-semibold" />
+          <Image
+            source={require('@/assets/images/add-product.png')}
+            className="h-7 w-6"
+          />
+          <Text tx="collection.addProduct" className="font-semibold" />
         </TouchableOpacity>
         <ScrollView
-          contentContainerClassName="pb-6 gap-3"
+          contentContainerClassName="gap-3 pb-4"
           showsVerticalScrollIndicator={false}
         >
-          {collections.map((collection) => (
-            <CollectionCard
-              key={collection.id}
-              title={collection.title}
-              productsCount={collection.productsCount}
-              onEdit={navigateTo}
+          {products.map((product) => (
+            <ProductCard
+              key={product.id}
+              title={product.title}
+              price={product.price}
+              imageUrl={product.imageUrl}
+              onEdit={() => {}}
               onDelete={() => {}}
             />
           ))}

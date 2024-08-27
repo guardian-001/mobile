@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import type { Control, RegisterOptions } from 'react-hook-form';
 import { type FieldValues, type Path, useController } from 'react-hook-form';
+import { View } from 'react-native';
 
 import { useCalendar } from '../providers/use-calendar-provider';
 import { formatDateBackend, splitList } from '../utils';
-import { CalendarDayItem, Text, View } from './';
+import { CalendarDayItem } from './calendar-day';
+import { Text } from './text';
 
 type CalendarDaysListProps<T extends FieldValues> = {
   name: Path<T>;
@@ -186,7 +188,7 @@ export const CalendarDaysList = <T extends FieldValues>({
         </View>
       ))}
       {errorMessage && (
-        <Text className="text-sm text-red-500">{errorMessage}</Text>
+        <Text className="text-sm text-error">{errorMessage}</Text>
       )}
     </View>
   );

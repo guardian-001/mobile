@@ -6,12 +6,15 @@ import type {
   RegisterOptions,
 } from 'react-hook-form';
 import { useController } from 'react-hook-form';
+import { View } from 'react-native';
 import type { ICountry } from 'react-native-international-phone-number';
 import PhoneInput from 'react-native-international-phone-number';
 
 import { translate, type TxKeyPath } from '@/core';
+import colors from '@/theme/colors';
 
-import { colors, Text, View } from './';
+import { Text } from './text';
+
 type TRule = Omit<
   RegisterOptions,
   'valueAsNumber' | 'valueAsDate' | 'setValueAs'

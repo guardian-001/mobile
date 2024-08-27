@@ -6,9 +6,9 @@ import {
   type RegisterOptions,
   useController,
 } from 'react-hook-form';
-import type { ViewStyle } from 'react-native';
+import { Pressable, type ViewStyle } from 'react-native';
 
-import { Pressable, Text } from './';
+import { Text } from './text';
 
 type CardProps<T extends FieldValues> = {
   value: string;

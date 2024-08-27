@@ -4,7 +4,9 @@ import React from 'react';
 import colors from '@/theme/colors';
 
 import { useRouteName } from '../hooks';
-import { type IconProps, Root, type RootProps, Text } from './';
+import type { IconProps, RootProps } from './checkbox';
+import { Root } from './checkbox';
+import { Text } from './text';
 type LabelProps = {
   text: string;
   className?: string;

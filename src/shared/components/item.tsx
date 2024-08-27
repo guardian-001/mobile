@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { TouchableOpacity, View } from 'react-native';
 
 import { ArrowRight } from '@/assets/icons';
 import type { TxKeyPath } from '@/core';
-import { Text, TouchableOpacity, View } from '@/shared/components';
+
+import { Text } from './text';
 
 type ItemProps = {
   text: TxKeyPath;

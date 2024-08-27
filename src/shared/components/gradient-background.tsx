@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 
-import { colors } from '@/shared/components';
+import colors from '@/theme/colors';
 
 type GradientBackgroundProps = {
   start?: { x: number; y: number };

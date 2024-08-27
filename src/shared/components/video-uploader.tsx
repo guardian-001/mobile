@@ -1,8 +1,11 @@
 import React from 'react';
+import { View } from 'react-native';
 
 import { Video, VideoUpload } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
-import { Button, Text, View } from '@/shared/components';
+
+import { Button } from './button';
+import { Text } from './text';
 type VideoProps = {
   pickVideo: () => void;
 };

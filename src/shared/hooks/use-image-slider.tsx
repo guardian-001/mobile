@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 
-import { WIDTH } from '@/shared/components';
+import { WIDTH } from '../utils';
 
 export const useImageSlider = (projectImages?: string[]) => {
   const [currentIndex, setCurrentIndex] = useState(0);
