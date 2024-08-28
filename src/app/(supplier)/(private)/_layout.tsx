@@ -8,6 +8,10 @@ export default function SupplierPrivateLayout() {
     <Stack>
       <Stack.Screen name="(complete)" options={ScreenOptions({})} />
       <Stack.Screen name="(tab)" options={ScreenOptions({ type: 'custom' })} />
+      <Stack.Screen
+        name="(collection)"
+        options={ScreenOptions({ type: 'custom' })}
+      />
     </Stack>
   );
 }

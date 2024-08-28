@@ -2,7 +2,8 @@ import * as React from 'react';
 import type { SvgProps } from 'react-native-svg';
 import Svg, { Path } from 'react-native-svg';
 
-export const Plus = ({ color = '#fff', ...props }: SvgProps) => (
+import colors from '@/theme/colors';
+export const Plus = ({ color = colors.white, ...props }: SvgProps) => (
   <Svg className="h-4 w-4" fill="none" {...props}>
     <Path
       fill={color}

@@ -26,5 +26,6 @@ export * from './supplierCollectionAppearance/big-border';
 export * from './supplierCollectionAppearance/little';
 export * from './supplierCollectionAppearance/little-border';
 export * from './three-dots';
+export * from './trash';
 export * from './video';
 export * from './video-upload';
