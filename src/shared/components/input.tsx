@@ -52,6 +52,7 @@ export interface NInputProps extends TextInputProps {
   error?: TxKeyPath;
   className?: string;
   inputAreaType?: 'textInput' | 'textArea';
+  icon?: React.ReactNode;
 }
 
 export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
@@ -64,6 +65,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
     disabled = false,
     required = false,
     inputAreaType = 'textInput',
+    icon,
     ...inputProps
   } = props;
   const [isFocussed, setIsFocussed] = React.useState(false);
@@ -97,13 +99,27 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
           {required && <Text className="text-primary">*</Text>}
         </View>
       )}
+      {icon && (
+        <View
+          style={{
+            transform: I18nManager.isRTL ? 'rotate(180deg)' : '',
+          }}
+          className="absolute inset-y-0 left-0  z-10 w-10 items-center justify-center"
+        >
+          {icon}
+        </View>
+      )}
       <NTextInput
         multiline={inputAreaType === 'textArea'}
         numberOfLines={4}
         testID={testID}
         ref={ref}
         placeholderTextColor={colors.neutral[400]}
-        className={clsx(styles.input(), inputAreaType === 'textArea' && 'h-40')}
+        className={clsx(
+          styles.input(),
+          inputAreaType === 'textArea' && 'h-40',
+          icon && 'pl-10'
+        )}
         onBlur={onBlur}
         onFocus={onFocus}
         aria-disabled={disabled}

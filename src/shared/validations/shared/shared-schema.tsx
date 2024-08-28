@@ -8,6 +8,7 @@ import {
   emailValidation,
   expirationDateValidation,
   facebookValidation,
+  fieldValidation,
   instagramValidation,
   notRequiredValidationBoolean,
   passwordValidation,
@@ -87,4 +88,8 @@ export const BankCardSchema = z.object({
   cvv: cvvValidation,
   cardNumber: cardNumberValidation,
   expirationDate: expirationDateValidation,
+});
+
+export const SearchSchema = z.object({
+  search: fieldValidation,
 });
