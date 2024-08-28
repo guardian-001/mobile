@@ -2,7 +2,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 
-import { Fournisseur, Inspiration, Projet, Search } from '@/assets/icons';
+import { Explore, Fournisseur, Inspiration, Projet } from '@/assets/icons';
 import ConstructionHelmet from '@/assets/icons/construction-helmet';
 
 export default function TabLayout() {
@@ -19,8 +19,8 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Explorer',
-          tabBarIcon: ({ color }) => <Search color={color} />,
-          tabBarTestID: 'search-tab',
+          tabBarIcon: ({ color }) => <Explore color={color} />,
+          tabBarTestID: 'Explore-tab',
           headerShown: false,
         }}
       />

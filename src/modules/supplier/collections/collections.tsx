@@ -1,10 +1,12 @@
 import React from 'react';
 import { Platform } from 'react-native';
 
-import { Filter, Plus } from '@/assets/icons';
+import { Filter, Plus, Search } from '@/assets/icons';
+import { translate } from '@/core';
 import {
   Button,
   colors,
+  ControlledInput,
   Image,
   KeyboardAvoidingView,
   ScrollView,
@@ -18,7 +20,7 @@ import { collections } from './dump-data';
 import { useCollection } from './hooks/use-collection';
 
 export const CollectionManagement = () => {
-  const { navigateTo } = useCollection();
+  const { navigateTo, control } = useCollection();
 
   return (
     <KeyboardAvoidingView
@@ -37,12 +39,19 @@ export const CollectionManagement = () => {
         />
       </View>
       <View className="h-full w-full flex-1 rounded-t-3xl bg-white p-4">
-        <View className="my-2 flex flex-row ">
+        <View className="my-2 flex flex-row">
           <Button
             icon={<Filter />}
             onPress={() => {}}
-            className="mr-4 h-12 w-12 rounded-lg"
+            className="!my-0 mr-4 h-12 w-12 rounded-lg"
             alternativeBg="bg-light-blue"
+          />
+          <ControlledInput
+            icon={<Search />}
+            control={control}
+            name="search"
+            placeholder={translate('labels.search')}
+            className="flex-1"
           />
         </View>
         <TouchableOpacity

@@ -9,6 +9,7 @@ export * from './close';
 export * from './construction-helmet';
 export * from './cube';
 export * from './emoji';
+export * from './explore';
 export * from './facebook';
 export * from './feed';
 export * from './filter';

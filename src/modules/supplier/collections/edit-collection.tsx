@@ -1,9 +1,10 @@
 import React from 'react';
 import { Platform } from 'react-native';
 
-import { Filter } from '@/assets/icons';
+import { Search } from '@/assets/icons';
+import { translate } from '@/core';
 import {
-  Button,
+  ControlledInput,
   Image,
   KeyboardAvoidingView,
   ScrollView,
@@ -14,8 +15,11 @@ import {
 
 import { ProductCard } from './components/product-card';
 import { products } from './dump-data';
+import { useEditCollection } from './hooks/use-edit-collection';
 
 export const EditCollection = () => {
+  const { control } = useEditCollection();
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -30,16 +34,15 @@ export const EditCollection = () => {
         />
       </View>
       <View className="h-full w-full flex-1 rounded-t-3xl bg-white p-4 pb-0">
-        <View className="my-2 flex flex-row ">
-          <Button
-            icon={<Filter />}
-            onPress={() => {}}
-            className="mr-4 h-12 w-12 rounded-lg"
-            alternativeBg="bg-light-blue"
-          />
-        </View>
+        <ControlledInput
+          icon={<Search />}
+          control={control}
+          name="search"
+          placeholder={translate('labels.search')}
+          className="my-2"
+        />
         <TouchableOpacity
-          className="mb-4 h-14 w-full flex-row items-center justify-center gap-3 rounded-lg border border-dashed border-description"
+          className="my-4 h-14 w-full flex-row items-center justify-center gap-3 rounded-lg border border-dashed border-description"
           onPress={() => {}}
         >
           <Image
