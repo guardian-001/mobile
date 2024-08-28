@@ -7,33 +7,38 @@ import {
   useController,
 } from 'react-hook-form';
 
-import type { TxKeyPath } from '@/core';
-
 import { Switch } from './switch';
 type Props<T extends FieldValues> = {
   className?: string;
   accessibilityLabel: string;
   label: string;
+  labelSwitch: string;
   name: Path<T>;
   control: Control<T>;
   rules?: RegisterOptions;
 };
 export const SwitchInput = <T extends FieldValues>(props: Props<T>) => {
-  const { name, control, rules, label, accessibilityLabel, className } = props;
+  const {
+    name,
+    control,
+    rules,
+    label,
+    labelSwitch,
+    accessibilityLabel,
+    className,
+  } = props;
 
-  const { field, fieldState } = useController({ control, name, rules });
-  const error = fieldState.error?.message as TxKeyPath | undefined;
+  const { field } = useController({ control, name, rules });
 
   return (
     <Switch.Root
       checked={field.value}
       onChange={field.onChange}
-      error={error}
       accessibilityLabel={accessibilityLabel}
       className={`${className} pb-2`}
     >
       <Switch.Icon checked={field.value} />
-      <Switch.Label text={label} />
+      <Switch.Label text={field.value ? label : labelSwitch} />
     </Switch.Root>
   );
 };

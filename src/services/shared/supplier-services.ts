@@ -6,17 +6,19 @@ import type { SpecialityTypeResponse } from '@/api/auth';
 import type { ProfileSocialLinksFormData } from '@/api/profileSettings/type';
 import type { FirstConnectionRequest } from '@/api/supplier/createAccount/types';
 import type {
+  createCollectionRequestData,
   SupplierProfileInfoListType,
   SupplierProfileInfoType,
 } from '@/api/supplier/profile/types';
 import type {
   BioFormType,
+  Collection,
   CompanyInformationFormType,
 } from '@/modules/supplier/profile/type';
 import { showErrorMessage } from '@/shared/components';
 
 export async function getSupplierProfile(): Promise<SupplierProfileInfoType> {
-  const url = 'api/users/supplier/get-profile/';
+  const url = '/api/users/supplier/get-profile/';
   return client
     .get(url)
     .then((response) => response.data)
@@ -36,7 +38,7 @@ export async function getSupplierProfile(): Promise<SupplierProfileInfoType> {
 }
 
 export async function getSpecialityTypes(): Promise<SpecialityTypeResponse[]> {
-  const url = 'api/users/supplier/speciality-types/';
+  const url = '/api/users/supplier/speciality-types/';
   return client
     .get(url)
     .then((response) => response.data)
@@ -58,7 +60,7 @@ export async function getSpecialityTypes(): Promise<SpecialityTypeResponse[]> {
 export async function postFirstConnection(
   request: FirstConnectionRequest
 ): Promise<AxiosResponse> {
-  const url = 'api/users/supplier/first-connection/';
+  const url = '/api/users/supplier/first-connection/';
   return client.post(url, request);
 }
 
@@ -98,7 +100,7 @@ export async function updateSupplierVideoAsync(
 export async function updateSupplierProfileAsync(
   formData: CompanyInformationFormType
 ): Promise<AxiosResponse> {
-  const url = `api/users/supplier/update-profile/`;
+  const url = `/api/users/supplier/update-profile/`;
   return client.put(url, formData);
 }
 
@@ -111,7 +113,7 @@ export async function updateSupplierBioAsync(
 export async function updateSocialLinkAsync(
   formData: ProfileSocialLinksFormData
 ): Promise<AxiosResponse> {
-  const url = `api/users/supplier/update-links/`;
+  const url = `/api/users/supplier/update-links/`;
   return client.put(url, formData);
 }
 
@@ -124,4 +126,41 @@ export async function getAllSuppliers(): Promise<SupplierProfileInfoListType> {
       showErrorMessage(error.response.data.errors[0].detail);
       throw error.response?.data || error.message;
     });
+}
+export async function getCollections(): Promise<Collection[]> {
+  const url = '/api/catalogue/collection';
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      showErrorMessage(error.response.data.errors[0].detail);
+      throw error.response?.data || error.message;
+    });
+}
+
+export async function getCollectionsCategories(): Promise<
+  SpecialityTypeResponse[]
+> {
+  const url = '/api/users/supplier/speciality-types/';
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      showErrorMessage(error.response.data.errors[0].detail);
+      throw error.response?.data || error.message;
+    });
+}
+
+export async function createCollection(
+  request: createCollectionRequestData
+): Promise<AxiosResponse> {
+  const url = '/api/catalogue/collection/create/';
+  return client.post(url, request);
+}
+
+export async function deleteCollectionAsync(
+  collectionId: number
+): Promise<AxiosResponse> {
+  const url = `/api/catalogue/collection/delete/${collectionId}/`;
+  return client.delete(url);
 }

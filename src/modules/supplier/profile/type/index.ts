@@ -29,3 +29,26 @@ export type SocialLink = {
   Icon: React.ComponentType;
   name: 'facebook' | 'website' | 'instagram';
 };
+export type Collection = {
+  id: number;
+  title: string;
+  categoryLabel: string;
+  products: Product[];
+};
+
+export type Product = {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  productImages: [
+    {
+      id: number;
+      image: string;
+    }
+  ];
+  collectionCategory: string;
+  collectionTitle: string;
+  order: 0;
+  display: false;
+};

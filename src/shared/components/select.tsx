@@ -18,19 +18,28 @@ import Svg, { Path, type SvgProps } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
 import { CaretDown } from '@/assets/icons';
+import type { TxKeyPath } from '@/core';
 import colors from '@/theme/colors';
 
+import {
+  Image,
+  Pressable,
+  type PressableProps,
+  Text,
+  TouchableOpacity,
+  View,
+} from './';
 import type { InputControllerType } from './controlled-input';
 import { Modal, useModal } from './modal';
-import { Text } from './text';
 
 const selectTv = tv({
   slots: {
     container: 'mb-4',
-    label: 'text-grey-100 mb-1 text-lg ',
+    label: 'mb-1 text-lg text-primary-txt ',
     input:
       'mt-0 flex-row items-center justify-center rounded-lg border border-description p-3 ',
-    inputValue: ' ',
+    inputValue: 'font-semibold  text-black',
+    inputNoValue: 'font-medium text-description',
   },
 
   variants: {
@@ -60,7 +69,7 @@ const selectTv = tv({
 
 const List = Platform.OS === 'web' ? FlashList : BottomSheetFlatList;
 
-export type Option = { label: string; value: string | number };
+export type Option = { label: string; value: string | number; icon?: string };
 
 type OptionsProps = {
   options: Option[];
@@ -75,7 +84,7 @@ function keyExtractor(item: Option) {
 
 export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
   ({ options, onSelect, value, testID }, ref) => {
-    const height = options.length * 70 + 100;
+    const height = options.length * 40;
     const snapPoints = React.useMemo(() => [height], [height]);
     const isDark = false;
 
@@ -84,6 +93,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
         <Option
           key={`select-item-${item.value}`}
           label={item.label}
+          icon={item.icon}
           selected={value === item.value}
           onPress={() => onSelect(item)}
           testID={testID ? `${testID}-item-${item.value}` : undefined}
@@ -116,17 +126,27 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
 const Option = React.memo(
   ({
     label,
+    icon = '',
     selected = false,
     ...props
   }: PressableProps & {
     selected?: boolean;
     label: string;
+    icon?: string;
   }) => {
     return (
       <Pressable
         className="flex-row items-center border-b border-neutral-300 bg-white px-3 py-2  "
         {...props}
       >
+        {icon && (
+          <Image
+            contentFit="fill"
+            source={{ uri: icon }}
+            className="mr-2 h-6 w-6"
+          />
+        )}
+
         <Text className="flex-1  ">{label}</Text>
         {selected && <Check />}
       </Pressable>
@@ -138,7 +158,7 @@ export interface SelectProps {
   value?: string | number;
   label?: string;
   disabled?: boolean;
-  error?: string;
+  error?: TxKeyPath;
   options?: Option[];
   required?: boolean;
 
@@ -163,11 +183,9 @@ export const Select = (props: SelectProps) => {
     onSelect,
     labelStyle,
     required = false,
-    testID,
     icon,
   } = props;
   const modal = useModal();
-
   const onSelectOption = React.useCallback(
     (option: Option) => {
       onSelect?.(option.value);
@@ -175,7 +193,6 @@ export const Select = (props: SelectProps) => {
     },
     [modal, onSelect]
   );
-
   const styles = React.useMemo(
     () =>
       selectTv({
@@ -184,7 +201,6 @@ export const Select = (props: SelectProps) => {
       }),
     [error, disabled]
   );
-
   const textValue = React.useMemo(
     () =>
       value !== undefined
@@ -192,14 +208,12 @@ export const Select = (props: SelectProps) => {
         : placeholder,
     [value, options, placeholder]
   );
-
   return (
     <>
       <View className={styles.container()}>
         {label && (
           <View className="flex w-full flex-row justify-start">
             <Text
-              testID={testID ? `${testID}-label` : undefined}
               className={clsx(
                 styles.label(),
                 labelStyle ? labelStyle : 'text-base'
@@ -214,7 +228,6 @@ export const Select = (props: SelectProps) => {
           className={styles.input()}
           disabled={disabled}
           onPress={modal.present}
-          testID={testID ? `${testID}-trigger` : undefined}
         >
           {icon && (
             <View
@@ -227,21 +240,25 @@ export const Select = (props: SelectProps) => {
             </View>
           )}
           <View className="flex-1">
-            <Text className={styles.inputValue()}>{textValue}</Text>
+            <Text
+              className={clsx(
+                value === undefined
+                  ? styles.inputNoValue()
+                  : styles.inputValue()
+              )}
+            >
+              {textValue}
+            </Text>
           </View>
           <CaretDown />
         </TouchableOpacity>
-        {error && (
-          <Text testID={`${testID}-error`} className="text-sm text-error ">
-            {error}
-          </Text>
-        )}
+        {error && <Text className="text-xs text-error  " tx={error} />}
       </View>
       <Options
-        testID={testID}
         ref={modal.ref}
         options={options}
         onSelect={onSelectOption}
+        value={value}
       />
     </>
   );
@@ -253,6 +270,8 @@ export function ControlledSelect<T extends FieldValues>(
   const { name, control, rules, onSelect: onNSelect, ...selectProps } = props;
 
   const { field, fieldState } = useController({ control, name, rules });
+  const error = fieldState.error?.message as TxKeyPath | undefined;
+
   const onSelect = React.useCallback(
     (value: string | number) => {
       field.onChange(value);
@@ -264,7 +283,7 @@ export function ControlledSelect<T extends FieldValues>(
     <Select
       onSelect={onSelect}
       value={field.value}
-      error={fieldState.error?.message}
+      error={error}
       {...selectProps}
     />
   );

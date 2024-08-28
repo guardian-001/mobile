@@ -50,7 +50,6 @@ describe('Select component ', () => {
         options={options}
         onSelect={onSelect}
         testID="select"
-        error="Please select an option"
       />
     );
     expect(screen.getByTestId('select-trigger')).toBeOnTheScreen();
