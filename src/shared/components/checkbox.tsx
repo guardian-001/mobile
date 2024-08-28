@@ -1,11 +1,12 @@
 import { MotiView } from 'moti';
 import React, { useCallback } from 'react';
+import type { PressableProps } from 'react-native';
+import { Pressable, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import { type TxKeyPath, useRouteName } from '@/core';
 import colors from '@/theme/colors';
 
-import { Pressable, type PressableProps, View } from './';
 import { Text } from './text';
 
 export interface RootProps extends Omit<PressableProps, 'onPress'> {

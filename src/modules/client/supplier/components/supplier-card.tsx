@@ -48,7 +48,7 @@ export const SupplierCard = ({
         textClassName="text-sm"
         className="my-2 h-11 w-[90%] rounded-lg"
       />
-      <View className="my-2 w-[90%] border border-dashed border-color-border" />
+      <View className="my-2 w-[90%] border-b border-dashed border-color-border" />
       <View className="mb-4 flex-row gap-8">
         <View className="items-center">
           <Text className="text-sm text-description">Collection</Text>

@@ -6,14 +6,20 @@ import { FlashList } from '@shopify/flash-list';
 import clsx from 'clsx';
 import * as React from 'react';
 import { type FieldValues, useController } from 'react-hook-form';
-import { I18nManager, Platform } from 'react-native';
+import type { PressableProps } from 'react-native';
+import {
+  I18nManager,
+  Platform,
+  Pressable,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Svg, { Path, type SvgProps } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
 import { CaretDown } from '@/assets/icons';
 import colors from '@/theme/colors';
 
-import { Pressable, type PressableProps, TouchableOpacity, View } from './';
 import type { InputControllerType } from './controlled-input';
 import { Modal, useModal } from './modal';
 import { Text } from './text';

@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 
 import { ArrowLeft, ArrowRight, Globe } from '@/assets/icons';
 import { translate } from '@/core';
-import { StepButtons } from '@/modules/shared';
+import StepButtons from '@/modules/shared/step-buttons';
 import colors from '@/theme/colors';
 
 import { DAYS } from '../constants/constants';
@@ -12,7 +12,7 @@ import { useCalendar } from '../providers/use-calendar-provider';
 import { useFormStepper } from '../providers/use-form-stepper-provider';
 import { capitalizeFirstLetter } from '../utils';
 import { CalendarFormSchema } from '../validations';
-import { CalendarDaysList } from './';
+import { CalendarDaysList } from './calendar-days-list';
 import { RenderTimeSlots } from './time-slots';
 type CalendarFormType = Zod.infer<typeof CalendarFormSchema>;
 export const Calendar = () => {

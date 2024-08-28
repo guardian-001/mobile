@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BackButton } from '@/modules/shared';
+import BackButton from '@/modules/shared/back-button';
 type ScreenOptionsProps = {
   route?: string;
   type?: 'default' | 'custom';

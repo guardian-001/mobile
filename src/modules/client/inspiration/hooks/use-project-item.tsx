@@ -1,32 +1,26 @@
-import { useCallback, useState } from 'react';
-import type {
-  ListRenderItemInfo,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-} from 'react-native';
-import { Dimensions } from 'react-native';
+import { useRouter } from 'expo-router';
+import React, { useCallback } from 'react';
+import type { ListRenderItemInfo } from 'react-native';
 
+import { useImageSlider } from '@/core';
 import { Image } from '@/shared/components';
 
-import { projectList } from '../dump-data';
 import type { ProjectItemProps } from '../types';
 
 export const useProjectItem = ({ item }: ProjectItemProps) => {
-  const snapToOffsets = projectList.map(
-    (_, index) => index * Dimensions.get('window').width
-  );
+  const { handleScroll, currentIndex, snapToOffsets, totalImages } =
+    useImageSlider(item?.projectImages);
+
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<string>) => (
       <Image source={{ uri: item }} className="h-screen w-screen" />
     ),
     []
   );
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const totalImages = item?.projectImages?.length ?? 0;
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const offsetX = event.nativeEvent.contentOffset.x;
-    const index = Math.round(offsetX / Dimensions.get('window').width);
-    setCurrentIndex(index);
+
+  const router = useRouter();
+  const navigateToProfile = () => {
+    router.push('(client)/(private)/(architect-profile)/profile');
   };
   return {
     snapToOffsets,
@@ -34,5 +28,6 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
     handleScroll,
     currentIndex,
     totalImages,
+    navigateToProfile,
   };
 };
