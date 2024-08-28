@@ -33,4 +33,12 @@ export type SupplierProfileInfoType = {
   presentationVideo: string;
   appearance: string;
 };
+
+export type createCollectionRequestData = {
+  title: string;
+  categoryLabel: string;
+  visibility?: boolean;
+  appearance: string;
+};
+
 export type SupplierProfileInfoListType = SupplierProfileInfoType[];

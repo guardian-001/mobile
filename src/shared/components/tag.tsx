@@ -19,6 +19,7 @@ interface TagProps<T extends FieldValues> {
   imageIcon?: string;
   className?: string;
   obligation?: boolean;
+  idValidation?: boolean;
 }
 
 export const Tag = <T extends FieldValues>({
@@ -31,12 +32,18 @@ export const Tag = <T extends FieldValues>({
   imageIcon,
   obligation = false,
   className,
+  idValidation = false,
 }: TagProps<T>) => {
   const { field } = useController({ name, control, rules });
 
   const handlePress = () => {
-    if (field.value === label && !obligation) field.onChange('');
-    else field.onChange(label);
+    if (!idValidation) {
+      if (field.value === label && !obligation) field.onChange('');
+      else field.onChange(label);
+    } else {
+      if (field.value === id && !obligation) field.onChange('');
+      else field.onChange(id);
+    }
   };
   const handleChangeMulti = () => {
     if (field.value.includes(id)) {
@@ -47,7 +54,12 @@ export const Tag = <T extends FieldValues>({
       field.onChange([...field.value, id]);
     }
   };
-  const isSelected = multi ? field.value.includes(id) : field.value === label;
+
+  const isSelected = multi
+    ? field.value.includes(id)
+    : idValidation
+    ? field.value === id
+    : field.value === label;
 
   return (
     <TouchableOpacity

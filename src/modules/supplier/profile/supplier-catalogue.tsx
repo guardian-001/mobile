@@ -1,18 +1,16 @@
-// import * as React from 'react';
-// import { StyleSheet, View } from 'react-native';
+import * as React from 'react';
+import { StyleSheet, View } from 'react-native';
 
-// import CatalogueHeader from './catalogue-header';
-// import { useProfileCatalogue } from './hooks/use-profile-catalogue';
+import CatalogueHeader from './catalogue-header';
 
-// export default function SupplierCatalogue() {
-//   const { } = useProfileCatalogue();
-//   return (
-//     <View className={'bg-secondary'} style={styles.gradientBachgroud}>
-//       <CatalogueHeader />
-//     </View>
-//   );
-// }
+export default function SupplierCatalogue() {
+  return (
+    <View className={'bg-secondary'} style={styles.gradientBachgroud}>
+      <CatalogueHeader />
+    </View>
+  );
+}
 
-// const styles = StyleSheet.create({
-//   gradientBachgroud: { flex: 1 },
-// });
+const styles = StyleSheet.create({
+  gradientBachgroud: { flex: 1 },
+});

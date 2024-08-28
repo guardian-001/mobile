@@ -1,3 +1,23 @@
 {
-  "preview": "Preview"
+  "preview": "Preview",
+  "addCollection": "Add collection",
+  "collections": "Collections",
+  "createCollection": {
+    "headerTitle": "Add a collection",
+    "headerDescription": "Each collection gathers a selection of products",
+    "titleLable": "Collection title",
+    "titlePlaceholder": "Enter the title",
+    "categoryLable": "Category",
+    "categoryPlaceholder": "Enter the category",
+    "appearance": "Appearance",
+    "little": "Small",
+    "littleDescription": "Ideal for small-sized products like paintings...",
+    "big": "Large",
+    "bigDescription": "Perfect for showcasing kitchens and other large items with grandeur",
+    "visibilityLabel": "Visibility in the Collection",
+    "visibilityDescriptionActive": "Visibility enabled",
+    "visibilityDescriptionNotActive": "Visibility disabled",
+    "success": "Collection created successfully",
+    "echec": "Creation failed"
+  }
 }

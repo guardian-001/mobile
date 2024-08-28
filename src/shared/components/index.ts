@@ -39,6 +39,7 @@ export * from './text';
 export * from './title';
 export * from './toggle-button';
 export * from './toggle-card';
+export * from './toggle-radio-card';
 export * from './utils';
 export * from './video';
 export * from './video-uploader';

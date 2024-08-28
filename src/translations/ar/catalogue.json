@@ -1,3 +1,23 @@
 {
-  "preview": "معاينة"
+  "preview": "معاينة",
+  "addCollection": "إضافة مجموعة",
+  "collections": "المجموعات",
+  "createCollection": {
+    "headerTitle": "إضافة مجموعة",
+    "headerDescription": "تجمع كل مجموعة مجموعة مختارة من المنتجات",
+    "titleLable": "عنوان المجموعة",
+    "titlePlaceholder": "أدخل العنوان",
+    "categoryLable": "الفئة",
+    "categoryPlaceholder": "أدخل الفئة",
+    "appearance": "المظهر",
+    "little": "صغير",
+    "littleDescription": "مثالي للمنتجات صغيرة الحجم مثل اللوحات...",
+    "big": "كبير",
+    "bigDescription": "مثالي لعرض المطابخ والعناصر الكبيرة الأخرى بروعة",
+    "visibilityLabel": "الرؤية في المجموعة",
+    "visibilityDescriptionActive": "تم تفعيل الرؤية",
+    "visibilityDescriptionNotActive": "تم تعطيل الرؤية",
+    "success": "تم إنشاء المجموعة بنجاح",
+    "echec": "فشل في الإنشاء"
+  }
 }
