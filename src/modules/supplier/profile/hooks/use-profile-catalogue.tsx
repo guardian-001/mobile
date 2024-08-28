@@ -5,9 +5,11 @@ import { useAuth, useCustomForm } from '@/core';
 
 import { collectionIdSchema } from '../schemas/collection-schema';
 
+
 export const useProfileCatalogue = () => {
   const router = useRouter();
   const logOut = useAuth.use.signOut();
+
   const {
     data: CollectionData,
     isError: isErrorCollection,
@@ -18,6 +20,7 @@ export const useProfileCatalogue = () => {
     collection: 35,
   });
 
+
   const navigateTo = (path: string) => {
     router.push(`/(supplier)/(private)/(tab)/${path}`);
   };
@@ -25,6 +28,7 @@ export const useProfileCatalogue = () => {
     logOut();
     router.replace(route);
   };
+
 
   return {
     navigateTo,
@@ -34,5 +38,6 @@ export const useProfileCatalogue = () => {
     isLoadingCollection,
     isSuccessCollection,
     control,
+
   };
 };
