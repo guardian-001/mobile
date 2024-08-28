@@ -1,5 +1,6 @@
 import announcement from './announcement.json';
 import architectProfile from './architect-profile.json';
+import catalogue from './catalogue.json';
 import collection from './collection.json';
 import common from './common.json';
 import explore from './explore.json';
@@ -45,6 +46,7 @@ export default {
   onBoarding,
   settings,
   common,
+  catalogue,
   resetpass,
   signupStepSpeciality,
   signupStepCreateProfile,
