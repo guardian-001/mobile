@@ -13,7 +13,8 @@ import { usePagination } from '@/shared/hooks';
 
 import { TIMESLOTS } from '../constants/constants';
 import { useCalendar } from '../providers';
-import { RenderPagination, ToggleButton } from './';
+import { RenderPagination } from './pagination-time-slots';
+import { ToggleButton } from './toggle-button';
 
 type RenderTimeSlotsProps<T extends FieldValues> = {
   name: Path<T>;

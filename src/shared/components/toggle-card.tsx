@@ -6,8 +6,11 @@ import {
   type RegisterOptions,
   useController,
 } from 'react-hook-form';
+import { Pressable, View } from 'react-native';
 
-import { Checkbox, Image, Pressable, Text, View } from './';
+import { Checkbox } from './checkbox';
+import { Image } from './image';
+import { Text } from './text';
 
 type CardProps<T extends FieldValues> = {
   title?: string;

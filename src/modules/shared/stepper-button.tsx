@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 
-import { Button } from '@/shared/components';
+import { Button } from '@/shared/components/button';
 
 interface StepperButtonProps {
   onPressHandler?: (event: GestureResponderEvent) => void;

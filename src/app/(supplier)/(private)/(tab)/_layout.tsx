@@ -32,7 +32,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="collection"
+        name="collections"
         options={{
           title: 'collection',
           tabBarIcon: ({ color }) => <Collection color={color} />,
