@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 
 import { translate } from '@/core';
@@ -18,7 +19,7 @@ export const SupplierCard = ({
 }: SupplierCardProps) => {
   const [coverImageError, setCoverImageError] = useState(false);
   const [logoUrlError, setLogoUrlError] = useState(false);
-
+  const router = useRouter();
   const fallbackCoverImage =
     'https://raw.githubusercontent.com/AzizSandid/AzizSandid/main/coverImage.png';
   const fallbackLogoUrl =
@@ -44,7 +45,10 @@ export const SupplierCard = ({
       <Text className="text-description">{description || 'empty'}</Text>
       <Button
         label={translate('searchSupplier.viewCatalogue')}
-        onPress={() => {}}
+        onPress={() => {
+          router.push('(client)/(private)/(supplier-profile)/profile');
+          console.log('dsds');
+        }}
         textClassName="text-sm"
         className="my-2 h-11 w-[90%] rounded-lg"
       />

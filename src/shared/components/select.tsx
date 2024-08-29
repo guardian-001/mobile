@@ -21,16 +21,10 @@ import { CaretDown } from '@/assets/icons';
 import type { TxKeyPath } from '@/core';
 import colors from '@/theme/colors';
 
-import {
-  Image,
-  Pressable,
-  type PressableProps,
-  Text,
-  TouchableOpacity,
-  View,
-} from './';
 import type { InputControllerType } from './controlled-input';
+import { Image } from './image';
 import { Modal, useModal } from './modal';
+import { Text } from './text';
 
 const selectTv = tv({
   slots: {

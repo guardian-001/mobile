@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { ActivityIndicator } from 'react-native';
 
-import { Location } from '@/assets/icons';
+import { Location, Search } from '@/assets/icons';
+import { translate } from '@/core';
 import {
   Button,
+  ControlledInput,
   EmptyList,
   ErrorData,
   Options,
@@ -32,6 +34,7 @@ export default function SupplierPage() {
     cityOptions,
     modal,
     field,
+    searchControl,
   } = useSupplier();
   return (
     <View className="flex-1">
@@ -64,12 +67,19 @@ export default function SupplierPage() {
             </ScrollView>
           )}
         </Layout>
-        <View className="mb-2 mt-6 flex flex-row px-4">
+        <View className="mb-2 mt-4 flex flex-row px-4">
           <Button
             icon={<Location />}
             onPress={modal.present}
-            className="mr-4 h-12 w-12 rounded-lg"
+            className="!my-0 mr-4 h-12 w-12 rounded-lg"
             alternativeBg="bg-light-blue"
+          />
+          <ControlledInput
+            icon={<Search />}
+            control={searchControl}
+            name="search"
+            placeholder={translate('labels.search')}
+            className="flex-1"
           />
         </View>
         {isErrorSuppliers && <ErrorData message="Error Loading Data" />}
