@@ -1,5 +1,4 @@
 {
-
   "preview": "معاينة",
   "addCollection": "إضافة مجموعة",
   "collections": "المجموعات",
@@ -19,7 +18,25 @@
     "visibilityDescriptionActive": "تم تفعيل الرؤية",
     "visibilityDescriptionNotActive": "تم تعطيل الرؤية",
     "success": "تم إنشاء المجموعة بنجاح",
+    "echec": "فشل في الإنشاء",
+    "collectionProductsNoDataTitle": "عناصر المجموعة",
+    "collectionProductsDataTitle": "المنتجات",
+    "collectionProductsNoDataDescription": "ابدأ في إنشاء منتجك الأول!"
+  },
+  "createProduct": {
+    "addProduct": "إضافة منتج",
+    "addproductTitle": "إضافة منتج",
+    "addproductDescription": "كل مجموعة تضم مجموعة مختارة من المنتجات المماثلة",
+    "nameLabel": "اسم المنتج",
+    "namePlaceholder": "أدخل اسم المنتج...",
+    "prixLabel": "سعر المنتج (اختياري)",
+    "prixPlaceholder": "أدخل سعر المنتج...",
+    "collectionLabel": "مجموعة",
+    "collectionPlaceholder": "اختر المجموعة...",
+    "productVisibility": "رؤية المنتج",
+    "descriptionLabel": "الوصف",
+    "descriptionPlaceholder": "الوصف (قدم أكبر قدر ممكن من التفاصيل)",
+    "success": "تم إنشاء المنتج بنجاح",
     "echec": "فشل في الإنشاء"
   }
-
 }

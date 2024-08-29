@@ -128,22 +128,24 @@ export const idValidation = z.number().refine((value) => value > 0, {
   message: 'validations.required',
 });
 
+export const idStringValidation = z.string({ message: 'validations.required' });
+
 export const facebookValidation = z
   .string()
-  .regex(/^https:\/\/(www\.)?facebook\.com\/[a-zA-Z0-9(\.\?)?]/, {
+  .regex(/^https:\/\/(www\.)?facebook\.com\/[a-zA-Z0-9(\\.\\?)?]/, {
     message: 'invalidFacebookUrl',
   });
 
 export const websiteValidation = z
   .string()
-  .regex(/^(https?:\/\/)?([\w\-]+\.)+[\w\-]+(\/[\w\-]*)*\/?$/, {
+  .regex(/^(https?:\/\/)?([\w\\-]+\.)+[\w\\-]+(\/[\w\\-]*)*\/?$/, {
     message: 'invalidWebsiteUrl',
   })
   .optional();
 
 export const instagramValidation = z
   .string()
-  .regex(/^https:\/\/(www\.)?instagram\.com\/[a-zA-Z0-9(\.\?)?]/, {
+  .regex(/^https:\/\/(www\.)?instagram\.com\/[a-zA-Z0-9(\\.\\?)?]/, {
     message: 'invalidInstagramUrl',
   });
 

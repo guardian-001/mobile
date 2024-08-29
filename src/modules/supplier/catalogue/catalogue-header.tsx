@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
@@ -15,11 +14,11 @@ import {
   Text,
 } from '@/shared/components';
 
+import { useProfileInfo } from '../profile/hooks/use-profile-info';
+import type { Collection } from '../profile/type';
 import AddCollectionForm from '../shared/components/add-collection-form';
 import { useAddCollection } from './hooks/use-add-collection';
 import { useProfileCatalogue } from './hooks/use-profile-catalogue';
-import { useProfileInfo } from './hooks/use-profile-info';
-import type { Collection } from './type';
 
 export default function CatalogueHeader() {
   const { data } = useProfileInfo();
@@ -109,4 +108,3 @@ const styles = StyleSheet.create({
     height: '100%',
   },
 });
-

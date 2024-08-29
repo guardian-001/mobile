@@ -6,14 +6,7 @@ import { FlashList } from '@shopify/flash-list';
 import clsx from 'clsx';
 import * as React from 'react';
 import { type FieldValues, useController } from 'react-hook-form';
-import type { PressableProps } from 'react-native';
-import {
-  I18nManager,
-  Platform,
-  Pressable,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { I18nManager, Platform, StyleSheet } from 'react-native';
 import Svg, { Path, type SvgProps } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
@@ -230,12 +223,7 @@ export const Select = (props: SelectProps) => {
           onPress={modal.present}
         >
           {icon && (
-            <View
-              style={{
-                transform: I18nManager.isRTL ? 'rotate(180deg)' : '',
-              }}
-              className="mr-2"
-            >
+            <View style={styleAnim.animation} className="mr-2">
               {icon}
             </View>
           )}
@@ -274,8 +262,8 @@ export function ControlledSelect<T extends FieldValues>(
 
   const onSelect = React.useCallback(
     (value: string | number) => {
-      field.onChange(value);
-      onNSelect?.(value);
+      field.onChange(String(value));
+      onNSelect?.(String(value));
     },
     [field, onNSelect]
   );
@@ -306,3 +294,9 @@ const Check = ({ ...props }: SvgProps) => (
     />
   </Svg>
 );
+
+const styleAnim = StyleSheet.create({
+  animation: {
+    transform: I18nManager.isRTL ? 'rotate(180deg)' : '',
+  },
+});

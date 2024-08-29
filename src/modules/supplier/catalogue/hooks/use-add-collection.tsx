@@ -9,9 +9,12 @@ import {
   useModal,
 } from '@/shared/components';
 
-import { collectionSchema } from '../schemas/collection-schema';
+import { collectionSchema } from '../../profile/schemas/collection-schema';
+import { useProfileCatalogue } from './use-profile-catalogue';
+
 type CollectionType = z.infer<typeof collectionSchema>;
 export const useAddCollection = () => {
+  const { refetch } = useProfileCatalogue();
   const { ref, present, dismiss } = useModal();
   const { control, handleSubmit, reset } = useCustomForm(collectionSchema, {
     visibility: false,
@@ -24,13 +27,15 @@ export const useAddCollection = () => {
   const categoriesOptions = data?.map((category) => ({
     icon: category.icon,
     label: category.label,
-    value: category.label,
+    value: category.id,
   }));
 
   const onSubmit = (dataCollection: CollectionType) => {
     mutate(dataCollection, {
       onSuccess: () => {
         showSuccesMessage(translate('catalogue.createCollection.success'));
+        reset();
+        refetch();
       },
       onError: () => {
         showErrorMessage(translate('catalogue.createCollection.echec'));
