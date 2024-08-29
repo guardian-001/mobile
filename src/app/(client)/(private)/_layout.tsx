@@ -19,6 +19,10 @@ export default function ClientPrivateLayout() {
         name="(architect-profile)"
         options={ScreenOptions({ type: 'custom' })}
       />
+      <Stack.Screen
+        name="(supplier-profile)"
+        options={ScreenOptions({ type: 'custom' })}
+      />
     </Stack>
   );
 }
