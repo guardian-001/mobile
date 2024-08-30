@@ -6,7 +6,15 @@ import { FlashList } from '@shopify/flash-list';
 import clsx from 'clsx';
 import * as React from 'react';
 import { type FieldValues, useController } from 'react-hook-form';
-import { I18nManager, Platform, StyleSheet } from 'react-native';
+import type { PressableProps } from 'react-native';
+import {
+  I18nManager,
+  Platform,
+  Pressable,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Svg, { Path, type SvgProps } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 

@@ -18,6 +18,7 @@ export * from './logo-archi';
 export * from './mail';
 export * from './manage-subscription';
 export * from './mastercard';
+export * from './pen';
 export * from './phone';
 export * from './plus-supplier';
 export * from './profile';
