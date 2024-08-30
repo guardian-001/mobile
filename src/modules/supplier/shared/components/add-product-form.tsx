@@ -19,7 +19,7 @@ import {
 
 import { useAddCollection } from '../../catalogue/hooks/use-add-collection';
 
-export default function AddCollectionForm() {
+export default function AddProductForm() {
   const { handleSubmit, modalControl, onSubmit, categoriesOptions } =
     useAddCollection();
   return (
@@ -91,7 +91,7 @@ export default function AddCollectionForm() {
           svgComponentBorder={BigBorder}
           name="appearance"
           control={modalControl}
-          value={'Petite'}
+          value={'grande'}
         />
         <ToggleRadioCard
           key={1}
@@ -101,8 +101,8 @@ export default function AddCollectionForm() {
           svgComponent={Little}
           svgComponentBorder={LittleBorder}
           name="appearance"
-          value={'Grande'}
           control={modalControl}
+          value={'petite'}
         />
       </View>
       <Button

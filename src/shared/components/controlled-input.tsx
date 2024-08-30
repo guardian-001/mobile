@@ -29,6 +29,7 @@ export type InputControllerType<T extends FieldValues> = {
   labelStyle?: string;
   inputAreaType?: 'textInput' | 'textArea';
   handleOnChange?: ({ name, data }: CreateProfileType) => void;
+  icon?: React.ReactNode;
 };
 
 interface ControlledInputProps<T extends FieldValues>
@@ -48,6 +49,7 @@ export function ControlledInput<T extends FieldValues>(
     inputAreaType = 'textInput',
     required = false,
     autoCapitalize = 'none',
+    icon,
     ...inputProps
   } = props;
 
@@ -56,6 +58,7 @@ export function ControlledInput<T extends FieldValues>(
 
   return (
     <Input
+      icon={icon}
       disabled={disabled}
       required={required}
       inputAreaType={inputAreaType}

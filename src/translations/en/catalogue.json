@@ -1,5 +1,4 @@
 {
-
   "preview": "Preview",
   "addCollection": "Add collection",
   "collections": "Collections",
@@ -19,7 +18,25 @@
     "visibilityDescriptionActive": "Visibility enabled",
     "visibilityDescriptionNotActive": "Visibility disabled",
     "success": "Collection created successfully",
+    "echec": "Creation failed",
+    "collectionProductsNoDataTitle": "Collection Items",
+    "collectionProductsDataTitle": "Products",
+    "collectionProductsNoDataDescription": "Start creating your first product!"
+  },
+  "createProduct": {
+    "addProduct": "Add a product",
+    "addproductTitle": "Add Product",
+    "addproductDescription": "Each collection gathers a selection of similar products",
+    "nameLabel": "Product Name",
+    "namePlaceholder": "Enter the product name...",
+    "prixLabel": "Product Price (optional)",
+    "prixPlaceholder": "Enter the product price...",
+    "collectionLabel": "Collection",
+    "collectionPlaceholder": "Select the collection...",
+    "productVisibility": "Product Visibility",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Description (provide as many details as possible)",
+    "success": "Product created successfully",
     "echec": "Creation failed"
   }
-
 }

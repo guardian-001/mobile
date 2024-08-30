@@ -1,7 +1,6 @@
 import React from 'react';
 
-import SupplierCatalogue from '@/modules/supplier/profile/supplier-catalogue';
-
+import SupplierCatalogue from '@/modules/supplier/catalogue/supplier-catalogue';
 import { FocusAwareStatusBar } from '@/shared/components';
 
 export default function Projets() {
