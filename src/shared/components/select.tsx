@@ -11,6 +11,7 @@ import {
   I18nManager,
   Platform,
   Pressable,
+  StyleSheet,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -224,12 +225,7 @@ export const Select = (props: SelectProps) => {
           onPress={modal.present}
         >
           {icon && (
-            <View
-              style={{
-                transform: I18nManager.isRTL ? 'rotate(180deg)' : '',
-              }}
-              className="mr-2"
-            >
+            <View style={styleAnim.animation} className="mr-2">
               {icon}
             </View>
           )}
@@ -268,8 +264,8 @@ export function ControlledSelect<T extends FieldValues>(
 
   const onSelect = React.useCallback(
     (value: string | number) => {
-      field.onChange(value);
-      onNSelect?.(value);
+      field.onChange(String(value));
+      onNSelect?.(String(value));
     },
     [field, onNSelect]
   );
@@ -300,3 +296,9 @@ const Check = ({ ...props }: SvgProps) => (
     />
   </Svg>
 );
+
+const styleAnim = StyleSheet.create({
+  animation: {
+    transform: I18nManager.isRTL ? 'rotate(180deg)' : '',
+  },
+});

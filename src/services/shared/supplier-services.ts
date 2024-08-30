@@ -7,8 +7,10 @@ import type { ProfileSocialLinksFormData } from '@/api/profileSettings/type';
 import type { FirstConnectionRequest } from '@/api/supplier/createAccount/types';
 import type {
   createCollectionRequestData,
+  createProductRequestData,
   SupplierProfileInfoListType,
   SupplierProfileInfoType,
+  UpdateVisibilityRequest,
 } from '@/api/supplier/profile/types';
 import type {
   BioFormType,
@@ -163,4 +165,26 @@ export async function deleteCollectionAsync(
 ): Promise<AxiosResponse> {
   const url = `/api/catalogue/collection/delete/${collectionId}/`;
   return client.delete(url);
+}
+
+export async function createProduct(
+  request: createProductRequestData
+): Promise<AxiosResponse> {
+  const url = '/api/catalogue/product/create/';
+  return client.post(url, request);
+}
+
+export async function deleteProductAsync(
+  productId: number
+): Promise<AxiosResponse> {
+  const url = `/api/catalogue/product/delete/${productId}/`;
+  return client.delete(url);
+}
+
+export async function updateProductVisibilityRequestAsync(
+  updateVisibilityData: UpdateVisibilityRequest
+): Promise<AxiosResponse> {
+  const url =
+    '/api/catalogue/product/update-visibility/${updateVisibilityData.id}/';
+  return client.put(url, { visibility: updateVisibilityData.visibility });
 }
