@@ -1,53 +1,58 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 
+import type { SupplierProfileInfoType } from '@/api/supplier/profile/types';
 import { translate } from '@/core';
 import { Button, Image, Text, View } from '@/shared/components';
 
 type SupplierCardProps = {
-  coverImage: string | null;
-  logoUrl: string | null;
-  name: string;
-  description: string;
+  supplier: SupplierProfileInfoType;
 };
 
-export const SupplierCard = ({
-  coverImage,
-  logoUrl,
-  name,
-  description,
-}: SupplierCardProps) => {
+export const SupplierCard = ({ supplier }: SupplierCardProps) => {
   const [coverImageError, setCoverImageError] = useState(false);
   const [logoUrlError, setLogoUrlError] = useState(false);
-  const router = useRouter();
   const fallbackCoverImage =
     'https://raw.githubusercontent.com/AzizSandid/AzizSandid/main/coverImage.png';
   const fallbackLogoUrl =
     'https://raw.githubusercontent.com/AzizSandid/AzizSandid/main/supplierImage.png';
+  const router = useRouter();
 
   return (
     <View className="items-center rounded-2xl bg-white shadow-lg shadow-color-shadow">
       <Image
         source={{
-          uri: coverImageError || !coverImage ? fallbackCoverImage : coverImage,
+          uri:
+            coverImageError || !supplier.coverImage
+              ? fallbackCoverImage
+              : supplier.coverImage,
         }}
         className="h-36 w-full rounded-t-2xl"
         onError={() => setCoverImageError(true)}
       />
       <Image
         source={{
-          uri: logoUrlError || !logoUrl ? fallbackLogoUrl : logoUrl,
+          uri:
+            logoUrlError || !supplier.profileImage
+              ? fallbackLogoUrl
+              : supplier.profileImage,
         }}
         className="-mt-16 mb-2 h-24 w-24 rounded-full border-4 border-white"
         onError={() => setLogoUrlError(true)}
       />
-      <Text className="text-2xl font-bold">{name || 'empty'}</Text>
-      <Text className="text-description">{description || 'empty'}</Text>
+      <Text className="text-2xl font-bold">
+        {supplier.companyName || 'empty'}
+      </Text>
+      <Text className="text-description">
+        {supplier.companySpeciality || 'empty'}
+      </Text>
       <Button
         label={translate('searchSupplier.viewCatalogue')}
         onPress={() => {
-          router.push('(client)/(private)/(supplier-profile)/profile');
-          console.log('dsds');
+          router.push({
+            pathname: '(client)/(private)/(supplier-profile)/profile',
+            params: { supplier: JSON.stringify(supplier) },
+          });
         }}
         textClassName="text-sm"
         className="my-2 h-11 w-[90%] rounded-lg"

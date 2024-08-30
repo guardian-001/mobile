@@ -1,3 +1,12 @@
+import { useCustomForm } from '@/core';
+
+import { collectionIdSchema } from '../schema/collection-schema';
+
 export const useCatalogue = () => {
-  return {};
+  const { control } = useCustomForm(collectionIdSchema, {
+    collection: 35,
+  });
+  return {
+    control,
+  };
 };

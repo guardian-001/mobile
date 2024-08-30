@@ -16,11 +16,22 @@ export type supplierSocialMedia = {
   website: string;
 };
 
+export type Collection = {
+  appearance: string;
+  categoryLabel: string;
+  display: boolean;
+  id: number;
+  products: any[];
+  supplier: string;
+  title: string;
+  visibility: boolean;
+};
+
 export type SupplierProfileInfoType = {
   id: number;
   user: User;
   socialLinks: supplierSocialMedia;
-  specialityType: SpecialityType;
+  specialityType: SpecialityType[];
   createdAt: string;
   updatedAt: string;
   profileImage: string;
@@ -30,8 +41,11 @@ export type SupplierProfileInfoType = {
   companySpeciality: string;
   bio: string;
   companyName: string;
-  presentationVideo: string;
-  appearance: string;
+  presentationVideo: string | null;
+  catalogVisibility: boolean;
+  showrooms: any[];
+  supplierCollections: Collection[];
+  supplierCoverImages: string[];
 };
 
 export type createCollectionRequestData = {

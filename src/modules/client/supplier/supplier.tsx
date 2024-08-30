@@ -93,13 +93,7 @@ export default function SupplierPage() {
               contentContainerClassName="gap-4 pb-2"
             >
               {suppliers?.map((supplier) => (
-                <SupplierCard
-                  key={supplier.id}
-                  coverImage={supplier.coverImage}
-                  logoUrl={supplier.profileImage}
-                  name={supplier.companyName}
-                  description={supplier.companySpeciality}
-                />
+                <SupplierCard key={supplier.id} supplier={supplier} />
               ))}
             </ScrollView>
           )}
