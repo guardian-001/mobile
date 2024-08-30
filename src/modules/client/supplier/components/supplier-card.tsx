@@ -61,7 +61,9 @@ export const SupplierCard = ({ supplier }: SupplierCardProps) => {
       <View className="mb-4 flex-row gap-8">
         <View className="items-center">
           <Text className="text-sm text-description">Collection</Text>
-          <Text className="text-xl font-semibold">5 k</Text>
+          <Text className="text-xl font-semibold">
+            {supplier.supplierCollections.length}
+          </Text>
         </View>
         <View className="items-center">
           <Text className="text-sm text-description">Produits</Text>

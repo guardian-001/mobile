@@ -1,5 +1,4 @@
 import React from 'react';
-import { Linking } from 'react-native';
 
 import { Phone } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
@@ -12,6 +11,7 @@ import {
   View,
 } from '@/shared/components';
 
+import { architect } from '../../inspiration/dump-data/architect-profile';
 import { useSupplierProfile } from './hooks/use-suppllier-profile';
 
 export default function SupplierProfile() {
@@ -26,44 +26,40 @@ export default function SupplierProfile() {
     setLogoUrlError,
     fallbackCoverImage,
     fallbackLogoUrl,
-    supplierData,
   } = useSupplierProfile();
-
   return (
     <View className="flex-1 bg-white">
       <View className="items-center">
         <Image
           source={{
             uri:
-              coverImageError || !supplierData?.coverImage
+              coverImageError || !architect.companyLogo
                 ? fallbackCoverImage
-                : supplierData?.coverImage,
+                : architect.companyLogo,
           }}
-          className="h-40 w-full"
+          className="h-44 w-full"
           onError={() => setCoverImageError(true)}
         />
         <Image
           source={{
             uri:
-              logoUrlError || !supplierData?.profileImage
+              logoUrlError || !architect.companyLogo
                 ? fallbackLogoUrl
-                : supplierData?.profileImage,
+                : architect.companyLogo,
           }}
           className="-mt-16 mb-2 h-24 w-24 rounded-full border-4 border-white"
           onError={() => setLogoUrlError(true)}
         />
         <Text className="text-2xl font-bold">
-          {supplierData?.companyName || 'empty'}
+          {architect?.companyName || 'empty'}
         </Text>
         <Text className="text-description">
-          {supplierData?.companySpeciality || 'empty'}
+          {architect?.architectSpeciality.label || 'empty'}
         </Text>
         <Button
           leftIcon={<Phone color={colors.white} />}
           label={translate('common.call')}
-          onPress={() => {
-            Linking.openURL(`tel:${supplierData?.user.phoneNumber}`);
-          }}
+          onPress={() => {}}
           textClassName="text-sm font-semibold"
           className="my-4 h-12 w-[85%] gap-3 rounded-lg"
         />
