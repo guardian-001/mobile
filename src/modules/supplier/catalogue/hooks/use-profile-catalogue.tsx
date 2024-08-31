@@ -4,7 +4,7 @@ import { useGetCollectionsApi } from '@/api/supplier/catalogue/use-get-collectio
 import { useCustomForm } from '@/core';
 
 import { collectionIdSchema } from '../../profile/schemas/collection-schema';
-import type { Product } from '../../profile/type';
+import type { Collection, Product } from '../../profile/type';
 
 export const useProfileCatalogue = () => {
   const {
@@ -14,24 +14,33 @@ export const useProfileCatalogue = () => {
     isSuccess: isSuccessCollection,
     refetch,
   } = useGetCollectionsApi();
-  const { control, form } = useCustomForm(collectionIdSchema, {
-    collection: 35,
+  const { control } = useCustomForm(collectionIdSchema, {
+    collection: CollectionData && CollectionData[0]?.id,
   });
-  const [selectedCollection, setSelectedCollection] = useState(
-    form.watch('collection')
-  );
+  const [selectedCollectionId, setSelectedCollectionId] = useState<number>();
+
+  const [selectedCollection, setSelectedCollection] = useState<Collection>();
+
   const [collectionProducts, setCollectionProducts] = useState<
     Product[] | undefined
   >([]);
-  useEffect(() => {
-    setSelectedCollection(form.watch('collection'));
-  }, [form]);
 
   useEffect(() => {
-    setCollectionProducts(
-      CollectionData?.filter((cd) => cd.id === selectedCollection)[0].products
+    setSelectedCollection(
+      CollectionData?.filter((cd) => cd.id === selectedCollectionId)[0]
     );
-  }, [selectedCollection, CollectionData]);
+  }, [selectedCollectionId, CollectionData]);
+
+  useEffect(() => {
+    console.log(selectedCollectionId);
+    if (selectedCollectionId === undefined) {
+      setSelectedCollectionId(CollectionData && CollectionData[0].id);
+    }
+    setCollectionProducts(
+      CollectionData?.filter((cd) => cd.id === selectedCollectionId)[0]
+        ?.products
+    );
+  }, [selectedCollectionId, CollectionData]);
 
   return {
     CollectionData,
@@ -41,5 +50,8 @@ export const useProfileCatalogue = () => {
     control,
     collectionProducts,
     refetch,
+    selectedCollection,
+    selectedCollectionId,
+    setSelectedCollectionId,
   };
 };

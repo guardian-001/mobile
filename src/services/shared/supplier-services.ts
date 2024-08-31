@@ -4,10 +4,10 @@ import { isAxiosError } from 'axios';
 import { client } from '@/api';
 import type { SpecialityTypeResponse } from '@/api/auth';
 import type { ProfileSocialLinksFormData } from '@/api/profileSettings/type';
+import type { createProductRequestData } from '@/api/supplier/catalogue/types';
 import type { FirstConnectionRequest } from '@/api/supplier/createAccount/types';
 import type {
   createCollectionRequestData,
-  createProductRequestData,
   SupplierProfileInfoListType,
   SupplierProfileInfoType,
   UpdateVisibilityRequest,

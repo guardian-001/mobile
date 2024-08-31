@@ -4,22 +4,27 @@ import { NoDataBox } from '@/assets/icons/archimatch/no-data-box';
 import { translate } from '@/core';
 import { Button, Modal, Text, View } from '@/shared/components';
 
+import type { Collection } from '../profile/type';
 import AddProductForm from '../shared/components/add-product-form';
 import { useAddProduct } from './hooks/use-add-product';
 import { useProfileCatalogue } from './hooks/use-profile-catalogue';
 
-export default function CatalogueBody() {
+type BodyProps = {
+  selectedCollection?: Collection;
+};
+
+export default function CatalogueBody({ selectedCollection }: BodyProps) {
   const { collectionProducts } = useProfileCatalogue();
   const { reset, ref, present } = useAddProduct();
 
   return (
-    <View className="flex  h-full w-full   justify-start">
+    <View className="flex h-full w-full justify-start">
       {collectionProducts && collectionProducts?.length > 0 ? (
         <View>
           <Text>data</Text>
         </View>
       ) : (
-        <View className="flex  h-3/5  w-full   items-center justify-start gap-28  ">
+        <View className="flex h-3/5 w-full items-center justify-start gap-28">
           <Text
             tx={'catalogue.createCollection.collectionProductsNoDataTitle'}
             className="text-md m-4 w-full px-4 text-start font-bold"
@@ -36,14 +41,14 @@ export default function CatalogueBody() {
             </View>
             <Button
               label={translate('catalogue.createProduct.addProduct')}
-              className="  h-12 w-2/5 rounded-lg"
+              className="h-12 w-2/5 rounded-lg"
               onPress={() => present()}
             />
           </View>
         </View>
       )}
       <Modal snapPoints={['85%']} ref={ref} onDismiss={() => reset()}>
-        <AddProductForm />
+        <AddProductForm selectedCollection={selectedCollection} />
       </Modal>
     </View>
   );

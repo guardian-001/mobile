@@ -61,9 +61,7 @@ export default function AddCollectionForm() {
         <View className="h-10">
           <SwitchInput
             accessibilityLabel=""
-            label={translate(
-              'catalogue.createCollection.visibilityDescriptionActive'
-            )}
+            label={translate('catalogue.createCollection.visibilityDescAct')}
             labelSwitch={translate(
               'catalogue.createCollection.visibilityDescriptionNotActive'
             )}

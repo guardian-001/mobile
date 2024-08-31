@@ -9,12 +9,13 @@ import {
   useModal,
 } from '@/shared/components';
 
-import { collectionSchema } from '../../profile/schemas/collection-schema';
+import { collectionSchema } from '../schema/collection-schema';
 import { useProfileCatalogue } from './use-profile-catalogue';
 
 type CollectionType = z.infer<typeof collectionSchema>;
 export const useAddCollection = () => {
   const { refetch } = useProfileCatalogue();
+
   const { ref, present, dismiss } = useModal();
   const { control, handleSubmit, reset } = useCustomForm(collectionSchema, {
     visibility: false,

@@ -1,5 +1,4 @@
 import { isError } from 'lodash';
-import type * as z from 'zod';
 
 import { useCreateProductApi } from '@/api/supplier/catalogue/use-create-product';
 import { translate, useCustomForm } from '@/core';
@@ -9,18 +8,43 @@ import {
   useModal,
 } from '@/shared/components';
 
-import { productSchema } from '../../profile/schemas/collection-schema';
+import {
+  createProductSchema,
+  productImageCreationSchema,
+} from '../schema/collection-schema';
+import type { createProductType, ImagesCreatePRoductFormType } from '../types';
+import { useImagePicker } from './use-image-picker';
 
-type ProductType = z.infer<typeof productSchema>;
 export const useAddProduct = () => {
   const { ref, present, dismiss } = useModal();
-  const { control, handleSubmit, reset } = useCustomForm(productSchema, {
+  const {
+    control: modalControl,
+    handleSubmit,
+    reset,
+  } = useCustomForm(createProductSchema, {
     visibility: false,
   });
 
+  const { errors: imagesError, control: ImageControl } = useCustomForm(
+    productImageCreationSchema,
+    {
+      productImages: [],
+    }
+  );
+  const {
+    images,
+    selectedImage,
+    error,
+    pickImages,
+    removeImage,
+    handleImagePress,
+  } = useImagePicker<ImagesCreatePRoductFormType>({
+    control: ImageControl,
+    name: 'productImages',
+  });
   const { mutate } = useCreateProductApi();
 
-  const onSubmit = (dataProduct: ProductType) => {
+  const onSubmit = (dataProduct: createProductType) => {
     mutate(dataProduct, {
       onSuccess: () => {
         showSuccesMessage(translate('catalogue.createProduct.success'));
@@ -33,7 +57,13 @@ export const useAddProduct = () => {
   };
 
   return {
-    modalControl: control,
+    images,
+    selectedImage,
+    error,
+    pickImages,
+    removeImage,
+    handleImagePress,
+    modalControl,
     handleSubmit,
     reset,
     ref,
@@ -42,5 +72,6 @@ export const useAddProduct = () => {
     onSubmit,
     mutate,
     isError,
+    imagesError,
   };
 };

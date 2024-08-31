@@ -19,8 +19,12 @@ import type { Collection } from '../profile/type';
 import AddCollectionForm from '../shared/components/add-collection-form';
 import { useAddCollection } from './hooks/use-add-collection';
 import { useProfileCatalogue } from './hooks/use-profile-catalogue';
-
-export default function CatalogueHeader() {
+type HeaderProps = {
+  setSelectedCollectionId: (id?: number) => void;
+};
+export default function CatalogueHeader({
+  setSelectedCollectionId,
+}: HeaderProps) {
   const { data } = useProfileInfo();
   const { CollectionData, isSuccessCollection, control } =
     useProfileCatalogue();
@@ -88,6 +92,9 @@ export default function CatalogueHeader() {
                     className="flex h-12 max-w-xl flex-row items-center justify-evenly"
                     obligation={true}
                     idValidation={true}
+                    onChange={(id) => {
+                      setSelectedCollectionId(id);
+                    }}
                   />
                 ))}
               </ScrollView>

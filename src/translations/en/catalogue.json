@@ -15,7 +15,7 @@
     "big": "Large",
     "bigDescription": "Perfect for showcasing kitchens and other large items with grandeur",
     "visibilityLabel": "Visibility in the Collection",
-    "visibilityDescriptionActive": "Visibility enabled",
+    "visibilityDescAct": "Visibility enabled",
     "visibilityDescriptionNotActive": "Visibility disabled",
     "success": "Collection created successfully",
     "echec": "Creation failed",

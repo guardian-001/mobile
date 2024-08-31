@@ -3,15 +3,15 @@ import { StyleSheet, View } from 'react-native';
 
 import CatalogueBody from './catalogue-body';
 import CatalogueHeader from './catalogue-header';
-import { ProfileCatalogueProvider } from './hooks/profile-catalogue-provider';
+import { useProfileCatalogue } from './hooks/use-profile-catalogue';
 
 export default function SupplierCatalogue() {
+  const { setSelectedCollectionId, selectedCollection } = useProfileCatalogue();
   return (
     <View className={'bg-secondary'} style={styles.gradientBachgroud}>
-      <ProfileCatalogueProvider>
-        <CatalogueHeader />
-        <CatalogueBody />
-      </ProfileCatalogueProvider>
+      <CatalogueHeader setSelectedCollectionId={setSelectedCollectionId} />
+
+      <CatalogueBody selectedCollection={selectedCollection} />
     </View>
   );
 }
