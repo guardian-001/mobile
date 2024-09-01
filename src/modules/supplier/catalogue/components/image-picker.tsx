@@ -4,7 +4,7 @@ import { Pressable, ScrollView } from 'react-native';
 import { ImageUploader } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import { StepperButton } from '@/modules/shared';
-import { Image, Text, View } from '@/shared/components';
+import { Text, View } from '@/shared/components';
 import type { ImageInfo } from '@/types';
 
 import ImagesList from './images-list';
@@ -18,7 +18,7 @@ type ImagePickerProps = {
 };
 export default function ImagePickerComponent({
   images,
-  selectedImage,
+  // selectedImage,
   error,
   pickImages,
   removeImage,
@@ -26,28 +26,28 @@ export default function ImagePickerComponent({
 }: ImagePickerProps) {
   return (
     <>
-      <View className="w-full items-start">
+      <View className="w-full items-start py-10">
         {images.length > 0 ? (
           <ScrollView
             contentContainerClassName="items-center justify-center pt-2 pb-5"
             className="flex h-full w-full"
             showsVerticalScrollIndicator={false}
           >
-            <View className="mb-4 flex h-56 w-full items-center justify-start">
+            {/* <View className="mb-4 flex h-56 w-full items-center justify-start">
               <Image
                 contentFit="fill"
                 source={{ uri: selectedImage?.uri }}
                 className="h-full w-full rounded-lg"
               />
-            </View>
-            <View className="w-full grid-flow-row grid-cols-2 items-start gap-5">
+            </View> */}
+            <View className="w-fit grid-flow-row grid-cols-2 gap-5 ">
               <ImagesList
                 images={images}
                 removeImage={removeImage}
                 handleImagePress={handleImagePress}
                 pickImages={pickImages}
               />
-              {images.length % 2 === 0 && (
+              {images.length % 3 === 0 && (
                 <View className="flex w-full items-center justify-center px-2">
                   <Pressable
                     onPress={pickImages}
@@ -62,7 +62,7 @@ export default function ImagePickerComponent({
             </View>
           </ScrollView>
         ) : (
-          <View className="mx-auto flex w-11/12 items-center justify-center rounded-xl border border-dashed border-description py-2">
+          <View className="mx-auto flex w-full items-center justify-center rounded-xl border border-dashed border-description py-2">
             <View className="flex h-28 w-28 items-center justify-center">
               <ImageUploader />
             </View>

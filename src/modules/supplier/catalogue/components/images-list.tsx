@@ -28,11 +28,11 @@ const ImagesList: React.FC<ImagesListProps> = ({
       {imagePairs.map((pair, index) => (
         <View
           key={index}
-          className="flex h-28 w-full flex-row items-center justify-around gap-5 "
+          className="flex h-28 w-full flex-row items-center justify-start gap-6  "
         >
           {pair.map((item: ImageInfo, subIndex: number) => (
             <React.Fragment key={index + '-' + subIndex}>
-              <View className="h-fit w-44">
+              <View className="h-fit w-28">
                 <CloseBtn handleAction={() => removeImage(index, subIndex)} />
                 <Pressable onPress={() => handleImagePress(index, subIndex)}>
                   <Image
@@ -42,11 +42,12 @@ const ImagesList: React.FC<ImagesListProps> = ({
                   />
                 </Pressable>
               </View>
-              {images.length % 2 > 0 &&
-              index === Math.floor(images.length / 2) ? (
+              {images.length % 3 > 0 &&
+              index === Math.floor(images.length / 3) &&
+              index * 3 + subIndex + 1 === images.length ? (
                 <Pressable
                   onPress={pickImages}
-                  className="mt-2 flex h-fit w-44 items-center justify-center rounded-md border border-dashed border-description py-2"
+                  className="mt-2 flex h-fit w-28 items-center justify-center rounded-md border border-dashed border-description py-2"
                 >
                   <View className="flex h-28 w-28 items-center justify-center">
                     <ImageUploader />

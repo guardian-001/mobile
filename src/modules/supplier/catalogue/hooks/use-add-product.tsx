@@ -15,7 +15,7 @@ import {
 import type { createProductType, ImagesCreatePRoductFormType } from '../types';
 import { useImagePicker } from './use-image-picker';
 
-export const useAddProduct = () => {
+export const useAddProduct = (selectedCollectionId?: string) => {
   const { ref, present, dismiss } = useModal();
   const {
     control: modalControl,
@@ -23,6 +23,7 @@ export const useAddProduct = () => {
     reset,
   } = useCustomForm(createProductSchema, {
     visibility: false,
+    collectionCategory: selectedCollectionId,
   });
 
   const { errors: imagesError, control: ImageControl } = useCustomForm(

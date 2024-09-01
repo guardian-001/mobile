@@ -4,8 +4,8 @@ export const useImagePairs = (images: ImageInfo[]) => {
   const groupImagesInPairs = () => {
     const pairs: ImageInfo[][] = [];
     images.forEach((_, index) => {
-      if (index % 2 === 0) {
-        pairs.push(images.slice(index, index + 2));
+      if (index % 3 === 0) {
+        pairs.push(images.slice(index, index + 3));
       }
     });
     return pairs;

@@ -31,7 +31,7 @@ export default function AddProductForm({
     handleImagePress,
   } = useAddProduct();
   return (
-    <View className="p-4">
+    <View className="flex h-fit justify-center p-4">
       <Text
         tx="catalogue.createProduct.addProduct"
         className="text-xl font-bold"
@@ -40,7 +40,7 @@ export default function AddProductForm({
         tx="catalogue.createProduct.addproductDescription"
         className="text-xs text-description"
       />
-      <ScrollView className="pb-10">
+      <ScrollView className="h-[84%] pb-10">
         <ControlledInput
           required={true}
           control={modalControl}
@@ -109,7 +109,7 @@ export default function AddProductForm({
       </ScrollView>
       <Button
         label={translate('common.publish')}
-        className=" mt-4 h-10 w-full rounded-lg"
+        className=" mt-4  h-10 w-full rounded-lg"
         onPress={handleSubmit(onSubmit)}
       />
     </View>

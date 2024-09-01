@@ -7,21 +7,27 @@ import { Button, Modal, Text, View } from '@/shared/components';
 import type { Collection } from '../profile/type';
 import AddProductForm from '../shared/components/add-product-form';
 import { useAddProduct } from './hooks/use-add-product';
-import { useProfileCatalogue } from './hooks/use-profile-catalogue';
 
 type BodyProps = {
   selectedCollection?: Collection;
 };
 
 export default function CatalogueBody({ selectedCollection }: BodyProps) {
-  const { collectionProducts } = useProfileCatalogue();
-  const { reset, ref, present } = useAddProduct();
+  // const { collectionProducts } = useProfileCatalogue();
+  const { reset, ref, present } = useAddProduct(String(selectedCollection?.id));
 
   return (
     <View className="flex h-full w-full justify-start">
-      {collectionProducts && collectionProducts?.length > 0 ? (
+      {selectedCollection && selectedCollection?.products?.length > 0 ? (
         <View>
-          <Text>data</Text>
+          {selectedCollection?.products?.map((product) => {
+            return (
+              <View>
+                <Text>{product.name}</Text>
+                <Text>{product.price}</Text>
+              </View>
+            );
+          })}
         </View>
       ) : (
         <View className="flex h-3/5 w-full items-center justify-start gap-28">
