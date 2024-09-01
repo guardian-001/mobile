@@ -48,8 +48,10 @@ export default function CatalogueHeader({
                   />
                 </View>
               ) : (
-                <View className=" absolute -z-10 flex h-20 w-20 items-center justify-center rounded-full bg-gray-100  ">
-                  <Profile width={20} height={30} color={colors.gray[400]} />
+                <View className="ml-1 flex items-center justify-center rounded-full bg-white p-1">
+                  <View className="flex h-20 w-20 items-center justify-center rounded-full   bg-gray-100">
+                    <Profile width={20} height={30} color={colors.gray[400]} />
+                  </View>
                 </View>
               )}
               <View className="flex flex-row items-center justify-center gap-1">

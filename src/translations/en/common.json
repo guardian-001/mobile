@@ -11,5 +11,6 @@
   "modify": "Edit",
   "publish": "Publish",
   "logout": "logout",
-  "subscribe": "Subscribe"
+  "subscribe": "Subscribe",
+  "delete": "Delete"
 }

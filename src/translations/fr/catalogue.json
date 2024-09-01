@@ -37,6 +37,8 @@
     "descriptionLabel": "Descritpion",
     "descriptionPlaceholder": "Description (fournir plus de détails possible)",
     "success": "Produit créée avec succès",
-    "echec": "Echec de Creation"
+    "echec": "Echec de Creation",
+    "confirmDeleteTitle": "Confirmer la suppression",
+    "confirmDeleteDescription": "Confirmez-vous la suppression du produit ?"
   }
 }

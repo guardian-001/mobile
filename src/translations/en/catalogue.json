@@ -37,6 +37,8 @@
     "descriptionLabel": "Description",
     "descriptionPlaceholder": "Description (provide as many details as possible)",
     "success": "Product created successfully",
-    "echec": "Creation failed"
+    "echec": "Creation failed",
+    "confirmDeleteTitle": "Confirm Delete",
+    "confirmDeleteDescription": "Would you confirm to delete the product ?"
   }
 }

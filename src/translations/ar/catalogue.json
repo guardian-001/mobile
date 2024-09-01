@@ -37,6 +37,8 @@
     "descriptionLabel": "الوصف",
     "descriptionPlaceholder": "الوصف (قدم أكبر قدر ممكن من التفاصيل)",
     "success": "تم إنشاء المنتج بنجاح",
-    "echec": "فشل في الإنشاء"
+    "echec": "فشل في الإنشاء",
+    "confirmDeleteTitle": "تأكيد الحذف",
+    "confirmDeleteDescription": "هل تؤكد حذف المنتج؟"
   }
 }

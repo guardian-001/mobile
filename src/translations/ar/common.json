@@ -11,5 +11,6 @@
   "modify": "تعديل",
   "publish": "نشر",
   "logout": "خروج",
-  "subscribe": "اشترك"
+  "subscribe": "اشترك",
+  "delete": "حذف"
 }
