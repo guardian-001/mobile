@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { useCategoriesApi, usePropertyTypesApi } from '@/api/client';
 import { useCustomForm } from '@/core';
 
@@ -10,9 +12,14 @@ export const useExplore = () => {
     isLoading: isLoadingCategory,
     isSuccess: isSuccessCategory,
   } = useCategoriesApi();
-  const { control, watch } = useCustomForm(ProjectCategorySchema, {
-    projectCategory: 'Projet résidentiel',
-  });
+  const { control, watch, setValue } = useCustomForm(ProjectCategorySchema);
+
+  useEffect(() => {
+    if (CategoryData?.length) {
+      setValue('projectCategory', CategoryData[0].label || '');
+    }
+  }, [CategoryData, setValue]);
+
   const selectedCategory: string = watch('projectCategory');
   const selectedCategoryId =
     CategoryData?.find((category) => category.label === selectedCategory)?.id ||

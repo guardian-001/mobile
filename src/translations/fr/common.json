@@ -11,5 +11,7 @@
   "modify": "Modifier",
   "publish": "Publier",
   "logout": "déconnecter",
-  "subscribe": "S'abonner"
+  "subscribe": "S'abonner",
+  "catalogue": "Catalogue",
+  "call": "Appeler"
 }
