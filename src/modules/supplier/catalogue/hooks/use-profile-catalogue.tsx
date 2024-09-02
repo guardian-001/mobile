@@ -32,7 +32,6 @@ export const useProfileCatalogue = () => {
   }, [selectedCollectionId, CollectionData]);
 
   useEffect(() => {
-    console.log(selectedCollectionId);
     if (selectedCollectionId === undefined) {
       setSelectedCollectionId(CollectionData && CollectionData[0].id);
     }
