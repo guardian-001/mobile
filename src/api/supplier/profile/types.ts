@@ -1,6 +1,10 @@
 import type { User } from '@/api/auth';
 import type { SpecialityType } from '@/modules/supplier/create-account/types';
 
+export type ProductImage = {
+  id: number;
+  image: string;
+};
 export type SpecialityTypeResponse = {
   id: number;
   label: string;
@@ -16,11 +20,34 @@ export type supplierSocialMedia = {
   website: string;
 };
 
+export type Product = {
+  collectionCategory: string;
+  collectionTitle: string;
+  description: string;
+  display: boolean;
+  id: number;
+  name: string;
+  order: number;
+  price: string;
+  productImages: ProductImage[];
+  visibility: boolean;
+};
+export type Collection = {
+  appearance: string;
+  categoryLabel: string;
+  display: boolean;
+  id: number;
+  products: Product[];
+  supplier: string;
+  title: string;
+  visibility: boolean;
+};
+
 export type SupplierProfileInfoType = {
   id: number;
   user: User;
   socialLinks: supplierSocialMedia;
-  specialityType: SpecialityType;
+  specialityType: SpecialityType[];
   createdAt: string;
   updatedAt: string;
   profileImage: string;
@@ -30,8 +57,11 @@ export type SupplierProfileInfoType = {
   companySpeciality: string;
   bio: string;
   companyName: string;
-  presentationVideo: string;
-  appearance: string;
+  presentationVideo: string | null;
+  catalogVisibility: boolean;
+  showrooms: any[];
+  supplierCollections: Collection[];
+  supplierCoverImages: string[];
 };
 
 export type createCollectionRequestData = {
@@ -40,6 +70,7 @@ export type createCollectionRequestData = {
   visibility: boolean;
   appearance: string;
 };
+
 
 export type UpdateVisibilityRequest = { id: number; visibility: boolean };
 

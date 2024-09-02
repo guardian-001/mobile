@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import type { Control } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 
@@ -8,6 +8,7 @@ import { useAllSuppliersApi } from '@/api/supplier/profile/use-all-suppliers';
 import { useCustomForm } from '@/core';
 import type { Option } from '@/shared/components';
 import { useModal } from '@/shared/components';
+import { SearchSchema } from '@/shared/validations';
 import type { TagType } from '@/types';
 
 import {
@@ -22,19 +23,7 @@ export const useSupplier = () => {
     isError: isErrorSpeciality,
     isSuccess: isSuccessSpeciality,
   } = useSpecialityTypesApi();
-  const specialityTypesData: TagType[] =
-    data?.map((type) => {
-      return {
-        id: type.id,
-        value: type.content,
-        displayName: type.label,
-        imageIcon: type.icon,
-      };
-    }) || [];
-  const { control } = useCustomForm(specialityTypeSchema, {
-    specialityType: specialityTypesData[0]?.displayName,
-  });
-
+  const { data: cities } = useCitiesApi();
   const {
     data: suppliers,
     isLoading: isLoadingSuppliers,
@@ -42,21 +31,41 @@ export const useSupplier = () => {
     isSuccess: isSuccessSuppliers,
   } = useAllSuppliersApi();
 
-  const modal = useModal();
-  const { data: cities } = useCitiesApi();
+  const { control, setValue } = useCustomForm(specialityTypeSchema);
+  const { control: controlCity, setValue: setValueCity } =
+    useCustomForm(citySchema);
+
+  useEffect(() => {
+    if (data?.length) {
+      setValue('specialityType', data[0].label || '');
+    }
+    if (cities?.length) {
+      setValueCity('city', cities[0].value || '');
+    }
+  }, [data, cities, setValue, setValueCity]);
+
+  const specialityTypesData: TagType[] =
+    data?.map((type) => {
+      return {
+        id: type.id,
+        value: type.label,
+        displayName: type.label,
+        imageIcon: type.icon,
+      };
+    }) || [];
+
   const cityOptions =
     cities?.map((city) => ({
       label: city.displayName,
       value: city.value,
     })) || [];
-  const { control: controlCity } = useCustomForm(citySchema, {
-    city: cityOptions[0]?.label,
-  });
 
   const { field } = useController({
     control: controlCity as Control<{ city: string }, any>,
     name: 'city',
   });
+
+  const modal = useModal();
   const onSelect = useCallback(
     (value: string | number) => {
       field.onChange(value);
@@ -70,6 +79,9 @@ export const useSupplier = () => {
     },
     [modal, onSelect]
   );
+
+  const { handleSubmit, control: searchControl } = useCustomForm(SearchSchema);
+
   return {
     CategoryData,
     PropertyData,
@@ -86,5 +98,7 @@ export const useSupplier = () => {
     cityOptions,
     modal,
     field,
+    searchControl,
+    handleSubmit,
   };
 };

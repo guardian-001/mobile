@@ -5,7 +5,7 @@ import Svg, { Mask, Path } from 'react-native-svg';
 import colors from '@/theme/colors';
 
 export const Location = ({ color = colors.blue, ...props }: SvgProps) => (
-  <Svg className="h-5 w-4" fill="none" {...props}>
+  <Svg className="h-5 w-5" fill="none" {...props}>
     <Mask id="a" fill="#fff">
       <Path d="m5.829 16 .297-.364c.199-.264 5.257-6.182 5.257-9.72 0-3.074-2.513-5.554-5.554-5.554C2.787.362.275 2.875.275 5.916c0 3.538 5.058 9.489 5.256 9.72L5.83 16Zm0-14.877a4.762 4.762 0 0 1 4.76 4.76c0 2.777-3.67 7.505-4.76 8.86-1.091-1.355-4.761-6.05-4.761-8.86a4.762 4.762 0 0 1 4.76-4.76Z" />
     </Mask>

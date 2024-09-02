@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Trash } from '@/assets/icons/archimatch';
-import { Pen } from '@/assets/icons/archimatch/pen';
+import { Pen, Trash } from '@/assets/icons/archimatch';
 import { colors, Text, TouchableOpacity, View } from '@/shared/components';
 
 type CollectionCardProps = {

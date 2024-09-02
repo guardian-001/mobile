@@ -13,4 +13,6 @@
   "logout": "logout",
   "subscribe": "Subscribe",
   "delete": "Delete"
+  "catalogue": "Catalogue",
+  "call": "To call"
 }
