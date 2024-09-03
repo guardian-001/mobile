@@ -14,6 +14,7 @@ export const useProfileCatalogue = () => {
     isSuccess: isSuccessCollection,
     refetch,
   } = useGetCollectionsApi();
+
   const { control } = useCustomForm(collectionIdSchema, {
     collection: CollectionData && CollectionData[0]?.id,
   });
@@ -27,7 +28,9 @@ export const useProfileCatalogue = () => {
 
   useEffect(() => {
     setSelectedCollection(
-      CollectionData?.filter((cd) => cd.id === selectedCollectionId)[0]
+      CollectionData?.filter(
+        (collection) => collection.id === selectedCollectionId
+      )[0]
     );
   }, [selectedCollectionId, CollectionData]);
 
@@ -36,8 +39,9 @@ export const useProfileCatalogue = () => {
       setSelectedCollectionId(CollectionData && CollectionData[0].id);
     }
     setCollectionProducts(
-      CollectionData?.filter((cd) => cd.id === selectedCollectionId)[0]
-        ?.products
+      CollectionData?.filter(
+        (collection) => collection.id === selectedCollectionId
+      )[0]?.products
     );
   }, [selectedCollectionId, CollectionData]);
 

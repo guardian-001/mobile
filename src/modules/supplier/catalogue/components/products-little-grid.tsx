@@ -6,6 +6,7 @@ import { translate } from '@/core';
 import { ControlledInput } from '@/shared/components';
 
 import type { Product } from '../../profile/type';
+import { DEFAULT_PRODUCT } from '../../shared/constant';
 import { useProductManagement } from '../hooks/use-product-management';
 import ProductLittle from './product-little';
 
@@ -28,20 +29,7 @@ const ProductLittleGrid = ({ items, onAddProductPress }: ProductGridProps) => {
         />
       </View>
       <FlatList
-        data={[
-          {
-            id: -1,
-            name: '',
-            price: 0,
-            description: '',
-            productImages: [{ id: 0, image: '' }],
-            collectionCategory: '',
-            collectionTitle: '',
-            order: 0,
-            display: false,
-          },
-          ...filteredItems,
-        ]}
+        data={[DEFAULT_PRODUCT, ...filteredItems]}
         renderItem={({ item, index }: { item: Product; index: number }) => (
           <ProductLittle
             item={item}
