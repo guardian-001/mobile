@@ -12,7 +12,7 @@
   "publish": "Publish",
   "logout": "logout",
   "subscribe": "Subscribe",
-  "delete": "Delete"
+  "delete": "Delete",
   "catalogue": "Catalogue",
   "call": "To call"
 }
