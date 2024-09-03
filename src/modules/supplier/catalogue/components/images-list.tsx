@@ -6,6 +6,7 @@ import CloseBtn from '@/services/shared/close-btn';
 import { Image } from '@/shared/components';
 
 import { useImagePairs } from '../hooks/use-image-pairs';
+import { useImageList } from '../hooks/use-images-list';
 import type { ImageInfo } from '../types';
 
 interface ImagesListProps {
@@ -22,13 +23,14 @@ const ImagesList: React.FC<ImagesListProps> = ({
   pickImages,
 }) => {
   const imagePairs = useImagePairs(images);
+  const { shouldRenderUploader } = useImageList(images);
 
   return (
     <>
       {imagePairs.map((pair, index) => (
         <View
           key={index}
-          className="flex h-28 w-full flex-row items-center justify-start gap-6  "
+          className="flex h-28 w-full flex-row items-center justify-start gap-6"
         >
           {pair.map((item: ImageInfo, subIndex: number) => (
             <React.Fragment key={index + '-' + subIndex}>
@@ -42,9 +44,7 @@ const ImagesList: React.FC<ImagesListProps> = ({
                   />
                 </Pressable>
               </View>
-              {images.length % 3 > 0 &&
-              index === Math.floor(images.length / 3) &&
-              index * 3 + subIndex + 1 === images.length ? (
+              {shouldRenderUploader(index, subIndex) ? (
                 <Pressable
                   onPress={pickImages}
                   className="mt-2 flex h-fit w-28 items-center justify-center rounded-md border border-dashed border-description py-2"

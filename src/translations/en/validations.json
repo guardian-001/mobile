@@ -26,5 +26,13 @@
   "invalidDateFormat": "Invalid date format",
   "invalidTimeFormat": "Invalid time format",
   "invalidName": "Invalid name",
-  "invalidUrl": "Invalid URL"
+  "invalidUrl": "Invalid URL",
+  "cardRequired": "Cardholder name is required",
+  "cvvInvalid": "CVV must be 3 or 4 digits",
+  "cardNumberInvalid": "Card number must be 16 digits",
+  "expirationDateInvalid": "Expiration date must be in MM/YY format",
+  "numberNonNegative": "Number must be non-negative",
+  "numberNonNegativeInteger": "Number must be a non-negative integer",
+  "urlInvalid": "Invalid URL format",
+  "numberPositive": "Number must be positive"
 }

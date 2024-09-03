@@ -4,7 +4,15 @@ import {
   fieldValidation,
   idStringValidation,
   idValidation,
+  numberNonNegativeIntegerValidation,
+  numberNonNegativeValidation,
+  numberPositiveValidation,
+  requiredValidation,
+  requiredValidationBoolean,
+  urlValidation,
 } from '@/shared/validations';
+
+import { productImageValidation } from '../validations/collection-validation';
 
 export const collectionIdSchema = z.object({
   collection: idValidation,
@@ -14,24 +22,22 @@ export const collectionSchema = z.object({
   title: fieldValidation,
   category: idStringValidation,
   appearance: fieldValidation,
-  visibility: z.boolean(),
+  visibility: requiredValidationBoolean,
 });
 
-const productImageSchema = z.object({
-  id: z.number().nonnegative(),
-  image: z.string().url(),
+export const productImageSchema = z.object({
+  id: numberNonNegativeValidation,
+  image: urlValidation,
 });
 
 export const productSchema = z.object({
-  id: z.number().nonnegative(),
-  name: z.string().min(1, 'Name is required'),
-  price: z.number().positive('Price must be greater than zero'),
-  description: z.string().min(1, 'Description is required'),
-  productImages: z
-    .array(productImageSchema)
-    .min(1, 'At least one image is required'),
-  collectionCategory: z.string().min(1, 'Category is required'),
-  collectionTitle: z.string().min(1, 'Title is required'),
-  order: z.number().int().nonnegative(),
-  display: z.boolean(),
+  id: numberNonNegativeValidation,
+  name: requiredValidation,
+  price: numberPositiveValidation,
+  description: requiredValidation,
+  productImages: productImageValidation,
+  collectionCategory: requiredValidation,
+  collectionTitle: requiredValidation,
+  order: numberNonNegativeIntegerValidation,
+  display: requiredValidationBoolean,
 });
