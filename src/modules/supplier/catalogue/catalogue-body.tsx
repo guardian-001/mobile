@@ -5,11 +5,11 @@ import { NoDataBox } from '@/assets/icons/archimatch/no-data-box';
 import { translate } from '@/core';
 import { Button, Modal, Text, View } from '@/shared/components';
 
-import type { Collection } from '../profile/type';
 import AddProductForm from '../shared/components/add-product-form';
 import ProductBigGrid from './components/products-big-grid';
 import ProductLittleGrid from './components/products-little-grid';
 import { useAddProduct } from './hooks/use-add-product';
+import type { Collection } from './types';
 
 type BodyProps = {
   selectedCollection?: Collection;

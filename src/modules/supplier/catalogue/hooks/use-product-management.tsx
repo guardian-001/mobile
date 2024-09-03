@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { useCustomForm } from '@/core';
 import { SearchSchema } from '@/shared/validations';
 
-import type { Product } from '../../profile/type';
+import type { Product } from '../types';
 
 export const useProductManagement = (items: Product[]) => {
   const { handleSubmit, control, watch } = useCustomForm(SearchSchema);

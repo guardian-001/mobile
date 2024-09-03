@@ -4,7 +4,7 @@ import { useGetCollectionsApi } from '@/api/supplier/catalogue/use-get-collectio
 import { useCustomForm } from '@/core';
 
 import { collectionIdSchema } from '../../profile/schemas/collection-schema';
-import type { Collection, Product } from '../../profile/type';
+import type { Collection, Product } from '../types';
 
 export const useProfileCatalogue = () => {
   const {

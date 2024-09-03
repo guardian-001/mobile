@@ -15,10 +15,10 @@ import {
 } from '@/shared/components';
 
 import { useProfileInfo } from '../profile/hooks/use-profile-info';
-import type { Collection } from '../profile/type';
 import AddCollectionForm from '../shared/components/add-collection-form';
 import { useAddCollection } from './hooks/use-add-collection';
 import { useProfileCatalogue } from './hooks/use-profile-catalogue';
+import type { Collection } from './types';
 type HeaderProps = {
   setSelectedCollectionId: (id?: number) => void;
 };
