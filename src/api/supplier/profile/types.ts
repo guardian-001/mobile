@@ -71,17 +71,6 @@ export type createCollectionRequestData = {
   appearance: string;
 };
 
-export type createProductRequestData = {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  productImages: ProductImage[];
-  collectionCategory: string;
-  collectionTitle: string;
-  order: number;
-  display: boolean;
-};
 
 export type UpdateVisibilityRequest = { id: number; visibility: boolean };
 

@@ -15,7 +15,7 @@
     "big": "Grande",
     "bigDescription": "Parfait pour présenter des cuisines et autres grands articles avec ampleur",
     "visibilityLabel": "Visibilité dans la Collection",
-    "visibilityDescriptionActive": "Visibilité activé",
+    "visibilityDescAct": "Visibilité activé",
     "visibilityDescriptionNotActive": "Visibilité desactivé",
     "success": "Collection créée avec succès",
     "echec": "Echec de Creation",
@@ -37,6 +37,8 @@
     "descriptionLabel": "Descritpion",
     "descriptionPlaceholder": "Description (fournir plus de détails possible)",
     "success": "Produit créée avec succès",
-    "echec": "Echec de Creation"
+    "echec": "Echec de Creation",
+    "confirmDeleteTitle": "Confirmer la suppression",
+    "confirmDeleteDescription": "Confirmez-vous la suppression du produit ?"
   }
 }

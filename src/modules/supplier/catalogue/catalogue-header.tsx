@@ -15,12 +15,16 @@ import {
 } from '@/shared/components';
 
 import { useProfileInfo } from '../profile/hooks/use-profile-info';
-import type { Collection } from '../profile/type';
 import AddCollectionForm from '../shared/components/add-collection-form';
 import { useAddCollection } from './hooks/use-add-collection';
 import { useProfileCatalogue } from './hooks/use-profile-catalogue';
-
-export default function CatalogueHeader() {
+import type { Collection } from './types';
+type HeaderProps = {
+  setSelectedCollectionId: (id?: number) => void;
+};
+export default function CatalogueHeader({
+  setSelectedCollectionId,
+}: HeaderProps) {
   const { data } = useProfileInfo();
   const { CollectionData, isSuccessCollection, control } =
     useProfileCatalogue();
@@ -44,8 +48,10 @@ export default function CatalogueHeader() {
                   />
                 </View>
               ) : (
-                <View className=" absolute -z-10 flex h-20 w-20 items-center justify-center rounded-full bg-gray-100  ">
-                  <Profile width={20} height={30} color={colors.gray[400]} />
+                <View className="ml-1 flex items-center justify-center rounded-full bg-white p-1">
+                  <View className="flex h-20 w-20 items-center justify-center rounded-full   bg-gray-100">
+                    <Profile width={20} height={30} color={colors.gray[400]} />
+                  </View>
                 </View>
               )}
               <View className="flex flex-row items-center justify-center gap-1">
@@ -88,6 +94,9 @@ export default function CatalogueHeader() {
                     className="flex h-12 max-w-xl flex-row items-center justify-evenly"
                     obligation={true}
                     idValidation={true}
+                    onChange={(id) => {
+                      setSelectedCollectionId(id);
+                    }}
                   />
                 ))}
               </ScrollView>

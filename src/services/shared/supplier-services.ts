@@ -4,10 +4,10 @@ import { isAxiosError } from 'axios';
 import { client } from '@/api';
 import type { SpecialityTypeResponse } from '@/api/auth';
 import type { ProfileSocialLinksFormData } from '@/api/profileSettings/type';
+import type { createProductRequestData } from '@/api/supplier/catalogue/types';
 import type { FirstConnectionRequest } from '@/api/supplier/createAccount/types';
 import type {
   createCollectionRequestData,
-  createProductRequestData,
   SupplierProfileInfoListType,
   SupplierProfileInfoType,
   UpdateVisibilityRequest,
@@ -174,10 +174,8 @@ export async function createProduct(
   return client.post(url, request);
 }
 
-export async function deleteProductAsync(
-  productId: number
-): Promise<AxiosResponse> {
-  const url = `/api/catalogue/product/delete/${productId}/`;
+export async function deleteProductAsync(id: string): Promise<AxiosResponse> {
+  const url = `/api/catalogue/product/delete/${id}/`;
   return client.delete(url);
 }
 

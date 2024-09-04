@@ -1,113 +1,115 @@
 import React from 'react';
 
-import {
-  Big,
-  BigBorder,
-  Little,
-  LittleBorder,
-} from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import {
   Button,
   ControlledInput,
-  ControlledSelect,
+  ScrollView,
   SwitchInput,
   Text,
-  ToggleRadioCard,
   View,
 } from '@/shared/components';
 
-import { useAddCollection } from '../../catalogue/hooks/use-add-collection';
-
-export default function AddProductForm() {
-  const { handleSubmit, modalControl, onSubmit, categoriesOptions } =
-    useAddCollection();
+import ImagePickerComponent from '../../catalogue/components/image-picker';
+import { useAddProduct } from '../../catalogue/hooks/use-add-product';
+import type { Collection } from '../../profile/type';
+type AddProductProps = {
+  selectedCollection?: Collection;
+};
+export default function AddProductForm({
+  selectedCollection,
+}: AddProductProps) {
+  const {
+    handleSubmit,
+    modalControl,
+    onSubmit,
+    images,
+    selectedImage,
+    error,
+    pickImages,
+    removeImage,
+    handleImagePress,
+  } = useAddProduct();
   return (
-    <View className="p-4">
+    <View className="flex h-fit justify-center p-4">
       <Text
-        tx="catalogue.createCollection.headerTitle"
+        tx="catalogue.createProduct.addProduct"
         className="text-xl font-bold"
       />
       <Text
-        tx="catalogue.createCollection.headerDescription"
+        tx="catalogue.createProduct.addproductDescription"
         className="text-xs text-description"
       />
-      <ControlledInput
-        required={true}
-        control={modalControl}
-        name="title"
-        labelStyle="mb-1 text-sm font-semibold"
-        className=" mb-5 mt-4 gap-2"
-        label={translate('catalogue.createCollection.titleLable')}
-        placeholder={translate('catalogue.createCollection.titlePlaceholder')}
-      />
-      <ControlledSelect
-        testID="city-input"
-        control={modalControl}
-        name="category"
-        options={categoriesOptions || []}
-        labelStyle="mb-1 text-sm font-semibold"
-        label={translate('catalogue.createCollection.categoryLable')}
-        placeholder={translate(
-          'catalogue.createCollection.categoryPlaceholder'
-        )}
-        required={true}
-      />
-      <View className="mt-2 flex gap-3 ">
-        <Text
-          className="text-sm font-semibold text-primary-txt"
-          tx={'catalogue.createCollection.visibilityLabel'}
+      <ScrollView className="h-[84%] pb-10">
+        <ControlledInput
+          required={true}
+          control={modalControl}
+          name="name"
+          labelStyle="mb-1 text-sm font-semibold"
+          className=" mb-5 mt-4 gap-2"
+          label={translate('catalogue.createProduct.nameLabel')}
+          placeholder={translate('catalogue.createProduct.namePlaceholder')}
         />
-        <View className="h-10">
-          <SwitchInput
-            accessibilityLabel=""
-            label={translate(
-              'catalogue.createCollection.visibilityDescriptionActive'
-            )}
-            labelSwitch={translate(
-              'catalogue.createCollection.visibilityDescriptionNotActive'
-            )}
-            name="visibility"
-            control={modalControl}
+        <ControlledInput
+          required={true}
+          control={modalControl}
+          name="price"
+          labelStyle="mb-1 text-sm font-semibold"
+          className=" mb-5  gap-2"
+          label={translate('catalogue.createProduct.prixLabel')}
+          placeholder={translate('catalogue.createProduct.prixPlaceholder')}
+        />
+        <ControlledInput
+          required={true}
+          control={modalControl}
+          name="collectionCategory"
+          labelStyle="mb-1 text-sm font-semibold"
+          className=" mb-5 gap-2"
+          label={translate('catalogue.createProduct.collectionLabel')}
+          forcedValue={String(selectedCollection && selectedCollection.title)}
+          disabled={true}
+        />
+        <View className="mt-2 flex gap-3 ">
+          <Text
+            className="text-sm font-semibold text-primary-txt"
+            tx={'catalogue.createCollection.visibilityLabel'}
           />
+          <View className="h-10">
+            <SwitchInput
+              accessibilityLabel=""
+              label={translate('catalogue.createCollection.visibilityDescAct')}
+              labelSwitch={translate(
+                'catalogue.createCollection.visibilityDescriptionNotActive'
+              )}
+              name="display"
+              control={modalControl}
+            />
+          </View>
         </View>
-      </View>
-      <View className="mt-3 flex w-full flex-row justify-start">
-        <Text
-          tx="catalogue.createCollection.appearance"
-          className="mb-1 text-sm font-semibold"
-        />
-        <Text className="text-primary">*</Text>
-      </View>
-      <View className="mx-auto mt-5 flex h-72  w-3/5 flex-row items-start justify-center  ">
-        <ToggleRadioCard
-          key={0}
-          className="h-52"
-          title={translate('catalogue.createCollection.little')}
-          description={translate(
-            'catalogue.createCollection.littleDescription'
+        <ControlledInput
+          required={true}
+          control={modalControl}
+          name="price"
+          labelStyle="mb-1 text-sm font-semibold"
+          className=" mb-5 h-40  gap-2"
+          inputAreaType="textArea"
+          label={translate('catalogue.createProduct.descriptionLabel')}
+          placeholder={translate(
+            'catalogue.createProduct.descriptionPlaceholder'
           )}
-          svgComponent={Big}
-          svgComponentBorder={BigBorder}
-          name="appearance"
-          control={modalControl}
-          value={'grande'}
         />
-        <ToggleRadioCard
-          key={1}
-          className="h-52"
-          title={translate('catalogue.createCollection.big')}
-          description={translate('catalogue.createCollection.bigDescription')}
-          svgComponent={Little}
-          svgComponentBorder={LittleBorder}
-          name="appearance"
-          control={modalControl}
-          value={'petite'}
+        <ImagePickerComponent
+          images={images}
+          selectedImage={selectedImage}
+          error={error}
+          pickImages={pickImages}
+          removeImage={removeImage}
+          handleImagePress={handleImagePress}
         />
-      </View>
+      </ScrollView>
       <Button
         label={translate('common.publish')}
-        className=" h-10 w-full rounded-lg"
+        className=" mt-4  h-10 w-full rounded-lg"
         onPress={handleSubmit(onSubmit)}
       />
     </View>

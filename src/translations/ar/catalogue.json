@@ -15,7 +15,7 @@
     "big": "كبير",
     "bigDescription": "مثالي لعرض المطابخ والعناصر الكبيرة الأخرى بروعة",
     "visibilityLabel": "الرؤية في المجموعة",
-    "visibilityDescriptionActive": "تم تفعيل الرؤية",
+    "visibilityDescAct": "تم تفعيل الرؤية",
     "visibilityDescriptionNotActive": "تم تعطيل الرؤية",
     "success": "تم إنشاء المجموعة بنجاح",
     "echec": "فشل في الإنشاء",
@@ -37,6 +37,8 @@
     "descriptionLabel": "الوصف",
     "descriptionPlaceholder": "الوصف (قدم أكبر قدر ممكن من التفاصيل)",
     "success": "تم إنشاء المنتج بنجاح",
-    "echec": "فشل في الإنشاء"
+    "echec": "فشل في الإنشاء",
+    "confirmDeleteTitle": "تأكيد الحذف",
+    "confirmDeleteDescription": "هل تؤكد حذف المنتج؟"
   }
 }

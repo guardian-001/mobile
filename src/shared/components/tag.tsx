@@ -20,6 +20,7 @@ interface TagProps<T extends FieldValues> {
   className?: string;
   obligation?: boolean;
   idValidation?: boolean;
+  onChange?: (id: number | undefined) => void;
 }
 
 export const Tag = <T extends FieldValues>({
@@ -33,6 +34,7 @@ export const Tag = <T extends FieldValues>({
   obligation = false,
   className,
   idValidation = false,
+  onChange,
 }: TagProps<T>) => {
   const { field } = useController({ name, control, rules });
 
@@ -42,7 +44,10 @@ export const Tag = <T extends FieldValues>({
       else field.onChange(label);
     } else {
       if (field.value === id && !obligation) field.onChange('');
-      else field.onChange(id);
+      else {
+        field.onChange(id);
+        onChange && onChange(id);
+      }
     }
   };
   const handleChangeMulti = () => {
