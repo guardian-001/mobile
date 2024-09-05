@@ -13,5 +13,8 @@
   "logout": "déconnecter",
   "subscribe": "S'abonner",
   "catalogue": "Catalogue",
-  "call": "Appeler"
+  "call": "Appeler",
+  "share": "Partager",
+  "settings": "Parametres",
+  "delete": "Supprimer"
 }

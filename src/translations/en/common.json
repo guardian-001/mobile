@@ -13,5 +13,8 @@
   "logout": "logout",
   "subscribe": "Subscribe",
   "catalogue": "Catalogue",
-  "call": "To call"
+  "call": "To call",
+  "share": "Share",
+  "settings": "Settings",
+  "delete": "Delete"
 }

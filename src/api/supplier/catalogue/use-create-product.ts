@@ -3,7 +3,7 @@ import { createMutation } from 'react-query-kit';
 
 import { createProduct } from '@/services/shared/supplier-services';
 
-import type { createProductRequestData } from '../profile/types';
+import type { createProductRequestData } from './types';
 
 export const useCreateProductApi = createMutation<
   AxiosResponse,

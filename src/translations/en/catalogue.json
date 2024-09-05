@@ -15,7 +15,7 @@
     "big": "Large",
     "bigDescription": "Perfect for showcasing kitchens and other large items with grandeur",
     "visibilityLabel": "Visibility in the Collection",
-    "visibilityDescriptionActive": "Visibility enabled",
+    "visibilityDescAct": "Visibility enabled",
     "visibilityDescriptionNotActive": "Visibility disabled",
     "success": "Collection created successfully",
     "echec": "Creation failed",
@@ -37,6 +37,8 @@
     "descriptionLabel": "Description",
     "descriptionPlaceholder": "Description (provide as many details as possible)",
     "success": "Product created successfully",
-    "echec": "Creation failed"
+    "echec": "Creation failed",
+    "confirmDeleteTitle": "Confirm Delete",
+    "confirmDeleteDescription": "Would you confirm to delete the product ?"
   }
 }

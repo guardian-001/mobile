@@ -13,5 +13,8 @@
   "logout": "خروج",
   "subscribe": "اشترك",
   "catalogue": "كتالوج",
-  "call": "الاتصال"
+  "call": "الاتصال",
+  "share": "مشاركة",
+  "settings": "إعدادات",
+  "delete": "حذف"
 }

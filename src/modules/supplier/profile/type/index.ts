@@ -34,6 +34,7 @@ export type Collection = {
   title: string;
   categoryLabel: string;
   products: Product[];
+  appearance: 'Petite' | 'Grande';
 };
 
 export type Product = {

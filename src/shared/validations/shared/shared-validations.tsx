@@ -133,31 +133,51 @@ export const idStringValidation = z.string({ message: 'validations.required' });
 export const facebookValidation = z
   .string()
   .regex(/^https:\/\/(www\.)?facebook\.com\/[a-zA-Z0-9(\\.\\?)?]/, {
-    message: 'invalidFacebookUrl',
+    message: 'validations.invalidUrl',
   });
 
 export const websiteValidation = z
   .string()
   .regex(/^(https?:\/\/)?([\w\\-]+\.)+[\w\\-]+(\/[\w\\-]*)*\/?$/, {
-    message: 'invalidWebsiteUrl',
+    message: 'validations.invalidUrl',
   })
   .optional();
 
 export const instagramValidation = z
   .string()
   .regex(/^https:\/\/(www\.)?instagram\.com\/[a-zA-Z0-9(\\.\\?)?]/, {
-    message: 'invalidInstagramUrl',
+    message: 'validations.invalidUrl',
   });
-
 export const cardNameValidation = z
   .string()
-  .min(1, 'Cardholder name is required');
+  .min(1, 'validations.cardRequired') // Use 'required' to match the key in the translation file
+  .refine((value) => value.trim().length > 0, {
+    message: 'validations.cardRequired',
+  });
+
 export const cvvValidation = z
   .string()
-  .regex(/^\d{3,4}$/, 'CVV must be 3 or 4 digits');
+  .regex(/^\d{3,4}$/, 'validations.cvvInvalid'); // Use 'cvvInvalid' to match the key in the translation file
+
 export const cardNumberValidation = z
   .string()
-  .regex(/^\d{16}$/, 'Card number must be 16 digits');
+  .regex(/^\d{16}$/, 'validations.cardNumberInvalid'); // Use 'cardNumberInvalid' to match the key in the translation file
+
 export const expirationDateValidation = z
   .string()
-  .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, 'Expiration date must be in MM/YY format');
+  .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, 'validations.expirationDateInvalid'); // Use 'expirationDateInvalid' to match the key in the translation file
+
+export const numberNonNegativeValidation = z
+  .number()
+  .nonnegative('validations.numberNonNegative'); // Use 'numberNonNegative' to match the key in the translation file
+
+export const numberNonNegativeIntegerValidation = z
+  .number()
+  .int()
+  .nonnegative('validations.numberNonNegativeInteger'); // Use 'numberNonNegativeInteger' to match the key in the translation file
+
+export const urlValidation = z.string().url('validations.urlInvalid'); // Use 'urlInvalid' to match the key in the translation file
+
+export const numberPositiveValidation = z
+  .number()
+  .positive('validations.numberPositive');

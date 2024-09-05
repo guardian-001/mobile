@@ -27,6 +27,7 @@ export type InputControllerType<T extends FieldValues> = {
   required?: boolean;
   disabled?: boolean;
   labelStyle?: string;
+  forcedValue?: string;
   inputAreaType?: 'textInput' | 'textArea';
   handleOnChange?: ({ name, data }: CreateProfileType) => void;
   icon?: React.ReactNode;
@@ -50,6 +51,7 @@ export function ControlledInput<T extends FieldValues>(
     required = false,
     autoCapitalize = 'none',
     icon,
+    forcedValue,
     ...inputProps
   } = props;
 
@@ -71,7 +73,7 @@ export function ControlledInput<T extends FieldValues>(
           handleOnChange({ name, data: value });
         }
       }}
-      value={(field.value as string) || ''}
+      value={forcedValue ? forcedValue : (field.value as string) || ''}
       {...inputProps}
       error={error}
     />
