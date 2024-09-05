@@ -6,7 +6,7 @@ import type { CatalogueProps } from '../types';
 
 export const useCatalogue = ({ collections }: CatalogueProps) => {
   const { control, watch } = useCustomForm(collectionIdSchema, {
-    collection: 35,
+    collection: collections?.[0]?.id,
   });
   const selectedCollectionId: number = watch('collection');
   const selectedCollection: Collection | undefined = collections.find(
