@@ -11,10 +11,6 @@ import { useModal } from '@/shared/components';
 import { SearchSchema } from '@/shared/validations';
 import type { TagType } from '@/types';
 
-import {
-  CategoryData,
-  PropertyData,
-} from '../../create-announcement/dump-data';
 import { citySchema, specialityTypeSchema } from '../schema';
 export const useSupplier = () => {
   const {
@@ -94,8 +90,6 @@ export const useSupplier = () => {
     });
   }, [searchValue, suppliers, selectedCity]);
   return {
-    CategoryData,
-    PropertyData,
     specialityTypesData,
     isLoadingSpeciality,
     isErrorSpeciality,
