@@ -36,6 +36,7 @@ export * from './security';
 export * from './send';
 export * from './settings';
 export * from './share';
+export * from './share-dots';
 export * from './site';
 export * from './style';
 export * from './style-icon';

@@ -44,9 +44,9 @@ export const useLoginSupplier = () => {
           user: ResponseData.data.user,
         });
         if (!ResponseData.data.user.phoneNumber) {
-          router.push('/(supplier)/(private)/(complete)/complete-account');
+          router.replace('/(supplier)/(private)/(complete)/complete-account');
         } else {
-          router.push('/(supplier)/(private)/(profile)/profile');
+          router.replace('/(supplier)/(private)/(profile)/profile');
         }
       },
     });

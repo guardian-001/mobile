@@ -12,7 +12,9 @@
   "publish": "Publier",
   "logout": "déconnecter",
   "subscribe": "S'abonner",
-  "delete": "Supprimer",
   "catalogue": "Catalogue",
-  "call": "Appeler"
+  "call": "Appeler",
+  "share": "Partager",
+  "settings": "Parametres",
+  "delete": "Supprimer"
 }

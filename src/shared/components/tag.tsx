@@ -18,6 +18,7 @@ interface TagProps<T extends FieldValues> {
   multi?: boolean;
   imageIcon?: string;
   className?: string;
+  background?: string;
   obligation?: boolean;
   idValidation?: boolean;
   onChange?: (id: number | undefined) => void;
@@ -33,6 +34,7 @@ export const Tag = <T extends FieldValues>({
   imageIcon,
   obligation = false,
   className,
+  background = 'bg-primary',
   idValidation = false,
   onChange,
 }: TagProps<T>) => {
@@ -70,7 +72,7 @@ export const Tag = <T extends FieldValues>({
     <TouchableOpacity
       onPress={multi ? handleChangeMulti : handlePress}
       className={`${className} m-1 min-w-min rounded-full border border-color-border p-3
-        ${isSelected ? 'bg-primary' : 'bg-white'}`}
+        ${isSelected ? background : 'bg-white'}`}
     >
       {imageIcon && (
         <Image
