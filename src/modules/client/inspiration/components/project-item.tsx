@@ -59,7 +59,7 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
           textClassName="text-sm"
           className="my-4 h-9 w-[55%] rounded"
         />
-        <View className="mb-3 rounded bg-black/50 p-2">
+        <View className="mb-3 rounded-2xl bg-black/50 p-2">
           <View className="flex flex-row items-center gap-4">
             <Text className="text-sm font-bold text-white">
               {item?.propertyType}

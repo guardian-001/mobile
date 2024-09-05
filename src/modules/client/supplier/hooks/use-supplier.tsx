@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import type { Control } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 
@@ -32,18 +32,13 @@ export const useSupplier = () => {
   } = useAllSuppliersApi();
 
   const { control, setValue } = useCustomForm(specialityTypeSchema);
-  const { control: controlCity, setValue: setValueCity } =
-    useCustomForm(citySchema);
+  const { control: controlCity } = useCustomForm(citySchema);
 
   useEffect(() => {
     if (data?.length) {
       setValue('specialityType', data[0].label || '');
     }
-    if (cities?.length) {
-      setValueCity('city', cities[0].value || '');
-    }
-  }, [data, cities, setValue, setValueCity]);
-
+  }, [data, setValue]);
   const specialityTypesData: TagType[] =
     data?.map((type) => {
       return {
@@ -53,7 +48,6 @@ export const useSupplier = () => {
         imageIcon: type.icon,
       };
     }) || [];
-
   const cityOptions =
     cities?.map((city) => ({
       label: city.displayName,
@@ -79,9 +73,26 @@ export const useSupplier = () => {
     },
     [modal, onSelect]
   );
+  const {
+    handleSubmit,
+    control: searchControl,
+    watch,
+  } = useCustomForm(SearchSchema);
+  const searchValue = watch('search');
+  const selectedCity = field.value;
+  const filteredSuppliers = useMemo(() => {
+    if (!suppliers) return [];
+    return suppliers.filter((item) => {
+      const matchesSearch =
+        !searchValue ||
+        item.companyName.toLowerCase().includes(searchValue.toLowerCase());
+      const matchesCity =
+        !selectedCity ||
+        item.companyAddress.toLowerCase().includes(selectedCity.toLowerCase());
 
-  const { handleSubmit, control: searchControl } = useCustomForm(SearchSchema);
-
+      return matchesSearch && matchesCity;
+    });
+  }, [searchValue, suppliers, selectedCity]);
   return {
     CategoryData,
     PropertyData,
@@ -100,5 +111,6 @@ export const useSupplier = () => {
     field,
     searchControl,
     handleSubmit,
+    filteredSuppliers,
   };
 };
