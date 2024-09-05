@@ -33,3 +33,10 @@ export async function putUpdateProfilePicture(
     },
   });
 }
+
+export async function updateArchitectBioAsync(
+  formData: FormData
+): Promise<AxiosResponse> {
+  const url = `api/users/architect/update-about/`;
+  return client.put(url, formData);
+}

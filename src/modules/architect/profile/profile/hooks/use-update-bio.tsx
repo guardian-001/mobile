@@ -1,9 +1,8 @@
-import { useRouter } from 'expo-router';
 import { useEffect } from 'react';
 
-import { useUpdateSupplierBioApi } from '@/api/supplier/profile/use-update-supplier-bio';
+import { useUpdateArchitectBioApi } from '@/api/architect/profile/use-update-supplier-bio';
 import { useCustomForm } from '@/core';
-import { showSuccesMessage } from '@/shared/components';
+import { showErrorMessage, showSuccesMessage } from '@/shared/components';
 
 import { BioSchema } from '../schemas/bio-schema';
 import type { BioFormType } from '../type';
@@ -11,7 +10,7 @@ import { useProfileInfo } from './use-profile-info';
 
 export const useUpdateBio = () => {
   const { handleSubmit, control, form, reset } = useCustomForm(BioSchema);
-  const router = useRouter();
+
   const { data: architect, isSuccess } = useProfileInfo();
 
   useEffect(() => {
@@ -22,19 +21,20 @@ export const useUpdateBio = () => {
     }
   }, [isSuccess, architect, reset]);
 
-  const updateProfile = useUpdateSupplierBioApi();
+  const updateProfile = useUpdateArchitectBioApi();
 
   const onSubmit = (data: BioFormType) => {
+    const formData = new FormData();
+    formData.append('bio', data.bio);
     if (data.bio !== architect?.bio) {
-      updateProfile.mutate(data, {
+      updateProfile.mutate(formData, {
         onSuccess: (response) => {
           showSuccesMessage(response.data.message);
-          router.back();
-          router.back();
+        },
+        onError: (error) => {
+          showErrorMessage(error.message);
         },
       });
-    } else {
-      router.back(), router.back();
     }
   };
   return {
@@ -43,5 +43,6 @@ export const useUpdateBio = () => {
     reset,
     handleSubmit,
     onSubmit,
+    architect,
   };
 };
