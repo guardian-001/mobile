@@ -5,7 +5,7 @@ import { client } from '@/api';
 import type { ArchitectProfileInfoType } from '@/api/architect/profile/types';
 
 export async function getArchitectProfile(): Promise<ArchitectProfileInfoType> {
-  const url = '/api/users/architect/get-profile/';
+  const url = 'api/users/architect/get-profile/';
   return client
     .get(url)
     .then((response) => response.data)
@@ -26,7 +26,7 @@ export async function getArchitectProfile(): Promise<ArchitectProfileInfoType> {
 export async function putUpdateProfilePicture(
   request: FormData
 ): Promise<AxiosResponse> {
-  const url = '/api/users/architect/update-profile-image/';
+  const url = 'api/users/architect/update-profile-image/';
   return client.put(url, request, {
     headers: {
       'Content-Type': 'multipart/form-data',
@@ -34,9 +34,16 @@ export async function putUpdateProfilePicture(
   });
 }
 
-export async function updateArchitectBioAsync(
+export async function updateArchitectAboutAsync(
   formData: FormData
 ): Promise<AxiosResponse> {
   const url = `api/users/architect/update-about/`;
+  return client.put(url, formData);
+}
+
+export async function updateArchitectNeedsAsync(
+  formData: string[]
+): Promise<AxiosResponse> {
+  const url = `api/users/architect/update-needs/`;
   return client.put(url, formData);
 }

@@ -57,7 +57,7 @@ export const useUpdateVideo = () => {
     isPending,
     data,
     pickVideo,
-    onSubmit,
+    onSubmitVideo: onSubmit,
     newVideo,
     onDelete,
   };
