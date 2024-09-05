@@ -71,7 +71,6 @@ export type createCollectionRequestData = {
   appearance: string;
 };
 
-
 export type UpdateVisibilityRequest = { id: number; visibility: boolean };
 
 export type SupplierProfileInfoListType = SupplierProfileInfoType[];

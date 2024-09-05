@@ -17,7 +17,7 @@ export default function Catalogue({ collections }: CatalogueProps) {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         contentContainerClassName="py-4 items-center"
-        className="flex max-h-16 w-full"
+        className="flex max-h-20 w-full"
       >
         {collections?.map((tag: Collection) => (
           <Tag
@@ -43,7 +43,7 @@ export default function Catalogue({ collections }: CatalogueProps) {
         )}
         keyExtractor={(item) => item.id.toString()}
         numColumns={2}
-        contentContainerClassName="gap-4 items-center"
+        contentContainerClassName="gap-4 items-center py-2"
         columnWrapperClassName="gap-4"
       />
     </View>

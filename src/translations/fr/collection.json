@@ -2,5 +2,6 @@
   "manageCollections": "Gestion des collections",
   "addCollection": "Ajouter collection",
   "collection": "Collection",
-  "addProduct": "Ajouter Produit"
+  "addProduct": "Ajouter Produit",
+  "priceNotDefined": "Prix non défini"
 }
