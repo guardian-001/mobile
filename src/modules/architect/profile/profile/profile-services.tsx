@@ -33,6 +33,10 @@ export default function ProfileServices() {
       >
         <View className="flex h-16 w-full flex-row items-center justify-center rounded-xl border border-dashed border-color-border pr-10">
           <AddServices />
+           <Text
+            className="-ml-2 text-center text-base font-semibold"
+            tx={'architectProfile.addService'}
+          />
         </View>
       </TouchableOpacity>
       {data?.needs && data?.needs.length > 0 ? (
