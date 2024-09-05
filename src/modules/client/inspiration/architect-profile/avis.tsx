@@ -3,10 +3,10 @@ import { FlatList } from 'react-native';
 
 import { Emoji } from '@/assets/icons';
 import { Image, Text, View } from '@/shared/components';
-import type { Review } from '@/types/architect';
+import type { OldReview } from '@/types/architect';
 
 interface ReviewsProps {
-  reviews: Review[];
+  reviews: OldReview[];
 }
 
 const Reviews = ({ reviews }: ReviewsProps) => {

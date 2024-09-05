@@ -34,5 +34,7 @@
   "demoButton": "Demander une démo",
   "addService": "Ajouter un service",
   "Signal": "Signaler",
-  "noNeedsFound": "Commencez par sélectionner votre premier besoin"
+  "noNeedsFound": "Commencez par sélectionner votre premier besoin",
+  "reviewDecisionTitle": "Signaler avis",
+  "reviewDecisionDescription": "Nous avons besoin de votre aide ! Veuillez sélectionner le motif pour lequel vous signalez l'avis de client."
 }
