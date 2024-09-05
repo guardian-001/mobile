@@ -14,7 +14,7 @@ export default function ProfileBody() {
   const { tags, control, state } = useProfileNavigator();
 
   return (
-    <View className="flex w-full flex-1 items-center">
+    <View className="flex w-full flex-1 items-center ">
       <View className="flex w-full  flex-row items-center justify-center gap-2 bg-white py-2">
         {tags.map((tag) => {
           return (
@@ -34,7 +34,7 @@ export default function ProfileBody() {
       </View>
       <View className="flex w-full items-center justify-center">
         {String(state) === '0' && (
-          <View className="h-max  ">
+          <View className="flex h-max w-full items-center justify-center  ">
             <ProfileSuggestion />
             <ProfileWork />
           </View>
