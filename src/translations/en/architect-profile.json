@@ -33,5 +33,6 @@
   "demoDescriptionFifthInfo": "Support and guidance",
   "demoButton": "Request a Demo",
   "addService": "Add a Service",
-  "Signal": "Report"
+  "Signal": "Report",
+  "noNeedsFound": "Start selecting your first need"
 }

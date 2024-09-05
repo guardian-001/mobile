@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useUpdateArchitectBioApi } from '@/api/architect/profile/use-update-supplier-bio';
+import { useUpdateArchitectAboutApi } from '@/api/architect/profile/use-update-supplier-bio';
 import { useCustomForm } from '@/core';
 import { showErrorMessage, showSuccesMessage } from '@/shared/components';
 
@@ -21,7 +21,7 @@ export const useUpdateBio = () => {
     }
   }, [isSuccess, architect, reset]);
 
-  const updateProfile = useUpdateArchitectBioApi();
+  const updateProfile = useUpdateArchitectAboutApi();
 
   const onSubmit = (data: BioFormType) => {
     const formData = new FormData();
