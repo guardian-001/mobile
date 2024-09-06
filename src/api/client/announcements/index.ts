@@ -1,4 +1,5 @@
 export * from './use-additional-info';
+export * from './use-all-property-types';
 export * from './use-announcement-step7-data ';
 export * from './use-categories';
 export * from './use-execution-details';

@@ -1,7 +1,7 @@
 import type { TxKeyPath } from '@/core';
 
 export type InspirationRequestType = {
-  projectCategory: number;
+  projectCategory: number[];
   propertyType: number[];
 };
 

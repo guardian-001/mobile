@@ -3,6 +3,7 @@ import * as React from 'react';
 import {
   ChooseCategory,
   ChoosePropertyType,
+  InspirationScrolling,
   SwipeRight,
   SwipeUp,
 } from './steps';
@@ -20,5 +21,8 @@ export const stepsContent: StepContent[] = [
   },
   {
     component: <SwipeRight />,
+  },
+  {
+    component: <InspirationScrolling />,
   },
 ];

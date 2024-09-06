@@ -60,6 +60,7 @@ export function ChooseCategory() {
                 image={Category.icon}
                 name="projectCategory"
                 control={control}
+                multi={true}
                 value={Category.id}
               />
             ))}

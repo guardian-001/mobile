@@ -43,7 +43,7 @@ export function ChoosePropertyType() {
       {isError && <ErrorData message="Error Loading Data" />}
       <View className="flex flex-1 justify-between p-4 pb-8">
         <View className="flex-1">
-          {(isLoading || PropertyData?.length === 0) && (
+          {(isLoading || (PropertyData?.length === 0 && !isError)) && (
             <EmptyList isLoading={isLoading} />
           )}
           {isSuccess && (

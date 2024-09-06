@@ -1,4 +1,4 @@
-import { usePropertyTypesApi } from '@/api/client';
+import { useAllPropertyTypesApi } from '@/api/client';
 import type { TxKeyPath } from '@/core';
 import { useCustomForm } from '@/core';
 import { useFormStepper } from '@/shared';
@@ -16,9 +16,7 @@ export const usePropertyType = () => {
   });
   const error = errors?.propertyType?.message as TxKeyPath | undefined;
 
-  const { data, isError, isLoading, isSuccess } = usePropertyTypesApi({
-    variables: { projectCategory: formData.projectCategory },
-  });
+  const { data, isError, isLoading, isSuccess } = useAllPropertyTypesApi();
   const PropertyData: TagType[] =
     data?.map((type) => {
       return {
