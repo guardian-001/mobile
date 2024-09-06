@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { requiredValidationNumber } from '@/shared/validations';
+import { arrayOfNonEmptyNumbers } from '@/shared/validations';
 
 export const ProjectCategorySchema = z.object({
-  projectCategory: requiredValidationNumber,
+  projectCategory: arrayOfNonEmptyNumbers,
 });

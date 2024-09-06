@@ -313,3 +313,16 @@ export async function getAnnouncements(): Promise<ProjectList> {
       throw error.response?.data || error.message;
     });
 }
+
+export async function getAllPropertyTypes(): Promise<Response> {
+  const url = `/api/announcement/all-property-types`;
+  return client
+    .get(url)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      showErrorMessage(error.response.data.errors[0].detail);
+      throw error.response?.data || error.message;
+    });
+}

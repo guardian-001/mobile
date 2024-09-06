@@ -3,10 +3,10 @@ import { FlatList } from 'react-native';
 
 import { View } from '@/shared/components';
 
-import { projectList } from './dump-data';
-import { useInspiration } from './hooks/use-inspiration';
+import { projectList } from '../dump-data';
+import { useInspiration } from '../hooks/use-inspiration';
 
-export default function InspirationScrolling() {
+export function InspirationScrolling() {
   const { snapToOffsets, renderItem } = useInspiration();
   return (
     <View className="flex-1">
