@@ -3,6 +3,8 @@ import { isAxiosError } from 'axios';
 
 import { client } from '@/api';
 import type { ArchitectProfileInfoType } from '@/api/architect/profile/types';
+import type { ProjectRealizationType } from '@/modules/architect/realization/shared/types';
+import type { PaginationResult } from '@/types';
 import type { Review, ReviewRequest } from '@/types/architect';
 
 export async function getArchitectProfile(): Promise<ArchitectProfileInfoType> {
@@ -72,4 +74,28 @@ export async function getArchitectProfileClientReviews(): Promise<Review[]> {
 export async function reportAsync(data: ReviewRequest): Promise<AxiosResponse> {
   const url = `/api/moderation/review-report/create/`;
   return client.post(url, data);
+}
+
+export async function getArchitectProfileRealizations(): Promise<
+  PaginationResult<ProjectRealizationType>
+> {
+  const url =
+    '/api/architect-realization/get-architect-realizations/?page=1&page_size=20';
+
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
 }

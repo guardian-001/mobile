@@ -11,6 +11,7 @@ client.interceptors.request.use(
     if (token && token.access) {
       config.headers.Authorization = `Bearer ${token.access}`;
     }
+    console.log(config);
     return config;
   },
   (error) => {

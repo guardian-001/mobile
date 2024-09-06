@@ -108,3 +108,17 @@ export type ReviewRequest = {
   reportedReviewId: number;
   reportReasons: string[];
 };
+
+// export interface Realization {
+//   id: number
+//   projectName: string
+//   architect: Architect
+//   projectCategory: ProjectCategory
+//   needs: Need[]
+//   address: string
+//   city: string[]
+//   workSurface: string
+//   description: string
+//   realizationImages: ImageInfo[]
+//   architecturalStyle: Style
+// }
