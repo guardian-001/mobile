@@ -23,7 +23,7 @@ export type Need = {
   description: string;
   architectSpeciality: number;
 };
-export type Review = {
+export type OldReview = {
   reviewer: string;
   comment: string;
   note: string;
@@ -34,6 +34,34 @@ export type serviceApprouve = {
   label: string;
   icon: string;
 };
+export type OldArchitect = {
+  id: number;
+  user: User;
+  architecturalStyles: resultType[];
+  projectCategories: resultType[];
+  propertyTypes: resultType[];
+  workTypes: workType[];
+  architectSpeciality: resultType;
+  needs: Need[];
+  subscriptionPlan?: SubscriptionPlan;
+  terrainSurfaces: CommunType[];
+  workSurfaces: CommunType[];
+  preferredLocations: CommunType[];
+  budgets: CommunType[];
+  createdAt: string;
+  updatedAt: string;
+  address: string;
+  architectIdentifier: string;
+  bio: string;
+  companyName: string;
+  companyLogo: string | null;
+  presentationVideo: string | null;
+  projectComplexity: string;
+  yearsExperience: string;
+  reviews: OldReview[];
+  servicesApprouves: serviceApprouve[];
+};
+
 export type Architect = {
   id: number;
   user: User;
@@ -58,6 +86,25 @@ export type Architect = {
   presentationVideo: string | null;
   projectComplexity: string;
   yearsExperience: string;
-  reviews: Review[];
   servicesApprouves: serviceApprouve[];
+};
+type clientReview = {
+  id: number;
+  user: User;
+  isVerified: boolean;
+};
+export type Review = {
+  id: number;
+  architectId: number;
+
+  client: clientReview;
+  rating: number;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ReviewRequest = {
+  reportedReviewId: number;
+  reportReasons: string[];
 };

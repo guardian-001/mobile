@@ -32,7 +32,9 @@
   "demoDescriptionFourthInfo": "Presentation interview",
   "demoDescriptionFifthInfo": "Support and guidance",
   "demoButton": "Request a Demo",
-  "addService": "Add a Service",
+  "addService": "Add a service",
   "Signal": "Report",
-  "noNeedsFound": "Start selecting your first need"
+  "noNeedsFound": "Start selecting your first need",
+  "reviewDecisionTitle": "Report Review",
+  "reviewDecisionDescription": "We need your help! Please select the reason for reporting the customer's review."
 }

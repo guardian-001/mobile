@@ -2,25 +2,31 @@ import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
 
+import { NoDataBox } from '@/assets/icons/archimatch/no-data-box';
+
 import { Text } from './text';
 type Props = {
   isPending: boolean;
+  isEmpty?: boolean;
   isError: boolean;
 };
 
-export const EmptyList = React.memo(({ isPending, isError }: Props) => {
-  return (
-    <View className="flex min-h-[400px] w-full flex-1 items-center justify-center">
-      {isError && (
-        <View>
-          <NoData />
-          <Text className="pt-4 text-center">Sorry! No data found</Text>
-        </View>
-      )}
-      {isPending && <ActivityIndicator />}
-    </View>
-  );
-});
+export const EmptyList = React.memo(
+  ({ isPending, isEmpty, isError }: Props) => {
+    return (
+      <View className="flex min-h-[300px] w-full flex-1 items-center justify-center">
+        {(isError || isEmpty) && (
+          <>
+            <NoDataBox />
+
+            <Text className="pt-4 text-center">Sorry! No data found</Text>
+          </>
+        )}
+        {isPending && <ActivityIndicator />}
+      </View>
+    );
+  }
+);
 
 export const NoData = () => (
   <Svg width={200} height={200} viewBox="0 0 647.636 632.174">

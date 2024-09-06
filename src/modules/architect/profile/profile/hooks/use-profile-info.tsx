@@ -6,7 +6,7 @@ import { useArchitectProfileApi } from '@/api/architect/profile/use-profile';
 import { useUpdateProfilePictureApi } from '@/api/supplier/profile/use-update-profile-picture';
 
 export const useProfileInfo = () => {
-  const { data, isError, isLoading, isPending, isSuccess } =
+  const { data, isError, isLoading, isPending, isSuccess, refetch } =
     useArchitectProfileApi();
 
   const {
@@ -77,5 +77,6 @@ export const useProfileInfo = () => {
     selectedProfileImage,
     setSelectedProfileImage,
     setError,
+    refetch,
   };
 };
