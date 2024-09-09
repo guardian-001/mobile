@@ -34,7 +34,7 @@ export type serviceApprouve = {
   label: string;
   icon: string;
 };
-export type Architect = {
+export type OldArchitect = {
   id: number;
   user: User;
   architecturalStyles: resultType[];
