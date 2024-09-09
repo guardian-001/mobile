@@ -3,11 +3,19 @@ import { FlatList, TouchableOpacity } from 'react-native';
 
 import { Heart, Location, Map, Send } from '@/assets/icons';
 import { translate } from '@/core';
-import { Button, Image, ImageContainer, Text, View } from '@/shared/components';
+import {
+  Button,
+  Image,
+  ImageContainer,
+  Modal,
+  Text,
+  View,
+} from '@/shared/components';
 
 import { useProjectItem } from '../hooks/use-project-item';
 import type { ProjectItemProps } from '../types';
 import { IconDisplay } from './icon-display';
+import { ProjectDetailsModal } from './project-details-modal';
 import { TagProject } from './tag';
 
 export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
@@ -18,6 +26,8 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
     currentIndex,
     totalImages,
     navigateToProfile,
+    ref,
+    present,
   } = useProjectItem({ item });
   return (
     <View className="relative flex-1">
@@ -25,7 +35,7 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
         <FlatList
           data={item?.realizationImages ?? []}
           renderItem={renderItem}
-          keyExtractor={(imageUrl, index) => index.toString()}
+          keyExtractor={(_, index) => index.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           snapToOffsets={snapToOffsets}
@@ -67,7 +77,12 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
             </Text>
             <Text className="text-xs text-white">Date ??????????????</Text>
           </View>
-          <Text className="mt-3 text-xs text-white">{item?.description}</Text>
+          <View className="mt-3 flex-row gap-4">
+            <Text className=" text-xs text-white">{item?.description}</Text>
+            <TouchableOpacity onPress={present}>
+              <Text className="text-xs font-extrabold text-white/60">more</Text>
+            </TouchableOpacity>
+          </View>
         </View>
         <View className="flex flex-row items-center gap-2">
           <TagProject label={item?.city ?? ''} SvgComponent={Location} />
@@ -85,6 +100,9 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
         <IconDisplay SvgComponent={Heart} count="32" onPress={() => {}} />
         <IconDisplay SvgComponent={Send} count="5" onPress={() => {}} />
       </View>
+      <Modal snapPoints={['80%']} ref={ref} onDismiss={() => {}}>
+        <ProjectDetailsModal item={item} />
+      </Modal>
     </View>
   );
 });

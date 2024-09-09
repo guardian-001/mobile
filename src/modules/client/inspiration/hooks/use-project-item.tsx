@@ -3,14 +3,14 @@ import React, { useCallback } from 'react';
 
 import type { RealizationImage } from '@/api/architect/project';
 import { useImageSlider } from '@/core';
-import { Image } from '@/shared/components';
+import { Image, useModal } from '@/shared/components';
 
 import type { ProjectItemProps } from '../types';
 
 export const useProjectItem = ({ item }: ProjectItemProps) => {
   const { handleScroll, currentIndex, snapToOffsets, totalImages } =
     useImageSlider(item?.realizationImages || []);
-
+  const { ref, present, dismiss } = useModal();
   const renderItem = useCallback(
     ({ item }: { item: RealizationImage }) => (
       <Image
@@ -36,5 +36,8 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
     currentIndex,
     totalImages,
     navigateToProfile,
+    dismiss,
+    ref,
+    present,
   };
 };
