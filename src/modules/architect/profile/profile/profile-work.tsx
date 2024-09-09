@@ -15,7 +15,7 @@ export default function ProfileWork() {
         onPress={navigateToRealization}
         className="mb-10 mt-2 flex  w-full flex-1  items-center justify-center"
       >
-        <View className="  flex w-10/12  items-center justify-center rounded-3xl border  border-dashed border-color-border pt-5   ">
+        <View className="  flex w-10/12  items-center justify-center rounded-3xl border  border-dashed border-color-border py-5   ">
           <AddProductImg />
           <Text
             className="text-center text-base font-semibold"

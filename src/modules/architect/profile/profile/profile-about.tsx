@@ -19,14 +19,8 @@ import { useUpdateVideo } from './hooks/use-update-video';
 
 export default function ProfileAbout() {
   const { control, handleSubmit, onSubmit, architect } = useUpdateBio();
-  const {
-    onSubmit: onSubmitVideo,
-    pickVideo,
-    selectedVideo,
-    onDelete,
-    newVideo,
-  } = useUpdateVideo();
-
+  const { onSubmitVideo, pickVideo, selectedVideo, onDelete, newVideo } =
+    useUpdateVideo();
   return (
     <View className=" mb-20 mt-2 flex h-max  w-11/12 flex-1 items-start justify-center  ">
       {!architect?.bio ? (
@@ -61,14 +55,22 @@ export default function ProfileAbout() {
           <Text>{architect?.bio}</Text>
         </View>
       )}
-
       <View className=" mx-1 mt-2 flex h-fit  flex-1  ">
         <Text
           tx={'architectProfile.presentationVideoLabel'}
           className="mb-2   text-lg font-bold"
         />
-        {architect?.presentationVideo ? (
-          ''
+        {architect?.presentationVideo &&
+        architect?.presentationVideo !== null ? (
+          <View>
+            <Video
+              className="h-64 w-full rounded-lg"
+              source={{ uri: architect?.presentationVideo }}
+              useNativeControls
+              resizeMode={ResizeMode.CONTAIN}
+              isLooping={false}
+            />
+          </View>
         ) : (
           <>
             {selectedVideo === null ? (
@@ -91,7 +93,6 @@ export default function ProfileAbout() {
                   >
                     <Pen color={colors.white} width={25} height={30} />
                   </TouchableOpacity>
-
                   <Button
                     label="X"
                     textClassName="text-xl"

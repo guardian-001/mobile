@@ -1,13 +1,13 @@
 import type { AxiosError, AxiosResponse } from 'axios';
 import { createMutation } from 'react-query-kit';
 
-import { updateArchitectBioAsync } from '@/services/shared/architect-services';
+import { updateArchitectAboutAsync } from '@/services/shared/architect-services';
 
-export const useUpdateArchitectBioApi = createMutation<
+export const useUpdateArchitectAboutApi = createMutation<
   AxiosResponse,
   FormData,
   AxiosError
 >({
   mutationKey: ['updateArchitectBio'],
-  mutationFn: updateArchitectBioAsync,
+  mutationFn: updateArchitectAboutAsync,
 });
