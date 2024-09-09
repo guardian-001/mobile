@@ -69,7 +69,7 @@ export const TagGroup = <T extends FieldValues>({
           )}
         </>
       ) : (
-        <View className="flex flex-row flex-wrap">
+        <View className="flex flex-row flex-wrap gap-y-2">
           {tags.map((tag, index) => (
             <Tag
               id={tag.id}

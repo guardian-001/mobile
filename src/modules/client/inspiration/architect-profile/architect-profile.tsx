@@ -11,11 +11,10 @@ import {
   View,
 } from '@/shared/components';
 
-import { architect } from '../dump-data/architect-profile';
 import { useArchitectProfile } from './hooks/use-architect-profile';
 
 export default function ArchitectProfile() {
-  const { activeTab, tabs, renderContent, setActiveTab } =
+  const { activeTab, tabs, renderContent, setActiveTab, architect } =
     useArchitectProfile();
   return (
     <View className="flex-1 bg-white">
@@ -27,7 +26,7 @@ export default function ArchitectProfile() {
             contentFit="cover"
           />
           <Text className="text-xl font-extrabold">
-            {architect?.companyName}
+            {architect?.user?.firstName} {architect?.user?.lastName}
           </Text>
           <Text className="text-sm font-medium text-primary">
             {architect?.architectSpeciality.label}

@@ -11,7 +11,6 @@ import {
   View,
 } from '@/shared/components';
 
-import { projectList } from '../dump-data';
 import { useProjectDetails } from './hooks/use-project-details';
 
 export default function ProjectDetails() {
@@ -22,7 +21,8 @@ export default function ProjectDetails() {
     currentIndex,
     totalImages,
     details,
-  } = useProjectDetails({ item: projectList[0] });
+    project,
+  } = useProjectDetails();
 
   return (
     <View className="flex-1">
@@ -35,9 +35,9 @@ export default function ProjectDetails() {
       <ScrollView contentContainerClassName="p-[16px]">
         <ImageContainer className="-mt-10 h-96 w-full">
           <FlatList
-            data={projectList[0].projectImages ?? []}
+            data={project.realizationImages ?? []}
             renderItem={renderItem}
-            keyExtractor={(imageUrl, index) => index.toString()}
+            keyExtractor={(_, index) => index.toString()}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             onScroll={handleScroll}
@@ -56,11 +56,9 @@ export default function ProjectDetails() {
           </View>
         </ImageContainer>
         <Text className="mb-2 mt-4 font-extrabold">
-          {projectList[0].workType}
+          {project.propertyType.label}
         </Text>
-        <Text className="text-sm font-medium">
-          {projectList[0].description}
-        </Text>
+        <Text className="text-sm font-medium">{project.description}</Text>
         <View className="my-4 gap-4 pl-8">
           {details.map((detail, index) => {
             const Icon = detail.icon;
@@ -89,9 +87,12 @@ export default function ProjectDetails() {
             contentFit="cover"
           />
           <View>
-            <Text className="font-bold">{projectList[0].architectName}</Text>
+            <Text className="font-bold">
+              {project.architect.user.firstName}{' '}
+              {project.architect.user.lastName}
+            </Text>
             <Text className="text-sm">
-              {projectList[0].architectSpeciality}
+              {project.architect.architectSpeciality.label}
             </Text>
           </View>
         </View>

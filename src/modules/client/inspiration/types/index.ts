@@ -1,3 +1,4 @@
+import type { ProjectItem } from '@/api/architect/project';
 import type { TxKeyPath } from '@/core';
 
 export type InspirationRequestType = {
@@ -14,22 +15,8 @@ export type propertyTypeFormType = Pick<InspirationRequestType, 'propertyType'>;
 export type StepContent = {
   component: React.ReactElement;
 };
-type Project = {
-  id: string;
-  architectName: string;
-  publishedDate: string;
-  projectCategory: string;
-  workType: string;
-  architectSpeciality: string;
-  architecturalStyle: string;
-  propertyType: string;
-  city: string;
-  terrainSurface: string;
-  budget: string;
-  description: string;
-  projectImages: string[];
-};
-export type ProjectItemProps = { item?: Project };
+
+export type ProjectItemProps = { item?: ProjectItem };
 
 export type Tab = {
   id: string;

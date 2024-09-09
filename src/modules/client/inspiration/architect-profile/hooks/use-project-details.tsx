@@ -1,21 +1,25 @@
+import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback } from 'react';
-import type { ListRenderItemInfo } from 'react-native';
 
+import type { ProjectItem, RealizationImage } from '@/api/architect/project';
 import { Category, Location, StyleIcon, SuperficieIcon } from '@/assets/icons';
 import { useImageSlider } from '@/core';
 import { Image, WIDTH } from '@/shared/components';
 
-import { projectList } from '../../dump-data';
-import type { details, ProjectItemProps } from '../../types';
+import type { details } from '../../types';
 
-export const useProjectDetails = ({ item }: ProjectItemProps) => {
+export const useProjectDetails = () => {
+  const { projectDetails } = useLocalSearchParams();
+  const project: ProjectItem = projectDetails
+    ? JSON.parse(projectDetails as string)
+    : null;
   const { handleScroll, currentIndex, snapToOffsets, totalImages } =
-    useImageSlider(item?.projectImages);
+    useImageSlider(project?.realizationImages);
 
   const renderItem = useCallback(
-    ({ item }: ListRenderItemInfo<string>) => (
+    ({ item }: { item: RealizationImage }) => (
       <Image
-        source={{ uri: item }}
+        source={{ uri: item.image }}
         className="h-full"
         style={{ width: WIDTH - 16 }}
       />
@@ -26,22 +30,22 @@ export const useProjectDetails = ({ item }: ProjectItemProps) => {
     {
       icon: Category,
       title: 'realisation.finalStep.categorie',
-      value: projectList[0].projectCategory,
+      value: project.projectCategory.label,
     },
     {
       icon: StyleIcon,
       title: 'realisation.finalStep.style',
-      value: projectList[0].architecturalStyle,
+      value: project.architecturalStyle.label,
     },
     {
       icon: SuperficieIcon,
       title: 'realisation.finalStep.superficie',
-      value: projectList[0].terrainSurface,
+      value: project.workSurface,
     },
     {
       icon: Location,
       title: 'realisation.finalStep.localisation',
-      value: projectList[0].city,
+      value: project.city,
     },
   ];
   return {
@@ -51,5 +55,6 @@ export const useProjectDetails = ({ item }: ProjectItemProps) => {
     currentIndex,
     totalImages,
     details,
+    project,
   };
 };

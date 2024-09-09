@@ -9,7 +9,7 @@ import { useSwipeUp } from '../hooks/use-swipe-up';
 export function SwipeUp() {
   const { onSubmit } = useSwipeUp();
   return (
-    <View className="flex-1 p-4 pt-8">
+    <View className="min-h-full flex-1 p-4 pt-8">
       <Text tx="inspiration.swipeUpTitle" className="mb-2 text-3xl font-bold" />
       <Text
         tx="inspiration.swipeUpSubtitle"

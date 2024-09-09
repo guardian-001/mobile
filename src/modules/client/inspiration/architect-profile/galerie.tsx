@@ -1,19 +1,29 @@
 import React from 'react';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native';
 
-import { projectList } from '../dump-data';
+import { EmptyList, ErrorData, View } from '@/shared/components';
+
 import { useGalerie } from './hooks/use-galerie';
 
-export default function Galerie() {
-  const { renderItem } = useGalerie();
+export default function Galerie({ architectId }: { architectId: number }) {
+  const { renderItem, Realizations, isError, isLoading, isSuccess } =
+    useGalerie(architectId);
 
   return (
-    <FlatList
-      data={projectList}
-      renderItem={renderItem}
-      contentContainerClassName="p-[16px] pb-0"
-      keyExtractor={(item) => item.id}
-      showsVerticalScrollIndicator={false}
-    />
+    <View className="flex-1">
+      {isError && <ErrorData message="Error Loading Data" />}
+      {(isLoading || Realizations?.length === 0) && (
+        <EmptyList isLoading={isLoading} />
+      )}
+      {isSuccess && (
+        <FlatList
+          data={Realizations}
+          renderItem={renderItem}
+          contentContainerClassName="p-[16px] pb-0"
+          keyExtractor={(item) => item.id.toString()}
+          showsVerticalScrollIndicator={false}
+        />
+      )}
+    </View>
   );
 }

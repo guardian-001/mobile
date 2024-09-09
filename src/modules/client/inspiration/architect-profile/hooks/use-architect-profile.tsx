@@ -1,14 +1,20 @@
+import { useLocalSearchParams } from 'expo-router';
 import React, { useState } from 'react';
 
+import type { ArchitectProfileInfoType } from '@/api/architect/profile/types';
 import { Avis, Card, GalerieIcon } from '@/assets/icons';
 
-import { architect } from '../../dump-data/architect-profile';
+import { architectDumpData } from '../../dump-data/architect-profile';
 import type { Tab } from '../../types';
 import About from '../about';
 import Reviews from '../avis';
 import Galerie from '../galerie';
 
 export const useArchitectProfile = () => {
+  const { architectData } = useLocalSearchParams();
+  const architect: ArchitectProfileInfoType = architectData
+    ? JSON.parse(architectData as string)
+    : null;
   const [activeTab, setActiveTab] = useState('a-propos');
   const tabs: Tab[] = [
     { id: 'a-propos', label: 'inspiration.about', icon: Card },
@@ -18,11 +24,11 @@ export const useArchitectProfile = () => {
   const renderContent = () => {
     switch (activeTab) {
       case tabs[0].id:
-        return <About />;
+        return <About architect={architect} />;
       case tabs[1].id:
-        return <Galerie />;
+        return <Galerie architectId={architect?.id} />;
       case tabs[2].id:
-        return <Reviews reviews={architect.reviews} />;
+        return <Reviews reviews={architectDumpData?.reviews} />;
       default:
         return null;
     }
@@ -32,5 +38,6 @@ export const useArchitectProfile = () => {
     tabs,
     renderContent,
     setActiveTab,
+    architect,
   };
 };

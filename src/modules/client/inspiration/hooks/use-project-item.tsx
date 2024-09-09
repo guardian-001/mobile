@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import React, { useCallback } from 'react';
-import type { ListRenderItemInfo } from 'react-native';
 
+import type { RealizationImage } from '@/api/architect/project';
 import { useImageSlider } from '@/core';
 import { Image } from '@/shared/components';
 
@@ -9,18 +9,25 @@ import type { ProjectItemProps } from '../types';
 
 export const useProjectItem = ({ item }: ProjectItemProps) => {
   const { handleScroll, currentIndex, snapToOffsets, totalImages } =
-    useImageSlider(item?.projectImages);
+    useImageSlider(item?.realizationImages || []);
 
   const renderItem = useCallback(
-    ({ item }: ListRenderItemInfo<string>) => (
-      <Image source={{ uri: item }} className="h-screen w-screen" />
+    ({ item }: { item: RealizationImage }) => (
+      <Image
+        source={{ uri: item.image }}
+        className="h-screen w-screen"
+        contentFit="contain"
+      />
     ),
     []
   );
 
   const router = useRouter();
   const navigateToProfile = () => {
-    router.push('(client)/(private)/(architect-profile)/profile');
+    router.push({
+      pathname: '(client)/(private)/(architect-profile)/profile',
+      params: { architectData: JSON.stringify(item?.architect) },
+    });
   };
   return {
     snapToOffsets,
