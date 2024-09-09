@@ -3,7 +3,8 @@ import React from 'react';
 import { FlatList } from 'react-native';
 
 import { translate } from '@/core';
-import { Button, EmptyList, ErrorData, View } from '@/shared/components';
+import { Button, View } from '@/shared/components';
+import { EmptyList } from '@/shared/components/emptylist-custom';
 
 import { useInspiration } from '../hooks/use-inspiration';
 
@@ -19,10 +20,11 @@ export function InspirationScrolling() {
   const router = useRouter();
   return (
     <View className="flex-1">
-      {isError && <ErrorData message="Error Loading Data" />}
-      {(isLoading || Realizations?.length === 0) && (
-        <EmptyList isLoading={isLoading} />
-      )}
+      <EmptyList
+        isError={isError}
+        isPending={isLoading}
+        isEmpty={Realizations?.length === 0}
+      />
       {isSuccess && Realizations?.length === 0 && (
         <Button
           label={translate('resetpass.reset')}
@@ -42,25 +44,6 @@ export function InspirationScrolling() {
           snapToOffsets={snapToOffsets}
         />
       )}
-import React from 'react';
-import { FlatList } from 'react-native';
-
-import { View } from '@/shared/components';
-
-import { projectList } from '../dump-data';
-import { useInspiration } from '../hooks/use-inspiration';
-
-export function InspirationScrolling() {
-  const { snapToOffsets, renderItem } = useInspiration();
-  return (
-    <View className="flex-1">
-      <FlatList
-        data={projectList}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        showsVerticalScrollIndicator={false}
-        snapToOffsets={snapToOffsets}
-      />
     </View>
   );
 }

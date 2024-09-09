@@ -48,3 +48,4 @@ export type ProjectItem = {
 
 export type ProjectItemList = ProjectItem[];
 export type ProjectRealizationsVariables = { architectId: number };
+export type ProjectRealizationVariable = { projectId: number };

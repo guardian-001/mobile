@@ -2,6 +2,7 @@ import { type AxiosResponse, isAxiosError } from 'axios';
 
 import { client } from '@/api';
 import type {
+  ProjectItem,
   ProjectItemList,
   ResponseCategory,
   ResponseNeeds,
@@ -143,6 +144,18 @@ export async function getRealizationsByArchitect(
   id: number
 ): Promise<ProjectItemList> {
   const url = `/api/architect-realization/get-realizations-by-architect/${id}`;
+  return client
+    .get(url)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      throw error.response?.data || error.message;
+    });
+}
+
+export async function getRealizationById(id: number): Promise<ProjectItem> {
+  const url = `/api/architect-realization/details/${id}`;
   return client
     .get(url)
     .then((response) => {

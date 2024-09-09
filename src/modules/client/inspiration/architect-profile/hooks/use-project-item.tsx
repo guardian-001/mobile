@@ -17,6 +17,7 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
         source={{ uri: item.image }}
         className="h-96"
         style={{ width: WIDTH - 16 }}
+        contentFit="contain"
       />
     ),
     []
@@ -26,7 +27,7 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
   const navigateToProjectDetails = () => {
     router.push({
       pathname: '(client)/(private)/(architect-profile)/project',
-      params: { projectDetails: JSON.stringify(item) },
+      params: { projectData: item?.id },
     });
   };
   return {

@@ -73,3 +73,25 @@ export async function reportAsync(data: ReviewRequest): Promise<AxiosResponse> {
   const url = `api/moderation/review-report/create/`;
   return client.post(url, data);
 }
+
+export async function getArchitectProfileById(
+  id: number
+): Promise<ArchitectProfileInfoType> {
+  const url = `api/users/architect/details/${id}`;
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
+}

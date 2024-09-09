@@ -7,9 +7,12 @@ import { Image, ScrollView, Text, Video, View } from '@/shared/components';
 import { architectDumpData } from '../dump-data/architect-profile';
 
 type AboutProps = {
-  architect: ArchitectProfileInfoType;
+  architect?: ArchitectProfileInfoType;
 };
 export default function About({ architect }: AboutProps) {
+  if (!architect) {
+    return <Text>No architect data available</Text>;
+  }
   return (
     <ScrollView contentContainerClassName="bg-white p-4 pb-0">
       <Text tx="inspiration.aboutUs" className="text-lg font-bold" />

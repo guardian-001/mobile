@@ -64,3 +64,5 @@ export type ArchitectProfileInfoType = {
 };
 
 export type ArchitectProfileInfoListType = ArchitectProfileInfoType[];
+
+export type ArchitectProfileVariables = { architectId: number };

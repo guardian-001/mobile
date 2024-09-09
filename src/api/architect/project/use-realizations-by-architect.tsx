@@ -16,7 +16,7 @@ export const useRealizationsByArchitectApi = createQuery<
   AxiosError
 >({
   queryKey: [
-    'getRealizations',
+    'getRealizationsByArchitect',
     (variables: ProjectRealizationsVariables) => variables.architectId,
   ],
   fetcher: fetchRealizationsByArchitect,

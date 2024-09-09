@@ -26,7 +26,7 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
   const navigateToProfile = () => {
     router.push({
       pathname: '(client)/(private)/(architect-profile)/profile',
-      params: { architectData: JSON.stringify(item?.architect) },
+      params: { architectData: item?.architect.id },
     });
   };
   return {

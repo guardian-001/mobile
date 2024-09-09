@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { useRealizationsByArchitectApi } from '@/api/architect/project/use-realizations-by-architect';
+import { useRealizationsByArchitectApi } from '@/api/architect/project';
 
 import type { ProjectItemProps } from '../../types';
 import { ProjectItem } from '../components/project-item';

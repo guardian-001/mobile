@@ -1,7 +1,10 @@
 import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback } from 'react';
 
-import type { ProjectItem, RealizationImage } from '@/api/architect/project';
+import {
+  type RealizationImage,
+  useRealizationByIdApi,
+} from '@/api/architect/project';
 import { Category, Location, StyleIcon, SuperficieIcon } from '@/assets/icons';
 import { useImageSlider } from '@/core';
 import { Image, WIDTH } from '@/shared/components';
@@ -9,10 +12,18 @@ import { Image, WIDTH } from '@/shared/components';
 import type { details } from '../../types';
 
 export const useProjectDetails = () => {
-  const { projectDetails } = useLocalSearchParams();
-  const project: ProjectItem = projectDetails
-    ? JSON.parse(projectDetails as string)
-    : null;
+  const { projectData } = useLocalSearchParams();
+  const projectId = projectData ? JSON.parse(projectData as string) : undefined;
+  const {
+    data: project,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useRealizationByIdApi({
+    variables: {
+      projectId: projectId,
+    },
+  });
   const { handleScroll, currentIndex, snapToOffsets, totalImages } =
     useImageSlider(project?.realizationImages);
 
@@ -22,6 +33,7 @@ export const useProjectDetails = () => {
         source={{ uri: item.image }}
         className="h-full"
         style={{ width: WIDTH - 16 }}
+        contentFit="contain"
       />
     ),
     []
@@ -30,22 +42,22 @@ export const useProjectDetails = () => {
     {
       icon: Category,
       title: 'realisation.finalStep.categorie',
-      value: project.projectCategory.label,
+      value: project?.projectCategory.label ?? '',
     },
     {
       icon: StyleIcon,
       title: 'realisation.finalStep.style',
-      value: project.architecturalStyle.label,
+      value: project?.architecturalStyle.label ?? '',
     },
     {
       icon: SuperficieIcon,
       title: 'realisation.finalStep.superficie',
-      value: project.workSurface,
+      value: project?.workSurface ?? '',
     },
     {
       icon: Location,
       title: 'realisation.finalStep.localisation',
-      value: project.city,
+      value: project?.city ?? '',
     },
   ];
   return {
@@ -56,5 +68,8 @@ export const useProjectDetails = () => {
     totalImages,
     details,
     project,
+    isError,
+    isLoading,
+    isSuccess,
   };
 };
