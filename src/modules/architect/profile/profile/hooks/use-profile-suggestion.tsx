@@ -44,7 +44,8 @@ export const useProfileSuggestion = () => {
       <Silver />
     ) : data?.badge === 'Bronze' ? (
       <Bronze />
-    ) : null; //<Bronze />
+    ) : null;
+  console.log(data?.badge === 'Bronze');
   const profileCompletion = data?.profileCompletion ?? 0;
   const profileLevel = getProfileLevel(profileCompletion);
   const profileNextLevel = getProfileNextLevel(profileCompletion);

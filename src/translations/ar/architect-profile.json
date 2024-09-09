@@ -34,5 +34,7 @@
   "demoButton": "طلب عرض تجريبي",
   "addService": "إضافة خدمة",
   "Signal": "الإبلاغ",
-  "noNeedsFound": "ابدأ بتحديد أول احتياجاتك"
+  "noNeedsFound": "ابدأ بتحديد أول احتياجاتك",
+  "reviewDecisionTitle": "الإبلاغ عن التقييم",
+  "reviewDecisionDescription": "نحن بحاجة إلى مساعدتك! يرجى تحديد السبب للإبلاغ عن تقييم العميل."
 }

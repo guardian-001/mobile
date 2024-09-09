@@ -5,7 +5,7 @@ import { updateArchitectNeedsAsync } from '@/services/shared/architect-services'
 
 export const useUpdateArchitectNeedsApi = createMutation<
   AxiosResponse,
-  string[],
+  { needs: string[] },
   AxiosError
 >({
   mutationKey: ['updateArchitectNeeds'],

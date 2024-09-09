@@ -23,7 +23,7 @@ export type Need = {
   description: string;
   architectSpeciality: number;
 };
-export type Review = {
+export type OldReview = {
   reviewer: string;
   comment: string;
   note: string;
@@ -58,6 +58,27 @@ export type OldArchitect = {
   presentationVideo: string | null;
   projectComplexity: string;
   yearsExperience: string;
-  reviews: Review[];
+  reviews: OldReview[];
   servicesApprouves: serviceApprouve[];
+};
+
+type clientReview = {
+  id: number;
+  user: User;
+  isVerified: boolean;
+};
+export type Review = {
+  id: number;
+  architectId: number;
+
+  client: clientReview;
+  rating: number;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ReviewRequest = {
+  reportedReviewId: number;
+  reportReasons: string[];
 };

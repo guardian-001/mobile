@@ -1,17 +1,17 @@
-import { Env } from '@env';
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 
 import { AddServices } from '@/assets/icons/archimatch/architect-profile-images/add-services';
 import { NoDataBox } from '@/assets/icons/archimatch/no-data-box';
-import { translate } from '@/core';
-import { Button, Image, Modal, Text } from '@/shared/components';
+import TickIcon from '@/assets/icons/tick-icon';
+import { colors, Image, Modal, Text } from '@/shared/components';
+import { deepEqual } from '@/shared/utils';
 
 import { useProfileInfo } from './hooks/use-profile-info';
 import { useProfileServices } from './hooks/use-profile-services';
 
 export default function ProfileServices() {
-  const { data } = useProfileInfo();
+  const { data, refetch: refetchProfileInfo } = useProfileInfo();
   const {
     needs,
     ref,
@@ -21,38 +21,41 @@ export default function ProfileServices() {
     updateNeeds,
     selectedNeeds,
   } = useProfileServices();
-
+  const handleUpdateNeeds = async () => {
+    await updateNeeds();
+    refetchProfileInfo();
+  };
   return (
-    <View className="mt-2 flex  w-11/12 flex-1  ">
+    <View className="mt-2 flex  w-11/12 flex-1">
       <TouchableOpacity
         onPress={() => present()}
-        className="mb-10 mt-2 flex  w-full flex-1  items-center justify-center"
+        className="mb-5 mt-2 flex w-full flex-1 items-center justify-center"
       >
-        <View className="flex h-16 w-full flex-row items-center justify-center rounded-xl  border border-dashed border-color-border pr-10">
+        <View className="flex h-16 w-full flex-row items-center justify-center rounded-xl border border-dashed border-color-border pr-10">
           <AddServices />
-          <Text
-            className=" -ml-2 text-center text-base font-semibold"
+           <Text
+            className="-ml-2 text-center text-base font-semibold"
             tx={'architectProfile.addService'}
           />
         </View>
       </TouchableOpacity>
-      {data?.needs && data?.needs?.length > 0 ? (
+      {data?.needs && data?.needs.length > 0 ? (
         <>
-          {data.needs.map((need) => {
-            const imgUrl = `${Env.API_URL}${need.icon}`;
-            return (
-              <View className="  flex h-16 w-full flex-row items-center justify-center rounded-xl  border   border-color-border ">
-                <Image
-                  className="  mt-1  h-5 w-5"
-                  source={{ uri: imgUrl }}
-                  contentFit="contain"
-                />
-                <Text className=" -ml-2 text-center text-base font-semibold">
-                  {need.label}
-                </Text>
-              </View>
-            );
-          })}
+          {data.needs.map((need) => (
+            <View
+              key={need.id}
+              className={`mb-2 flex h-16 flex-row items-center justify-start gap-2 rounded-xl border border-color-border px-4`}
+            >
+              <Image
+                className="mt-1 h-5 w-5"
+                source={{ uri: need.icon }}
+                contentFit="contain"
+              />
+              <Text className="mt-1 text-start text-base font-semibold">
+                {need.label}
+              </Text>
+            </View>
+          ))}
         </>
       ) : (
         <View className="flex w-full items-center justify-center gap-5">
@@ -63,37 +66,47 @@ export default function ProfileServices() {
           />
         </View>
       )}
-      <Modal snapPoints={['85%']} ref={ref} onDismiss={dismiss}>
-        <>
-          <Button
-            label={translate('common.modify')}
-            textClassName="text-xl"
-            onPress={updateNeeds}
-            className="mx-2 my-4 h-16 w-16  rounded-full"
-          />
-          {needs?.map((need) => {
-            const imgUrl = `${Env.API_URL}${need.icon}`;
-
-            return (
-              <TouchableOpacity onPress={() => handleSelect(need.label)}>
+      <Modal snapPoints={['65%']} ref={ref} onDismiss={dismiss}>
+        <View className="w-30 absolute bottom-10 right-0 z-20 flex items-end">
+          <TouchableOpacity
+            onPress={handleUpdateNeeds}
+            className="right-5 mx-2 my-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary-txt"
+          >
+            <TickIcon color={colors.white} width={55} height={50} />
+          </TouchableOpacity>
+        </View>
+        <ScrollView>
+          <View className="my-10 flex w-full items-center">
+            {needs?.map((need) => (
+              <TouchableOpacity
+                key={need.id}
+                className="mb-1 w-11/12"
+                onPress={() => handleSelect(need)}
+              >
                 <View
-                  className={`flex h-16 w-full flex-row items-center justify-center rounded-xl  border   border-color-border ${
-                    selectedNeeds.includes(need.label) && 'bg-primary'
+                  className={`flex h-16 flex-row items-center justify-start gap-2 rounded-xl border border-color-border px-4 ${
+                    selectedNeeds.some((obj) => deepEqual(obj, need)) &&
+                    'bg-primary'
                   }`}
                 >
                   <Image
-                    className="  mt-1  h-5 w-5"
-                    source={{ uri: imgUrl }}
+                    className="mt-1 h-5 w-5"
+                    source={{ uri: need.icon }}
                     contentFit="contain"
                   />
-                  <Text className=" -ml-2 text-center text-base font-semibold">
+                  <Text
+                    className={`mt-1 text-start text-base font-semibold ${
+                      selectedNeeds.some((obj) => deepEqual(obj, need)) &&
+                      'text-white'
+                    }`}
+                  >
                     {need.label}
                   </Text>
                 </View>
               </TouchableOpacity>
-            );
-          })}
-        </>
+            ))}
+          </View>
+        </ScrollView>
       </Modal>
     </View>
   );
