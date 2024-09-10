@@ -2,14 +2,8 @@ import React from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
 
 import { AddServices } from '@/assets/icons/archimatch/architect-profile-images/add-services';
- 
-import TickIcon from '@/assets/icons/tick-icon'; 
-import { deepEqual } from '@/shared/utils'; 
-import { NoDataBox } from '@/assets/icons/archimatch/no-data-box';
 import { translate } from '@/core';
-import { colors,Button, Image, Modal, Text } from '@/shared/components';
- 
-
+import { Button, Modal, Text } from '@/shared/components';
 
 import ArchitectProfileNeed from './components/architect-profile-need';
 import ArchitectProfileService from './components/architect-profile-service';

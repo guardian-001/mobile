@@ -50,7 +50,7 @@ export async function getNeeds(): Promise<ResponseNeeds> {
 
 export async function getCategories(): Promise<ResponseCategory> {
   return client
-    .get(`/api/announcement/project-categories/`)
+    .get(`/api/announcement/project-categories`)
     .then((response) => response.data)
     .catch((error: unknown) => {
       if (isAxiosError(error)) {

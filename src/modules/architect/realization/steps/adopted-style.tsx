@@ -55,7 +55,7 @@ export function AdoptedStyle() {
             })}
           </ScrollView>
 
-          <View className="flex h-fit w-full items-center ">
+          <View className="  flex w-full items-center ">
             <Text className="w-11/12 text-left text-sm text-error">
               {error ? translate(error) : ''}
             </Text>
