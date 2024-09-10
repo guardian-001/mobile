@@ -34,5 +34,6 @@
   "numberNonNegative": "Number must be non-negative",
   "numberNonNegativeInteger": "Number must be a non-negative integer",
   "urlInvalid": "Invalid URL format",
-  "numberPositive": "Number must be positive"
+  "numberPositive": "Number must be positive",
+  "requiredMinTextSize": "The text length should be 50 or more letters"
 }
