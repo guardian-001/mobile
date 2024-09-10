@@ -11,23 +11,24 @@ import type {
 import type { ProjectRealizationType } from '@/modules/architect/realization/shared/types';
 
 export async function getStyles(): Promise<ResponseStyle> {
-  try {
-    const response = await client.get(`/api/users/architectural-styles`);
-    return response.data;
-  } catch (error: unknown) {
-    if (isAxiosError(error)) {
-      throw new Error(
-        `API request failed with status ${error.response?.status}`
-      );
-    } else {
-      throw new Error(
-        `API request failed: ${
-          error instanceof Error ? error.message : 'Unknown error'
-        }`
-      );
-    }
-  }
+  return client
+    .get(`/api/users/architectural-styles/`)
+    .then((response) => response.data)
+    .catch((error: unknown) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
 }
+
 export async function getNeeds(): Promise<ResponseNeeds> {
   return client
     .get(`/api/architect-realization/needs/`)
@@ -49,7 +50,7 @@ export async function getNeeds(): Promise<ResponseNeeds> {
 
 export async function getCategories(): Promise<ResponseCategory> {
   return client
-    .get(`/api/announcement/project-categories`)
+    .get(`/api/announcement/project-categories/`)
     .then((response) => response.data)
     .catch((error: unknown) => {
       if (isAxiosError(error)) {

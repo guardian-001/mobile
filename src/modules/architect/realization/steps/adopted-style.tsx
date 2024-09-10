@@ -23,7 +23,7 @@ export function AdoptedStyle() {
   } = useStyles();
   return (
     <View className="mb-5 flex h-full w-full flex-1 items-center justify-between gap-6  ">
-      {(isPending || data?.length === 0) && (
+      {(isPending || data?.length === 0 || isError) && (
         <EmptyList isError={isError} isPending={isPending} />
       )}
       {isSuccess && (
