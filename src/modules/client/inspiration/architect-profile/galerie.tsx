@@ -1,8 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import { Text, View } from '@/shared/components';
-import { EmptyList } from '@/shared/components/emptylist-custom';
+import { FetchStateHandler, Text, View } from '@/shared/components';
 
 import { useGalerie } from './hooks/use-galerie';
 
@@ -14,12 +13,12 @@ export default function Galerie({ architectId }: { architectId?: number }) {
   }
   return (
     <View className="flex-1">
-      <EmptyList
+      <FetchStateHandler
         isError={isError}
         isPending={isLoading}
         isEmpty={Realizations?.length === 0}
-      />
-      {isSuccess && (
+        isSuccess={isSuccess}
+      >
         <FlatList
           data={Realizations}
           renderItem={renderItem}
@@ -27,7 +26,7 @@ export default function Galerie({ architectId }: { architectId?: number }) {
           keyExtractor={(item) => item.id.toString()}
           showsVerticalScrollIndicator={false}
         />
-      )}
+      </FetchStateHandler>
     </View>
   );
 }
