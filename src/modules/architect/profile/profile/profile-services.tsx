@@ -6,6 +6,8 @@ import { NoDataBox } from '@/assets/icons/archimatch/no-data-box';
 import { translate } from '@/core';
 import { Button, Image, Modal, Text } from '@/shared/components';
 
+
+import ArchitectProfileNeed from './components/architect-profile-need';
 import ArchitectProfileService from './components/architect-profile-service';
 import { useProfileInfo } from './hooks/use-profile-info';
 import { useProfileServices } from './hooks/use-profile-services';
@@ -42,19 +44,7 @@ export default function ProfileServices() {
       {data?.needs && data?.needs.length > 0 ? (
         <>
           {data.needs.map((need) => (
-            <View
-              key={need.id}
-              className={`mb-2 flex h-16 flex-row items-center justify-start gap-2 rounded-xl border border-color-border px-4`}
-            >
-              <Image
-                className="mt-1 h-5 w-5"
-                source={{ uri: need.icon }}
-                contentFit="contain"
-              />
-              <Text className="mt-1 text-start text-base font-semibold">
-                {need.label}
-              </Text>
-            </View>
+            <ArchitectProfileNeed need={need} />
           ))}
         </>
       ) : (
