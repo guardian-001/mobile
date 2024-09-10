@@ -2,9 +2,13 @@ import React from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
 
 import { AddServices } from '@/assets/icons/archimatch/architect-profile-images/add-services';
+ 
+import TickIcon from '@/assets/icons/tick-icon'; 
+import { deepEqual } from '@/shared/utils'; 
 import { NoDataBox } from '@/assets/icons/archimatch/no-data-box';
 import { translate } from '@/core';
-import { Button, Image, Modal, Text } from '@/shared/components';
+import { colors,Button, Image, Modal, Text } from '@/shared/components';
+ 
 
 
 import ArchitectProfileNeed from './components/architect-profile-need';
@@ -48,13 +52,7 @@ export default function ProfileServices() {
           ))}
         </>
       ) : (
-        <View className="flex w-full items-center justify-center gap-5">
-          <NoDataBox />
-          <Text
-            tx={'architectProfile.noNeedsFound'}
-            className="text-md font-bold text-description"
-          />
-        </View>
+        ''
       )}
       <Modal snapPoints={['65%']} ref={ref} onDismiss={dismiss}>
         <View className="absolute bottom-8  right-0 z-20 flex w-full   items-center  ">

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { requiredValidation } from '@/shared/validations';
+import { requiredLongTextValidation } from '@/shared/validations';
 
 export const BioSchema = z.object({
-  bio: requiredValidation,
+  bio: requiredLongTextValidation,
 });
