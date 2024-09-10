@@ -7,6 +7,7 @@ import TickIcon from '@/assets/icons/tick-icon';
 import { colors, Image, Modal, Text } from '@/shared/components';
 import { deepEqual } from '@/shared/utils';
 
+import ArchitectProfileNeed from './components/architect-profile-need';
 import { useProfileInfo } from './hooks/use-profile-info';
 import { useProfileServices } from './hooks/use-profile-services';
 
@@ -33,7 +34,7 @@ export default function ProfileServices() {
       >
         <View className="flex h-16 w-full flex-row items-center justify-center rounded-xl border border-dashed border-color-border pr-10">
           <AddServices />
-           <Text
+          <Text
             className="-ml-2 text-center text-base font-semibold"
             tx={'architectProfile.addService'}
           />
@@ -42,19 +43,7 @@ export default function ProfileServices() {
       {data?.needs && data?.needs.length > 0 ? (
         <>
           {data.needs.map((need) => (
-            <View
-              key={need.id}
-              className={`mb-2 flex h-16 flex-row items-center justify-start gap-2 rounded-xl border border-color-border px-4`}
-            >
-              <Image
-                className="mt-1 h-5 w-5"
-                source={{ uri: need.icon }}
-                contentFit="contain"
-              />
-              <Text className="mt-1 text-start text-base font-semibold">
-                {need.label}
-              </Text>
-            </View>
+            <ArchitectProfileNeed need={need} />
           ))}
         </>
       ) : (
