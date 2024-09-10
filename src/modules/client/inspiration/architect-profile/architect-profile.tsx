@@ -4,13 +4,13 @@ import { translate } from '@/core';
 import {
   Button,
   colors,
+  FetchStateHandler,
   GradientBackground,
   Image,
   Text,
   TouchableOpacity,
   View,
 } from '@/shared/components';
-import { EmptyList } from '@/shared/components/emptylist-custom';
 
 import { useArchitectProfile } from './hooks/use-architect-profile';
 
@@ -27,8 +27,11 @@ export default function ArchitectProfile() {
   } = useArchitectProfile();
   return (
     <View className="flex-1 bg-white">
-      <EmptyList isError={isError} isPending={isLoading} />
-      {isSuccess && (
+      <FetchStateHandler
+        isError={isError}
+        isPending={isLoading}
+        isSuccess={isSuccess}
+      >
         <View className="flex-1">
           <GradientBackground
             colors={[colors.white, colors['extra-light-blue']]}
@@ -82,7 +85,7 @@ export default function ArchitectProfile() {
             />
           </View>
         </View>
-      )}
+      </FetchStateHandler>
     </View>
   );
 }

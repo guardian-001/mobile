@@ -23,7 +23,7 @@ export function ProjectCategory() {
   } = useCategory();
 
   return (
-    <View className="mb-5 flex h-full flex-1 items-start justify-between gap-16  ">
+    <View className="mb-5 flex flex-1 items-start justify-between gap-16  ">
       {isPending && <EmptyList isError={isError} isPending={isPending} />}
       {isSuccess && (
         <>
@@ -53,7 +53,7 @@ export function ProjectCategory() {
             contentContainerStyle={styles.contentContainerListStyle}
           />
 
-          <View className="flex h-fit w-full items-center">
+          <View className=" flex w-full items-center">
             <Text className="w-11/12 text-left text-sm text-error">
               {error ? translate(error) : ''}
             </Text>

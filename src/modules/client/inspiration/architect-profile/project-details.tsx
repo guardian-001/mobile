@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 
 import {
   colors,
+  FetchStateHandler,
   GradientBackground,
   Image,
   ImageContainer,
@@ -10,7 +11,6 @@ import {
   Text,
   View,
 } from '@/shared/components';
-import { EmptyList } from '@/shared/components/emptylist-custom';
 
 import { useProjectDetails } from './hooks/use-project-details';
 
@@ -35,8 +35,11 @@ export default function ProjectDetails() {
           className="my-12 text-center text-xl font-bold"
         />
       </GradientBackground>
-      <EmptyList isError={isError} isPending={isLoading} />
-      {isSuccess && (
+      <FetchStateHandler
+        isError={isError}
+        isPending={isLoading}
+        isSuccess={isSuccess}
+      >
         <ScrollView contentContainerClassName="p-[16px]">
           <ImageContainer className="-mt-10 h-96 w-full">
             <FlatList
@@ -102,7 +105,7 @@ export default function ProjectDetails() {
             </View>
           </View>
         </ScrollView>
-      )}
+      </FetchStateHandler>
     </View>
   );
 }
