@@ -25,7 +25,7 @@ export function ProjectDetails() {
   } = useDetails();
 
   return (
-    <View className="mb-5 flex h-full flex-1 items-start justify-between gap-5  ">
+    <View className=" flex h-full flex-1 items-start justify-between gap-5  ">
       <View>
         <Text
           tx={'realisation.detailsStep.title'}
@@ -75,7 +75,7 @@ export function ProjectDetails() {
           )}
         />
       </ScrollView>
-      <View className="flex h-fit w-full items-center">
+      <View className="mb-5 flex w-full items-center">
         <StepButtons
           previous={{
             handlePreviousStep: onHandleBack,

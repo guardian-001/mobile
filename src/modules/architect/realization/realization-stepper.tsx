@@ -1,7 +1,8 @@
 import React from 'react';
+import { Platform } from 'react-native';
 
 import StepperPercentageBar from '@/modules/shared/stepper-percentage-bar';
-import { View } from '@/shared/components';
+import { KeyboardAvoidingView, View } from '@/shared/components';
 import {
   FormProvider,
   useFormStepper,
@@ -15,10 +16,13 @@ const ProjectRealizationStepperInner = () => {
 
   const { component } = stepsContent[step];
   return (
-    <View className="items-between mt-16 flex h-full w-full rounded-t-3xl bg-background  ">
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      className="items-between mt-16 flex h-full w-full rounded-t-3xl bg-background  "
+    >
       <StepperPercentageBar />
-      <View className=" h-full flex-1 p-6 py-12">{component}</View>
-    </View>
+      <View className=" h-full flex-1 px-6 ">{component}</View>
+    </KeyboardAvoidingView>
   );
 };
 

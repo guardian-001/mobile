@@ -56,6 +56,15 @@ export const fieldValidation = z
     message: 'validations.fieldShape',
   });
 
+export const fieldWithSpecialCharactersValidation = z
+  .string({ message: 'validations.required' })
+  .min(1, { message: 'validations.required' })
+  .min(3, { message: 'validations.fieldMinLength' })
+  .max(50, { message: 'validations.fieldMaxLength' })
+  .regex(/^[a-zA-Z0-9_ \u00C0-\u00FF.,;:!?\-'"]+$/, {
+    message: 'validations.fieldShape',
+  });
+
 export const phoneValidation = z
   .string({ message: 'validations.required' })
   .min(1, { message: 'validations.required' })

@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 import {
   fieldValidation,
+  fieldWithSpecialCharactersValidation,
   idValidation,
   intArrayValidation,
 } from '@/shared/validations';
@@ -17,7 +18,7 @@ export const ProjectRealizationSchema = z.object({
   needs: intArrayValidation,
   address: cityValidation,
   workSurface: workSurfaceValidation,
-  description: fieldValidation,
+  description: fieldWithSpecialCharactersValidation,
   architecturalStyle: idValidation,
   realizationImages: imagesValidation,
   projectCategory: idValidation,
@@ -38,7 +39,7 @@ export const ProjectDetailsSchema = z.object({
   projectName: fieldValidation,
   address: cityValidation,
   workSurface: workSurfaceValidation,
-  description: fieldValidation,
+  description: fieldWithSpecialCharactersValidation,
 });
 
 export const ImagesRealizationSchema = z.object({
