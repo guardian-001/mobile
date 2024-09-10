@@ -41,8 +41,8 @@ export const useUpdateBio = () => {
           showSuccesMessage(response.data.message);
           refetch();
         },
-        onError: (error) => {
-          showErrorMessage(error.message);
+        onError: (submitError) => {
+          showErrorMessage(submitError.message);
         },
       });
     }
