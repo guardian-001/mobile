@@ -1,6 +1,26 @@
 import type { User } from '@/api/auth';
 import type { Category, Need, Style } from '@/types';
 
+export type SubscriptionPlan = {
+  id: number;
+  planName: string;
+  planPrice: string;
+  remainingTokens: number;
+  active: boolean;
+  freePlan: boolean;
+  services: {
+    service: {
+      id: number;
+      description: string;
+      permissions: any[];
+      specialIdentifier: string;
+    };
+    included: boolean;
+  }[];
+  startDate: string | null;
+  endDate: string | null;
+};
+
 export type ArchitectProfileInfoType = {
   id: number;
   user: User;
@@ -23,7 +43,7 @@ export type ArchitectProfileInfoType = {
     icon: string;
   };
   needs: Need[];
-  subscriptionPlan: null | string;
+  subscriptionPlan: SubscriptionPlan;
   terrainSurfaces: string[];
   workSurfaces: string[];
   preferredLocations: string[];
@@ -44,3 +64,5 @@ export type ArchitectProfileInfoType = {
 };
 
 export type ArchitectProfileInfoListType = ArchitectProfileInfoType[];
+
+export type ArchitectProfileVariables = { architectId: number };

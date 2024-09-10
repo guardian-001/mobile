@@ -1,11 +1,18 @@
 import { ResizeMode } from 'expo-av';
 import React from 'react';
 
+import type { ArchitectProfileInfoType } from '@/api/architect/profile/types';
 import { Image, ScrollView, Text, Video, View } from '@/shared/components';
 
-import { architect } from '../dump-data/architect-profile';
+import { architectDumpData } from '../dump-data/architect-profile';
 
-export default function About() {
+type AboutProps = {
+  architect?: ArchitectProfileInfoType;
+};
+export default function About({ architect }: AboutProps) {
+  if (!architect) {
+    return <Text>No architect data available</Text>;
+  }
   return (
     <ScrollView contentContainerClassName="bg-white p-4 pb-0">
       <Text tx="inspiration.aboutUs" className="text-lg font-bold" />
@@ -24,7 +31,7 @@ export default function About() {
         tx="inspiration.approvedServicesRequired"
         className="mb-4 text-sm font-medium text-description"
       />
-      {architect.servicesApprouves.map((service, index) => (
+      {architectDumpData.servicesApprouves.map((service, index) => (
         <View key={index} className="my-3 flex-row items-center gap-3">
           <Image
             className="h-9 w-9 overflow-hidden"

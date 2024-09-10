@@ -1,14 +1,31 @@
+import { useLocalSearchParams } from 'expo-router';
 import React, { useState } from 'react';
 
+import { useArchitectProfileByIdApi } from '@/api/architect/profile/use-profile-by-id';
 import { Avis, Card, GalerieIcon } from '@/assets/icons';
 
-import { architect } from '../../dump-data/architect-profile';
+import { architectDumpData } from '../../dump-data/architect-profile';
 import type { Tab } from '../../types';
 import About from '../about';
 import Reviews from '../avis';
 import Galerie from '../galerie';
 
 export const useArchitectProfile = () => {
+  const { architectData } = useLocalSearchParams();
+  const architectId = architectData
+    ? JSON.parse(architectData as string)
+    : undefined;
+  const {
+    data: architect,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useArchitectProfileByIdApi({
+    variables: {
+      architectId: architectId,
+    },
+  });
+
   const [activeTab, setActiveTab] = useState('a-propos');
   const tabs: Tab[] = [
     { id: 'a-propos', label: 'inspiration.about', icon: Card },
@@ -18,11 +35,11 @@ export const useArchitectProfile = () => {
   const renderContent = () => {
     switch (activeTab) {
       case tabs[0].id:
-        return <About />;
+        return <About architect={architect} />;
       case tabs[1].id:
-        return <Galerie />;
+        return <Galerie architectId={architect?.id} />;
       case tabs[2].id:
-        return <Reviews reviews={architect.reviews} />;
+        return <Reviews reviews={architectDumpData?.reviews} />;
       default:
         return null;
     }
@@ -32,5 +49,9 @@ export const useArchitectProfile = () => {
     tabs,
     renderContent,
     setActiveTab,
+    architect,
+    isError,
+    isLoading,
+    isSuccess,
   };
 };

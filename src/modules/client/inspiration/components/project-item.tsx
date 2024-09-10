@@ -23,7 +23,7 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
     <View className="relative flex-1">
       <ImageContainer className="h-full w-full">
         <FlatList
-          data={item?.projectImages ?? []}
+          data={item?.realizationImages ?? []}
           renderItem={renderItem}
           keyExtractor={(imageUrl, index) => index.toString()}
           horizontal={true}
@@ -38,7 +38,7 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
           </Text>
         </View>
       </ImageContainer>
-      <View className="absolute bottom-0 mb-10 w-4/5 pl-3">
+      <View className="absolute bottom-0 mb-16 ml-3 w-4/5 rounded-2xl  bg-black/50 p-3">
         <View className="flex flex-row items-center gap-2">
           <TouchableOpacity onPress={navigateToProfile}>
             <Image
@@ -49,7 +49,8 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
           </TouchableOpacity>
           <TouchableOpacity onPress={navigateToProfile}>
             <Text className="text-sm font-extrabold text-white">
-              {item?.architectName}
+              {item?.architect?.user?.firstName}{' '}
+              {item?.architect?.user?.lastName}
             </Text>
           </TouchableOpacity>
         </View>
@@ -59,18 +60,18 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
           textClassName="text-sm"
           className="my-4 h-9 w-[55%] rounded"
         />
-        <View className="mb-3 rounded-2xl bg-black/50 p-2">
+        <View className="mb-3 p-2">
           <View className="flex flex-row items-center gap-4">
             <Text className="text-sm font-bold text-white">
-              {item?.propertyType}
+              {item?.propertyType?.label}
             </Text>
-            <Text className="text-xs text-white">{item?.publishedDate}</Text>
+            <Text className="text-xs text-white">Date ??????????????</Text>
           </View>
           <Text className="mt-3 text-xs text-white">{item?.description}</Text>
         </View>
-        <View className="mb-8 flex flex-row items-center gap-2">
+        <View className="flex flex-row items-center gap-2">
           <TagProject label={item?.city ?? ''} SvgComponent={Location} />
-          <TagProject label={item?.terrainSurface ?? ''} SvgComponent={Map} />
+          <TagProject label={item?.workSurface ?? ''} SvgComponent={Map} />
         </View>
       </View>
       <View className="absolute inset-y-0 right-0 mb-10 h-3/4 w-1/6 items-center justify-end gap-4">

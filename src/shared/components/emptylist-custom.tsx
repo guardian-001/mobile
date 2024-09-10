@@ -14,7 +14,7 @@ type Props = {
 export const EmptyList = React.memo(
   ({ isPending, isEmpty, isError }: Props) => {
     return (
-      <View className="flex min-h-[300px] w-full flex-1 items-center justify-center">
+      <View className="flex w-full items-center justify-center">
         {(isError || isEmpty) && (
           <>
             <NoDataBox />

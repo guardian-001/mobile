@@ -9,7 +9,7 @@ import { useSwipeRight } from '../hooks/use-swipe-right';
 export function SwipeRight() {
   const { onSubmit } = useSwipeRight();
   return (
-    <View className="flex-1 p-4 pt-8">
+    <View className="min-h-full flex-1 p-4 pt-8">
       <Text
         tx="inspiration.swipeRightTitle"
         className="mb-2 text-3xl font-bold"
