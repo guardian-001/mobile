@@ -68,7 +68,7 @@ export function ControlledInput<T extends FieldValues>(
       ref={field.ref}
       autoCapitalize={autoCapitalize}
       onChangeText={(value) => {
-        field.onChange(value);
+        field.onChange(value.trim());
         if (handleOnChange) {
           handleOnChange({ name, data: value });
         }

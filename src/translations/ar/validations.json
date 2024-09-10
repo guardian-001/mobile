@@ -34,5 +34,6 @@
   "numberNonNegative": "يجب أن يكون الرقم غير سلبي",
   "numberNonNegativeInteger": "يجب أن يكون الرقم صحيحًا غير سلبي",
   "urlInvalid": "تنسيق URL غير صحيح",
-  "numberPositive": "يجب أن يكون الرقم إيجابيًا"
+  "numberPositive": "يجب أن يكون الرقم إيجابيًا",
+  "requiredMinTextSize": "يجب أن تكون طول النص 50 حرفًا أو أكثر"
 }

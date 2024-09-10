@@ -14,18 +14,28 @@ import {
   VideoUploader,
 } from '@/shared/components';
 
+import ShowBio from './components/show-bio';
+import VideoSelect from './components/video-select';
 import { useUpdateBio } from './hooks/use-update-bio';
 import { useUpdateVideo } from './hooks/use-update-video';
 
 export default function ProfileAbout() {
-  const { control, handleSubmit, onSubmit, architect } = useUpdateBio();
+  const {
+    control,
+    handleSubmit,
+    onSubmit,
+    architect,
+    updateBio,
+    handleUpdateBioForm,
+    error,
+  } = useUpdateBio();
   const { onSubmitVideo, pickVideo, selectedVideo, onDelete, newVideo } =
     useUpdateVideo();
   return (
     <View className=" mb-20 mt-2 flex h-max  w-11/12 flex-1 items-start justify-center  ">
-      {!architect?.bio ? (
-        <>
-          <View className="mb-4 ml-1 mr-2 flex flex-row items-center justify-between">
+      {!architect?.bio || updateBio ? (
+        <View className="mb-4  flex w-full items-start ">
+          <View className="mb-4 flex w-full flex-row items-center justify-between">
             <Text
               tx={'architectProfile.bioLabel'}
               className="text-lg font-bold"
@@ -43,17 +53,15 @@ export default function ProfileAbout() {
             name="bio"
             inputAreaType="textArea"
             placeholder={translate('architectProfile.bioPlaceholder')}
-            className="flex-1"
+            className="w-full flex-1"
+            error={error}
           />
-        </>
-      ) : (
-        <View className="mb-4 ml-1 mr-2 flex   items-start">
-          <Text
-            tx={'architectProfile.bioLabel'}
-            className="text-justify text-lg font-bold"
-          />
-          <Text>{architect?.bio}</Text>
         </View>
+      ) : (
+        <ShowBio
+          handleUpdateBioForm={handleUpdateBioForm}
+          bio={architect.bio}
+        />
       )}
       <View className=" mx-1 mt-2 flex h-fit  flex-1  ">
         <Text
@@ -62,15 +70,7 @@ export default function ProfileAbout() {
         />
         {architect?.presentationVideo &&
         architect?.presentationVideo !== null ? (
-          <View>
-            <Video
-              className="h-64 w-full rounded-lg"
-              source={{ uri: architect?.presentationVideo }}
-              useNativeControls
-              resizeMode={ResizeMode.CONTAIN}
-              isLooping={false}
-            />
-          </View>
+          <VideoSelect presentationVideo={architect?.presentationVideo} />
         ) : (
           <>
             {selectedVideo === null ? (
