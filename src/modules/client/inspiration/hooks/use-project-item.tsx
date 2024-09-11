@@ -4,6 +4,7 @@ import React, { useCallback } from 'react';
 import type { RealizationImage } from '@/api/architect/project';
 import { useImageSlider } from '@/core';
 import { Image, useModal } from '@/shared/components';
+import useFormattedDate from '@/shared/hooks/use-formatted-date';
 
 import type { ProjectItemProps } from '../types';
 
@@ -21,7 +22,7 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
     ),
     []
   );
-
+  const formattedDate = useFormattedDate(item?.createdAt ?? '');
   const router = useRouter();
   const navigateToProfile = () => {
     router.push({
@@ -39,5 +40,6 @@ export const useProjectItem = ({ item }: ProjectItemProps) => {
     dismiss,
     ref,
     present,
+    formattedDate,
   };
 };

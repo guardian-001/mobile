@@ -28,6 +28,7 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
     navigateToProfile,
     ref,
     present,
+    formattedDate,
   } = useProjectItem({ item });
   return (
     <View className="relative flex-1">
@@ -75,12 +76,15 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
             <Text className="text-sm font-bold text-white">
               {item?.propertyType?.label}
             </Text>
-            <Text className="text-xs text-white">Date ??????????????</Text>
+            <Text className="text-xs text-white">{formattedDate}</Text>
           </View>
           <View className="mt-3 flex-row gap-4">
             <Text className=" text-xs text-white">{item?.description}</Text>
             <TouchableOpacity onPress={present}>
-              <Text className="text-xs font-extrabold text-white/60">more</Text>
+              <Text
+                tx="inspiration.more"
+                className="text-xs font-extrabold text-white/60"
+              />
             </TouchableOpacity>
           </View>
         </View>

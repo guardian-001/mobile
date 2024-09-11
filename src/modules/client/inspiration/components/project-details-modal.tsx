@@ -49,7 +49,7 @@ export const ProjectDetailsModal = React.memo(({ item }: ProjectItemProps) => {
         </View>
       </View>
       <Button
-        label={translate('inspiration.launchYourProject')}
+        label={translate('inspiration.viewArchitectProfile')}
         onPress={navigateToProfile}
         textClassName="text-sm"
         className="my-4 h-12 w-[95%] self-center rounded-lg"
