@@ -13,7 +13,7 @@ export const TagProject = ({
   className,
 }: TagProjectProps) => (
   <View
-    className={`${className} flex w-24 flex-row items-center justify-evenly rounded-2xl bg-black/50 p-2`}
+    className={`${className} min-w-24 flex flex-row items-center justify-evenly rounded-2xl bg-black/50 p-2`}
   >
     {SvgComponent && <SvgComponent color={colors.white} />}
     <Text className="text-xs text-white">{label}</Text>

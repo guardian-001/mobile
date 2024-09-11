@@ -44,6 +44,7 @@ export type ProjectItem = {
     icon: string;
     projectCategory: number;
   };
+  createdAt: string;
 };
 
 export type ProjectItemList = ProjectItem[];

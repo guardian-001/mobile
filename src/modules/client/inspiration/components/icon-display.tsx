@@ -11,7 +11,7 @@ export const IconDisplay = ({
   count,
   onPress,
 }: IconDisplayProps) => (
-  <View className="items-center gap-1">
+  <View className="items-center gap-1 rounded-2xl bg-black/25 p-2">
     <TouchableOpacity onPress={onPress}>
       <SvgComponent />
     </TouchableOpacity>
