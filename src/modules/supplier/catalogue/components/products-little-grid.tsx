@@ -40,7 +40,7 @@ const ProductLittleGrid = ({ items, onAddProductPress }: ProductGridProps) => {
         {searchValue && listState && (
           <Pressable
             onPress={() => setListState(false)}
-            className="  h-96 w-full rounded-lg "
+            className="  h-96 w-full rounded-lg shadow-lg shadow-color-shadow "
           >
             <View className=" mb-1  w-full rounded-lg  bg-white">
               <FlatList
