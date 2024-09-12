@@ -47,12 +47,13 @@ export const passwordValidation = z
   .regex(/[0-9]/, { message: 'validations.passwordDigit' })
   .regex(/[^a-zA-Z0-9]/, { message: 'validations.passwordSpecialChar' });
 
+const fieldShapeRegex = /^[a-zA-Z0-9_ \u00C0-\u00FF]+$/;
 export const fieldValidation = z
   .string({ message: 'validations.required' })
   .min(1, { message: 'validations.required' })
   .min(3, { message: 'validations.fieldMinLength' })
   .max(50, { message: 'validations.fieldMaxLength' })
-  .regex(/^[a-zA-Z0-9_ \u00C0-\u00FF]+$/, {
+  .regex(fieldShapeRegex, {
     message: 'validations.fieldShape',
   });
 export const requiredShortTextValidation = z
@@ -60,7 +61,7 @@ export const requiredShortTextValidation = z
   .min(1, { message: 'validations.required' })
   .min(3, { message: 'validations.fieldMinLength' })
   .max(15, { message: 'validations.fieldMaxLength' })
-  .regex(/^[a-zA-Z0-9_ \u00C0-\u00FF]+$/, {
+  .regex(fieldShapeRegex, {
     message: 'validations.fieldShape',
   });
 
