@@ -119,8 +119,10 @@ export async function updateSocialLinkAsync(
   return client.put(url, formData);
 }
 
-export async function getAllSuppliers(): Promise<SupplierProfileInfoListType> {
-  const url = '/api/users/supplier/get-all-suppliers/';
+export async function getSuppliersBySpecialityType(
+  specialityId: number
+): Promise<SupplierProfileInfoListType> {
+  const url = `/api/users/supplier/get-all-suppliers?speciality_type=${specialityId}`;
   return client
     .get(url)
     .then((response) => response.data)

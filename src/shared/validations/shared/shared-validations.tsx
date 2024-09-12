@@ -55,6 +55,14 @@ export const fieldValidation = z
   .regex(/^[a-zA-Z0-9_ \u00C0-\u00FF]+$/, {
     message: 'validations.fieldShape',
   });
+export const requiredShortTextValidation = z
+  .string({ message: 'validations.required' })
+  .min(1, { message: 'validations.required' })
+  .min(3, { message: 'validations.fieldMinLength' })
+  .max(15, { message: 'validations.fieldMaxLength' })
+  .regex(/^[a-zA-Z0-9_ \u00C0-\u00FF]+$/, {
+    message: 'validations.fieldShape',
+  });
 
 export const fieldWithSpecialCharactersValidation = z
   .string({ message: 'validations.required' })

@@ -74,3 +74,4 @@ export type createCollectionRequestData = {
 export type UpdateVisibilityRequest = { id: number; visibility: boolean };
 
 export type SupplierProfileInfoListType = SupplierProfileInfoType[];
+export type SuppliersBySpecialityVariables = { specialityId: number };

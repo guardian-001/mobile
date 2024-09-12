@@ -30,11 +30,10 @@ export const useUpdateBio = () => {
         onSuccess: (response) => {
           showSuccesMessage(response.data.message);
           router.back();
-          router.back();
         },
       });
     } else {
-      router.back(), router.back();
+      router.back();
     }
   };
   return {

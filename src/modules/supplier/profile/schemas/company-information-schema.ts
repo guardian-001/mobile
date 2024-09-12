@@ -1,10 +1,14 @@
 import { z } from 'zod';
 
-import { fieldValidation, requiredValidation } from '@/shared/validations';
+import {
+  fieldValidation,
+  requiredShortTextValidation,
+  requiredValidation,
+} from '@/shared/validations';
 
 export const CompanyInformationSchema = z.object({
-  companyName: fieldValidation,
-  companySpeciality: fieldValidation,
+  companyName: requiredShortTextValidation,
+  companySpeciality: requiredShortTextValidation,
   companyAddress: fieldValidation,
   phoneNumber: requiredValidation,
 });
