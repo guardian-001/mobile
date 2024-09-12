@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { ScrollView, Text, View } from '@/shared/components';
+import { HeaderTitle, ScrollView, Text, View } from '@/shared/components';
 import { Calendar } from '@/shared/components';
 import { CalendarProvider } from '@/shared/providers/use-calendar-provider';
 
@@ -11,6 +11,8 @@ export function DemoPlanning() {
       className="h-fit w-full"
       contentContainerStyle={styles.scrollContainer}
     >
+      <HeaderTitle text="signup.headerTitle" type="custom" />
+
       <View className="mt-[12vh]">
         <Text
           tx={'signupStepDemoPlanning.title'}

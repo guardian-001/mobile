@@ -16,10 +16,7 @@ export function HeaderTitle({ text, type }: HeaderTitleProps) {
     <>
       {type === 'custom' ? (
         <GradientBackground style={styles.gradientBackground}>
-          <Text
-            style={styles.marginTop}
-            className="text-xl font-bold text-primary-txt"
-          >
+          <Text className="text-xl font-bold text-primary-txt">
             {translate(text)}
           </Text>
         </GradientBackground>
@@ -48,13 +45,10 @@ const styles = StyleSheet.create({
   gradientBackground: {
     position: 'absolute',
     display: 'flex',
-    height: '12%',
+    height: '11%',
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
     backgroundColor: 'white',
-  },
-  marginTop: {
-    marginTop: 40,
   },
 });

@@ -1,6 +1,7 @@
 import React from 'react';
+import { Platform } from 'react-native';
 
-import { HeaderTitle, View } from '@/shared/components';
+import { KeyboardAvoidingView, View } from '@/shared/components';
 import {
   FormProvider,
   useFormStepper,
@@ -16,10 +17,14 @@ const SignupStepperInner = () => {
   const { component } = stepsContent[step];
 
   return (
-    <View className="items-between flex h-full bg-background">
-      <HeaderTitle text="signup.headerTitle" type="custom" />
-      <View className=" h-full flex-1 p-6">{component}</View>
-    </View>
+    <>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        className="items-between flex  w-full  bg-background  "
+      >
+        <View className=" flex h-full  ">{component}</View>
+      </KeyboardAvoidingView>
+    </>
   );
 };
 

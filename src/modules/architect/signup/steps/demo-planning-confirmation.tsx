@@ -3,7 +3,7 @@ import React from 'react';
 import { Clock } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import StepperButton from '@/modules/shared/stepper-button';
-import { Text, View } from '@/shared/components';
+import { HeaderTitle, Text, View } from '@/shared/components';
 import { add30Minutes, formatDate } from '@/shared/utils';
 
 import { useDemoConfirmation } from '../shared/hooks';
@@ -13,7 +13,8 @@ export function DemoPlanningConfirmation() {
 
   return (
     <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
-      <View className="mt-[11vh]">
+      <HeaderTitle text="signup.headerTitle" type="custom" />
+      <View className="mt-[12vh]">
         <Text
           tx={'signupStepDemoPlanningConfirmation.title'}
           className="mb-2 text-center text-2xl font-extrabold"
