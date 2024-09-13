@@ -56,10 +56,10 @@ export default function SupplierPage() {
               {specialityTypesData?.map((tag) => (
                 <Tag
                   key={tag.id}
-                  label={tag.displayName}
+                  label={tag.label}
                   name="specialityType"
                   control={control}
-                  imageIcon={tag.imageIcon}
+                  imageIcon={tag.icon}
                   className="flex h-12 max-w-xl flex-row items-center justify-evenly"
                   obligation={true}
                 />

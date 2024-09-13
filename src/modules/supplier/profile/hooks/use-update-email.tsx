@@ -32,12 +32,11 @@ export const useUpdateEmail = () => {
         onSuccess: (response) => {
           showSuccesMessage(response.data.message);
           setUser(response.data.user);
-          router.back();
-          router.back();
+          router.replace('/(supplier)/(private)/(tab)/(profile)/profile/');
         },
       });
     } else {
-      router.back(), router.back();
+      router.replace('/(supplier)/(private)/(tab)/(profile)/profile/');
     }
   };
   return {

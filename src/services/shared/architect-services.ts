@@ -95,3 +95,23 @@ export async function getArchitectProfileById(
       }
     });
 }
+
+export async function getArchitectReview(): Promise<any> {
+  const url = '/api/moderation/client-review/architect-reviews';
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
+}

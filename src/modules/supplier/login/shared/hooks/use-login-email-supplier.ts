@@ -23,23 +23,25 @@ export const useLoginEmailSupplier = () => {
   const updateData = async (data: EmailType) => {
     setFormData((prev: LoginSupplierFormType) => ({
       ...prev,
-      ...data,
+      email: data.email.toLowerCase(),
     }));
   };
   const onSubmit = async (data: EmailType) => {
     await updateData(data);
-
-    emailCheck.mutate(data, {
-      onSuccess: () => {
-        setFormData((prev: LoginSupplierFormType) => ({
-          ...prev,
-          state: 'pass',
-        }));
-      },
-      onError: () => {
-        router.push(`(${space})/(public)/check-mail-banner`);
-      },
-    });
+    emailCheck.mutate(
+      { email: data.email.toLowerCase() },
+      {
+        onSuccess: () => {
+          setFormData((prev: LoginSupplierFormType) => ({
+            ...prev,
+            state: 'pass',
+          }));
+        },
+        onError: () => {
+          router.push(`(${space})/(public)/check-mail-banner`);
+        },
+      }
+    );
   };
 
   const [checked, setChecked] = useState(true);

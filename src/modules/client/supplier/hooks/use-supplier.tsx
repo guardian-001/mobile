@@ -4,57 +4,55 @@ import { useController } from 'react-hook-form';
 
 import { useCitiesApi } from '@/api/client/use-cities';
 import { useSpecialityTypesApi } from '@/api/supplier/createAccount/use-speciality-types';
-import { useAllSuppliersApi } from '@/api/supplier/profile/use-all-suppliers';
+import { useSuppliersBySpecialityTypeApi } from '@/api/supplier/profile/use-get-suppliers-by-speciality';
 import { useCustomForm } from '@/core';
 import type { Option } from '@/shared/components';
 import { useModal } from '@/shared/components';
 import { SearchSchema } from '@/shared/validations';
-import type { TagType } from '@/types';
 
 import { citySchema, specialityTypeSchema } from '../schema';
 export const useSupplier = () => {
   const {
-    data,
+    data: specialityTypesData,
     isLoading: isLoadingSpeciality,
     isError: isErrorSpeciality,
     isSuccess: isSuccessSpeciality,
   } = useSpecialityTypesApi();
   const { data: cities } = useCitiesApi();
   const {
+    control,
+    setValue,
+    watch: watchSpecialityType,
+  } = useCustomForm(specialityTypeSchema);
+  const { control: controlCity } = useCustomForm(citySchema);
+  useEffect(() => {
+    if (specialityTypesData?.length) {
+      setValue('specialityType', specialityTypesData[0].label || '');
+    }
+  }, [specialityTypesData, setValue]);
+  const selectedSpecialityType: string = watchSpecialityType('specialityType');
+  const selectedSpecialityTypeId =
+    specialityTypesData?.find(
+      (speciality) => speciality.label === selectedSpecialityType
+    )?.id || 1;
+  const {
     data: suppliers,
     isLoading: isLoadingSuppliers,
     isError: isErrorSuppliers,
     isSuccess: isSuccessSuppliers,
-  } = useAllSuppliersApi();
+  } = useSuppliersBySpecialityTypeApi({
+    variables: { specialityId: selectedSpecialityTypeId },
+  });
 
-  const { control, setValue } = useCustomForm(specialityTypeSchema);
-  const { control: controlCity } = useCustomForm(citySchema);
-
-  useEffect(() => {
-    if (data?.length) {
-      setValue('specialityType', data[0].label || '');
-    }
-  }, [data, setValue]);
-  const specialityTypesData: TagType[] =
-    data?.map((type) => {
-      return {
-        id: type.id,
-        value: type.label,
-        displayName: type.label,
-        imageIcon: type.icon,
-      };
-    }) || [];
   const cityOptions =
     cities?.map((city) => ({
       label: city.displayName,
       value: city.value,
     })) || [];
-
   const { field } = useController({
     control: controlCity as Control<{ city: string }, any>,
     name: 'city',
   });
-
   const modal = useModal();
   const onSelect = useCallback(
     (value: string | number) => {
@@ -85,7 +83,6 @@ export const useSupplier = () => {
       const matchesCity =
         !selectedCity ||
         item.companyAddress.toLowerCase().includes(selectedCity.toLowerCase());
-
       return matchesSearch && matchesCity;
     });
   }, [searchValue, suppliers, selectedCity]);

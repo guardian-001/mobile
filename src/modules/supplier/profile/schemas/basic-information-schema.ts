@@ -3,7 +3,7 @@ import { z } from 'zod';
 import {
   emailValidation,
   phoneValidation,
-  requiredValidation,
+  requiredLongTextValidation,
 } from '@/shared/validations';
 
 export const EmailSchema = z.object({
@@ -13,5 +13,5 @@ export const PhoneNumberSchema = z.object({
   phoneNumber: phoneValidation,
 });
 export const BioSchema = z.object({
-  bio: requiredValidation,
+  bio: requiredLongTextValidation,
 });
