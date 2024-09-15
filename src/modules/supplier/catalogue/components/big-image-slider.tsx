@@ -5,7 +5,7 @@ import { Image } from '@/shared/components';
 
 import { useImagesProductSlider } from '../hooks/use-image-slider';
 
-export default function ImageSlider({ images }: { images: string[] }) {
+export default function BigImageSlider({ images }: { images: string[] }) {
   const {
     activeIndex,
     onViewableItemsChanged,
@@ -14,7 +14,7 @@ export default function ImageSlider({ images }: { images: string[] }) {
   } = useImagesProductSlider();
 
   return (
-    <View className="h-30 mr-4 w-full">
+    <View className=" h-96 w-full">
       <FlatList
         ref={flatListRef}
         data={images}
@@ -23,17 +23,21 @@ export default function ImageSlider({ images }: { images: string[] }) {
         showsHorizontalScrollIndicator={false}
         onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={viewabilityConfig}
-        renderItem={({ item }) => (
-          <View className={`  flex h-28 w-44 items-center justify-center py-3`}>
-            <Image
-              source={{ uri: item }}
-              className={`h-28 w-44 ${
+        renderItem={({ item }) => {
+          return (
+            <View
+              className={`${
                 images.length === activeIndex + 1 && 'mr-4'
-              }`}
-              contentFit="contain"
-            />
-          </View>
-        )}
+              }  flex h-80 w-96 items-center  justify-center p-6`}
+            >
+              <Image
+                source={{ uri: item }}
+                className="h-full w-full"
+                contentFit="contain"
+              />
+            </View>
+          );
+        }}
         keyExtractor={(item, index) => index.toString()}
       />
       <View className=" mt-1 flex-row justify-center">

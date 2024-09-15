@@ -1,4 +1,3 @@
-import { Env } from '@env';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 
@@ -18,7 +17,7 @@ export const useProfileInfo = () => {
     await ImagePicker.requestMediaLibraryPermissionsAsync();
   };
   const [selectedProfileImage, setSelectedProfileImage] = useState<string>(
-    data?.companyLogo ? `${Env.API_URL}${data?.companyLogo}` : ''
+    data?.companyLogo ? data?.companyLogo : ''
   );
 
   const [error, setError] = useState<string>('');

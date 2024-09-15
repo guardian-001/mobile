@@ -1,6 +1,5 @@
-import { Env } from '@env';
 import * as ImagePicker from 'expo-image-picker';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useSupplierProfileApi } from '@/api/supplier/profile/use-profile';
 import { useUpdateCoverPictureApi } from '@/api/supplier/profile/use-update-cover-picture';
@@ -23,10 +22,10 @@ export const useProfileInfo = () => {
     await ImagePicker.requestMediaLibraryPermissionsAsync();
   };
   const [selectedProfileImage, setSelectedProfileImage] = useState<string>(
-    data?.profileImage ? `${Env.API_URL}${data?.profileImage}` : ''
+    data?.profileImage ? data?.profileImage : ''
   );
   const [selectedCoverImage, setSelectedCoverImage] = useState<string>(
-    data?.coverImage ? `${Env.API_URL}${data?.coverImage}` : ''
+    data?.coverImage ? data?.coverImage : ''
   );
   const [error, setError] = useState<string>('');
   const pickImage = async () => {
@@ -78,6 +77,10 @@ export const useProfileInfo = () => {
       await uploadImage(image, type);
     }
   };
+
+  useEffect(() => {
+    console.log(selectedProfileImage);
+  }, [selectedProfileImage]);
   return {
     error,
     data,
