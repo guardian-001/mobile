@@ -5,6 +5,7 @@ import { HouseModel, InteriorHouseModel } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
 import {
+  HeaderTitle,
   KeyboardAvoidingView,
   ScrollView,
   Text,
@@ -22,6 +23,8 @@ export function ChooseSpeciality() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className={`mb-5 flex h-full flex-1 items-center justify-between gap-16`}
     >
+      <HeaderTitle text="signup.headerTitle" type="custom" />
+
       <View className="mt-[15vh]">
         <Text
           tx={'signupStepSpeciality.title'}

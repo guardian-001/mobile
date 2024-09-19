@@ -28,7 +28,7 @@ export function AdoptedStyle() {
       )}
       {isSuccess && (
         <>
-          <View className="mb-2">
+          <View className="mb-2 w-full">
             <Text
               tx={'realisation.styleStep.title'}
               className="mb-2 text-start text-2xl font-extrabold"

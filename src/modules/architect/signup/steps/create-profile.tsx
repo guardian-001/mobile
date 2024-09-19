@@ -1,5 +1,4 @@
 import React from 'react';
-import { Platform } from 'react-native';
 
 import { translate } from '@/core';
 import { StepButtons } from '@/modules/shared';
@@ -7,8 +6,8 @@ import {
   ControlledInput,
   ControlledPhoneNumberInput,
   ControlledSelect,
-  KeyboardAvoidingView,
   ScrollView,
+  SignupHeaderTitle,
   Text,
   View,
 } from '@/shared/components';
@@ -19,11 +18,16 @@ export function CreateProfile() {
   const { onSubmit, handleSubmit, control, onHandleBack, cityOptions } =
     useProfile();
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className={`mb-5 flex h-full flex-1 items-center justify-between gap-16`}
+    <View
+      className={`mb-5 flex h-full w-full flex-1 items-center justify-between `}
     >
-      <View className="mt-[11vh]">
+      <SignupHeaderTitle />
+      <View className="mt-[8vh]">
+        <Text
+          tx="signup.headerTitle"
+          className="mb-10 text-center text-xl font-bold text-primary-txt"
+        />
+
         <Text
           tx={'signupStepCreateProfile.title'}
           className="mb-2 text-center text-2xl font-extrabold"
@@ -33,16 +37,12 @@ export function CreateProfile() {
           className="max-w-xs text-center text-sm text-description"
         />
       </View>
-
-      <View
-        className=" max-h-4/5 flex  h-3/5   w-full items-center   justify-center rounded-3xl bg-white  py-2 shadow-md
-shadow-color-shadow"
+      <ScrollView
+        className=" mt-5 flex w-full gap-5 p-4"
+        contentContainerClassName="justify-center"
+        showsVerticalScrollIndicator={false}
       >
-        <ScrollView
-          className=" flex gap-5 rounded-3xl bg-white p-4"
-          contentContainerClassName="justify-center"
-          showsVerticalScrollIndicator={false}
-        >
+        <View className=" flex  w-full rounded-3xl  bg-white p-4  py-2 shadow-md shadow-color-shadow">
           <ControlledInput
             testID="name-input"
             control={control}
@@ -85,13 +85,20 @@ shadow-color-shadow"
             placeholder={translate('labels.city')}
             options={cityOptions}
           />
-        </ScrollView>
+        </View>
+      </ScrollView>
+      <View className=" flex w-full items-center">
+        <StepButtons
+          previous={{
+            handlePreviousStep: onHandleBack,
+            label: 'common.back',
+          }}
+          next={{
+            handleSubmit: handleSubmit(onSubmit),
+            label: 'common.next',
+          }}
+        />
       </View>
-
-      <StepButtons
-        previous={{ handlePreviousStep: onHandleBack, label: 'common.back' }}
-        next={{ handleSubmit: handleSubmit(onSubmit), label: 'common.next' }}
-      />
-    </KeyboardAvoidingView>
+    </View>
   );
 }

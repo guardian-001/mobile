@@ -32,6 +32,7 @@ export * from './radio';
 export * from './radio-input';
 export * from './screen-options';
 export * from './select';
+export * from './signup-header-title';
 export * from './switch';
 export * from './switch-input';
 export * from './tag';
