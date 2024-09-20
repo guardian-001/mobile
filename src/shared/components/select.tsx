@@ -79,8 +79,8 @@ function keyExtractor(item: Option) {
 
 export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
   ({ options, onSelect, value, testID }, ref) => {
-    const height = options.length * 40;
-    const snapPoints = React.useMemo(() => [height], [height]);
+    // const height = options.length * 40;
+    // const snapPoints = React.useMemo(() => [height], [height]);
     const isDark = false;
 
     const renderSelectItem = React.useCallback(
@@ -101,7 +101,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
       <Modal
         ref={ref}
         index={0}
-        snapPoints={snapPoints}
+        snapPoints={['65%']}
         backgroundStyle={{
           backgroundColor: isDark ? colors.neutral[800] : colors.white,
         }}
@@ -112,6 +112,7 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
           renderItem={renderSelectItem}
           testID={testID ? `${testID}-modal` : undefined}
           estimatedItemSize={52}
+          className={'mb-16'}
         />
       </Modal>
     );
