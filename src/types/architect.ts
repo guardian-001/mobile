@@ -78,6 +78,11 @@ export type Review = {
   updatedAt: string;
 };
 
+export type ReportRview = {
+  reportedReviewId: number;
+  reportReasons: string[];
+};
+
 export type ReviewRequest = {
   reportedReviewId: number;
   reportReasons: string[];
