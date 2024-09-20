@@ -16,6 +16,8 @@ export default function ProfileSuggestion() {
     profileCompletion,
     profileNextLevel,
     suggestionCardsData,
+    activeIndex,
+    handleScroll,
   } = useProfileSuggestion();
 
   return (
@@ -49,21 +51,37 @@ export default function ProfileSuggestion() {
           </Text>
         </View>
       )}
-      <View className="mt-2 flex w-full  items-center justify-center">
+      <View className="mt-2 flex w-full items-center justify-center">
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          contentContainerClassName="gap-x-4 px-4"
+          pagingEnabled
+          contentContainerClassName="gap-x-2"
+          onScroll={handleScroll}
+          scrollEventThrottle={20}
         >
-          {suggestionCardsData?.map((tag) => (
-            <CardSuggestion
-              id={tag.id}
-              title={tag.title}
-              description={tag.description}
-              button={tag.button}
-            />
+          {suggestionCardsData?.map((tag, index) => (
+            <View key={index}>
+              <CardSuggestion
+                id={tag.id}
+                title={tag.title}
+                description={tag.description}
+                button={tag.button}
+              />
+            </View>
           ))}
         </ScrollView>
+
+        <View className="mt-2 flex-row">
+          {suggestionCardsData?.map((_, index) => (
+            <View
+              key={index}
+              className={`mx-1 h-2 w-2 rounded-full ${
+                activeIndex === index ? 'bg-black' : 'bg-gray-400'
+              }`}
+            />
+          ))}
+        </View>
       </View>
     </View>
   );
