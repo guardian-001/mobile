@@ -2,14 +2,15 @@ import React from 'react';
 
 import { Clock } from '@/assets/icons/archimatch';
 import { translate } from '@/core';
-import StepperButton from '@/modules/shared/stepper-button';
+import { StepperButton } from '@/modules/shared';
 import { HeaderTitle, Text, View } from '@/shared/components';
 import { add30Minutes, formatDate } from '@/shared/utils';
 
 import { useDemoConfirmation } from '../shared/hooks';
 
 export function DemoPlanningConfirmation() {
-  const { formData, timezone, handleConfirmationStep } = useDemoConfirmation();
+  const { formData, timezone, handleConfirmationStep, onHandleBack } =
+    useDemoConfirmation();
 
   return (
     <View className="mb-5 flex h-full flex-1 items-center justify-between gap-16  ">
@@ -54,13 +55,23 @@ export function DemoPlanningConfirmation() {
             </View>
           </View>
         </View>
-        <StepperButton
-          width="w-[90%]"
-          alternativeBg="bg-primary"
-          alternativeTextStyle="color-white"
-          label={translate('signupStepDemoPlanningConfirmation.confirmBtn')}
-          onPressHandler={handleConfirmationStep}
-        />
+        <View className=" flex w-full items-center">
+          <View className="my-2 flex flex-row justify-center gap-2">
+            <StepperButton
+              width="w-[45%]"
+              alternativeBg="bg-secondary-btn"
+              alternativeTextStyle="color-primary-txt"
+              label={translate('common.back')}
+              onPressHandler={onHandleBack}
+            />
+
+            <StepperButton
+              width="w-[45%]"
+              onPressHandler={handleConfirmationStep}
+              label={translate('signupStepDemoPlanningConfirmation.confirmBtn')}
+            />
+          </View>
+        </View>
       </View>
     </View>
   );
