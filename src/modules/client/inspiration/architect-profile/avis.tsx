@@ -12,13 +12,12 @@ interface ReviewsProps {
 }
 
 const Reviews = ({ reviews }: ReviewsProps) => {
-  const { Reviews, isError, isLoading, isSuccess } = useAvis();
-  console.log(Reviews);
+  const { reviewsApiData, isError, isLoading, isSuccess } = useAvis();
   return (
     <FetchStateHandler
       isError={isError}
       isPending={isLoading}
-      isEmpty={Reviews?.length === 0}
+      isEmpty={reviewsApiData?.length === 0}
       isSuccess={isSuccess}
     >
       <FlatList
