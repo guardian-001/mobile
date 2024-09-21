@@ -12,11 +12,12 @@ type ButtonsProps = {
     handleSubmit: (() => Promise<void>) | undefined;
     label: TxKeyPath;
   };
+  style?: string;
 };
 
-export default function StepButtons({ previous, next }: ButtonsProps) {
+export default function StepButtons({ previous, next, style }: ButtonsProps) {
   return (
-    <View className="my-2 flex flex-row justify-center gap-2">
+    <View className={`my-2 flex flex-row justify-center gap-2 ${style}`}>
       <StepperButton
         width="w-[45%]"
         alternativeBg="bg-secondary-btn"
