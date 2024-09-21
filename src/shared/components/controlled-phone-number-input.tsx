@@ -37,7 +37,7 @@ export function ControlledPhoneNumberInput<T extends FieldValues>(
   const { field, fieldState } = useController({ control, name, rules });
   const error = fieldState.error?.message as TxKeyPath | undefined;
   const [selectedCountry, setSelectedCountry] = useState<ICountry>();
-  const [number, setNumber] = useState<string>('');
+  const [number, setNumber] = useState<string>(field.value.slice(4));
 
   function handleSelectedCountry(country: ICountry) {
     setSelectedCountry(country);

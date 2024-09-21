@@ -13,7 +13,7 @@
   "confirmPassword": "Passwords must match",
   "phoneNumberDigits": "Phone number must contain only digits",
   "phoneNumberMinLength": "Phone number must contain at least 8 characters",
-  "phoneNumberMaxLength": "Phone number must contain a maximum of 15 characters",
+  "phoneNumberMaxLength": "Phone number must contain a maximum of 8 characters",
   "arrayNonEmpty": "You must choose at least one option",
   "chooseOption": "You must choose an option",
   "uploadedImageType": "Please upload image files only",

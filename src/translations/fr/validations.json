@@ -13,7 +13,7 @@
   "confirmPassword": "Les mots de passe doivent correspondre",
   "phoneNumberDigits": "Le numéro de téléphone ne doit contenir que des chiffres",
   "phoneNumberMinLength": "Le numéro de téléphone doit contenir au moins 8 caractères",
-  "phoneNumberMaxLength": "Le numéro de téléphone doit contenir un maximum de 15 caractères",
+  "phoneNumberMaxLength": "Le numéro de téléphone doit contenir un maximum de 8 caractères",
   "arrayNonEmpty": "Vous devez choisir au moins une option",
   "chooseOption": "Vous devez choisir une option",
   "uploadedImageType": "Veuillez télécharger uniquement des fichiers image",

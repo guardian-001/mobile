@@ -13,7 +13,7 @@
   "confirmPassword": "يجب أن تتطابق كلمات المرور",
   "phoneNumberDigits": "يجب أن يحتوي رقم الهاتف على أرقام فقط",
   "phoneNumberMinLength": "يجب أن يحتوي رقم الهاتف على 8 أحرف على الأقل",
-  "phoneNumberMaxLength": "يجب أن يحتوي رقم الهاتف على أقصى حد من 15 حرف",
+  "phoneNumberMaxLength": "يجب أن يحتوي رقم الهاتف على أقصى حد من 8 حرف",
   "arrayNonEmpty": "يجب عليك اختيار خيار واحد على الأقل",
   "chooseOption": "يجب عليك اختيار خيار",
   "uploadedImageType": "يرجى تحميل ملفات الصور فقط",
