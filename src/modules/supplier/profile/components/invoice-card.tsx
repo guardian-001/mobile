@@ -10,7 +10,7 @@ type Props = {
 };
 export const InvoiceCard = ({ title, date, price }: Props) => {
   return (
-    <View className="flex h-fit flex-row items-center justify-between rounded-2xl bg-white p-3 shadow-md  shadow-color-shadow">
+    <View className="flex h-fit flex-row items-center justify-between rounded-2xl bg-white p-3 shadow-md shadow-color-shadow ">
       <View>
         <Text className="font-extrabold text-primary-txt">{title}</Text>
         <Text className="text-sm font-semibold text-description">{date}</Text>

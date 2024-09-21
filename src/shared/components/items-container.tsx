@@ -15,7 +15,7 @@ export const ItemsContainer = ({ children, title }: Props) => {
     <>
       {title && <Text className="pb-2 pt-4 text-base font-bold" tx={title} />}
       {
-        <View className="h-fit rounded-2xl bg-white p-3 shadow-md  shadow-color-shadow">
+        <View className="h-fit rounded-2xl bg-white p-3 shadow-md shadow-color-shadow ">
           {children}
         </View>
       }
