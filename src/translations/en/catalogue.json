@@ -21,7 +21,11 @@
     "echec": "Creation failed",
     "collectionProductsNoDataTitle": "Collection Items",
     "collectionProductsDataTitle": "Products",
-    "collectionProductsNoDataDescription": "Start creating your first product!"
+    "collectionProductsNoDataDescription": "Start creating your first product!",
+    "successDelete": "Delete successfully",
+    "echecDelete": "Delete failed",
+    "confirmDeleteTitle": "Confirm Delete",
+    "confirmDeleteDescription": "Would you confirm to delete the collection ?"
   },
   "createProduct": {
     "addProduct": "Add a product",

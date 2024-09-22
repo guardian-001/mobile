@@ -1,26 +1,28 @@
 import { isError } from 'lodash';
 
-import { useDeleteProductApi } from '@/api/supplier/catalogue/use-delete-product';
+import { useDeleteCollectionApi } from '@/api/supplier/catalogue/use-delete-collection';
 import { translate } from '@/core';
 import {
   showErrorMessage,
   showSuccesMessage,
   useModal,
 } from '@/shared/components';
-import { error } from '@/theme/colors';
 
-export const useDeleteProduct = (selectedProductId: string) => {
+import { useCollection } from './use-collection';
+
+export const useDeleteCollection = (selectedCollectionId: string) => {
   const { ref, present, dismiss } = useModal();
-
-  const { mutate } = useDeleteProductApi();
+  const { refetch } = useCollection();
+  const { mutate } = useDeleteCollectionApi();
 
   const onSubmit = () => {
-    mutate(selectedProductId, {
+    mutate(selectedCollectionId, {
       onSuccess: () => {
         showSuccesMessage(
           translate('catalogue.createCollection.successDelete')
         );
         dismiss();
+        refetch();
       },
       onError: () => {
         showErrorMessage(translate('catalogue.createCollection.echecDelete'));
@@ -31,7 +33,6 @@ export const useDeleteProduct = (selectedProductId: string) => {
   };
 
   return {
-    error,
     ref,
     present,
     dismiss,

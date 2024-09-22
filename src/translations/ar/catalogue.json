@@ -21,7 +21,11 @@
     "echec": "فشل في الإنشاء",
     "collectionProductsNoDataTitle": "عناصر المجموعة",
     "collectionProductsDataTitle": "المنتجات",
-    "collectionProductsNoDataDescription": "ابدأ في إنشاء منتجك الأول!"
+    "collectionProductsNoDataDescription": "ابدأ في إنشاء منتجك الأول!",
+    "successDelete": "تم حذف بنجاح",
+    "echecDelete": "فشل في الحذف",
+    "confirmDeleteTitle": "تأكيد الحذف",
+    "confirmDeleteDescription": "هل ترغب في تأكيد حذف المجموعة؟"
   },
   "createProduct": {
     "addProduct": "إضافة منتج",

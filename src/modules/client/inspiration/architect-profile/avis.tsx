@@ -13,7 +13,6 @@ interface ReviewsProps {
 
 const Reviews = ({ reviews }: ReviewsProps) => {
   const { Reviews, isError, isLoading, isSuccess } = useAvis();
-  console.log(Reviews);
   return (
     <FetchStateHandler
       isError={isError}

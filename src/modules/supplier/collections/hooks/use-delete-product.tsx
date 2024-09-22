@@ -7,10 +7,12 @@ import {
   showSuccesMessage,
   useModal,
 } from '@/shared/components';
-import { error } from '@/theme/colors';
+
+import { useEditCollection } from './use-edit-collection';
 
 export const useDeleteProduct = (selectedProductId: string) => {
   const { ref, present, dismiss } = useModal();
+  const { refetch } = useEditCollection();
 
   const { mutate } = useDeleteProductApi();
 
@@ -21,6 +23,7 @@ export const useDeleteProduct = (selectedProductId: string) => {
           translate('catalogue.createCollection.successDelete')
         );
         dismiss();
+        refetch();
       },
       onError: () => {
         showErrorMessage(translate('catalogue.createCollection.echecDelete'));
@@ -31,7 +34,6 @@ export const useDeleteProduct = (selectedProductId: string) => {
   };
 
   return {
-    error,
     ref,
     present,
     dismiss,
