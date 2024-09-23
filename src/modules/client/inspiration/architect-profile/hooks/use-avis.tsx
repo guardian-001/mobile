@@ -2,13 +2,13 @@ import { useArchitectReviewApi } from '@/api/architect/profile/use-review';
 
 export const useAvis = () => {
   const {
-    data: Reviews,
+    data: reviewsApiData,
     isError,
     isLoading,
     isSuccess,
   } = useArchitectReviewApi();
   return {
-    Reviews,
+    reviewsApiData,
     isError,
     isLoading,
     isSuccess,

@@ -46,6 +46,7 @@ export default function ImageSlider({ images }: { images: string[] }) {
           />
         ))}
       </View>
+      <View className="mb-2 mt-4 h-[0.5px] w-full bg-color-shadow" />
     </View>
   );
 }

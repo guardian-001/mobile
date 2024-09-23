@@ -32,9 +32,9 @@ const ProductBig = ({ item, index, onAddProductPress }: ProductBigProps) => {
   }
 
   return (
-    <View className="m-2   flex-1 items-center rounded-3xl bg-white pl-4 pt-4 shadow-md shadow-gray-300">
+    <View className="m-2   flex-1 items-center rounded-3xl bg-white   pt-4 shadow-md shadow-gray-300">
       <BigImageSlider images={item.productImages.map((img) => img.image)} />
-      <View className="items-between w-full flex-1 flex-row justify-between">
+      <View className="items-between w-full flex-1 flex-row justify-between pl-4">
         <View>
           <Text className="mb-1 text-lg font-bold">{item.name}</Text>
           <Text className="mb-4 text-sm text-main-project-blue">
