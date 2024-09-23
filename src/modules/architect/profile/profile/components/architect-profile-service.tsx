@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import TickIcon from '@/assets/icons/tick-icon';
-import { Image, Text, View } from '@/shared/components';
+import { colors, Image, Text, View } from '@/shared/components';
 import { deepEqual } from '@/shared/utils';
 import type { Need } from '@/types';
 
@@ -34,7 +34,11 @@ export default function ArchitectProfileService({
             {need.label}
           </Text>
         </View>
-        {selectedNeeds.some((obj) => deepEqual(obj, need)) && <TickIcon />}
+        {selectedNeeds.some((obj) => deepEqual(obj, need)) && (
+          <View className="rounded-full bg-green-600">
+            <TickIcon color={colors.white} />
+          </View>
+        )}
       </View>
     </TouchableOpacity>
   );

@@ -17,7 +17,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
     <FetchStateHandler
       isError={isError}
       isPending={isLoading}
-      isEmpty={Reviews?.length === 0}
+      isEmpty={reviewsApiData?.length === 0}
       isSuccess={isSuccess}
     >
       <FlatList
