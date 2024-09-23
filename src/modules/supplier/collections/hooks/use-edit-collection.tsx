@@ -23,7 +23,6 @@ export const useEditCollection = () => {
   const searchValue = watch('search');
   const products = useMemo(() => {
     const productsData = collection?.products || [];
-    if (!productsData) return [];
     return productsData.filter((item) => {
       const matchesSearch =
         !searchValue ||

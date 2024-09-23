@@ -86,7 +86,6 @@ export const useSupplier = () => {
       return matchesSearch && matchesCity;
     });
   }, [searchValue, suppliers, selectedCity]);
-  console.log('sdds', selectedCity);
   return {
     specialityTypesData,
     isLoadingSpeciality,

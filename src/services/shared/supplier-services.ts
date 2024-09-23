@@ -195,7 +195,6 @@ export async function getCollectionById(id: string): Promise<Collection> {
     .get(url)
     .then((response) => response.data)
     .catch((error) => {
-      showErrorMessage(error.response.data.errors[0].detail);
       throw error.response?.data || error.message;
     });
 }

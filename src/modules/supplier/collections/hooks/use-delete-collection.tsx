@@ -21,12 +21,10 @@ export const useDeleteCollection = (selectedCollectionId: string) => {
         showSuccesMessage(
           translate('catalogue.createCollection.successDelete')
         );
-        dismiss();
         refetch();
       },
       onError: () => {
         showErrorMessage(translate('catalogue.createCollection.echecDelete'));
-        dismiss();
       },
     });
     dismiss();

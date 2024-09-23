@@ -47,7 +47,7 @@ export default function AddCollectionForm() {
           testID="city-input"
           control={modalControl}
           name="category"
-          options={categoriesOptions || []}
+          options={categoriesOptions}
           labelStyle="mb-1 text-sm font-semibold"
           label={translate('catalogue.createCollection.categoryLable')}
           placeholder={translate(

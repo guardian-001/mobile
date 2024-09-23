@@ -42,7 +42,7 @@ export const EditCollection = () => {
       <View className="my-7 w-11/12 flex-row items-center justify-between self-end px-4">
         <Text tx="collection.collection" className="text-lg font-extrabold" />
         <Image
-          source={data?.profileImage}
+          source={{ uri: data?.profileImage }}
           className="h-16 w-16 rounded-full"
           contentFit="cover"
         />

@@ -50,7 +50,7 @@ export const CollectionManagement = () => {
           className="text-lg font-extrabold"
         />
         <Image
-          source={data?.profileImage}
+          source={{ uri: data?.profileImage }}
           className="h-16 w-16 rounded-full"
           contentFit="cover"
         />
@@ -73,7 +73,7 @@ export const CollectionManagement = () => {
         </View>
         <TouchableOpacity
           className="mb-4 h-14 w-full flex-row items-center justify-center gap-3 rounded-lg border border-dashed border-description"
-          onPress={() => present()}
+          onPress={present}
         >
           <Plus color={colors.blue} />
           <Text tx="collection.addCollection" className=" font-semibold" />
