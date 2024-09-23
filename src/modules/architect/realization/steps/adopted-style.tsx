@@ -40,7 +40,7 @@ export function AdoptedStyle() {
           </View>
           <ScrollView
             showsVerticalScrollIndicator={false}
-            className="flex w-full "
+            className="mb-44 flex w-full "
           >
             {data?.map((item) => {
               return (
@@ -55,8 +55,8 @@ export function AdoptedStyle() {
             })}
           </ScrollView>
 
-          <View className="  flex w-full items-center ">
-            <Text className="w-11/12 text-left text-sm text-error">
+          <View className="absolute bottom-0 flex h-40 w-full items-center justify-start bg-background ">
+            <Text className="   w-11/12 text-left text-sm text-error">
               {error ? translate(error) : ''}
             </Text>
             <StepButtons

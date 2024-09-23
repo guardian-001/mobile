@@ -79,7 +79,7 @@ export const phoneValidation = z
   .min(1, { message: 'validations.required' })
   .regex(/^\+?\d+$/, { message: 'validations.phoneNumberDigits' })
   .min(8, { message: 'validations.phoneNumberMinLength' })
-  .max(15, { message: 'validations.phoneNumberMaxLength' });
+  .max(12, { message: 'validations.phoneNumberMaxLength' }); //15
 export const arrayOfNonEmptyStrings = z
   .array(
     z.string().nonempty({

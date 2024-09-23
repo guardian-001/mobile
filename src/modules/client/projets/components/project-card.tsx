@@ -23,7 +23,7 @@ export const ProjectCard = ({
   const formattedDate = useFormattedDate(date);
   const [checked, setChecked] = useState(searchStatus);
   return (
-    <View className="flex h-fit rounded-2xl bg-white shadow-md ">
+    <View className="flex h-fit rounded-2xl bg-white shadow-md shadow-color-shadow ">
       <View className="p-4">
         <Header formattedDate={formattedDate} status={status} />
         <Text className="font-bold text-primary-txt">{workType}</Text>
