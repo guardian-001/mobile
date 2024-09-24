@@ -18,7 +18,7 @@ export default function ArchitectProfileService({
   return (
     <TouchableOpacity
       key={need.id}
-      className="mb-1 w-11/12"
+      className="mb-3 w-11/12"
       onPress={() => handleSelect(need)}
     >
       <View
