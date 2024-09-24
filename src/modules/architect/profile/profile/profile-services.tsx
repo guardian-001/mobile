@@ -49,7 +49,7 @@ export default function ProfileServices() {
         ''
       )}
       <Modal snapPoints={['65%']} ref={ref} onDismiss={dismiss}>
-        <View className="absolute bottom-8  right-0 z-20 flex w-full   items-center  ">
+        <View className="absolute bottom-0 right-0 z-20 flex w-full items-center bg-white   pb-8  ">
           <Button
             label={translate('common.update')}
             className=" h-14 w-11/12 rounded-md"

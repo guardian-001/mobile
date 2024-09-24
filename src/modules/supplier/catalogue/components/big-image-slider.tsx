@@ -14,7 +14,7 @@ export default function BigImageSlider({ images }: { images: string[] }) {
   } = useImagesProductSlider();
 
   return (
-    <View className=" h-96 w-full">
+    <View className=" h-96 w-full ">
       <FlatList
         ref={flatListRef}
         data={images}
@@ -28,11 +28,11 @@ export default function BigImageSlider({ images }: { images: string[] }) {
             <View
               className={`${
                 images.length === activeIndex + 1 && 'mr-4'
-              }  flex h-80 w-96 items-center  justify-center p-6`}
+              }  m-2 flex h-80 w-96 items-center  justify-center p-6`}
             >
               <Image
                 source={{ uri: item }}
-                className="h-full w-full"
+                className=" h-full w-full"
                 contentFit="contain"
               />
             </View>
@@ -50,6 +50,7 @@ export default function BigImageSlider({ images }: { images: string[] }) {
           />
         ))}
       </View>
+      <View className="mb-2 mt-4 h-[0.5px] w-full bg-color-shadow" />
     </View>
   );
 }

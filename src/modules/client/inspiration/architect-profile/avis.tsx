@@ -3,25 +3,20 @@ import { FlatList } from 'react-native';
 
 import { Emoji } from '@/assets/icons';
 import { FetchStateHandler, Image, Text, View } from '@/shared/components';
-import type { OldReview } from '@/types/architect';
 
 import { useAvis } from './hooks/use-avis';
 
-interface ReviewsProps {
-  reviews: OldReview[];
-}
-
-const Reviews = ({ reviews }: ReviewsProps) => {
-  const { Reviews, isError, isLoading, isSuccess } = useAvis();
+const Reviews = () => {
+  const { reviewsApiData, isError, isLoading, isSuccess } = useAvis();
   return (
     <FetchStateHandler
       isError={isError}
       isPending={isLoading}
-      isEmpty={Reviews?.length === 0}
+      isEmpty={reviewsApiData?.length === 0}
       isSuccess={isSuccess}
     >
       <FlatList
-        data={reviews}
+        data={reviewsApiData}
         contentContainerClassName="p-4 pb-0"
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
