@@ -1,6 +1,6 @@
 import type { OldArchitect } from '@/types/architect';
 
-export const architect: OldArchitect = {
+export const architectDumpData: OldArchitect = {
   id: 3,
   user: {
     id: 7,

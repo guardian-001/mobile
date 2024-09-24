@@ -62,32 +62,6 @@ export type OldArchitect = {
   servicesApprouves: serviceApprouve[];
 };
 
-export type Architect = {
-  id: number;
-  user: User;
-  architecturalStyles: resultType[];
-  projectCategories: resultType[];
-  propertyTypes: resultType[];
-  workTypes: workType[];
-  architectSpeciality: resultType;
-  needs: Need[];
-  subscriptionPlan?: SubscriptionPlan;
-  terrainSurfaces: CommunType[];
-  workSurfaces: CommunType[];
-  preferredLocations: CommunType[];
-  budgets: CommunType[];
-  createdAt: string;
-  updatedAt: string;
-  address: string;
-  architectIdentifier: string;
-  bio: string;
-  companyName: string;
-  companyLogo: string | null;
-  presentationVideo: string | null;
-  projectComplexity: string;
-  yearsExperience: string;
-  servicesApprouves: serviceApprouve[];
-};
 type clientReview = {
   id: number;
   user: User;

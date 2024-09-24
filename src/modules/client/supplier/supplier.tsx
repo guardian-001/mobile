@@ -26,7 +26,7 @@ export default function SupplierPage() {
     isLoadingSpeciality,
     isErrorSpeciality,
     isSuccessSpeciality,
-    suppliers,
+    filteredSuppliers,
     isLoadingSuppliers,
     isErrorSuppliers,
     isSuccessSuppliers,
@@ -56,10 +56,10 @@ export default function SupplierPage() {
               {specialityTypesData?.map((tag) => (
                 <Tag
                   key={tag.id}
-                  label={tag.displayName}
+                  label={tag.label}
                   name="specialityType"
                   control={control}
-                  imageIcon={tag.imageIcon}
+                  imageIcon={tag.icon}
                   className="flex h-12 max-w-xl flex-row items-center justify-evenly"
                   obligation={true}
                 />
@@ -84,7 +84,7 @@ export default function SupplierPage() {
         </View>
         {isErrorSuppliers && <ErrorData message="Error Loading Data" />}
         <View className="flex flex-1 px-4 pb-6 ">
-          {(isLoadingSuppliers || suppliers?.length === 0) && (
+          {(isLoadingSuppliers || filteredSuppliers?.length === 0) && (
             <EmptyList isLoading={isLoadingSuppliers} />
           )}
           {isSuccessSuppliers && (
@@ -92,7 +92,7 @@ export default function SupplierPage() {
               showsVerticalScrollIndicator={false}
               contentContainerClassName="gap-4 pb-2"
             >
-              {suppliers?.map((supplier) => (
+              {filteredSuppliers?.map((supplier) => (
                 <SupplierCard key={supplier.id} supplier={supplier} />
               ))}
             </ScrollView>

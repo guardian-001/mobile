@@ -24,11 +24,13 @@ export default function ImageSlider({ images }: { images: string[] }) {
         onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={viewabilityConfig}
         renderItem={({ item }) => (
-          <View className="flex h-28 w-44 items-center justify-center py-3">
+          <View className={`  flex h-28 w-44 items-center justify-center py-3`}>
             <Image
               source={{ uri: item }}
-              className="h-h-28 w-44"
-              contentFit="cover"
+              className={`h-28 w-44 ${
+                images.length === activeIndex + 1 && 'mr-4'
+              }`}
+              contentFit="contain"
             />
           </View>
         )}
@@ -44,6 +46,7 @@ export default function ImageSlider({ images }: { images: string[] }) {
           />
         ))}
       </View>
+      <View className="mb-2 mt-4 h-[0.5px] w-full bg-color-shadow" />
     </View>
   );
 }

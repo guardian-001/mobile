@@ -28,6 +28,7 @@ export type InputControllerType<T extends FieldValues> = {
   disabled?: boolean;
   labelStyle?: string;
   forcedValue?: string;
+  choiceValue?: string;
   inputAreaType?: 'textInput' | 'textArea';
   handleOnChange?: ({ name, data }: CreateProfileType) => void;
   icon?: React.ReactNode;
@@ -52,11 +53,33 @@ export function ControlledInput<T extends FieldValues>(
     autoCapitalize = 'none',
     icon,
     forcedValue,
+    choiceValue,
     ...inputProps
   } = props;
 
   const { field, fieldState } = useController({ control, name, rules });
   const error = fieldState.error?.message as TxKeyPath | undefined;
+
+  const [inputValue, setInputValue] = React.useState<string | undefined>(
+    forcedValue || (field.value as string)
+  );
+
+  const { onChange, value } = field;
+
+  React.useEffect(() => {
+    if (choiceValue && value !== choiceValue) {
+      setInputValue(choiceValue);
+      onChange(choiceValue);
+    }
+  }, [choiceValue, value, onChange]);
+
+  const handleInputChange = (newValue: string) => {
+    setInputValue(newValue);
+    onChange(newValue);
+    if (handleOnChange) {
+      handleOnChange({ name, data: newValue });
+    }
+  };
 
   return (
     <Input
@@ -67,13 +90,8 @@ export function ControlledInput<T extends FieldValues>(
       labelStyle={labelStyle}
       ref={field.ref}
       autoCapitalize={autoCapitalize}
-      onChangeText={(value) => {
-        field.onChange(value);
-        if (handleOnChange) {
-          handleOnChange({ name, data: value });
-        }
-      }}
-      value={forcedValue ? forcedValue : (field.value as string) || ''}
+      onChangeText={handleInputChange}
+      value={inputValue || ''}
       {...inputProps}
       error={error}
     />

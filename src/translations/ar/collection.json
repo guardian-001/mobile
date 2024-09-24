@@ -2,5 +2,6 @@
   "manageCollections": "إدارة المجموعات",
   "addCollection": "إضافة مجموعة",
   "collection": "مجموعة",
-  "addProduct": "إضافة منتج"
+  "addProduct": "إضافة منتج",
+  "priceNotDefined": "السعر غير محدد"
 }

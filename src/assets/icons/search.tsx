@@ -17,7 +17,6 @@ export const Search = ({ color = colors.blue, ...props }: SvgProps) => {
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M10.273 10.651 13 13.38"
-        opacity={0.4}
       />
     </Svg>
   );

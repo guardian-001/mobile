@@ -9,6 +9,7 @@ import {
   Text,
   View,
 } from '@/shared/components';
+import { useKeyboard } from '@/shared/hooks/use-keyboard-listener';
 
 import { useDetails } from '../shared/hooks/use-details';
 
@@ -23,9 +24,11 @@ export function ProjectDetails() {
     cities,
     workSurfaces,
   } = useDetails();
+  const { isKeyboardVisible } = useKeyboard();
+  const space = isKeyboardVisible ? '' : 'mb-20';
 
   return (
-    <View className="mb-5 flex h-full flex-1 items-start justify-between gap-5  ">
+    <View className={`${space} flex  flex-1 items-start justify-between gap-5`}>
       <View>
         <Text
           tx={'realisation.detailsStep.title'}
@@ -36,13 +39,16 @@ export function ProjectDetails() {
           className="max-w-xs text-start text-sm text-description"
         />
       </View>
-      <ScrollView className="flex gap-4" showsVerticalScrollIndicator={false}>
+      <ScrollView
+        className="mb-20 flex gap-4"
+        showsVerticalScrollIndicator={false}
+      >
         <ControlledInput
           required={true}
           control={control}
           name="projectName"
           labelStyle="mb-1 text-base font-bold"
-          className=" mt-5 gap-2"
+          className="mt-5 gap-2"
           label={translate('realisation.detailsStep.inputLabel')}
           placeholder={translate('realisation.detailsStep.inputPlaceholder')}
         />
@@ -54,7 +60,6 @@ export function ProjectDetails() {
           error={errorCity}
           required={true}
         />
-
         <TagGroup
           name="workSurface"
           control={control}
@@ -75,7 +80,7 @@ export function ProjectDetails() {
           )}
         />
       </ScrollView>
-      <View className="flex h-fit w-full items-center">
+      <View className="absolute bottom-0 flex  w-full items-center justify-start bg-background ">
         <StepButtons
           previous={{
             handlePreviousStep: onHandleBack,

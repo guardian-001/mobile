@@ -23,12 +23,12 @@ export function AdoptedStyle() {
   } = useStyles();
   return (
     <View className="mb-5 flex h-full w-full flex-1 items-center justify-between gap-6  ">
-      {(isPending || data?.length === 0) && (
+      {(isPending || data?.length === 0 || isError) && (
         <EmptyList isError={isError} isPending={isPending} />
       )}
       {isSuccess && (
         <>
-          <View className="mb-2">
+          <View className="mb-2 w-full">
             <Text
               tx={'realisation.styleStep.title'}
               className="mb-2 text-start text-2xl font-extrabold"
@@ -40,7 +40,7 @@ export function AdoptedStyle() {
           </View>
           <ScrollView
             showsVerticalScrollIndicator={false}
-            className="flex w-full "
+            className="mb-44 flex w-full "
           >
             {data?.map((item) => {
               return (
@@ -55,8 +55,8 @@ export function AdoptedStyle() {
             })}
           </ScrollView>
 
-          <View className="flex h-fit w-full items-center ">
-            <Text className="w-11/12 text-left text-sm text-error">
+          <View className="absolute bottom-0 flex h-40 w-full items-center justify-start bg-background ">
+            <Text className="   w-11/12 text-left text-sm text-error">
               {error ? translate(error) : ''}
             </Text>
             <StepButtons

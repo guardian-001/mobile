@@ -1,70 +1,58 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import type { Control } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 
 import { useCitiesApi } from '@/api/client/use-cities';
 import { useSpecialityTypesApi } from '@/api/supplier/createAccount/use-speciality-types';
-import { useAllSuppliersApi } from '@/api/supplier/profile/use-all-suppliers';
+import { useSuppliersBySpecialityTypeApi } from '@/api/supplier/profile/use-get-suppliers-by-speciality';
 import { useCustomForm } from '@/core';
 import type { Option } from '@/shared/components';
 import { useModal } from '@/shared/components';
 import { SearchSchema } from '@/shared/validations';
-import type { TagType } from '@/types';
 
-import {
-  CategoryData,
-  PropertyData,
-} from '../../create-announcement/dump-data';
 import { citySchema, specialityTypeSchema } from '../schema';
 export const useSupplier = () => {
   const {
-    data,
+    data: specialityTypesData,
     isLoading: isLoadingSpeciality,
     isError: isErrorSpeciality,
     isSuccess: isSuccessSpeciality,
   } = useSpecialityTypesApi();
   const { data: cities } = useCitiesApi();
   const {
+    control,
+    setValue,
+    watch: watchSpecialityType,
+  } = useCustomForm(specialityTypeSchema);
+  const { control: controlCity } = useCustomForm(citySchema);
+  useEffect(() => {
+    if (specialityTypesData?.length) {
+      setValue('specialityType', specialityTypesData[0].label || '');
+    }
+  }, [specialityTypesData, setValue]);
+  const selectedSpecialityType: string = watchSpecialityType('specialityType');
+  const selectedSpecialityTypeId =
+    specialityTypesData?.find(
+      (speciality) => speciality.label === selectedSpecialityType
+    )?.id || 1;
+  const {
     data: suppliers,
     isLoading: isLoadingSuppliers,
     isError: isErrorSuppliers,
     isSuccess: isSuccessSuppliers,
-  } = useAllSuppliersApi();
-
-  const { control, setValue } = useCustomForm(specialityTypeSchema);
-  const { control: controlCity, setValue: setValueCity } =
-    useCustomForm(citySchema);
-
-  useEffect(() => {
-    if (data?.length) {
-      setValue('specialityType', data[0].label || '');
-    }
-    if (cities?.length) {
-      setValueCity('city', cities[0].value || '');
-    }
-  }, [data, cities, setValue, setValueCity]);
-
-  const specialityTypesData: TagType[] =
-    data?.map((type) => {
-      return {
-        id: type.id,
-        value: type.label,
-        displayName: type.label,
-        imageIcon: type.icon,
-      };
-    }) || [];
+  } = useSuppliersBySpecialityTypeApi({
+    variables: { specialityId: selectedSpecialityTypeId },
+  });
 
   const cityOptions =
     cities?.map((city) => ({
       label: city.displayName,
       value: city.value,
     })) || [];
-
   const { field } = useController({
     control: controlCity as Control<{ city: string }, any>,
     name: 'city',
   });
-
   const modal = useModal();
   const onSelect = useCallback(
     (value: string | number) => {
@@ -79,12 +67,26 @@ export const useSupplier = () => {
     },
     [modal, onSelect]
   );
-
-  const { handleSubmit, control: searchControl } = useCustomForm(SearchSchema);
-
+  const {
+    handleSubmit,
+    control: searchControl,
+    watch,
+  } = useCustomForm(SearchSchema);
+  const searchValue = watch('search');
+  const selectedCity = field.value;
+  const filteredSuppliers = useMemo(() => {
+    if (!suppliers) return [];
+    return suppliers.filter((item) => {
+      const matchesSearch =
+        !searchValue ||
+        item.companyName.toLowerCase().includes(searchValue.toLowerCase());
+      const matchesCity =
+        !selectedCity ||
+        item.companyAddress.toLowerCase().includes(selectedCity.toLowerCase());
+      return matchesSearch && matchesCity;
+    });
+  }, [searchValue, suppliers, selectedCity]);
   return {
-    CategoryData,
-    PropertyData,
     specialityTypesData,
     isLoadingSpeciality,
     isErrorSpeciality,
@@ -100,5 +102,6 @@ export const useSupplier = () => {
     field,
     searchControl,
     handleSubmit,
+    filteredSuppliers,
   };
 };

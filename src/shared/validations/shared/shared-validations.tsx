@@ -22,6 +22,10 @@ export const intArrayValidation = z
 export const requiredValidation = z
   .string({ message: 'validations.required' })
   .min(1, { message: 'validations.required' });
+
+export const requiredLongTextValidation = z
+  .string({ message: 'validations.required' })
+  .min(50, { message: 'validations.requiredMinTextSize' });
 export const notRequiredValidation = z.string().optional();
 
 export const requiredValidationBoolean = z
@@ -43,12 +47,30 @@ export const passwordValidation = z
   .regex(/[0-9]/, { message: 'validations.passwordDigit' })
   .regex(/[^a-zA-Z0-9]/, { message: 'validations.passwordSpecialChar' });
 
+const fieldShapeRegex = /^[a-zA-Z0-9_ \u00C0-\u00FF]+$/;
 export const fieldValidation = z
   .string({ message: 'validations.required' })
   .min(1, { message: 'validations.required' })
   .min(3, { message: 'validations.fieldMinLength' })
   .max(50, { message: 'validations.fieldMaxLength' })
-  .regex(/^[a-zA-Z0-9_ \u00C0-\u00FF]+$/, {
+  .regex(fieldShapeRegex, {
+    message: 'validations.fieldShape',
+  });
+export const requiredShortTextValidation = z
+  .string({ message: 'validations.required' })
+  .min(1, { message: 'validations.required' })
+  .min(3, { message: 'validations.fieldMinLength' })
+  .max(15, { message: 'validations.fieldMaxLength' })
+  .regex(fieldShapeRegex, {
+    message: 'validations.fieldShape',
+  });
+
+export const fieldWithSpecialCharactersValidation = z
+  .string({ message: 'validations.required' })
+  .min(1, { message: 'validations.required' })
+  .min(3, { message: 'validations.fieldMinLength' })
+  .max(50, { message: 'validations.fieldMaxLength' })
+  .regex(/^[a-zA-Z0-9_ \u00C0-\u00FF.,;:!?\-'"]+$/, {
     message: 'validations.fieldShape',
   });
 
@@ -57,7 +79,7 @@ export const phoneValidation = z
   .min(1, { message: 'validations.required' })
   .regex(/^\+?\d+$/, { message: 'validations.phoneNumberDigits' })
   .min(8, { message: 'validations.phoneNumberMinLength' })
-  .max(15, { message: 'validations.phoneNumberMaxLength' });
+  .max(12, { message: 'validations.phoneNumberMaxLength' }); //15
 export const arrayOfNonEmptyStrings = z
   .array(
     z.string().nonempty({

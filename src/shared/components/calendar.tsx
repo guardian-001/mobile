@@ -7,14 +7,13 @@ import StepButtons from '@/modules/shared/step-buttons';
 import colors from '@/theme/colors';
 
 import { DAYS } from '../constants/constants';
-import { useCustomForm, useTimezone } from '../hooks';
+import { useCustomCalendar } from '../hooks/use-custom-calendar';
 import { useCalendar } from '../providers/use-calendar-provider';
-import { useFormStepper } from '../providers/use-form-stepper-provider';
 import { capitalizeFirstLetter } from '../utils';
 import { CalendarFormSchema } from '../validations';
 import { CalendarDaysList } from './calendar-days-list';
 import { RenderTimeSlots } from './time-slots';
-type CalendarFormType = Zod.infer<typeof CalendarFormSchema>;
+
 export const Calendar = () => {
   const {
     selectedDate,
@@ -23,20 +22,15 @@ export const Calendar = () => {
     handlePreviousMonth,
     handleNextMonth,
   } = useCalendar();
-  const [formattedTimezone] = useTimezone();
-  const { formData, setFormData, onHandleNext, onHandleBack } =
-    useFormStepper<CalendarFormType>();
-  const { handleSubmit, errors, control } = useCustomForm(CalendarFormSchema, {
-    date: formData?.date,
-    timeSlot: formData?.timeSlot,
-  });
-  const onSubmit = (data: CalendarFormType) => {
-    setFormData((prev: any) => ({
-      ...prev,
-      ...data,
-    }));
-    onHandleNext();
-  };
+  const {
+    formattedTimezone,
+    onHandleBack,
+    handleSubmit,
+    errors,
+    control,
+    onSubmit,
+    previousCondition,
+  } = useCustomCalendar<typeof CalendarFormSchema>(CalendarFormSchema);
   return (
     <>
       <View className="my-5 flex h-fit w-4/5 rounded-3xl bg-white px-3 py-5 shadow-md shadow-color-shadow">
@@ -44,10 +38,17 @@ export const Calendar = () => {
           <View className="px-4">
             <View className="mb-4 flex-row items-start justify-between py-2">
               <TouchableOpacity
-                className="flex h-7 w-7 items-center justify-center rounded-md border border-gray-400 p-2"
+                className={`flex h-7 w-7 items-center justify-center rounded-md border ${
+                  previousCondition ? 'border-gray-300' : 'border-gray-400'
+                } p-2`}
                 onPress={handlePreviousMonth}
+                disabled={previousCondition}
               >
-                <ArrowLeft color={colors.gray[600]} />
+                <ArrowLeft
+                  color={
+                    previousCondition ? colors.gray[300] : colors.gray[600]
+                  }
+                />
               </TouchableOpacity>
               <Text className="text-sm font-bold text-primary-txt">
                 {capitalizeFirstLetter(

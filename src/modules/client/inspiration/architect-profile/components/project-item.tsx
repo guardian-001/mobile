@@ -20,7 +20,7 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
     <View className="mb-2 flex-1">
       <ImageContainer className="h-96 w-full">
         <FlatList
-          data={item?.projectImages ?? []}
+          data={item?.realizationImages ?? []}
           renderItem={renderItem}
           keyExtractor={(imageUrl, index) => index.toString()}
           horizontal={true}
@@ -42,7 +42,7 @@ export const ProjectItem = React.memo(({ item }: ProjectItemProps) => {
       </ImageContainer>
       <View className="flex flex-1 flex-row items-center">
         <Text className="flex-1 text-sm font-semibold">
-          {item?.projectCategory}
+          {item?.projectCategory.label}
         </Text>
         <Button
           icon={<ArrowRightLong />}

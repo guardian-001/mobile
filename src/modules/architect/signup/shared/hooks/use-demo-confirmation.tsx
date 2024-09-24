@@ -9,7 +9,7 @@ import { showError, showSuccesMessage } from '@/shared/components';
 import type { SignupFormDataType } from '../types';
 
 export const useDemoConfirmation = () => {
-  const { formData } = useFormStepper<SignupFormDataType>();
+  const { formData, onHandleBack } = useFormStepper<SignupFormDataType>();
   const [errors, setErrors] = useState<string>('');
   const signup = useSignupApi();
   const router = useRouter();
@@ -30,5 +30,5 @@ export const useDemoConfirmation = () => {
       },
     });
   };
-  return { formData, timezone, errors, handleConfirmationStep };
+  return { formData, timezone, errors, handleConfirmationStep, onHandleBack };
 };

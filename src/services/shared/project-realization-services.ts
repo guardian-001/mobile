@@ -2,6 +2,8 @@ import { type AxiosResponse, isAxiosError } from 'axios';
 
 import { client } from '@/api';
 import type {
+  ProjectItem,
+  ProjectItemList,
   ResponseCategory,
   ResponseNeeds,
   ResponseStyle,
@@ -9,23 +11,26 @@ import type {
 import type { ProjectRealizationType } from '@/modules/architect/realization/shared/types';
 
 export async function getStyles(): Promise<ResponseStyle> {
-  try {
-    const response = await client.get(`/api/users/architectural-styles/`);
-    return response.data;
-  } catch (error: unknown) {
-    if (isAxiosError(error)) {
-      throw new Error(
-        `API request failed with status ${error.response?.status}`
-      );
-    } else {
-      throw new Error(
-        `API request failed: ${
-          error instanceof Error ? error.message : 'Unknown error'
-        }`
-      );
-    }
-  }
+ 
+  return client
+    .get(`/api/users/architectural-styles/`)
+    .then((response) => response.data)
+    .catch((error: unknown) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
+ 
 }
+
 export async function getNeeds(): Promise<ResponseNeeds> {
   return client
     .get(`/api/architect-realization/needs/`)
@@ -120,3 +125,46 @@ export const useCreateProjectImages = ({
     }
   }
 };
+
+export async function getRealizations(
+  categories: number[],
+  properties: number[]
+): Promise<ProjectItemList> {
+  const url = `/api/architect-realization/get-realizations/?project_category=${categories.join(
+    ','
+  )}&property_type=${properties.join(',')}`;
+  return client
+    .get(url)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      throw error.response?.data || error.message;
+    });
+}
+
+export async function getRealizationsByArchitect(
+  id: number
+): Promise<ProjectItemList> {
+  const url = `/api/architect-realization/get-realizations-by-architect/${id}`;
+  return client
+    .get(url)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      throw error.response?.data || error.message;
+    });
+}
+
+export async function getRealizationById(id: number): Promise<ProjectItem> {
+  const url = `/api/architect-realization/details/${id}`;
+  return client
+    .get(url)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      throw error.response?.data || error.message;
+    });
+}

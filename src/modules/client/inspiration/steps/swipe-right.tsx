@@ -7,9 +7,9 @@ import { Text, View } from '@/shared/components';
 import { useSwipeRight } from '../hooks/use-swipe-right';
 
 export function SwipeRight() {
-  const {} = useSwipeRight();
+  const { onSubmit } = useSwipeRight();
   return (
-    <View className="flex-1 p-4 pt-8">
+    <View className="min-h-full flex-1 p-4 pt-8">
       <Text
         tx="inspiration.swipeRightTitle"
         className="mb-2 text-3xl font-bold"
@@ -19,7 +19,7 @@ export function SwipeRight() {
         className="text-xl text-description"
       />
       <StepperButton
-        onPressHandler={() => {}}
+        onPressHandler={onSubmit}
         label={translate('inspiration.startWatching')}
       />
     </View>

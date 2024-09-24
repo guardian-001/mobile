@@ -1,5 +1,8 @@
 import { t } from 'i18next';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import type { NativeScrollEvent } from 'react-native';
+import type { NativeSyntheticEvent } from 'react-native';
+import { Dimensions } from 'react-native';
 
 import { useArchitectProfileApi } from '@/api/architect/profile/use-profile';
 import { Bronze } from '@/assets/icons/archimatch/architect-badges/bronze';
@@ -9,6 +12,15 @@ import { translate } from '@/core';
 import type { ProgressBarRef } from '@/shared/components';
 
 export const useProfileSuggestion = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const { width } = Dimensions.get('window');
+
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const scrollPosition = event.nativeEvent.contentOffset.x;
+    const activeIndexLocal = Math.round(scrollPosition / width);
+    setActiveIndex(activeIndexLocal);
+  };
+
   const { data, isError, isLoading, isPending, isSuccess } =
     useArchitectProfileApi();
 
@@ -45,7 +57,6 @@ export const useProfileSuggestion = () => {
     ) : data?.badge === 'Bronze' ? (
       <Bronze />
     ) : null;
-  console.log(data?.badge === 'Bronze');
   const profileCompletion = data?.profileCompletion ?? 0;
   const profileLevel = getProfileLevel(profileCompletion);
   const profileNextLevel = getProfileNextLevel(profileCompletion);
@@ -82,5 +93,8 @@ export const useProfileSuggestion = () => {
     profileCompletion,
     profileNextLevel,
     suggestionCardsData,
+    activeIndex,
+    handleScroll,
+    width,
   };
 };
