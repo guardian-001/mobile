@@ -63,8 +63,6 @@ export default function RealizationCard({
         />
       </View>
 
-      {/* Active dots indicator */}
-
       <View className="mx-auto h-[0.5px] w-11/12 bg-slate-200" />
       <View className="w-full flex-1 flex-row items-center justify-between rounded-3xl  ">
         <View className="ml-2 flex-1 flex-row items-center justify-start gap-2">
