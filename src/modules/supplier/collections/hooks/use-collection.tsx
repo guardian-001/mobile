@@ -60,7 +60,7 @@ export const useCollection = () => {
   );
   const searchValue = watch('search');
   const selectedCategory = field.value;
-  const CollectionData = useMemo(() => {
+  const collectionData = useMemo(() => {
     if (!data) return [];
     return data.filter((item) => {
       const matchesSearch =
@@ -78,7 +78,7 @@ export const useCollection = () => {
     navigateTo,
     handleSubmit,
     control,
-    CollectionData,
+    collectionData,
     isErrorCollection,
     isLoadingCollection,
     isSuccessCollection,

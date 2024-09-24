@@ -30,7 +30,7 @@ export const CollectionManagement = () => {
     navigateTo,
     control,
     modal,
-    CollectionData,
+    collectionData,
     isErrorCollection,
     isLoadingCollection,
     isSuccessCollection,
@@ -81,7 +81,7 @@ export const CollectionManagement = () => {
         <FetchStateHandler
           isError={isErrorCollection}
           isPending={isLoadingCollection}
-          isEmpty={CollectionData?.length === 0}
+          isEmpty={collectionData?.length === 0}
           isSuccess={isSuccessCollection}
           type="CUSTOM"
         >
@@ -89,7 +89,7 @@ export const CollectionManagement = () => {
             contentContainerClassName="pb-6 gap-3"
             showsVerticalScrollIndicator={false}
           >
-            {CollectionData?.map((collection) => (
+            {collectionData?.map((collection) => (
               <CollectionCard
                 key={collection.id}
                 id={collection.id.toString()}
