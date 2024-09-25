@@ -163,7 +163,7 @@ export async function createCollection(
 }
 
 export async function deleteCollectionAsync(
-  collectionId: number
+  collectionId: string
 ): Promise<AxiosResponse> {
   const url = `/api/catalogue/collection/delete/${collectionId}/`;
   return client.delete(url);
@@ -187,4 +187,14 @@ export async function updateProductVisibilityRequestAsync(
   const url =
     '/api/catalogue/product/update-visibility/${updateVisibilityData.id}/';
   return client.put(url, { visibility: updateVisibilityData.visibility });
+}
+
+export async function getCollectionById(id: string): Promise<Collection> {
+  const url = `/api/catalogue/collection/${id}`;
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error.response?.data || error.message;
+    });
 }
