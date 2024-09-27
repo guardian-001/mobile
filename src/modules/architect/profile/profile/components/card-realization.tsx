@@ -29,6 +29,10 @@ export default function RealizationCard({
     viewabilityConfig,
     flatListRef,
   } = useImagesProductSlider();
+
+  const realizationImagesData =
+    element?.realizationImages?.map((img) => img.image) ?? [];
+
   return (
     <View
       key={indexElement}
@@ -37,7 +41,7 @@ export default function RealizationCard({
       <View className="mr-4 h-80 w-full">
         <FlatList
           ref={flatListRef}
-          data={element?.realizationImages?.map((img) => img.image) ?? []}
+          data={realizationImagesData}
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
@@ -79,18 +83,18 @@ export default function RealizationCard({
             onPress={() => {}}
           />
         </View>
+
         <View className="justify-cente mr-2 flex-row">
-          {element?.realizationImages
-            ?.map((img) => img.uri)
-            ?.map((_, index) => (
-              <View
-                key={index}
-                className={`mx-1 h-2 w-2 rounded-full ${
-                  activeIndex === index ? 'bg-black' : 'bg-gray-300'
-                }`}
-              />
-            ))}
+          {element?.realizationImages?.map((_, index) => (
+            <View
+              key={index}
+              className={`mx-1 h-2 w-2 rounded-full ${
+                activeIndex === index ? 'bg-black' : 'bg-gray-300'
+              }`}
+            />
+          ))}
         </View>
+
         <TouchableOpacity
           onPress={() => {}}
           className="flex w-full flex-1 flex-row items-center justify-center gap-2"

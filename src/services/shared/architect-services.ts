@@ -76,14 +76,29 @@ export async function reportAsync(data: ReviewRequest): Promise<AxiosResponse> {
   return client.post(url, data);
 }
 
- 
 export async function getArchitectProfileRealizations(): Promise<
   PaginationResult<ProjectRealizationType>
 > {
   const url =
     '/api/architect-realization/get-architect-realizations/?page=1&page_size=20';
+  return client
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      if (isAxiosError(error)) {
+        throw new Error(
+          `API request failed with status ${error.response?.status}`
+        );
+      } else {
+        throw new Error(
+          `API request failed: ${
+            error instanceof Error ? error.message : 'Unknown error'
+          }`
+        );
+      }
+    });
+}
 
- 
 export async function getArchitectProfileById(
   id: number
 ): Promise<ArchitectProfileInfoType> {
@@ -108,7 +123,7 @@ export async function getArchitectProfileById(
 
 export async function getArchitectReview(): Promise<any> {
   const url = '/api/moderation/client-review/architect-reviews';
- 
+
   return client
     .get(url)
     .then((response) => response.data)
