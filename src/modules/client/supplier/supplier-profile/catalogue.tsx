@@ -4,15 +4,20 @@ import { FlatList } from 'react-native';
 import type { Collection } from '@/api/supplier/profile/types';
 import { ScrollView, Tag, View } from '@/shared/components';
 
-import { ProductCard } from './components/product-card';
 import { useCatalogue } from './hooks/use-catalogue';
 import type { CatalogueProps } from './types';
 
 export default function Catalogue({ collections }: CatalogueProps) {
-  const { control, products } = useCatalogue({ collections });
+  const {
+    control,
+    products,
+    appearance,
+    renderBigProduct,
+    renderLittleProduct,
+  } = useCatalogue({ collections });
 
   return (
-    <View className="flex-1">
+    <View className="flex-1 bg-background">
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -32,20 +37,25 @@ export default function Catalogue({ collections }: CatalogueProps) {
           />
         ))}
       </ScrollView>
-      <FlatList
-        data={products}
-        renderItem={({ item }) => (
-          <ProductCard
-            imageUrl={item.productImages?.[0]?.image}
-            title={item.name}
-            price={item.price}
-          />
-        )}
-        keyExtractor={(item) => item.id.toString()}
-        numColumns={2}
-        contentContainerClassName="gap-4 items-center py-2"
-        columnWrapperClassName="gap-4"
-      />
+      {appearance === 'Petite' ? (
+        <FlatList
+          key="small"
+          data={products}
+          renderItem={renderLittleProduct}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
+          contentContainerClassName="gap-4 items-center py-2"
+          columnWrapperClassName="gap-4"
+        />
+      ) : (
+        <FlatList
+          key="large"
+          data={products}
+          renderItem={renderBigProduct}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerClassName="px-2"
+        />
+      )}
     </View>
   );
 }

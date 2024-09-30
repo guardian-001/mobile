@@ -29,6 +29,8 @@ export const useLoginShared = () => {
         });
         if (space === 'supplier') {
           router.replace(`/(supplier)/(private)/(tab)/(profile)/profile`);
+        } else if (space === 'client') {
+          router.replace(`/(client)/(private)/(tab)/projets`);
         } else {
           router.replace(`/(${space})/(private)/profile`);
         }

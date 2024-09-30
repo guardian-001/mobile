@@ -27,6 +27,7 @@ module.exports = {
         'light-blue-linear': '#F4FDFF',
         'lighter-blue-linear': '#E5ECFF',
         'progress-background': '#EAEAEA',
+        'bar-txt': '#8E8E8F',
       },
     },
   },
