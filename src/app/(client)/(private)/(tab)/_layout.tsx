@@ -1,11 +1,14 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { Tabs } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
 import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
 
 import { Explore, Fournisseur, Inspiration, Projet } from '@/assets/icons';
 import ConstructionHelmet from '@/assets/icons/construction-helmet';
+import colors from '@/theme/colors';
 
 export default function TabLayout() {
+  const router = useRouter();
   return (
     <Tabs
       initialRouteName="index"
@@ -28,24 +31,41 @@ export default function TabLayout() {
         name="inspiration"
         options={{
           title: 'Inspiration',
-          tabBarIcon: ({ color }) => <Inspiration color={color} />,
           tabBarTestID: 'inspiration-tab',
           headerShown: false,
+          tabBarButton: () => (
+            <TouchableOpacity
+              onPress={() =>
+                router.push('/(client)/(private)/(inspiration)/inspiration')
+              }
+              className="w-24 items-center justify-around"
+            >
+              <Inspiration color={colors['bar-txt']} />
+              <Text className="text-[10px] text-bar-txt ">Inspiration</Text>
+            </TouchableOpacity>
+          ),
         }}
       />
       <Tabs.Screen
         name="home"
         options={{
-          title: 'Lancer un projet',
-          href: '/(client)/(private)/(announcement)/create-announcement',
           tabBarIcon: ({ color }) => <ConstructionHelmet color={color} />,
           tabBarTestID: 'home-tab',
-          tabBarIconStyle: {
-            paddingBottom: 20,
-          },
-          tabBarLabelStyle: {
-            width: 90,
-          },
+          tabBarButton: () => (
+            <TouchableOpacity
+              onPress={() =>
+                router.push(
+                  '/(client)/(private)/(announcement)/create-announcement'
+                )
+              }
+              className="-mt-6 w-24 items-center"
+            >
+              <ConstructionHelmet />
+              <Text className="text-[10px] text-bar-txt ">
+                Lancer un projet
+              </Text>
+            </TouchableOpacity>
+          ),
         }}
       />
       <Tabs.Screen

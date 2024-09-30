@@ -23,6 +23,10 @@ export default function ClientPrivateLayout() {
         name="(supplier-profile)"
         options={ScreenOptions({ type: 'custom' })}
       />
+      <Stack.Screen
+        name="(inspiration)"
+        options={ScreenOptions({ type: 'custom' })}
+      />
     </Stack>
   );
 }
