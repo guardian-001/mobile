@@ -50,7 +50,8 @@ export const SupplierCard = ({ supplier }: SupplierCardProps) => {
         label={translate('searchSupplier.viewCatalogue')}
         onPress={() => {
           router.push({
-            pathname: '(client)/(private)/(supplier-profile)/profile',
+            pathname:
+              '(architect)/(private)/(supplier-profile)/supplier-profile',
             params: { supplier: JSON.stringify(supplier) },
           });
         }}
