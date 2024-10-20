@@ -14,7 +14,7 @@ export const ProductCard = ({ imageUrl, title, price }: ProductCardProps) => {
   const fallbackImage =
     'https://raw.githubusercontent.com/AzizSandid/AzizSandid/main/product-image-3.jfif';
   return (
-    <View className=" items-center justify-between rounded-2xl border border-color-border bg-white p-3">
+    <View className=" items-center justify-between rounded-2xl bg-white p-4 shadow-md shadow-color-shadow">
       <Image
         source={{
           uri: imageError || !imageUrl ? fallbackImage : imageUrl,
@@ -23,8 +23,8 @@ export const ProductCard = ({ imageUrl, title, price }: ProductCardProps) => {
         onError={() => setImageError(true)}
         contentFit="contain"
       />
-      <Text className="w-36 text-center font-bold">{title}</Text>
-      <Text className="w-36 text-center font-bold">
+      <Text className="w-36 text-left text-sm font-bold">{title}</Text>
+      <Text className="w-36 text-right text-sm font-bold">
         {price ? `${price} dt` : translate('collection.priceNotDefined')}
       </Text>
     </View>

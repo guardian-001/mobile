@@ -21,7 +21,11 @@
     "echec": "Echec de Creation",
     "collectionProductsNoDataTitle": "Articles de la collection",
     "collectionProductsDataTitle": "Produits",
-    "collectionProductsNoDataDescription": "Commencez à créer votre premier produit !"
+    "collectionProductsNoDataDescription": "Commencez à créer votre premier produit !",
+    "successDelete": "supprimé avec succès",
+    "echecDelete": "Échec de la suppression",
+    "confirmDeleteTitle": "Confirmer la suppression",
+    "confirmDeleteDescription": "Souhaitez-vous confirmer la suppression de la collection ?"
   },
   "createProduct": {
     "addProduct": "Ajouter un produit",

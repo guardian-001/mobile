@@ -5,31 +5,45 @@ import { Search } from '@/assets/icons';
 import { translate } from '@/core';
 import {
   ControlledInput,
+  FetchStateHandler,
   Image,
   KeyboardAvoidingView,
+  Modal,
   ScrollView,
   Text,
   TouchableOpacity,
   View,
 } from '@/shared/components';
 
+import { useProfileInfo } from '../profile/hooks/use-profile-info';
+import AddProductForm from '../shared/components/add-product-form';
 import { ProductCard } from './components/product-card';
-import { products } from './dump-data';
 import { useEditCollection } from './hooks/use-edit-collection';
 
 export const EditCollection = () => {
-  const { control } = useEditCollection();
+  const { data } = useProfileInfo();
+  const {
+    products,
+    control,
+    isError,
+    isLoading,
+    isSuccess,
+    reset,
+    ref,
+    present,
+    collection,
+  } = useEditCollection();
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1"
     >
-      <View className="my-6 w-11/12 flex-row items-center justify-between self-end px-4">
+      <View className="my-7 w-11/12 flex-row items-center justify-between self-end px-4">
         <Text tx="collection.collection" className="text-lg font-extrabold" />
         <Image
-          source={require('@/assets/images/architecteImage.jpg')}
-          className="mb-3 h-14 w-14 rounded-full"
+          source={{ uri: data?.profileImage }}
+          className="h-16 w-16 rounded-full"
           contentFit="cover"
         />
       </View>
@@ -43,7 +57,7 @@ export const EditCollection = () => {
         />
         <TouchableOpacity
           className="my-4 h-14 w-full flex-row items-center justify-center gap-3 rounded-lg border border-dashed border-description"
-          onPress={() => {}}
+          onPress={present}
         >
           <Image
             source={require('@/assets/images/add-product.png')}
@@ -51,22 +65,33 @@ export const EditCollection = () => {
           />
           <Text tx="collection.addProduct" className="font-semibold" />
         </TouchableOpacity>
-        <ScrollView
-          contentContainerClassName="gap-3 pb-4"
-          showsVerticalScrollIndicator={false}
+        <FetchStateHandler
+          isError={isError}
+          isPending={isLoading}
+          isEmpty={products?.length === 0}
+          isSuccess={isSuccess}
+          type="CUSTOM"
         >
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              title={product.title}
-              price={product.price}
-              imageUrl={product.imageUrl}
-              onEdit={() => {}}
-              onDelete={() => {}}
-            />
-          ))}
-        </ScrollView>
+          <ScrollView
+            contentContainerClassName="gap-3 pb-4"
+            showsVerticalScrollIndicator={false}
+          >
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                title={product.name}
+                price={product.price}
+                imageUrl={product.productImages[0].image}
+                onEdit={() => {}}
+                id={product.id.toString()}
+              />
+            ))}
+          </ScrollView>
+        </FetchStateHandler>
       </View>
+      <Modal snapPoints={['85%']} ref={ref} onDismiss={() => reset()}>
+        <AddProductForm selectedCollection={collection} />
+      </Modal>
     </KeyboardAvoidingView>
   );
 };

@@ -102,4 +102,5 @@ module.exports = {
   description: '#888FA7',
   green: '#00B031',
   error: '#ff0000',
+  'bar-txt': '#8E8E8F',
 };

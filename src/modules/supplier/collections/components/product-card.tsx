@@ -5,17 +5,21 @@ import { Pen } from '@/assets/icons/archimatch/pen';
 import {
   colors,
   Image,
+  Modal,
   Text,
   TouchableOpacity,
   View,
 } from '@/shared/components';
 
+import DeleteProductForm from '../../catalogue/components/confirm-delete-product';
+import { useDeleteProduct } from '../../catalogue/hooks/use-delete-product';
+
 type ProductCardProps = {
   imageUrl: string;
   title: string;
-  price?: string;
+  id: string;
+  price?: number;
   onEdit: () => void;
-  onDelete: () => void;
 };
 
 export const ProductCard = ({
@@ -23,8 +27,9 @@ export const ProductCard = ({
   title,
   price,
   onEdit,
-  onDelete,
+  id,
 }: ProductCardProps) => {
+  const { ref, present, onSubmit } = useDeleteProduct(id);
   return (
     <View className="flex-row items-center justify-between rounded-2xl border border-color-border bg-white p-4">
       <View className="flex-row items-center">
@@ -43,10 +48,13 @@ export const ProductCard = ({
         <TouchableOpacity onPress={onEdit}>
           <Pen color={colors.blue} width={25} height={35} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={onDelete}>
+        <TouchableOpacity onPress={present}>
           <Trash color={colors.blue} />
         </TouchableOpacity>
       </View>
+      <Modal snapPoints={['25%']} ref={ref}>
+        <DeleteProductForm id={id} onSubmit={onSubmit} />
+      </Modal>
     </View>
   );
 };
