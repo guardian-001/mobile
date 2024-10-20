@@ -37,8 +37,8 @@ export default function SupplierTab() {
     searchControl,
   } = useSupplier();
   return (
-    <View className="flex-1">
-      <View className="min-h-full bg-background">
+    <View className="w-full flex-1">
+      <View className="min-h-full  bg-background">
         <Layout>
           <Text
             className="m-4 text-base font-bold"
@@ -53,17 +53,18 @@ export default function SupplierTab() {
               contentContainerClassName="px-4"
               className="max-h-16 "
             >
-              {specialityTypesData?.map((tag) => (
-                <Tag
-                  key={tag.id}
-                  label={tag.label}
-                  name="specialityType"
-                  control={control}
-                  imageIcon={tag.icon}
-                  className="flex h-12 max-w-xl flex-row items-center justify-evenly"
-                  obligation={true}
-                />
-              ))}
+              {Array.isArray(specialityTypesData) &&
+                specialityTypesData?.map((tag) => (
+                  <Tag
+                    key={tag.id}
+                    label={tag.label}
+                    name="specialityType"
+                    control={control}
+                    imageIcon={tag.icon}
+                    className="flex h-12 max-w-xl flex-row items-center justify-evenly"
+                    obligation={true}
+                  />
+                ))}
             </ScrollView>
           )}
         </Layout>

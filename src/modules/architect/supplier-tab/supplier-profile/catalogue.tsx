@@ -1,10 +1,9 @@
 import React from 'react';
-import { FlatList } from 'react-native';
 
 import type { Collection } from '@/api/supplier/profile/types';
 import { ScrollView, Tag, View } from '@/shared/components';
 
-import { ProductCard } from './components/product-card';
+import ProductLittleGrid from './components/products-little-grid';
 import { useCatalogue } from './hooks/use-catalogue';
 import type { CatalogueProps } from './types';
 
@@ -32,20 +31,7 @@ export default function Catalogue({ collections }: CatalogueProps) {
           />
         ))}
       </ScrollView>
-      <FlatList
-        data={products}
-        renderItem={({ item }) => (
-          <ProductCard
-            imageUrl={item.productImages?.[0]?.image}
-            title={item.name}
-            price={item.price}
-          />
-        )}
-        keyExtractor={(item) => item.id.toString()}
-        numColumns={2}
-        contentContainerClassName="gap-4 items-center py-2"
-        columnWrapperClassName="gap-4"
-      />
+      <ProductLittleGrid items={products} />
     </View>
   );
 }

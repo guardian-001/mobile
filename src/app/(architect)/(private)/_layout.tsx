@@ -7,6 +7,10 @@ export default function ArchitectPrivateLayout() {
   return (
     <Stack initialRouteName="profile">
       <Stack.Screen name="(tab)" options={ScreenOptions({ type: 'custom' })} />
+      <Stack.Screen
+        name="(supplier-profile)"
+        options={ScreenOptions({ type: 'custom' })}
+      />
 
       <Stack.Screen
         name="realize-project"
