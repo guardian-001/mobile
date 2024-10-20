@@ -1,21 +1,32 @@
 import React from 'react';
 
 import { Pen, Trash } from '@/assets/icons/archimatch';
-import { colors, Text, TouchableOpacity, View } from '@/shared/components';
+import {
+  colors,
+  Modal,
+  Text,
+  TouchableOpacity,
+  View,
+} from '@/shared/components';
+
+import { useDeleteCollection } from '../hooks/use-delete-collection';
+import DeleteCollectionForm from './confirm-delete-collection';
 
 type CollectionCardProps = {
   title: string;
   productsCount: number;
+  id: string;
   onEdit: () => void;
-  onDelete: () => void;
 };
 
 export const CollectionCard = ({
   title,
   productsCount,
   onEdit,
-  onDelete,
+  id,
 }: CollectionCardProps) => {
+  const { ref, present, onSubmit } = useDeleteCollection(id);
+
   return (
     <View className="flex-row items-center justify-between rounded-2xl border border-color-border bg-white p-4">
       <View>
@@ -28,10 +39,13 @@ export const CollectionCard = ({
         <TouchableOpacity onPress={onEdit}>
           <Pen color={colors.blue} width={25} height={35} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={onDelete}>
+        <TouchableOpacity onPress={present}>
           <Trash color={colors.blue} />
         </TouchableOpacity>
       </View>
+      <Modal snapPoints={['25%']} ref={ref}>
+        <DeleteCollectionForm id={id} onSubmit={onSubmit} />
+      </Modal>
     </View>
   );
 };

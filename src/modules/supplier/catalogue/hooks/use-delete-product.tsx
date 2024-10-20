@@ -17,11 +17,13 @@ export const useDeleteProduct = (selectedProductId: string) => {
   const onSubmit = () => {
     mutate(selectedProductId, {
       onSuccess: () => {
-        showSuccesMessage(translate('catalogue.createProduct.success'));
+        showSuccesMessage(
+          translate('catalogue.createCollection.successDelete')
+        );
         dismiss();
       },
       onError: () => {
-        showErrorMessage(translate('catalogue.createProduct.echec'));
+        showErrorMessage(translate('catalogue.createCollection.echecDelete'));
         dismiss();
       },
     });

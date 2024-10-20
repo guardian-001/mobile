@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { useArchitectProfileByIdApi } from '@/api/architect/profile/use-profile-by-id';
 import { Avis, Card, GalerieIcon } from '@/assets/icons';
 
-import { architectDumpData } from '../../dump-data/architect-profile';
 import type { Tab } from '../../types';
 import About from '../about';
 import Reviews from '../avis';
@@ -39,7 +38,7 @@ export const useArchitectProfile = () => {
       case tabs[1].id:
         return <Galerie architectId={architect?.id} />;
       case tabs[2].id:
-        return <Reviews reviews={architectDumpData?.reviews} />;
+        return <Reviews />;
       default:
         return null;
     }
