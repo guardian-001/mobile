@@ -26,6 +26,12 @@ export const imagesValidation = z
       uri: z.string().url({
         message: 'validations.invalidUrl',
       }),
+      image: z
+        .string()
+        .url({
+          message: 'validations.invalidUrl',
+        })
+        .optional(),
       type: z.string({ message: 'validations.invalidType' }),
     })
   )

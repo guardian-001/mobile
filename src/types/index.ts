@@ -56,3 +56,11 @@ export type EmailType = {
 export type verificationCodeType = {
   verificationCode: string;
 };
+
+export type PaginationResult<T> = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  totalPages: number;
+  results: T[];
+};

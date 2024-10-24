@@ -11,6 +11,7 @@ import type {
 import type { ProjectRealizationType } from '@/modules/architect/realization/shared/types';
 
 export async function getStyles(): Promise<ResponseStyle> {
+ 
   return client
     .get(`/api/users/architectural-styles/`)
     .then((response) => response.data)
@@ -27,6 +28,7 @@ export async function getStyles(): Promise<ResponseStyle> {
         );
       }
     });
+ 
 }
 
 export async function getNeeds(): Promise<ResponseNeeds> {
@@ -71,7 +73,7 @@ export async function useCreateProject(
   formData: ProjectRealizationType
 ): Promise<AxiosResponse> {
   try {
-    const url = 'api/architect-realization/create-realization/';
+    const url = '/api/architect-realization/create-realization/';
     const response = await client.post(url, formData);
 
     return response.data;
@@ -98,7 +100,7 @@ export const useCreateProjectImages = ({
   id: string;
 }) => {
   try {
-    const url = `api/architect-realization/update-realization-images/${id}/`;
+    const url = `/api/architect-realization/update-realization-images/${id}/`;
     const response = client({
       url: url,
       method: 'PUT',

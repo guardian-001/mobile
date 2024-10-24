@@ -73,7 +73,7 @@ export default function ProfileHeader() {
           icon={<Settings color={colors.white} />}
         />
         <Button
-          label={translate('common.update')}
+          label={translate('common.share')}
           className=" h-12 w-32 rounded-xl"
           alternativeBg="bg-secondary-btn"
           alternativeTextColor="color-primary-txt"
