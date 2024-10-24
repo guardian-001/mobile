@@ -31,10 +31,12 @@ export const useSupplier = () => {
     }
   }, [specialityTypesData, setValue]);
   const selectedSpecialityType: string = watchSpecialityType('specialityType');
-  const selectedSpecialityTypeId =
-    specialityTypesData?.find(
-      (speciality) => speciality.label === selectedSpecialityType
-    )?.id || 1;
+  const selectedSpecialityTypeId = Array.isArray(specialityTypesData)
+    ? specialityTypesData.find(
+        (speciality) => speciality.label === selectedSpecialityType
+      )?.id || 1
+    : 1;
+
   const {
     data: suppliers,
     isLoading: isLoadingSuppliers,
@@ -44,11 +46,12 @@ export const useSupplier = () => {
     variables: { specialityId: selectedSpecialityTypeId },
   });
 
-  const cityOptions =
-    cities?.map((city) => ({
-      label: city.displayName,
-      value: city.value,
-    })) || [];
+  const cityOptions = Array.isArray(cities)
+    ? cities.map((city) => ({
+        label: city.displayName,
+        value: city.value,
+      }))
+    : [];
   const { field } = useController({
     control: controlCity as Control<{ city: string }, any>,
     name: 'city',

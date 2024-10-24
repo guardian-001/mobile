@@ -12,7 +12,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ appStatus, router }) => {
   return (
-    <View className="p-4 pb-0">
+    <View className="px-4 pb-0 pt-10">
       {appStatus ? (
         <View className="flex flex-row justify-between">
           <Button

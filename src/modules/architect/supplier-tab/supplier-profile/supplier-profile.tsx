@@ -70,7 +70,7 @@ export default function SupplierProfile() {
             const isActive = activeTab === tab.id;
             const IconComponent = tab.icon;
             const color =
-              activeTab === tab.id ? colors.client : colors.description;
+              activeTab === tab.id ? colors.architect : colors.description;
             return (
               <TouchableOpacity
                 key={tab.id}
